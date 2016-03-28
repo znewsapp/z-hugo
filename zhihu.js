@@ -5,7 +5,7 @@ import cheerio from 'cheerio'
 export default {
   async getLatest() {
     const res = await got('http://news-at.zhihu.com/api/4/news/latest')
-    console.log(prettyjson.render(JSON.parse(res.body)))
+    return JSON.parse(res.body)
   },
 
   async getPost(postId) {
@@ -18,6 +18,6 @@ export default {
     // meta
     html('div.meta').remove()
     postInfo.newBody = html.html()
-    console.log(prettyjson.render(postInfo))
+    return prettyjson.render(postInfo)
   },
 }
