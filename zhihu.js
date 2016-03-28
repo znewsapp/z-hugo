@@ -1,11 +1,9 @@
-function sleep(ms = 0) {
-  return new Promise(r => setTimeout(r, ms))
-}
+import got from 'got'
+import prettyjson from 'prettyjson'
 
 export default {
   async getLatest() {
-    console.log('hello')
-    await sleep(1000)
-    console.log('world')
+    const res = await got('http://news-at.zhihu.com/api/4/news/latest')
+    console.log(prettyjson.render(JSON.parse(res.body)))
   },
 }
