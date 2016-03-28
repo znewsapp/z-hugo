@@ -11,10 +11,10 @@ var zhihu = require('./zhihu').default
 
 program.version(require('./package').version)
 
-program.command('getlatest')
-  .description('get latest daily zhihu')
+program.command('listlatest')
+  .description('list latest daily zhihu')
   .action(function() {
-    zhihu.getLatest().then(function(latestPosts) {
+    zhihu.listLatest().then(function(latestPosts) {
       console.log(prettyjson.render(latestPosts))
     })
   })
@@ -24,6 +24,14 @@ program.command('getpost <postId>')
   .action(function(postId) {
     zhihu.getPost(postId).then(function(post) {
       console.log(prettyjson.render(post))
+    })
+  })
+
+program.command('fetch')
+  .description('fetch latest posts info')
+  .action(function() {
+    zhihu.getLatestPostsInfo().then(function(posts) {
+      console.log(prettyjson.render(posts))
     })
   })
 
