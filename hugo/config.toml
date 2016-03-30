@@ -1,3 +1,4 @@
 baseurl = "http://znews.site/"
 # languageCode = "en-us"
+theme = "hugo-hikari-theme"
 title = "ZNews"
