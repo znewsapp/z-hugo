@@ -10,11 +10,13 @@ var prettyjson = require('prettyjson')
 var zhihu = require('./zhihu').default
 
 program.version(require('./package').version)
+program.option('-d, --date [date]', 'date + 1day to get')
+program.option('-f, --forcewrite', 'write to post file even if it already exists')
 
-program.command('listlatest')
+program.command('list')
   .description('list latest daily zhihu')
   .action(function() {
-    zhihu.listLatest().then(function(latestPosts) {
+    zhihu.list(program.date).then(function(latestPosts) {
       console.log(prettyjson.render(latestPosts))
     })
   })
@@ -30,8 +32,17 @@ program.command('getpost <postId>')
 program.command('fetch')
   .description('fetch latest posts info')
   .action(function() {
-    zhihu.getLatestPostsInfo().then(function(posts) {
+    zhihu.fetchPostsInfo(program.date).then(function(posts) {
       console.log(prettyjson.render(posts))
+    })
+  })
+
+// daily job
+program.command('download')
+  .description('get postinfo and write to hugo post')
+  .action(function() {
+    zhihu.download(program.date).then(function(result) {
+      console.log(result)
     })
   })
 

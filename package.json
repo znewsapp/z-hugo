@@ -13,6 +13,7 @@
     "cheerio": "^0.20.0",
     "commander": "^2.9.0",
     "got": "^6.2.0",
+    "mkdirp": "^0.5.1",
     "prettyjson": "^1.1.3"
   },
   "devDependencies": {
