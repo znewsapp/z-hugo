@@ -12,3 +12,18 @@ This will give you 20160303's stories
 
 The datetime seems to be CST
 ```
+
+## Daily download
+
+```
+$ node index download
+# it would fetch today and yesterday's posts, write to hugo/content/post
+```
+
+## Build hugo site
+
+```
+$ cd hugo
+$ hugo
+# the generated site will be in hugo/public
+```
