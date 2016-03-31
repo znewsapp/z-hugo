@@ -53,38 +53,42 @@ export default {
     return results
   },
 
-  async download(date) {
+  async download(date, forceWrite) {
     try {
       // download batch 1
       const allPosts = []
       const posts1 = await this.fetchPostsInfo(date)
       allPosts.push(...posts1)
-      // if (allPosts.length) {
-      //   const posts2 = await this.fetchPostsInfo(allPosts[0].postDate)
-      //   allPosts.push(...posts2)
-      // }
+      if (allPosts.length) {
+        const posts2 = await this.fetchPostsInfo(allPosts[0].postDate)
+        allPosts.push(...posts2)
+      }
       console.log(`got ${allPosts.length} postinfo total, now write them to file`)
-      allPosts.forEach(p => this.writePost(p))
+      allPosts.forEach(p => this.writePost(p, forceWrite))
       return 'download succeeded'
     } catch (err) {
       return err
     }
   },
 
-  writePost(post) {
-    const dir = `hugo/content/post/${post.postDate}/`
+  writePost(post, forceWrite) {
+    const dir = `hugo/content/post/${post.postDate.slice(0, 6)}/${post.postDate.slice(6, 8)}/`
     const dateInHugo =
       `${post.postDate.slice(0, 4)}-${post.postDate.slice(4, 6)}-${post.postDate.slice(6, 8)}`
-    // mkdirp.sync(dir)
     const fileName = `${post.ga_prefix}-${post.id}.html`
+    const path = dir + fileName
     let fileContent = '+++\n'
     fileContent += `date = "${dateInHugo}"\n`
     fileContent += `title = "${post.title}"\n`
     fileContent += `titleimage = "${post.image}"\n`
     fileContent += '+++\n\n'
     fileContent += post.newBody
-    console.log(dir)
-    console.log(fileName)
-    console.log(fileContent)
+    if (fs.existsSync(path) && !forceWrite) {
+      console.log(`${path} already exists, skip.......`)
+      return
+    }
+    mkdirp.sync(dir)
+    fs.writeFileSync(path, fileContent)
+    console.log(`!!! ${path} created, great !!!`)
   },
 }
