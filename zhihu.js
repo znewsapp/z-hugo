@@ -78,9 +78,10 @@ export default {
     const fileName = `${post.ga_prefix}-${post.id}.html`
     const path = dir + fileName
     let fileContent = '+++\n'
-    fileContent += `date = "${dateInHugo}"\n`
+    fileContent += `date = "${dateInHugo}T${post.ga_prefix.slice(4, 6)}:00:00"\n`
     fileContent += `title = "${post.title}"\n`
     fileContent += `titleimage = "${post.image}"\n`
+    fileContent += `ga = ${post.ga_prefix}\n`
     fileContent += '+++\n\n'
     fileContent += post.newBody
     if (fs.existsSync(path) && !forceWrite) {

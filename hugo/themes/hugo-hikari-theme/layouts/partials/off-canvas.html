@@ -1,6 +1,6 @@
 <div class="off-canvas">
     <figure class="avatar">
-        <img src="{{ .Site.BaseURL }}img/avatar.jpg" title="{{ with .Site.Params.name }}{{ . }}{{ end }}">
+        <img src="{{ .Site.BaseURL }}img/zicon.png" title="{{ with .Site.Params.name }}{{ . }}{{ end }}">
     </figure>
     <div class="bio">
         {{ with .Site.Params.offcanvas.title }}
@@ -34,6 +34,7 @@
 
         <ul>
             <li><a target="_blank" href="{{ .Site.BaseURL }}index.xml">RSS feed</a></li>
+            <li><a href="mailto:admin@znews.site" target="_top">Contact us</a></li>
         </ul>
 
         {{ with .Site.Params.offcanvas.followme }}
@@ -44,6 +45,6 @@
         {{ range .Site.Params.offcanvas.socialnetworks }}
             <li><a target="_blank" href="{{ .url }}">{{ .name }}</a></li>
         {{ end }}
-        </ul>        
+        </ul>
     </nav>
 </div>

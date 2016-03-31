@@ -41,7 +41,7 @@ program.command('fetch')
 program.command('download')
   .description('get postinfo and write to hugo post')
   .action(function() {
-    zhihu.download(program.date).then(function(result) {
+    zhihu.download(program.date, program.forcewrite).then(function(result) {
       console.log(result)
     })
   })
