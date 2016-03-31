@@ -15,15 +15,28 @@ The datetime seems to be CST
 
 ## Daily download
 
-```
+```bash
 $ node index download
 # it would fetch today and yesterday's posts, write to hugo/content/post
 ```
 
-## Build hugo site
+## Build hugo site (./build-hugo.sh)
 
-```
+```bash
 $ cd hugo
+$ rm -rf public
 $ hugo
 # the generated site will be in hugo/public
+```
+
+## Deploy the site to github pages (./push-to-github.sh)
+
+```bash
+$ cd hugo/public
+$ git init
+$ echo "znews.site" > CNAME
+$ git add .
+$ git commit -m "commit message"
+$ git remote add origin git@github.com:znewsapp/znews-msite.git
+$ git push -f -u origin master:gh-pages
 ```
