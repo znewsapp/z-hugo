@@ -40,3 +40,9 @@ $ git commit -m "commit message"
 $ git remote add origin git@github.com:znewsapp/znews-msite.git
 $ git push -f -u origin master:gh-pages
 ```
+
+## To setup cron
+
+```bash
+$ ./downandbuild.sh
+```
