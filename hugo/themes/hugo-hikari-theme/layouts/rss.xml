@@ -9,7 +9,7 @@
     <webMaster>{{.}}{{ with $.Site.Author.name }} ({{.}}){{end}}</webMaster>{{end}}{{ with .Site.Copyright }}
     <copyright>{{.}}</copyright>{{end}}{{ if not .Date.IsZero }}
     <lastBuildDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</lastBuildDate>{{ end }}
-    {{ range first 20 .Data.Pages }}
+    {{ range first 30 .Data.Pages }}
     <item>
       <title>{{ .Title }}</title>
       <link>{{ .Permalink }}</link>
@@ -17,7 +17,12 @@
       {{ with .Site.Author.email }}<author>{{.}}{{ with $.Site.Author.name }} ({{.}}){{end}}</author>{{end}}
       <guid>{{ .Permalink }}</guid>
       <content:encoded>
-      {{ `<header><figure data-mode=aspect-fit><img src="` | html }}{{ .Params.titleimage }}{{ `"></figure></header>` | html }}
+      {{ `<head>
+ <meta property="fb:use_automatic_ad_placement" content="true">
+</head>` | html }}
+      {{ `<header><figure data-mode=aspect-fit><img src="` | html }}{{ .Params.titleimage }}{{ `"></figure>` | html }}
+      {{ `<figure class="op-ad"><iframe width="300" height="250" style="border:0; margin:0;" src="https://www.facebook.com/adnw_request?placement=1577302215929977_1577302255929973&adtype=banner300x250"></iframe></figure>` | html}}
+      {{ `</header>` | html }}
       {{ .Content | html}}
       </content:encoded>
     </item>
