@@ -28,6 +28,12 @@ export default {
     html('div.view-more').remove()
     // meta
     html('div.meta').remove()
+    // remove p wrapper around img
+    html('p img').each(function () {
+      const parent = html(this).parent()
+      html(this).insertAfter(parent)
+      parent.remove()
+    })
     postInfo.newBody = html.html()
     postInfo.postDate = postDate
     return postInfo
