@@ -4,7 +4,7 @@ cd $DIR
 
 node index.js download
 
-if git diff-index --quiet HEAD --; then
+if [[ -z $(git status -s) ]]; then
     echo 'no file changes, exit'
     exit 0
 else
