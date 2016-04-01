@@ -5,4 +5,9 @@
 		{{ end }}
 		<a class="menu-icon" title="Menu"><span class="lines"></span></a>
 	</div>
+  {{ with .Params.titleimage }}
+  <section class="single-wrap">
+    <img src="{{ . }}">
+  </section>
+  {{ end }}
 </header>
