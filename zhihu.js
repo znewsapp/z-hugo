@@ -41,12 +41,11 @@ export default {
 
   async fetchPostsInfo(date) {
     const posts = await this.list(date)
-    const promises = posts.stories.map(p => this.getPost(p.id, posts.date))
 
     const results = []
-    for (const promise of promises) {
+    for (const post of posts.stories) {
       try {
-        const postDetail = await promise
+        const postDetail = await this.getPost(post.id, posts.date)
         if (postDetail.section && postDetail.section.id && postDetail.section.id === 2) {
           // we don't need 瞎扯
         } else {
@@ -73,7 +72,7 @@ export default {
       allPosts.forEach(p => this.writePost(p, forceWrite))
       return 'download succeeded'
     } catch (err) {
-      return err
+      return err.stack
     }
   },
 
