@@ -2,6 +2,9 @@ import got from 'got'
 import cheerio from 'cheerio'
 import mkdirp from 'mkdirp'
 import fs from 'fs'
+import OpenCC from 'opencc'
+
+const opencc = new OpenCC('s2t.json')
 
 export default {
   async list(date) {
@@ -29,12 +32,13 @@ export default {
     // meta
     html('div.meta').remove()
     // remove p wrapper around img
-    html('p img').each(function () {
+    html('p img').each(function cleanup() {
       const parent = html(this).parent()
       html(this).insertAfter(parent)
       parent.remove()
     })
-    postInfo.newBody = html.html()
+    postInfo.newBody = opencc.convertSync(html.html())
+    postInfo.title = opencc.convertSync(postInfo.title)
     postInfo.postDate = postDate
     return postInfo
   },
