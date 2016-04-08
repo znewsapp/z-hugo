@@ -45,6 +45,41 @@
                     js.src = "//connect.facebook.net/en_US/sdk/xfbml.ad.js#xfbml=1&version=v2.5&appId=1676323079284163";
                     fjs.parentNode.insertBefore(js, fjs);
                   }(document, 'script', 'facebook-jssdk'));
+
+                  var count = 0;
+                  window.img_array = new Array();
+
+                  // create a img frame
+                  function create_img_iframe(url)
+                  {
+                      var frameid = 'frameimg' + Math.random();
+                      window.img = '<img id="img" src=\''+url+'?'+Math.random()+'\' /><script>window.onload = function() { parent.document.getElementById(\''+frameid+'\').height = document.getElementById(\'img\').height+\'px\'; }<'+'/script>';
+                      window.img_array[count] = window.img;
+                      ifr = document.createElement('iframe');
+                      ifr.src = "javascript:parent.img_array[" + count + "];";
+                      ifr.frameBorder="0";
+                      ifr.scrolling="no";
+                      ifr.width="100%";
+                      ifr.id = frameid;
+
+                      count++;
+                      return ifr;
+                  }
+
+                  // hotlink, param id is the img parent id
+                  function hotlink_under_id()
+                  {
+                      imgs = document.documentElement.getElementsByTagName('img');
+
+                      while (imgs.length > 0)
+                      {
+                          src = imgs[0].src;
+                          ifr = create_img_iframe(src);
+                          imgs[0].parentNode.replaceChild(ifr, imgs[0]);
+                      }
+                  }
+
+                  hotlink_under_id();
                 </script>
 
                 <div class="feat share">
