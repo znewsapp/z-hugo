@@ -50,8 +50,10 @@ export default {
     for (const post of posts.stories) {
       try {
         const postDetail = await this.getPost(post.id, posts.date)
-        if (postDetail.section && postDetail.section.id && postDetail.section.id === 2) {
-          // we don't need 瞎扯
+        if (postDetail.section &&
+            (postDetail.section.id && postDetail.section.id === 2 ||
+             postDetail.section.id && postDetail.section.id === 34)) {
+          // we don't need 瞎扯 and 读读日报
         } else {
           results.push(postDetail)
         }

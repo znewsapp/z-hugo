@@ -1,7 +1,7 @@
 <main>
     <div id="home">
         <ul class="posts">
-        {{ $paginator := .Paginate (where .Data.Pages.ByDate.Reverse "Type" "post") }}
+        {{ $paginator := .Paginate (where .Data.Pages.ByDate.Reverse "Type" "post") 20 }}
         {{ range $paginator.Pages }}
             <li itemscope itemtype="//schema.org/BlogPosting">
                 <a href="{{ .Permalink }}" itemprop="url">
