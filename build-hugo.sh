@@ -6,5 +6,6 @@ rm -rf public
 hugo
 cd $DIR/hugo/public
 echo "znews.site" > CNAME
+cp -R post m
 
 cd $DIR
