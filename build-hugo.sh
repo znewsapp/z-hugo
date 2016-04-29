@@ -7,5 +7,7 @@ hugo
 cd $DIR/hugo/public
 echo "znews.site" > CNAME
 cp -R post m
+cd m
+find . -type f -name "*.html" -exec sed -i '' 's|content="http://znews.site/post|content="http://znews.site/m|g' {} \;
 
 cd $DIR
