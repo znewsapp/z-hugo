@@ -1,0 +1,89 @@
++++
+date = "2016-05-02T16:00:00"
+title = "拍照把人臉拍得一片黑，怎麼補救？"
+titleimage = "http://pic1.zhimg.com/a8b5d43090a28b10b8b1b0fb1b8d1100.jpg"
+ga = 050216
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title">在逆光下，人物完全背光又沒有補光的情況下，怎麼恢復膚色？</h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>題主說的問題，原因有三個</p>
+<p>1. 暗部噪點大</p>
+<p>2. 陰影部分影調範圍被壓縮</p>
+<p>3. 色溫在陰影區域下降</p>
+<p>針對三個問題，需要三步調整</p>
+<p>1. 降噪，raw 的話直接 acr 細節面板，jpeg 的話 nik dfine</p>
+<p>2. 提亮陰影，同時提高對比度。用曲線工具可以，pro contrast 之類的插件也 OK</p>
+<p>3. 最重要的一步，矯正陰影中更暗部的紅黃色偏。這個可以用曲線，可以用可選顏色，可以用色彩圖層，可以用蒙版，可以用高低頻，方法太多了，就隨心所欲吧。</p>
+<p>作爲一個手機軟鍵盤攝影師，我就不放圖了。</p>
+<p>--------------------------------- 勞動節的分割線 ---------------------------------</p>
+<p>好吧，既然題主現身評論，我還是隨便放點兒操作吧。</p>
+<p>爲了方便操作，我把前景人物和背景分成兩部分處理，首先複製一下背景圖層，對新圖層執行 Camera Raw 濾鏡。畢竟演示個思路，用這種大而全的濾鏡方便點：）</p>
+<p>基本面板裏面的調整，大體上是整體提高人物曝光環境什麼就別管了。用高光和白色把過曝的部分控制住。</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/5534b1198ece27c86199491a5ae79ceb_b.jpg" alt="">
+<p>這個地方容我偷懶一下，直接用分離色調，通過控制平衡把面部的色彩順便統一一下。簡單說，就是把平衡打低抑制高光範圍咯。如果擔心自己看不準範圍，可以先把飽和度打到 100，然後再降回來。</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/5293de5ec5b52e5bae98c995b954c206_b.jpg" alt="">
+<p>好了，接下來是背景圖層的調整。這個地方我調整了色溫。用白平衡工具在背後的白牆上點一下，然後色調、色溫都向左移一點兒。</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/3885ab4d553d52a8125051cf3c3eb6c8_b.jpg" alt="">
+<p>做個漸變濾鏡，提高色溫和色調，壓點兒曝光，把地面暖暖的感覺做出來。</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/7b45dd8322c9a039199c8aafd11b41d4_b.jpg" alt="">
+<p>回到上面的圖層，框個選區，然後調整邊緣。意思一下就 OK 了，反正上下圖層本來就是一個東西。 勾選淨化顏色，輸出到帶蒙版的新圖層。</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/cb59c2bdb721ab1f27c3dee2fa2081e4_b.jpg" alt="">
+<p>得到一個新圖層，開始調整的人物圖層會被關掉。忽略掉曲線調整圖層，圖層面板裏看到就應該是這個效果了。</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/e6e2b49b87a59d9ad1aa882bdfb00840_b.jpg" alt="">
+<p>把被關閉的人物圖層打開，接着我們就可以用這個圖層的不透明度來控制上下的混合狀態了，讓效果更自然一些，另外插個調整圖層到中間做做色彩光影效果什麼也是很不錯的，可以對比下面兩個圖片。</p>
+<p>上方人物圖層不透明度 90%</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/ee2ffb53f62890558233e8cfb87ceb48_b.jpg" alt="">
+<p>上方人物圖層不透明度 20%</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/b87a10caae58ac2af8c4998637e839ae_b.jpg" alt="">
+<p>好了，接着是膚色。最偷懶的方法，做個純色填充圖層，模式柔光，隨便畫一下蒙版把大致皮膚範圍圈出來，然後在混合顏色帶裏面把暗部限制一下。</p>
+<p>嗯，因爲本來就追求逆光小清新，所以用柔光大平板打上去沒什麼不妥，膚色與光影問題一次解決。</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/e0223d7814959a4af21367e9aec59e48_b.jpg" alt="">
+<p>這麼做的話，不管你喜歡什麼膚色，只需要更改一下顏色填充圖層就 OK。</p>
+<p>自然的顏色：</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/d28e0132731b195dc12742572f76831b_b.jpg" alt="">
+<p>高冷的顏色：</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/d791a52175072678fe46dd8ce7f135de_b.jpg" alt="">
+<p>紅潤的顏色：</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/efbc2ec42c78590028413258055d2c04_b.jpg" alt="">
+<p>頭髮的處理和膚色差不多，做個漸變映射，隨便畫一下蒙版，混合顏色帶控制一下範圍，然後調一下圖層混合模式。</p>
+<p>這裏我用了強光。也可以根據自己的喜好用柔光或者疊加。因爲題主給的範例裏面頭髮暗部是黑色的，那就黑色吧，其實用別的顏色也挺好。</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/3fcda73ffbe361b005e0e2009f930f1d_b.jpg" alt="">
+<p>聽說這年頭不用一下 LUT 出門都不好意思和人打招呼？那老同志也來一發吧：</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/50966c7e74e16f1958fd883c22acc8d8_b.jpg" alt="">
+<p>隨手弄的，對膚色的保護做得不是太好，所以回到 PS 裏面用蒙版保護一下，直接用了之前的人物蒙版反向。</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/7a8e3be04a5d1033cf7234a2ca639b83_b.jpg" alt="">
+<p>以上，希望題主滿意。</p>
+<p>嗯，重要的是思路，色彩傾向，工具選擇，參數設置什麼的大家都可以隨便來。</p>
+<p>勞動最光榮！</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div>
