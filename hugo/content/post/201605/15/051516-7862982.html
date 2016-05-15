@@ -1,0 +1,140 @@
++++
+date = "2016-05-15T16:00:00"
+title = "怎麼把一羣人分成實力相當的兩組？我掏出了計算器"
+titleimage = "http://pic1.zhimg.com/87f19f83116664ec7a1edd7043d82310.jpg"
+ga = 051516
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+<div class="question">
+<h2 class="question-title">怎樣將一羣人分成兩組，使他們各自的總體實力「旗鼓相當」？</h2>
+<div class="answer">
+
+
+
+<div class="content">
+<img class="content-image" src="https://pic4.zhimg.com/59030d930fd74c13edf50096deddbfef_b.png" alt="">
+<p>在生活中，我們經常會遇到這樣的場景：<strong>把一羣人分成兩組，使得兩組人的實力盡可能相近。</strong>這個問題看起來簡單，但實際操作的時候，卻常常令人頭疼。</p>
+<hr>
+<p>舉個例子：一共有 16 個人，並且已知他們的實力排序（分別爲第 1、2&hellip;&hellip;16 名），把這 16 個人分成兩組，每組 8 人，如何分組使得這兩個小組的實力盡可能接近呢？</p>
+<hr>
+<p>一個最簡單的思路是，要把最強的兩個人分開（第 1 名在 A 組，第 2 名在 B 組），剩下的人隨機分組（我們打籃球時就經常這麼幹）。</p>
+<p>但這麼分組偶然性太大了，如果第 3 名、第 4 名分在了同一組，那麼這組的實力就太強了。</p>
+<p>於是我們細化分組方案：把第 3 名和第 4 名也分開，考慮到當前第 1 名所在的 A 組實力比較強，所以就把較弱第 4 名分在 A 組，較強的第 3 名分在 B 組。</p>
+<p>分好前 4 名的小組後，我們再來分第 5~8 名。第 8 名最弱，所以把他和第 1 名所在的 A 組分在一起，然後把第 7 名分在 B 組，而這個時候 A 組好像又比 B 組弱一點了，於是把第 5 名分到 A 組，第 6 名分到 B 組&hellip;&hellip;</p>
+<p>&hellip;&hellip;</p>
+<p>細心的你大概會發現，這樣的分組方式和「單敗淘汰賽」的分組方式有點接近：</p>
+<img class="content-image" src="https://pic3.zhimg.com/a257ec9c1f0c9e57b1dbb2fdfa55ab5e_b.png" alt="">
+<p>簡單地說，「單敗淘汰賽」的分組效果是：如果每一輪都是名次高的人勝出，那麼每一輪的對陣的人的名次總和都是相等的。</p>
+<p>這種分組方式被用在了很多場景中，比如網球公開賽、NBA 季後賽等等。</p>
+<p>通過這種分組方式，我們將所有人按照實力分成兩組：</p>
+<ul>
+<li>A 組：1、4、5、8、9、12、13、16；</li>
+<li>B 組：2、3、6、7、10、11、14、15。</li>
+</ul>
+<p>這種分組方式很合理吧？</p>
+<p><strong>未必。</strong></p>
+<hr>
+<p>上面的分組方式，的確很適合淘汰賽，但是如果是分組對抗的話，還是有點問題的。</p>
+<p>我們得知道這樣一個事實：不同名次之間的實力差距，往往並不正比於他們的名次差。在大多數情況下，名次越高，名次之間的實力差距就越大。</p>
+<p>比如說，對於前 8 名選手，我們覺得他們的實力和名次之間是線性關係，他們的實力可以量化爲 8 分、7 分、6 分&hellip;&hellip; 2 分、1 分。但實際上，他們的實力和名次之間更接近於二次函數的關係，第 1 名到第 8 名的實力評分可能分別爲：64 分、49 分、36 分&hellip;&hellip; 4 分、1 分。</p>
+<p>如果這種關係成立，那麼對於前 8 名來說，兩個組的評分分別爲：</p>
+<ul>
+<li>A 組：<img class="content-image" src="https://zhihu.com/equation?tex=8%5E%7B2%7D+%2B5%5E%7B2%7D+%2B4%5E%7B2%7D+%2B1%5E%7B2%7D%3D106++" alt=""></li>
+<li>B 組：<img class="content-image" src="https://zhihu.com/equation?tex=7%5E%7B2%7D+%2B6%5E%7B2%7D+%2B3%5E%7B2%7D+%2B2%5E%7B2%7D%3D98++" alt=""></li>
+</ul>
+<p>這麼看，似乎是 A 組更強一些了。</p>
+<p>怎麼消除這個差距呢？</p>
+<p>我靈機一動：對於第 5 ~ 8 名這四個人，兩組的人交換一下（「交叉分組」）試試？這樣，A 組有第 1、4、6、7 名，B 組有第 2、3、5、8 名，他們的名次和依然相同，而他們評分的平方和：</p>
+<ul>
+<li>A 組：<img class="content-image" src="https://zhihu.com/equation?tex=8%5E%7B2%7D+%2B5%5E%7B2%7D+%2B3%5E%7B2%7D+%2B2%5E%7B2%7D%3D102++" alt=""></li>
+<li>B 組：<img class="content-image" src="https://zhihu.com/equation?tex=7%5E%7B2%7D+%2B6%5E%7B2%7D+%2B4%5E%7B2%7D+%2B1%5E%7B2%7D%3D102++" alt=""></li>
+</ul>
+<p>也恰好相等！（P.S. 他們名次的平方和也同樣相等）</p>
+<p>似乎我們有了一些方向。對於第 9 ~ 16 名，我們可以進行類似的「交叉分組」：</p>
+<ul>
+<li><strong>把前 8 名在 A 組的 4 個人名次 +8 後，把對應的 4 個名次的人放到 B 組去；把前 8 名在 B 組的 4 個人名次 +8 後，把對應的 4 個名次放到 A 組去；</strong></li>
+</ul>
+<p>（如：因爲 第 1 名在 A 組，所以 第 9 名就分到 B 組）</p>
+<img class="content-image" src="https://pic2.zhimg.com/e67dd3198a03f91de3f4797b397863c5_b.png" alt="">
+<p>於是我們得到了最終的分組情況：</p>
+<ul>
+<li>A 組：1、4、6、7、10、11、13、16；</li>
+<li>B 組：2、3、5、8、9、12、14、15。</li>
+</ul>
+<p>於是我們得到：</p>
+<img class="content-image" src="https://zhihu.com/equation?tex=1%2B4%2B6%2B7%2B10%2B11%2B13%2B16%3D68" alt="">
+<img class="content-image" src="https://zhihu.com/equation?tex=%3D2%2B3%2B5%2B8%2B9%2B12%2B14%2B15" alt="">
+<img class="content-image" src="https://zhihu.com/equation?tex=1%5E%7B2%7D%2B4%5E%7B2%7D%2B6%5E%7B2%7D%2B7%5E%7B2%7D%2B10%5E%7B2%7D%2B11%5E%7B2%7D%2B13%5E%7B2%7D%2B16%5E%7B2%7D%3D748" alt="">
+<img class="content-image" src="https://zhihu.com/equation?tex=%3D2%5E%7B2%7D%2B3%5E%7B2%7D%2B5%5E%7B2%7D%2B8%5E%7B2%7D%2B9%5E%7B2%7D%2B12%5E%7B2%7D%2B14%5E%7B2%7D%2B15%5E%7B2%7D" alt="">
+<p>與此同時，我們還意外地發現：</p>
+<img class="content-image" src="https://zhihu.com/equation?tex=1%5E%7B3%7D%2B4%5E%7B3%7D%2B6%5E%7B3%7D%2B7%5E%7B3%7D%2B10%5E%7B3%7D%2B11%5E%7B3%7D%2B13%5E%7B3%7D%2B16%5E%7B3%7D%3D9248" alt="">
+<img class="content-image" src="https://zhihu.com/equation?tex=%3D2%5E%7B3%7D%2B3%5E%7B3%7D%2B5%5E%7B3%7D%2B8%5E%7B3%7D%2B9%5E%7B3%7D%2B12%5E%7B3%7D%2B14%5E%7B3%7D%2B15%5E%7B3%7D" alt="">
+<p>連立方和都相等！</p>
+<p>這是一個巧合嗎？並不是！</p>
+<hr>
+<p>實際上，我們有更強的結論。用數學的語言說：</p>
+<p><img class="content-image" src="https://zhihu.com/equation?tex=2%5E%7Bn%7D+" alt=""></p>
+<ul>
+<li><strong>1 在 A 組，2 在 B 組；<br></strong></li>
+<li><strong>假設 1 到 <img class="content-image" src="https://zhihu.com/equation?tex=2%5E%7Bk%7D+" alt="">（<img class="content-image" src="https://zhihu.com/equation?tex=k%5Cin+N%2Ck%5Cgeq+1" alt="">）已經分組完畢，其中 A 組從小到大依次是 <img class="content-image" src="https://zhihu.com/equation?tex=a_%7B1%7D%2C+a_%7B2%7D%2C...%2Ca_%7B2%5E%7Bk-1%7D%7D" alt="">，B 組從小到大依次是 <img class="content-image" src="https://zhihu.com/equation?tex=b_%7B1%7D%2C+b_%7B2%7D%2C...%2Cb_%7B2%5E%7Bk-1%7D%7D" alt="">，那麼，將 <img class="content-image" src="https://zhihu.com/equation?tex=2%5E%7Bk%7D+%2B1" alt=""> 到 <img class="content-image" src="https://zhihu.com/equation?tex=2%5E%7Bk%2B1%7D+" alt=""> 按照如下方式分組：<img class="content-image" src="https://zhihu.com/equation?tex=a_%7B2%5E%7Bk-1%7D%2Bt%7D%3Db_%7Bt%7D%2B2%5E%7Bk%7D+" alt="">，<img class="content-image" src="https://zhihu.com/equation?tex=b_%7B2%5E%7Bk-1%7D%2Bt%7D%3Da_%7Bt%7D%2B2%5E%7Bk%7D+" alt=""> （<img class="content-image" src="https://zhihu.com/equation?tex=t%3D1%2C2%2C...%2C2%5E%7Bk-1%7D" alt="">）。<br></strong></li>
+</ul>
+<p><img class="content-image" src="https://zhihu.com/equation?tex=A%3Aa_%7B1%7D%2C+a_%7B2%7D%2C...%2Ca_%7B2%5E%7Bn-1%7D%7D" alt=""></p>
+<hr>
+<p>證明：</p>
+<p>用歸納法。當 n=2 時，1 + 4 = 2 + 3，結論成立，</p>
+<p>假設 n = k 時，</p>
+<img class="content-image" src="https://zhihu.com/equation?tex=A%3Aa_%7B1%7D%2C+a_%7B2%7D%2C...%2Ca_%7B2%5E%7Bk-1%7D%7D" alt="">
+<p>，</p>
+<img class="content-image" src="https://zhihu.com/equation?tex=B%3Ab_%7B1%7D%2C+b_%7B2%7D%2C...%2Cb_%7B2%5E%7Bk-1%7D%7D" alt="">
+<p>，兩組數的 1,2,...k-1 次冪和都相等。</p>
+<p>那麼當 n = k + 1 時，</p>
+<img class="content-image" src="https://zhihu.com/equation?tex=A%3Aa_%7B1%7D%2C+a_%7B2%7D%2C...%2Ca_%7B2%5E%7Bk-1%7D%7D%2Cb_%7B1%7D%2B2%5E%7Bk%7D%2Cb_%7B2%7D%2B2%5E%7Bk%7D%2C....%2Cb_%7B2%5E%7Bk-1%7D%7D%2B2%5E%7Bk%7D" alt="">
+<img class="content-image" src="https://zhihu.com/equation?tex=B%3Ab_%7B1%7D%2C+b_%7B2%7D%2C...%2Cb_%7B2%5E%7Bk-1%7D%7D%2Ca_%7B1%7D%2B2%5E%7Bk%7D%2Ca_%7B2%7D%2B2%5E%7Bk%7D%2C....%2Ca_%7B2%5E%7Bk-1%7D%7D%2B2%5E%7Bk%7D" alt="">
+<p>計算他們各自的 1,2,...k 次冪和，定義</p>
+<img class="content-image" src="https://zhihu.com/equation?tex=c_%7Bi%7D%3D%5Csum_%7Bj%3D1%7D%5E%7B2%5E%7Bk-1%7D%7D%7Ba_%7Bj%7D%5E%7Bi%7D+%7D+%3D%5Csum_%7Bj%3D1%7D%5E%7B2%5E%7Bk-1%7D%7D%7Bb_%7Bj%7D%5E%7Bi%7D+%7D+" alt="">
+<p>(i=1,2,...k-1)</p>
+<p>容易驗證，對於 1,2,...k-1 次冪和，兩組數展開後都是關於</p>
+<img class="content-image" src="https://zhihu.com/equation?tex=c_%7Bi%7D" alt="">
+<p>的多項式，且係數相等，所以總和相等，而對於 k 次冪和，兩組數展開後關於 k 次冪的項完全相同，而不大於 k-1 次冪的項也可以表示成關於</p>
+<img class="content-image" src="https://zhihu.com/equation?tex=c_%7Bi%7D" alt="">
+<p>的係數相等的多項式，所以總和也相等。所以 n= k+1 時，兩組數的 1,2,...k-1 次冪和都相等。</p>
+<p>證畢。</p>
+<hr>
+<p>【注 1】上面的結論有一個簡單的推論：</p>
+<ul>
+<li>如果對於任意一個數 <em>t </em>，對應函數 <em>f(t)</em> 只要是不高於 n-1 階的多項式，那麼 A 組和 B 組各自的 f(t) 的和也是相等的，這意味着 A 組 和 B 組的數的 1,2,...,n-1 階矩 （平均值、方差、偏度、峯度&hellip;&hellip;）也是相等的。</li>
+</ul>
+<p>這說明，如果我們按照這種方式分組，兩組的性質真的非常非常接近。<strong>我們終於找了了一種方法，將一羣人分成兩組，使他們各自的總體實力「旗鼓相當」。</strong></p>
+<p>【注 2】如何迅速判斷一個數 <em style="line-height: 1.5;">t</em> 應該在 A 組 還是 B 組呢？</p>
+<p>一個有趣的判斷方式： 觀察 t-1 的二進制表示中 1 的個數，如爲偶數個，則在 A 組，如爲奇數個，則在 B 組。如：要判斷 12 在哪個組，判斷</p>
+<img class="content-image" src="https://zhihu.com/equation?tex=11%3D%281011%29_%7B2%7D" alt="">
+<p>，有奇數個 1，所以 12 在 B 組中。</p>
+<p>證明從略。</p>
+<p>【注 3】以上種種，其實也是「等冪和問題」的一個應用場景。</p>
+<p>可以參見回答：<a class="internal" href="https://www.zhihu.com/question/37470096/answer/85014007">非常神奇的數學結論有哪些？ - 曾加的回答</a></p>
+<p>【注 4】以上所提供的，是隻知道排名，不知道各個名次對應權重時的一種選取方法，如果你知道更多的信息，如：每個人的確切權重，那本問題就轉化爲「揹包問題」了，並不在本問題的討論內，可移步：<a class="internal" style="line-height: 1.5;" href="https://www.zhihu.com/question/27896075">求一個算法，把一組數據切成兩組數據，使兩組數據和之差的絕對值最小？ - 數據結構</a></p>
+<hr>
+<p>（本文可以轉發，如需轉載，請私信作者。）</p>
+
+
+
+</div>
+</div>
+</div>
+
+
+</div>
+</div>
