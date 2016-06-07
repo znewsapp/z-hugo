@@ -1,0 +1,71 @@
++++
+date = "2016-06-07T17:00:00"
+title = "用計算機模擬大腦，基本上是這樣實現的"
+titleimage = "http://pic2.zhimg.com/f59952a3ce1a4bd2dd46bad9dc65d595.jpg"
+ga = 060717
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+<div class="question">
+<h2 class="question-title">發育、學習和記憶：用超級計算機研究大腦可塑性</h2>
+<div class="answer">
+
+
+
+<div class="content">
+<p><strong>寫在前面的話</strong></p>
+<p>在本專欄的<a class="internal" href="https://zhuanlan.zhihu.com/p/21278735">第一篇</a>和<a class="internal" href="https://zhuanlan.zhihu.com/p/21285223">第二篇</a>文章中，我提到了好幾次大腦可塑性（plasticity）的概念。大腦可塑性不只是神經元數量的增加，還體現在神經元之間的突觸形成和連接建立上。大腦的功能建立在高度連接的神經網絡基礎上。發育的過程是神經元獲得特定的屬性，並且建立正確的連接；而學習和記憶的過程，是神經元之間的連接得到修改，增強或者減弱。這一微觀現象在分子生物學和電生理學實驗中都被觀察到了，而出身於數學、物理、計算機背景的科學家們也非常感興趣，想在全局視野上理解這一現象。本文將重點介紹兩種研究突觸間可塑性的計算神經科學的常用方法。</p>
+<p><strong style="line-height: 1.5;">Hebb 的假設</strong></p>
+<p>在這一篇<a class="internal" href="https://zhuanlan.zhihu.com/p/21278735">文章</a>裏，我提到 Hebb 關於神經元間形成突觸的理論，fire together, wire together. 即當兩個在位置上臨近的神經元，在放電時間上也臨近的話，他們之間很有可能形成突觸。而突觸前膜和突觸後膜的一對神經元的放電活動（spike train）會進一步影響二者間突觸的強度。</p>
+<img class="content-image" style="line-height: 1.5;" src="https://zhihu.com/equation?tex=%5CDelta+t" alt="">
+<p>實驗結果非常喜人。</p>
+<img class="content-image" src="https://pic3.zhimg.com/cdc1fddeaa6e45d16611d64c35c5d162_b.png" alt="">
+<img class="content-image" style="line-height: 1.5;" src="https://zhihu.com/equation?tex=w" alt="">
+<p>這個實驗結果將發育、學習、記憶的研究從&ldquo;有沒有&rdquo;推進到了&ldquo;是多少&rdquo;的旨在發現其時間空間物理數學規律的階段。</p>
+<p><strong>STDP 的數學原理</strong></p>
+<p>通過量化建模，突觸強度的變化被簡化爲以下優美的數學公式：</p>
+<img class="content-image" src="https://zhihu.com/equation?tex=%5CDelta+w%5E%2B+%26%3DF_%2B%28w%29%5Ccdot+e%5E%7B%5Cfrac%7B-%5Clvert%5CDelta+t%5Crvert%7D%7B%5Ctau_%2B%7D%7D%5Cquad+%5Cquad+%5Cquad%26+%5Ctext%7Bif+%7D%5CDelta+t+%3E0+" alt="">
+<img class="content-image" src="https://zhihu.com/equation?tex=%5CDelta+w%5E-+%26%3D-F_-%28w%29%5Ccdot+e%5E%7B%5Cfrac%7B-%5Clvert%5CDelta+t%5Crvert%7D%7B%5Ctau_-%7D%7D%5Cquad+%5Cquad+%5Cquad%26+%5Ctext%7Bif+%7D%5CDelta+t+%3C0" alt="">
+<img class="content-image" src="https://zhihu.com/equation?tex=%5CDelta+w" alt="">
+<p>這就是計算神經科學的基礎，利用實驗數據進行抽象建模，獲取其數學物理規律，再根據相應的規律建造工具，模擬自然神經網絡，就可以進行計算機實驗，來檢驗目前普通生化實驗無法做到的大規模量化和動態觀察。</p>
+<p><strong>結構可塑性</strong></p>
+<p>STDP 有一個缺陷，就是它最初被用於 point neuron 模型，也就是把神經元簡化爲一個點，而忽視了神經元的形態特徵。然而實際上神經元是一個形態萬千的細胞，來自同一個突觸前膜的 spike，到達樹突（dendrites）或者到達胞體 (cell body or soma)，對於該突觸後膜的電活動影響大小是不一樣的。而且，神經元之間可以形成多個連接，這是 point neuron 的矩陣無法實現的。可以這麼說，在現實中，兩個神經元之間在不停地產生新的突觸或者有突觸消失，既有的突觸強度也是不斷變化的。</p>
+<img class="content-image" src="https://pic4.zhimg.com/223b583980e91d01830fa8be65b3a33b_b.jpg" alt="">
+<p>那麼一個能夠模擬結構變化的算法應運而生，叫做 Structural plasticity. Structural Plasticity 的算法 2016 年才上線，目前這個領域還非常新，相關的研究並不多。</p>
+<p><strong>用計算機解決神經科學的真實問題</strong></p>
+<p>前面講了很多數學，都是爲了研究實際問題。舉一個跟真實大腦現象有關的例子。</p>
+<p>視覺皮層的神經元被報告具有獨特的反應域，即不同的神經元會對特定的方向（prefereerd orientation）起反應。在貓和猴子的視皮層內，方向偏好類似的神經元在位置上是鄰近的。但是這種鄰近現象在齧齒類動物視皮層卻不存在。那麼在小鼠視皮層上，這些神經元都是單兵作戰麼？還是有什麼地下網絡呢？</p>
+<p>這個來着德國 BCCN 神經科學中心的&nbsp;<a class=" wrap external" href="https://link.zhihu.com/?target=https%3A//www.bcf.uni-freiburg.de/people/details/rotter" target="_blank" rel="nofollow noreferrer">Rotter</a>&nbsp;組的實驗，就用計算機模擬的方法，發現了具有相似方向偏好的神經元之間的連接強度比不相干的更強。在訓練之前，各個神經元的初始連接強度都一樣，等到訓練一段時間後，有的連接增強了，有的連接減弱了。方向偏好類似的連接增強了，這就暗示了在小鼠視皮層也有類似於貓和猴子的神經元 cluster。</p>
+<img class="content-image" src="https://pic3.zhimg.com/60d20c7dbaeb914ec73585657c3f5c1a_b.png" alt="">
+<p>這個研究是計算神經科學運用的一個很好的典範，因爲腦成像研究還無法精確追蹤神經元羣以及每對神經元的突觸（除了一個非常新的 real time in vivo calcium imaging 技術）。</p>
+<p><strong style="line-height: 1.5;">三兩閒話</strong></p>
+<p>鋪墊這麼久，終於寫到我自己的領域了。計算神經科學有非常多有趣的算法和研究，也是我爲之着迷的地方。本專欄隨後將會推出一個【計算神經科學小黑屋】系列，放上一些計算神經科學領域的基礎內容，以及值得討論的交叉學科話題，還會邀請有關領域的同學來寫作。希望對這一領域感興趣的同學能夠加入我（們？），一個人讀公式太苦了，不如一起討論吧。戳<a class=" wrap external" href="https://link.zhihu.com/?target=https%3A//github.com/neuronstar/spiking-neuron-models" target="_blank" rel="nofollow noreferrer">這裏</a>看我們正在進行的讀書會的討論筆記。</p>
+<p><strong style="line-height: 1.5;">相關參考</strong></p>
+<p>神經元的圖出自這裏，<a class=" wrap external" style="line-height: 1.5;" href="https://link.zhihu.com/?target=http%3A//images.google.de/imgres%3Fimgurl%3Dhttps%253A%252F%252Fonline.science.psu.edu%252Fsites%252Fdefault%252Ffiles%252Fbisc004%252Fcontent%252Fneuron.jpg%26imgrefurl%3Dhttps%253A%252F%252Fonline.science.psu.edu%252Fbisc004_activewd001%252Fnode%252F1907%26h%3D315%26w%3D644%26tbnid%3DwIo3MQcytXFE-M%253A%26docid%3DzTj4byOXlOODIM%26ei%3DUyVQV7qyGsqEgAaXiZTYCg%26tbm%3Disch%26iact%3Drc%26uact%3D3%26dur%3D512%26page%3D1%26start%3D0%26ndsp%3D25%26ved%3D0ahUKEwj6p7HsqonNAhVKAsAKHZcEBasQMwg7KAwwDA%26bih%3D798%26biw%3D1821" target="_blank" rel="nofollow noreferrer">戳</a></p>
+<p>按順序出現的篇文獻：</p>
+<p>Bi, G. Q., &amp; Poo, M. M. (1998). Synaptic modifications in cultured hippocampal neurons: dependence on spike timing, synaptic strength, and postsynaptic cell type. <em>The Journal of neuroscience</em>, <em>18</em>(24), 10464-10472.</p>
+<p>Morrison, A., Aertsen, A., &amp; Diesmann, M. (2007). Spike-timing-dependent plasticity in balanced random networks. <em>Neural computation</em>, <em>19</em>(6), 1437-1467.</p>
+<p>Diaz Pier, S., Naveau, M., Butz-Ostendorf, M., &amp; Morrison, A. (2016). Automatic generation of connectivity for large-scale neuronal network models through structural plasticity. <em>Frontiers in Neuroanatomy</em>, <em>10</em>, 57.</p>
+<p>Sadeh, S., Clopath, C., &amp; Rotter, S. (2015). Emergence of Functional Specificity in Balanced Networks with Synaptic Plasticity. <em>PLoS Comput Biol</em>, <em>11</em>(6), e1004307.</p>
+
+
+
+</div>
+</div>
+</div>
+
+
+</div>
+</div>
