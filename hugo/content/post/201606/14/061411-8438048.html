@@ -1,0 +1,66 @@
++++
+date = "2016-06-14T11:00:00"
+title = "磨皮美顏的好工具，無數妹子的好朋友"
+titleimage = "http://pic2.zhimg.com/eb8583a1e2ca94fd9e58d2a1cbc989e5.jpg"
+ga = 061411
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title">傅里葉變換是用來做什麼的，具體舉例一下應用？</h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>用來美顏！美顏！美顏！</p>
+<p>重要的事情說三遍。</p>
+<p>沒錯傅里葉變換很重要的一個應用領域就是數字圖像處理，就是我們常說的磨皮美顏。</p>
+<p>簡單來說原理是這樣的：</p>
+<p>（1）基於傅里葉變換，把一張圖片從 <strong>圖像域</strong> 轉化爲 <strong>頻率域</strong>。</p>
+<p>所謂圖像域，就是我們日常看到的圖片，長這樣：</p>
+<img class="content-image" style="display: block; margin-left: auto; margin-right: auto;" src="http://pic3.zhimg.com/70/840c4d34423ae58e512a14f33b333f5a_b.jpg" alt="">
+<p>而根據傅里葉變化，這張圖可以用一系列的<strong>不同頻率的函數的疊加</strong>來表示，圖片從圖片本身，變成了一個公式：Pic=A+B+C，於是這張圖片就變成了這樣：</p>
+<img class="content-image" style="display: block; margin-left: auto; margin-right: auto;" src="http://pic3.zhimg.com/70/fd8ce32903bee2559756ae6c17bb7462_b.jpg" alt="">
+<p>雖然看起來很不可思議，總而言之上面兩張圖是同一個信息的兩種表現方式。</p>
+<p>如果太難理解，可以想象一下，一首歌可以是你用耳朵聽到的聲音組合，但是在很多播放器裏會出現這種樣子：</p>
+<img class="content-image" style="display: block; margin-left: auto; margin-right: auto;" src="http://pic3.zhimg.com/70/35faca04d869bc1003501fa2e6b202aa_b.jpg" alt="">
+<p>經過傅里葉變換會變成這樣：</p>
+<img class="content-image" style="display: block; margin-left: auto; margin-right: auto;" src="http://pic4.zhimg.com/70/dc2ab42299042cd5a4742fc9604df043_b.jpg" alt="">
+<p>也成了多種頻率波形的組合。</p>
+<p>（感謝@<a href="http://www.zhihu.com/people/yingx">Y ing</a> 提醒，原來的配圖只是時域的圖）</p>
+<p>（2）去掉 頻率域 裏面 <strong>高頻</strong> 的部分。</p>
+<p>回到（1）中的原圖，各種噪點，如果在圖片中去噪（也就是磨皮），你就需要一點一點地摳掉，非常麻煩。但那張圖片到了頻率域中，所有獨立的噪點都變成了高頻函數表現的部分。</p>
+<p>（對於一幅圖像，高頻部分代表了圖像的細節、紋理信息；低頻部分代表了圖像的輪廓信息。）</p>
+<p>於是在頻率域圖片裏，我們把高頻函數直接砍掉。假設原來是 Pic=A+B+C，C 是高頻部分，那麼去掉 C 之後，Pic=A+B，頻率域的樣子就變成了這樣：</p>
+<img class="content-image" style="display: block; margin-left: auto; margin-right: auto;" src="http://pic1.zhimg.com/70/8493908d6ab23efa284badc67146c0c4_b.jpg" alt="">
+<p>（3）把 Pic=A+B 再轉回圖像域，所有的噪點就消失了，瞬間美美噠。</p>
+<img class="content-image" style="display: block; margin-left: auto; margin-right: auto;" src="http://pic4.zhimg.com/70/fb06d5b935dac9f72a76734cd72914c7_b.jpg" alt="">
+<p>於是如你所見，傅里葉變換拯救了無數的妹紙。</p>
+<p>P.S.畢業後再也沒寫過代碼了，都是靠記憶 + 寫的，想表達的是頻率域處理圖像的思路，如果細節表述有誤請大家輕拍指出來就好。</p>
+<p>P.S.又 P.S. 圖像是網上找的，如有侵權請指出來，立刪。原圖應該是先添加了椒鹽噪聲後再去處理，所以效果會很明顯，實際操作過程中還要看具體情況，不詳述了。</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div>
