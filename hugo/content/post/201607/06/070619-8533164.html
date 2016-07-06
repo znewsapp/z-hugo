@@ -1,0 +1,81 @@
++++
+date = "2016-07-06T19:00:00"
+title = "一家中國廣告公司，利用惡意軟件感染全球 8500 萬臺手機"
+titleimage = "http://pic4.zhimg.com/36883c2b22634060711e5014dd78b17f.jpg"
+ga = 070619
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+<div class="headline-background">
+<a class="headline-background-link" href="http://blog.checkpoint.com/wp-content/uploads/2016/07/HummingBad-Research-report_FINAL-62916.pdf">
+<div class="heading">相關新聞</div>
+<div class="heading-content">From HummingBad to Worse</div>
+<i class="icon-arrow-right"></i>
+</a>
+</div>
+
+</div>
+
+<div class="content-inner">
+
+
+
+<div class="question">
+<h2 class="question-title"></h2>
+<div class="answer">
+
+
+
+<div class="content">
+<p>最近 Check Point 發佈了一份非常詳細的報告，談到一款名爲 HummingBad 的 Android 惡意程序。此惡意程序在行爲方式上和先前一些相當霸道的 Android 惡意程序類似，不過它有幾大亮點：其一背後操縱者來自中國重慶（注意下面還有地址哦&hellip;）；其二其感染範圍極爲廣泛，Check Point 研究人員表示，HummingBad 估計已經感染了 8500 萬臺設備。</p>
+<p>HummingBad 的實例增長</p>
+<p><strong>HummingBad 幕後團隊大曝光</strong></p>
+<p>Check Point 在報告中將這款 Android 惡意程序稱作 HummingBad。這款惡意程序的作者是國內的一家廣告公司，名叫微贏互動（Yingmob！這下火了！）。Check Point 在報告中毫不留情地揭露了這家公司的一些細節信息。</p>
+<p>連工位都有啊！</p>
+<p>據說微贏互動內部還是有好幾個團隊在開發合法追蹤和廣告平臺的。而負責開發像 HummingBad 這樣惡意產品的團隊名爲&ldquo;海外平臺開發團隊&rdquo;，這個團隊內部有 4 個小組，共 25 名成員。</p>
+<p>該團隊有三個開發項目，分別是 Eomobi（就是 HummingBad 惡意組件產品）、Hummer Offers（廣告服務器分析平臺）、Hummer 啓動器（這實際上是個廣告服務 Android 應用開發包），共開發 6 條產品線：</p>
+<blockquote>1. Ebomi<br><br>2. Hummer 啓動器<br><br>3. Root 軟件開發套裝（SDK）<br><br>4. Hummer Offers<br><br>5. MAT<br><br>6. Unitemobi</blockquote>
+<p>這家公司其實算不上惡意程序的新人。早在 2015 年的時候，Palo Alto 曾經發布過一款 iOS 惡意程序 YiSpecter 的報告。當時 Palo Alto 就認爲 YiSpecter 應該與微贏互動有關，因爲這款惡意程序簽名就是微贏企業證書。</p>
+<p>Check Point 這次的報告則提到 HummingBad 和 YiSpecter 相比，有着相同的 C&amp;C 服務器地址，行爲方式也很相似。另外 HummingBad 內部還包含 QVOD 快播文檔（Check Point 直接將之稱作 iOS 色情播放器&hellip;&hellip;），這其實跟 Yispecter 也有關聯。</p>
+<p><strong>HummingBad 的目標當然是賺錢！</strong></p>
+<p>CheckPoint 預計，HummingBad 每天都會推 2000 萬廣告內容，其點擊率大約爲 12.5%，也就是說每天的廣告點擊量約爲 250 萬次。此外，HummingBad 每天還安裝超過 50000 個欺詐應用。</p>
+<p>預計微贏互動每天光從廣告點擊，就能獲取超過 3000 美元的收益，而詐騙應用的安裝則能獲取 7500 美元 / 天。換算下來一個月就是 30 萬美元，一年則爲 360 萬美元。</p>
+<p>當前 HummingBad 已經感染了 8500 萬臺 Android 設備。不止於此，由於這款惡意程序會非法對 Android 設備進行 Root 操作，實現各類惡意程序的推送，這些設備幾乎就是被徹底掌控的。這些設備上的數據風險自不必多說，將它們組成僵屍網絡，發起攻擊，或者將這些訪問權限賣到黑市，都全然不在話下。</p>
+<p>微贏互動用他們自家的 Umeng 服務來追蹤 HummingBad 的感染情況（專業！）。從 Umeng 的控制面板來看，這家公司&ldquo;註冊&rdquo;了近 200 款應用，預計其中 25%都是惡意程序，用於分發 HummingBad 惡意程序。上面這張圖也來自 Umeng 的統計，從去年 8 月份開始，其活躍性成長表現還是相當不錯的。</p>
+<p>從 HummingBad 當前影響的國家地區來看，這款惡意程序當前應該算是個跨國惡意程序，雖然主要感染地區還是在中國和印度，其他各國的感染數量也是相當可觀的。</p>
+<p><strong>惡意行爲分析</strong></p>
+<p>這次的報告中提到，HummingBad 首次感染方法應該是隱藏下載攻擊（drive-by download），部分成人內容站點也提供了相應的惡意 payload。</p>
+<p>而 HummingBad 本身包含了兩個主要組成部分，其中一個組件負責對 Android 設備進行 Root 操作，Rootkit 會考慮利用多種不同的漏洞。Root 成功後，攻擊者就能完全獲取設備的訪問權限。如果 Root 失敗，第二套組件就會生成一個欺騙性的系統升級通知，欺騙用戶讓 HummingBad 獲取系統級權限（Root 還是關鍵呀！）。無論 Root 是否成功，HummingBad 都會盡可能下載大量欺詐應用。</p>
+<p>模擬點擊的代碼</p>
+<p>整套 HummingBad 包含好幾個惡意組件。首要的組件名爲 SSP，其作用是顯示非法廣告、安裝欺詐應用。該組件通過 4 個事件觸發：設備啓動、屏幕開啓 / 關閉、設備連接任意變化、用戶檢測（聽說過 Android 系統中的 Receiver 嗎？這類行爲其實是完全合法的）。</p>
+<p>觸發過後，SSP 開啓名爲 Se 的服務，初始化惡意邏輯，並且開啓廣告網絡。SSP 還會開啓計時器，每 10 秒鐘計劃一次 LockTask，如果滿足相應條件（比如互聯網連接、從服務器獲取到設置，時間延遲等），LockTask 就會重啓 Se 服務，並且啓動 MainActivity 進程，激活惡意 payload。</p>
+<p>MainActivity 進程開始之後，惡意程序會顯示廣告 banner，廣告上面會有個關閉按鈕。實際上惡意程序會阻止用戶回到 Home 頁，或者是進行返回操作，這樣用戶就只能點擊該廣告了。用戶點擊所謂的&ldquo;關閉&rdquo;按鈕，實際上也是點擊一次廣告操作。在點擊廣告之後，SSP 組件就會向服務器發出請求，給 APK 返回一個鏈接，SSP 隨後再從服務器下載該 APK 文件（就是 Android 安裝文件嘛）。</p>
+<p>那個&ldquo;關閉&rdquo;按鈕相關代碼</p>
+<p>APK 文件下載完成後，惡意應用會檢查設備是否已經 Root。如果已經 Root，則默默地安裝下載的 APK 文件；如果沒有 Root 的話，SSP 會彈出用戶對話框，仍舊企圖進行安裝操作。</p>
+<p>下載的 APK 文件安裝完成後，SSP 再啓動該程序，並且廣播 INSTALL_BEFERRER，通過從服務器獲取到的信息來僞造 Google Play 的安裝，並從廣告網絡中獲取廣告收益（難道這不是僅針對國際用戶的麼？）。</p>
+<p>作爲一個合格的惡意程序，肯定還要獲取更新、發回報告。SSP 會從某 JSON 文件檢索 C&amp;C 域名。這裏的 JSON 文件是從 d1qxrv0ap6yf2e.cloudfront[.]net/domain/xxx.json 下載的，值大概是這樣的：</p>
+<div class="highlight">
+<pre><code class="language-text">&bull; {"id":3,"name":"CAP","master":"032o[.]com","slave":"032n[.]com"}&bull; {"id":4,"name":"SSP&amp;CCSDK","master":"guangbom[.]com","slave":"ssppsspp[.]com"}&bull; {"id":5,"name":"asdf","master":"asdf","slave":"asdf"} //I think&bull; {"id":6,"name":"efwe","master":"gwsgs","slave":"dgss"}//it's unused&bull; {"id":7,"name":"1","master":"1","slave":"1"} //and this&bull; {"id":8,"name":"CAP-DW","master":"ccaa100[.]com","slave":"ccaa200[.]com"}&bull; {"id":9,"name":"SSP-DW","master":"cscs100[.]com","slave":"cscs200[.]com"}&bull; {"id":11,"name":"HM-JK","master":"hmapi[.]com","slave":"eoapi[.]com"}&bull; {"id":12,"name":"易盟 - 易窗","master":"ma2.heshan88[.]com","slave":"sl2.heshan88[.]com"}&bull; {"id":13,"name":"易盟 - 易推","master":"ma2.heshan88[.]com","slave":"sl2.heshan88[.]com"}&bull; {"id":14,"name":"易盟 - 啓彈","master":"ma2.heshan88[.]com","slave":"sl2.heshan88[.]com"}&bull; {"id":15,"name":"iadpush","master":"ma2.lb0408[.]com","slave":"sl2.lb0408[.]com"}&bull; {"id":16,"name":"1mob-fudian","master":"ma2.heshan88[.]com","slave":"sl2.heshan88[.]com"}&bull; {"id":17,"name":"QS","master":"aa0ad[.]com","slave":"aa0ab[.]com"}&bull; {"id":18,"name":"1mob-xin（點滴 /BDSDK ","master":"ma2.heshan88[.]com","slave":"sl2.heshan88[.]com"}
+</code></pre>
+</div>
+<p>除此之外，SSP 還有一些行爲，比如具體的 Google Play 進程注入（SSP 能夠向 Google Play 進程注入一個庫，惡意程序也就能夠僞裝 Google Play 商店中安裝、購買、接受點擊操作；這裏用到的是比較知名的 ptrace，SSP 能夠用 ptrace 來調用控制其他應用，讀取、寫入內存等操作）；還有 RightCore 惡意組件，其實應該算是 SSP 的一個早期版本；CAP 組件採用比較複雜的技術負責安裝欺詐應用，實現欺騙 IMEI 碼注入，執行 Google Play 的點擊模擬操作等等。</p>
+<p>對這些感興趣的同學可以&nbsp;<a class=" wrap external" href="https://link.zhihu.com/?target=http%3A//blog.checkpoint.com/wp-content/uploads/2016/07/HummingBad-Research-report_FINAL-62916.pdf" target="_blank" rel="nofollow noreferrer">點擊這裏</a>，查看 Check Point 提供的詳情。</p>
+<p>在 Check Point 看來，微贏互動可能是首個曝光到大衆面前、如此高度組織化推惡意程序的團隊。或許這種趨勢未來還會持續，引來其他團隊的學習，實現複雜攻擊的獨立化運營。甚至將這樣掌控僵屍網絡的權限，提供給某些組織或政府機關，情況就更加複雜了。</p>
+<hr>
+<p>* FreeBuf 官方報道，本文原創作者：歐陽洋蔥，轉載請註明來自 FreeBuf 黑客與極客（<a class=" external" href="https://link.zhihu.com/?target=http%3A//FreeBuf.COM" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://</span><span class="visible">FreeBuf.COM</span><span class="invisible"></span></a>）</p>
+
+
+
+</div>
+</div>
+</div>
+
+
+</div>
+</div>
