@@ -1,0 +1,118 @@
++++
+date = "2016-07-08T07:00:00"
+title = "有些數據分析中常踩的坑，當心別掉進去"
+titleimage = "http://pic2.zhimg.com/1f6c86808439d86adba050a91776611d.jpg"
+ga = 070807
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title">數據分析中會常犯哪些錯誤，如何解決？</h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>中國</p>
+<p><em>來點入門的吧（因爲我就是入門水平啊）</em></p>
+<ul>
+<li><strong>錯把相關性當成因果性 correlation vs. causation</strong></li>
+</ul>
+<p>經典的冰淇凌銷量和游泳溺水人數成正比的數據，這並不能說明冰淇凌銷量的增加會導致更多的人溺水，而只能說明二者相關，比如因爲天熱所以二者數量都增加了。這個例子比較明顯，說起來可能會有人覺得怎麼會有人犯這樣的錯誤，然而在實際生活、學習、工作中，時不時的就會有人犯這樣的錯誤。</p>
+<p>舉個栗子</p>
+<blockquote>數據顯示，當科比出手 10-19 次時，湖人的勝率是 71.5%；當科比出手 20-29 次時，湖人的勝率驟降到 60.8%；而當科比出手 30 次或者更多時，湖人的勝率只有 41.7%。</blockquote>
+<img class="content-image" src="http://pic4.zhimg.com/70/b0f8e873c67736c9314a091392886f3f_b.jpg" alt="">
+<p>圖片來源：<a href="http://www.statisticshowto.com/wp-content/uploads/2014/12/correlation.png">statisticshowto.com</a></p>
+<p>-- 聲明：非科比粉，路人偏黑。</p>
+<ul>
+<li><strong>倖存者偏差 survivorship bias</strong></li>
+</ul>
+<p>數據分析中看到的樣本是&ldquo;倖存了某些經歷&rdquo;才被觀察到的，進而導致結論不正確。</p>
+<p>比如比爾蓋茨、喬布斯、扎克伯格都沒有唸完大學，所以大家都應該退學去創業。這一結論的最大問題在於那些退學而又沒有成功的例子，很多時候我們是看不到的。另一方面，他們是因爲牛逼才退學，而不是退學才牛逼的，看，相關性 / 因果性真是限魂不散。</p>
+<p>再比如某打車軟件發現新用戶有 10 塊錢優惠券，但是平均評價卻只有 3 星。相反，第二次再用的時候沒有優惠券了，評價卻高達 4 星半。這說明，不給優惠券用戶評價會更高，果然用戶雖然愛用優惠券，但內心還是覺得便宜沒好東西的？很明顯，倖存者偏差在這個例子裏體現在那些打一星二星評價的用戶，之後可能就沒有第二次了。更明顯的，這個例子是我瞎扯的。</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/fc780146bef3bc7772388cfaeeab8de0_b.jpg" alt="">
+<p>圖片來源：<a href="http://66.media.tumblr.com/3a600f05e67d4995557ccb788e7db97b/tumblr_nnzx8oTLo91uqr0clo1_1280.png">Tumblr</a></p>
+<ul>
+<li><strong>樣本跟整體存在着本質的不同</strong></li>
+</ul>
+<p>以知乎爲例，會有種錯覺人人年薪百萬，985/211 起，各種 GFSBFM，中國收入水平直逼灣區碼工。然而一方面這是倖存者偏差，知乎大 V 們的發聲更容易被看到（看，倖存者偏差也是陰魂不散）。另一方面，不要小瞧知乎跟中國網民的差別，以及中國網民跟中國老百姓的差別&mdash;&mdash;樣本跟整體的差別。</p>
+<p>類似的例子有水木的工作版塊、步行街的收入和華人網站的貧困線。</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/630a045adab0d5b04f7541f0940b4eee_b.jpg" alt="">
+<p>圖片來源：<a href="http://i.stack.imgur.com/yZQgZ.gif">http://i.stack.imgur.com/yZQgZ.gif</a></p>
+<ul>
+<li><strong>過於追逐統計上的顯著性 statistical significance</strong></li>
+</ul>
+<p>統計 101 告訴我們，要比較兩組數是否不同，最基本的一點可以看它們的區別是不是統計上顯著。</p>
+<p>比如 LinkedIn 又要改版了（我爲什麼要說又呢），有兩個版本 A 和 B. 灰度測試發現，跟現有版本比起來，A 的日活比現有版本高 20%，但是統計不顯著。而 B 的日活跟現有版本雖然只高了 3%，但是統計顯著。於是 PM 拿出統計 101 翻到第二頁說，來，咱們把統計顯著的版本 B 上線吧。苦逼的數據科學家 DS 說，等一下！並不是所有時候都選統計顯著的那一個，咱們再看看版本 A 的數據吧（具體分析略過一萬字）。</p>
+<p>很顯然，這個例子也是我瞎扯的。</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/c9f232cf027f40517b8bd8904505413f_b.jpg" alt="">
+<p>圖片來源：<a href="https://s-media-cache-ak0.pinimg.com/736x/a2/3c/db/a23cdb849c2f0b25f9798cfd1f6fddda.jpg">pinimg.com</a></p>
+<ul>
+<li><strong>不做數據可視化，以及更可怕的：做出錯誤或者帶誤導性的數據可視化</strong></li>
+</ul>
+<p>比如 @謝科 這個回答裏提到的</p>
+<p><a href="https://www.zhihu.com/question/19578400/answer/24843398">「數據會說謊」的真實例子有哪些？ - 謝科的回答</a></p>
+<img class="content-image" src="http://pic4.zhimg.com/70/b5abc9b5a87623b29fc73561c520ee33_b.jpg" alt="">
+<p>在趨勢圖中，爲了說明增長趨勢多明顯，把 Y 調成不從 0 開始。這樣差距會看起來很大，增長很大，但是如果把 Y 軸從 0 開始看的話，會顯得基本沒有差距。</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/ed63202ffc229d4b9dbda3739bb06fb2_b.jpg" alt="">
+<p>圖片來源：<a href="https://s3.amazonaws.com/lowres.cartoonstock.com/business-commerce-data-big_data-data_specialist-bar_graphs-data_chart-jcen1296_low.jpg">amazonaws.com</a></p>
+<p>（一下步就是要編排一個 Twitter 的例子了 23333，因爲數據分析表明，有 Twitter 公司這樣的例子讀起來會更有趣）</p>
+<ul>
+<li><strong>數據分析提供的結果和建議不具有可行性</strong></li>
+</ul>
+<p>Twitter 通過分析文本數據發現&hellip;&hellip;</p>
+<p>算了，我編不出來，由此可見，不具有可行性的結果雖然是&ldquo;理論正確&lsquo;的分析結果，然並卵&hellip;&hellip;</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/fac734e86cc9bf8dda660fc988ab5a21_b.jpg" alt="">
+<p>圖片來源：<a href="https://pbs.twimg.com/media/BlSiygoCEAEJC8S.png">twimg.com</a></p>
+<ul>
+<li><strong>不做數據分析</strong></li>
+</ul>
+<p>別笑，據某公司 PM 說，這是真的。</p>
+<ul>
+<li><strong>最後的大招：如何解釋 p-value</strong></li>
+</ul>
+<p>具體我就不講了， 講錯了我明天還怎麼面對老闆和同事啊。</p>
+<p>有興趣解釋 p-value 的歡迎留言。</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/be1d1454dd3b24b4cc38d594380f62a7_b.jpg" alt="">
+<p>圖片來源：<a href="http://3.bp.blogspot.com/-y_hvRb5anNc/VTGkru5LZeI/AAAAAAAABNo/GAVvAbPS-CQ/s1600/worship.gif">blogspot.com</a></p>
+</div>
+</div>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>不少容易出現的錯誤在這個問題裏都已經介紹過：<a href="https://www.zhihu.com/question/19578400">「數據會說謊」的真實例子有哪些？ - 數據</a></p>
+<p>我只補充一個，就是要保證研究的<strong>可重複性（reproducibility）</strong>，也就是說別人用同樣的數據和同樣的方法，能夠得出同樣的結果。這樣的好處是能夠保證分析結果的客觀，沒有人爲篡改數據，而且能夠很容易的發現哪裏出現了問題。</p>
+<p>爲了保證可重複性，應該堅持對數據每一步的處理都有記錄。如果你使用的是寫代碼的軟件，當然就不存在這個問題。不過如果使用的是點擊操作的軟件，比如 Excel（非 VBA），那就要小心。Excel 雖然方便，但是處理完數據後，很快就會忘了之前對數據做了些什麼，如果之後出現什麼問題就很難再查找了。</p>
+<p>還有原始數據要保存好，我一般都會把原始數據（網上收集的、下載的、別人傳過來的等等）都備份一下，這樣之後如果要追根溯源也可以找到數據最開始的出處。</p>
+<p>重要代碼多保存幾份，不管是放到雲上還是本地硬盤。或者用 GitHub。</p>
+<p>&ldquo;可重複性&rdquo;對數據科學方面的專業人士來說可能是常識，但在其他領域的學術研究中，不少人會忽視這一點。</p>
+<p>因此，在 Coursera 上開數據分析課程的幾位統計學教授，專門在課上強調了這個問題，並在這篇文章中對可重複性研究的方法做了簡單介紹：</p>
+<p><a href="http://simplystatistics.org/2015/12/11/instead-of-research-on-reproducibility-just-do-reproducible-research/">Instead of research on reproducibility, just do reproducible research &middot; Simply Statistics</a></p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div>
