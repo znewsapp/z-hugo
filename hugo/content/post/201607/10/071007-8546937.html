@@ -1,0 +1,119 @@
++++
+date = "2016-07-10T07:00:00"
+title = "不管是保護自己的隱私，還是寫一封浪漫情書，你都用得上"
+titleimage = "http://pic1.zhimg.com/66c516f987cbf39f2bb5bc61221db148.jpg"
+ga = 071007
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+<div class="question">
+<h2 class="question-title">數學中的戰爭，戰爭中的數學——漫談密碼（2）</h2>
+<div class="answer">
+
+
+
+<div class="content">
+<p><strong>長文慎入！多圖殺貓！</strong></p>
+<p>在上一篇中，<a class="member_mention" href="https://www.zhihu.com/people/2e7c47a1caae5034b50548e1d5457f17">@Banana9</a>&nbsp;學長對密碼學做了一個很好的介紹概括。那麼在這一篇中，就由我來給大家介紹一些具體的信息加密與密碼破解的方式。看完這一篇，大家也能變成密碼學的小能手，不僅可以巧妙地保護自己的隱私，還可以給鐘意的妹紙 / 漢紙寫一封浪漫的 without wax 的密碼情書（誤）。本文將由淺而深，最難只要求大家掌握高中數學基礎，請各位放心閱讀！</p>
+<blockquote>本篇內容：<br>一、古典密碼學<br>1.1 斯巴達將軍的腰帶&mdash;&mdash;變位字謎<br>1.2 經久耐用的&ldquo;數字、字母替換&rdquo;<br>1.3 凱撒密碼<br>1.4 凱撒平方<br>1.5 如何破譯古典密碼<br>二、現代密碼學<br>2.1 對稱加密<br> 異或運算<br> 流密碼與塊密碼<br> 電子密碼本（ECB）<br> 加密塊鏈（CBC）<br> 數據加密標準（DES）<br> 高級加密標準（AES）<br><br>下一篇內容（敬請期待）：<br>2.2 非對稱加密（更多未知驚喜）</blockquote>
+<p>在密碼學發展的歷史中，主要分爲兩個階段，一個是古典密碼學，另一個則是現代密碼學。我們就先從較爲簡單的古典密碼學開始：</p>
+<p>- 古典密碼學 -</p>
+<p>1. 在公元前 405 年，Lysander，一位古希臘的斯巴達將軍，便將一份加密後的信息寫在了腰帶的背後。解碼時，將腰帶纏繞在特製的木棍上，便能讀出正確的信息。</p>
+<img class="content-image" src="https://pic4.zhimg.com/6a3ec00ca5e87b21faab3289afb39743_b.png" alt="">
+<p>這種通過改變字母順序的加密方式，被稱爲變位字謎（Anagram），常常被用於許多密碼學相關的文學與影視作品當中。例如在丹&middot;布朗的處女作《數字城堡》中，遠誠友加所編造出來的同夥諾斯&middot;達科塔（NDakota）即是友加本名（Tankado）的替換。而在其成名作《達芬奇密碼》中，Anagram 的應用更是喪心病狂，例如盧浮宮館長死前留下的遺言，&ldquo;O, Draconian devil. Oh, lame saint. （嚴峻的魔鬼，跛足的聖人）&rdquo;代表着&ldquo;Leonardo da Vinci. The Mona Lisa.（萊昂納多&middot;達芬奇，蒙娜麗莎）&rdquo;； &ldquo;So dark the con of man（男人的騙局是如此陰暗）&rdquo;代表着&ldquo;Madonna of the Rocks（巖中聖母）&rdquo;。而最爲人熟知的 Anagram，應當還要屬 J&middot;K&middot;羅琳所著《哈利波特》系列小說中的伏地魔：其原名爲 Tom Marvolo Riddle，替換後變爲&ldquo;I am Lord Voldemort&rdquo;.</p>
+<img class="content-image" src="https://pic1.zhimg.com/16c636852dec287e4e26c8c8a04e75b4_b.png" alt="">
+<p>2. 古希臘人還發明過另一種用數字替換字母的加密方式：</p>
+<img class="content-image" src="https://pic1.zhimg.com/f5ec39fd1005ae26f0f847919db3d624_b.png" alt="">
+<img class="content-image" src="https://pic2.zhimg.com/96bd5477fb6c65cc4cef2beea237352d_b.png" alt="">
+<p>這種加密方式簡單快捷，而且可以衍生出許多變體，因此一直沿用至第一次世界大戰。</p>
+<p>3. 在古典密碼中，最爲著名的，便是在上一篇中所提到的&ldquo;凱撒密碼&rdquo;。它的加密方式在上一篇中也有講到，因此在這裏就不再贅述了。類似的加密還有 Alberti 密碼盤：</p>
+<img class="content-image" src="https://pic3.zhimg.com/bbc340e79576b31cc8d1a793c12b3352_b.png" alt="">
+<p>4. 另一個與凱撒有關的，則是&ldquo;凱撒平方&rdquo;。雖然名稱與&ldquo;凱撒密碼&rdquo;相近，但是實際原理卻完全不同，反倒是與 Lysander 相似。其基本原理，是將長度爲完全平方數 n<sup>2</sup>（例如 9、16、64 等）的明文寫依次在 n*n 的正方形中（如從左到右），然後改變順序（如從上到下）將正方形中的字母抄下，即爲密文。</p>
+<p>5. 那麼，當我們遇到古典密碼時，要怎麼破譯他們呢？</p>
+<p>第二種與第三種加密方式，是逐字替換，即明文單位與密文單位一一對應。這個概念在高中數學（基本在高一）中的集合與映射中就有提到，相信大家不會陌生。如果是喜歡看福爾摩斯的童鞋們，大概這時候已經猜到了答案。當然，這裏還要照顧一下沒看過的孩紙們，我們還是從頭開始。</p>
+<p>密文單位與明文單位一一對應，導致了一個很明顯的問題：密文中每個信息單位（一般情況下爲字母）出現的頻率，也會等於明文中某個特定信息單位出現的頻率。可是，無論在何種自然語言體系當中，不同的文字單位都有其特定的出現頻率。尤其在長篇幅、有意義的文字序列中，這個現象表現的尤爲明顯。以最典型的英語爲例，26 個字母的使用頻率分別爲（數據來源：<a class=" wrap external" href="https://link.zhihu.com/?target=http%3A//en.algoritmy.net/article/40379/Letter-frequency-English" target="_blank" rel="nofollow noreferrer">Letter frequency (English)</a>）：</p>
+<img class="content-image" src="https://pic2.zhimg.com/3710c9334f6c3ac5a0138bfd8bee8445_b.png" alt="">
+<p>我們可以很明顯地看到，字母 E 的使用頻率遠高於其他字母，另外字母 T、A 也都有較高的使用頻率；而字母 J、Q、X、Z 的使用頻率則相對較低。利用這一點，讓我們可以在沒有計算機的幫助下，也有極大的機率在短時間內破解出古典加密方式的密碼。在福爾摩斯探案集約翰&middot;特納的故事中，對於密文&ldquo;dv mvvw blfi svok&rdquo;，便是將密文中出現次數最多的字母&ldquo;v&rdquo;認定爲日常使用頻率最高的字母&ldquo;e&rdquo;，然後順藤摸瓜破解出明文爲&ldquo;we need your help&rdquo;。</p>
+<p>而隨着科學技術的進步，古典密碼受到了越來越嚴峻的挑戰。因爲需要加密的情報越來越多，而敵人監聽的情報越多，結果就越符合基本分佈頻率，密碼也就越容易被破譯；加上計算機的出現，在計算機強大的枚舉能力面前，古典密碼那簡單的字母代換已經不再是一個難題。因此，二戰中的德軍，專門爲此發明了加密機 Enigma。Enigma 類似一臺老式打字機（見下圖左），每個按鍵上標寫的是明文字母；而在每個按鍵下面，則是印滿字母的圓盤，按下按鍵後自動打出對應的密文字母（見下圖右）。通過旋轉按鍵下面的圓盤，即可輕易改變字母的替換方式。二戰時德軍利用 Enigma，至少每天改變一次加密方式，以此來應對盟軍情報部門的監聽。饒是如此，德軍仍然有不少重要情報被破譯。</p>
+<img class="content-image" src="https://pic2.zhimg.com/46b92c06ca56f064338a688b9eb73969_b.png" alt="">
+<p>而第一種與第四種加密方式，是變位替換。而變位替換之所以一直沒被作爲主流的加密方式，在於其過於容易被識別。由於變位替換並不改變字母本身，而是改變其排列順序，因此密文的字母頻率會遵循自然語言的字母頻率。尤其當密文越長，該現象也越爲明顯，越容易被識別；而如果密文過短，一來嚴重限制了能夠傳輸的信息量，二來被破解的可能性也越大。但是變位替換是最富有藝術性的古典加密方式之一，尤其是當明文與密文都有意義的時候，常能令人嘖嘖稱奇，回味無窮。</p>
+<p>- 現代密碼學 -</p>
+<p>隨着計算機技術的發展，古典加密方式越來越不能夠滿足信息加密與傳輸的作用。因此，以計算機技術爲基礎的現代密碼學應運而生。與古典密碼學相比，現代密碼學的內容更爲艱深，藝術性也更低。雖然我仍然能夠保證將難度限制在高中數學範圍內，但該部分將不再同古典密碼一樣擁有豐富而有趣的例子了。若各位看官到這裏知難而退，不必爲此感到羞愧；若有興趣的讀者願意進一步深究，下面便爲你們敞開現代密碼學的大門：</p>
+<p>由於現代密碼學是建立在計算機技術的基礎之上，因此在接下來的內容中，明文、密文以及其他所有的編碼方式，都將以二進制來表示。至於自然語言與二進制之間的轉換，一般按照 ASCII（美國信息交換標準代碼）作爲規範。</p>
+<p>在現代密碼學中，信息的加密與解密，都要依靠一把&ldquo;鑰匙&rdquo;。這把&ldquo;鑰匙&rdquo;的本質，是一串數據，或者說是一條信息。而根據&ldquo;鑰匙&rdquo;種類的不同，我們將現代密碼學分爲兩大類，對稱加密與非對稱加密。</p>
+<p>1. 對稱加密，指的是將明文加密，以及破解密文所使用的&ldquo;鑰匙&rdquo;，是同一把&ldquo;鑰匙&rdquo;。在介紹加密算法之前，我們得先了解一下數學邏輯中的&ldquo;異或&rdquo;運算。</p>
+<p>異或運算，它的符號爲&ldquo;&oplus;&rdquo;。真值表如下：</p>
+<img class="content-image" src="https://pic2.zhimg.com/97476ee8ab418a2e83f03426fe3a1b35_b.png" alt="">
+<p>異或運算有這樣一種性質，(X&oplus;Y)&oplus;Y=X。即對於 X 而言，使用相同的數字對其做兩次異或運算，將仍然獲得原來的 X。因此對稱加密的最基本方式，便是將明文與同等長度的&ldquo;鑰匙&rdquo;，按位依次做異或運算，即得到密文；而解密時，將密文再與&ldquo;鑰匙&rdquo;按位異或，便得到明文，如圖。</p>
+<img class="content-image" src="https://pic4.zhimg.com/c2d58e0a072e09ee10a8fd6bc0e46e4b_b.png" alt="">
+<p>然而這種簡易的加密方式有個致命的缺點，就是每個鑰匙在使用一次之後就必須丟棄，不能重複使用。一旦重複使用，密文就會輕易地被破解。至於原因麼，我就吊一吊大家的胃口，放到後面來說。</p>
+<p>而在密碼的加密與傳輸過程中，又分爲流密碼（Stream Cipher）與塊密碼（Block Cipher）兩種。流密碼的思想很簡單：按位加密、按位傳輸。而塊密碼，則將明文與鑰匙分成許多等長的小塊（Block），每次按塊加密再按塊傳輸，如圖：</p>
+<img class="content-image" src="https://pic3.zhimg.com/11dd8d0210f17222a3fa5b2150bb57d2_b.png" alt="">
+<p>由於塊密碼將鑰匙也分成了等長的小塊，所以鑰匙的每個小塊既可以用單塊重複，也可以不重複。若小塊不重複，則與流密碼相似，鑰匙長度與明文長度相同，其安全性較高，但是需要處理的數據量也較大。若小塊重複，則大大縮短了鑰匙長度，加密解密的速度更快，但是安全性較低。其典型代表爲 ECB（Electronic Code Book，電子密碼本），基本原理如圖。</p>
+<img class="content-image" src="https://pic1.zhimg.com/6c82dafb6a74dd25da43a500621df5fc_b.png" alt="">
+<p>鑰匙的重複使用容易導致安全問題，這在前面提到過，每個鑰匙在使用一次之後就應當丟棄。而在 ECB 中，同一個鑰匙被多次使用，更增加了其危險性。具體原因如下：</p>
+<p>假設我們有 n 條信息 Mi(i=1,2,...,n)，對它們使用同一個鑰匙 K 進行加密，則密文 Ci=Mi&oplus;K。當有人獲取了兩條或以上的密文 Ci、Cj(i&ne;j)時，將 Ci&oplus;Cj，便可以得到 Mi&oplus;Mj（證明：Ci&oplus;Cj=(Mi&oplus;K)&oplus;(Mj&oplus;K)=Mi&oplus;Mj）。那麼只要有任意一條信息被破解，其他所有信息也都將被破解。而即使在改進加密方式，不再使用異或運算加密，相同的明文塊在加密後，其密文塊也仍然相同。如此，對方便可以使用類似破解古典密碼學的方式，使用頻率分析來破解 ECB 加密後的密文。</p>
+<p>爲了解決 ECB 的安全問題，同時仍然保證其鑰匙長度短、加密速度快等優點，CBC（Cipher Block Chaining，加密塊鏈）等方式依次被研發出來。由於篇幅限制（我好像已經寫了好多的樣子(*/&omega;╲*)&hellip;&hellip;），這裏僅簡要介紹 CBC 的加密方式。</p>
+<p>CBC 的加密方式，簡要來說，就是將前一段的密文，作爲後一段明文加密的鑰匙；而接收到密文後，也如此依次解密。基本原理如圖：</p>
+<img class="content-image" src="https://pic3.zhimg.com/30e3585fe165ba74bac56808f87f5cb6_b.png" alt="">
+<p>與 ECB 相比，CBC 較好地提高了安全性。只要被竊聽的密文不連續，對方便很難破解出明文。</p>
+<p>而目前使用最爲廣泛的塊密碼，則是 DES（Data Encryption Standard，數據加密標準）。但是在講 DES 之前，需要先介紹 DES 的基礎，Feistel 加密法。</p>
+<p>Feistel 加密法，是將明文塊拆解成長度相等的左右兩塊，將右半部用鑰匙加密後，再用左半部進行二次加密，得到密文的右半部；而密文的左半部，則直接等同於明文的右半部。如圖：</p>
+<img class="content-image" src="https://pic3.zhimg.com/058dbd2bef22a40fe9054f54e0d061a6_b.png" alt="">
+<p>聽上去挺簡單，感覺要破解好像也沒什麼難度。但是這並不是 Feistel 的核心，它的思路是，一次加密不夠？那就把密文當成明文，多來幾次&hellip;&hellip;注意到圖中的&ldquo;F&rdquo;了嗎？它代表的是輪函數，即在每一輪（每一次加密）中，它所使用的鑰匙 K 是不一樣的。於是，下面纔是 Feistel 的正常畫風：</p>
+<img class="content-image" src="https://pic2.zhimg.com/303439efec7391c1cd359088bacbf7cd_b.png" alt="">
+<p>而 DES 的算法加密，主要就是建立在 Feistel 的基礎之上。DES 將輸入的明文分割成 64 位長的塊，先對每個明文塊中的位子重新進行組合變換，置換方式如圖</p>
+<img class="content-image" src="https://pic4.zhimg.com/af70d7eea16299ecf0986c885948d5bb_b.png" alt="">
+<p>看不清楚是嗎？沒事，我也看不清楚&hellip;&hellip;反正不是重點，你們記住在 DES 中順序是換過了的就行了&hellip;&hellip;</p>
+<p>在將明文塊內的位置順序變換之後，DES 會對變換後的明文塊進行連續 16 輪的 Feistel 加密。每一輪中進行加密使用的鑰匙，都是由 56 位的主鑰匙所導出的不同的子鑰匙。關於子鑰匙的導出，以及利用子鑰匙加密過程中的排列擴張、S-Box 替換、P-Box 排列等，感興趣的童鞋可以私信我，這裏就不再多說了（我覺着可能已經有好多童鞋看不下去了&hellip;&hellip;）。</p>
+<p>童鞋們，堅持住！我就講最後一題，最後一題！！講完就下課！！！</p>
+<p>啊，歷史的車輪滾滾向前，長江後浪推前浪。作爲 1977 年提出的&ldquo;前浪&rdquo;DES，雖然目前的使用仍然比較廣泛，但是也快要被 2002 年提出的 AES（Advanced Encryption Standard，高級加密標準）給拍死在沙灘上了。在 RSA lab 舉辦的 DES Challenge II-2 比賽中，EFF（Electronic Frontier Foundation）在 56 個小時內便破解出了一個 DES 鑰匙（RSA 又是一個大坑，我們將在下節課與這位可愛的大坑見面）。</p>
+<p>於是乎，更流弊的加密算法應運而生，那就是由 Joan Daemen 和 Vincent Rijmen 所設計的 Rijndael 加密法稍加修改而成的 AES。要明白 AES 到底咋回事，我們得先了解 AES 中的四種基本操作：輪函數加密、字節替換、移行與混列。其中輪函數加密與 DES 中的輪函數加密相同，這裏不再贅述。</p>
+<p>與 DES 不同的是，在 AES 當中，明文被分割成 128 位長的塊，即每個明文塊長 16 字節（1 字節=8 位；1byte=8bit）；然後將每個明文塊寫成 4*4 的矩陣（矩陣，高中數學選修 4-2，一般高二就教了；沒學過的童鞋，簡單來說這就像最開頭古典密碼中的方法 2，看下圖）。</p>
+<img class="content-image" src="https://pic4.zhimg.com/04ef71b57e8d1c8368e432671dd92457_b.png" alt="">
+<p>首先，是<strong>字節替換</strong>。其本質與古典加密中的替換相同。只是在計算機的實現過程中，人們開發了一個神器，叫 S-Box。它是一個替換表，通過查表即可獲得該字節所對應的替換字節。一般 AES 中的 S-Box 長這樣：</p>
+<img class="content-image" src="https://pic2.zhimg.com/cbc11608030af5bc026be3fcd7dd8289_b.png" alt="">
+<p>可能有些童鞋有點看不懂，我稍微解釋一下。AES 中每個明文塊長度是 128 位，在寫成 4*4 矩陣之後，每個矩陣單位的長度是 8 位。所以對於每個矩陣單位而言，總共有 2^8=256 種可能性，正好爲 16^2。即兩位 16 進制數剛好能夠完全表示單個明文塊的所有可能性。而表中的橫縱座標，對應的正是轉換成 16 進制後的明文塊的第 1 位與第 2 位。其中 A~F 代表 16 進制數中的 10~15。另外相應地，還有一個逆 S-Box，標註有替換字節所對應的原字節，用於解碼時的逆字節替換。</p>
+<p>然後，是<strong>移行</strong>。移行是怎樣一個操作呢？我不說話，就上個圖，相信大家都能看得懂：</p>
+<img class="content-image" src="https://pic1.zhimg.com/fd00c0ccb2eada80b2daa446f34769c8_b.png" alt="">
+<p>啊不好意思，上面的圖是逆向移行。正向移行麼，把中間那一步反過來就行了。</p>
+<p>最後是<strong>混列</strong>。正向混列爲左乘一個矩陣 A，逆向混列爲左乘一個矩陣 B：</p>
+<img class="content-image" src="https://pic1.zhimg.com/c1ba3b6c4cff8bf2ead61db3b17e122c_b.png" alt="">
+<p>可計算得 A&middot;B=I，即 A、B 兩個矩陣互逆。注意在混列的矩陣運算當中，加法是通過轉化成二進制後進行異或運算來實現的。</p>
+<p>好的，我們終於講到了 AES 的結構了。不好意思我也覺得有點累了，還是直接上個圖吧（說的好像我畫個圖更輕鬆一樣~~~~(&gt;_&lt;)~~~~）。</p>
+<img class="content-image" src="https://pic4.zhimg.com/308c2ebb8f68471cc5794ae0d890e263_b.png" alt="">
+<p>說實話 AES 與 DES 都是一個德性，NIST（National Institute of Standards and Technology，美國國家標準與技術研究院）的想法就是，沒有什麼問題是一遍算法加密解決不了的；如果有，就多加幾遍&hellip;&hellip;不過要注意的是，加密的最終輪與其他不同，不再進行混列操作；因此解密時也相應地略去這一步。</p>
+<p>好了，今天就上到這裏，童鞋們辛苦啦！有什麼問題呢可以課後找老溼<a class="member_mention" href="https://www.zhihu.com/people/8777d4323a3c8eb6ecfb9585654097ee">@謝鈞</a> 討論。下節課呢，將由何老師<a class="member_mention" href="https://www.zhihu.com/people/6173d0b2d6bffae954184786b3fa92b8">@何欽堯</a>來給大家講現代密碼學中剩下的內容：非對稱加密。請大家掌聲歡迎！同時也請做好相應的預習工作（非對稱加密涉及到較多的數論知識）與心理準備&hellip;&hellip;</p>
+<p>P.S. 若大家對於密碼學的專業書籍感覺閱讀有困難的話，也支持大家看一些密碼學相關的文學與影視作品。例如著名的《福爾摩斯探案集》，丹&middot;布朗的《數字城堡》（《天使與魔鬼》、《達芬奇密碼》、《失落的符號》及《地獄》也比較推薦，但是這幾部涉及的則更多是符號學而非密碼學）。至於電影麼，我看的不多，不敢妄言</p>
+<p>P.P.S. 碼字辛苦，繪圖更辛苦。未經允許，嚴禁轉載！</p>
+<p>P.P.P.S. 本人是在南洋理工大學進行的密碼學學習，因此文中的名詞翻譯可能與國內中文教材有異，請見諒。另外還要感謝<a class="member_mention" href="https://www.zhihu.com/people/6173d0b2d6bffae954184786b3fa92b8">@何欽堯</a>學弟對本文的審閱與批改。</p>
+<p>參考文獻：</p>
+<p>[1] Buonafalce, Augusto, &ldquo;An Exercise in Solving the Alberti Disk&rdquo;. <em>The Cryptogram</em> LIV, 5, ACA, Plano 1999.</p>
+<p>[2] Alberti, Leon Battista, <em>A Treatise on Ciphers</em>, trans. A. Zaccagnini. Foreword by <a class=" wrap external" href="https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/David_Kahn_%28writer%29" target="_blank" rel="nofollow noreferrer">David Kahn</a>, Galimberti, Torino 1997.</p>
+<p>[3] Carroll, Christine M., BSN, RN, MBA, <em>Cryptology and Cryptography. </em>Salem Press Encyclopedia of Science, January, 2015. 4p.</p>
+<p>[4] Lek, Kamol, Rajapakse, Naruemol, <em>Cryptography: protocols, design, and applications. </em>Hauppauge, N.Y. : Nova Science Publishers, c2012.</p>
+<p>[5] Piper, F. C., <em>Cryptography: a very short introduction.</em> Oxford ; New York : Oxford University Press, 2002.</p>
+<p>[6] Meyer, Carl H. <em>Cryptography: a new dimension in computer data security: a guide for the design and implementation of secure systems. </em>New York : Wiley, 1982.</p>
+<p>[7] Alhamdani, Wasim A. <em>Teaching Cryptography Using Design Thinking Approach.</em> Journal of Applied Security Research; Jan-Mar2016, Vol. 11 Issue 1, p78-89, 12p.</p>
+
+
+
+</div>
+</div>
+</div>
+
+
+</div>
+</div>
