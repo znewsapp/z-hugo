@@ -1,0 +1,82 @@
++++
+date = "2016-07-14T18:00:00"
+title = "記得登月的阿波羅 11 號嗎？現在你也能看到它的源代碼"
+titleimage = "http://pic2.zhimg.com/b75a75da76b40fa69abe2908b44b1c51.jpg"
+ga = 071418
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+<div class="headline-background">
+<a class="headline-background-link" href="http://www.leiphone.com/news/201607/2sUZ0GZJebJWTngo.html">
+<div class="heading">相關新聞</div>
+<div class="heading-content">阿波羅 11 號登月源代碼公佈，其中竟隱藏莎翁名言</div>
+<i class="icon-arrow-right"></i>
+</a>
+</div>
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title">如何看待阿波羅 11 號操作系統源碼公佈？</h2>
+
+<div class="answer">
+
+<div class="content">
+<p>阿波羅 11 號是人類第一次載人登月任務，阿姆斯特朗和奧爾德林於 1969 年 7 月 20 日走上月面。本週，登月計算機系統的源代碼被實習生上傳到&nbsp;<a class=" wrap external" href="https://link.zhihu.com/?target=https%3A//github.com/chrislgarry/Apollo-11/" target="_blank" rel="nofollow noreferrer">GitHub</a>，面向全球開放。<a class=" wrap external" href="https://link.zhihu.com/?target=https%3A//github.com/chrislgarry/Apollo-11" target="_blank" rel="nofollow noreferrer">GitHub - chrislgarry/Apollo-11: Original Apollo 11 Guidance Computer (AGC) source code for the command and lunar modules.</a></p>
+<p>對於技術開發人員，有什麼地方值得挖掘和學習？</p>
+</div>
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="question">
+<h2 class="question-title"></h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>看懂這份代碼需要大量的宇航學知識。需要對軌道動力學，飛船 GNC（制導導航與控制），深空測控，熱管理和電源管理等等，具有非常深入的瞭解。</p>
+<p>整個飛船由一臺計算機控制，其運算性能大致相當於 ATmega128 單片機。現在仍然有很多衛星是一個 ATmega128 管理所有功能的。</p>
+<p>具體的控制原理並不複雜，很多操作是依賴硬件完成的。而不像現在的先進衛星 / 飛船大量依賴軟件。現在的小衛星很多使用 SDR 作爲測控收發機，暴力運算產生中頻信號。60 年代沒人這麼幹，都是硬件編解碼器。</p>
+<p>多使用專用硬件，讓硬件部分擔工作量，是不需要很多計算的。缺點就是體積和重量會比較大。</p>
+<p>Apollo 主控計算機大致有如下的功能：</p>
+<p>任務管理，進程管理和內存分配：<strong>沒錯，這個古董計算機有操作系統！這是世界上第一個 OS，有協作式調度功能，有動態內存分配。</strong>阿波羅 11 着陸的時候，因爲同時開了着陸雷達和對接測速雷達，導致計算機產生了內存不足錯誤。系統拋棄了低優先級的任務，保證最重要的的姿態穩定和發動機推力調節能繼續正常運行。雖然着陸雷達掛了，但飛船仍然是可控的。</p>
+<p>主導航系統有平臺式 IMU（模擬穩定迴路，機械相連的六分儀），計算機可以直接讀取姿態角 / 速度 / 位置。備用導航系統使用歐拉角微分方程實現捷聯慣性導航，測量器件精度極高並且飛船動態小，更新速率小於 100Hz 都夠了。</p>
+<p>位置修正的信息直接從六分儀和平臺的角度傳感器讀出，代入公式計算即可得到修正量。</p>
+<p>數據下行使用的是硬件編碼器，計算機直接傳送原始數據即可安排發送。其他的設備如主發動機、推力矢量機構、姿態控制噴口，以及一些熱控組件。這些用到了 pid 控制或者簡單的開關控制，每秒更新幾次到幾十次。</p>
+<p>鍵盤和顯示器：有一個 CRT 圖形顯示器，可以顯示着陸月球 / 返回地球時的彈道信息。還有另外一個計算器數碼管和鍵盤（居然是繼電器驅動的）</p>
+<p>地面設備因爲不太受到體積和重量限制，做得就更加誇張了：主控大廳是 eidophor 光閥實現的巨幅投影機，一臺電腦控制整個地面操作中心，生成所有的圖像內容。</p>
+<p><a href="http://cdn.arstechnica.net/wp-content/uploads/2012/10/liebergot-eidophor1.jpg">http://cdn.arstechnica.net/wp-content/uploads/2012/10/liebergot-eidophor1.jpg</a></p>
+<p>總的來說，在數字計算機剛剛出現的年代，能造出這樣的自動化設備是極爲驚人的。當年有這樣的技術能力，去做一條大型自動化生產線，或者控制整個化工廠，是完全沒問題的。</p>
+<p>現在的自動化控制程序，會用新一點的理論，比如慣性導航可以換四元數算法（但是德國 mikrocopter 仍然是歐拉角微分方程）。或者添加一些新的方法，例如嫦娥使用了激光雷達進行地形識別和導航。但是呢，基本的思路仍然和當年的程序接近。</p>
+<p>換了 C++ 語言和現代的 x86 處理器，<strong>這套程序的實現不會有根本的變化</strong>。一個自動化系統最核心的部分，仍然是這些物理定律、算法和工程參數，它決定了一套自動化系統的基本能力和技術特性。</p>
+<p>原作代碼因爲是彙編寫成的，確實很難懂。如果想學習其工作原理，不妨看一看相關領域的教材。直接啃生肉雖然來得快，但確實是太難以消化了。代碼裏面的東西現在的教材全都有，看了都能學到。</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div>
