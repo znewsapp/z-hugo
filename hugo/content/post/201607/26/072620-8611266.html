@@ -1,0 +1,188 @@
++++
+date = "2016-07-26T20:00:00"
+title = "沒有多少電氣知識，也可以搞懂家居配電設計"
+titleimage = "http://pic1.zhimg.com/c3fae54295850f5418f490f9b5e8fb6c.jpg"
+ga = 072620
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title">家居配電如何設計才合理？</h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>居家配電，涉及到的原理性的東西不是很多，但要能一一解析出來，還是有一定難度的。</p>
+<p>題主事實上代表了絕大多數業主的實際需求。大家沒有多少電氣知識，但期望裝修完成後家裏的一切都十分完美，佈局合理，使用方便，物盡其用。</p>
+<p>對於題主的這個範例，我來說明一下吧。</p>
+<p><strong style="line-height: 1.5;">1.居家配電負荷的分類</strong></p>
+<p>家裏的用電設備很多，大略的分類包括廚房類電器、空調類電器、照明類電器、洗手間潔具和沐浴類電器，還有許多其它小家電，例如筆記本、充電寶之類。因此，我們可以把居家配電的負荷分爲五類：廚電、空調、照明、洗手間和插座。</p>
+<p><strong>2.確定某電器電流的方法</strong></p>
+<p>由於家用電器一般都是用功率 P 來表明它的容量的，因此我們要明確如何根據電器銘牌上的功率 P 來計算它的工作電流。</p>
+<p>對於 1000W 的功率來說，它的電流 Iu 爲：</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=I_%7BU%7D+%3D%5Cfrac%7BP%7D%7BU%7D+%3D%5Cfrac%7B1000%7D%7B220%7D+%5Capprox+4.55A" alt="">
+<p><strong>所以，我們只需要把電器的瓦數乘以 4.55，即可得出它的電流。</strong></p>
+<p>以題主的範例來舉例：</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/e66174a8906544cc1013eafaa5e9c7c0_b.jpg" alt="">
+<p>淨水器電流：</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=0.096%5Ctimes+4.55%5Capprox+0.44A" alt="">
+<p>消毒櫃電流：</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=0.52%5Ctimes+4.55%5Capprox+2.37A" alt="">
+<p>&hellip;&hellip;&hellip;&hellip;</p>
+<p>小廚寶加熱器電流：</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=2%5Ctimes+4.55%5Capprox+9.1A" alt="">
+<p>注意：在計算電流時，要把家電的額定功率換算爲千瓦。例如淨水器的功率 96W 換算爲 0.096kW。</p>
+<p><strong>3.確定分開關額定電流的方法</strong></p>
+<p>確定分開關電流幾個原則。</p>
+<p><strong>第一個原則：同時係數</strong></p>
+<p>一般來說，家用電器不會同時使用。例如上圖中，我們不會同時使用這些電器，因此在配電設計中，用某配電分區總電流乘以同時係數來確定分區的計算電流。</p>
+<p><strong>同時係數一般取值爲：Kc=0.8。</strong></p>
+<p>設分區的總電流是 Iz，則分區的計算電流：</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=I_%7BJS%7D+%3DK_%7BC%7D+%28I_%7B1%7D+%2BI_%7B2%7D+%2B...%2BI_%7Bn%7D+%29+%3DK_%7BC%7D+I_%7BZ%7D+" alt="">
+<p><strong>第二個原則：常用功率大於 1500W 的用電設備應當單獨供電。</strong></p>
+<p>注意這裏所指的是常用功率大於 1500W 的用電設備。對於臨時性的用電設備，它不在此列。</p>
+<p>例如上圖中，多頭電陶爐的功率達 6500W，小廚寶加熱器的功率爲 2000W，它們都不屬於常用用電設備。</p>
+<p>常用用電設備一般指的是空調、電熱水器等等。</p>
+<p><strong>第三個原則：對於電動機負載，需要乘以電動機起動係數</strong></p>
+<p><strong>家用電動機類的負荷，它的電動機起動係數 Km=3。</strong></p>
+<p>空調是典型的電動機負荷。空調的功率一般是用多少匹來定義的，1 匹=735W=0.735kW。</p>
+<p>例如一臺 1.5 匹的空調，它的電流爲：</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=I%3D1.5%5Ctimes+0.735%5Ctimes+3%5Ctimes+4.55%5Capprox+15.05A" alt="">
+<p>空調的計算電流爲：</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=I_%7BJS%7D+%3DK_%7BC%7D+I%3D0.8%5Ctimes+15.05%5Capprox+12.04A" alt="">
+<p>有了這三個原則，我們就可以來計算題主的範例了。</p>
+<p><strong>4.廚房配電計算</strong></p>
+<p>廚房配電計算：</p>
+<p>廚房的總功率：25602W，取爲 25.6kW。</p>
+<p>總計算電流：</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=I_%7BJS%7D+%3D0.8%5Ctimes+25.6%5Ctimes+4.55%5Capprox+93A" alt="">
+<p>我們看到，這個值已經遠遠大於允許的居家配電總電流值了。可見，題主的廚房用電需要精簡，一些並不常用的電器無需計算在內。</p>
+<p>如果去掉所謂的靈活使用電器，那麼總功率爲 18.822kW。我們再來計算：</p>
+<p>廚房總功率：18.822kW。</p>
+<p>總計算電流：</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=I_%7BJS%7D+%3D0.8%5Ctimes+18.822%5Ctimes+4.55%5Capprox+68.51A" alt="">
+<p>這個值還是很大。</p>
+<p>疑問是：</p>
+<p>題主在使用洗碗機時，是不是一定會使用電烤箱和電蒸鍋？</p>
+<p>可以想見，這個疑問是沒有結果的。那麼在工程上如何來解決此類問題？解決的辦法是，配套一個新的係數，叫做需要係數 Kx。</p>
+<p><strong>需要係數的意義在於，某種設備在實際配套使用時，並不一定會立即投運，可能會因爲某種原因和其它設備錯開使用；需要係數另外一個意義是：把某設備在某工作制下的功率換算爲在長期工作制下的功率。</strong></p>
+<p><strong>需要係數的值爲：Kx=0.8~0.85。</strong></p>
+<p>我們把題主家廚房設備的需要係數均設定爲 0.8，再來重新計算如下：</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=I_%7BJS%7D+%3DK_%7BC%7D+K_%7BX%7D+I%3D0.8%5Ctimes+0.8%5Ctimes+25.6%5Ctimes+4.55%5Capprox+74.55A" alt="">
+<p>這就是題主家廚房的分開關的電流值。我們看到，這個值很大，需要精簡。我們且等題主更新吧。</p>
+<p><strong>5.確定總進線斷路器計算電流的方法</strong></p>
+<p>設，總進線的計算電流是 Izjs，則有：</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=I_%7BZJS%7D+%3DK_%7BC%7D+%28I_%7BJS1%7D+%2BI_%7BJS2%7D+%2B......%2BI_%7BJSN%7D+%29%3D0.8+%28I_%7BJS1%7D+%2BI_%7BJS2%7D+%2B......%2BI_%7BJSN%7D+%29" alt="">
+<p>注意到這裏再次出現了同時係數。也就是說，在計算分開關時我們已經把總電流乘以 0.8，在計算總開關時，我們再次乘以 0.8。如果再加上需要係數，則總電流近似等於全系統計算電流的 0.8X0.8X0.8=0.512 倍。</p>
+<p>注意：這裏的 0.512 又叫做使用係數。</p>
+<p><strong>現在，我們要推出一個重要計算公式，就是家裝配電總功率和總進線開關電流之間的關係：</strong></p>
+<p><strong>我們已經知道：</strong></p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=I_%7BJS%7D+%3DK_%7BC%7D+K_%7BX%7D+I_%7BZ%7D+%3DK_%7BC%7D+K_%7BX%7D+%5Ctimes+4.55%5Ctimes+P%3D0.8%5Ctimes+0.8%5Ctimes+0.8%5Ctimes+4.55%5Ctimes+P%5Capprox+2.33P" alt="">
+<p><img class="content-image" src="http://www.zhihu.com/equation?tex=1%2F2.33%5Capprox+0.43" alt=""></p>
+<p>例如，我們家裏的總開關額定電流是 40A，則家裏的電器總功率爲 17.2kW。</p>
+<p><strong>6.其它分配電計算</strong></p>
+<img class="content-image" src="http://pic1.zhimg.com/70/b7c8168c73e4208ff46ca911beeb0f3c_b.jpg" alt="">
+<p>1）我們來看分開關 2 的參數：</p>
+<p>總功率：11.5kW；</p>
+<p>總電流：</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=I_%7BJS%7D+%3D0.8%5Ctimes+0.8%5Ctimes+11.5%5Ctimes+4.55%5Capprox+33.5A" alt="">
+<p>。</p>
+<p>2）分開關 3 的參數：</p>
+<p>總功率：0.55kW；</p>
+<p>總電流：</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=I_%7BJS%7D+%3D0.8%5Ctimes+0.8%5Ctimes+0.55%5Ctimes+4.55%5Capprox+1.6A" alt="">
+<p>分開關 3 屬於客廳迴路，考慮到其中可能會有其它一些裝置，因此按 10A 來考慮。</p>
+<p>3）分開關 4 和分開關 5 的參數：</p>
+<p>總電流：</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=I_%7BJS%7D+%3D1%5Ctimes+0.735%5Ctimes+3%5Ctimes+4.55%5Capprox10.03A" alt="">
+<p>房間空調可以和房間內的插座合併考慮，按 16A 來設計。</p>
+<p><strong>7.總體設計</strong></p>
+<p>先計算總電流：</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=I_%7BZJS%7D+%3DK_%7BC%7D+%28I_%7BJS1%7D+%2BI_%7BJS2%7D+%2B......%2BI_%7BJS5%7D+%29%3D0.8+%2874.55%2B33.5%2B10%2B16%2B16%29%3D0.8%5Ctimes+150.05%5Capprox+120A" alt="">
+<p>我們看到，總電流很大。</p>
+<p>現在我們來看看如何設計系統，如下：</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/24b44e45cec900370f5bff09c477cc6d_b.jpg" alt="">
+<p>圖中，總進線配套了 RCD（漏電開關）。當然也可以把漏電開關配到 QF1、QF2、QF4 和 QF5 支路。其中，QF4 和 QF5 支路可以合併。</p>
+<p>不過，從題主的描述看，QF2 似乎是衛浴加上洗衣機。如果兩者不在同一個位置，最好分開成爲兩個獨立支路。</p>
+<p><strong>8.配套漏電開關的方法</strong></p>
+<p>原則是，凡是人可能接觸到的電器都必須配套漏電斷路器。</p>
+<p>但我們有兩個方案：第一個方案是在總進線開關設漏電斷路器，第二個方案是在廚房、衛浴和插座等分開關設置漏電斷路器。相比之下，第一個方案更簡潔，第二個方案保護更周到。</p>
+<p>不過，要注意到衛浴的電熱水器其實商家已經配套了漏電保護器。</p>
+<p>漏電斷路器由兩個部分構成，其一是測量漏電的裝置，其二就是普通開關。</p>
+<p>漏電的測量依據的是：當系統正常時，相線電流和 N 線電流大小相等方向相反，因此兩者之和爲零。如果發生了漏電，則兩者之和不爲零，漏電電流就等於兩者之差。</p>
+<p>由於漏電電流可能會流過人體，因此漏電斷路器 RCD 必須在不大於人體能夠承受的極限電流的情況下就會開斷，這個電流就是 30mA。</p>
+<p>上圖中將漏電開關設定在總開關。</p>
+<p><strong>9.居家配電的線制和接地</strong></p>
+<p>線制和接地，對於絕大多數非電氣專業的人士來說，很難理解。在這裏，我只想讓大家記住以下幾點：</p>
+<p><strong>第一點：電源線從戶外引入戶內，應當有三條線。其中之一是相線，它的顏色在黃、綠和紅之間選擇；其中之二是中性線 N，它的顏色是藍色；其中之三是保護線 PE，它的顏色是黃綠相間。</strong></p>
+<p><strong>這三種線缺一不可。</strong></p>
+<p><strong>第二點：保護線用於保護人身安全，入戶後與所有用電設備的外殼相連，例如電冰箱的外殼、筆記本的外殼，也包括浴房的熱水器外殼。</strong></p>
+<p>第三點：相線也叫做火線，但 N 線卻不是零線，戶內不存在任何零線，只有中性線。</p>
+<p>考慮到零線這個叫法已經深入人心，即使不是零線，我們似乎也很願意把 N 線叫做零線。就像熊貓明明就是熊，卻被硬叫做貓一樣。</p>
+<p><strong>10.</strong><strong>開關選擇和導線選擇</strong></p>
+<p><strong>1）開關的選擇</strong></p>
+<p>由前面的計算可知，總開關的計算電流爲 128A，廚電分開關 QF1 的計算電流是 74.55A，衛浴分開關 QF2 的計算電流是 33.5A，照明分開關 QF3 的計算電流是 10A，房間 1 和房間 2 分開關 QF5 和 QF6 都是 16A。</p>
+<p>我們知道，低壓斷路器有三種，分別是框架斷路器 ACB，塑殼斷路器 MCCB 和微型斷路器 MCB。我們平常使用的微型斷路器 MCB 有時又被稱爲空氣開關，它的額定電流最大值爲 63A。塑殼斷路器 MCCB 的電流範圍爲 10A 到 1250A。</p>
+<p>由此可見，題主的這個配電箱已經超越了尋常的規格，其中主開關和廚電開關不得不使用塑殼斷路器 MCCB。</p>
+<p>於是，按給定的參數，我替題主選擇如下開關：</p>
+<p>主開關：MCCB，額定電流 125A；</p>
+<p>廚電開關：MCCB，額定電流 80A；</p>
+<p>衛浴開關：MCB，額定電流 40A；</p>
+<p>照明開關：MCB，額定電流 10A；</p>
+<p>房間 1 開關：MCB，額定電流 16A；</p>
+<p>房間 2 開關：MCB，額定電流 16A。</p>
+<p>說實在的，開關規格之所以選用如此之大，和題主選用的廚電有關。例如電陶爐，它的特點是什麼鍋都能用，不像電磁爐只能用於鐵質鍋。但電陶爐的熱效率很低，消耗功率大，但真正用於加熱炊具的熱量卻不大。要是我，肯定不會選用這種產品。</p>
+<p>開關的生產廠家最好的是施耐德，可優選。其它廠家次之。</p>
+<p>下圖是 ABB 的微型斷路器 MCB（空氣開關）的參數：</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/d23963cd6073d95668c402e2ae38b75e_b.jpg" alt="">
+<p>注意看右邊的額定電流規格，最大值爲 63A。</p>
+<p>下圖是 ABB 的塑殼斷路器 MCCB 的參數：</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/ec76968a595135684b2c754883824794_b.jpg" alt="">
+<p>其中的 T1 開關符合題主的總開關和廚電開關的要求。T1 開關的額定電流範圍如下：</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/b8390ac342460461092b7b99ca2b3d89_b.jpg" alt="">
+<p>可見其中的 125A 規格。</p>
+<p>另外，選主開關時可選用 IP+N 規格，也即僅僅對相線保護，N 線可合分，但不保護。</p>
+<p>而廚電開關則選用 1P 的規格即可。</p>
+<p><strong>2）導線的選擇</strong></p>
+<p>查閱《電氣工程師實務手冊》的表 17-23，絕緣電纜在空氣中敷設時允許載流量表，數據如下：</p>
+<p>聚氯乙烯兩芯銅導線，截面 4 平方，額定載流量 24A；</p>
+<p>聚氯乙烯兩芯銅導線，截面 6 平方，額定載流量 31A；</p>
+<p>聚氯乙烯兩芯銅導線，截面 10 平方，額定載流量 44A；</p>
+<p>聚氯乙烯兩芯銅導線，截面 16 平方，額定載流量 60A；</p>
+<p>聚氯乙烯單芯銅導線，截面 25 平方，額定載流量 95A；</p>
+<p>聚氯乙烯單芯銅導線，截面 35 平方，額定載流量 115A；</p>
+<p>聚氯乙烯單芯銅導線，截面 50 平方，額定載流量 147A。</p>
+<p>以上導線規格和載流量供題主參考。</p>
+<hr>
+<p>&nbsp;本想多寫一些，但實在太佔用時間了，就這樣吧。</p>
+<p>這個帖子我深信會給許多人帶來一定的衝擊，原先認爲很複雜的計算，卻原來如此簡單。</p>
+<p>確實如此。</p>
+<p>若某些知友希望對這種方法有更多的瞭解，請閱讀任何一本《配電與電氣工程》類的教科書，在有關負荷計算的章節中能看到同時係數和需要係數，以及它們的應用。</p>
+<p><strong>記住：同時係數決定了電器設備的同時使用問題，需要係數決定了某具體電器折算到長期工作制下的功率值；前者面對的是系統，後者面對的是某具體設備。這兩個係數在配電設計中具有十分重要的意義和地位。</strong></p>
+<p>這種方法，也是當下建築設計院的工程師們設計配電系統時常用的方法之一。</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div>
