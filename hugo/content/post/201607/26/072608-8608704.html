@@ -1,0 +1,96 @@
++++
+date = "2016-07-26T08:00:00"
+title = "爲了認出那張臉，你知道大腦有多努力嗎？"
+titleimage = "http://pic3.zhimg.com/44e5f3fcde5478d2b922cb46e4237e46.jpg"
+ga = 072608
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title">人類本身識別面部用的是什麼「算法」？</h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>這是一個相當好的問題，我最近一直在思考一些新的論文，強調了面孔各個特徵之間的相互關係與鏈接。尤其是反思 Calder &amp; Young （2005）的精彩綜述之後特意查閱了相關論文， 深感面孔處理的精妙，以及深藏的處理 &lsquo;算法&rsquo; 之巧妙。儘讓我斗膽在此大致介紹下自己的理解，望批評指正。</p>
+<p>（最近我有個 Live，在週六，也是說關於面孔識別。有興趣可以來看看<a href="http://zhuanlan.zhihu.com/p/21668415">華沙的 Live&mdash;&mdash; 看臉的科學第二集</a>）</p>
+<p>按照 David Marr 等視覺研究大神的精彩觀點，我們任何的視覺處理都是信息處理（而非簡單地、粗暴地處理看到東西本身）；很顯然面孔，這一種最爲重要的、與社會生活息息相關的視覺信息不能免俗，也是一種信息處理過程。所以題主提到能不能用計算機模擬其實是個非常好的問題，馮諾依曼機作爲以人類爲原本的計算機，完全應該有人類的能力。不過，很抱歉，我們目前都沒有完全理解視覺過程，而目前計算機的很多 CV 研究並不完全按照人類的識別方法進行（老實說，可能計算機視覺和人類視覺的交際也就到 70 年代 Hubel &amp; Wiseal 的論文爲止了吧）。所以我的觀點其實很簡單，計算機目前基於更強的計算能力，完全可以利用已知的一些大腦處理面孔方式對於面孔進行分析，但是效率和準確度和人類不好比（嚴格說是效率）；當我們更加理解了大腦的原理之後，相信不在不遠的將來，計算機完全可以做到更好。</p>
+<p>那麼人類本身用什麼算法呢？</p>
+<p>很簡單，<strong>整體識別</strong>。</p>
+<p>我先說下，面孔識別的相關大腦結構。按照經典的面孔識別模型（Bruce &amp; Young, 1986; Haxby, Hoffman, &amp; Gobbinni, 2000），我們大腦利用 FFA（梭狀回面孔區；Kanwisher, McDermott, &amp; Chun, 1997），pSTS（後顳上溝皮層; Hoffman &amp; Haxby, 2000），OFA（枕葉面孔區; 如 Yovel, Kanwisher, 2005）這三個核心面孔處理區域以及 &lsquo;借用&rsquo; 其餘的視覺和高級處理皮層達到面孔的識別。這幾個腦區有多重要呢，我舉個不恰當的例子，人類的好朋友狗狗們，就是因爲有類似人一樣的面孔識別區域（也在下顳葉，和人類位置很接近；Dilks et al., 2015），才能記住主人的面孔。</p>
+<p>就如同 Mishkin 與 Ungerleider 教授（1982）的精彩研究結論一樣，我們處理面孔的時候也把信息分爲了兩束進行分析。第一束往下顳葉走更加依賴於 FFA，往往是處理面孔上不變的信息，比如身份（是誰）；而另一束往頂葉走，依賴於 pSTS，處理面孔上動態的信息，比如表情，面孔方向等。這就是面孔處理的一個基本算法。也就是依賴核心腦區（佐以其餘神經系統幫助），把面孔信息進行粗略劃分之後進行分析。當然杏仁核等邊緣系統可以從上丘直接獲得輸出（此處不展開，可以看看我專欄提到的），但是大致途徑類似。總體而言，面孔上的信息會在 FFA 進行彙總（Yovel, Kanwisher, 2006），然後往更高級視覺皮層傳遞。那麼這部分信息到底是什麼呢？這就是整體識別的關鍵信息。</p>
+<p>可能和大家想象的不一樣，我們識別面孔的時候其實並不是只依賴一些局部的信息，比如眼睛、嘴巴。而是把面孔上的信息彙總在一起，成爲一個整體來進行分析（如 Yin，1969 發現的面孔倒置效應就是整體識別的一個好佐證）。這樣的分析高效快捷。那麼整體是怎麼分析的呢？這就得說道一個筆者特別喜歡的觀點：面孔模板假說。</p>
+<p>我們對於面孔的理解和分析都基於我們所看到的面孔（Webster &amp; MacLeod, 2011）。倘若我們把所有面孔都假設存放與一張平面上，那就是一張面孔的地圖（Valentine, 1991）。這一章地圖就是反映我們識別面孔的方法：我們的算法就是通過上述大腦區域的羣體編碼，根據不同神經細胞的活動程度，我們可以在腦海中形成一個 &lsquo;矩陣&rsquo;，這個矩陣編碼了看到的圖片在某個判斷維度上（如表情）與模板（如表情模板）的距離；通過這個距離，我們可以清楚明白這張面孔傳遞的信息。因爲通過模板，信息得到簡化，可以更高效分析。甚至可以說面孔的處理基本都是以這個方法進行，所以說面孔處理可以說在算法層面互有重疊（Calder &amp; Young，2005）。</p>
+<p>再具體一點，整體識別中的信息就是面孔上的二階關係信息（second-order rational information）比如說五官之間的距離，嘴角的彎曲程度之類的（Maurer, 2002）。這部分信息與模板的對比就是筆者所提到的 &lsquo;矩陣&rsquo; （用矩陣更方便理解）。基於篇幅原因不展開討論。</p>
+<p>簡而言之，大腦處理面孔信息的時候，往往提取出面孔上信息的相互關係，以與模板距離的方法整體識別面孔。這就是大腦處理面孔信息 &lsquo;算法&rsquo; 的一個簡單介紹。</p>
+<p>參考文獻</p>
+<p>Bruce, V., &amp; Young, A. (1986). Understanding face recognition. <em>British journal of psychology</em>, <em>77</em>(3), 305-327.</p>
+<p>Burton, N., Jeffery, L., Calder, A. J., &amp; Rhodes, G. (2015). How is facial expression coded?. <em>Journal of vision</em>, <em>15</em>(1), 1-1.</p>
+<p>Calder, A. J., &amp; Young, A. W. (2005). Understanding the recognition of facial identity and facial expression. <em>Nature Reviews Neuroscience</em>, <em>6</em>(8), 641-651.</p>
+<p>Dilks, D. D., Cook, P., Weiller, S. K., Berns, H. P., Spivak, M., &amp; Berns, G. S. (2015). Awake fMRI reveals a specialized region in dog temporal cortex for face processing. <em>PeerJ</em>, <em>3</em>, e1115.</p>
+<p>Haxby, J. V., Hoffman, E. A., &amp; Gobbini, M. I. (2000). The distributed human neural system for face perception. <em>Trends in cognitive sciences</em>, <em>4</em>(6), 223-233.</p>
+<p>Hoffman, E. A., &amp; Haxby, J. V. (2000). Distinct representations of eye gaze and identity in the distributed human neural system for face perception.<em>Nature neuroscience</em>, <em>3</em>(1), 80-84.</p>
+<p>Kanwisher, N., &amp; Yovel, G. (2006). The fusiform face area: a cortical region specialized for the perception of faces. <em>Philosophical Transactions of the Royal Society of London B: Biological Sciences</em>, <em>361</em>(1476), 2109-2128.</p>
+<p>Kanwisher, N., McDermott, J., &amp; Chun, M. M. (1997). The fusiform face area: a module in human extrastriate cortex specialized for face perception. <em>The Journal of neuroscience</em>, <em>17</em>(11), 4302-4311.</p>
+<p>Valentine T. (1991). A unified account of the effects of distinctiveness, inversion, and race in face recognition. <em><em>Quarterly Journal of Experimental Psychology</em></em><em>,</em> 43A<em>,</em> 161&ndash;240.</p>
+<p>Webster, M. A., &amp; MacLeod, D. I. (2011). Visual adaptation and face perception. <em>Philosophical Transactions of the Royal Society B: Biological Sciences</em>, <em>366</em>(1571), 1702-1725.</p>
+<p>Yin, R. K. (1969). Looking at upside-down faces. <em>Journal of experimental psychology</em>, <em>81</em>(1), 141.</p>
+<p>Yovel, G., &amp; Kanwisher, N. (2005). The neural basis of the behavioral face-inversion effect. <em>Current Biology</em>, <em>15</em>(24), 2256-2262.</p>
+</div>
+</div>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>如大多數人說的那樣，機制未完全清楚。我從一個外行人的角度將目前瞭解到的部分信息進行粗略整理及推測</p>
+<p>1. 時間上：</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/c8db45e014ca9f2778c2ea5928622643_b.jpg" alt="">
+<p>2. 空間上：和以下兩個區域有關</p>
+<p>FFA (<a href="http://en.wikipedia.org/wiki/Fusiform_face_area">Fusiform face area</a>，不知道中文怎麼譯，梭形人臉識別區？)</p>
+<p>ATL (anterior temporal lobe，前<a href="http://zh.wikipedia.org/wiki/%E9%A2%9E%E5%8F%B6">顳葉</a>)</p>
+<p><strong>1. 時間上</strong></p>
+<p>用經顱磁刺激（<a href="http://baike.baidu.com/view/1837702.htm">經顱磁刺激</a>）在識別材料出現後&nbsp;<strong>40~50 毫秒</strong>對人進行刺激，發現這同等程度地影響人臉識別 vs. 身體識別、人臉識別相關區域 (rOFA) vs. 身體識別相關區域 (rEBA) 4 種組合下兩個相關區域的活動程度；由此推測在這個時間段內，<strong>人腦對材料進行無差別的預處理</strong> (Goldhaber et al., 2012)</p>
+<p>用經顱磁刺激在識別材料出現後&nbsp;<strong>100~110 毫秒</strong>對人進行刺激，發現隻影響人臉識別情況下 rOFA 的活動，以及身體識別情況下 rEBA 的活動 (Goldhaber et al., 2012)。另外，腦磁圖（<a href="http://baike.baidu.com/view/354486.htm">腦磁圖</a>）研究發現，材料出現後 100 毫秒那一刻出現了一個和人臉識別相關的腦磁波（M100），它和材料分類的成功率相關，而和材料識別的成功率無顯著相關 (Liu, Harris &amp; Kanwisher, 2002)。由此推測在這個時間段內，<strong>人腦對材料進行分類處理</strong></p>
+<p><strong>130~200 毫秒</strong>這個階段，和它有關的就是比較有名的腦電波&nbsp;<a href="http://en.wikipedia.org/wiki/N170">N170</a>。研究發現這個腦電波和結構編碼有關 (Rossion &amp; Jacques, 2008)；而它的強度在進行明星臉、陌生人臉時無顯著差異 (Gosling &amp; Eimer, 2011)。簡而言之，<strong>人腦在這個階段對人臉的結構進行處理</strong>，但沒有進行身份信息的處理</p>
+<p><strong>230~400 毫秒</strong>階段出現的腦電波 N250，研究發現它在進行明星臉孔識別時有更強的負向信號（對比在進行陌生人臉孔識別時）；由此推測在這個階段，<strong>人腦對人臉進行身份信息的處理</strong> (Gosling &amp; Eimer, 2011)</p>
+<p><strong>400~700 毫秒</strong>階段，研究發現在對明星臉孔進行識別時，左腦區的 P600f 顯著更強（對比一在進行陌生人臉孔識別時）；左腦區被認爲有語言信息的特異性處理功能；由此推測在這個階段，<strong>人腦進行人臉和姓名的配對</strong>(Gosling &amp; Eimer, 2011)</p>
+<p><strong>2. 空間上</strong></p>
+<p>FFA 在人臉識別上的特異性已經得到比較廣泛的認可，最初發現這塊區域印象中是讓人看人臉和房子的圖片時做<a href="http://zh.wikipedia.org/wiki/%E5%8A%9F%E8%83%BD%E6%80%A7%E7%A3%81%E5%85%B1%E6%8C%AF%E6%88%90%E5%83%8F">功能性磁共振成像</a>，然後發現有一個區域只在看人臉時活動強度比看房子時大，這個區域後來被命名爲 FFA。大概位置看下面兩個圖</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/239b7f46436e6ffcc9b3abd272d88c68_b.jpg" alt="">
+<img class="content-image" src="http://pic2.zhimg.com/70/8b1958117387dc07eed0dfa3604e4789_b.jpg" alt="">
+<p>最近幾年發現了一個新的區域（位於前顳葉 ATL），這個區域同樣只在看到人臉時被激活（對比看房子）。另外研究還發現即使是看倒立臉孔時，FFA 和 ATL 都被激活，而且識別成功率和 ATL 激活程度有顯著相關，但和 FFA 激活程度相關不顯著 (Nasr &amp; Tootell, 2012)</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/4c29795d5b4df54ef1c2233160dec8d0_b.jpg" alt="">
+<p>參考資料</p>
+<p>Goldhaber, T., Duchaine, B., Walsh, V., Pitcher, D., &amp; Kanwisher, N. (2012). Two Critical and Functionally Distinct Stages of Face and Body Perception.</p>
+<p>Gosling, A., &amp; Eimer, M. (2011). An event-related brain potential study of explicit face recognition. <em>Neuropsychologia</em>, <em>49</em>(9), 2736-2745.</p>
+<p>Liu, J., Harris, A., &amp; Kanwisher, N. (2002). Stages of processing in face perception: an MEG study. <em>Nature neuroscience</em>, <em>5</em>(9), 910-916.</p>
+<p>Nasr, S., &amp; Tootell, R. B. (2012). Role of fusiform and anterior temporal cortical areas in facial recognition. <em>Neuroimage</em>, <em>63</em>(3), 1743-1753.</p>
+<p>Rossion, B., &amp; Jacques, C. (2008). Does physical interstimulus variance account for early electrophysiological face sensitive responses in the human brain? Ten lessons on the N170. <em>Neuroimage</em>, <em>39</em>(4), 1959-1979.</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div>
