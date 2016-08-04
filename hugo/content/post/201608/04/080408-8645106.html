@@ -1,0 +1,108 @@
++++
+date = "2016-08-04T08:00:00"
+title = "寫給產品 / 市場 / 運營的數據抓取黑科技教程"
+titleimage = "http://pic2.zhimg.com/551fac8833ec0f9e0a142aa2031b9b09.jpg"
+ga = 080408
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+<div class="question">
+<h2 class="question-title">寫給產品 / 市場 / 運營的黑科技教程：如何用數據抓取調研競品、獲取用戶？</h2>
+<div class="answer">
+
+
+
+<div class="content">
+<p>互聯網是一座資源未被充分結構化的數據倉庫，利用技術手段批量從已知網頁或其他數據源下載資源的方法，就是<strong>數據抓取</strong>。執行這項任務的程序被稱爲<strong>網絡爬蟲（Web crawler）</strong>，它的職責在於採集、處理和儲存。</p>
+<p>早期的數據抓取是一種按照特定規則，自動批量獲取互聯網信息的程序或腳本，能夠輔助搜索引擎建立對海量內容的索引。不過，如同光明同黑暗同時誕生，數據抓取技術的出現，也帶來惡意爬蟲的降生，無論是製造虛假註冊用戶數據、採集競爭對手情報、嘗試破解用戶口令還是自動下單刷量，都離不開爬蟲。對此我們不多做探討。</p>
+<p>總部位於加州的 Diffbot 公司成立於 2008 年，創始人兼首席執行官 Mike Tung 是斯坦福畢業的研究生。這家公司的業務模式就是通過人工智能技術，讓機器識別網頁，抓取關鍵內容，再對其進行結構化處理，繼而輸出軟件乃至人眼可以直接識別的結果。Diffbot 的技術被廣泛應用於知識圖譜、商業智能等領域。Scikit-Learn 機器學習庫、phantomjs 渲染引擎等在其中扮演關鍵角色。</p>
+<img class="content-image" src="https://pic2.zhimg.com/4d8145500dbf8df7f2411aba2a47ed7d_b.jpg" alt="">
+<p>我的一位好友在國內知名外企出任技術專家，業餘兼職爲各種項目提供數據抓取服務。他親身參與實踐的案例包括：</p>
+<ul>
+<li><strong>鎖定早期用戶：</strong>西安一家新開業的美術教育機構招生，他花了兩天時間寫爬蟲，抓取了國內最大的美術生交流社區上的公開學生信息，包括姓名、專業、電話、地理位置，篩選後將西安周邊地區的學生名單賣給了這家機構。</li>
+<li><strong>調研競爭對手：</strong>爲一家垂直電商的後起之秀服務，把兩個成熟競品過往兩年的訂單量、交易量及交易人數抓取整理出來，估算了對方的流水，由此爲團隊擴增、制定指標和新一輪融資提供了直觀參照。</li>
+<li><strong>立項市場調查：</strong>他的一位好友打算做面向年輕人的動漫項目，想從非一線城市做起，於是請他把某國內最大&ldquo;二次元&rdquo;駐紮視頻網站的用戶數據抓取了三天，最後得出結論：成都、南京、杭州等城市是適宜啓動的絕佳地點。</li>
+<li><strong>年底業績交差：</strong>某國企在焦躁的互聯網轉型中指定了高不可攀的業績指標，分公司負責人請他編寫爬蟲模擬新用戶到網站註冊，成功衝抵差額，在年底考覈中保住了位子。</li>
+</ul>
+<p><strong>一、如何編寫爬蟲腳本抓取數據？基本步驟策略如下：</strong></p>
+<ol>
+<li><strong>選定目標。</strong>首先確定被抓取方提供了哪些服務，比如網站、移動應用、開放平臺等。如果所有服務是等價的，不存在某一服務缺失什麼功能，就優先從移動應用開始抓取。因爲應用一般是通過 API 來獲取數據，透過 API 抓取的數據比較方便後期的結構化整理。</li>
+<li><strong>技術方案。</strong>實際抓取採用的技術手段視情況而定，如果需求簡單且對方完全沒有防護，可以用命令行腳本；稍微複雜一點可以使用 Python，requests、beautifulsoup、re 都是實用的第三方庫。</li>
+<li><strong>性能優化。</strong>如果是單次抓取需求，並不需要持續穩定地一直跟蹤抓取，則對性能優化的考慮較少，可以直接在本機或是虛擬主機上執行，通過多個不同進程來同時工作，以調度器來統一管理。複雜一些可以考慮用付費的第三方雲服務。</li>
+<li><strong>資源結構。</strong>抓取網頁，一般先研究頁面上是否有統一的資源 ID 命名方式（分類、排行、導航、搜索通常能提供良好的組織結構和命名規則），然後遞增、遍歷或藉助能批量處理特定結構的第三方庫。</li>
+<li><strong>見招拆招。</strong>對於採取防抓取措施的對象，也有應對方法：如果對方要求註冊，網頁服務可以在 request 請求中把瀏覽器的 cookie 帶上，移動應用抓包看看 Auth Key 然後在請求中帶上；如果對方有 IP 限制，可以用代理池解決；如果有隨機數時間校驗，就用 random 命令生成一個對應長度的隨機數來延時。</li>
+<li><strong>數據處理。</strong>髒數據要用正則表達式或者 beautifulsoup 這樣的第三方包把想要的內容取出來，然後存放到數據庫，或是以約定的分隔符來劃分字段並保存到文本文件裏。</li>
+<li><strong>數據分析。</strong>簡單的分析可以用命令行裏的 sort、uniq、awk、diff 等搞定，複雜需求借助第三方庫 pandas 可以方便地完成各種維度的分析查詢和統計工作。</li>
+</ol>
+<p><strong>二、數據抓取的基礎指令和常用工具：</strong></p>
+<p>寫個爬蟲抓取網絡資源並不是每次都要興師動衆。掌握基本的指令，你也可以在十分鐘之內拿到想要的內容。</p>
+<p><strong>1、CURL</strong></p>
+<p>Curl 是命令行下的開源文件傳輸工具，如果你使用蘋果電腦或者 Unix、Linux 發行版，系統會自帶，Windows 用戶也可以安裝對應的移植版本。</p>
+<p>Curl 命令的基本使用方法是，在命令行下執行：</p>
+<blockquote>curl <a class=" external" href="https://link.zhihu.com/?target=https%3A//assets-cdn.github.com/favicon.ico" target="_blank" rel="nofollow noreferrer"><span class="invisible">https://</span><span class="visible">assets-cdn.github.com/f</span><span class="invisible">avicon.ico</span><span class="ellipsis"></span></a></blockquote>
+<p>其中 <a class=" external" href="https://link.zhihu.com/?target=https%3A//assets-cdn.github.com/favicon.ico" target="_blank" rel="nofollow noreferrer"><span class="invisible">https://</span><span class="visible">assets-cdn.github.com/f</span><span class="invisible">avicon.ico</span><span class="ellipsis"></span></a> 是想抓取到本地的資源文件 URL。另外你也可以在 curl 後面添加以下參數或語法，實現更多高級配置：</p>
+<ul>
+<li>-o：將抓取到的資源按照指定名稱保存，實現數據初步整理</li>
+<li>-C：斷點續傳，適合抓取大塊頭文件或是網絡環境不穩定時</li>
+<li>-u：配合輸入用戶名和密碼，可獲得加密資源的授權訪問資格</li>
+<li>-x：指定代理主機和端口，配合代理池可以在抓取時&ldquo;打一槍換一個地方&rdquo;</li>
+<li>-d：在發起請求時傳送參數，運用巧妙既可以簡化腳本代碼，也可以實現更多出彩特性</li>
+<li>中括號：在 URL 中使用形如&ldquo;[100-200]&rdquo;語法，可以順次從 100、101、102&hellip;200 之間的等間距資源，比如按順序保存的文件名。</li>
+</ul>
+<p>我在《增長黑客》&ldquo;獲取用戶&rdquo;章節中談到如何抓取第三方唱歌應用裏的用戶頭像，稍加整理後用於某移動交友產品內測期間的數據冷啓動，使用的就是這個 curl 指令。我們僅花費 2 個小時就拿到了 10000 多張高質量的頭像大圖，人工消耗成本極低。</p>
+<p>Curl 命令的詳盡使用教程，可以參閱《黑客與畫家》譯者阮一峯先生整理的這篇指南：<a class=" external" href="https://link.zhihu.com/?target=http%3A//www.ruanyifeng.com/blog/2011/09/curl.html" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://www.</span><span class="visible">ruanyifeng.com/blog/201</span><span class="invisible">1/09/curl.html</span><span class="ellipsis"></span></a>。</p>
+<p><strong>2、file_get_contents</strong></p>
+<p>PHP 下的 file_get_contents() 函數用於將整個文件讀入一個字符串中，既適用於本地文件，也作用於網絡資源。早年網絡上流行的第三方開源 CMS（Content Management System，內容管理系統）就有不少以自動抓取作爲賣點，核心就是圍繞這個函數展開。</p>
+<p>我也經常建議我的客戶，在不傷及被抓取對象利益的前提下，儘可能編寫腳本完成每日的常規運營工作，比如本地新聞、天氣預報、行業動態&mdash;&mdash;這項工作如果只是向外界傳遞&ldquo;我們還沒有倒閉&rdquo;的信息，那就不要佔用額外人力，畢竟網上可供抓取的更新來源太多。</p>
+<p>file_get_contents 可以配合的其他常用函數包括：</p>
+<ul>
+<li>explode()：根據指定分隔符（比如逗號、分好、頓號），將抓取到的網頁源代碼切割成數組。</li>
+<li>strpos()：可以在抓取到的網頁源代碼裏查找特定的字符。例如在輿情采集分析過程中，如果發現被抓取頁面出現了競爭對手的名稱，則產生對應的提醒動作，平時相安無事。</li>
+<li>substr()：用於從一串字符中截取出特定位數的字符，能剔除掉不必要的數據，讓抓取結果乾淨和便於處理。</li>
+<li>echo()：打印出抓取結果看看，最直觀的方式。</li>
+</ul>
+<p>我成功將 file_get_contents() 函數用於多個商業項目中，包括爲某世界五百強公司在國內的微信公衆平臺菜單裏實現與美國官網同步更新。此外業餘也開發過有意思的用途，例如曾抓取多玩網數據開發了微信裏的爐石傳說卡牌遊戲查詢器，以及在 Mac 平臺的效率軟件 Alfred 裏自行開發股票查詢、日語字典、資訊快遞等插件。</p>
+<p>PHP 官方網站上提供了這個函數的使用文檔：<a class=" external" href="https://link.zhihu.com/?target=http%3A//php.net/manual/zh/function.file-get-contents.php" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://</span><span class="visible">php.net/manual/zh/funct</span><span class="invisible">ion.file-get-contents.php</span><span class="ellipsis"></span></a>。</p>
+<p><strong>3、Charles&mdash;&mdash;抓包利器</strong></p>
+<p>有時候我們無法直接從程序界面抓取到文字或圖像資源（對方可能封鎖了網頁點擊，或者想抓取對象來自移動應用）。這時候可以改換思路，不抓靜態資源，而是抓包。你可以將&ldquo;抓包&rdquo;理解成數據在運載過程中即被截獲，有點像&ldquo;劫鏢&rdquo;。</p>
+<p>Charles 是基於 Java 的跨平臺工具，可用於 Windows、Mac 和 Linux 平臺，能夠讓開發者方便地查看聯網設備（電腦、手機、平板電腦）在傳輸交互中產生的數據包。只要手機和電腦在同一無線網絡內，就能夠在電腦上查看手機端收發的數據，既包括最終可見的界面文字，也包括隱含傳輸的文件頭、指令、參數等。</p>
+<img class="content-image" src="https://pic4.zhimg.com/a6e51167bcdc6cb362e2042abb922873_b.png" alt="">
+<p>Charles 的官網是：<a class=" external" href="https://link.zhihu.com/?target=https%3A//www.charlesproxy.com/" target="_blank" rel="nofollow noreferrer"><span class="invisible">https://www.</span><span class="visible">charlesproxy.com/</span><span class="invisible"></span></a>。</p>
+<p><strong>三、如何規避抓取別家數據的潛在風險？</strong></p>
+<p>除了上述披露細節，在我的《增長黑客》裏也提到一些數據抓取解決冷啓動的實戰案例。其實在互聯網行業裏，依靠抓取來獲取數據的做法，並不罕見。既然我敢於公諸於衆，就不可避免遭遇質疑和非議。</p>
+<p>在此請允許我就&ldquo;如何規避抓取別家數據的潛在風險？&rdquo;的問題闡述我的經驗和反思：</p>
+<p>第一，技術是中立的，本身不帶有任何傾向性。</p>
+<p>如何你覺得從別的平臺&ldquo;右鍵另存爲&rdquo;來獲得資源並運用到自己的產品裏不構成任何問題，那麼寫腳本批量抓取沒有改變這件事的性質，它只是幫你將原本需要人工操作三天的事情簡化到三個小時內自動完成。</p>
+<p>第二，平臺各有自己的政策，不同平臺的抓取策略不同。</p>
+<p>有的平臺明確在自己的用戶協議裏聲明，&ldquo;本平臺只承擔數據存儲的作用，內容版權隸屬原作者所有&rdquo;，這時候，你完全可以徵得原作者同意之後，以你認爲方便的途徑去獲取。至於如何快速大量獲得原作者同意？也可以通過寫腳本批量發私信給目標人羣。這種行爲的性質參見第一條。</p>
+<p>第三，分清學習目的與商用目的。</p>
+<p>我專門查詢過版權法等相關法律法規，其中對&ldquo;出於學習目的&rdquo;是有專門的分類討論的。如果將抓取來的數據用於產品上線前內部的測試、參考，以此作爲私下決策依據而非投入實際商業運作， 我認爲是屬於這一範疇的（當然還是得具體問題具體分析）。當然，你最好還是先徵詢你律師的建議。</p>
+<p>最後，你有沒有越界，其實你自己心裏清楚。</p>
+<p><strong>四、如何反抓取，保護自己的數據資產？</strong></p>
+<p>既然有抓取，自然也有反抓取。通常反抓取的目的在於：</p>
+<p>第一，保護企業的數據資產。雖然通常能被抓取的是公開內容，但這些可免費查詢的資源很可能原本就是一種商業競爭策略，如果被對手抓取，競爭力此消彼長，很可能讓讓企業蒙受損失，這是需要防範的。</p>
+<p>第二，節省帶寬，提升服務性能。初級程序員編寫的腳本如果性能堪憂，源源不斷的訪問會對被抓取網站的帶寬和性能帶來壓力，擡升成本。有些抓取初衷雖無惡意，卻叫人哭笑不得。我的一個朋友就曾抱怨，每年三月都會迎來一波被抓取的高峯期，原來是計算機專業應屆畢業生此刻都在忙着畢業答辯，抓取數據趕論文。</p>
+<p>第三，去除數據噪音。數據抓取會影響對網站流量指標的誤判，徒增的 IP/PV/UV 可能源自機器爬蟲的訪問，這對於運營人員拆分流量和追蹤用戶形成了干擾，與其在分析數據階段清洗數據，不如在收集數據階段就屏蔽干擾因素。</p>
+<p>常見的抓取策略包括：封鎖 IP、封鎖設備、限制單位時間內的訪問頻度、混淆代碼增大識別難度等。將單一策略組合起來，能更有效地避免誤判，以免將普通用戶識別爲爬蟲。</p>
+
+
+
+</div>
+</div>
+</div>
+
+
+</div>
+</div>
