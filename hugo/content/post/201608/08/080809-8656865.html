@@ -1,0 +1,83 @@
++++
+date = "2016-08-08T09:00:00"
+title = "從經濟學角度來看，「走一步看一步」是不是能達到最優？"
+titleimage = "http://pic3.zhimg.com/34aea22959578f4232e15c1e4bc5a8ea.jpg"
+ga = 080809
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title">「走一步看一步」會是納什均衡嗎？</h2>
+
+<div class="answer">
+
+<div class="content">
+<p>長輩常說，如果你人生裏每一步都選對了，那麼你的人生就是最優的。這個問題是否可以等價於找子博弈納什均衡。子博弈納什均衡需要用到逆向歸納法，而人生更像一個不完美信息博弈，這樣是不是用找序貫均衡（sequential equilibrium）來描繪更合適呢？但如果處理成動態最優化問題，問題就轉變成局部最優在什麼情況下可以等價爲全局最優。可能要接着討論效用函數的凹凸性，集合的緊性等等，看起來會更加複雜，而且效用函數也是很難得到的。所以纔想用到博弈論的框架。</p>
+<p>「知乎日報」注：如果某情況下無一參與者可以通過獨自行動而增加收益，則此策略組合被稱爲「納什均衡點」。</p>
+</div>
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="question">
+<h2 class="question-title"></h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>最近正好在看一本叫&ldquo;The economics of time and ignorance&rdquo;的關於奧地利學派的書，正好和這個問題很有關。在其中的一篇叫做&ldquo;The Dynamic Conception of Time&rdquo;的文章中，作者正好提到過這個問題。那篇文章引用了 Hahn 那本著名的《一般均衡理論》裏面的話：</p>
+<blockquote>As Hahn admitted, &ldquo;The assumption that all intertemporal and all contingent markets exist has the effect of collapsing the future into the present&rdquo; (1980, p. 132). Decisions are all made in a single primordial instant: the future is merely the unfolding of a tapestry that exists now.</blockquote>
+<p>翻譯：就像 Hahn 所承認的那樣：&ldquo;假設所有跨期商品和或有商品市場存在會讓所有&lsquo;未來&rsquo;塌陷到&lsquo;現在&rsquo;當中。&rdquo;決策完全是在（整個 state variable 的隨機過程）開始之前就制定好了：未來只是一個現在已經存在東西的展開罷了。</p>
+<p>其實，無論是題主提到的序貫均衡也好，動態一般均衡也罷，都是這個問題。經濟學家解決動態問題的方法只有一個，那就是逆向歸納。比如在經典的宏觀問題中，比如 Hall 的不確定性存在下的永久收入假說，我們無非是要解一個這樣的問題：</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cbegin%7Baligned%7D%0A%5Cmax%3A%26+E_0%5Csum_%7Bt%3D0%7D%5ET%5Cbeta%5Etu%28c_t%29%5C%5C%0A%26s.t.%5Csum_%7Bt%3D0%7D%5ETR%5E%7B-t%7D%28c_t-y_t%29%3DA_t%0A%5Cend%7Baligned%7D" alt="">
+<img class="content-image" style="line-height: 1.5;" src="http://www.zhihu.com/equation?tex=A_t" alt="">
+<img class="content-image" style="line-height: 1.5;" src="http://www.zhihu.com/equation?tex=c_t%3DE_t%28c_%7Bt%2B1%7D%7Cy_1%2C%5Ccdots%2Cy_t%29" alt="">
+<p>當然，宏觀當中因爲要經常遇到貨幣問題，所以一般都要假設無限期界，這時候就沒有一個特別合適的&ldquo;第 T 期&rdquo;了，所以必須要改用 DP（Dynamic Programming） 來解這個問題了。但是思想沒變，結果是，最終我們找到只是一個&ldquo;相機行動計劃&rdquo;，即依據不同的已經 realize 掉的收入流，調整我們的決策也就是一個 optimal policy。當然就像 @金超 說的，一個相機行動計劃在某種意義上也可以被看做&ldquo;走一步看一步&rdquo;。但從本質上說，第 0 期之後，決策者並沒有真的在做&ldquo;決策&rdquo;，而是一直在執行一個從一開始就決定好了的行動計劃而已。</p>
+<p>這篇文章的作者所 argue 的點是這樣的：如果我們那新古典這一套東西去研究跨期問題，我們不可能看得到真正的&ldquo;動態問題&rdquo;，動態問題根本就不存在，這是因爲決策是靜態的。作者繼續 argue 的一件事情就是這裏面的根本問題是新古典經濟學裏面的時間是&ldquo;牛頓時間&rdquo;，它只是空間概念的一個類比而已，因爲空間是可分的，牛頓時間也是可分的，所以，時間軸作爲&ldquo;時間點組成的連續統&rdquo;，不可能包含任何真正的因果關係。作者認爲，應該用&ldquo;real time&rdquo;這個概念，即事物因果關係的一個序數排序，來取代&ldquo;Newtonian time（牛頓時間）&rdquo;。</p>
+<p>當然，作者說的東西我一來沒有完全理解（沒有數學模型看不懂東西是病得治），二來看懂的部分也不完全贊成。所以這裏我按照我理解問題的方式來說說真正的&ldquo;走一步看一步&rdquo;是什麼，題主的困惑是用新古典模型的視角去看待動態問題不可能出現真正的走一步看一步，我想問題是出在了新古典模型默認的 Savage 的主觀概率理論上了，也就是我在之前一篇專欄裏寫的&ldquo;小世界假設&rdquo;上（<a href="https://zhuanlan.zhihu.com/p/20059266?refer=lastvc">開放宇宙、企業家與挨千刀的概率論 - Mr. Bias 的經濟學輕科普 - 知乎專欄</a>）。</p>
+<img class="content-image" style="line-height: 1.5;" src="http://www.zhihu.com/equation?tex=S" alt="">
+<img class="content-image" style="line-height: 1.5;" src="http://www.zhihu.com/equation?tex=S%3D%5CPi_%7Bt%3D1%7D%5E%5Cinfty+S_t" alt="">
+<p>感謝期望效用下面效用和概率之間的關係是線性的，感謝重複期望法則，我們在所有&ldquo;動態經濟模型&rdquo;當中使用的決策規則在統計決策理論下面就這麼成立了。</p>
+<p>所以，所有新古典經濟學家在統計決策理論的角度看都是 Bayesian（貝葉斯定理：通常，事件 A 在事件 B（發生）的條件下的概率，與事件 B 在事件 A 的條件下的概率是不一樣的；然而，這兩者是有確定的關係。貝葉斯公式的用途在於通過己知三個概率函數推出第四個，及在 B 出現的前提下，A 出現的概率等於 A 和 B 都出現的概率除以 B 出現的概率。通過聯繫 A 與 B，計算從一個事件產生另一事件的概率，即從結果上溯原）。</p>
+<p>Savage 體系是題主疑惑的問題的最根本原因，因爲 Savage 體系的好處是&ldquo;動態一致性&rdquo;。就像我們從上面那個宏觀問題當中發現的那樣，只要我們在整個隨機過程開始之前就確定一個計劃，然後忠實地完成這個計劃就可以了。而且，我們的 Belief 是 Bayesian 的，是我們的決策是動態一致性的必要條件，也就是說，如果我們的先驗信念不是一個概率測度，或者我們更新信念的方式不是 Bayes Rule 而是其他一些什麼東西，那麼動態一致性就沒有了，這是 Epstein &amp; Le Breton (1992)證明過的。</p>
+<p>Binmore 在 2006 年的一篇叫做&ldquo;Making Decisions in Large Worlds&rdquo;（當然從題目看他就是要解決小世界問題的）中說了這麼一段話：</p>
+<blockquote>But why should we wish to adjust our gut-feelings using Savage&rsquo;s methodology? In particular, why should a rational decision-maker wish to be consistent? After all, scientists aren&rsquo;t consistent, on the grounds that it isn&rsquo;t clever to be consistently wrong. When surprised by data that shows current theories to be in error, they seek new theories that are inconsistent with the old theories. Consistency, from this point of view, is only a virtue if the possibility of being surprised can somehow be eliminated. This is the reason for distinguishing between large and small worlds. Only in the latter is consistency an unqualified virtue.</blockquote>
+<p>翻譯：然而，爲什麼我們要拋棄直覺而改用 Savage 的方法呢？特別是，爲什麼一個理性的決策者一定要是動態一致的呢？至少科學家就不一致嘛，因爲&ldquo;動態一致地犯錯&rdquo;是非常不明智的。當數據驚奇地告訴我們已知的理論是錯的，我們會尋找與舊理論不一致的新理論來代替它。一致性在這個角度來說僅僅是&ldquo;驚奇&rdquo;不存在時的正確決策方式。這就是&ldquo;小世界&rdquo;和&ldquo;大世界&rdquo;必須分開對待的原因。一致性在&ldquo;大世界&rdquo;中是一個非常爛的行爲法則。</p>
+<p>Herbert Simon 在 1950 年代提出 Satisficing 的那篇經典文章中特意區分過兩類知識：一類是關於&ldquo;哪些偶然情況可能發生&rdquo;的知識，另一類是關於&ldquo;這些可能發生的偶然情況發生的概率&rdquo;的知識。顯然在 Savage 的公理體系裏面，僅有第二類是會通過學習而&ldquo;更新&rdquo;的，而第一類知識先驗地就是完備的，這也是很多奧地利學派經濟學家認爲新古典經濟學雖然到處是概率，但是並沒有能夠使 genuine uncertainty 存在的餘地的原因。</p>
+<img class="content-image" style="line-height: 1.5;" src="http://www.zhihu.com/equation?tex=S" alt="">
+<p>我在之前那篇專欄裏提到的身兼凱恩斯和哈耶克兩門武藝的 Shackle，站在他激進主觀主義的立場上聲稱：未來在現在並不存在。未來並不是所有人在某一時刻就已經創造出來，並隨着時間流逝慢慢發現它，而是由所有人不斷地創造出來的。在他 1972 年的 Epistemics and economics 中，他提到(pp. 156)：</p>
+<blockquote>So far as men are concerned, being consists in continual and endless fresh knowing.</blockquote>
+<img class="content-image" style="line-height: 1.5;" src="http://www.zhihu.com/equation?tex=S" alt="">
+<p>這也是題主和同學們覺得人生不能化約爲一個動態博弈的原因。</p>
+<p>就醬~</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div>
