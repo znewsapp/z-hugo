@@ -17,7 +17,11 @@
                 </div>
                 <h1 class="page-title" itemprop="name headline">{{ .Title }}</h1>
 
-                <div class="fb-ad" data-placementid="1676323079284163_1676324105950727" data-format="300x250" data-testmode="false"></div>
+                <div id='div-gpt-ad-1470795637655-0' style='height:250px; width:300px;'>
+                <script>
+                googletag.cmd.push(function() { googletag.display('div-gpt-ad-1470795637655-0'); });
+                </script>
+                </div>
 
                 <div itemprop="articleBody">
                     {{ .Content }}
@@ -81,12 +85,27 @@
 
                   //hotlink_under_id();
                 </script>
+                <script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
+                <script>
+                var googletag = googletag || {};
+                googletag.cmd = googletag.cmd || [];
+                </script>
+
+                <script>
+                googletag.cmd.push(function() {
+                  googletag.defineSlot('/23865961/testad1', [300, 250], 'div-gpt-ad-1470795637655-0').addService(googletag.pubads());
+                  googletag.pubads().enableSingleRequest();
+                  googletag.enableServices();
+                });
+                </script>
 
                 <div class="feat share">
                     <a href="//twitter.com/share" class="popup">
                         <span class="icon-twitter"></span>
                     </a>
                 </div>
+
+                <div class="fb-ad" data-placementid="1676323079284163_1676324105950727" data-format="300x250" data-testmode="false"></div>
 
                 {{ template "_internal/disqus.html" . }}
 
@@ -101,9 +120,6 @@
                     </a>
                 {{ end }}
             </article>
-            <div style="text-align:center; width:100%">
-            <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FToKnowOrNot%2Fposts%2F986399121475180&width=500" width="500" height="281" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
-            </div>
         </section>
 
         {{ partial "footer" . }}
