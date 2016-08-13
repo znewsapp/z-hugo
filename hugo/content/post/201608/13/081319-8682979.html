@@ -1,0 +1,146 @@
++++
+date = "2016-08-13T19:00:00"
+title = "數學中有哪些巧合讓人眼前一亮？"
+titleimage = "http://pic4.zhimg.com/b495f1829ffba58d4774cbd4fa7e4b83.jpg"
+ga = 081319
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title"></h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>（多圖，流量黨慎入！）</p>
+<p>我來講一個四年前的故事。</p>
+<p>初三的某節數學課上，我突發奇想：</p>
+<blockquote><strong>在圓周上的 n 個點兩兩連線，最多可以把圓分成幾份？</strong></blockquote>
+<p>（不要問我爲什麼會突然想到這個問題&hellip;&hellip;）</p>
+<p>於是我就拿出紙和筆開始畫起來&mdash;&mdash;</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/04d805db51f1273cd470d3efcc37d12f_b.jpg" alt="">
+<p>一個點顯然連不了任何直線，所以整個圓還是&nbsp;<strong>1&nbsp;</strong>份；</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/9d94b15d826e51d5f5c9018abe1b6f97_b.jpg" alt="">
+<p>兩個點之間可以連一條線，這樣圓就被分成了&nbsp;<strong>2&nbsp;</strong>份；</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/6d9391c5c119348673440071d6e8543c_b.jpg" alt="">
+<p>三個點可以連成一個三角形，圓被分成了&nbsp;<strong>4&nbsp;</strong>份；</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/8a03f928f9f0c5b4ea8f576699c8d31f_b.jpg" alt="">
+<p>四個點兩兩相連把圓分成了&nbsp;<strong>8&nbsp;</strong>份。</p>
+<p>啊，這個規律似乎已經很明顯了，1、2、4、8，那麼下一個肯定是 16 嘛！</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/5406b03013dbe7b17239a6b0cb6c960e_b.jpg" alt="">
+<p>果不其然，五個點兩兩連線，圓被分成了&nbsp;<strong>16&nbsp;</strong>份。</p>
+<p>於是，我覺得自己已經解決了這個問題，直到&hellip;&hellip;我決定再加一個點。</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/7d2f0c4f1b809759d4b960b766f7748c_b.jpg" alt="">
+<p>爲什麼是&nbsp;<strong>31&nbsp;</strong>份？？？</p>
+<p>我又數了一遍，還是 31 份，並且在圓內也沒有出現三線共點的情況&hellip;&hellip;</p>
+<p>這是什麼情況？？？</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/ec633b6d5216132aca6017e3f5163d12_b.jpg" alt="">
+<p>於是我又加了一個點：</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/60d6157164b4b4048dee70a7f6b62985_b.jpg" alt="">
+<p>七個點，<strong>57&nbsp;</strong>份。</p>
+<p>啊，這下跟 2 的冪徹底沒有關係了。</p>
+<blockquote><strong>那規律到底是啥呢？</strong></blockquote>
+<p>在與幾個朋友一起討論了數個小時之後，我們找到了答案。</p>
+<p>爲了分析這個問題，我們不妨先好好審視一下其中的一條直線，看看它是怎樣把圓分割開的：</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/ef5c2b987d20d5a68614a6125a8f5913_b.jpg" alt="">
+<p>以上圖中突出顯示的這條線爲例，假設它是從左往右畫上去的，我們重現一下畫圖的過程：</p>
+<blockquote>從左端點開始，慢慢向右畫，每當它碰到一根其他的直線段時，它就把某一塊區域徹底地分成了兩份，於是總份數就多了一；而當它最後抵達圓周右側上的點時，總份數又多了一。</blockquote>
+<p>也就是說，<strong>圓內部的每一個交點都使得總份數增加了一</strong>；除此之外，<strong>每一根直線段最後抵達圓周時，總份數也增加了一</strong>。</p>
+<p>所以，總份數應該是 <strong>1 +『圓內部的交點數量』+『直線段的數量』</strong>。</p>
+<p>爲什麼會有一個 1？因爲圓本身最開始就有一份啊。</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=+%7Bn+%5Cchoose+2%7D" alt="">
+<p>那圓內部的交點數量怎麼求呢？</p>
+<p>注意，雖然每個交點都是由兩條直線段相交而成的，但我們並不能把這個問題簡化爲『m 條直線段中選 2 條直線段有幾種選法』，因爲並不是每兩條直線段都相交的。</p>
+<p>那怎麼辦？</p>
+<p>（再往下繼續看之前，大家可以自己先想一想=w=）</p>
+<p>（提示：對角線）</p>
+<blockquote>啥意思？</blockquote>
+<p>再放一張圖來提示一下：</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/d454b7316405bd1257c6337624c40537_b.jpg" alt="">
+<p>好了我要說答案了：</p>
+<p>我們可以把圓內部的每個交點看成是某個圓內接四邊形的對角線交點，於是在 n 個點中，任意四個點的組合都對應了圓內部的某個交點。</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=+%7Bn+%5Cchoose+4%7D" alt="">
+<p>於是我們最終的公式是：</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=+%7Bn+%5Cchoose+4%7D+%2B+%7Bn+%5Cchoose+2%7D+%2B+1+%3D+%5Cfrac%7B1%7D%7B24%7D+%28n%5E4-6+n%5E3%2B23+n%5E2-18+n%2B24%29" alt="">
+<p>啊。問題解決了&hellip;&hellip;</p>
+<p>嗎？</p>
+<p>等等，我還沒回答題主的問題呢。所以說這有啥『巧合』？</p>
+<p>沒什麼巧合。至少當我在初三那年找到了上述解答之後，我覺得沒什麼巧合，問題已經解決了&hellip;&hellip;</p>
+<p>直到半個月前我看到了這個視頻：<a href="http://link.zhihu.com/?target=https%3A//www.youtube.com/watch%3Fv%3D84hEmGHw3J8">A Curious Pattern Indeed</a></p>
+<p>我真想狠狠扇自己的臉！我當年竟然沒有多問一句：</p>
+<blockquote><strong>爲什麼當 n 比較小的時候，份數恰好是 2 的冪？</strong></blockquote>
+<p>而且，當 n 等於 10 時：</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/46960612cd6382953e2ae55af001bc46_b.jpg" alt="">
+<p>256 份！又是 2 的冪！</p>
+<p>爲什麼？？真的只是巧了嗎？？？</p>
+<p>我非常贊同 @鬱林成森在回答中所說的：</p>
+<blockquote><strong>數學中所有美的巧合都有其更深刻的原因，絕不僅僅是巧合。</strong></blockquote>
+<p>所以說這到底是爲什麼呢？</p>
+<p>原因跟這個東西有關：</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/865bc27c500f3b4f8295f8b379fc8a3f_b.jpg" alt="">
+<blockquote>這不就是<strong>楊輝（帕斯卡）三角形</strong>麼？除了最左與最右的 1 以外，每個數都是由其左上與右上的兩個數相加得到的。這我早就知道了，可是跟這題有啥關係？</blockquote>
+<p>啊，說得很對，楊輝三角形的構造方法確實很簡單，不過&hellip;&hellip;讓我們算一算每一行的和：</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/7bc876116709187a33ed4cdf4525dae9_b.jpg" alt="">
+<p>咦！爲什麼剛好是 2 的冪呢？</p>
+<p>我們可以換一個角度來看楊輝三角形的構造方法：</p>
+<p><strong>每一個數被複制了兩份，分別加進了左下角與右下角的兩個數中。</strong></p>
+<p>所以下一行的和自然是上一行的兩倍，而由於第一行的和是 1，所以每一行的和就都是 2 的冪啦！</p>
+<blockquote>哦原來是這樣，好有道理！不過這跟分圓有啥關係啊？</blockquote>
+<p>啊，這是因爲，楊輝三角形還有另外一種形式：</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/38807c3554bda7bf2b92b2e66c74530a_b.jpg" alt="">
+<blockquote>我去！這是爲啥？？</blockquote>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=+%7Bn-1+%5Cchoose+k-1%7D%2B+%7Bn-1+%5Cchoose+k%7D%3D+%7Bn+%5Cchoose+k%7D" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%7Bn+%5Cchoose+k%7D" alt="">
+<p>啊，當我把楊輝三角形寫成這種形式之後，之前分圓的公式與 2 的冪的關係就很緊密了！</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=+%7Bn+%5Cchoose+4%7D+%2B+%7Bn+%5Cchoose+2%7D+%2B+1+%3D++%7Bn+%5Cchoose+4%7D+%2B+%7Bn+%5Cchoose+2%7D+%2B+%7Bn+%5Cchoose+0%7D" alt="">
+<p>比如，當 n=5 時，份數就是第 5 行第 0、2、4 列的和：</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/d465e330384abc670adfe4befdc68342_b.jpg" alt="">
+<p>寫成之前的形式就是這樣：</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/f889c39a3d7d68022da766fdb7761819_b.jpg" alt="">
+<p>由於每個數都是左上和右上兩個數的和，所以這三個數的和其實就是上一行的和：</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/d1327389732ef1c7b81f6e008fa750bb_b.jpg" alt="">
+<p>而我們之前已經說過，楊輝三角形每一行的和都是 2 的冪，所以當 n=5 時，份數是 2 的冪。</p>
+<p>當 n 更小的時候，情況類似。</p>
+<p>而當 n=6 的時候，問題來了：</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/77915c5f5f74854a91231b771049c629_b.jpg" alt="">
+<p>寫成原形式：</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/4fb5a04bcbb5fc4390a307c18cb8eb4a_b.jpg" alt="">
+<p>而此時，它們的和就不是上一行的和了：</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/e3b70c20ad3bc4da549d5f82ef075597_b.jpg" alt="">
+<p>少了最右邊的一。</p>
+<p>這就是爲什麼 n=6 時，結果是 31 份。</p>
+<p>而當 n=10 時：</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/4eecdc211e30d09c67457448a30b016c_b.jpg" alt="">
+<p>這三個數剛好是上一行的一半：</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/c0532970785d7dbaa4d635c8a0afafca_b.jpg" alt="">
+<p>而 2 的冪的一半也是 2 的冪，所以 n=10 時，份數 256 就是 2 的冪啦。</p>
+<p>這就解釋了我們之前的『巧合』=w=</p>
+<p>順帶說一句，楊輝三角形其實水很深，我們甚至可以在楊輝三角形中找到斐波那契數列，不過這裏我就不細說了。</p>
+<p>這篇回答的配圖來自於&nbsp;<a href="http://link.zhihu.com/?target=https%3A//www.youtube.com/watch%3Fv%3DK8P8uFahAgc">Circle Division Solution</a>，不過我初三時的推導方法要比視頻中的簡潔得多。視頻裏用了歐拉公式，麻煩了不少，不過也挺有趣的。</p>
+<p>那麼就這樣=w=</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div>
