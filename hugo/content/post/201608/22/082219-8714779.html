@@ -1,0 +1,137 @@
++++
+date = "2016-08-22T19:00:00"
+title = "36 度的天氣好熱，躲到雲彩裏會涼快點嗎？"
+titleimage = "http://pic3.zhimg.com/1264b65269c77cbcfcaa33fdc4b86d8e.jpg"
+ga = 082219
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title">36 度的天氣裏，雲的溫度是多少呢？</h2>
+
+<div class="answer">
+
+<div class="content">
+<img class="content-image" src="https://pic4.zhimg.com/db6d10ef8c317a23e2f4f240c9bb3893_b.jpg" alt="">
+</div>
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="question">
+<h2 class="question-title"></h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>這是結論啊~需要結論的小夥伴看這一段就可以了~</p>
+<p><strong>題主圖中淡積雲雲內的溫度約爲 23.5℃-22.2℃ 左右，</strong>題主所拍攝雲朵是典型的<strong>暖雲（水雲），</strong>相對的則是<strong>冷雲（冰雲）</strong>。</p>
+<p>-- 計算過程</p>
+<p>其實要計算雲的溫度，僅僅知道地面溫度是不夠的，或者說是不夠精確的。</p>
+<p>如果需要相對精確的知道雲內的溫度，還需要知道當地的<strong>溼度情況，如果更好則應該提供露點溫度</strong>。</p>
+<p>根據圖片提供的信息，在某度地圖街景中查詢出圖片是在<strong>上海市寶山區鐵峯路與友誼路交匯處</strong>拍攝的。</p>
+<p>圖中的雲種是<strong>低雲族積雲屬的雲種（淡積雲）</strong></p>
+<img class="content-image" src="http://pic3.zhimg.com/70/5cd96f1efee8913c549cffa50eb4ed36_b.jpg" alt="">
+<p>查找到最近的氣象站，爲<strong>上海寶山氣象站</strong>。</p>
+<p>如果圖片是在今天下午拍攝的，那麼整個寶山區下午的空氣溼度都在 70%左右,另外查詢到地面的氣溫（空氣溫度）爲 33 ℃，並不是 36℃。地面氣壓則爲 1002 hPa 左右。</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/2dee953707586d0e18685825d36cced7_b.jpg" alt="">
+<p>--</p>
+<p><strong>則以 70% 和 33 ℃ 來計算</strong></p>
+<p><strong>一、求出露點溫度</strong></p>
+<p><strong>1、</strong></p>
+<p>首先<strong> Clapeyron-Clausius 公式（雙克方程）</strong>的積分表達式，這個是基礎：</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=e_%7Bs%7D+%5Cleft%28+t+%5Cright%29+%3De_%7Bs0%7D+exp%5Cleft%5B+%5Cfrac%7BL_%7Bv%7D%7D%7BR_%7Bv%7D+%7D+%5Cleft%28+%5Cfrac%7B1%7D%7BT_%7B0%7D+%7D-%5Cfrac%7B1%7D%7BT%7D+++%5Cright%29+%5Cright%5D+" alt="">
+<p>es(t) 爲對純水面的飽和水汽壓，Rv 是水汽的比氣體常數，Lv 是潛熱項（積分是在假定 Lv 是常數的情況下）</p>
+<p><strong>2、</strong></p>
+<p>雙克方程有參數化表達的<strong>Tetens 公式</strong></p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=e_%7Bs%7D%3D6.1078exp%5Cleft%5B+%5Cfrac%7B17.2693882%5Cleft%28+T-273.16+%5Cright%29+%7D%7BT-35.86%7D++%5Cright%5D+" alt="">
+<p><strong>將 t=33 ℃，即 T=306.15 K 代入</strong>，解出<strong>飽和水汽壓 es</strong>爲 50.26786999 hPa</p>
+<p><strong>3、</strong></p>
+<p>根據相對溼度 U 的定義</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=U%3D%5Cleft%28+%5Cfrac%7Be%7D%7Be_%7Bs%7D+%7D++%5Cright%29+_%7BP%7D+" alt="">
+<p>將 U=70%，es=50.26786999 hPa 代入，解得實際水汽壓 e=35.18750899</p>
+<p><strong>4、</strong></p>
+<p>將 e 帶回 Tetens 公式</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=e%3D6.1078exp%5Cleft%5B+%5Cfrac%7B17.2693882%5Cleft%28+T_%7Bd%7D+-273.16+%5Cright%29+%7D%7BT_%7Bd%7D-35.86%7D++%5Cright%5D+" alt="">
+<p>解出露點溫度&nbsp;<strong>Td</strong>=299.9375994 K，即&nbsp;<strong>td</strong>=26.8 ℃</p>
+<p>OK，我們有了<strong>地面溫度 t</strong>，有了<strong>地面的露點溫度 td</strong>，就可以計算氣塊的擡升和凝結了，也就是計算雲內的溫度。（所以露點儀是一個好東西&hellip;&hellip;</p>
+<p><strong>二、計算雲內溫度</strong></p>
+<p><strong>對於積雲來說，非常適合用於計算雲內溫度。</strong></p>
+<p>因爲積雲是一種<strong>熱力性質</strong>的雲朵，是由空氣熱泡塊（即<strong>空氣塊</strong>）擡升所形成的雲朵。</p>
+<p>需要知道的是：</p>
+<p><strong>1、</strong></p>
+<p>對於<strong>空氣塊</strong>來說，在擡升的過程中只要沒有發生水汽凝結（<strong>無相變</strong>），那麼它的熱力性質滿足<strong>幹絕熱過程</strong>：</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=dT%3D%5Cfrac%7BRT%7D%7Bc_%7Bp%7D%7D+%5Cfrac%7Bdp%7D%7Bp%7D+" alt="">
+<p>R 是<strong>溼空氣（帶有水汽）</strong>的比氣體常數，cp 爲溼空氣的比定壓熱容。</p>
+<p><strong>2、</strong></p>
+<p>在空氣塊到達<strong>某一個高度</strong>以後，空氣塊達到飽和，水汽開始凝結，<strong>水汽凝結所釋放的相變潛熱開始參與空氣塊內的熱力過程</strong>，即由幹絕熱過程轉變爲了<strong>溼絕熱過程</strong>：</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cleft%28+c_%7Bpd%7D%2Br_%7Bt%7Dc_%7Bw%7D%5Cright%29+dlnT-R_%7Bd%7Ddlnp_%7Bd%7D%2Bd%5Cleft%28+%5Cfrac%7Br_%7Bs%7DL_%7Bv%7D%7D%7BT%7D++%5Cright%29%3D0+" alt="">
+<p>而這個某一個高度就是<strong>擡升凝結高度 LCL</strong>，而這個高度<strong>作爲幹絕熱和溼絕熱的分水嶺，尤其重要</strong>。<strong>而計算擡升凝結高度，我們就需要露點溫度 Td，這也是在（一）中計算露點溫度的原因所在</strong>。</p>
+<p><strong>三、</strong></p>
+<p>觀察上面兩個方程</p>
+<p>對於幹絕熱過程來說，是一個常微分方程，我們可以將其積分（得到的方程稱爲<strong>泊松方程</strong>）然後代入溫度和高度求解。</p>
+<p>而對於溼絕熱過程來說，這個方程（被稱爲<strong>假絕熱方程</strong>）是一個<strong>非線性的微分方程</strong>，是很難求解出解析解的，而採用數值計算方法又十分繁瑣。</p>
+<p>所以<strong>大氣熱力學圖解</strong>應運而生。</p>
+<p>可以將熱力學圖解理解爲一個計算器，通過<strong>曲線的交點、曲線圍成的面積計算出方程的數值解和能量積分</strong>。</p>
+<p>我截取了一小塊（也只需要這一小塊）來說明</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/14ecd6a3cf39d2707fadedd8e9235adf_b.jpg" alt="">
+<p>而實際的大小是</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/221249cfde13be2fcd929b3499bca264_b.jpg" alt="">
+<p>圖上的<strong>幹絕熱線</strong>就是根據幹絕熱方程繪製，<strong>溼絕熱線</strong>則是根據假絕熱方程繪製。<strong>等飽和比溼線</strong>則是許多組<strong>雙曲線</strong>，是根據等飽和比溼方程繪製的。</p>
+<p><strong>四、</strong></p>
+<p><strong>經過那麼多的鋪墊和計算，我們得到了基本的參數。</strong></p>
+<p>終於到了最激動人心的計算時刻了</p>
+<p>1、</p>
+<p>由於上海寶山的實測氣壓爲 1002 hPa，t=33 ℃，計算得到 td=26.8 ℃。我們在大氣熱力圖解上描繪出兩個點</p>
+<p>T（33，1002），Td（26.8，1002）</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/922ec8916dd2d6f46b952de5886bc330_b.jpg" alt="">
+<p>在 T 處沿着幹絕熱線上升，Td 處沿着等飽和比溼線上升，它們的交點即爲擡升凝結高度 LCL。</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/394b526ce924ff17e70fb01ce82a3fe4_b.jpg" alt="">
+<p>可以看見，<strong>LCL 的高度約爲 910 hPa，約爲 1000m 的高度</strong>。這與淡積雲的雲底高度是相符合的。</p>
+<p>可以看見，淡積雲的雲底溫度約爲&nbsp;<strong>25℃</strong>，當然，受到邊緣湍流混合的作用，這個溫度是不準確的，我們需要上升到 900-870hPa 左右的高度才能確定淡積雲雲內的溫度。</p>
+<p>2、</p>
+<p><strong>經過了 LCL，雲的熱力學過程從幹絕熱轉變爲了溼絕熱，而此時也需要沿着溼絕熱線繼續上升。</strong></p>
+<img class="content-image" src="http://pic3.zhimg.com/70/09f3d56a1a0521cb76f5153be5b05042_b.jpg" alt="">
+<p>我們繼續上升，可以看見，</p>
+<p>雲內的溫度從&nbsp;<strong>25 攝氏度下降到了 23.5 至 22.2 攝氏度</strong>左右。</p>
+<p><strong>五、總結</strong></p>
+<p><strong>現在就可以回答題主的問題了，在地面溫度爲 33 ℃（氣象站溫度並不是 36 ℃），溼度爲 70%，氣壓爲 1002 hPa 的條件下：</strong></p>
+<p><strong>題主圖中淡積雲雲內的溫度約爲 23.5℃-22.2℃左右，</strong>題主所拍攝雲朵是典型的<strong>暖雲（水雲），</strong>相對的則是<strong>冷雲（冰雲）</strong>。</p>
+<p><strong>另外，上面的計算準麼？略準，但是在實際觀測面前，誤差是一定存在的。</strong></p>
+<p>最後，我要感謝現代氣象觀測儀器如探空氣球、探空雷達、露點儀等等等的出現，讓現代氣象工作者不用飽受如此繁雜的計算的過程。</p>
+<p>不過，<strong>大氣科學作爲一個理學學科</strong>，<strong>每位工作在一線的預報員妥妥的都流淌着學霸的氣息啊&hellip;&hellip;</strong></p>
+<p><strong>除知乎應用外，如需轉載請先從知乎私信聯繫我~謝謝~</strong></p>
+<hr>
+<p><strong>專欄<a href="https://zhuanlan.zhihu.com/DaqizhiXiang">大氣之象</a>，歡迎關注~</strong></p>
+<p><strong>我的主頁<a href="https://www.zhihu.com/people/mo-bei-79-44">漠北</a>，歡迎大家關注~</strong></p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div>
