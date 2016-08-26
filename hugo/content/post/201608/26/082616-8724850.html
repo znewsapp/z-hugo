@@ -1,0 +1,155 @@
++++
+date = "2016-08-26T16:00:00"
+title = "一滴污水就能讓清水變濁，但一滴清水卻不能讓污水變通透"
+titleimage = "http://pic4.zhimg.com/f29f9adaf8302e0aa5efccefccd1b01f.jpg"
+ga = 082616
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title">一杯清水因滴入一滴污水而變污濁，一杯污水卻不會因爲一滴清水的存在而變清澈，原理是什麼？</h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>這是一個很棒的問題，忍不住來回答，拋磚引玉一下。</p>
+<p>題主的真實含義是：</p>
+<p><strong>一杯清水中，滴入一滴污水，（很明顯地）變污濁了，但一杯污水中，滴入一滴清水，卻沒有（明顯）變清澈（肉眼很難察覺），原理是什麼？</strong></p>
+<p>由此看來，現有的大部分答案都很難令人滿意。</p>
+<p>現有的回答主要分爲三類：</p>
+<ul>
+<li>糾結於&middot;&ldquo;清&rdquo;和&ldquo;濁&rdquo;的定義，認爲&ldquo;濁&rdquo;的定義比&ldquo;清&rdquo;寬泛得多，有一點點&ldquo;髒&rdquo;的水就是渾濁的。</li>
+</ul>
+<p>&mdash;&mdash;這話雖然不錯，但似乎曲解了題主的題意（把題意窄化，將相對&ldquo;清澈&rdquo;理解爲絕對&ldquo;清澈&rdquo;），有抖機靈之嫌；</p>
+<ul>
+<li>用 &ldquo;熵&rdquo; 來回答，認爲變渾濁是熵增的過程，是自發的，而反過來需要做功，是比較困難的。</li>
+</ul>
+<p>&mdash;&mdash;這話本身也不錯，但我認爲並不能解釋這道題。因爲 &ldquo;熵&rdquo; 和 &ldquo;渾濁&rdquo; 並非是直接聯繫，真正與 &ldquo;熵&rdquo; 對應的，是 &ldquo;混亂&rdquo;，這兩個詞是不一樣的，比如，很多液體本身就是渾濁的，但也可以是純淨物，它並不&ldquo;混亂&rdquo; ；</p>
+<ul>
+<li>用&ldquo;量變&rdquo;和&ldquo;質變&rdquo;來解釋，清水是 0 ，濁水是 1 ，清水變渾是從無到有，是質變，而濁水變清是量變；</li>
+</ul>
+<p>&mdash;&mdash;在物理問題下這麼答，好像有點雞湯吧？</p>
+<p>只有 @D Flip Flop 的回答道出了問題的一部分本質：</p>
+<blockquote><strong>混合後是否渾濁是&ldquo;或&rdquo;運算</strong></blockquote>
+<p>我贊同他的回答，只是他的回答太簡略了，需要提供一個詳細的解釋。</p>
+<p>【一】</p>
+<p>首先我們得明白，什麼是&ldquo;污濁&rdquo;？</p>
+<p><strong>我們覺得一個東西污濁，本質是因爲它的透明度低，而透明度低，本質是光線穿過率低。</strong></p>
+<p><strong>而光線穿過率低，是因爲有分子阻礙了光線的前進。</strong></p>
+<p>&ldquo;透明度&rdquo; 其實是一個有點複雜的物理概念，要計算物質的透明度，我們得考慮不同分子的濃度、分子的大小、結構、密度、折射率等等，計算過程也非常複雜，用來回答這道題，顯然是殺雞用牛刀了。</p>
+<p>所以，不妨 <strong>簡化一下模型</strong>，像這樣</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/32c62651df59342f82db399b8b740ec3_b.jpg" alt="">
+<p>假如我們要研究的分子，形成成立體點陣，鋪滿整個平面。</p>
+<ul>
+<li>分子之間其實是有縫隙的，爲了簡化計算，先不管它；</li>
+<li>&ldquo;清水&rdquo;並不是完全透明的，但也假設是完全透明的吧；</li>
+<li>&ldquo;濁水&rdquo; 中的雜質並不是完全不透明的，但也假設是完全不透明的；</li>
+</ul>
+<p>於是我們建立了一個簡單的模型：</p>
+<p><strong>一共 1000 個點，代表 1000 個分子，可以是 &ldquo;清水&rdquo; 的分子，也可以 &ldquo;雜質的分子&rdquo;，這些分子，鋪滿了 10*10*10 的立體空間，每個大小都是 1*1*1 ，它們的中點座標 （x，y，z） 從 （0，0，0） ~ （9，9，9） ;</strong></p>
+<p><strong>考慮在 xy 平面上的 &ldquo;透明度&rdquo;，即垂直於該平面的 &ldquo;光線&rdquo;；</strong></p>
+<img class="content-image" src="http://pic2.zhimg.com/70/0a89bc2e828768fabf0cfe8d6a916d19_b.jpg" alt="">
+<p><strong>xy 平面，一共 100 個&ldquo;位置&rdquo;，從 （0，0）~ （9，9），</strong></p>
+<p><img class="content-image" src="http://www.zhihu.com/equation?tex=%28x_%7B0%7D+%2Cy_%7B0%7D+%29" alt=""></p>
+<p><img class="content-image" src="http://www.zhihu.com/equation?tex=z%5Cin+" alt=""></p>
+<p><img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cleft%28+x_%7B0%7D%2Cy_%7B0%7D%2C+z+%5Cright%29+" alt=""></p>
+<p>（這是容易理解的，因爲光在垂直於 xy 平面傳播時，所遇到的 10 個點，只要有一個點不透光，這路光線就不會穿過來）</p>
+<p>【二】</p>
+<p>一開始，這 1000 個點都是透明的，所以 xy 平面的這 100 個位置也是透明的。</p>
+<p>下面我們加 &ldquo;雜質&rdquo;，把部分點變得 &ldquo;不透明&rdquo;。</p>
+<p>爲了探究 xy 平面的不透明度，我們只要考慮&ldquo;雜質&rdquo; 在 xy 平面的投影即可：</p>
+<p>當雜質是 1 個點時， 顯然，xy 平面的 100 個位置，有一個位置變得 &ldquo;不透明&rdquo; 了，總的透明度變爲了 0.99 &hellip;&hellip;</p>
+<p>當雜質是 2 個點時，設兩個點分別（x1，y1，z1）和（x2，y2，z2）,則有兩種可能：</p>
+<ul>
+<li>若 （x1，y1） = （x2，y2），則兩個雜質點投影到 xy 平面是同一個位置，所以透明度還是 0.99 ；</li>
+<li>反之，兩個雜質點投影到 xy 平面是不同位置，透明度爲 0.98 ；</li>
+</ul>
+<p>考慮到兩種情況的不同概率，我們需要做一個加權平均，最後得出兩個雜質點的 &ldquo;平均透明度&rdquo;，大約是 0.9801</p>
+<p>類似地，我們可以計算當雜質點的個數爲 n 個的時候，xy 平面的 &ldquo;平均透明度&rdquo;。</p>
+<p>計算方法不是很容易，我用<strong> 動態規劃</strong> 的方法，由於懶得寫代碼 ，</p>
+<p>所以就直接在 Excel 中編程，像這樣 （中間一塊代表概率）：</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/fc10d3fecf8f50526b8b7d61dbf967b6_b.jpg" alt="">
+<p>最後可以算出 平均透明度，像這樣：</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/37dff2870860df7c9254eaed5058657a_b.jpg" alt="">
+<p>最後得到下面的圖：</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/965118ba7b6feba87fc6ddaa8c65dd55_b.jpg" alt="">
+<p>其中，橫座標爲&ldquo;雜質的個數&rdquo;，縱座標爲 &ldquo;透明度&rdquo;</p>
+<p>從圖中我們可以看到，<strong>透明度曲線的&ldquo;斜率&rdquo;的絕對值，隨着&ldquo;雜質&rdquo;的增多而降低，而且，幾乎可以近似成等比例衰減函數。</strong></p>
+<p>OK，答案呼之欲出了。</p>
+<p>假設總共有 1000 個分子，一滴水是 10 個分子。</p>
+<p><strong>A</strong></p>
+<ul>
+<li><strong>在清水中加入一滴濁水，就好比在 1000 個透明分子裏混入了 10 個不透明分子，即 1010 個分子中有 10 個不透明分子，等效於 1000 個分子中有 9.9 個不透明分子</strong></li>
+</ul>
+<p><strong>透明度從 1 下降到了 0.905 &mdash;&mdash; 變化幾乎達到了 0.1 ，很明顯<br></strong></p>
+<p><strong>B</strong></p>
+<ul>
+<li><strong>在濁水中加入一滴清水，就好比在 1000 個分子中，可能本來已經有 100 個不透明分子，我們滴完清水後，變成 1010 個 分子中有 100 個不透明分子，約等效於 1000 個分子中有 99 個不透明分子&mdash;&mdash;僅僅相當於減少了 1 個不透明分子<br></strong></li>
+</ul>
+<p><strong>透明度從 0.347 上升到了 0.351 &mdash;&mdash; 變化是 0.004</strong></p>
+<p>由於不透明度越高，透明度曲線斜率的絕對值就越小，加上 B 中的&ldquo;等效不透明分子&rdquo;變化要小於 A ，那麼&mdash;&mdash;</p>
+<p><strong>就透明度而言，無論是絕對值的變化，還是從比例的變化，B 都要遠遠小於 A 。<br></strong></p>
+<p>這就從直觀上解釋了題主的疑問。</p>
+<p>【三】</p>
+<p>當然，真正的&ldquo;透明度&rdquo;計算模型，比這個要複雜得多，但大體原理是一樣的。</p>
+<p><strong>&ldquo;透明度曲線的&lsquo;斜率&rsquo;的絕對值，隨着&lsquo;雜質&rsquo;比例的增高而降低&rdquo; </strong>這個結論，依然成立。</p>
+<p>那麼，爲什麼會算出這個結果呢？</p>
+<p>回到這句話：</p>
+<blockquote><strong>混合後是否渾濁是&ldquo;或&rdquo;運算</strong></blockquote>
+<p>現在，它是不是容易理解一些了？</p>
+<p>在一瓶清澈的水中，混入一點點 &ldquo;渾濁&rdquo; 分子，由於數量比較少，投影后很少會有空間位置的重合，所以幾乎每一個都會遮擋我們的視線，使水的透明度下降；</p>
+<p>正如這樣的或運算：</p>
+<ul>
+<li>原來：0 || 0 || 0 || <strong>0 </strong>|| 0 = 0</li>
+<li>現在：0 || 0 || 0 || <strong>1</strong> || 0 = 1</li>
+</ul>
+<p>（左邊多了一個 1，右邊從 0 變成 1 ）</p>
+<p>而一杯混濁的水中，混入一點點 &ldquo;清澈&rdquo; 分子，本質上，和一杯渾濁的水，去掉一點點渾濁分子是類似的。</p>
+<p>只是，當渾濁分子的數量達到一定的量的時候，去掉一點點渾濁分子，在空間上看來，很多時候並不能增加透明度，因爲在這條線上，可能還有別的分子遮擋了光線。</p>
+<p>正如這樣的或運算：</p>
+<ul>
+<li>原來：0 || <strong>1</strong> || 1 || 1 || 0 = 1</li>
+<li>現在：0 || <strong>0</strong> || 1 || 1 || 0 = 1</li>
+</ul>
+<p>（左邊少了一個 1 ，右邊沒有任何變化）</p>
+<p>正因爲這樣的區別，纔會有這樣的結論：</p>
+<p><strong>原來的水越清，雜質濃度變化在視覺上的表現越明顯。</strong></p>
+<p>你看，看起來很簡單的生活現象，背後可是蘊含着不太簡單的道理的。</p>
+<hr>
+<p>扯淡的分割線&nbsp;</p>
+<p><strong>&ldquo;一杯清水因滴入一滴污水而變污濁,一杯污水卻不會因爲一滴清水的存在而變清澈&rdquo;</strong></p>
+<p>這句話，其實是一個絕妙的比喻。</p>
+<p>比如，在工作中，</p>
+<p>一個優秀的團隊，往往會因爲一個糟糕的人變壞。</p>
+<p>一個糟糕的團隊，卻很少因爲一個優秀的人變好。</p>
+<p>爲什麼會這樣？</p>
+<p>因爲，<strong>一個項目是否失敗，往往是 &ldquo;或&rdquo; 運算。</strong>（牽一髮而動全身）</p>
+<p>人生的很多事情，不也是如此嗎？</p>
+<hr>
+<p><strong>【轉載請註明出處，商業轉載請私信】</strong></p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div>
