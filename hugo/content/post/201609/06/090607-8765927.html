@@ -1,0 +1,130 @@
++++
+date = "2016-09-06T07:00:00"
+title = "點擊搜索到獲得結果之間的零點幾秒，都發生了什麼？"
+titleimage = "http://pic1.zhimg.com/20492b3f4eec12e53ebbfcccbd6deab0.jpg"
+ga = 090607
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title">搜索引擎的工作原理是什麼？</h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<ul>
+<li><strong>什麼是搜索引擎</strong></li>
+</ul>
+<p>搜索引擎是一個幫助用戶搜索他們需要內容的計算機程序。換一種說法，搜索引擎把計算機中存儲的信息與用戶的信息需求（information need）相匹配，並把匹配的結果展示出來。</p>
+<p>舉個例子：大黃想賣腎買個 iPhone ，就查一下價格。它在 Google 的搜索框裏輸入了&ldquo;iPhone 6 售價&rdquo;，點擊搜索按鈕。這裏大黃的關鍵詞&ldquo;iPhone 6 售價&rdquo;就是他的信息需求。Google 在展示出搜索結果的那零點幾秒之間，它的程序在巨大的數據庫裏按照關鍵字進行了查找，終於計算出所有關於 iPhone 價格的網頁。</p>
+<ul>
+<li><strong>網絡爬蟲</strong></li>
+</ul>
+<p>互聯網上的信息存儲在無數個服務器上，任何搜索引擎要想回答用戶的搜索，首先要把網頁存在自己本地的服務器上，這靠的就是網絡爬蟲。它不停的向各種網站發送請求，將所得到的網頁存儲起來。那麼它怎麼知道往哪發送請求呢？通常的做法是利用網頁之間的鏈接從一個網頁出發，提取出指向其他頁面的鏈接，把它們當成將下次要請求的對象，不停重複這個過程。有很多細節要被考慮。比如避免循環鏈接的網頁；解析網頁文檔（通常是 html 格式，但也有很多其他格式）提取裏邊的鏈接；當鏈接無法打開時對錯誤進行處理等。</p>
+<p>其次，如何高效的爬取數據也是一個很大的挑戰。比如需要有成千上萬個爬蟲程序同時爬取數據，高效的將數據存儲起來以便之後分析等。這種分佈式程序的實現是一個相當大的工程。</p>
+<p>出於安全等因素考慮，很多網絡服務器都有反惡意爬蟲的功能。儘管他們所採取策略各不相同，共同點是他們目標就是儘量只響應真人用戶的請求。但搜索引擎爬蟲通常不需要擔心這一點，因爲大部分網站都希望提高自己的搜索排名，歡迎搜索引擎爬蟲到訪。通常 Google 等搜索引擎都和網站之間有約定，比如在網頁上加個特殊標籤，告訴爬蟲這個網頁是什麼類型，包含什麼信息等，以便幫助爬蟲更好的獲取該網頁內容。</p>
+<p>好了，幾乎整個互聯網的內容都被 Google 的爬蟲獲得了。Google 怎麼幫大黃找到賣 iPhone 6 的網頁呢？</p>
+<ul>
+<li><strong>索引</strong></li>
+</ul>
+<p>互聯網上的數據千千萬萬，大海撈針的搜索怎麼就這麼快？難道 Google 發明了什麼逆天科技嗎？其實不是。這都要歸功於搜索引擎的索引了。</p>
+<p>如果要你在一本書裏找一個關鍵詞，應該怎麼找？假設有充足的時間，最暴力的方法就是從頭到尾看一遍，最後總能找到關鍵詞所在的位置。不過這是不是太麻煩了？有更好的方法嗎？</p>
+<p>有。索引就是幫助程序進行快速查找的。大家都用過新華字典。字典前邊的按照偏旁部首查字的部分就是索引。搜索引擎也一樣。這裏要介紹第一個最重要的數據結構：反轉列表（inverted list）。</p>
+<p>搜索引擎所擁有的文檔中出現的每一個單詞都擁有一個反轉列表。它記錄了這個單詞在多少文檔中出現，分別是哪些文檔，每個文檔分部出現多少次，分別出現在什麼位置等信息。比如 Apple 這個詞出現在文檔 1，7，19，34，102。其中文檔 1 中出現了 3 次，分別在位置 20，105，700。這樣當搜索 Apple 時，Goolge 就不用遍歷所有的文檔，只需要查找每個單詞對應的反轉列表就可以知道這個詞在哪裏出現了。每一個網絡文檔不僅只有文本信息。它還可能包括 URL, 文件名，引用等部分。爲了提高搜索質量，搜索引擎需要對文檔的不同部分分別處理，構造反轉列表。每一部分的單詞都要被加入到這個詞屬於此部分的反轉列表裏。</p>
+<p>索引除了反轉列表還包含了很多各種數據結構。比如維護文檔 ID 到實際文檔的 Document Manager，存儲每個單詞屬性信息的 Term Dictionary，存儲文檔屬性的數據結構等等。</p>
+<p>創建索引是個巨大工程。首先是對文檔進行解析和處理。互聯網上的文檔格式各種各樣，對每一種格式的文檔都要有一個對應的解析器程序，這樣才能忽略各種奇怪符號，提取出有用內容。每一個解析器的實現都是一個繁瑣且困難的任務。對於解析後的乾淨文檔，許多重要的自然語言處理算法就要派上用場。以英語爲例，需要進行<a href="http://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Tokenization_%28lexical_analysis%29">分詞</a>（tokenzation，將一句話分割成一個個單詞），<a href="http://link.zhihu.com/?target=https%3A//zh.wikipedia.org/wiki/%25E8%25AF%258D%25E5%25B9%25B2%25E6%258F%2590%25E5%258F%2596">詞幹提取</a>（stemming， 將文本中出現的單詞還原成它的原型），<a href="http://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Part-of-speech_tagging">part-of-speech tagging</a>（識別單詞在一句話中的詞性），創建&nbsp;<a href="http://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/N-gram">n-gram 模型</a>等操作。因爲此文爲目的是掃盲，就不深入講解每個操作了。此外還需要<a href="http://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Named-entity_recognition">識別文檔中的命名實體（named entity</a>），比如將&ldquo;iPhone 6&rdquo;作爲一個詞，而不是 &ldquo;iPhone&rdquo; 一個， &ldquo;6&rdquo; 一個。上述操作生成的信息都要存儲下來。這樣構造反轉列表時就可以知道每個單詞出現的位置，出現個數等信息。</p>
+<p>索引生成程序的一個設計目標就是高效。因此它被儘可能地運行在多個機器上。對於每個機器來說，索引程序一邊掃描輸入文檔，一邊在內存中更新索引的數據結構。當內存中得數據大小超過一定閥值時，這些內容被作爲一個塊(block)一次性寫入硬盤文件中。當所有文檔掃描結束後這些塊會再被合併成一個大的反轉文件(Inverted file)。因爲每一個塊都是排好序的，合併操作是線性的複雜度。因爲數據量太大，Google 爲了快速處理，發明了 <a href="http://link.zhihu.com/?target=https%3A//zh.wikipedia.org/wiki/MapReduce">MapReduce</a>。它現在是一個應用非常廣泛的分佈式計算框架。MapReduce 把一個大的任務分割成許多小任務，並下發給多個 Mapper 程序，Mapper 計算好的中間結果會發給多個 Reducer 程序繼續處理，得到最終結果。這個計算模型允許成千上萬臺機器同時運算，從而極大提高了運算效率。</p>
+<p>反轉文件要和訪問機（(access mechanism）一起可以工作。訪問機制定義瞭如何通過一個單詞找到它所對應的反轉列表。大概可以使用兩種數據結構：b-tree 或 Hash table。</p>
+<p>爲了提高效率，索引中的單詞和文檔都用整形的 ID 表示而不是字符串。單詞 ID 和字符串的映射由 Term Dictionary 維護，它還存儲了關於此單詞一些其他信息，比如在多少文件中出現（document frequency），在文檔中出現概率（inverse document frequency = total document count／document frequency）。這些信息在搜索排序中會提供關鍵信息。</p>
+<p>互聯網內容是不停變化的，這必然導致索引不停被更新。然而建立好的索引中，各個單詞的反轉列表是緊密的拼接在一起的，這使得更新變得非常困難。通常搜索引擎會積攢一批文件後才進行索引的更改，並且把索引分成靜態和動態兩個部分。程序把所有更改都寫入動態部分，並且週期性地將動態部分合並進靜態部分中。搜索時，動態和靜態部分都會被訪問。當從索引中刪除一個文檔時，這個文檔中出現的詞對應的反轉列表都會被修改，開銷極大。於是程序加入了&ldquo;刪除列表（delete lists）&rdquo;來記錄所有被刪除的文檔。搜索時會查詢刪除列表來把已經被刪除的文檔從搜索結果中移除。當刪除列表足夠大，垃圾回收機制會被觸發，重新生成索引。</p>
+<ul>
+<li><strong>搜索</strong></li>
+</ul>
+<p>有了索引，就可以快速找到所需內容了。前邊說過搜索引擎根據用戶的信息需求查找匹配的內容。信息需求來自於用戶輸入。如何理解它有很大學問。簡單的說，大黃的搜索詞&ldquo;iPhone 6 售價&rdquo;會被解析成一個樹形結構：葉子節點就是一個個關鍵詞，非葉子結點是搜索引擎自己定義的查詢運算符（query operator）。比如大黃的輸入可以被解析成 AND(TERM(iPhone 6)，TERM(售價) )</p>
+<p>這裏要說第到二個重要的數據結構：分數列表（score list）。每個單詞同樣對應一個。它記錄這個單詞所出現的文檔擁有的分數。爲方便計算，分數通常是一個大於零小於一的浮點數。在後邊介紹結果排序時會講如何給文檔打分。</p>
+<p>在進行搜索時，TERM 運算符查詢出每一個單詞對應的反轉列表；AND 運算符將每個反轉列表轉換成分數列表，並且對於每個分數列表中的文檔 id 集合進行求交集操作，結果是一個新的分數列表，每個文檔對應的分數是該文檔在各個輸入的分數列表中分數的乘積。</p>
+<p>除了 AND, TERM 運算符，搜索引擎一般還會定義許多其他運算符，比如 OR 用來對文檔集合求並集操作； NEAR(term1, term2)用來查找所有 term1 和 term2 相鄰的文檔, WINDOW(5, term1, term2)用來查找 term1 和 term2 相隔不超過 5 個單詞的文檔，WEIGHTED_SUM 運算符來對分數進行加權和操作等。如何定義搜索運算符取決於不同的搜索引擎。</p>
+<p>搜索引擎用把用戶輸入的搜索字符進行一些類似於創建索引時對文本的處理（tokenization, stemming, stopword removal, entity recognition），然後生成解析樹。這個過程使用了各種技巧，常見的有：</p>
+<p><em>multiple representation model</em>： 即一個文檔的標題， URL，主體等部分被分別處理。比如大黃的搜索會被轉換成：</p>
+<p>AND(</p>
+<p>WEIGHTED_SUM(0.1, URL(iPhone 6), 0.2, TITLE(iPhone 6), 0.7, BODY(iPhone 6)),</p>
+<p>WEIGHTED_SUM(0.1, URL(售價), 0.2, TITLE(售價), 0.7, BODY(售價))</p>
+<p>)</p>
+<p>或者</p>
+<p>WEIGHTED_SUM(</p>
+<p>0.1, AND(URL(iPhone 6), URL(售價)),</p>
+<p>0.2, AND(TITLE(iPhone 6), TITLE(售價)),</p>
+<p>0.7, BODY(iPhone 6), BODY(售價)),</p>
+<p>)</p>
+<p><em>Sequential Dependency Model</em>：將搜索詞按照以下三個不同方法生成解析樹，最後把他們加權求和。三個方法分別是：</p>
+<ul>
+<li>bag of words 匹配，即 AND(&ldquo;iPhone 6&rdquo;， 售價);</li>
+<li>N-gram 匹配，即 NEAR(&ldquo;Iphone 6&rdquo;， 售價)</li>
+<li>短窗口匹配，即 WINDOW(8, &ldquo;iPhone 6&rdquo;, 售價)</li>
+</ul>
+<p>最後加權求和：</p>
+<p>WEIGHTED_SUM(0.7, AND(&ldquo;iPhone 6&rdquo;， 售價), 0.2, NEAR(&ldquo;Iphone 6&rdquo;， 售價), 0.1 WINDOW(8, &ldquo;iPhone 6&rdquo;, 售價) )</p>
+<p>也可以把以上兩種方法生成的解析樹再進行加權求和來生成最終結果。</p>
+<p>搜索引擎也可能會根據查詢的類型選擇不同的方法生成解析樹。具體如何解析是沒有定論的，加權操作中每部分的權重也沒有定論。這需要根據歷史數據做大量實驗最終確定參數。總之，以上技巧最終目標是幫助搜索引擎更好理解用戶的信息需求，以便查找出更高質量的文檔。</p>
+<ul>
+<li><strong>排序</strong></li>
+</ul>
+<p>到這兒終於該說搜索引擎怎麼給文檔打分了。根據 Google 的論文<a href="http://link.zhihu.com/?target=http%3A//infolab.stanford.edu/%7Ebackrub/google.html">Brin &amp; Page, WWW 1998</a>，他們計算文檔最終分數是</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=score%28doc%2C+query%29%3Df%28IRscore%28doc%2C+query%29%2C+PageRank%28doc%29%29" alt="">
+<p>其中</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=IRscore%28doc%2C+query%29" alt="">
+<p>就是文檔 doc 對於搜索詞 query 的信息檢索得分，</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=PageRank%28doc%29" alt="">
+<p>是該文檔的 PageRank 得分。在論文裏他們沒有說函數 f 是如何實現的。</p>
+<p>信息檢索得分（Information Retrieval Score）</p>
+<p>假設互聯網裏的所有網頁都包含有用的信息，且它們之間沒有引用，這時打分唯一的依據就是這篇文章是否和查詢相關。信息檢索得分就是這種相關性的衡量。</p>
+<p>有很多理論來計算 IRscore。比如向量空間（Vector space retrieval model），概率理論（Probabilistic retrieval models），或統計語言模型（Statistical language models）等。這裏不細說具體每個理論是怎麼回事。關鍵要記住的是，它們的公式都和一個簡單算法的公式非常接近。那就是 tf-idf （term frequency&ndash;inverse document frequency）。</p>
+<p>每個單詞－文檔組合都有一個 tf-idf 值。tf 表示此文檔中這個單詞出現的次數；df 表示含有這個單詞的文檔的數量。通常如果一個單詞在文檔中出現次數越多說明這個文檔與這個單詞相關性越大。但是有的單詞太常用了，比如英文裏&ldquo;the&rdquo;，&ldquo;a&rdquo;，或者中文裏&ldquo;這裏&rdquo;，&ldquo;就是&rdquo;等，在任何一個文檔中都會大量出現。idf 表示一個文檔含有此單詞的概率的倒數，就是用來消除常用詞幹擾的。如果一個詞在越多的文檔中出現，說明這個詞對於某一個文檔的重要性就越低。算法的公式是：</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=tfidf+%3D+tf+%2A+%5Cfrac%7BtotalDocCount%7D%7Bdf%7D" alt="">
+<p>搜索引擎如果只考慮 tfidf 分數，會非常容易被欺騙。因爲 tfidf 只考慮網頁和搜索詞之前的相關性，而不考慮網頁本身的內容質量。比如老中醫可以在自己的網頁上堆滿治療 X 病的關鍵詞，這樣當有人搜索相關內容時 tfidf 就會給出高分。PageRank 就是專門禰補這個缺陷的。</p>
+<ul>
+<li><strong>PageRank 分數</strong></li>
+</ul>
+<p>PageRank 是 Google 創始人 Larry Page 和 Sergey Brin 當年在斯坦福讀博期間搞出來的一個算法。憑藉此算法他們創立 Google，迎娶白富美走向人生巔峯的故事早已成爲佳話。它的作用就是對網頁的重要性打分。假設有網頁 A 和 B，A 有鏈接指向 B。如果 A 是一個重要網頁，B 的重要性也被提升。這種機制可靠的懲罰了沒有被別的鏈接指向的欺詐網站。</p>
+<p>以下內容涉及數學知識，不感興趣可以跳過。</p>
+<img class="content-image" style="line-height: 1.5;" src="http://www.zhihu.com/equation?tex=%5Cvec%7Br%7D" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=B_%7Bpr%7D%3D%281-%5Calpha%29M%5ET%2B%7B%5Calpha%7DE%5ET" alt="">
+<img class="content-image" style="line-height: 1.5;" src="http://www.zhihu.com/equation?tex=m_%7Bij%7D" alt="">
+<img class="content-image" style="line-height: 1.5;" src="http://www.zhihu.com/equation?tex=%5Cvec%7Br%7D" alt="">
+<img class="content-image" style="line-height: 1.5;" src="http://www.zhihu.com/equation?tex=%5Cvec%7Br%7D%5E%7B%28k%29%7D%3DB_%7Bpr%7D%5Cvec%7Br%7D%5E%7B%28k-1%29%7D%3DB%5Ek%5Cvec%7Br%7D%5E%7B%280%29%7D" alt="">
+<p>這個迭代公式是有意義的。對於網頁 i，它的 PageRank 得分爲：</p>
+<img class="content-image" style="line-height: 1.5;" src="http://www.zhihu.com/equation?tex=r_i%5E%7B%28k%29%7D%3D%5Csum_%7Bt%3D1%7D%5E%7Bn%7D%7BB_%7Bpr%7D%7D_%7Bit%7D%2Ar_%7Bt1%7D%5E%7B%28k-1%29%7D%3D%5Csum_%7Bt%3D1%7D%5E%7Bn%7D%5Cleft%5B+%281-%5Calpha%29m_%7Bti%7D%2B%5Cfrac%7B%5Calpha%7D%7Bn%7D+%5Cright%5D+r_%7Bt1%7D%5E%7B%28k-1%29%7D" alt="">
+<img class="content-image" style="line-height: 1.5;" src="http://www.zhihu.com/equation?tex=B_%7Bpr%7D" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%281-%5Calpha%29m_%7Bti%7D%2B%5Cfrac%7B%5Calpha%7D%7Bn%7D" alt="">
+<p>搜索引擎將查詢結果中的文檔按照得分排序，最終給大黃顯示出所有賣 iPhone 6 的網頁。</p>
+<ul>
+<li><strong>總結</strong></li>
+</ul>
+<p>搜索引擎是各種高深的算法和複雜的系統實現的完美結合，每一部分都在系統裏起到關鍵作用。 洋洋灑灑寫了這麼多也只觸及到皮毛，還有很多內容沒有提及。比如搜索引擎如何評估搜索結果好壞，如何進行個性化搜索，如何進行分類搜索等。以後有機會再分別總結。</p>
+<p>本文大部分知識來自卡內基梅隆大學&ldquo;當年&rdquo;的課程 11-641 Search Engine and Web Mining，說&ldquo;當年&rdquo;是聽說現在這個課已經被拆分成兩個搜索引擎和文本挖掘兩個課了。不過授課內容肯定更加豐富了。最後感謝 Jamie Callan 教授和 Yiming Yang 教授的教導！</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div>
