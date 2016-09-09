@@ -1,0 +1,83 @@
++++
+date = "2016-09-09T11:00:00"
+title = "金融行業中，常用的 Excel 分析操作技巧有哪些？"
+titleimage = "http://pic1.zhimg.com/801fdc64d7729919d8240c16c4989fc0.jpg"
+ga = 090911
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title"></h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>在金融行業中，Excel 最重要的工作就是做模型對各類指標進行估算，在（<a href="https://www.zhihu.com/question/27031429/answer/105505212">投行常說的「模型」(model) 是什麼東西？ - 何明科的回答</a>）中有許多交代。主要的模型包括但不限於：</p>
+<ul>
+<li>偏會計或財務：財務三張報表的歷史及預測</li>
+<li>偏項目投資或管理：NPV/IRR 等模型</li>
+<li>偏股權或債券投資：市場規模預測、投資價值預測（DCF 及 Comparable 等等）、針對各種股權的回報預測等</li>
+<li>偏交易方面：針對各類金融產品（FX、衍生品等等）的模型估算和執行策略等</li>
+</ul>
+<p>因此本文緊緊圍繞在金融行業內的財務模型來解釋各種技巧，簡單將其分爲技法和心法兩類。簡單介紹三個技法而着墨在心法，因爲技法讓人在道路上跑得更快，而只有心法讓人能跑在正確的道路上。</p>
+<p><strong>技法 1：掌握快捷鍵</strong></p>
+<p>如同程序員崇尚用 VIM 甚至極致到用&ldquo;hjkl&rdquo;來代替"&darr;↖&uarr;↗"，金融行業在使用 Excel 的過程中，把雙手牢牢放在鍵盤上翻飛纔是正確姿勢。這就需要熟知各類快捷鍵，詳見（<a href="https://www.zhihu.com/question/25671374/answer/102855646">Excel 鍵盤操作技巧？ - 何明科的回答</a>），裏面提到的都是金融建模中最常用的快捷鍵，滿足七八成的實戰。另外高效的學習方法是遇到重複發生的操作然後去掌握和記憶快捷鍵，在實踐中學習，而不是先死記硬背然後再實踐。</p>
+<p>檢驗金融建模中使用 Excel 快捷鍵水平高低的重要標準是：能否脫離鼠標而手不離鍵盤。不過鼠標卻是繞不過的。</p>
+<p><strong>技法 2：掌握初中高級各類函數及 Excel 自帶的工具</strong></p>
+<p>初級一些的函數有 Sum/Average/Sumproduct/If 等，完成基礎的四則運算和邏輯運算。複雜一些之後，就需要使用 VLookup/HLookup 這類標準的查找函數來匹配數據，再複雜一些就需要花式查找（ Match/Offset/ Indirect/Address 等）。查找完之後，就涉及到統計計算，於是 Sumif 或者 Sumifs 的需求就來了。然而這還不是效率的極值點，當繁衍出類似於數據庫的&ldquo;Select&hellip;Where&hellip;Group By&hellip;&rdquo;等多重複雜條件的需求，於是就不得不引入了數組函數。</p>
+<p>Excel 上面還提供了許多金融財務的專業函數（比如：IRR/NPV/PMV/PV/FV 等），使用的時候一定要把參數和輸出搞清楚，一些關鍵點模糊絕對就是產生錯誤的結果，比如：NPV 或 IRR 計算時候的起始點選取。</p>
+<p>另外，Excel 還提供各類工具：</p>
+<ul>
+<li>數據清洗工具：分割和去重等等</li>
+<li>數據分析工具：排序、篩選、數據透視表等</li>
+<li>統計工具：ANOVA、各類檢驗及多元線性迴歸等等</li>
+<li>求解工具：Solver</li>
+</ul>
+<img class="content-image" src="http://pic4.zhimg.com/70/75d041f19c10f492ac9037ba59df698f_b.jpg" alt="">
+<p><strong>技法 3：掌握 Macro 和 VBA</strong></p>
+<p>已經厚顏無恥地推廣 VBA 多次，它們絕對是提升效率和完成複雜運算的利器（曾經使用 VBA 來完成蒙特卡洛模擬），這裏不多說，詳細的答案參考（<a href="https://www.zhihu.com/question/27588491/answer/90603436">Excel 到底有多厲害？ - 何明科的回答</a>）。</p>
+<p>這裏就簡單舉例一枚給不願跳轉的同學。一般的 Financial Model 都是根據假設計算結果，而在爲某頂級手機品牌服務的過程中，卻遭遇了逆向需求。本來是根據地面銷售人員的一定服務水平，計算所需要的銷售人員數量；結果在項目過程中，總部已經確定好銷售人數，轉而要求根據人數確定服務水平。然而，服務水平不是一個單變量，是由零售店的覆蓋率、銷售拜訪頻率、拜訪中的服務深度等多重因素來決定的，同時還可以根據一線至五線城市來變化。於是只好再次祭出 VBA，先根據常規思路建立好 Financial Model，得出人數的初步結果。然後寫 VBA，根據不同的情景、不同的優先級以及不同的權重來調節零售店的覆蓋率、銷售拜訪頻率、拜訪中的服務深度等多因素，同時設定這幾大因素的可接受範圍，逐步逼近銷售人數的預設值。</p>
+<blockquote>高攀一下，是不是有點深度學習的梯度下降法的味道？</blockquote>
+<img class="content-image" src="http://pic1.zhimg.com/70/7f82d2bb5d9c916a3215e8bd444bc2c4_b.jpg" alt="">
+<p><strong>心法：掌握構建財務模型的框架和基本原則</strong></p>
+<p>做 Financial Model 的基本思想其實和編程非常類似，比如著名而老套的 MVC： 整個 Financial Model 的邏輯被分成三層， Model（負責數據），View（負責呈現）和 Controller（負責業務邏輯），理想狀態下其中一層的改動不會影響到另一層。我在做大部分 Financial Model 的時候基本就是按照 MVC 的框架來要求自己的。</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/50d06124756b056e4c5828b5aeaeac37_b.jpg" alt="">
+<p>Financial Model 搭建的過程就如同修建高樓一層層往上累加模塊</p>
+<ul>
+<li>常數 / 核心數據 / 假設數據部分，包括：商業常數（匯率及稅率等）、歷史數據（過去的財報以及市場規模的歷史數據）、認爲靠譜而不能改動的預測數據、核心假設（比如假定宏觀經濟按照 6-7% 來增長）等等。這些數據略等於 C 語言的 h 文件部分，動一發而動全身，所以要單獨對待。如同程序一樣，Excel 的函數中是不能出現 hard-code 的數字，所以如果一個財務模型中出現&ldquo;=2*3.14*r&rdquo;，基本是可以打回去重做的。</li>
+<li>Scenario 場景，包括：模型中需要經常調節的重要輸入參數（比如：市場滲透率、Exit PE ratio 等）。這些參數最好剝離出來成爲一個單獨的界面，可以比較方便的控制和調整，爲之後的 Sensitivity Analysis 做準備，甚至可能遇到在上文中提到的類似於用梯度下降法尋求最優值的情況。</li>
+<li>基礎模型。這一步的核心就是做出預測的三張財務報表，最令人痛苦的是配平。可以使用各類複雜函數（Indirect/Offset/VLookup 等）來進行配平而不會出錯，而且複用性極高。</li>
+<li>進階模型。基於歷史及預測的三張報表，做一些更復雜的財務分析或者估值預測，包括：DCF、Comparable、敏感性分析等等。</li>
+<li>呈現。把用戶（包括老闆或者客戶）最關心的產出放出來，用最友好的界面展現出來。當然做得極致些，可以把調整 Scenario 以及重要參數的界面也放出來，方便用戶 Manipulate Data（其實翻譯成中文更有趣一些：猥褻數據）以便得到最滿意的結果。</li>
+</ul>
+<p>下圖是曾經奮戰過的一個 Financial Model，基本涵蓋了上述的邏輯和構建過程，供大家參考。</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/b3229f461c0587e2ad750163785f80ef_b.jpg" alt="">
+<hr>
+<p>...更多文章請到<a href="http://zhuanlan.zhihu.com/hemingke">數據冰山 - 知乎專欄</a></p>
+<p>...更多回答請看<a href="https://www.zhihu.com/people/he-ming-ke">何明科的主頁</a></p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div>
