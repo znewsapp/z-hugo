@@ -1,0 +1,63 @@
++++
+date = "2016-09-18T13:00:00"
+title = "iPhone 7 拍的照片有點怪？因爲蘋果用了一種特殊的色域"
+titleimage = "http://pic3.zhimg.com/67e60aa29107a01c5ab72c7b633b08e2.jpg"
+ga = 091813
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+<div class="question">
+<h2 class="question-title">iPhone 7 的照片是以 Display P3 爲色彩空間描述的，這意味着什麼？</h2>
+<div class="answer">
+
+
+
+<div class="content">
+<p>在之前<a class="internal" href="https://zhuanlan.zhihu.com/p/22411193?refer=ThinkDifferent">關於顯示器以及色彩空間的專欄中</a>，曾經提到過一點，iPhone 7 &amp; 7 Plus 擁有全新的 DCI-P3 色域的屏幕，隨着 iPhone 7 &amp; 7 Plus 正式發貨，現在已經可以確認新 iPhone 的照片也是以 Display P3 存儲的。</p>
+<img class="content-image" src="https://pic4.zhimg.com/d90503b249b6fb7bf8bf170540563767_b.png" alt="">
+<p>這裏要插一句，Display P3 並不是完全等於 DCI-P3, Display P3 是 Apple 在 DCI-P3 基礎上參考了 sRGB 而修訂出的自己的標準，它擁有 sRGB 的 Gamma 2.2, 而不是 DCI-P3 的 2.6. 同時 White Point 也與 sRGB 同爲 D65（6500K），並非 DCI-P3 的 D50（5500K）。</p>
+<p>這也就是之前 5K iMac 上默認的 iMac 描述文件。</p>
+<img class="content-image" src="https://pic4.zhimg.com/409074589dab921a20da6fc849246f5f_b.jpg" alt="">
+<p><strong>那麼使用 Display P3 來描述圖片會出現什麼樣的情況？我畫了張圖：</strong></p>
+<img class="content-image" src="https://pic2.zhimg.com/acd60a1e8f5e948f8f2a2624b28672e1_b.png" alt="">
+<p>請放大查看，從上圖的結果我們能看出：</p>
+<p>如果 iPhone 7 拍攝的照片直接發送給未經色彩管理的設備的話，除非這個未經色彩管理的顯示器正好覆蓋 P3 色域，否則你看到的圖片都是不準的。</p>
+<ul>
+<li>如果是未經色彩管理的設備且屏幕色域未覆蓋 P3, 那麼符合第一種，你看到的東西都是淡的。</li>
+<li>如果是未經色彩管理的設備且屏幕色域超過了 sRGB, 比如覆蓋的是 Adobe RGB, 那麼你看的圖片要稍微複雜一些，現在複習一下幾個色彩空間的對比。</li>
+</ul>
+<img class="content-image" src="https://pic4.zhimg.com/70f1bb012fe578df3748489d46c1e153_b.jpg" alt="">
+<p>也就是說這種情況下你看到的青綠色會是過飽和而紅色會是偏淡的。</p>
+<p>現在你應該知道爲什麼你看到的未經處理的 iPhone 7 樣張紅色和青綠色都偏淡了吧？</p>
+<p>* 今年的 MacBook Pro 若是更新的話，我相信很有可能也會由現在的全覆蓋 sRGB 轉換爲 全覆蓋 Display P3 色域，但是由於目前圖片處理和印刷還是 Adobe RGB 爲主流，並且 Display P3 和 Adobe RGB 之間並不是完全的包含與被包含關係，所以這個標準到底適不適合影像處理，目前還存在着爭論。</p>
+<p><img class="content-image" src="https://pic4.zhimg.com/9c42f50678f41f2c91f6fc6948f16867_b.jpg" alt=""></p>
+<p>當然，我知道大部分人的顯示器並不能顯示出完整的內容，所以我們對圖片進行一些處理：</p>
+<img class="content-image" src="https://pic2.zhimg.com/6edd660b6158a5fa4b00dd5ad5bf6f35_b.jpg" alt="">
+<ul>
+<li>綠色是 sRGB 無法描述的顏色。</li>
+<li>粉色是 Adobe RGB 無法描述的顏色。</li>
+<li>藍色是 Display P3 無法描述的顏色。</li>
+</ul>
+<p>可以看出，在橙色爲主色調的時候，P3 是覆蓋最好的標準，而 Adobe RGB 已經淪爲和 sRGB 一個水平。</p>
+
+
+
+</div>
+</div>
+</div>
+
+
+</div>
+</div>
