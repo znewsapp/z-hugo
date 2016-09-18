@@ -1,0 +1,139 @@
++++
+date = "2016-09-18T07:00:00"
+title = "與你們人類不同，機器人光是雙足走路就拼盡全力了"
+titleimage = "http://pic4.zhimg.com/159e1fefa01641749b50bbc9ef458d27.jpg"
+ga = 091807
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title">雙足機器人有哪些常見的平衡算法？</h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>拋磚引個玉先 :)</p>
+<p>雙足機器人的算法比較多，有些有名字，比如&ldquo;增量式模糊控制 PD 控制算法&rdquo;，&ldquo;機器學習算法&rdquo;；有些則沒有什麼太過具體的名字，我在這裏就介紹一種應用於複雜地形（帶有傾斜角度的或表面不均勻的落腳面）的雙足機器人的算法吧。</p>
+<p>先說說雙足機器人的平衡控制都經歷過哪些階段。</p>
+<p>在最開始的雙足機器人使用的平衡控制策略是&ldquo;<strong>靜態步行</strong>&rdquo;（static walking）這種策略的特點是：機器人步行的過程中，重心（COG，Center of Gravity）的投影始終位於多邊形支撐區域（support region）內，這種控制策略的好處在於：在整個的行進過程中，機器人可以在行走動作中停止而不摔倒，但代價是行動速度非常遲緩（每一步需要花費 10 秒甚至更長）（因爲需要保持重心的投影始終位於支撐區域，否則將不穩定），因爲靜態步行和人類的期望相差甚遠，於是人類開發出來了另一種步行平衡策略：&ldquo;<strong>動態步行</strong>&rdquo;。（dynamic walking）在動態步行中機器人的行動速度被提升至了每步不超過 1 秒。但是弊端也是顯而易見的，機器人難以在運動的狀態下立即停頓（慣性的作用），從而使得機器人在狀態轉換的過程中變得不穩定。爲了解決慣性帶來的影響，<strong>零力矩點</strong>（ZMP，zero moment point）被引入到了這一控制策略中。在單腳支撐相中，ZMP=COG。引入 ZMP 的好處在於，如果 ZMP 嚴格的存在於機器人的支撐區域中，機器人絕對不會摔倒。</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/7268d49aaa304ef7db20399ff3e927a8_b.jpg" alt="">
+<p>（圖 1. 靜態步行）</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/09a839711e17fdd0d81211367da55541_b.jpg" alt="">
+<p>（圖 2. 引入了 ZMP 的動態步行）</p>
+<p>現在雙足平衡的主流是用基於 ZMP 的動態步行。</p>
+<p>基於上述的基本內容，雙足機器人的一條腿就可以抽象成控制系統中最基本的&ldquo;<strong>倒立擺</strong>&rdquo;模型。</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/2a323e7968b29a8355e8ca77af353046_b.jpg" alt="">
+<p>（圖 3. 倒立擺模型）</p>
+<p>可以推導出機器人的一條腿的<strong>正向 ZMP 動力學公式</strong>爲：</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/365864f6cac01bcaa19540bb63845d1e_b.jpg" alt="">
+<p>（圖 4.正向 ZMP 動力學公式）</p>
+<p>Xzmp 代表正向 ZMP，Xmc 代表質量中心的前進位移，l 是倒立擺的長度，g 是重力加速度。</p>
+<p>由於複雜地形的雙足平衡無法由單一的控制器實現，所以多個控制器的切換策略被用於解決平衡問題。在這一個策略中，機器人的行走被設定爲一個<strong>週期</strong>（cycle）每一個週期被分成了不同的<strong>行走階段</strong>（stage）如下圖所示：</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/c2f06ccaebc6c4f483b1e8393b3cbd7e_b.jpg" alt="">
+<p>（圖 5.雙足機器人的行走週期和行走階段）</p>
+<p>圖中的 1-4 階段是一個週期。而在第 2 和第 4 階段可以發現，在這兩個階段中，機器人的 SSP 與 DSP 發生了&ldquo;共存&rdquo;，即同時存在狀態。</p>
+<p>在一般的雙足平衡的算法中包含了三種控制策略：</p>
+<p>（1）實時平衡控制策略（real-time balance control strategy）</p>
+<p>（2）步行模式控制策略（walking pattern control strategy）</p>
+<p>（3）行動預測控制策略（predicted motion control strategy）</p>
+<p>基於不同策略的不同目的，每一種控制策略都包含了多種<strong>在線控制器</strong>（online controller），下面將分述每一種策略的任務及使用的控制器。</p>
+<p><strong>A. 實時平衡控制策略</strong></p>
+<p>控制器 1：阻尼控制器（Damping controller）。目的：在 SSP 模式下，消除機器人上 半身的振動。作用階段：1，3 全階段；2,4 中的 SSP 階段。</p>
+<p>控制器 2：ZMP 補償器（ZMP compensator） 。目的：保持機器人骨盆關節（如圖 6 所 示）在動態運動中水平方向的平衡。作用階段：1，3 全階段；2,4 中的 SSP 階段。</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/e1e0bd305f7053951757ebb28567a370_b.jpg" alt="">
+<p>（圖 6，機器人的骨盆（pelvis）關節示意圖）</p>
+<p>控制器 3：軟著陸控制器（Soft landing controllers）。目的：吸收機器人腳着陸時的撞 擊，調節機器人腳與着陸區的接觸面。作用階段：2,4 中的 DSP 階段。</p>
+<p><strong>B. 步行模式控制策略</strong></p>
+<p>控制器 1：骨盆搖擺振幅控制器（Pelvis swing amplitude controller ）。目的：補償機 器人骨盆關節側部搖擺振幅。作用階段：2,4 中的 DSP 階段。</p>
+<p>控制器 2：軀幹俯仰角 / 側傾角控制器（Torso pitch/roll controller ） 。目的：補償骨盆 關節的中心位置相對於軀幹的俯仰角 / 側傾角搖擺。作用階段：2,4 中的 DSP 階段。</p>
+<p><strong>C. 行動預測控制策略</strong></p>
+<p>控制器 1：過傾斜控制器（Tilt over controller ）。目的：補償機器人踝關節軌跡，以避 免機器人在壓延方向上的過傾斜。作用階段：1,3 全階段。</p>
+<p>控制器 2：着陸位姿控制器（Landing position controller ） 。目的：避免機器人腳着 陸時造成的不穩定。作用階段：2,4 全階段。</p>
+<p>然而，一般的雙足平衡算法無法解決地形不均勻或地形傾斜的問題，因此，在地形不均勻或地形傾斜這種複雜環境中，一些新的控制需要被引入：</p>
+<p><strong>A1.直立姿態控制器（Upright Pose Controller ）</strong></p>
+<p>這種控制器可以使機器人在傾斜地形中始終保持直立姿勢，從而保持整個機體的平衡。對於雙足機器人而言，傾斜地形的&ldquo;全局傾斜角&rdquo;的測量就顯得尤爲重要。一般採用的測量方法是在機器人的軀體內部安裝一個 2 軸的加速度計，在加上一個低通濾波器就可以構成一個傾斜計。</p>
+<p>對於機器人的俯仰姿態控制，在規定的踝關節軌跡上，直立姿態控制器附加了含有俯仰誤差的 PI 控制器：</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/aadb8eb747e262c921428347e95c2d2e_b.jpg" alt="">
+<p>直立姿態控制器則可由下列等式實現：</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/a0102248d0ca298f4214ab3403f15322_b.jpg" alt="">
+<img class="content-image" src="http://pic1.zhimg.com/70/1d10f5971a69be684f1f1f4700eaddb0_b.jpg" alt="">
+<p>圖 7 更加直觀的反映出了使用控制器之前與之後的俯仰控制平衡性差異：</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/e1406a9fd139f29bb7aa057c324e48d2_b.jpg" alt="">
+<p>使用控制器之前與之後的側傾控制平衡性差異：</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/a0e547e4a67a3a0343d28f3b124ed085_b.jpg" alt="">
+<p>至於後面的.....碼不動了......暫且先到這裏吧</p>
+<hr>
+<p>2016 年 6 月 26 日更新 (￣┰￣*)</p>
+<p>看到評論裏有大神提到了沒有 ZMP sensor 怎麼控制雙足機器人的問題，正好有一個例子可以看一下</p>
+<p>2011 年的時候，德國航空航天局下屬的機器人學和機電學研究所（Institute of Robotics and Mechatronics）發佈了一款名爲&ldquo;DLR&rdquo;的機器人（如下圖所示）</p>
+<p>它是由 Christin Ott 及其帶領的團隊一起研發的，和一般基於 ZMP 的雙足機器人不同，DLR 並不依賴於 ZMP 的輔助控制。德國人給它的定義是&ldquo;Torque controlled humanoid robot&rdquo;即基於力矩調節控制的機器人。</p>
+<p>力矩調節的核心思想是&ldquo;當機器人受到外界的干擾時，預期的力和力矩可以同時作用以使得機器人始終保持平衡（如下圖）</p>
+<p>DLR 機器人採用的控制器是一個名叫&ldquo;grasping-inspired controller &rdquo;（實在是隻能意會）這個控制器實現的算法是一種優化算法，這種算法可以計算上述平衡策略中所需要的力和力矩，從而抵消外界擾動。</p>
+<p>下圖所示的是 DLR 所使用的平衡控制器的框圖</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/70486162dd6eba2610a05ba0100902c5_b.jpg" alt="">
+<p>由於鄙人實在是才疏學淺，所學並未涉及到力矩控制平衡算法，所以將文獻的標題寫在下方，諸位感興趣可以看看：</p>
+<blockquote>&ldquo;<em>Posture and Balance Control for Biped Robots </em><em>based on Contact Force Optimization</em>&rdquo;，Christian Ott, Maximo A. Roa, and Gerd Hirzinger。2011 11th IEEE-RAS International Conference on Humanoid Robots. <br>978-1-61284-868-6/11/$26.00 &copy;2011 IEEE</blockquote>
+<p>其實我真正感興趣的是 Boston Dynamics 的 Altas 雙足機器人，BD 出品，必屬精品（你懂的），可是資料少的可憐，上窮碧落下黃泉，兩處茫茫皆不見&hellip;&hellip;還是很想知道 Altas 的控制算法的。</p>
+<p>哦，對了，其實答主是一個害怕與人社交的工科男 所以還是不要私信了吧 問題在評論裏面說出來就好，我們大家可以共同討論，集思廣益嘛୧(๑&bull;̀⌄&bull;́๑)૭</p>
+<hr>
+<p>有大神私信我問了一種日本機器人的平衡算法，在這裏回覆一下</p>
+<p>這種機器人是由一個名爲 Dr. Guero 的日本機器人研究者開發的，但是他的真名是 Masahiko Yamaguchi........這裏值得注意的是，如果在網站上搜索 Masahiko Yamaguchi 的相關研究成果，你會發現：</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/b60ed2fa6ddbdde6d6174fefccfc339a_b.jpg" alt="">
+<p>好吧，居然是一個化學家&hellip;&hellip;雖然不排除重名重姓的可能&hellip;&hellip;但還是有點奇怪。</p>
+<p>有點扯遠了，說回機器人。這種日本機器人實際上是一個系列，以&ldquo;PRIMER&rdquo;開頭的一個系列，說的在通俗一點，相比諸位多多少少都在媒體上曾經見過一個能夠自己騎自行車並剎車的小機器人吧？沒錯，就是這種機器人。</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/de7a889c39e2763cc532148e9aea6b1c_b.jpg" alt="">
+<p>（PRIMER-V2 robot)</p>
+<p>在這種機器人的官網上（<a href="http://link.zhihu.com/?target=http%3A//ai2001.ifdef.jp/">http://ai2001.ifdef.jp/</a>）還能找到這一系列機器人的更多功能及其圖片，例如走鋼絲什麼的：</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/c1bdce1b5428d4c48e2d4021a34b7dba_b.jpg" alt="">
+<p>然後我們來聊聊這種機器人的工作原理。</p>
+<p>首先，官網給出的原理非常&ldquo;玄妙&rdquo;，難以理解，因爲居然用的是 AI！！也就是人工智能：</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/50900cb3d2c21b6e38de4f2a00eb3cdd_b.jpg" alt="">
+<p>還有很玄妙的原理圖：</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/4828097f00e83862b66bd458f8f7e1e0_b.jpg" alt="">
+<img class="content-image" src="http://pic2.zhimg.com/70/c3958471c990020a527d5d2f2eceb9dd_b.jpg" alt="">
+<img class="content-image" src="http://pic3.zhimg.com/70/63e3f3225face375e63288bd21ae7716_b.jpg" alt="">
+<img class="content-image" src="http://pic3.zhimg.com/70/45fbaf5a6c62deaefe5addfbe61130a2_b.jpg" alt="">
+<p>呃，我個人表示&mdash;&mdash;完全看不懂&hellip;&hellip;</p>
+<p>好吧，那麼在網上能否找到其他相關信息呢？答案是肯定的，但是和官網感覺&hellip;&hellip;畫風不一樣啊：</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/8b90a3f1fee43293de081d604fa8ad22_b.jpg" alt="">
+<p>例如這一段話的最後一段就說&ldquo;the machine works on the remote control........"頓時就感覺有點 low 了有木有&hellip;&hellip;畢竟在我心中，遙控操縱的機器人和自主機器人還是有差距的。</p>
+<p>再比如：</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/68479c10c3aa1a10ee9b1be9797d7619_b.jpg" alt="">
+<p>第一段的最後提到，儘管平衡是自主完成的，但是在決定方向時，必須（has to）要一直（at all times）遙控&hellip;&hellip;仁兄，高大上的 AI 呢？？？</p>
+<p>然後又有關於 V4 機器人的資料：</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/d5410ad2d2f088fa465d6ba620239d8a_b.jpg" alt="">
+<p>這段話裏面提到了 Dr.Guero 的 PRIMER-V4 機器人是基於 KHR-3HV（這個機器人網上有賣的，有詳細的說明書，網址在文章最後）改造的，而關於 PRIMER-V4 的平衡原理，一箇中文網站上寫到：</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/8c8bd2234f708bf2d603822418499291_b.jpg" alt="">
+<p>用的是&ldquo;傾斜感應器&rdquo;，應該和我上文提到的控制器差不多，嗯&hellip;&hellip;</p>
+<p>其實我覺得吧，這個系列的日本機器人，好像並沒有多麼的依靠算法，控制之類的，應該是一種編程 + 示教 + 遙控的機器人，由於文獻網站上沒有關於這種機器人的 Datesheet 和 Paper，所以這也僅僅是我的個人猜想，歡迎一起討論。</p>
+<p>不知道對您的問題有沒有幫助&hellip;&hellip;</p>
+<blockquote>
+<p><a href="http://blog.cavedu.com/%E6%9C%AA%E5%88%86%E9%A1%9E%E8%B3%87%E6%96%99%E5%A4%BE/%E4%BA%BA%E5%9E%8B%E6%A9%9F%E5%99%A8%E4%BA%BA-kondo-khr3-hv-ver-2-%E7%A8%8B%E5%BC%8F%E7%B7%A8%E8%BC%AF%E4%BB%8B%E9%9D%A2%E7%B0%A1%E4%BB%8B/">人型機器人 KONDO KHR3-HV Ver. 2 程式編輯介面簡介CAVEDU教育團隊技術部落格 | CAVEDU教育團隊技術部落格</a><br><a href="http://www.robotics.com.hk/index.php?option=com_wrapper&amp;Itemid=119">Robotics.com.hk - Kondo KHR-3HV</a><br><a href="http://www.robaid.com/robotics/primer-v4-a-steel-wire-crossing-robot.htm">PRIMER V4 &ndash; a steel wire crossing robot | RobAid</a><br><a href="http://ai2001.ifdef.jp/">AI &amp; Robot</a></p>
+</blockquote>
+<p>如有問題，還望指正，大家互相學習 : )</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div>
