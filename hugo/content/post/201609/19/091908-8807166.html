@@ -1,0 +1,105 @@
++++
+date = "2016-09-19T08:00:00"
+title = "如何把微信的聊天記錄從 iPhone 裏拿出來？"
+titleimage = "http://pic2.zhimg.com/a2d76ffbedaea43edf9272467d446905.jpg"
+ga = 091908
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+<div class="question">
+<h2 class="question-title">iOS 微信的本地存儲結構簡析</h2>
+<div class="answer">
+
+
+
+<div class="content">
+<p>大約四年前，我有了一個暗戀對象，所以想要把微信的聊天記錄保存起來。那時在網上只有一種要付費的類似軟件，所以我想，寫一個開源的工具好了。於是這件事<a class=" wrap external" href="https://link.zhihu.com/?target=https%3A//github.com/tiancaihb/SaWechat-iOS" target="_blank" rel="nofollow noreferrer">很快就完成了</a>（對應微信 6.0；那時的代碼質量很低我知道）。</p>
+<p>後來我沒有了暗戀對象，也就不再關心這件事。最近，因爲有不少人認爲這樣的功能仍然很有用，並且據我搜索到的情況，仍然沒有能讓每個人拿來直接用的工具。因爲在幾年之間文件結構發生了一些變化，我在這裏記錄下來，方便其他的開發者（對應現在的版本 6.3.25；雖然我沒想到還能有什麼用）。</p>
+<p><strong>1. 怎麼得到這些文件？</strong></p>
+<p>過去，我可以提示用戶在越獄之後用 iFunbox 自行把微信 App 所在文件夾複製出來。然而自從某個版本的 iOS 開始，在不越獄的情況下，我們只能看到 /User/Media 這裏的文件，而需要的本地數據在 /User/Containers/Data/Application/ 微信的 UID。強迫用戶爲了這麼一件事前去越獄顯然不太友好，而對&ldquo;聊天記錄遷移&rdquo;抓包也不方便，所以我想到另一種途徑。</p>
+<p>這就是 iTunes 備份。從經驗判斷，恢復備份之後微信裏的聊天記錄都還在，說明肯定這些文件在備份的時候保存到了電腦上。它們在哪裏？<a class=" wrap external" href="https://link.zhihu.com/?target=https%3A//support.apple.com/zh-cn/HT204215" target="_blank" rel="nofollow noreferrer">蘋果官方給了答案</a>。簡單地說，Windows 下在&ldquo;\用戶\（用戶名）\AppData\Roaming\Apple Computer\MobileSync\Backup\&rdquo;，然後我不喜歡用 Mac OS。</p>
+<p>不過，iTunes 備份的文件夾結構不是很友好，似乎每個手機上的文件名都變成了一串序號，當然打開相關的 plist 然後看出規律也不難。好消息是，已經有很多人做了類似的事情，例如 <a class=" wrap external" href="https://link.zhihu.com/?target=https%3A//code.google.com/archive/p/iphonebackupbrowser/" target="_blank" rel="nofollow noreferrer">iphonebackupbrowser</a>，它也是用 C# 寫的，用起來比較方便。</p>
+<p>因此，我做的第一步是讓用戶選取做好的 iTunes 備份，從上面那個源碼，稍微修改一下就可以找到 com.tencent.xin 的相關文件，從而在程序裏直接通過 iOS 上的路徑找到對應的文件。</p>
+<p><strong>2. 主要的數據庫：MM.sqlite</strong></p>
+<p>從很久以前，iOS 微信的大部分數據就保存在這個 SQLite 3 數據庫裏。沒有安卓上可惡的加密，直接可以打開。這個文件在 Documets/xxxx/DB/MM.sqlite，中間是對應用戶名的 MD5，稍後會講它的具體含義。不過一般只需要遍歷所有的。</p>
+<img class="content-image" src="https://pic3.zhimg.com/94103a48241ebc4fecb947db31a3a5e2_b.png" alt="">
+<p>我們感興趣的是 Chat_ 開頭的表，分別是和一個人（或羣聊、公衆號）的對話內容；以及記錄朋友列表的 Friend 和 Friend_Ext。下面兩圖是朋友表的內容：</p>
+<img class="content-image" src="https://pic4.zhimg.com/231c54f86ad0db1f43a2fbe5776a9bff_b.png" alt="">
+<img class="content-image" src="https://pic1.zhimg.com/daeae17863884f588c317879024a87bc_b.png" alt="">
+<p>很明顯，微信號是 UsrName，暱稱是 NickName，備註名在 ConRemark。</p>
+<p>此外在 ConStrRes2 裏面（XML 格式）還有一些有用的信息。比如地區、簽名、來源、LinkedIn&hellip;&hellip;我們更需要的是頭像的地址 HeadImgUrl，下面會用到。</p>
+<img class="content-image" src="https://pic2.zhimg.com/dcc464dcc31bf9f3f8015a1be7796141_b.png" alt="">
+<p>特別有個屬性叫 alias 需要處理。我們知道每個用戶最多可以修改一次微信號，那麼新的微信號就會保存在 alias 當中。因爲很多地方是用微信號作爲 key 來索引到用戶的（儘管每個用戶也有一個數字的 ID），我們對兩種微信號都要檢查。</p>
+<p>既然已經知道所有人的信息，下面就來看聊天記錄。不過在這之前，我還遇到了一個意想不到的新問題。</p>
+<p><strong>3. 消失的 Friend</strong></p>
+<p>程序寫到一半，在某次備份之後，突然讀不到朋友們的名字了。打開 MM.sqlite，發現 Friend 表當中確實幾乎已經沒有記錄。那麼微信究竟把這麼多信息藏到哪裏了？</p>
+<p>我發現在同一個文件夾下面還有名叫 WCDB_Contact.sqlite 的文件。打開之後一目瞭然：</p>
+<img class="content-image" src="https://pic1.zhimg.com/4d7af05fbccc5b9cdabfd693a38d2d18_b.png" alt="">
+<p>猜想是因爲隨着中老年用戶大量加入各種羣聊，用戶表的長度急速增長（聊天室裏的陌生人可能也需要記錄信息呀！），所以微信在最近的版本里選擇了分表，而我剛好趕上了它轉存數據的這個時間。</p>
+<p>後面那些列都是 BLOB 格式的二進制，打開之後是這樣的：</p>
+<img class="content-image" src="https://pic4.zhimg.com/9a3bd9f6434f5b49576b6bcb65a4df03_b.png" alt="">
+<p>以人類的視角，我們很容易看出所有內容的含義，只要多一些耐心，都可以直接找到需要的內容。問題在於，讓程序怎麼分割呢？</p>
+<img class="content-image" src="https://pic4.zhimg.com/afc9c49ef5b65f9a6d6dcfea9fbc280f_b.png" alt="">
+<p>我們來觀察一下這位微信號爲 suan*******cai 的朋友的信息。圖片中選中了他的微信號字符串，那麼微信如何知道這是需要的字符串呢？一種猜想是用分隔符，例如 C 字符串的 '\0' 結尾。但是，這字符串之後是 0x1a （或者其他很多可能性），無法與正常字符區分。另一種選擇是在文件開始記錄每一個變量的偏移量，但是觀察其他文件發現開頭部分非常短，最多 3 字節，不足以保存這樣的內容。</p>
+<p>自然只剩字符串的前一字節。0x0e，這剛好是選中字符串的長度。我們再往後看，例如有一個拼音首字母 XXK，剛好前一個字節是 0x03。後面的備註 INI-Mob，所以前一個字節是 0x07。於是這個疑問解決了。</p>
+<p>再前面一個字節，例如第一行的 0x12，可以發現在同類每個文件的相應位置都不變。我猜想是下一個字符串的類型。</p>
+<p>這樣，這種記錄的結構我們已經大致瞭解：</p>
+<p>開頭若干字節未知信息 --&gt; (1 字節類型說明 --&gt; 1(?) 字節長度 --&gt; 字符串) 若干個</p>
+<p>不過，在 dbContact 的上空還飄着兩朵烏雲：</p>
+<p>(1) 文件開頭究竟應該跳過幾個字節，開始真正的內容？這好像在文件自身當中找不到線索，但在同一列當中是相同的，例如 dbContactRemark 是 0x0a，dbContactProfile 是 0x08 0x?? 0x12。問號表示可能有差別，但長度是確定的。所以相應地，可以人爲讓每種類型跳過若干個字節。至少我沒有找到任何反例。</p>
+<p>(2) 如果字符串長度超過一字節的表示範圍，怎麼辦？一種合理的猜想是類似 UTF-8 或者 SQLite 的數值類型的表示法，也就是讓某些高位爲 1 來表示這個數字還要加上下一個字節。我暫時沒有過多檢驗這個說法，因爲唯一涉及這個問題的地方是 dbContactHeadImage 和 dbContactChatRoom。而這二者都有很明顯的分隔位置，例如頭像的鏈接總是以 http 開始，到 \/\d+ 爲止。我在這裏偷懶直接去匹配了。</p>
+<p><strong>4. 聊天文字記錄</strong></p>
+<p>有了前面的準備，我們已經可以解析 Chat_[0-9a-f]{32} 表，並且以文本形式導出每個對話的聊天記錄。怎麼知道聊天的對象是誰？Chat_ 後面是 UsrName 或 alias 的 MD5 值。</p>
+<img class="content-image" src="https://pic3.zhimg.com/68499f7761d5384b2801c87bde22d7c6_b.png" alt="">
+<p>首先看一下聊天記錄的結構。MesLocalID 是一個比較重要的數字，雖然暫時還用不到。CreateTime 顧名思義，並且應該是 UTC+0 的。Message 就是消息本身。Type 表示消息的類型，可以自己試驗一下，最後 Des 應該表示我是否爲消息的接收方。</p>
+<p>下面簡單描述一下我見到過的 Type 和對應的 Message 處理：</p>
+<p>10000: 系統消息，就是那種居中的。</p>
+<p>34: 語音，消息裏會有</p>
+<p>47: 表情，</p>
+<p>62: 小視頻，&lt;videomsg。</p>
+<p>50: 視頻 / 語音通話，&lt;voipinvitemsg。本來在微信裏二者就可以切換，對用戶解釋得太細也沒啥用。</p>
+<p>3: 圖片。</p>
+<p>48: 位置。</p>
+<p>42: 名片。</p>
+<p>49: 鏈接。這裏麪包含的類別比較多，在 Message 裏面會有、、、 等信息。微信應該是通過 標籤來確定一些特殊的應用，比如 2001 是紅包，2000 轉賬，17 實時位置共享，6 文件。（我試過把它或者後面的模板地址改成別的，好像不管用。）</p>
+<p>對於導出文字來說，這些特殊的東西就給用戶顯示個&ldquo;[圖片]&rdquo;、&ldquo;[表情]&rdquo;吧。</p>
+<p>還有一個問題是羣聊，特點是用戶名爲 \d+@chatroom。在羣聊當中，每個人（除了自己）的發言前面都會有&ldquo;微信號:\n&rdquo;，好讓我們知道對方身份。問題在於，有些人在羣聊當中可以改自己顯示的名字。這個信息如果在新版數據庫當中，包含在 dbContactChatRoom 列。它有 ... 的結構，處理起來應該不難。</p>
+<p><strong>5. 其他多媒體資源</strong></p>
+<p>爲了給用戶初戀般的體驗，我還希望能儘量還原聊天的全部內容，這就需要加入對應的圖片（頭像）、語音、視頻、動畫表情等元素。</p>
+<p>我們自然會想在&ldquo;Documents/ 微信號的 MD5&rdquo;文件夾下面找這些內容。這時很容易發現：</p>
+<p>(1) Img 文件夾中有一些以 MD5 命名的文件夾，它們對應數據庫中的各 Chat_ 表，而具體文件是以數字編號的，這個編號等於對應消息的 MesLocalID（上面提到過）。文件有三種後綴：.pic、.pic_hd、.pic_thum，顧名思義是正常大小的圖片、原圖、縮略圖。基本上是 JPEG 格式吧，這個影響不大。</p>
+<p>(2) Video 文件夾類似，有 .video_thum 擴展名的縮略圖，以及 .mp4 的視頻本體。視頻是 AVC+AAC 編碼的，不過仍然不重要吧。</p>
+<p>(3) Audio 是語音，以前是 3GP 格式，現在打開之後可以看到 SILK_V3 的字樣，搜索可以直接發現<a class=" wrap external" href="https://link.zhihu.com/?target=https%3A//github.com/kn007/silk-v3-decoder" target="_blank" rel="nofollow noreferrer">編譯好的轉換程序</a>。不過沒有源碼，也可以自行搜索其他解決方案。</p>
+<p>然而在這個版本中，我始終沒有從備份當中找到動畫表情和頭像這兩項資源。怎麼回事？</p>
+<p>正好那段時間盤古越獄出現了，我把完整的 Documents 和 Library 文件夾複製出來，看了一遍。原來它們在 Library/WechatPrivate 裏，而這個文件夾設置成了不備份。這也有道理，因爲前面的幾個是個人的資源，而頭像和表情隨時都可以再去下載，所以並不需要放在 iTunes 備份當中。</p>
+<p>那麼不越獄的情況下，我們怎麼獲得它們呢？記得上面提到過，在每個好友的 dbContactHeadImage 當中有正常和放大頭像的地址；如果看一下含有動畫表情的消息，其中也有這個表情的 GIF 地址。好的，下載就可以了。</p>
+<p>最後，還有一件小事有點麻煩。</p>
+<p>當前用戶的微信號和頭像在哪？</p>
+<p>打開 mmsetting.archive，這是一個 plist 文件，在裏面有幾項是我的微信號、暱稱、頭像地址&hellip;&hellip;</p>
+<img class="content-image" src="https://pic3.zhimg.com/68499f7761d5384b2801c87bde22d7c6_b.png" alt="">
+<p>問題在於這裏沒有很清楚的 key-value 形式，所以只能猜測出來一些找到相應內容的方法。如果能改進一下就更好了。</p>
+<p><strong>6. 總結</strong></p>
+<p>以上描述了找到微信聊天記錄涉及的文件的方法，不過講道理它們都只能算是&ldquo;有根據的推測&rdquo;。因爲聊天記錄這件事不太方便收集測試數據，只能保證它們符合我能找到的記錄。</p>
+<p>我寫了一個<a class=" wrap external" href="https://link.zhihu.com/?target=https%3A//github.com/tiancaihb/WechatExport-iOS" target="_blank" rel="nofollow noreferrer">新的微信聊天記錄導出工具</a>放在 GitHub 上，請有興趣的讀者盡情地 Fork 走修改之類的！</p>
+
+
+
+</div>
+</div>
+</div>
+
+
+</div>
+</div>
