@@ -1,0 +1,132 @@
++++
+date = "2016-09-20T15:00:00"
+title = "泄露內部信息丟了工作，因爲截圖上「看不見的水印」"
+titleimage = "http://pic3.zhimg.com/f38c72be4031ea2a7404ce5b637a5482.jpg"
+ga = 092015
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title">阿里巴巴公司根據截圖查到泄露信息的具體員工的技術是什麼？</h2>
+
+<div class="answer">
+
+<div class="content">
+<img class="content-image" src="https://pic4.zhimg.com/066406960041fca616a184ba83ac9673_b.png" alt="">
+<p>在月餅事件中的新聞中提到。阿里對員工訪問的界面做了一定的處理。貌似這不是簡單的水印。這種處理是什麼，是怎麼做到的呢？</p>
+</div>
+</div>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>看了除了 @大溼 其他人提出的都是空域算法，這些空域直接疊加的算法抗攻擊性太差了。</p>
+<p>就數字圖像處理來說是叫做數字水印，不可見則被稱爲「盲水印技術」。現在加水印都是頻域圖片加水印。其算法有基於傅里葉變換，小波變換，分數階傅里葉變換等。這些算法的基本思路是將圖像變換成頻域 / 小波域 / 分數階頻域，再將想加密的內容做變換，再疊加，之後做逆變換，形成加密圖像。dct 和分數階的方法一般加中頻，想要攻擊就要破壞圖片內容。小波變換一般加在 LL2 LH2 HH2 HL2 中。</p>
+<p>這類算法解密困難，你不知道加密者加在那個頻段，而且受到攻擊往往會破壞圖像原本內容。其實解碼的基本思想是濾波，可是，你要濾除哪個頻段呢？正統是匹配濾波，可是不知道基頻如何做呢？</p>
+<p>我感覺阿里工程師還是很善良的，幾乎就是應付 HR 需求，真要好好做的話，被動性解密（又被稱爲被動性攻擊，即你不知道加密具體過程）圖片就直接毀了的可能性比較大。那樣圖片如果不帶水印的化無論如何也不會流出，帶水印就能知道誰幹的。</p>
+<p>看評論和答案，有同學在說剪切塗抹等破壞水印的方法，這對空域的方法是有效的。頻域加水印的目的就是防止水印被破壞，破壞方式包括<strong>旋轉，剪切，縮放，塗抹，加噪</strong>等。心血來潮，簡單介紹一下頻域加水印的方法。這裏採用最簡單的<strong>傅里葉變換</strong>的方式。特別說明一下，我就是簡單科普一下頻域加水印，我給出的方法抗攻擊性相對較差的，有興趣可以瞭解小波方面的加水印方法，真正做的好的真心不怕大部分空域的操作。代碼附在原答案後。（看有同學問小波的，其實思路都差不多，我在文章最後附上了 Haar 小波變換加水印的代碼）</p>
+<p>這是原圖像，尺寸 300*240</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/b3a4081fc7b9bbb79ffb000ecedc88e0_b.jpg" alt="">
+<p>這是我想加的水印，尺寸 200*100</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/63030836c8e16a6347a83069f5c995fc_b.jpg" alt="">
+<p>這是我編碼後的水印，編碼方式採用隨機序列編碼</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/9762930aae4390a0ebb87198efa64332_b.jpg" alt="">
+<p>之後將原圖像做傅里葉變換，與編碼後的水印疊加，再作傅里葉逆變換，得到了加水印的圖像</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/eb37e5719b7dbdc7c2f1fee82555a9d3_b.jpg" alt="">
+<p>肉眼幾乎看不出來與原圖像有什麼區別，實際上是把水印已噪聲的形式添加進去。</p>
+<p>下圖是在空域上的加水印圖與原圖的殘差</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/6bb2786fcadc1a7c340dd9dac6ff4df5_b.jpg" alt="">
+<p>可以看出實際上就是添加冗餘信息也就是噪聲，但這些噪聲遍佈全圖，在空域上並不容易破壞</p>
+<p>最終，均方誤差（MSE）爲 0.0244</p>
+<p>信噪比（PSNR）爲 64.2dB</p>
+<p>之後再進行水印提取</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/ae69d7c600f12d5c236bd0ebfea0a361_b.jpg" alt="">
+<p>這是一個很簡單的 Demo，總得來說抗攻擊性不強，現在利用小波、分數階傅里葉變換所添加的盲水印抗攻擊性好。</p>
+<p>在文章最後附上了上述實驗的源代碼，以及 Harr 小波變換加水印的代碼。</p>
+<p>攻擊實驗區</p>
+<p>下面進行抗攻擊性測試</p>
+<p>1.進行塗抹攻擊，這是攻擊後的圖片，（在原加水印算法中，我調低了信噪比）</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/104994386bbf1e9b9cbea3eeb609264c_b.jpg" alt="">
+<p>再進行水印提取</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/d269c1532e70d6de7c2060c2e18563e9_b.jpg" alt="">
+<p>2.進行剪切攻擊，就是網上經常用的截圖截取一部分的情況</p>
+<p>部分剪切的圖像</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/ad05d44a39b5a6af756d1c2aefc7ec1c_b.jpg" alt="">
+<p>進行循環補全：</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/238231eb23a3b6589fec927bae928163_b.jpg" alt="">
+<p>提取水印：</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/cff34012b4b2005982bbd178a6d37c46_b.jpg" alt="">
+<p>5. 從 float32 量化到 uint8 的提取結果</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/274abc272ddeab78e70e2dd6673a0569_b.jpg" alt="">
+<p>6 JPEG 壓縮後，（這個實驗我好像是拿明碼做的，能量主要加在了高頻）</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/7294860f10dd05dc07edf292f893f517_b.jpg" alt="">
+<p>提取結果</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/f0eedd3f2c5a64dfb12806d056d53afe_b.jpg" alt="">
+<p>7.PS 4 像素馬賽克 / 均值濾波 等</p>
+<p>攻擊後圖像：(這是我女朋友嗎？醜死了)</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/1bdc3e13d618c4bde517d39be1abfe14_b.jpg" alt="">
+<p>提取水印後圖像：</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/78dae620d32d3e0509ff99b848ac88f2_b.jpg" alt="">
+<p>8.截屏：</p>
+<p>截屏後我手動摳出要測試的圖像區域，並且抽樣或者插值到原圖尺寸</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/32dfb311269481bb13e8da232c3a167d_b.jpg" alt="">
+<p>測試結果：</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/7883b1811c59826caf96e9a0742c8f2f_b.jpg" alt="">
+<p>9.對於背景純色的圖其實也是無所謂的</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/a6edbc9a370dde28dc9e2f320a31ab50_b.jpg" alt="">
+<p>能量係數爲 10 時加水印圖片：覺得太顯噪就把能量係數調低，不過水印的隱祕性和魯棒性是互斥的</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/2f8d121e7d8174299c2a8eddc4dca05e_b.jpg" alt="">
+<p>最終提取出的水印：</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/29c89dd9595d0605e0ba70e657a3f358_b.jpg" alt="">
+<p>10.我用將 RGB&gt;600 的像素設置成爲(0，255，0)來模擬 PS 魔術手，</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/dd39d93e64b2ce44751e9358feb6d957_b.jpg" alt="">
+<p>提取水印爲：</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/cfb84d767e7cc6c7f7ffc3b4928c14a1_b.jpg" alt="">
+<p>11.屏攝，好吧，這個實驗我做哭了</p>
+<p>屏攝圖：</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/d92a632dde3a1583db4163dcf4d53b0a_b.jpg" alt="">
+<p>實驗結果：</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/982aa30e34745873a6297a58213ebc6e_b.jpg" alt="">
+<p>我把水印能量係數調整到 2000 都沒有用。</p>
+<p>屏攝之後與原圖信噪比爲 4dB 左右，我用多抽樣濾波的方式試過，濾不掉屏攝引入的噪聲，屏攝不僅引入了椒鹽噪聲，乘性噪聲，還有有規律的雪花紋理，求大神嘗試一下。</p>
+<p>我所用的這種方法針對屏攝不行，我試各種加放大器濾波器、還有多抽樣濾波、譜增強等方法將近三個小時，沒成功，哪位大神可以做一下或者討論討論。還有二值化不行，這是我想當然的，覺得肯定不行所以沒做實驗。其他的我試了試，用給出的方法調整一下能量係數都可以。</p>
+<p>我想大家最關心的是什麼最安全，不會被追蹤。</p>
+<p>不涉及圖像的都安全，比如拿筆記下來。</p>
+<p>涉及圖像的<strong>屏攝最安全</strong>，截屏十分不安全。</p>
+<hr>
+<p>以下是源代碼：</p>
+<p>%% 運行環境 Matlab2010a</p>
+<p>clc;clear;close all;</p>
+<p>alpha = 1;</p>
+<p>%% read data</p>
+<p>im = double(imread('gl1.jpg'))/255;</p>
+<p>mark = double(imread('watermark.jpg'))/255;</p>
+<p>figure, imshow(im),title('original image');</p>
+<p>figure, imshow(mark),title('watermark');</p>
+<p>&hellip;&hellip;（閱讀完整代碼請點擊「查看知乎討論」查看）</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div>
