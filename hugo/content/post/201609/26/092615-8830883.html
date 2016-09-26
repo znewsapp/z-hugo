@@ -1,0 +1,189 @@
++++
+date = "2016-09-26T15:00:00"
+title = "在魔方上寫一個故事，轉啊轉，希望你看不懂我的祕密"
+titleimage = "http://pic4.zhimg.com/d73f7be0e5ce4474c5188c4a6e2bec4f.jpg"
+ga = 092615
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title">存在利用魔方性質的加密算法嗎？</h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p><strong>一句話結論</strong></p>
+<p>存在，但是幾乎無法構造出安全的加密算法。</p>
+<p>&nbsp;</p>
+<p><strong>簡單解釋</strong></p>
+<p>首先值得注意的是，魔方的轉動本質上可以表示爲一個張量或者放到一個交換羣中表示。所以這是個對稱加密方法，本質上和 AES 加密的 sbox 混淆是沒有區別的，都是一個單射函數。</p>
+<p>但是 AES 並不使用 sbox 本身作爲密鑰，而魔方羣加密則使用單射函數的分解作爲密鑰。</p>
+<p>這也就註定了前者是相對安全的，後者是相對不安全的。</p>
+<p>&nbsp;</p>
+<p><strong>魔方羣</strong></p>
+<p>一般來說，爲了構造一個加密算法，我們需要有一定的數學工具來表示我們的算法。對魔方而言，我們可以將對魔方的打亂看做一連串的旋轉。我們會發現每次旋轉都會把一些顏色塊挪到另一個顏色塊的位置上去。而且滿足下面的性質：</p>
+<ol>
+<li>色塊的數量不變</li>
+<li>每個色塊在變換前後都存在唯一的位置，既不會分身也不會消失</li>
+</ol>
+<p><strong>所以魔方的旋轉操作可以表示爲一個置換羣。</strong></p>
+<p>既然他已經是個置換羣了，那麼就和一般的置換加密沒區別了。</p>
+<p><strong>當然我知道，你肯定還不死心，魔方有神奇的魔法，一定和那些妖豔的密碼本不一樣。</strong></p>
+<p>&nbsp;</p>
+<p><strong>所以我們來設計一下算法原型：</strong></p>
+<p>1 假設一個白色理想三階魔方，通過往魔方上填寫明文然後旋轉魔方的方法加密。</p>
+<p>旋轉的時候我們使用標準的記法來表示我們的旋轉：</p>
+<p>R 表示面對右邊的面順時針旋轉 90 度</p>
+<p>R&lsquo;表示面對右邊的面逆時針旋轉 90 度</p>
+<p>同理，L 是左面，U 是上面，D 是下面，F 是正面，B 是背面</p>
+<p>比如我們這個可愛的三階魔方有 6 個面每個面 9 個小格子。每個小格子寫一個字。一共 54 個字：</p>
+<p><strong>&ldquo;我喜歡一個姑娘，她笑起來很甜，每年我們一起吃一頓飯，聊聊閒天，我以爲這樣就可以只如初見，但最後還是天各一方。&rdquo;</strong></p>
+<p>然後我們的加密方法是 RUUR'U</p>
+<p>首先我們把他們分組：</p>
+<p>我喜歡</p>
+<p>一個姑</p>
+<p>娘，她</p>
+<p>笑起來</p>
+<p>很甜，</p>
+<p>每年我</p>
+<p>們一起</p>
+<p>吃一頓</p>
+<p>飯，聊</p>
+<p>聊閒天</p>
+<p>，我以</p>
+<p>爲這樣</p>
+<p>就可以</p>
+<p>只如初</p>
+<p>見，但</p>
+<p>最後還</p>
+<p>是天各</p>
+<p>一方。</p>
+<p>然後旋轉魔方默唸咒語：RUUR'U</p>
+<p>嘛哩嘛哩哄！</p>
+<p>天一起</p>
+<p>一個可</p>
+<p>娘，就</p>
+<p>們喜還</p>
+<p>閒甜，</p>
+<p>聊年我</p>
+<p>年很笑</p>
+<p>吃一頓</p>
+<p>飯，聊</p>
+<p>就一見</p>
+<p>，我以</p>
+<p>爲這樣</p>
+<p>歡姑她</p>
+<p>可如，</p>
+<p>我初但</p>
+<p>最後起</p>
+<p>是天各</p>
+<p>一方。</p>
+<p>雖然有點不太好的感覺，但是還是把他們寫成一串看看吧：</p>
+<p><strong>天一起一個可娘，就們喜還閒甜，聊年我年很笑吃一頓飯，聊就一見，我以爲這樣歡姑她可如，我初但最後起是天各一方。</strong></p>
+<p><strong>。</strong></p>
+<p><strong>。</strong></p>
+<p><strong>。</strong></p>
+<img class="content-image" src="http://pic3.zhimg.com/70/96639e3120971014b53b895d82311b4a_b.jpg" alt="">
+<p>這加密了個屁啊，孫子輩的都能看出來是個十動然拒的故事了啊。媽的智障。</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/7bc029a4b04efa1033b080de467d9dd8_b.jpg" alt="">
+<p>首先，密鑰的長度太短了，不構成一個有效的加密方法。所以我們換一個長一點的</p>
+<p>比如三階魔方公認的十五步打亂公式之一：</p>
+<p>U2 R' D2 F D R' U' D F' L R U' F D' F'</p>
+<p>打亂之後就變成了這樣：</p>
+<p><strong>最，飯，個，還，就我吃一放甜一天一歡爲閒天一一姑但以出我年樣很我喜們是每見只聊各如，娘頓。歡放起這天一我年每</strong></p>
+<p><strong>。</strong></p>
+<p><strong>。</strong></p>
+<p><strong>。</strong></p>
+<img class="content-image" src="http://pic3.zhimg.com/70/96639e3120971014b53b895d82311b4a_b.jpg" alt="">
+<p>搞毛啊，一眼還是能看出來是個十動然拒的故事啊，一開頭那麼多一，一看就是個注孤生的故事啊。這特麼長了根本沒有卵用啊。</p>
+<p><strong>ops！ 無法承受統計攻擊</strong></p>
+<p>上面這個例子充分體現了置換加密的通病，我們只需要簡單地使用統計工具就可以輕鬆解決掉魔方加密。常見的統計攻擊方法比如：</p>
+<p>頻率攻擊：就是我計算一下整個文本中的文字頻率，再根據常見的詞彙組合來還原原文。</p>
+<p>語義攻擊：比如我看見這個句子裏都是什麼一，喜歡，吃，我，她這樣的字眼，很容易就推斷出這密碼的原文是個吃貨十動然拒注孤生的故事。</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/7bc029a4b04efa1033b080de467d9dd8_b.jpg" alt="">
+<p>既然我們已經知道了算法的弱點，小修小補一下是不是就可以了。</p>
+<p>比如我們<strong>使用隨機數加密一下原文</strong>再拿到魔方里混淆。</p>
+<p>聽起來不錯。</p>
+<p>比如：</p>
+<p>Every human being has a basic instinct: to help each other out.</p>
+<p>通過魔方加密之後：</p>
+<p>ics uacsievt o hbhere l n hmi nienueoottghht ca:.anytrpsaEba</p>
+<p>再用隨機字符串加密：</p>
+<p>ponattus nnhoha sa a b aaratbr hig uoh ma yhonrs seo o ybiu</p>
+<p><strong>哈哈哈哈哈哈！媽媽都認不出來啦！</strong></p>
+<p><strong>且慢！</strong></p>
+<p>我們需要還原這個密碼太複雜了！</p>
+<p>你看，對方爲了解密我們的密碼，需要把兩個密鑰，</p>
+<p>一個隨機串</p>
+<p>hhiepo oEh.te ap:n ovh i ao h oh abn.mhEcnE s huonmcthn tcr u</p>
+<p>還有個置換羣算子</p>
+<p>U2 R' D2 F D R' U' D F' L R U' F D' F'</p>
+<p>特麼比原文還長了好嗎！</p>
+<p>仔細一想還的確是這麼回事。</p>
+<p>我要使用魔方加密的話，密鑰是旋轉動作串。</p>
+<p>一共有 6 個面，一正一反一雙一共 18 個動作。</p>
+<p>精簡一下不要 180 度表示法也有十二種動作，</p>
+<p>至少要 4bit 來表示，一個足夠強的密串需要 15-20 次操作，也就是至少 60bit。</p>
+<p>而明文空間只有 54bit.....</p>
+<p>高維度空間的時候只能讓這件事變得更糟糕....</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/7bc029a4b04efa1033b080de467d9dd8_b.jpg" alt="">
+<p>我覺得說道這裏就已經沒救了....</p>
+<p>畢竟，如果用</p>
+<p>奇數階魔方的話中心塊是不會變的，</p>
+<p>偶數階魔方的話也是存在隠式不變形的。</p>
+<p>也就是說，<strong>魔方置換羣甚至不能算作一個合格的置換加密方法。</strong></p>
+<img class="content-image" src="http://pic1.zhimg.com/70/7bc029a4b04efa1033b080de467d9dd8_b.jpg" alt="">
+<p>但是老師，我還想再給力一點。<strong>比如作爲一個核把加密算法設計成非對稱加密</strong>？</p>
+<p>同學...你的出發點是好的。但是這樣的話我們就面臨了兩個困境：</p>
+<p>首先，加密步驟中起到保密作用的是非對稱變換，比如離散對數變換，而不是魔方置換羣。</p>
+<p>其次，魔方置換羣的密鑰長度增加並不能有效地增加加密算法的保密性。</p>
+<p>畢竟 3 階魔方 15-20 次就已經完全混淆了，4 階需要 40-50 次打亂。</p>
+<p>總體上來看，混淆極限是和階數的平方正相關的。這個增長速度太慢了。</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/7bc029a4b04efa1033b080de467d9dd8_b.jpg" alt="">
+<p><strong>老師，我覺得高維度魔方應該還可以搶救一下</strong></p>
+<p>那我們需要把剛纔討論的問題再拿出來說一遍，別的我就不廢話了。</p>
+<p>一句話按死你：</p>
+<p>隨着魔方維度的增長，明文空間的增長速度和一個單元密鑰佔用空間的增長速度是一致的。最後還會導致總結中的致命缺陷 2。</p>
+<p>&nbsp;</p>
+<p><strong>總結</strong></p>
+<p>使用魔方置換羣作爲加密算法會面臨以下問題：</p>
+<p>1 置換加密通病</p>
+<p>2 明文空間有限，密鑰比明文長</p>
+<p>3 置換羣存在不變形陷阱</p>
+<p>4 密鑰長度增加並不能有效提高保密性</p>
+<p>&nbsp;</p>
+<p><strong>結論</strong></p>
+<p>這個加密方法並不安全，用來表白應該不錯。</p>
+<p><strong>延伸閱讀</strong></p>
+<p>【0】安全性 ：<a href="https://www.zhihu.com/question/47316089">在有限專家間評議加密算法是不是比直接公開更安全？ - 網絡安全</a></p>
+<p>【1】置換羣 ：<a href="https://en.wikipedia.org/wiki/Permutation_group">Permutation group</a></p>
+<p>【2】AES 加密： <a href="https://en.wikipedia.org/wiki/Advanced_Encryption_Standard">Advanced Encryption Standard</a></p>
+<p>【3】置換加密： <a href="https://en.wikipedia.org/wiki/Transposition_cipher">Transposition cipher</a></p>
+<p>【4】對稱加密： <a href="https://en.wikipedia.org/wiki/Symmetric-key_algorithm">Symmetric-key algorithm</a></p>
+<p>太晚了，我先睡了，想到什麼明天再補充好了</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div>
