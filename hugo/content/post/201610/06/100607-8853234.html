@@ -1,0 +1,97 @@
++++
+date = "2016-10-06T07:00:00"
+title = "假期拍了很多照片，來教你修出「日系」風格"
+titleimage = "http://pic3.zhimg.com/6e4d219d6f09c972a65290629fc2d572.jpg"
+ga = 100607
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title">這種日系調色風格怎麼實現？</h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>首先祝大家國慶節快樂啊！</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/3295a28613e06c319a4839a7c638bff1_b.jpg" alt="">
+<p>這張照片中，我覺得有三個後期特徵很值得注意，似乎之前也沒有遇到過類似的案例。</p>
+<p><strong>一、天空的形態</strong></p>
+<p>大家注意觀察這張照片中的天空部分，它並不是我們常見的天空形態，而是像被糊上了一層青色，並且它的影響範圍僅僅侷限於畫面的上半部分，並沒有延伸到畫面整體，形成的是一個線性漸變效果。</p>
+<p><strong>二、馬路的色彩</strong></p>
+<p>這張照片中馬路的色彩呈現出明顯的藍色，但是牆壁部分受到藍色的影響則較小。</p>
+<p><strong>三、整體的色調</strong></p>
+<p>畫面整體的色調偏冷色，但是又沒有明顯的低光缺失或者高光缺失特徵。</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/8b9aa23c377e4030339be27d8b1da8d6_b.jpg" alt="">
+<p>通過直方圖我們可以看到，畫面的整體亮度還是偏亮的，在畫面的陰影部分只有極少部分的像素。</p>
+<p>因此，我們的後期思路是：</p>
+<p><strong>一、提亮</strong></p>
+<img class="content-image" src="http://pic2.zhimg.com/70/a573e03063025a1b49250d08cb3781f5_b.jpg" alt="">
+<img class="content-image" src="http://pic1.zhimg.com/70/8aba4e2d1bd5f4aa7cca655e4d0e4fa0_b.jpg" alt="">
+<p>效果如圖：</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/1029b135de069695aeda6f2be8ff3c93_b.jpg" alt="">
+<p><strong>二、渲染馬路顏色</strong></p>
+<p>我們在渲染馬路色彩的時候，可以直接使用色彩平衡工具，通過爲陰影加入青色來渲染馬路的色彩。</p>
+<p>但是經過操作我們發現，陰影在畫面中對應的區域還是過大，導致畫面整體都會受到調整的影響：</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/6dcf490ce98b162a88a30602fca92d8d_b.jpg" alt="">
+<img class="content-image" src="http://pic3.zhimg.com/70/338be8d99fd9f3b805e90fb072ce903a_b.jpg" alt="">
+<p>這時候我們就可以採用分區調整的思想，讓我們的效果只應用到畫面的局部。</p>
+<p>我們對色彩平衡工具應用一個蒙版，使其效果只應用到地面：</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/ca2a69b2482fe021ad3644480b9fc39f_b.jpg" alt="">
+<img class="content-image" src="http://pic2.zhimg.com/70/6dcf490ce98b162a88a30602fca92d8d_b.jpg" alt="">
+<img class="content-image" src="http://pic1.zhimg.com/70/c4883dff860988aef81da09d86cd60ac_b.jpg" alt="">
+<p>分區調整思想的應用非常廣泛，色彩平衡工具、選區 + 調整、蒙版 + 調整、高低光調整等等都是分區調整，只不過分類依據不一樣而已，我們可以根據自己的需要靈活選擇。</p>
+<p><strong>三、調整色階</strong></p>
+<p>我們調整一下色階值，讓畫面更加通透：</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/ddc8579359cee1009a12e13595fe6848_b.jpg" alt="">
+<img class="content-image" src="http://pic4.zhimg.com/70/51e5188b2f19039d5f1cb1a0dd0a1263_b.jpg" alt="">
+<p><strong>四、渲染畫面色調</strong></p>
+<p>然後我們新建一個圖層，填充顏色：</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/fc688d8b950fad0a66889e702673733c_b.jpg" alt="">
+<p>然後把這個圖層的混合模式改爲柔光，畫面效果如圖：</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/95e49ca96cc93c7e5145670982a874d9_b.jpg" alt="">
+<p>我們要注意柔光混合模式的一個重要特徵，那就是如果我們填充的柔光層較亮，畫面最後會變亮，填充的柔光層較暗，畫面最後會變暗。</p>
+<p>因爲我們的顏色都是從效果圖中獲得的，因此用柔光層 + 混合模式的方法來渲染色彩，不僅僅能夠讓畫面的色彩與效果圖靠近，還能讓畫面的曝光與效果圖靠近，這是柔光層的獨特作用。</p>
+<p><strong>五、渲染天空形態</strong></p>
+<p>最後我們來渲染天空的形態，我們首先新建一個圖層，然後拉一個青色到無色的漸變，畫面效果如圖：</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/6dbe8317a761011bf84c704f7c81d919_b.jpg" alt="">
+<p>如果我們僅僅只是調整圖層的不透明度，是很難達到原圖的效果的：</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/365b2a32960347e0cafc26d5e697809b_b.jpg" alt="">
+<p>這時候我們就要用到一個混合模式：深色混合模式。</p>
+<p>深色混合模式的計算原理就是將混合層和原圖層的像素進行比較，誰的像素比較暗，最終圖像就用哪個圖層的。</p>
+<p>它與變暗混合模式的區別是，變暗混合模式是單個通道的比較取較暗者，而深色混合模式是整個像素比較取較暗者。因此：深色混合模式不會產生新的顏色，而變暗混合模式會產生混合層和原圖層兩個圖層之外的新的顏色。</p>
+<p>在這裏，我們不需要產生新的顏色，只需要讓我們的漸變圖層與原圖層融合即可，因此選擇深色混合模式。</p>
+<p>我們將漸變圖層的混合模式改爲深色，效果如圖：</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/c5355f5f36559b466a7ec81dce43e532_b.jpg" alt="">
+<p>最後再整體銳化一下，調整一下對比度：</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/caec6fefb026c8e8d296a64dc5f2921f_b.jpg" alt="">
+<img class="content-image" src="http://pic2.zhimg.com/70/3295a28613e06c319a4839a7c638bff1_b.jpg" alt="">
+<p>這一張照片有三個地方值得玩味：</p>
+<p>一是這種幕布式的天空。</p>
+<p>二是分區調整的後期思想。</p>
+<p>三是柔光混合模式在曝光和色彩上的跟隨性。</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div>
