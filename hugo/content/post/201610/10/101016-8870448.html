@@ -1,0 +1,81 @@
++++
+date = "2016-10-10T16:00:00"
+title = "把照片調出電影質感，有了它方便好多"
+titleimage = "http://pic4.zhimg.com/ae402acdd45d42c452928d4e0ae952ff.jpg"
+ga = 101016
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title">《神探夏洛克》《魔戒》《霍比特人》中那種畫面的畫質色調是怎麼調的？如何把一張圖片以及一段視頻調成這樣？</h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>首先要說的是電影的調色模式根照片是不同的。</p>
+<p>電影工業的標準調色模式大多爲 3D Lut, 即 3D Lookup Table，</p>
+<p>其實就是一個顏色映射表。</p>
+<p>類似於這種：</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/028617f4260e99c62ccc017d516aaa27_b.jpg" alt="">
+<p>表中的每一個座標方向都有 RGB 通道。這使得你可以映射並處理所有的色彩信息，無論是存在還是不存在的色彩,或是某些膠片也無法達的色域。</p>
+<p>最早的 3D lut 是爲了解決電影內顏色統一的問題。</p>
+<p>比如，一部電影的拍攝過程中因爲種種原因換用了幾種不同的膠片，每種膠片的色彩曲線都是不同的，顯然這種大範圍的色彩變化是無法被接受的。於是呢，就有人開發出了一種色表，即 3D lut，將不同來源的圖像按照表中色值進行映射和替換，那麼最終就獲得了統一的色彩。</p>
+<p>後來有人說不給力啊，能不能來點更炫酷的色彩？</p>
+<p>於是便出現了定製的 Lut，即每部電影都可能存在一個獨特的專有的色表。</p>
+<p>那麼問題來了</p>
+<p>這麼個高大上的玩意到底能不能用到照片上？</p>
+<p>&nbsp;</p>
+<p>直接上幹。</p>
+<p>現在我們有這樣一張很普通的照片：</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/13268bdae8ca63008151eaf7afa7432f_b.jpg" alt="">
+<p>Nikon D800E 直出，RAW 文件直接在 ACR 裏打開。</p>
+<p><em>不知道 ACR 是什麼戳這裏：<a href="http://help.adobe.com/zh_CN/creativesuite/cs/using/WS438DC1E5-3DA4-49a2-A625-A87156D488A3.html">http://help.adobe.com/zh_CN/creativesuite/cs/using/WS438DC1E5-3DA4-49a2-A625-A87156D488A3.html</a>）</em></p>
+<p>現在我們要做的就是把這張圖灰化，因爲灰化圖像可以最大程度的顯現圖像細節。</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/b1982425aba2c53bf1e9bb650bd5981e_b.jpg" alt="">
+<p>解釋下這個參數，對比度儘可能的拉低，高光拉低，陰影拉高，白色拉低，黑色相反。數值不是絕對。做完差不多是下面這樣：</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/13a1aeeec1645b685887e0e64551f7bd_b.jpg" alt="">
+<p>這就是灰化的圖像，看着不是很舒服。</p>
+<p>然後在 Photoshop 中打開圖像</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/8041f0a28cf4dd3076dee88b41db4799_b.jpg" alt="">
+<p>在右邊工具欄裏面找到顏色查找，就會看到這個面板，3D Lut 直接可以載入。</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/85bd440a837cbacb41fccf3b1616c4ff_b.jpg" alt="">
+<p>這是我平時用的 Lut 文件，可以自行下載。</p>
+<p>現在我使用一個自己常用的一個 lut 文件應用到這張圖上</p>
+<p>出來效果如下</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/6d824bb23ff769c4f2fce5882698ef5d_b.jpg" alt="">
+<p>顏色略微有點怪，不過已經有了一種很炫酷的感覺</p>
+<p>於是再做個灰度蒙板（灰度蒙板是什麼請自行搜索）基本就可以保存了。</p>
+<p>上面這張爲了演示隨意做的，之前做的比較完美的色調應該是下面這種效果</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/ee007967df2f8371c51667511be6dd12_b.jpg" alt="">
+<p>是不是其他調色方式都弱爆了？</p>
+<p>BTW</p>
+<p>這種調色方式並不一定適用於所有場景，並且也收到 3D lut 文件的限制。一般網上下載的 3D lut 都是別人做好針對某一些列場景活着模擬某種色標的設定。真正的電影 Lut 一般接觸不到，而且就算有價格也極其昂貴。但是這個玩意如果你學過美術對色彩敏感的話，是可以自己做的&hellip;&hellip;</p>
+<p>另外補充一點，視頻的處理和圖片是相同的流程，只不過免去了 ACR 的過程，Photoshop 可以編輯視頻。</p>
+<hr>
+<p>電影質感的照片會調了吧，好看的膠片質感又怎麼調呢？想學習的話，去聽聽 Timothy Wang 的 Live 吧 &mdash;&mdash; <a href="https://www.zhihu.com/lives/744497206337232896?utm_campaign=zhihulive&amp;utm_source=zhihudaily&amp;utm_medium=daily_story">膠片色調的實現原理</a></p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div>
