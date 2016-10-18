@@ -1,0 +1,64 @@
++++
+date = "2016-10-18T13:00:00"
+title = "咦，爲什麼幾根棉籤放在盒子裏，會自動組成這種形狀？"
+titleimage = "http://pic4.zhimg.com/58c4fa28d9c85ebae9d35376fea8008b.jpg"
+ga = 101813
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title">棉籤或者牙籤，用到一半的時候，呈螺旋狀排列是什麼原理？</h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>這個東西叫做單葉雙曲面：</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-8ce2789108c6cd2390d907089cae41bb_b.jpg" alt="">
+<p>（圖片來源：<a href="http://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Hyperboloid">Hyperboloid</a>）</p>
+<p>其實這個方程是能推導出來的。題主問的是爲什麼會形成這個形狀，那麼我們就來歸納一下棉籤到底處於什麼樣的條件。</p>
+<p>首先對於單根的棉籤而言，不難理解受到重力作用下滑，最終兩端都在棉籤桶的壁上。而對於多根棉籤而言，由於他們的粗細和長度都相同，因此這裏存在了兩個約束條件：</p>
+<p>1. 它們頂點和底端都在一個圓上。</p>
+<p>2. 緊鄰的兩根棉籤距離相同（也就是這個圓上的圓心角差距相同）。</p>
+<p>接下來是粗糙的數學推導：</p>
+<p>隨便找一根棉籤，假設它上下的座標分別是：</p>
+<p>（cosA, sinA, 1）和（cosB, sinB, -1）</p>
+<p>這裏假設了這個圓半徑是 1，棉籤自然垂落的高度是 2。具體數字並不影響最終形式，只是爲了方便推導。</p>
+<p>那麼緊跟着它的一根棉籤，旋轉了一個小角度 x，上下座標就應該是：</p>
+<p>（cos（A+x）, sin（A+x）, 1）和（cos（B+x）, sin（B+x）, -1）</p>
+<p>那麼：</p>
+<p>1. 兩點可以確定一條直線。</p>
+<p>2. 這條直線對於任意 x 成立，確定一條面。</p>
+<p>於是我沒事幹推導了一下&hellip;&hellip;</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-4dfacae2e3a6c11cfefb9bfbad249632_b.jpg" alt="">
+<p>假設 B 等於 0，就是選一個特殊的起始點咯，然後第一個推導是兩點的直線方程。後面暫時用 K 代替簡化計算。</p>
+<p>第二個推導就是把 x 和 y 分別弄出來。</p>
+<p>第三個推導就是暴力運算了。</p>
+<p>第四個推導只是把形式變得好看，類似於下面這個：</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-d64767fa5172974524512efb06e6aaba_b.jpg" alt="">
+<p>也就是單葉雙曲面的方程。</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div>
