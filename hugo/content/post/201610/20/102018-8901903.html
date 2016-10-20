@@ -1,0 +1,45 @@
++++
+date = "2016-10-20T18:00:00"
+title = "筆記本電腦的外接電源和電池是怎麼實現無縫切換的？"
+titleimage = "http://pic1.zhimg.com/fcb595443bf291d48948ceb3afbd899c.jpg"
+ga = 102018
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title"></h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>認爲電池可以一邊充電一邊放電是消費者羣體裏面常見的認識誤區，實際上電池充電和放電兩個狀態是不能同時存在的。</p>
+<p>現在的消費級筆記本大多把充電控制（Charger）和 PPM 功能做到同一個芯片裏，以 TI 的 BQ24725A 爲例：，適配器掛在系統電源母線上而電池通過一個負載開關才能接入母線，是典型的 Power-Selector 架構。</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-a6520aa1b748ce3eaf52130a0ce09978_b.jpg" alt="">
+<p>這款 IC 出貨量大得難以想象，官網標價$2，市場上兩塊人民幣就能拿到。兩個紅框裏面的 NFET Driver 就是用於實現 PPM 功能的晶體管開關。具體來說，當使用者把外部的電源適配器接入筆記本電腦時，這個芯片就會通過內置的適配器檢測機制得知適配器是否正常接入。確認無誤後會將右邊紅框的 NFET 關斷，此時電池依舊可以通過並聯的體二極管給系統供電，這時適配器還沒有和筆記本內部的電源系統連接上。在等待大約 100ms-1s 後 IC 纔會控制左邊的 NFET 導通，這時候由於系統母線上的電壓比電池電壓高，右邊 NFET 的體二極管會被強迫截止進入關斷狀態，系統的電源母線得以平滑過渡到外部適配器供電狀態。當用戶把適配器拔出的時候則反之。</p>
+<p>外部供電時操作系統的底層驅動和 BIOS 可以根據用戶設置或電池的 SoC 狀態決定是否給電池充電。黑框裏的是給電池充電的降壓電路，不難發現這個充電電路只能從系統母線上取電，而電池接入電源母線和適配器接入母線在邏輯上是互斥的，這就避免了一邊充電一邊放電和先充後放這類問題。</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div>
