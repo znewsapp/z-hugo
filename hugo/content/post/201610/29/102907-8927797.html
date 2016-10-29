@@ -1,0 +1,87 @@
++++
+date = "2016-10-29T07:00:00"
+title = "識別一秒鐘，線下十年功：語音輸入如何一分鐘 400 字"
+titleimage = "http://pic1.zhimg.com/39bbfbd04d827adbad9cd69ee281da98.jpg"
+ga = 102907
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+<div class="question">
+<h2 class="question-title"></h2>
+<div class="answer">
+
+
+
+<div class="content">
+<p>文章來自<a href="https://www.zhihu.com/org-intro">機構帳號</a>：「<a href="https://www.zhihu.com/org/ke-da-xun-fei">科大訊飛</a>」</p>
+<hr>
+<p>18 號晚錘子手機發佈會上，讓老羅始料未及的除了新手機賺足關注目光外，還意外地讓我司產品 &mdash;&mdash; 訊飛輸入法火了起來。其實，訊飛輸入法早在 2010 年 10 月 28 日推出（是的，今天是訊飛輸入法六週年！），初面世就支持語音輸入，是<strong>業界最早實現語音輸入的輸入法</strong>。正如老羅發佈會所展現的那樣，以老羅的語速和口音，發佈會現場識別準確率竟然 100%。</p>
+<p><strong>高識別率如何煉就</strong></p>
+<p>所謂<strong>&ldquo;識別一秒鐘，線下十年功&rdquo;</strong>，訊飛輸入法語音輸入 97% 的正確率，是如何煉就的呢？</p>
+<img class="content-image" src="https://pic2.zhimg.com/v2-07ebb77f07ff40d69aa1497580ba743d_b.jpg" alt="">
+<p>首先，想讓語音秒變文字<strong>，首先得讓機器&ldquo;聽懂&rdquo;你在說什麼。</strong>這項技術，我們稱爲&mdash;&mdash;<strong>語音識別（Speech Recognition）</strong>。語音識別就好比&ldquo;機器的聽覺系統&rdquo;，讓機器通過識別和理解，能夠把語音信號轉變爲相應的文本或命令。</p>
+<p>事實上，在極短的時間內，機器內的語音識別系統已經經歷了一個極爲複雜的分析過程。而爲了使語音識別系統有能力、更精確的進行這個分析過程，同樣也需要花大力氣提前準備好模型等相關資源。</p>
+<img class="content-image" src="https://pic4.zhimg.com/v2-6be822959d33c040135f73f9957d1a0f_b.jpg" alt="">
+<p>（圖：主流的語音識別系統框架圖）</p>
+<p>當你對着手機說話時，目標語音首先被數字化並送入系統的<strong>前端模塊</strong>，<strong>前端模塊主要包含語音信號處理和語音特徵處理兩部分</strong>。其中信號處理部分是爲了改善識別效果受環境噪聲、信道畸變等因素的影響，而特徵處理則是將輸入語音進行某種符合語音識別需求的&ldquo;轉換&rdquo;<strong>（讓手機聽懂&ldquo;人話&rdquo;</strong>）。</p>
+<p>除此以外，一個好的前端模塊還需提升語音識別系統<strong>魯棒性</strong>（Robust 音譯，穩健的意思，也可以理解爲不&ldquo;宕機&rdquo;）的重要因素。在確定了上述的語音特徵處理等規則之後，接下來的任務就是教會機器聽懂人話，這個教學過程就是語音識別系統的<strong>模型訓練</strong>階段了。</p>
+<p><strong>模型訓練一般又分爲聲學模型訓練和語言模型訓練。</strong>其中<strong>聲學模型訓練</strong>是教會機器學會<strong>&ldquo;哪個字詞發什麼音、該怎麼連在一起讀&rdquo;</strong>，有點像我們小學時候跟着老師讀拼音的趕腳，<strong>而語言模型訓練</strong>是教會機器<strong>&ldquo;什麼樣的命令或文字組合是合理的、更常見的&rdquo;</strong>，我們通過將包羅萬象的百科全書輸入到機器的&ldquo;記憶&rdquo;中並通過合適的方式引導它&ldquo;閱讀&rdquo;，使得機器可以&ldquo;出口成章&rdquo;。</p>
+<p>在完成後臺的模型訓練和輸入語音的前端處理以後，我們就可以將他們一起送入語音識別系統的<strong>解碼引擎</strong>了。解碼引擎的工作是在一個巨大的網絡裏邊進行搜索，這個網絡由數億節點及弧組成，並且裏邊已經糅合了前邊所描述的聲學模型以及語言模型信息，搜索出來的最優路徑上所攜帶的信息就是對應的語音識別結果了。</p>
+<p><strong>解碼引擎的運算效率至關重要，直接影響到用戶體驗。目前，科大訊飛的解碼引擎可以在用戶說完話 40 毫秒之內給出結果</strong>。並且，通過把國際領先的<strong>深度神經網絡技術</strong>引入語音識別，通過海量訓練語料基礎上的高精度聲學模型和語言模型訓練，並結合極致的解碼引擎工程技術，給識別效果和識別速度帶來了跨越式的提升。大詞彙連續語音識別率達到&nbsp;<strong>97%&nbsp;</strong>以上，&ldquo;秒懂&rdquo;已不再是幻想。</p>
+<p>沒想到吧，老羅那幾百字的即興語音輸入，背後竟蘊含着如此複雜的技術。</p>
+<p><strong>語音識別還有哪些&ldquo;花樣&rdquo;</strong></p>
+<p>要想成爲國際語音識別的&ldquo;扛把子&rdquo;，光識別率高是遠遠不夠的。所以，我們還玩出了其他的&ldquo;花樣&rdquo;。</p>
+<p><strong>【</strong><strong><strong>聽得懂方言</strong>】 <br></strong></p>
+<p>中國地大物博、幅員遼闊。吃的五花八門，說的更是各有特色。對於普通話不&ldquo;普通&rdquo;的人來說，機器能聽懂&ldquo;方言&rdquo;嗎。</p>
+<img class="content-image" src="https://pic4.zhimg.com/v2-728547e7778970c1dc2b968e9df0302f_b.jpg" alt="">
+<p>目前訊飛輸入法已經支持合肥話、四川話、客家話、山東話、東北話、粵語、客家話等 19 種方言的識別。</p>
+<p>讓機器懂方言，怎麼實現呢？</p>
+<p>先從<strong>數據方面</strong>說起<strong>，</strong>其實科大訊飛的普通話水平測試覆蓋全國 31 個省，超過 1500 萬考生參加了測試，他們的發音真實反映了全國各地的方言發音特色。藉助這些海量普通話水平測試的數據，我們對全國各地的方言現象，都持續通過自動挖掘並配合人工輔助的方式積累了一套基於知識或規則的資源。</p>
+<p>訊飛開放平臺自 2010 年發佈至今，覆蓋終端用戶數超過 8.9 億，日服務量達 30 億次。通過結合基於 PSC 數據訓練的模型對這些真實數據進行自動分析和分類，可以對各地區方言數據產生很好的補充，進一步發揮迭代優化的作用。</p>
+<p><strong>在技術方面，</strong>我們分別針對全國八大方言區各自的特性來構建獨立的方言識別系統。考慮到方言訓練數據量相對於普通話數據明顯稀少，我們採用獨特的<strong>&ldquo;受限多方言混合深度神經網絡&rdquo;</strong>方案來完成相應模型的構建。方言資源的累積過程和方言模型訓練過程詳見下圖。</p>
+<img class="content-image" src="https://pic3.zhimg.com/v2-9edce709225192c039402464747b2b3e_b.jpg" alt="">
+<p>（圖：方言識別系統構建流程圖）</p>
+<p>利用這樣的方案，訊飛也成爲業界可以對方言進行識別獨家。</p>
+<p><strong>【離線也可識別】</strong></p>
+<p>現在很多智能設備離開網絡，就成了&ldquo;板磚&rdquo;。其實，要做到&ldquo;離線識別&rdquo;在技術上存在很大難度。要實現精準的語音識別，超強的計算能力和超大的內存空間是必需品，以我們雲計算方式的語音識別爲例，運算服務器需要搭載幾十核心的 CPU 以及上百 G 的內存，這樣的配置在我們智能終端上是可望不可及的。在智能終端區區幾十 M 可用內存以及雙核甚至單核的計算能力的基礎上，要想獲得不錯的識別效果，這是一個巨大的挑戰！</p>
+<img class="content-image" src="https://pic2.zhimg.com/v2-c913f487fcb769bcda842224bdcbd259_b.png" alt="">
+<p>這個難關，已經被我們突破了哦~</p>
+<p><strong>在沒有網絡環境情況下也能進行識別，這項技術便是我們所說的&ldquo;離線識別&rdquo;。</strong>科大訊飛採用了<strong>創新的模型壓縮技術及幀半同步解碼方案，</strong>率先推出了業界首個<strong>達實用的離線語音聽寫引擎，</strong>將近乎不可能變成了可能。在常用領域識別準確率接近雲端效果，成爲語音雲聽寫服務的有效補充，是目前業界<strong>最輕量級識別效果最好的離線聽寫引擎。 </strong></p>
+<p>沒流量、信號弱... ... 都不再是語音識別的阻礙<strong>。</strong></p>
+<p><strong>【個性化識別】　</strong></p>
+<p>機器在這個時代，變得不再冷冰冰。人機交互的加深，機器日益懂的人類的需求。在語音識別領域，就指向爲個性化識別也就是<strong>語音識別系統具備自動學習並適應用戶使用習慣的能力</strong>。</p>
+<p>一般來說，<strong>個性化識別包括髮音和語言兩方面</strong>。其中發音個性化主要是指系統對<strong>用戶語速、口音等發音習慣的學習</strong>，而語言個性化主要是指系統可以對用戶的特定詞彙（例如通訊錄、口頭禪等）具備更好的辨識性。</p>
+<p>比如，你像老羅那樣說話的語速很快，這時，協同發音比較明顯，傳統識別系統的準確性一般會有下降趨勢。往往說話速度越快，識別效果下降得越明顯。</p>
+<p>科大訊飛的語音識別系統一方面針對語速等發音現象<strong>設計了自動檢測及規整算法</strong>，<strong>以降低其多變性對識別效果的影響</strong>；另一方面，通過國際領先的<strong>&ldquo;基於說話人編碼和 i-vector 的深度神經網絡自適應算法&rdquo;</strong>，以完全不需要人工干預的方式率先在產品中解決了深度學習框架下的說話人自適應問題。在加入這些發音個性化技術以後，即使在語速特別快的情況下，也能實現準確的識別。</p>
+<p><strong>除了上面的發音個性化以外，訊飛還實現了語言個性化，這項技術更加複雜，當然也更加實用。</strong></p>
+<p>語言個性化指系統能針對<strong>每個人的興趣點、知識背景</strong>等來進行個性化語言模型建模，使系統的知識背景與說者一致，這樣才能準確識別出用戶個性化的詞彙內容，讓語音識別變得更加聰明，更懂用戶。但這在通用的語言模型一般是無法完成對其的識別的，尤其在自由的上下文中識別出這些專屬名詞更是難上加難。</p>
+<p>科大訊飛是如何解決這項難題的？</p>
+<p>我們在方案上需要應用上&ldquo;<strong>類別語言模型建模</strong>&rdquo;和&ldquo;<strong>動態語言模型建模</strong>&rdquo;等核心技術。考慮到語音識別對實時響應的高要求，需要在極短的時間內，利用通用的<strong>超大規模靜態語言模型</strong>和<strong>用戶的個性化信息</strong>（例如通訊錄人名、專有詞庫等）實時構建出動態的、超大規模個性化語言模型並完成解碼過程，這些對技術的要求都是極高。</p>
+<img class="content-image" src="https://pic2.zhimg.com/v2-789b40e9d56b27fbe5239c18376d289d_b.jpg" alt="">
+<p>（圖：語言個性化方案）</p>
+<p><strong>打個比方，這個過程就好像是&ldquo;在全世界幾十億人中瞬間找到所有穿粉紅色衣服的、自然捲的、穿耐克鞋的黑衣人&rdquo;。</strong> 是不是有種&ldquo;大海撈針&rdquo;的感覺。</p>
+<p>另外，<strong>【麥克風陣列】</strong>對語音識別也有&ldquo;加持&rdquo;的作用，前面就有篇文章專門提到這個技術，可以戳右邊鏈接查看 <a class="internal" href="https://zhuanlan.zhihu.com/p/22512377">自然的語音交互 &mdash;&mdash; 麥克風陣列</a></p>
+<hr>
+<p>「知乎<span class="lG">機構</span><span class="lG">帳號</span>」是<span class="lG">機構</span>用戶專用的知乎<span class="lG">帳號</span>，與知乎社區內原有的個人<span class="lG">帳號</span>獨立並行，其使用者爲有正規資質的組織<span class="lG">機構</span>，包括但不限於科研院所、公益組織、政府機關、媒體、企業等。這不僅是知乎對<span class="lG">機構</span>的「身份認證」，更是涵蓋了內容流通機制、<span class="lG">帳號</span>規範等全套<span class="lG">帳號</span>體系。和個人<span class="lG">帳號</span>一樣，<span class="lG">機構</span><span class="lG">帳號</span>開通不需要任何費用，同時也受社區規範的監督管理，並要遵守相關協議。目前<span class="lG">機構</span><span class="lG">帳號</span>入駐採用邀請制。您可以通過 &nbsp;<a href="http://zhihu.com/org-intro" target="_blank">什麼是「知乎機構帳號」</a>&nbsp;來了解更多<span class="lG">機構</span><span class="lG">帳號</span>信息。&nbsp;</p>
+
+
+
+</div>
+</div>
+</div>
+
+
+</div>
+</div>
