@@ -1,0 +1,98 @@
++++
+date = "2016-11-03T19:00:00"
+title = "給飲料裏吹氣玩，爲什麼出來的泡泡都是五 / 六邊形？"
+titleimage = "http://pic3.zhimg.com/2912ac1bd99c7c4c1a65c0cab283d33a.jpg"
+ga = 110319
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title"></h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>題主對生活中的小現象作出了非常有趣的觀察，也得到了比較正確的結論。</p>
+<p>事實上，對於類似於題主照片中的那樣的（準）二維的泡泡堆積結構，有一個確定的結論，即<strong>這些泡泡的平均邊數是 6</strong></p>
+<p>這是一個由泡沫堆積結構的幾何性質，加上歐拉公式所給出的結論，證明如下。</p>
+<p><img class="content-image" src="http://www.zhihu.com/equation?tex=V-E%2BF%3D2" alt=""></p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=V%3D4%2CE%3D6%2CF%3D4" alt="">
+<p>歐拉公式的證明可參見：</p>
+<blockquote><a href="https://www.ics.uci.edu/~eppstein/junkyard/euler/">Euler's Formula </a>提供了二十種不同的證明 <br>以及：<a href="http://math.rice.edu/~pcmi/sphere/gos6.html">The Geometry of the Sphere 6</a>給出了一種較爲直觀的證明</blockquote>
+<p><img class="content-image" src="http://www.zhihu.com/equation?tex=V-E%2BF%3D1" alt=""></p>
+<p>推導如下：（由下文可知，該式等號右邊具體的數值其實並不影響結論，沒有興趣的讀者可略過以下證明）</p>
+<p>此式可直接由對於凸多面體的歐拉公式導出。對於一個非常大（但有限）的二維平面網絡，我們可以想像把這個網絡覆蓋包裹在一個球面上，這樣，這個網絡在球面上形成了一個大多面體，同時其邊界在球面上形成了一個新的&ldquo;面&rdquo;。對於大多面體，歐拉公式</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=+V-E%2BF%3D2" alt="">
+<p>由此出發，我們可以繼續推導二維泡沫結構的平均邊數。</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/6b6e27ce4dff45fc9dc20d97ccea910d_b.jpg" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%3Cn%3E" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=F%3Cn%3E%3D2E%3D3V" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cfrac%7BF%7D%7B3%7D%3Cn%3E-%5Cfrac%7BF%7D%7B2%7D+%3Cn%3E%2BF%3D1" alt="">
+<p><strong>解得：</strong></p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%3Cn%3E%3D6%5Cleft%28+1-%5Cfrac%7B1%7D%7BF%7D++%5Cright%29+%5Crightarrow+6" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=F" alt="">
+<p>事實上實驗發現，對於這種二維的泡沫堆積結構，其邊數 n 的分佈正是一個峯值 n=6 的分佈，如圖（紅線）：</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/36339471d8534e56aff62af3f471d807_b.jpg" alt="">
+<blockquote>圖片引自：The physics of foam.ppt Simon Cox, The University of Wales</blockquote>
+<p>到這裏便回答了題主的問題，也修正了題主的觀察，即（準二維的）泡沫大多數 5、6、7 邊形的。</p>
+<p>補充：</p>
+<p>一.</p>
+<p>在評論中有知友提到該問題的關鍵在於&ldquo;爲什麼頂點總是被三個泡泡共用&rdquo;。</p>
+<p>在 @Haoxing 的回答中提到了 Plateau's Law</p>
+<blockquote><a href="https://en.wikipedia.org/wiki/Plateau%27s_laws">Plateau's laws</a></blockquote>
+<p>以及相應的證明，即這種結構是要求表面積最小的必然結果。</p>
+<p>我試圖在這裏給出一個形象化的、比較物理的理解。</p>
+<p>考慮一個頂點由四個泡泡共用，如下圖的中圖所示：</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/63da9d017b7a5b57de87d96a05ad742d_b.jpg" alt="">
+<blockquote>圖片引自：The physics of foam.ppt Simon Cox, The University of Wales</blockquote>
+<p>從幾何的角度而言，左圖和右圖的結構雖然較之中圖多了一條邊，但總的表面積（線段長度總和）還是減少了。（可證明）</p>
+<p>從力學角度而言，中圖那樣的結構是二階不穩定的，即微小的擾動便會讓體系偏離該狀態，而左右兩圖的結構是二階穩定的。</p>
+<p>二.</p>
+<p>事實上對於任意一個二維點陣（如下圖中的方塊點）：</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/2fa62d6c7761344e0f8e528ede4b31c6_b.jpg" alt="">
+<p>都可以進行所謂 voronoi 分塊（即上圖通過實線分出的各個區域）</p>
+<blockquote><a href="https://en.wikipedia.org/wiki/Voronoi_diagram">Voronoi diagram</a></blockquote>
+<p>對於這樣一個網絡圖形，上文提到的結論</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%3Cn%3E%3D6" alt="">
+<p>同樣成立。所以該結論源自幾何約束，只和分塊的方式（即每個點都連接三條邊）以及網絡所在的空間（即二維平面）有關，（準二維）泡沫只是其中的一個真實世界中的特例。</p>
+<p>蜂巢是另一個更有名的真實例子，每個&ldquo;面&rdquo;都是六邊形的，</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%3Cn%3E%3D6" alt="">
+<p>顯然成立。</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/ada6e43cb7de83b17ea6d8918a190a5b_b.jpg" alt="">
+<p>三.</p>
+<p>本問題另一個回答中提到 D.Weaire 教授在 The physics of foams 一書中提到&ldquo;36% 的臨界含水量，大於該含水量則體系成爲液態的泡泡流，低於該含水量泡泡成爲多面體&rdquo;</p>
+<p>（放假賦閒在家，沒法去學校看這本書的原話，只能說說我的猜測）</p>
+<p>對於單一大小的光滑球體的空間隨機堆積問題，有一臨界的堆積狀態，被稱作 random close packing，該堆積的密度在實驗上被認爲是 64%左右。（<strong>注意剛好是 100%-36%！！</strong>）</p>
+<p>請參見</p>
+<blockquote><a href="https://en.wikipedia.org/wiki/Random_close_pack">Random close pack</a></blockquote>
+<p>小於這個堆積密度，對泡沫而言即含水量高於 36%，泡泡不互相接觸擠壓；大於該堆積密度（含水量低於 36％）時，泡沫互相積壓，其形狀從球形逐漸變爲多面體。題主照片中的泡沫的含水量接近於 0，所以每個泡泡其實都是被&ldquo;嚴重&rdquo;積壓爲多面體的球形。</p>
+<p>強調一點，<strong>以上說法只適用於三維空間中單一大小的球體的堆積問題</strong>，不應照搬到本回答主要討論的二維問題中。</p>
+<p>四.</p>
+<p>關於泡沫的科學研究從屬於軟物質科學，屬於凝聚態物理中的軟凝聚態物理，其背後的科學問題要比咖啡杯、肥皂泡、蜂巢等等深刻的多。</p>
+<p>簡而言之，泡沫與堆積問題（純數學領域）、優化算法（計算機領域）、結構力學（力學）、化學、玻璃化轉變（凝聚態物理）、阻塞相變（複雜性科學）等科學問題都有直接或間接的聯繫，這裏不展開了。</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div>

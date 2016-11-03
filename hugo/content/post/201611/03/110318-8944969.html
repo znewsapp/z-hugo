@@ -1,0 +1,72 @@
++++
+date = "2016-11-03T18:00:00"
+title = "不小心長了個很會存儲信息的大腦"
+titleimage = "http://pic4.zhimg.com/a0becfa821b5b6d9e94d5a86d8cf3a7b.jpg"
+ga = 110318
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+<div class="question">
+<h2 class="question-title">大腦的網絡結構是存儲信息的最佳模式嗎？</h2>
+<div class="answer">
+
+
+
+<div class="content">
+<p><strong>寫在前面的話</strong></p>
+<p>最近跟幾個背景不同的小夥伴們搞了個 journal club（戳<a class=" wrap external" href="https://link.zhihu.com/?target=https%3A//reading-club.github.io/" target="_blank" rel="nofollow noreferrer">這裏</a>可以看細節內容），會從網絡結構方面來討論神經網絡和人工神經網絡。這個 journal club 的日程目前有五週，萬一以後還會有更多呢，所以叫 The 5-week Plus. 歡迎感興趣的同學一起來探討。</p>
+<p>大腦不是全連接</p>
+<p>考慮到大腦是一個高度摺疊的網絡結構，以及 pyramidal 神經元的 collaterals 在狹小的空間裏迂迴穿過樹突，直覺告訴我們大腦很有可能是全連接的。</p>
+<p>然而電生理數據發現，皮層的神經元網絡連接程度只有 10% 而已。所以問題是，大腦呈現出這樣 10%的連接強度，難道因爲這是最適合信息存儲的設置嗎？或者只是偶然或者進化不全？</p>
+<p><strong>信息存儲的兩種形式</strong></p>
+<p>對於大腦中信息存儲的方式，做計算神經科學的同行們提出了不少的猜想和模擬，其中有兩個假設和實驗數據吻合而被廣泛接受。一個是物理學中的概念 attractor state，另一個是基於 feedforward network 的形式提出的對 firing sequence 的存儲。</p>
+<p><strong>(1) attractor state and engram</strong></p>
+<p>物理學的概念就不贅述了（因爲我不是學物理的不想把臉拿出來被打）。這個 attractor state 的簡單例子就是在網絡中，有一小撮神經元的 firing rate 比背景強度更高。再一次祭出舊文，因爲讓我想起了<a class="internal" href="https://zhuanlan.zhihu.com/p/21278735">engram</a>的形式。</p>
+<img class="content-image" src="https://pic3.zhimg.com/v2-e1f8eb9f871e56e10fab7d8d866242b6_b.png" alt="">
+<p>比如在這個神經網絡中，這些藍色的神經元就是用來標記小鼠在這個環境下的記憶（或者信息）。不難看出，這個假設裏，被存儲的信息是基於特定的神經元 sub-group 的，sub-group 被激活，那麼記憶被提取。</p>
+<p><strong>(2) sequence storage and feedforward network</strong></p>
+<p>Attractor state 是被更廣爲接受的在 recurrent network 中用來存儲信息的形式。直到 Goldman 提出就算是一個沒有 feedback 的網絡中，也可以有信息被存儲下來。這是難以置信的。或者換句話說，信息因爲原樣傳遞而被保留下來了。</p>
+<img class="content-image" src="https://pic3.zhimg.com/v2-9a8d102adc5f980bf9aeacf713f74f06_b.png" alt="">
+<img class="content-image" src="https://zhihu.com/equation?tex=1%2F%5Ctau" alt="">
+<img class="content-image" src="https://pic2.zhimg.com/v2-164f437f9863439444aa4a64c83be1d9_b.png" alt="">
+<p>爲了保證信息的如實傳遞，即 firing rate 在不同位置序列上的神經元上保持不變，那麼隨着位置距離 raw inputs 的增加，相應的突觸強度應該增加，從上圖（中）到上圖（下）。這也說明在 feedforward network 中，信息雖然以 sequence 保留下來，然而最終體現在突觸強度上，和學習與記憶的生物基礎是吻合的。</p>
+<p><strong>從模型到連接</strong></p>
+<p>目前計算神經科學領域的研究，主要方法是提出模型，然後任意選定合適的（簡化的）網絡結構進行探索。這是長期爲實驗科學家所詬病的一點：你 run 出來的結果，跟我們有關係麼？</p>
+<p>這一篇 Brunel 的新文章就扛起了大旗，用機器學習的方法改變網絡連接的 connection matrix，基於不同的訓練方式（attractor state 或者 sequence storage），然後將最終學習到飽和的網絡結構與電生理測量數據作比較。如同教科書扔到臉上：你服不服。</p>
+<p><strong>perceptron learning algorithm</strong></p>
+<img class="content-image" src="https://zhihu.com/equation?tex=T" alt="">
+<img class="content-image" src="https://pic4.zhimg.com/v2-bbaa2c09c3fd8488478af33dc98cf9ef_b.png" alt="">
+<p>對於任意一個所需學習的 pattern，fire or not 將其所需要的突觸強度範圍進行了劃分。比如在上圖中，三個 pattern 就將該突觸的強度範圍限定到了白色區域。</p>
+<p><strong>大量的弱突觸和較強的雙向突觸</strong></p>
+<p>理論推導出來的結果和實驗結果有非常令人驚喜的吻合。</p>
+<img class="content-image" src="https://pic3.zhimg.com/v2-8eae9e1312c88a6ccf110012cd19b7e6_b.png" alt="">
+<p>比如，不管在哪種參數條件下，發現突觸強度的分佈都是零突觸居多，並且非零突觸呈現 truncated Gaussian distribution. 即弱突觸居多而強突觸更少。以及連接程度在貼近生物實際的參數範圍內，趨近於 0.1 的水平。上圖 C 的 EPSP amplitude 也是一個突觸強度的指標，灰色部分表示實驗數據，光滑曲線是理論值。</p>
+<img class="content-image" src="https://pic3.zhimg.com/v2-65b251b9fb8755f748f524330ba5573a_b.png" alt="">
+<img class="content-image" src="https://zhihu.com/equation?tex=+w_%7Bij%7D" alt="">
+<p><strong>這些都是令人信服的發現，說明我們大腦的網絡結構是有利於信息存儲的，這個 sparsely connected network 不是偶然的結果</strong>。</p>
+<p>更多分析請見<a class=" wrap external" href="https://link.zhihu.com/?target=http%3A//hanlu.io/blog/is-brain-optimal-for-information-storage/" target="_blank" rel="nofollow noreferrer">這裏</a></p>
+<p><a class=" wrap external" href="https://link.zhihu.com/?target=http%3A//www.sciencedirect.com/science/article/pii/S0896627308010830" target="_blank" rel="nofollow noreferrer">Goldman MS. Memory without feedback in a neural network. Neuron. 2009 Feb 26;61(4):621-34.</a></p>
+<p><a class=" wrap external" href="https://link.zhihu.com/?target=http%3A//www.nature.com/neuro/journal/v9/n3/full/nn1643.html" target="_blank" rel="nofollow noreferrer">G&uuml;tig R, Sompolinsky H. The tempotron: a neuron that learns spike timing&ndash;based decisions. Nature neuroscience. 2006 Mar 1;9(3):420-8.</a></p>
+<p><a class=" wrap external" href="https://link.zhihu.com/?target=http%3A//utmemoryclub.com/wp-content/uploads/2013/07/brunel2016.pdf" target="_blank" rel="nofollow noreferrer">Brunel N. Is cortical connectivity optimized for storing information [quest]. Nature neuroscience. 2016 Apr 11.</a></p>
+
+
+
+</div>
+</div>
+</div>
+
+
+</div>
+</div>
