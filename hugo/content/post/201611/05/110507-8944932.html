@@ -1,0 +1,122 @@
++++
+date = "2016-11-05T07:00:00"
+title = "特斯拉全系車輛都將完全自動駕駛，技術夠格了嗎？"
+titleimage = "http://pic1.zhimg.com/d79381f9298cb14b0abbc3b3f2bc0438.jpg"
+ga = 110507
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title">如何看待「特斯拉宣佈：全系在產車輛都將能夠完全自動駕駛」？</h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>更新部分主要補充一下無人車用<strong>傳感器的作用</strong>與<strong>無人車的架構</strong>（三個組成部分），還有推薦《創業美國》第 4 季第 1 期的節目，<strong>介紹了前兩天剛出了一起小交通事故的在新加坡做無人駕駛出租車測試</strong>（比 Uber 在匹茲堡的還要早哦！）<strong>的 nuTonomy！</strong>（視頻中也有一些無人車基礎知識的介紹）</p>
+<p><strong>無人駕駛汽車的傳感器及其作用</strong></p>
+<ul>
+<li><strong>GPS</strong>：用於定位；常用的高精度定位方法是使用差分定位設備，如 RTK-GPS，但需要額外架設固定差分基站，應用距離受限，而且易受建築物、數目遮擋影響。</li>
+</ul>
+<ul>
+<li><strong>激光雷達</strong>：用於定位以及障礙物檢測。激光的能量密度高、方向性佳，商用 LiDAR 使用的激光射線波長一般在 600nm 到 1000nm 之間（在汽車安裝的激光雷達的波長一般爲 905 納米），遠遠低於傳統雷達所使用的波長，不易發生衍射現象。由此，<strong>可以</strong><strong>準確測量視場中物體輪廓邊沿與汽車之間的相對距離【原理爲：利用激光的飛行時間（Time of Flight，ToL）和光速，可以計算出距離】與移動物體的速度</strong>。根據相對距離及激光發射的角度，這些輪廓信息形成點雲，<strong>可對周邊所有障礙物進行精準的建模，繪製出周圍環境的動態 3D 高精度地圖，精度可達到釐米級</strong>【注：<strong>波長較長的電磁波容易發生衍射現象，使得發射出去的電磁波只有少部分反射回來</strong>；激光雷達最大的特點就是測距的準確性和可靠性，還有高的角分辨率】但測量效果易受環境條件的影響（例如，<strong>在霧霾天氣下，PM2.5 的直徑個激光的波長在一個量級上，容易發生散射，使得 ToL 非常短，測量出來的 3D 地圖會嚴重失真</strong>）；</li>
+</ul>
+<ul>
+<li><strong>攝像頭</strong>：<strong>攝像頭的分辨率進高於其他傳感器，可以獲取足夠多的環境細節，特別是顏色信息</strong>，如識別交通標線識別、交通信號燈等，<strong>但單目攝像頭無法得到準確的距離信息、雙目的計算量又太大，且光學攝像頭普遍受光照條件的影響巨大，物體的識別準確度很不穩定</strong>；</li>
+</ul>
+<ul>
+<li><strong>毫米波雷達</strong>：可快速獲得速度信息，實現追蹤前車並控制車速，<strong>在不同天氣情況下魯棒性更好</strong>。但與激光雷達相比精度稍低、可視角度偏小，對行人的反射波也較弱（由於<strong>發生了衍射</strong>），難以探測；</li>
+</ul>
+<ul>
+<li><strong>超聲波雷達</strong>：可感應車輛周圍和駕駛員盲區內車輛和障礙物，<strong>用於低速下碰撞預警，成本最低，探測距離近（通常只有幾米）、精度低</strong>；</li>
+</ul>
+<ul>
+<li><strong>高精度地圖</strong>：遇到傳感器束手無策的天氣，就需要藉助高精度地圖。例如，谷歌無人車行駛在暴雪覆蓋路面的時候，就在高精度地圖基礎上，定位計算馬路車道線位置，確定行駛軌跡。但是對地圖數據的完備性要求較高！</li>
+</ul>
+<p><strong>無人駕駛汽車的基本構架</strong></p>
+<p>主要是三部分：</p>
+<ul>
+<li><strong>Perception（感知端）</strong>：也就是下文中所說的<strong>信息輸入端（Input）</strong>，主要包括上文中提到的傳感器，它們相當於是汽車的眼睛，下圖是馭勢科技的感知端方案（定位指的是 Perception）：</li>
+</ul>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-03cc7857bb0c30c1499d0e46cb7a4253_b.jpg" alt="">
+<ul>
+<li><strong>Planning（規劃端）</strong>：也就是下文中所說的<strong>信息處理端（Processing）</strong>，功能是讓汽車實現避障、規劃行駛路徑、平穩駕駛等，主要包括類似 NVIDIA 給無人車設計的車載 GPU 的設備、經過深度學習的控制模型等，它們相當於汽車的大腦；</li>
+<li><strong>Decision Making（決策端）</strong>：類似於<strong>信息輸出端（Output）</strong>，功能是讓汽車完成規劃的動作，它們相當於汽車的四肢。</li>
+</ul>
+<p>馭勢的整個無人車解決方案架構圖如下（控制指的是 Decision Making）：</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-26533259957ccaa664872885f9c6909a_b.jpg" alt="">
+<p><strong>《創業美國》第 4 季第 1 期：世界上第一個開展無人駕駛出租車測試的企業 nuTonomy</strong></p>
+<p><a href="http://v.youku.com/v_show/id_XMTc1NTU2NjM3Mg==.html">創業美國</a></p>
+<p>看到這條消息讓我想到了有關無人駕駛實現路徑的兩個主要問題：</p>
+<ol>
+<li>信息輸入端（Input）：<strong>視覺 OR 激光雷達？</strong></li>
+<li>信息處理端（Processing）：<strong>算法爲王</strong><strong> OR 數據爲王？</strong></li>
+</ol>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-21bac07b0889b8129a7a89b0f19217c3_b.jpg" alt="">
+<p><strong>無人駕駛汽車上主要的傳感器</strong></p>
+<p>（激光雷達：LiDAR；攝像頭：3D Camera；毫米波雷達：RaDAR；高精度地圖：GPS；超聲波雷達：Ultrasonic;車輪轉角傳感器：Wheel Encoder）</p>
+<ul>
+<li><strong>先來說說無人駕駛汽車的傳感器系統到底應該以視覺爲主，還是應該以激光雷達爲主。</strong></li>
+</ul>
+<p>Elon Musk 曾經在公開場合多次說過，不用激光雷達只用攝像頭，也能實現 Level 4 以上的無人駕駛。但是我個人覺得<strong>他這麼說其實是屁股決定腦袋，有商業化方面的考慮。</strong></p>
+<p><strong>Tesla 的汽車已經在銷售了，賣出去的車只能更新軟件，而肯定不能換硬件</strong><strong>，比如全部重新裝上激光雷達</strong><strong>（不然</strong><strong>今天</strong><strong>Tesla 官方也不會說現在在產的 Tesla 汽車會換上新的硬件系統）</strong>。況且，Google 無人車用的 64 線 Velodyne LiDAR 本身的價格高達 75000 美元，這幾乎和低配版 Tesla 在美國的售價差不多了。<strong>特斯拉的車要賣的好必須控制成本，Google 的無人車目前還只是處於測試階段，幾百輛的規模當然可以什麼好用什麼，相比於特斯拉幾萬的產銷量，花不了多少錢。</strong></p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-f4dda3ebf9ed6534c63fd889e1ff456b_b.jpg" alt="">
+<p>被撞毀的 Tesla，面目全非</p>
+<p>此外，衆所周知，2016 年 5 月 7 日，美國佛羅里達州的一位 Tesla 車主在使用 Autopilot 時發生車禍，最終不幸生亡。由此還導致給 Tesla 提供計算機視覺技術的 Mobileye 的創始人 Amnon Shashua 與埃隆 - 馬斯克之間的口水戰，雙方最終還鬧掰了：<strong>Mobileye 宣佈在與 Tesla 的合同結束後不再繼續合作，而在 9 月 11 日發佈的 Autopilot 8.0 版本中，Tesla 把毫米波雷達採集到的數據作爲了控制系統判斷的主要依據，而不是之前 Mobileye 的攝像頭</strong>。</p>
+<p>其實，車禍發生前，<strong>Tesla 的毫米波雷達已經感知到有障礙物</strong>，但是攝像頭因光線的問題，沒有發現在藍天白雲背景下的大貨車，最後導致車禍發生。Musk 肯定也知道了攝像頭並不靠譜，所以纔在 Autopilot 的新版本中把毫米波雷達的數據作爲主要參考依據。</p>
+<p>綜上所述，<strong>Musk 說&ldquo;不用激光雷達只用攝像頭，也能實現 Level 4 以上的無人駕駛&rdquo;更多是出於商業化方面的考慮。此舉意在一邊用現有的傳感器收集數據，一邊等激光雷達價格降下來。個人認爲，如果固態激光雷達的價格真能如宣傳中所說下降到 100 美元～200 美元，</strong><strong>爲了保證汽車行駛的安全性，</strong><strong>馬斯克肯定是會用的。</strong></p>
+<ul>
+<li><strong>再來說說&ldquo;</strong><strong>大數據與算法對於實現無人駕駛哪個更重要？&rdquo;這個問題</strong></li>
+</ul>
+<p>一年前這個時候，下圖所示的微博引起了網友們的爭論一方認爲：<strong>數據爲王，再牛的智能算法也拼不過海量的數據</strong>！而另一方則認爲：<strong>數據只是建材，強大的分析能力才能讓它變成摩天大樓，對效率的追求導致了算法，大數據取代不了算法</strong>！</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-e9fb55031f38e06532f6254c09804b56_b.jpg" alt="">
+<p>有意思的是，近日雙方都公佈了各自的測試里程數。據華爾街日報美國當地時間 10 月 5 日報道，Google 宣佈自己的<strong>無人駕駛汽車剛剛完成</strong><strong>200 萬英里道路行駛里程</strong>。而 Tesla 創始人埃隆 - 馬斯克（Elon Musk）也針鋒相對地於幾天後在個人 Twitter 上宣佈：<strong>Tesla Autopilot 發佈後的 1 年中累計行駛里程已達到 2.22 億英里</strong>。</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-814749f4cf563a7d5c324f4695093885_b.jpg" alt="">
+<p>Google 和 Tesla 兩方的表態表面上似乎也印證了微博討論中雙方的觀點：<strong>數據爲王</strong><strong> VS 算法爲王</strong>。那實際情況究竟如何呢？</p>
+<p>我們不妨考慮另一個類似的現象：大多數人認爲 Google 的搜索比微軟的 Bing 搜索在質量上做得略好一點的<strong>原因是 Google&nbsp;</strong><strong>的算法好</strong>。</p>
+<p>但在前 Google 工程師吳軍博士看來，&ldquo;<strong>這種看法在&nbsp;</strong><strong>2010&nbsp;</strong><strong>年之前是對的，因爲那時&nbsp;</strong><strong>Bing&nbsp;</strong><strong>在技術和工程方面明顯落後於&nbsp;</strong><strong>Google</strong><strong>。但今天這兩家公司在技術上已經相差無幾了，</strong><strong>Google&nbsp;</strong><strong>還能稍稍佔優，很大程度上靠的是數據的力量。</strong>&rdquo;</p>
+<p>與搜索算法尚不成熟的 2000 年不同，今天已經不存在一個未知的方法，僅憑它就能將準確率提高哪怕一個百分點。Google 憑藉 PageRank 算法給搜索結果帶來了質的變化，而好的搜索結果能吸引更多的用戶使用 Google 的搜索引擎，這不知不覺間給 Google 提供了大量的點擊數據。有了這些數據之後，Google 可以訓練出更精確的&ldquo;點擊模型&rdquo;，<strong>而點擊模型貢獻了今天搜索排序至少&nbsp;</strong><strong>60%~80%&nbsp;</strong><strong>的權重，這將吸引更多的用戶，整個過程是一個典型的不斷自我強化的正反饋過程。</strong></p>
+<p>在 Google 內部，產品經理們都遵循這樣一個規則：<strong>在沒有數據之前，不要給出任何結論</strong>。由此可見，Google 的企業使命已經融入了員工的日常工作中。<strong>Google&nbsp;</strong><strong>正是充分利用了大數據的力量，順利成爲了對整張互聯網舉足輕重的樞紐節點，非常自然地實現了對互聯網的壟斷。</strong></p>
+<p>再舉一個例子，9 月 27 日 Google 發佈了新版本的神經機器翻譯系統（Google Neural Machine Translation，GNMT），宣稱該系統的翻譯質量接近人工筆譯。</p>
+<p>大多數網友在實際測試過後，大都表示眼前一亮。與此同時，這也引起了某些翻譯工作者的恐慌：&ldquo;作爲翻譯看到這個新聞的時候，我理解了 18 世紀紡織工人看到蒸汽機時的憂慮與恐懼。&rdquo;<strong>而這其實也是充分利用大數據的結果。</strong></p>
+<p>其實早在 2005 年，Google 的機器翻譯質量就讓全世界從事自然語言處理的人震驚不已了：<strong>從來沒有從事過機器翻譯的&nbsp;</strong><strong>Google，在美國國家標準技術研究所（National Institute of Standards and Technology，NIST）的年度測評中遙遙領先</strong>。如下圖所示，在阿拉伯語到英語翻譯的封閉測試集中，Google 系統的 BLUE 評分爲 51.31%，領先第二名將近 5%，而<strong>提高這&nbsp;</strong><strong>5 個百分點在過去需要研究 5 ~ 10 年</strong>。</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-112c9415693b915a302fd9da65fe52d6_b.jpg" alt="">
+<p>Google 究竟是做到的呢？除了 Google 一貫的行事風格&mdash;&mdash;把該領域全世界最好的專家、南加州大學 ISI 實驗室的弗朗茲 - 奧科（Franz Och）博士挖過來之外，<strong>最關鍵的還是&nbsp;</strong><strong>Google&nbsp;</strong><strong>手裏握有改進機器翻譯系統所需要的大數據</strong>。</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-9f0918cb97a9f70a6d03f9b019e3451a_b.jpg" alt="">
+<p><strong>機器翻譯專家</strong><strong>Franz Och，供職於人類長壽公司</strong><strong>（後來他又轉行到了大數據醫療領域）</strong></p>
+<p>從奧科 2004 年加入 Google 到 2005 年參加 NIST 測試，期間只有一年時間，如此短的時間只夠他將在南加大的系統用 Google 的程序風格重新實現一遍，完全沒有額外的時間做新的研究。而從上圖中我們可以看到，Google 和南加大系統的水平差了 5~10 年。其中的祕密就在於<strong>：奧科在&nbsp;</strong><strong>Google&nbsp;</strong><strong>還是用的在南加大使用過的方法，但充分利用了&nbsp;</strong><strong>Google&nbsp;</strong><strong>在數據收集和處理方面的優勢，使用了比其他研究機構多上萬倍的數據，訓練出一個機器翻譯的六元模型</strong>（一般來講 N 元模型的 N 值不超過 3）。<strong>當奧科使用的數據是其他人的上萬倍時，量變的積累導致了質變的發生，</strong>而這就是當今人工智能領域最權威的幾位專家之一傑弗裏 - 辛頓（Geoffrey Hinton）教授所堅持的&ldquo;<strong>多則不同</strong>&rdquo;吧。</p>
+<p>值得一提的是，上圖中的排在末位的 SYSTRAN 公司是一家<strong>使用語法規則進行翻譯的企業</strong>，在科學家們還沒有想到或者有條件利用統計的方法進行機器翻譯之前，該企業在機器翻譯領域是最領先的。但現在與那些採用了<strong>數據驅動</strong>的統計模型的翻譯系統相比，它的翻譯系統就顯得非常落後了。</p>
+<p>經過上述分析，對本小結的問題終於可以下一個較安全的結論：<strong>在當下的企業競爭中，相比於算法或數學模型，數據的重要性的確要大得多，即數據爲王！</strong></p>
+<p><strong>因爲前者往往由學術界在幾十年前就已經發現了，所有企業都可以加以利用，但是多維度的完備數據並不是每一個企業都擁有的。</strong></p>
+<p><strong>今天很多企業在產品和服務的競爭，某種程度上已經是數據的競爭了，可以說沒有數據就沒有智能。因爲從理論上講，只要能夠找到足夠多的具有代表性的數據，就可以利用概率統計結果找到一個數學模型，使得它和真實情況非常接近，從而節省了大量人力成本或給予了用戶更愉悅的體驗。</strong></p>
+<ul>
+<li><strong>總結</strong></li>
+</ul>
+<p>Tesla 已經積累的 2.22 億英里行駛數據，以及未來將要積累的數據，對於他們研發 Level 4 以上的無人駕駛汽車是非常有幫助的，<strong>Tesla 可能會最終會先 Google 一步實現量產。</strong></p>
+<p>目前出於商業化的考慮，已量產的 Tesla 用攝像頭 + 毫米波雷達 + 超聲波雷達作爲主要傳感器，但是等到低成本的固態激光雷達性能更穩妥，我相信 Musk 肯定是會裝上去的（有網友已經在加州的道路上拍到頭上頂着激光雷達的特斯拉汽車偷偷在做測試了），<strong>因爲這對於保證實現 99.9999%+ 的車輛行駛安全性是非常有幫助的！</strong></p>
+<p>【<strong>注：文章的例子選自吳軍博士《數學之美》（第二版）與《智能時代》</strong>】</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div>
