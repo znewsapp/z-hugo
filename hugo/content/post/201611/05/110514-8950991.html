@@ -1,0 +1,91 @@
++++
+date = "2016-11-05T14:00:00"
+title = "頭頂的旋翼，是如何讓直升機往前飛的？"
+titleimage = "http://pic2.zhimg.com/bfcf4d2c4bb6dced1f9041ee2d466291.jpg"
+ga = 110514
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title">直升機從懸停到前進，這個姿態變化中的扭矩是怎麼產生的？</h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>看了幾個回答，說的都不錯，點出了通過週期變距操縱可以讓旋翼前傾，從而產生向前分力，使直升機前飛，但是關鍵沒有說出來&mdash;&mdash;<strong>旋翼是如何前傾的？</strong></p>
+<p>這個問題屬於飛行力學範疇，先給大家介紹一下槳轂（鉸接式，有多種形式）：</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/48733b603169f7167487d208132ddb03_b.jpg" alt="">
+<p>AH-64（阿帕奇） 槳轂</p>
+<p>看着很複雜，對吧，那就看看抽象之後的 -- 還是很複雜：</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/4569d13c131048411ffb5143588d3c39_b.jpg" alt="">
+<p>注意這張圖，裏面有些專業術語，今天主要要講的是：<strong>揮舞運動</strong>，<strong>變距運動</strong>，<strong>變距連桿和變距搖臂結構</strong>。擺振運動先不用管。</p>
+<p>揮舞運動：觀察一下上圖，揮舞鉸是平放的，所以槳葉可以繞着這個鉸上下運動，運動幅度不大，目的是防止直升機側傾（知道就好）。</p>
+<p>變距運動：繞着變距鉸槳葉可以轉動，這樣就可以改變槳葉的迎角啦。</p>
+<p><strong>1. 槳葉剛體模態揮舞運動方程</strong></p>
+<p>變距和揮舞運動的配合使得旋翼可以前傾，從而使直升機由懸停到前飛，那麼這兩者是如何配合的呢？</p>
+<p>想是想不出來的，還得靠數學（大一的小孩要學好數學哇）。下面就來詳細說說這個揮舞運動，假設槳葉是剛性的，下圖只保留了揮舞鉸（左下角）。</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/1688da8e4b3d6623d92c965be33ed80e_b.jpg" alt="">
+<p>槳葉在運動過程中受到的力：氣動力，離心力，重力，慣性力。重力沒有畫出來，相比幾十上百噸的離心力，重力就是個戰五渣，知道槳葉的工作環境多麼糟糕了吧，哈哈。</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cbeta+" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5CDelta+I%3Dmdr%5Ccdot+%5Cfrac%7Bd%5E%7B2%7D+%5Cbeta+%7D%7Bdt%5E%7B2%7D++%7D+%5Ccdot+r" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5CDelta+C+%3D+mdr%5Ccdot+%5COmega%5E%7B2%7D%5Ccdot++r" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5CDelta+F+" alt="">
+<p>根據達朗貝爾原理，這些力關於揮舞鉸的力矩處於平衡狀態：</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cint_%7B0%7D%5E%7BR%7D%28%5CDelta+I%5Ccdot+r%2B%5CDelta+C%5Ccdot+r%5Cbeta+-%5CDelta+F%5Ccdot+r%29%3D0+++%5CRightarrow%0A++" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cint_%7B0%7D%5E%7BR%7D%28+mdr%5Ccdot+%5Cfrac%7Bd%5E%7B2%7D+%5Cbeta+%7D%7Bdt%5E%7B2%7D++%7D+%5Ccdot+r%5Ccdot+r+%2B++mdr%5Ccdot+%5COmega%5E%7B2%7D%5Ccdot++r%5Cbeta+%5Ccdot+r-%5CDelta+F%5Ccdot+r%29%3D0" alt="">
+<p>定義槳葉質量慣矩：</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=I_%7Bb%7D+%3D%5Cint_%7B0%7D%5E%7BR%7D+mr%5E%7B2%7D+dr" alt="">
+<p>氣動力矩：</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cint_%7B0%7D%5E%7BR%7D+%5CDelta+F%5Ccdot+r%3DM_%7BF%7D+" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=+%5Cfrac%7Bd%5E%7B2%7D+%5Cbeta+%7D%7Bdt%5E%7B2%7D++%7D+%2B+%5COmega+%5E%7B2%7D%5Cbeta+%3D++%5Cfrac%7BM_%7BF%7D%7D%7BI_%7Bb%7D+%7D+" alt="">
+<p>想必上過大學物理的對這個都不陌生吧：</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=m%5Cfrac%7Bd%5E%7B2%7D+x+%7D%7Bdt%5E%7B2%7D+%7D+%2BKx%3Df%28t%29" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Comega+_%7Bn%7D+%3D%5Csqrt%7B%5Cfrac%7Bk%7D%7Bm%7D+%7D+%3D+%5COmega++" alt="">
+<p><strong>2. 氣動力矩</strong></p>
+<p>不要着急，氣動力矩就出來。</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5CDelta+F%3D%5Cfrac%7B1%7D%7B2%7D+%5Crho+V%5E%7B2%7D+%5Ccdot+%5Calpha+a_%7B%5Cinfty+%7D%5Ccdot++bdr" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=V" alt="">
+<p>聰明的你，看到這裏是不是知道了什麼？</p>
+<p>對的，此時<strong>槳葉剛體揮舞運動處在以氣動力激振下的共振狀態</strong>。共振狀態有什麼特點？<strong>位移的相位落後激振力相位 90&deg;，</strong>這裏也按下，擱置爭議，共同開發。</p>
+<p><strong>3. 變距連桿和變距搖臂</strong></p>
+<p>前面說到了變距運動，變距就是讓槳葉的迎角變大變小，這是通過變距連桿和變距搖臂實現的。你一定覺得是這樣實現的：</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/ad99e7d296840d9770fc3b2651109bd2_b.jpg" alt="">
+<p>紅色的叫動環（旋轉環），隨着槳轂和槳葉一起轉動，橙色的部分是變距連桿。</p>
+<p>藍色的叫不動環（不旋轉環），和直升機的操縱系統相連，黃色的是操縱桿系。</p>
+<p>當前後左右推動駕駛杆時，黃色的連桿就會拉動不動環。駕駛杆往哪個方向推，那個方向的連桿就會把相連的不動環的相應位置往下拉，從而把動環也往下拉，通過連桿最終改變槳葉的迎角。</p>
+<p>如果你覺得確實是這樣，那就 too young 了。我是夢中跟王適存老師談笑風生的人，我推的公式沒什麼卵用，你不覺得可疑嗎？</p>
+<p>事實上，上面的結構是錯的，正確的結構是這樣的：</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/54990b4e5bd366c2aeb110de8fae8840_b.jpg" alt="">
+<p>觀察一下上邊的圖，跟前面一副圖是不是稍稍不同，<strong>變距連桿在動環上的點和對應的槳葉上的點相位差了 90&deg;。</strong>看到這裏，你應該明白了點什麼。如果還不明白，我就以懸停轉前飛爲例，講一下整個流程。</p>
+<p>看一下這幅圖，圖上標出了不同的方位角：</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/6c7e0d761e0cf69e14994f05b765004d_b.jpg" alt="">
+<p><strong> 懸停轉前飛的邏輯過程：</strong></p>
+<p>前推杆 =&gt; 180&deg;處不動環向下運動，0&deg;處不動環向上運動 =&gt; 相應位置的動環運動相同 =&gt; 180&deg;處的動環上的連桿和搖臂把 90&deg;處的槳葉迎角變小，相應的 270&deg;處槳葉迎角增大 =&gt; 迎角大，氣動力大，所以 90&deg;處氣動力最小，270&deg;處氣動力最大 =&gt; 位移相位落後氣動力激振力 90&deg;，從而 180&deg;處槳葉揮舞高度最低，0&deg;處槳葉揮舞最高，看起來是這樣：</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/c2697b74dabb4194b81eeb00416105f7_b.jpg" alt="">
+<p>這樣旋翼產生的氣動力就有向前的分力了，直升機就前飛了。</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div>
