@@ -1,0 +1,60 @@
++++
+date = "2016-11-22T07:00:00"
+title = "如何在 Excel 中少犯錯？"
+titleimage = "http://pic4.zhimg.com/5ce354c4d66dd7e45c79df6e1697d37f.jpg"
+ga = 112207
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+<div class="question">
+<h2 class="question-title"></h2>
+<div class="answer">
+
+
+
+<div class="content">
+<p>&ldquo;如何在 Excel 中少犯二&rdquo;。從這個話題開始的理由特別簡單：首先，時常在別人的 Excel 數據模型中發現各種細小錯誤，哪怕作者花費再多的時間把圖表搞得再精美，頓時對整個模型的結論產生懷疑；其次，Excel 數據模型是經常要在現場分享並不斷調試數據，經常看見作者手忙腳亂得更改輸入和公式，忙中經常出錯。</p>
+<p>巴菲特曾說，犯錯少就是成功。特別是那些重大而簡單的弱智錯誤。這個理論套用到 Excel 做數據模型上面，一樣成立。對於 Excel 這種人人都會的工具，少犯二的目標看似簡單。然而，量變產生質變，當成千上萬的數據堆積在一起，同時帶來千絲萬縷的函數關係，少犯二就會成爲一個高大上的目標。如果不信，可以試試從 1 開始寫數字寫到 600，能否保證一字不差（這是一個經典的街頭騙局）。</p>
+<p>因此在 Excel 中少犯二並不簡單，如同要做到如何寫好程序一樣，需要引入一套方法論，在下面分步驟列出。</p>
+<img class="content-image" src="https://pic3.zhimg.com/v2-8234ca064b5a0f2a3ed50f27b48e0132_b.png" alt="">
+<p><strong>第一層：提升輸入質量</strong></p>
+<p>通過使用&ldquo;數據有效性&rdquo;功能，減少輸入的錯誤，設置輸入的有效性檢查（比如：手機號碼是 11 位等等），儘量避免"Garbage In, Garge Out"。</p>
+<img class="content-image" src="https://pic3.zhimg.com/0f557e84870dbcb0b755077435ae57ea_b.png" alt="">
+<p>Excel 數據模型中，存在不同類型的數據：常數、可調參數、中間結果、最終結果等等。不少的錯誤發生在混淆各種類型的數據或者更改了不能調整的中間結果而污染最終結果。因此可以考慮對不同的數據，用顏色或者 worksheet 進行區隔，下圖左方就是利用顏色標註不同的數據：有些是供修改的，有些是最後結果及中間過程而不能修改。這些措施都是爲了在模型的製作過程以及調試過程中，避免誤改誤刪數據。如果要想做到極致，還可以使用下圖右方的方法，直接利用&ldquo;保護工作表&rdquo;功能，對不能修改的數據進行保護。</p>
+<img class="content-image" src="https://pic4.zhimg.com/v2-33be6f56e4394a33b322764f580dd8ab_b.png" alt="">
+<p>另外，對於一些經常使用的輸入區域（比如，A1:A299），往往反覆出現在 Sum 或者 Vlookup 等函數中，可以考慮將它們定義成變量，並可以在&ldquo;名稱管理器&rdquo;中進行修改、增加和刪除等管理。反覆使用的時候就會非常方便，比如：=Vlookup(A1,data,2,false)這種簡單的寫法。</p>
+<img class="content-image" src="https://pic4.zhimg.com/v2-ce4fec6e561520ee5f526009a0b937f7_b.png" alt="">
+<p><strong>第二層，提升輸出質量和增加輸出維度</strong></p>
+<p>不少人在用 Excel 輸出結果的時候，往往就事論事，把輸出侷限在較小的範圍，不僅容易忽略錯誤，而且會失去多個視角。但如果能夠在現有輸出結果的基礎擴展審視輸出的維度，就能獲得更全息的視角。以財務三張報表而言，當然可以妥妥得輸出經典的報表格式，但如果能夠多計算一些財務指標並放在合適的位置（如下圖中所示的 EBIDTA、Cash flow from operation、EBIDA/Interest Expenses 等等），不僅可以部分校驗運算過程，還能從多個維度反應企業的財務狀況，當然也更容易發現可能存在的計算誤差，從而提升輸出的質量。</p>
+<img class="content-image" src="https://pic2.zhimg.com/v2-9ccd5f1fef6972f107a79cf28cfcd969_b.png" alt="">
+<p><strong>第三層，檢驗運算過程</strong></p>
+<p>最簡單粗暴的方式，利用函數框中對輸入不同顏色的標註，對運算過程及輸入參數進行檢查，看是否達到預期或者有犯二的差錯。</p>
+<img class="content-image" src="https://pic3.zhimg.com/v2-c16a1dfdbe6a2e386a56702d314188d6_b.png" alt="">
+<p>升級一些，可通過&ldquo;追蹤引用 / 從屬單元格&rdquo;，對運算過程進行檢查，儘可能避免公式運算中輸入參數的犯二。</p>
+<img class="content-image" src="https://pic1.zhimg.com/84eff6e25ed4fb06b1aa0cc43ebc8cac_b.png" alt="">
+<p>再升級一些，可以對一些關鍵指標以及核心等式就行復檢。比如對於財務報表中最基礎的等式&ldquo;資產=負債 + 權益&rdquo;，在做 Financial Modeling 的過程中，都要設置專門的一行進行檢查，類似於化學方程式的配平檢查。</p>
+<img class="content-image" src="https://pic1.zhimg.com/a1a62a753d5e2d3d61089616d6ea1d54_b.png" alt="">
+<p><strong>...更多回答請看<a class="internal" href="https://www.zhihu.com/people/he-ming-ke">何明科的主頁</a></strong></p>
+<p><strong>...更多文章請到<a class="internal" href="http://zhuanlan.zhihu.com/hemingke">數據冰山 - 知乎專欄</a></strong></p>
+
+
+
+</div>
+</div>
+</div>
+
+
+</div>
+</div>
