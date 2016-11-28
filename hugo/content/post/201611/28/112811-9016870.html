@@ -1,0 +1,70 @@
++++
+date = "2016-11-28T11:00:00"
+title = "要定義真正的「尖銳」，「空間分辨率」纔是更本質的敘述"
+titleimage = "http://pic3.zhimg.com/fc01b5921799cf14fbd936dead0010c6.jpg"
+ga = 112811
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title">物體的「尖銳度」有極限嗎？最尖銳的物體能達到什麼效果？</h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>所謂無圖無真相，我來上圖~</p>
+<p>首先糾正一點，AFM 的針頭不是最尖的，和他同類型的另一種 STM 纔是，這兩種顯微鏡的原理類似但是不同，一個是利用隧穿電流，一個是用原子力~~ 但是其實兩者都能實現原子級的分辨率（0.1nm）。</p>
+<p>此外，對於尖，我想明確一下這個概念。在宏觀尺度，人們通常理解的尖其實就是很細，尖端很小，而其實尖本身帶有感性色彩，即一個很尖的東西刺一下人會很疼。畢竟尖端小的話同樣的力會產生更大的壓強。然後，這都不是重點，<strong>如果真正要定義尖的話，我覺得空間分辨率（spatial resolution）就是尖更本質的敘述。</strong></p>
+<img class="content-image" src="http://pic2.zhimg.com/70/af50382627208bcb14e09aa67b6c0095_b.jpg" alt="">
+<p>這個就是 STM 的針頭，這裏的 scale bar 是 50 micron，再來個 TEM 照片，繼續放大。</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/08bbdc3f84206b10982332f084d3a504_b.jpg" alt="">
+<p>所以可以看到，其實就這個針頭而言，他 tip 的尖端也就 20 個 nm，這麼大的尺度其實根本不能操作單原子。</p>
+<p>那究竟 AFM 操作單原子是怎麼實現的呢？ 答案其實是在 tip 的最前面，有吸附的雜質原子，這些雜質原子在 tip 最前沿其實只有數個，所以可以達到操作單原子的目的。</p>
+<p>我看有人提到了電子等。正如我上面說的，空間分辨率是尖的本質敘述，所以如果繼續深究這個話題的話， TEM 是怎麼也繞不過的一個坎。可是這個時候的&ldquo;尖&rdquo;已經不是平常的概念了，算是作爲對大家支持的回饋，我就繼續完善一下吧。 【 以下，我簡單介紹一下 TEM 的成像和我拍的一些 TEM 的圖片。</p>
+<p>先來 FIB，FIB 是一個精度非常高的儀器，裏面的各個部件都可以說是很尖很尖。</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/9f34878af8b11a9503d7f1b98182d839_b.jpg" alt="">
+<p>這個是用 FIB 切的一個長爲 10 微米寬是一微米的長方塊，FIB 中的 HRSEM 可以達到 200nm 的分辨率，精度非常高，而用其中的 Ga source 可以切到 10nm 的精度.</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/260e855c09c59d27fdb5c37a313b84c9_b.jpg" alt="">
+<p>這個是 FIB 裏的鎢針，大家可以注意一下現在的 scale bar，這個鎢針已經非常細了，我需要用這個針把剛剛那個長方塊給 lift out 出來。</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/bf5d185c41d0504230937b615c95f6da_b.jpg" alt="">
+<p>像這個樣子，之後再用 Ga 離子束轟擊，將這個寬度爲 1 微米的長方塊削薄到 40 個 nm～</p>
+<p>最後的效果就是這樣的</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/eadaf9057d05353b22733a0227fe85c7_b.jpg" alt="">
+<p>注意 scale bar 和那個小長方塊的尺寸～這樣，一個 tem 的樣品就做好了～</p>
+<p>關於 TEM，請參見我在另一個帖子的回答：<a href="https://www.zhihu.com/question/38596552/answer/77139465">透射電鏡下看到的原子像的物理意義是什麼？</a></p>
+<p>感謝各位的支持, 最近比較緊，所以現在才更新~</p>
+<p>關於 AFM 針尖的製作，說來其實並不複雜，先上一個流程圖</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/68c583442a46de83bc657471e7024462_b.jpg" alt="">
+<p>首先當然是在硅基底上面長一層二氧化硅，然後用 BHF 和相應的 MASK 把想要做成針尖的區域給定下來，之後用 RIE 刻蝕掉二氧化硅下面的 Si, 由於是各項同性的刻蝕，所以離二氧化硅近的區域就會刻蝕的比較嚴重，所以就會在尖端形成很尖的尖端。</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/3d1a80a9b55106f8bb3d9a589c6c6023_b.jpg" alt="">
+<p>整套製作流程的關鍵是就 etching 參數的選擇. [1]</p>
+<p>我看到有人把尖，硬度還有刺入的深度都聯繫起來了，其實這幾個概念，隨着尺寸的減小越來越分道揚鑣。宏觀上，我們認爲尖的東西就是那種扎一下就刺進去了。當一個尖銳的物體刺入另一個尖銳的物體時，有好幾種情況。 第一種就是塑性變形，也是宏觀上最常見的，這是由於尖銳的東西會對目標在尖端產生應力集中，所以施加很小的力就可以達到塑性變形的條件，或者達到臨界應力，目標體內的裂紋發生擴展，表現出的刺入。然後這個時候的刺入對於尖銳物體是有硬度的要求的，然後硬度的要求也就決定了這種尖銳的程度。</p>
+<p>繼續往尖銳的程度發展就代表着尖端物體原子數目的減少，原子數目的減少勢必會影響硬度，然後需要注意的是，這時候的刺入不需要變形或是裂紋擴展了，因爲它的尖銳可以比目標內的裂紋尺度還小，所以可以直接發生刺入。</p>
+<p>REFERENCE</p>
+<p>[1] Yaqiang Wang, Daniel Van der Weide, J. Vac. Sci Techonl. B, Vol. 23, No.4 Jul/Aug 2005</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div>
