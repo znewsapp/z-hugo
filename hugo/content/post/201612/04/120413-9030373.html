@@ -1,0 +1,73 @@
++++
+date = "2016-12-04T13:00:00"
+title = "谷歌地圖如此大規模的 3D 建模，是怎麼做到的？"
+titleimage = "http://pic3.zhimg.com/85e2e53ff388ac8cebdf255628abda0e.jpg"
+ga = 120413
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title"></h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>看到這個題目真是很巧，我來講講我實習時候的見聞吧！</p>
+<p>先說結論，這種三維模型是由<strong>無人機航拍測繪</strong>生成的。</p>
+<p>之前在廣州市城市規劃與勘測設計研究院實習的時候參與過一個關於無人機在城市規劃和測繪中的應用的研究項目，科普一下這種三維模型是怎樣生成的。</p>
+<p><strong>一、用什麼做？</strong></p>
+<p>進行測繪的無人機有兩種類型，即<strong>固定翼</strong>和<strong>螺旋翼</strong>，各有優劣。插一句題外話，專業級別設備並非 DJ 這類消費級無人機可望之項背，畢竟價格擺在那裏：中高端無人機的價格約在 40 萬~90 萬人民幣的區間內，都能買一輛雷克薩斯了：）</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/8bfdf066d5471b6c73b0535d6c343b50_b.jpg" alt="">
+<p>這個萌萌噠傢伙就是固定翼無人機的一種，瑞士 sensefly 生產的<strong>ebee/eBee-RTK</strong>版無人機（屬於入門中檔，價格 40+ 萬 rmb）</p>
+<p>開箱說明書中的參數如下：</p>
+<blockquote>eBee 是一款由瑞士 senseFly 公司生產的輕量級、高度耐用、可重複多次使用的無人機，具有操作簡便、輕便安全的特點。它可實現<strong>自動飛行</strong>、<strong>獲取影像</strong>及<strong>全自動着陸</strong>等操作，能夠快速生成高質量<strong>2D 和 3D</strong><strong>航空測繪成果</strong>。 <br>【參數】<br><br>96cm 翼展<br><br>起飛重量小於 700g<br><br>運輸箱尺寸 55&times;45&times;25cm<br><br>鋰聚合物電池 /11.1V/2150mAh<br><br>45 分鐘在空時長 巡航速度 36-57km/h 抗風能力 45km/h(六級風)<br><br>1600 萬像素相機（定製佳能 S110RGB）<br><br>單次飛行覆蓋區域 1.5-10 平方公里</blockquote>
+<p><strong>二、能做出什麼？</strong></p>
+<p>彩色點雲、真正射影像、數字表面模型、全自動三維模型。現有的航攝系統具備自動的數據處理能力。</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/83aec1f2fbe1ef13816188d37ca665fb_b.jpg" alt="">
+<p>彩色點雲，激光掃描得到。</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/a3cd05cec5c4650c0c678916de0134c1_b.jpg" alt="">
+<p>正投影圖，比起一般衛星圖的優勢在於不會有透視（看不到建築立面）</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/c0abf4749788b89c36552dcc1bd42d4b_b.jpg" alt="">
+<p>具有高程信息的數字地表面模型。</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/3a8d44c549e6af011a8ca7063c3f9055_b.jpg" alt="">
+<p>三維模型，也就是題中所提到的。其實只是測繪成果的一個部分而已。</p>
+<p><strong>三、如何進行測繪？<br></strong>測繪的步驟具體包括：</p>
+<p>劃定測繪區域 -&gt; 規劃航線 -&gt; 放飛 -&gt; 進行數據處理</p>
+<p>（1）劃定測繪區域</p>
+<p>這個沒有什麼好說的，對於特定城市區域，自然是要劃定一個邊界。而像谷歌這種全市範圍的測繪建模，也需要將一個城市分成一個個小的測繪單元。這也是受到無人機的續航時間和日照時長的限制所決定的。</p>
+<p>（2）規劃航線</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/1d959361c4c70fb218d9e8ea70ad3b9c_b.jpg" alt="">
+<p>設定起飛點、降落點和飛掠航線。（這裏以另一型號的無人機系統爲例）</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/9ef70b34325d86ea38ae948a31ed0e33_b.jpg" alt="">
+<p>飛掠軌跡</p>
+<p>（3）放飛</p>
+<p>這裏也沒啥好說的，不過需要提前申請，以及注意氣象條件。</p>
+<p>（4）數據處理</p>
+<p>這一步是將採集到的數據通過數據處理系統（與無人機配套）進行處理，生成前述的測繪成果。相關的數據和模型是可以直接導入 GIS 軟件的。</p>
+<p>雖然這些資料基本上不涉密，但是我還是在能夠輔助闡述的前提下儘可能用了零散而非同一項目中的圖片資料，望見諒。（簽了保密協議的人是我啊喂）</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div>
