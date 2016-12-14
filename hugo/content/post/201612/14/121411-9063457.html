@@ -1,0 +1,76 @@
++++
+date = "2016-12-14T11:00:00"
+title = "想在 Excel 裏少犯錯，多用自動化替代人肉操作"
+titleimage = "http://pic1.zhimg.com/71252e886a45b43736399cac382dda80.jpg"
+ga = 121411
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+<div class="question">
+<h2 class="question-title">如何在 Excel 中少犯二（II）</h2>
+<div class="answer">
+
+
+
+<div class="content">
+<p>（接上一期日報<a href="http://daily.zhihu.com/story/8999095">如何在 Excel 中少犯錯？</a>，本期着重講下圖用紅心標註的第四層和第五層）</p>
+<img class="content-image" src="https://pic1.zhimg.com/v2-f0a85815c8bf0cd9e84dbf27c88275b0_b.png" alt="">
+<p><strong>第四層，提升自動化程度</strong></p>
+<p>就像在 IDE 中使用了關鍵詞提示以及經常檢查 Code Review，還是不能寫好程序一樣，這裏面還有套路。</p>
+<p>Excel 中的錯誤經常發生在不斷的手工人肉操作，再簡單的事情做個幾十遍或者幾百遍，出錯的概率也會非常低。因此在 Excel 中可通過使用系統工具、高階函數甚至 VBA 來提高自動化程度，避免反覆輸入函數或者重複操作，就能大大降低出錯概率。</p>
+<p>比如，逐漸學會使用 Excel 自帶的豐富數據清洗（排序、篩選、根據統一分隔符來分隔數據等）及分析工具（包括高階的統計工具，ANOVA 及多元線性迴歸等等一個都不少），減少人肉人工參與的過程。</p>
+<img class="content-image" src="https://pic4.zhimg.com/75d041f19c10f492ac9037ba59df698f_b.png" alt="">
+<p>再比如，下面表格中，要求白色區域中的矩陣元素等於所在行、列及 worksheet 上對應數字的總和。最笨的辦法是每個單元格寫一次加總函數，重複幾十次值幾百次（應該會有許多張 worksheet），非常容易出錯；進階的辦法是利用絕對地址和相對地址，寫一次函數，整個矩陣的函數拷貝粘貼就完成，出錯概率大大降低，但是每出現一個新的表格就要更新函數，仍然有出錯的不低概率；最高級的辦法就是在上一個辦法的基礎上，利用 CELL 函數獲取 Worksheet 的名字並提煉數字，然後一氣呵成，整個表格的函數完全是動態的，Worksheet 複製之後只要改成相應的名字就可以完成任務，在出錯方面的魯棒性很強。</p>
+<img class="content-image" src="https://pic3.zhimg.com/702adc4e4bf28f65901cfad52be8a8b2_b.png" alt="">
+<p>又比如，製作 Financial Modeling 的時候經常需要將季度或者半年度數據彙總成年度的（或者反向實施），一般的做法都是寫加減等簡單的函數，然而卻不能成塊拖拽或者複製函數而需要手工不斷寫函數，不僅麻煩而且容易出錯，利用 Offset 等函數，可以寫好函數就一步成型，完成整個過程。</p>
+<img class="content-image" src="https://pic4.zhimg.com/d0f62ffaf73987025525fbfe915241ef_b.png" alt="">
+<blockquote>函數寫法是：<br>=IF(MOD(COLUMN(Constant!A1),2)=1,OFFSET($M4,0,INT((COLUMN(Constant!A1)-1)/2)), <br>-OFFSET($M4,0,INT((COLUMN(Constant!A1)-1)/2))+OFFSET($C4,0,INT((COLUMN(Constant!A1)-1)/2)))</blockquote>
+<p>又比如，在第二層中，使用設置 Check Point（檢查站）的方式來檢測三張報表是否配平，然而這種土法炮製的方式只能防止最後的結果不能出錯，而不能保證中間的狀態以及提升效率。爲了偷懶和提高財務模型的健壯性，將各類索引函數及數組函數用到極致，於是實現自動配平以及檢查。</p>
+<img class="content-image" src="https://pic3.zhimg.com/55e34178a6262a45685b2d5d616b552a_b.png" alt="">
+<img class="content-image" src="https://pic4.zhimg.com/9bc2ce5c61cc3fb7c8261c8bc88787af_b.png" alt="">
+<blockquote>函數寫法是：=SUM(('Balance Sheet'!$AA$8:$AA$100='Cash Flow'!$B44)*('Balance Sheet'!O$8:O$100-'Balance Sheet'!N$8:N$100)*('Balance Sheet'!$AB$8:$AB$100))</blockquote>
+<p><strong>第五層，使用先進的&ldquo;編程思想&rdquo;</strong></p>
+<p>以上都是技法，讓編程真正成爲一門科學或者手藝的是，裏面存在心法或者思想。圍繞着這些編程思想，構建出一套套體系：MVC 框架、MVP 框架以及 OO 等等。這些體系的目的大概都是提高工作效率、複用率以及魯棒性等等，都是多快好省少出錯得完成任務。然而世間萬物，不少都是觸類旁通。利用 Excel 做數據分析的基本思想其實和編程非常類似，許多框架都可以參考編程思想，這樣就能提高效率和降低出錯概率。</p>
+<p>所以歸根結底，還是要做&ldquo;有思想&rdquo;的人和&ldquo;有思想&rdquo;的事。</p>
+<blockquote>Excel 最大的實戰價值就是製作各類財務模型（Financial Model）或者簡單的數學模型，用正確的方式方法來做模型（所謂的&ldquo;套路&rdquo;）纔是心法。</blockquote>
+<p>比如可以借鑑著名而老套的 MVC 到 Excel 的 Financial Modeling，實戰性強且效果好。將構建 Financial Model 的邏輯被分成三層， Model（負責數據），View（負責呈現）和 Controller（負責業務邏輯），理想狀態下其中一層的改動不會影響到另一層。</p>
+<ul>
+<li>靈活性高，需要有靈活的框架快速滿足老闆及客戶多變的需求</li>
+<li>複用性強，這個項目做得 Financial Model，隨便改改就能投入到下一個毫不相關的項目中使用</li>
+<li>健壯性強，儘量減少頻繁的手工輸入或者操作，將原始數據集中在一個模塊，改一個數據，相關的數據及模塊自動更改</li>
+</ul>
+<p>在做大部分 Financial Model 的時候基本就是按照 MVC 的框架來要求自己的。</p>
+<img class="content-image" src="https://pic4.zhimg.com/50d06124756b056e4c5828b5aeaeac37_b.png" alt="">
+<p>Financial Model 搭建的過程就如同修建高樓一層層往上累加模塊</p>
+<ul>
+<li>常數 / 核心數據 / 假設數據部分，包括：商業常數（匯率及稅率等）、歷史數據（過去的財報以及市場規模的歷史數據）、認爲靠譜而不能改動的預測數據、核心假設（比如假定宏觀經濟按照 6-7% 來增長）等等。這些數據略等於 C 語言的 h 文件部分，動一發而動全身，所以要單獨對待。如同程序一樣，Excel 的函數中是不能出現 hard-code 的數字，所以如果一個財務模型中出現&ldquo;=2*3.14*r&rdquo;，基本是可以打回去重做的。</li>
+<li>Scenario 場景，包括：模型中需要經常調節的重要輸入參數（比如：市場滲透率、Exit PE ratio 等）。這些參數最好剝離出來成爲一個單獨的界面，可以比較方便的控制和調整，爲之後的 Sensitivity Analysis 做準備，甚至可能遇到在上文中提到的類似於用梯度下降法尋求最優值的情況。</li>
+<li>基礎模型。這一步的核心就是做出預測的三張財務報表，最令人痛苦的是配平。可以使用各類複雜函數（Indirect/Offset/VLookup 等）來進行配平而不會出錯，而且複用性極高。</li>
+<li>進階模型。基於歷史及預測的三張報表，做一些更復雜的財務分析或者估值預測，包括：DCF、Comparable、敏感性分析等等。</li>
+<li>呈現。把用戶（包括老闆或者客戶）最關心的產出放出來，用最友好的界面展現出來。當然做得極致些，可以把調整 Scenario 以及重要參數的界面也放出來，方便用戶 Manipulate Data（其實翻譯成中文更有趣一些：猥褻數據）以便得到最滿意的結果。</li>
+</ul>
+<p>下圖是曾經奮戰過的一個 Financial Model，基本涵蓋了上述的邏輯和構建過程，供大家參考。</p>
+<img class="content-image" src="https://pic4.zhimg.com/b3229f461c0587e2ad750163785f80ef_b.png" alt="">
+<p><strong>...更多回答請看<a class="internal" href="https://www.zhihu.com/people/he-ming-ke">何明科的主頁</a><br>...更多文章請到<a class="internal" href="http://zhuanlan.zhihu.com/hemingke">數據冰山 - 知乎專欄</a></strong></p>
+
+
+
+</div>
+</div>
+</div>
+
+
+</div>
+</div>
