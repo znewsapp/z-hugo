@@ -1,0 +1,124 @@
++++
+date = "2016-12-19T07:00:00"
+title = "聽到「我把拿着望遠鏡的她鋸得彎下了腰」， Siri 懵了"
+titleimage = "http://pic4.zhimg.com/f025ef9dc57661f98d70cdc7ae2e8177.jpg"
+ga = 121907
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title">爲什麼 Siri 聽懂了我的話，還是不能做出有效的回答或準確的操作？</h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>Siri 其實說白了是兩個子部分構成，一個就是語音識別，另一個就是識別後的自動問答。而自動問答最主要依賴的技術就是自然語言處理（NLP）。自然語言處理說白了就是讓機器跟人一樣讀懂語言，並且依據此生成必要的輸出。樓主說的兩個問題其實都是機器在自然語言理解上出了問題。</p>
+<p>自然語言處理所有的困難，歸根結底就是一個問題：二義性（ambiguity）。</p>
+<p>這種二義性，體現在語法、句法、語義的各個方面。</p>
+<p>舉個最經典的栗子，也是英文 NLP 算是最常被引用的一個二義性例子：</p>
+<p><strong>I saw her duck with a telescope</strong></p>
+<p>請大家先努力的讀三遍這個句子，確保明白了它的含義。</p>
+<p>然後我們開始講故事。</p>
+<p>按照天朝人民的平均英語能力，大多會自然的理解成：</p>
+<p>I saw her duck with a telescope</p>
+<p><strong>我用望遠鏡看到了她的鴨子</strong></p>
+<p>也就是介個樣子：</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-050f3e25ec7d7a0224baa0ae6abcf1e0_b.jpg" alt="">
+<p>英語稍微好一點的童鞋，會知道 saw 還有&ldquo;鋸&rdquo;的意思，於是這個句子就變成了類似這樣的意思：</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-5a3e12cfe4b1318768fd490f6cc3041a_b.jpg" alt="">
+<p>不過，和這個圖不同的地方在於，鋸鴨子用的不是鋸子，而是一把望遠鏡。</p>
+<p>I saw her duck with a telescope</p>
+<p><strong>我用望遠鏡鋸她的鴨子。</strong></p>
+<p>到這裏內心已經能感受到一絲絲凌亂和猙獰。</p>
+<p>想象力再豐富一點的童鞋，可能還會暢想一種偉大的場景同樣也符合這個句子的描述。那就是這個鴨子是個神鴨子，是個會拿望遠鏡的鴨子。於是就衍生出了 NLP 界最著名的句法二義性問題 pp attachment 問題，也就是介詞性短語（with a telescope）到底修飾的是謂語 saw 還是賓語 duck。如果修飾的是 duck，那麼上述的兩種情形就會變成：</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-92adfdbde80073ecc81049b3dc8ecf57_b.jpg" alt="">
+<p>I saw her duck with a telescope</p>
+<p><strong>我看到她的鴨子拿着一個望遠鏡。</strong></p>
+<p>以及</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-06e4d60c138efb754ea3c93398598797_b.jpg" alt="">
+<p>I saw her duck with a telescope</p>
+<p><strong>我鋸了她的一隻拿着望遠鏡的鴨子。</strong></p>
+<p>脊背發涼啊我勒個去</p>
+<p>不過這還遠遠沒有完&hellip;&hellip;</p>
+<p>考過 GRE 的童鞋會跳出來指出，其實就連 duck 在這裏都可以還有另一個合理的意思，來來來一起查詞典：</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-1d1f92ac3e2478f2a0577e503547054d_b.jpg" alt="">
+<p>也即是&ldquo;彎腰&rdquo;的意思。</p>
+<p>這下好，上面已經提到的四種意思，一下子又能各自出現一個變種。其中前兩個還算正常：</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-cfa1f91fd4cc854340823d5b366b531a_b.jpg" alt="">
+<p>I saw her duck with a telescope</p>
+<p><strong>我用望遠鏡看到她彎下了腰</strong></p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-303d6a21aab90cc273a3dedaa9531215_b.jpg" alt="">
+<p>I saw her duck with a telescope</p>
+<p><strong>我看到她拿着一個望遠鏡彎下了腰</strong></p>
+<p>然後就越來越喪心病狂：</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-c270621f0c9af19fdf1ef77751ce333d_b.jpg" alt="">
+<p>I saw her duck with a telescope</p>
+<p><strong>我用望遠鏡把她鋸得彎下了腰。</strong></p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-011e5348f604f27264cb5e14d45a54f4_b.jpg" alt="">
+<p>I saw her duck with a telescope</p>
+<p><strong>我把拿着望遠鏡的她鋸得彎下了腰。</strong></p>
+<p>尼瑪，人家姑娘只不過拿了個望遠鏡，招你惹你了。</p>
+<p>各位可以發現，每一個二義性，都會使得句子的可能意義的數量指數級上升。雖然其中大多數意義極少被使用，但對於機器來說，是很難做出有效判斷的。就上述例子而言，<strong>我用望遠鏡看到她彎下了腰</strong>和<strong>我用望遠鏡看到了她的鴨子</strong>，都是英文文本中非常可能出現的意義。而這種二義性只有通過上下文才能夠消解。而人類是因爲擁有一些常識（所謂 priori 或者 common sense），所以能排除掉那些明顯不合理的可能。</p>
+<p>同理，如果我們搞的再複雜一點：</p>
+<p><strong>I saw her duck with a telescope in the garden.</strong></p>
+<p>二義性會指數級的爆炸。因爲 in the garden 可能修飾的是 I，可能是 her，可能是 duck，可能是 telescope。最荒謬的意義可能就是：<strong>我把拿着花園裏的望遠鏡的她鋸得彎下了腰。</strong></p>
+<p>到這裏大家應該可以看到，pp attachment 問題是英文二義性問題的重要來源。從 NLP 的角度來說，很多時候就會導致所謂 non-projective dependency 的場景（請自行參閱相關論文）。在中文中，由於介詞短語通常都會緊緊的 attach 在被修飾對象之前，因此這個問題可以說幾乎不存在。所以在中文 NLP 中，更多的還是詞性和詞義本身的二義性造成的。</p>
+<p>比如題主所舉的兩個例子，一個是詞性理解差錯（以爲回家是名詞；如果不是沒理解什麼是滴滴打車的話），一個是語義理解差錯（以爲出租車是一個日程安排）。在缺乏上下文，只有一個單獨的問題，又缺乏相應使用歷史的時候，這種二義性是極其難以被消解的。</p>
+<p>所以大家真的不要爲難 siri 了，她是真的不瞭解你啊。</p>
+<p>最後說說我所從事的醫療 NLP。我們天天打交道的，就是大家一直覺得跟天書一樣的病歷：</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-66fb9ee43ec46e0b40e8ce2d1150234f_b.jpg" alt="">
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-9793e85a76fc5b99e94cba9d0f7cbc97_b.jpg" alt="">
+<p>&hellip;&hellip;</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/917cfb1d56b2a8561a8fc98c32ed8ed9_b.jpg" alt="">
+<p>其實，手寫病歷的識別是個計算機視覺問題，並不屬於自然語言處理範疇。醫院的電子化，給我們這些 NLP 狗帶來了重大利好。終於有美麗整齊的文本可以處理啦：</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-90633926a127b213dab95967b9224cad_b.jpg" alt="">
+<p>看到這裏，NLP 汪們深深的鬆了一口氣。</p>
+<p>可惜，想象和現實總是有差距的。醫生不會因爲放下筆頭、拿起電腦，就變成聖人。該 NLP 買單的，還是得買。</p>
+<p>&ldquo;<strong>脣稍紺&rdquo;</strong>是什麼鬼？</p>
+<p>&ldquo;<strong>臂叢 + 腰硬&rdquo;</strong>是什麼黑科技？</p>
+<p>還有離譜的</p>
+<p><strong>主訴：尿尿尿不出尿來 3 天</strong></p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-42c0e3603e0b62590d34fb2f47a17562_b.jpg" alt="">
+<p>動不動還能搞出這種：</p>
+<p><strong>全身淺表淋巴結未觸及腫大，頭顱無，五官端正</strong></p>
+<p>頭都沒了你還治個什麼鬼？</p>
+<p>一般而言，病歷 NLP 是不需要做句法分析的，因爲醫生的用語往往都簡單異常，掐頭去尾，用大量的並列短語來簡介的概括一段事實。沒有必要識別什麼主謂賓定狀補。</p>
+<p>於是 NLP 汪們興高采烈：不用做 parsing 啦！</p>
+<p>直到有一天遇到這麼個病歷：</p>
+<p><strong>主任冒着漫天大雪，一步一步的走入病房，緊緊的握住病人的雙手，親切的問道：好點了沒？</strong></p>
+<p>#教你如何用盡量長的句子表達儘可能少的意思#</p>
+<p>NLP 汪們也經常會說，病歷語義明確，不需要做共指代消歧義！（共指代消歧義就是說在類似&ldquo;奧巴馬上了車，他頭很痛&rdquo;這樣的句子中，識別出&ldquo;他&rdquo;指代的對象是奧巴馬）</p>
+<p>直到有一天遇到這麼個病歷：</p>
+<p><strong>今查房，症狀同前，體查同前，治療同前</strong></p>
+<img class="content-image" src="http://pic2.zhimg.com/70/d555f3e11e8edecb4731585844826231_b.jpg" alt="">
+<p>好啦，話歸正題，其實醫學 NLP 和前面說的普通 NLP 一樣，最主要要解決的就是二義性問題。比如，呼吸音粗和小腿變粗，雖然都是粗，但是臨牀意義是完全不同的。</p>
+<p>另一種二義性的反向體現，就是一個意義有無數種表達，比如巴賓斯基症這麼一個體徵，我們可愛的醫生們就能寫出五百種寫法：</p>
+<p>巴林斯基徵、巴氏徵、巴賓斯基徵、巴賓斯基、babinski 徵、巴彬斯基徵、babinskisign&hellip;</p>
+<p>#我知道你們忙，但你們能不能稍微認真點。。#</p>
+<p>事實上，我們醫學 NLP 汪，就是想幫中國的醫生們，一方面不用再忍受寫病歷的折磨。你們隨心所欲，我們來收拾爛攤！另一方面，你們寫了這麼多病歷，總要產生點價值吧？有了 NLP，你們埋藏在病歷中的知識寶藏（希望不是糟粕&hellip;&hellip;），就都能被挖出來咯！</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div>
