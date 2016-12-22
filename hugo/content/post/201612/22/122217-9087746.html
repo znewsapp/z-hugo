@@ -1,0 +1,382 @@
++++
+date = "2016-12-22T17:00:00"
+title = "爲什麼現在的人工智能助理都像人工智障？"
+titleimage = "http://pic1.zhimg.com/eb5b9206b8351513c9cf71521a2e4fdc.jpg"
+ga = 122217
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+<div class="question">
+<h2 class="question-title"></h2>
+<div class="answer">
+
+
+
+<div class="content">
+<p>"我不是針對誰，只是在座現在所有做 C 端智能助理的都是坑。"</p>
+<p>對羣嘲做個限定：</p>
+<ol><ol>
+<li>現在：在"API 困境"被解決之前（後詳）。</li>
+</ol></ol><ol><ol>
+<li><em>人工智能助理：這裏指的是</em><a class=" wrap external" href="https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Intelligent_personal_assistant" target="_blank" rel="nofollow noreferrer">Intelligent personal assistant/agent (IPA)</a><em> 又稱爲 Virtual Personal Assistant/Agent(VPA)&mdash;&mdash;幫助個人完成多項任務或多項服務的虛擬助理，當前討論的核心驅動力是人工智能。（什麼你說用人來做處理單元？那是呼叫中心，也叫客服，最看不起掛羊頭賣狗肉的了。）</em></li>
+</ol></ol><ol><ol>
+<li><em>在座：不止是創業公司，大公司也搞不定，國內國外無所謂。</em></li>
+</ol></ol><ol>
+<li><em>都是坑：創業公司做消費端的虛擬助理，一定無法實現消費級產品效果。對於巨頭也是，我相信大部分的相關負責人都以&ldquo;進步&rdquo;爲目標，而不敢跟自家 CEO 擔保要以&ldquo;搞定&rdquo;爲目標。</em></li>
+</ol>
+<p>什麼是智能助理？</p>
+<ul>
+<li><strong>智能助理屬於對話式服務</strong></li>
+</ul>
+<p>兩者的邊界不是很清晰，智能助理的功能在前面解釋過了；而&ldquo;<strong>對話式服務（conversational service/commerce）</strong>&rdquo;&mdash;&mdash;這是包含智能助理在內的多個產品形態的統稱，核心特點是：</p>
+<ul>
+<ul>
+<ul>
+<li><em>對話式：人機交互的方式由圖形化交互（GUI-Graphical User Interface）變爲以對話作爲交互方式（CUI-Conversational User Interface 業界暫時還沒有定義，這是我自己瞎編的），就是用說話來代替觸摸或者鼠標，操作計算設備。</em></li>
+</ul>
+</ul>
+</ul>
+<ul>
+<ul>
+<li><em>服務：提供服務，解決問題都算，如訂機票，購買禮物等。不包括信息查詢（如天氣）。</em></li>
+</ul>
+</ul>
+<img class="content-image" src="https://pic2.zhimg.com/v2-05ebd15b2e232d1c7ec83e410290513d_b.jpg" alt="">
+<p>Facebook M, 真人和 AI 結合的服務</p>
+<p>去年（2015）起來的這一波對話式服務在硅谷有多火？看看創業團隊增長的數量就知道了：2015 年的時候有 129 個類似的項目出現，而 14 年的時候才 42 個。</p>
+<p><a class=" wrap external" href="https://link.zhihu.com/?target=https%3A//blog.tracxn.com/2015/12/17/tracxn-report-conversational-commerce/" target="_blank" rel="nofollow noreferrer">Tracxn Report:Conversational Commerce</a></p>
+<p>在各類科技博客上，對<a class=" wrap external" href="https://link.zhihu.com/?target=https%3A//medium.com/chris-messina/2016-will-be-the-year-of-conversational-commerce-1586e85e3991%23.h66ip9md0" target="_blank" rel="nofollow noreferrer">Conversational Commerce</a>的討論也非常熱烈，尤其是<a class=" wrap external" href="https://link.zhihu.com/?target=https%3A//medium.com/search%3Fq%3Dconversational%2520commerce" target="_blank" rel="nofollow noreferrer">在 medium.com 上有大量的探討</a>。基本的觀點就是&rdquo;對話式的交互將會成爲下一個風口，大家趕緊上啊！&ldquo;。截止到 2016 年 6 月的時候，在 Producthunt 上<a class=" wrap external" href="https://link.zhihu.com/?target=https%3A//www.producthunt.com/%40chrismessina/collections/convcomm" target="_blank" rel="nofollow noreferrer">標記爲對話式服務（ConvComm）的有一百多個創業項目</a>。</p>
+<p>除了智能助理以外，還有很多類似的概念如 digital agent，bot，service bot, chatbot，P2P 的電商。比如 Operator 現在用真人專家幫用戶做消費決策，在過去嘗試過用 bot/AI 但可惜<a class=" wrap external" href="https://link.zhihu.com/?target=https%3A//medium.com/%40Operator/conversational-commerce-goes-visual-4c6816bf7783%23.uptkual7e" target="_blank" rel="nofollow noreferrer">達不到效果</a>，或者 magic 模式，完全是靠&rdquo;真人幫懶人用 APP&ldquo;驅動運營。本文主要討論的是基於人工智能的智能助理&mdash;&mdash;就像 IBM 提到的一樣，<a class=" wrap external" href="https://link.zhihu.com/?target=https%3A//www.ibm.com/blogs/watson/2016/07/cn-tlk-2-u-capitalize-emerging-conversation-trends/" target="_blank" rel="nofollow noreferrer">只有如此才能真正規模化</a>。</p>
+<ul>
+<li><strong>智能助理應該解決服務需求</strong></li>
+</ul>
+<p>巨頭的人工智能助理基本都已亮相了：</p>
+<ul>
+<ul>
+<ul>
+<li>Facebook M</li>
+</ul>
+</ul>
+</ul>
+<ul>
+<ul>
+<ul>
+<li>Amazon Echo</li>
+</ul>
+</ul>
+</ul>
+<ul>
+<ul>
+<ul>
+<li>Google Assistant, Allo</li>
+</ul>
+</ul>
+</ul>
+<ul>
+<ul>
+<ul>
+<li>Apple Siri</li>
+</ul>
+</ul>
+</ul>
+<ul>
+<ul>
+<ul>
+<li>IBM Watson</li>
+</ul>
+</ul>
+</ul>
+<ul>
+<ul>
+<li>Microsoft Cortana</li>
+</ul>
+</ul>
+<p>以上智能助理的服務範圍大都是在信息檢索，幫助用戶獲得資訊。絕大多數的內容是不牽涉&ldquo;推理&rdquo;的查詢類信息服務。比如：</p>
+<p>1）明天的天氣如何？</p>
+<p>2）找附近的星巴克在哪兒？</p>
+<p>3）蘋果的股價如何？</p>
+<p>如果用戶問到在基礎信息以上，一旦牽涉推理的問題，就無能爲力了。比如：</p>
+<p>1）明天這個天氣狀況會會造成航班延誤麼？</p>
+<p>2）我只有支付寶，附近的星巴克可以用麼？</p>
+<p>3）我什麼時候該買蘋果的股票？</p>
+<p>使用體驗方面，這些助理的服務範圍覆蓋面基本跟當前的所有引擎一樣。在設計邏輯上，基本都是基於用命名實體識別來代替打字輸入關鍵詞然後返回檢索結果 SERP。而信息檢索，離人們要完成的服務需求有很大的區別。就好像 viv.ai 的聯合創始人<a class=" wrap external" href="https://link.zhihu.com/?target=https%3A//www.crunchbase.com/person/dag-kittlaus" target="_blank" rel="nofollow noreferrer">Dag Kittlaus</a> 說的，當初他創建 siri 的時候，<a class=" wrap external" href="https://link.zhihu.com/?target=https%3A//www.washingtonpost.com/news/the-switch/wp/2016/05/04/siris-creators-say-theyve-made-something-better-that-will-take-care-of-everything-for-you/" target="_blank" rel="nofollow noreferrer">是想要重新挑戰移動服務，而不是造一個 chatbot</a>。</p>
+<p><img class="content-image" src="https://pic4.zhimg.com/v2-668dbbbc11348b5cd7b5b5bc8965e797_b.jpg" alt=""></p>
+<p>除此以外，巨頭的助理與其關聯的生態產生操作的關聯。比如 SIRI 對 iOS 和 macOS 的操作；Cortana 對 windows 的操作；echo 對關聯着的智能家居設備的操作等等。此類操作的一個特點，是對結果非常的確定，出現個性化選擇範圍非常的少。</p>
+<p>另一方面，對於創業項目而言，因爲不具備類似的生態和硬件入口的條件，大都定位在資訊和服務上。我們選擇 Producthunt 當中排在最前 150 位的項目進行分析，其中高達 70%的項目定位都在 2C 的個人助理（agent）上，其中大部分都想做切入服務，包括垂直類的和多任務的。</p>
+<p>這些助理服務當中有 23.1%是專業類型的服務，主要是在醫療和理財方面。而剩下來的 76.9%的助理乾的最多的活兒是生活上的綜合幫助，出行安排，日程管理，購物訂餐廳等等&mdash;&mdash;這一類是坑最大的地方&mdash;&mdash;特別是那些試圖把生活上的各種服務都打包進去的產品。</p>
+<p><img class="content-image" src="https://pic1.zhimg.com/v2-33ef9db986cff374b567ba9021084f14_b.png" alt=""></p>
+<p><strong><strong>人工智能助理的潛力</strong></strong></p>
+<ul>
+<li><strong>移動紅利的結束，行業需要新的增長點</strong></li>
+</ul>
+<p>很多跡象都指向同一個結論：<strong>移動互聯的高速增長已經飽和</strong>。比如用戶已經不再願意下載新的 APP。</p>
+<p><a class=" wrap external" href="https://link.zhihu.com/?target=http%3A//qz.com/253618/most-smartphone-users-download-zero-apps-per-month/" target="_blank" rel="nofollow noreferrer">qz</a><em> (based on comscore data) &amp;</em><a class=" wrap external" href="https://link.zhihu.com/?target=http%3A//www.statista.com/statistics/258160/number-of-new-apps-submitted-to-the-itunes-store-per-month/" target="_blank" rel="nofollow noreferrer">statista</a></p>
+<p>2016 年 1 月有超過 5 萬個新的 APP 被提交到了 appstore，但是在美國市場有 65%的智能手機用戶在一個月內下載新 APP 的數量爲 0，下了 1 個新 APP 的人佔 8.4%。</p>
+<p>2015 年中到現在，在國內 2C 市場中，幾乎找不到一款真正能爆發並留存的移動產品。對於移動開發者而言，能放首屏的高頻應用早就擠不進去了。而且很多中低頻的服務，並不是最適合用 app 來承載的。比如訂生日蛋糕，作爲商業其價值一直存在，能通過信息化的方式來解決獲客或者能效問題麼？宏觀來講肯定可以，但是開發一個 APP 則會面臨用戶獲取和使用成本高，難留存，用戶難發現等等障礙&mdash;&mdash;這些問題，都讓開發者懷疑要不要做 APP，特別是在最開始的 PMF 核心邏輯還沒有被驗證的時候。</p>
+<p>但創業者的熱情和投資人基金裏的錢都不能等！於是大家憋着這口氣四處找風口，或者又有怎樣的產品形態可以把商業形態再顛覆一次，好比 APP 顛覆了網頁，宏觀上有沒有新的產品形態可以再來一次？甚至運氣更好點，甚至開拓出以前沒有被耕耘過的維度？</p>
+<ul>
+<li><strong>對話式服務具備新的增長點的潛質</strong></li>
+</ul>
+<p>回顧過去，最大的幾次浪潮基本都伴隨着一個規律：核心技術（軟硬一堆）的出現和整合，帶來全新的人機交互方式 ，在此基礎上大量的商業應用應運而生。</p>
+<p><img class="content-image" src="https://pic1.zhimg.com/v2-1be9116f356fd17511bd00b60c18a3e8_b.png" alt=""></p>
+<p>比如 2007 年末移動互聯開始，核心驅動的硬件是觸摸技術、各種 sensor 的成熟以及整體計算能力的提升和小型化；軟件方面則是 iOS&amp;Android 的顛覆式出現。軟硬結合創造出完全顛覆過去的觸摸操作的體驗，並使其稱爲真正可用的人機交互方式&mdash;&mdash;讓圖形化界面的輸入工具，從鍵鼠時代跨越到了更 intuitive 的觸摸，並完美的與後面開放的生態系統結合起來（不得不再次對喬大爺表示敬佩）。</p>
+<ul>
+<li><strong>人機交互越來越傾向於人</strong></li>
+</ul>
+<p>可以看到隨着技術的平民化(democratization)，人機交互正不可逆轉地向人的方向靠近&mdash;&mdash;不需要學習的人機交互。</p>
+<p><img class="content-image" src="https://pic1.zhimg.com/v2-ce434c04d38ac89d9447aec2be25dfe4_b.png" alt=""></p>
+<p>因爲軟硬件限制，過去用上計算設備的人很少。一方面，當時的人機交互是讓人來&ldquo;將就&rdquo;機器&mdash;&mdash;人學習機器的語言&mdash;&mdash;操作需要專業技術，如打孔...（在個人電腦方面，當年知道'cd 文件夾名'的命令行的人也都是高端人士）；另一方面計算設備巨貴，還不屬於個人設備，大衆都買不起；再者，日常應用和普通生產力應用幾乎沒有，所以買來設備學會了 UI 也沒啥用。而移動設備出現就讓更多的人從使用計算設備中獲利，更多不會鍵盤鼠標的人，通過觸摸手機屏來操作。將來人們想要獲得服務的時候，或許不需要有&ldquo;計算設備&rdquo;這個中間載體的概念。直接提出需求，就能獲得結果。</p>
+<ul>
+<li><strong>下一代的交互方式，似計算設備能覆蓋更廣的商業。</strong></li>
+</ul>
+<p><img class="content-image" src="https://pic4.zhimg.com/v2-a631b1e8e8ebe5e05d1719f913f4579f_b.jpg" alt=""></p>
+<p>看看過去 app 如何顛覆 web 的，在沒有移動互聯之前，大衆點評只是一個不知道幾流的小衆產品，web 也並非最合適這個商業模式的產品形態&mdash;&mdash;比如大部分情況下，人們想要找餐廳的時候，身邊都沒有 PC 來獲得其他人的點評信息；而移動互聯的 APP 解決了這個問題。</p>
+<p>這並不是說 app 代替了 web（比如 PS 還是在桌面端更好用），而是藉由移動設備，app 開啓了過去沒有的維度，繼而大衆點評的商業模式有了更合適的產品形態。我相信 APP 顛覆 web 的歷史，也會同樣發生在下一代人機交互的形態來顛覆當前 app 的時候。不僅很多商業模式和形態都可以被重新考慮一次，甚至幾乎可以肯定 CUI 會打開新的維度，解放更多的商業價值。</p>
+<p>如果一個 C 端產品做得好，傳播不受硬件束縛，沒有用戶的使用成本的障礙，並且不需要下載新的 APP，直接在熟悉的 IM 或者 SNS 裏實現過去用 app 承載的服務，甚至還能開拓新的形態...比起當前的其他選擇 AR/VR/IOT/ 區塊鏈，CUI 帶來的想象空間更大。所以，就有很多人，巨頭小頭沒頭的都來嘗試。</p>
+<p><strong><strong>對 CUI 的特點的理解決定產品價值</strong></strong></p>
+<p>不可否認的，真正的 CUI 產品一定是基於人工智能的自然語言處理的。如何深入利用 CUI 的特點，是產品打造的關鍵。</p>
+<p>話說當前國內有很多投資人認爲，只要是做人工智能的團隊，就必須是 MIT，Caltech 出來的機器學習博士或者是 GOOGLE，FACEBOOK 的 AI 團隊的人；如果團隊不是頂級院校的學者或者是巨頭出來的項目帶頭人，就沒有什麼好搞的&mdash;&mdash;這是典型的誤區，或者說對行業的理解太淺了。這種理解基本等於 &ldquo;聽說你是計算機專業畢業的，幫我裝一下電腦吧&rdquo;這樣的水平。很不幸國內好多年輕點的投資經理基本都是這種水平（爲什麼年紀大點的不是？因爲他們理解'不懂就不要輕易判斷'這樣的人生道理）。看不懂本質，就看表面，也是不得已。</p>
+<p>這裏，我非常贊同順爲資本的<a class=" wrap external" href="https://link.zhihu.com/?target=http%3A//mp.weixin.qq.com/s%3F__biz%3DMjc1NjM3MjY2MA%3D%3D%26mid%3D2691314008%26idx%3D1%26sn%3D53d4403d20db634e05ee1bb27cb8502e%26chksm%3Da9eb8e839e9c07952666697a66450cac443eb0cec06c42cf1e87201918968ea30d73138f4721%26mpshare%3D1%26scene%3D2%26srcid%3D1103DN62sIIDGrDtLT2Ozqeu%26from%3Dtimeline%26isappinstalled%3D0%23wechat_redirect" target="_blank" rel="nofollow noreferrer">孟醒的幾個觀點</a>：1）所謂&ldquo;做 AI 的&rdquo;也有幾個類型，底層研發和做應用的是兩碼事。2）人工智能的底層交給大公司，小創業公司可以做點小模塊。而應用層則有大量的空間給創業公司來實現商業化。3）&ldquo;這個行業缺 AI 的產品經理，不缺一般意義上的明星，特別牛 x 的算法達人，牛 x 的北京的 BAT 出來的人。&rdquo; 這方面<a class=" wrap external" href="https://link.zhihu.com/?target=http%3A//36kr.com/p/5056288.html" target="_blank" rel="nofollow noreferrer">吳恩達也有類似的觀點</a>，&ldquo;人工智能社區是極其開放的，大多數頂級研究者會出版他們的著作／分享他們的想法身子開源代碼。因此，在這個技術開元環境下，數據和人才就是稀缺的資源。&rdquo;</p>
+<p>有點跑題了，在這裏就強調一下，CUI 的核心技術是 AI（不僅限 NLP 後面會提到）。對 CUI 作爲新一代顛覆性人機交互的理解，纔在產品形態上能發揮底層技術的商業價值。最後，再舉個例子，GUI 的核心突破是技術大牛（xerox）帶領的，而其商業應用的發揚光大則是產品經理喬布斯從 xerox 那兒&ldquo;偷來&rdquo;的。</p>
+<p><img class="content-image" src="https://pic3.zhimg.com/v2-ef10eed2117bb8c4b218b43ab0a0c54e_b.jpg" alt=""></p>
+<p>年輕人不懂就要多看書。</p>
+<ul>
+<li><strong>CUI 的不可延續 GUI 的特點</strong></li>
+</ul>
+<p>爲了深入理解這個問題，我們可能要先分析一下，CUI 和 GUI 究竟給用戶體驗帶來什麼影響？因爲這<strong>絕不是現在主流的&ldquo;把按鈕變成語言操控&rdquo;那麼簡單</strong>的事情。</p>
+<p>當移動設備出現的時候，大家對如何在智能手機上開發產品還沒有來得及有深入的瞭解。所以當時開發者基本都是從最明顯的地方起步，也就是<strong>觸摸代替鍵鼠操作</strong>。早期的大量應用，都是從&ldquo;<strong>如何把 web 縮小到手機屏幕</strong>&rdquo;的思路出發來設計 APP 的。&mdash;&mdash;這是典型的延續上一代交互的思路。</p>
+<p>隨着開發者不斷思考和挖掘移動端的潛力，慢慢有了對移動端真正的核心特質的理解&mdash;&mdash;這些<strong>&ldquo;聖盃屬性&rdquo;</strong>纔是真正讓移動端產品設計出衆的要素。比如&ldquo;碎片時間&rdquo;、&ldquo;個人身份綁定&ldquo;、&rdquo;LBS&rdquo;等等，這些特質纔是真正讓移動產品體現價值的&mdash;&mdash;這些是完全顛覆上一代交互的屬性。而且我們發現這些屬性幾乎跟&ldquo;觸摸&rdquo;這個明顯的交互行爲沒有直接關係。</p>
+<p>現在 CUI 出現的時候，產品經理也會面臨類似的問題。當前大多數智能助理的設計思路都是&ldquo;<strong>過去 APP 是怎麼用的，我現在用語言來代替觸摸操作</strong>&rdquo;。好比是用語言來代替手指去觸摸屏幕，或者是用說話來代替手指打字。而能讓用戶感覺真正智能的核心，我認爲依然藏在 CUI 的&ldquo;<strong>聖盃屬性&rdquo;</strong>裏，有待大家發掘。</p>
+<ul>
+<li><strong>CUI 的特點：高度個性化</strong></li>
+</ul>
+<p>舉一個例子，根據實際研發和市場運作的經驗，我們發現有一個算得上&ldquo;聖盃屬性&rdquo;是特質是：&ldquo;高度個性化&rdquo;。</p>
+<p>在 GUI 時代，用戶使用產品時，有一個可視化的界面，比如找餐廳，我們打開點評看上去是這樣：</p>
+<img class="content-image" src="https://pic4.zhimg.com/v2-442c3d1122a7358382440dfdb33ff8eb_b.png" alt="">
+<p>這看上去是一個大家非常熟悉的界面，只是<strong>所有用戶能做的選擇範圍，都明確的顯示在界面上（所見即所選）。</strong>找美食，用戶能做的選擇基本就是：附近，類型，智能排序（不點開可能還不知道是什麼意思）以及排序。當用戶自己不知道該如何決策的時候，這些視覺化的框架，給了用戶提示該從這些方面根據自己的需求來做篩選和匹配。</p>
+<p>但是在智能助理的界面，用戶看到的是這樣的：</p>
+<img class="content-image" src="https://pic2.zhimg.com/v2-48d214fb2dba1820205b49e6483409d5_b.png" alt="">
+<p>用戶對可以做哪些選擇一無所知&mdash;&mdash;在沒有可視化的參考下，面對如此開放的交互，當用戶要找一個餐廳的時候，他們提出的要求，大都不在 GUI 設定的範圍以內。</p>
+<p>根據我們實際操作的經驗，用戶提出的問題是這樣的：</p>
+<img class="content-image" src="https://pic4.zhimg.com/v2-2e13d5d24d347b992d79abd978b0ebaf_b.png" alt="">
+<p>只有&ldquo;在外灘附近的&rdquo;是之前 GUI 的查詢範圍當中的，其他的需求都是過去 GUI 的類型當中不存在的維度。但因爲 CUI 的開放性，用戶很容易給出上面這樣的高度個性化（非結構化）的需求。</p>
+<p>如果 GUI 的產品試圖在個性化同樣給用戶那麼多選擇，就不得不面臨用戶使用成本的問題。一個界面可能會被大量的下拉列表，層級關係，各種填空和操作充滿。如此是加深了個性化程度了，但是操作的成本會讓用戶放棄使用。</p>
+<p>如果在智能助理的產品設計上，不尊重用戶&ldquo;高度個性化&rdquo;的需求，只提供過去 APP 本身提供的個性化程度&ldquo;在 XX 附近找個 YY 菜&rdquo;，那麼用戶在實際提需求的時候得靠運氣撞到既定的條件上，不然就是無法識別的範圍，繼而失望。另一方面，<strong>如果 CUI 只是在做 GUI 範圍內的事情，會遠不足</strong><strong>以</strong><strong>顛覆 APP</strong>。</p>
+<p>除此之外，CUI 還有一些專屬的特點。比如</p>
+<ul>
+<ul>
+<ul>
+<li><strong>使用流程非線性：</strong>比如 GUI 是線性的流程，界面引導用戶一步一步走到結果；而 CUI 則可以是完全無視先後順序的，用戶可以再最開始就提出本來到排在最後的條件當中。</li>
+</ul>
+</ul>
+</ul>
+<ul>
+<ul>
+<ul>
+<li><strong>可避免信息過載</strong>：用戶打開 GUI 的一個界面，比如點評上找一個餐廳，用戶得在一個列表裏去找尋自己最想要的選項（典型的案例是，GUI 讓用戶選擇國家的時候那一長排的列表）。而 CUI 則可以規避用戶的信息過載，直接給出期望的結果。這個特點的另一面是，GUI 因此是 informative 的，給不熟悉場景的用戶更多的提示，或者比較結果的機會。</li>
+</ul>
+</ul>
+</ul>
+<ul>
+<ul>
+<li><strong>複合動作</strong>：&ldquo;明天或後天，晚上最便宜的機票&rdquo;&mdash;&mdash;從用戶的操作和實際體驗來看，GUI 無法一次給出結果，只能用戶先查一次明天的機票，再查一次後天的機票，然後手動來對比。CUI 完勝&mdash;&mdash;可以直接給出相關條件的檢索結果，前提是 AI 足夠優秀。</li>
+</ul>
+</ul>
+<p>這裏只是拋磚引玉，詳細更多特質會不斷被開發者發掘出來。在這裏就不詳細展開了。在另一篇《人工智能時代的產品經理》文章當中，會做更多關於 CUI 的分析。</p>
+<p><strong><strong><br>什麼樣的 AI Agent 能滿足 C 端的需求？</strong></strong></p>
+<p>爲什麼現在的助理產品都是坑？很多團隊不是底層的算法差，而是團隊對產品的理解有問題。</p>
+<p>要滿足 C 端用戶的需求，確實非常難。10 次使用，有一次因爲任意原因的失望，用戶心理就會開始有疑慮。從體驗上來看，在用戶熟悉的場景下得全面理解用戶提出的需求；在用戶自身不清楚場景下，得自然的協助用戶挖掘需求；獲得需求後得幫助用戶做決策，並最終呈現結果。以此來看，對話式的 agent 就得至少滿足以下功能：</p>
+<ul>
+<li>具備基於上下文的對話能力 (contextual conversation)</li>
+</ul>
+<ul>
+<li>具備理解口語中的邏輯 (logic understanding)</li>
+</ul>
+<ul>
+<li>所有能理解的需求，都要有能力履行（full-fulfillment）</li>
+</ul>
+<ol>
+<li><strong>基於上下文的對話能力(contextual conversation)</strong></li>
+</ol>
+<p>在當前，做助理的產品的底層技術基本都是圍繞 NLU（自然語言理解）打造的，很多還沒有涉及到 NLP。可是無論是大公司還是小公司的 NLU 都是讓人失望的。舉個簡單的例子，在大公司的幾個產品上提出需求：<strong>我下週五要去北京，幫我查一下航班</strong>。</p>
+<p><strong>需要識別意圖</strong>：查機票</p>
+<p><strong>需要識別 entities</strong>：時間（下週五），目的地（北京），出發地（無 / 當前地理位置）</p>
+<p>我們看看結果，首先看三家的回覆，從左到右分別是蘋果的 SIRI, 微軟的 CORTANA, Google 的 ALLO。</p>
+<img class="content-image" src="https://pic1.zhimg.com/v2-c42db18ee9cd96e25d81c286c98225cc_b.png" alt="">
+<p>沒有一個能識別出來意圖，全部做爲用關鍵詞來檢索網頁(SERP)。沒有識別出意圖，繼而也就沒有可能識別 entity 所在的場景。對於 C 端用戶而言，這可能算是最基礎的服務之一，而三大巨頭提供的產品完全不能用。</p>
+<p>不過當我們看到國內的創業公司，卻能按照需求識別出意圖，並且識別出對應的 entity，組合查詢出結果，看上去比幾個巨頭更強大。</p>
+<img class="content-image" src="https://pic4.zhimg.com/v2-31d44587ef2e01365f1a4d52f211b09b_b.png" alt="">
+<p>我們繼續測試上下文的對話。比如，我是國航的會員，agent 給出上面的結果裏沒有國航的航班，我自然會問：&rdquo;有沒有國航的？&ldquo;</p>
+<p>結果並沒有如期望那樣，在給出的列表裏找到國航的航班。而是開始了重新的一次查詢。</p>
+<img class="content-image" src="https://pic1.zhimg.com/v2-15522835c738bb1e7f3b1965596b7818_b.png" alt="">
+<p>換一句話來說，沒有結合上下文的對話。我並不是爲了黑，事實上這個產品在國內的創業公司中也算不錯的技術了。但是不會結合上下文的對話，會造成的最嚴重的問題就是這個 agent 基本不能獨立完成服務。因爲<strong>用戶不會在一個句子裏把所有的條件都列出來。</strong></p>
+<p>以上是基本要素，就當前的產品形態來看，只有非常少的產品能真正做到第一點。大部分號稱能做到的，都是濫竽充數，連續問問題而已。</p>
+<p>不能真正理解上下文的對話（機票查詢）：</p>
+<ul>
+<ul>
+<ul>
+<li>AGENT： 從哪裏出發？</li>
+</ul>
+</ul>
+</ul>
+<ul>
+<ul>
+<ul>
+<li>用戶：上海虹橋機場</li>
+</ul>
+</ul>
+</ul>
+<ul>
+<ul>
+<ul>
+<li>AGENT：到哪裏？</li>
+</ul>
+</ul>
+</ul>
+<ul>
+<ul>
+<ul>
+<li>用戶：還是從浦東走吧</li>
+</ul>
+</ul>
+</ul>
+<ul>
+<ul>
+<li>AGENT：好的，從虹橋出發<strong>到浦東的航班</strong>是......</li>
+</ul>
+</ul>
+<p>在上面的對話，AI Agent 在問第二個問題的時候，不能理解用戶對前一個回答的修改（出發地從&ldquo;虹橋&rdquo;改爲&ldquo;浦東&rdquo;），只是按照預先設計對話的順序，填上命名實體識別得來的 entity。繼而查詢不到結果，給用戶的感覺就是笨。</p>
+<p>真正理解上下文的對話（機票查詢）：</p>
+<ul>
+<ul>
+<ul>
+<li>AGENT：從哪裏出發？</li>
+</ul>
+</ul>
+</ul>
+<ul>
+<ul>
+<ul>
+<li>用戶：上海虹橋機場</li>
+</ul>
+</ul>
+</ul>
+<ul>
+<ul>
+<ul>
+<li>AGENT：到哪裏？</li>
+</ul>
+</ul>
+</ul>
+<ul>
+<ul>
+<ul>
+<li>用戶：算了，從浦東走吧</li>
+</ul>
+</ul>
+</ul>
+<ul>
+<ul>
+<ul>
+<li>AGENT：好的，<strong>出發改爲浦東。那到達城市呢</strong>？</li>
+</ul>
+</ul>
+</ul>
+<ul>
+<ul>
+<ul>
+<li>用戶：北京</li>
+</ul>
+</ul>
+</ul>
+<ul>
+<ul>
+<li>AGENT：好的，從浦東到北京的航班是...（給出正確的結果）</li>
+</ul>
+</ul>
+<p>而具備真正上下文理解的對話，agent 可以正確理解用戶第二個回答的內容（從浦東走），其實是在修改上一問題的回答（出發機場），而不是真的在回答第二個問題（到達地在哪裏）。</p>
+<p>這只是上下文的例子，而對於服務類 agent 而言，所有後續的 NLP 功能都基於上下文對話爲前提。這些看上去其實都是非常簡單的需求，但是當前沒有任何一個 2C 的 agent 可以做到。</p>
+<p>可能有人會問，大部分用戶都應該在第一時間把需求表達出來吧，爲什麼還需要對話？實際上，真正操作過大量案例的同學就會發現，用戶不可能如此&rdquo;貼心&ldquo;地按照開發者的設計來提出需求。</p>
+<p>&rdquo; 幫我看看下個星期五去北京，下午 3 點多，從虹橋出發，國航的航班。&ldquo;&mdash;&mdash;這一類的表達方式在幾乎從來沒有出現過。哪怕是在用戶最熟悉的場景，也很難確保一個句子的表達裏包含了所有必須的檢索條件。而且，用戶還會不停的補充更多的個性化需求。</p>
+<p><strong>對於用戶自己比較瞭解的場景</strong>，如：訂機票需要提供到達地，用戶提出的大多數需求，在最初都是非常簡單，然後逐漸開始細化的。所以需要當用戶提出不完整需求的時候，根據其意圖，結合之前已經給過的條件，通過對話，向用戶提出問題，再獲得答案來補全剩下還需要的條件，最後再完成服務。</p>
+<p><strong>對於用戶自己不熟悉的場景</strong>，用戶根本就不知道自己該提出哪些方面的需求。如：不懂酒的用戶，想買一瓶合適的威士忌。他就根本很難提出除了價格以外的需求，比如產地，年份，釀造原料，水源等等。因此，Agent 得以合適的方式來提問，引導用戶給出偏好，並且用對話提出推薦。</p>
+<p>而且對於 agent 而言，很難判斷哪些用戶對服務的認知有多深。如果不做識別，就容易問&rdquo;老手&ldquo;一些&rdquo;新手問題&ldquo;，繼而讓老手覺得我還不如自己下單；而給新手又留下&rdquo;你在說什麼我都不懂&ldquo;的印象，也是不聰明。</p>
+<p>所以要有好的體驗，這是非常困難的。<strong>而基於上下文的對話，只是最基礎的用戶需求之一</strong>。</p>
+<p><strong>2.理解口語中的邏輯 (logic understanding)</strong></p>
+<p>在我們的實踐中，我們發現對&rdquo;邏輯&ldquo;的理解直觀重要。原因也是因爲用戶的正常對話，大部分都不是開發者預設那樣的。</p>
+<p>再做一個簡單的測試，比如找餐廳，試試：<strong>幫我推薦一個附近的餐廳，不要日本菜。</strong></p>
+<p>這是一個簡單邏輯，但是你看所有的服務，這次包括剛剛那個國內創業公司 C 一樣，都會是一個結果：全部推薦日本菜。</p>
+<p><img class="content-image" src="https://pic1.zhimg.com/v2-e7465baabb6e1d9c4f85eef28fa0f40c_b.png" alt=""></p>
+<p>這次其實比剛剛好多了，至少 4 家裏面除了 google allo，都識別出來我的意圖是找餐廳&mdash;&mdash;但是，當我明確提出<strong>不要日本菜</strong>的時候，給出結果的三家全部都是日本菜......也就是說&ldquo;<strong>不要</strong>&rdquo; 兩個字被完全忽略了。</p>
+<p>觀察大量的用戶案例表明，當用戶越是個性化需求強烈的時候，對話中出現邏輯和指代關係的頻次越高。</p>
+<p>&ldquo;有沒有<strong>更便宜</strong>的？&rdquo;</p>
+<p>&ldquo;<strong>除了</strong>大牀房<strong>以外</strong>的房間有麼？&rdquo;</p>
+<p>&ldquo;後天會比今天<strong>更冷</strong>麼？&rdquo;</p>
+<p>&ldquo;就要剛剛的<strong>那個 2 千多</strong>的吧。&rdquo;</p>
+<p>&ldquo;<strong>除了</strong>廉價航空，其他的航班<strong>都可以</strong>。&rdquo;</p>
+<p>以上這些需求是提需求的時候，在對話中經常出現的表達方式，而且看似簡單，但是目前沒有任何一個 NLU 的系統或產品能夠正確的理解。主要的阻礙就是對邏輯的理解，還有在基於上下文對話中的指代關係的理解失敗。</p>
+<p><strong>3. NLP 不是全部，還要有能力履行（API 困境）</strong></p>
+<p>NLU 並不是智能助理髮展的瓶頸，供給端的數據纔是。</p>
+<p>我們假設如果有一個黑科技出現，使得 NLP 有了極大的進步，以至於兩個條件：1）基於上下文場景的對話；2）口語邏輯，都能被理解了，甚至還能基於場景和上下文用 NLG 來生成各類問題&mdash;&mdash;它能理解我們所有講出來的需求。</p>
+<p>在用戶熟悉的範圍內，它能結合所有的過去的對話，歷史記錄等等內部外部條件，幫助用戶儘可能的實現&ldquo;不用開口，就知道我在這個的需求&rdquo;。比如當用戶提出&ldquo;推薦餐廳的需求&rdquo;：</p>
+<p>用戶：&ldquo;女朋友週日過生日，推薦一個餐廳，找有江景的，最好桌子旁邊有一個大落地窗戶，能看到外面的夜景。吃的不要太貴，環境好點，有現場音樂的最好是爵士，不要太吵的。&rdquo; （btw，這是一個真實需求）</p>
+<p>Agent：&ldquo;菜系有偏好麼？&rdquo;</p>
+<p>用戶：&ldquo;意大利餐和法餐都可以，對了不要離外灘太遠了&rdquo;</p>
+<p>agent 解析出以下選擇餐廳的條件：</p>
+<ol><ol>
+<li>週日晚（營業）</li>
+</ol></ol><ol><ol>
+<li>適合女朋友過生日</li>
+</ol></ol><ol><ol>
+<li>有江景</li>
+</ol></ol><ol><ol>
+<li>有大落地窗</li>
+</ol></ol><ol><ol>
+<li>不要太貴</li>
+</ol></ol><ol><ol>
+<li>環境好</li>
+</ol></ol><ol><ol>
+<li>有現場音樂，爵士</li>
+</ol></ol><ol>
+<li>不能太吵</li>
+</ol><ol><ol>
+<li>意大利餐或者法餐</li>
+</ol></ol><ol>
+<li>距離外灘不能太遠</li>
+</ol>
+<p>然後它去哪裏找到這樣的餐廳呢？在地圖服務提供商，或者點評的 API 提供的信息裏只有 8，9，兩項能找到數據。假設評論中有這樣的數據，該用什麼方式來傳遞呢？接口提供的都是結構化的數據，而&ldquo;環境好&rdquo;這樣的非結構化數據，最多以標籤的方式來做，但是這樣的話，標籤就會有無止境的多也不現實。</p>
+<p>這就是我們所謂的&ldquo;API 困境&rdquo;&mdash;&mdash;當前基於 API 的數據傳遞方式，只能 1）承載結構化數據；2）承載數量非常有限的結構化數據。</p>
+<p>當前基於 GUI 的產品，都是用 API 來傳遞結構化數據。但大量個性化數據往往是非結構化的，以當前 API 的方式很難被處理。這還是在使用場景或者服務比較簡單的情況下。</p>
+<p>在用戶不熟悉的場景下，agent 面對稍微專業一點的服務，就會遇到知識圖譜的問題。簡單來講，agent 要做推薦的前提是對推薦的內容得先有了解。好比，要向一位不懂酒的用戶推薦一款威士忌，那就不能依賴這位用戶自己提出的問題（很可能提不出要求），而得依賴&ldquo;懂行&rdquo;的自己對威士忌的理解的方方面面來引導用戶做合適他的選擇。一個助理顯然無法擁有所有服務所需的知識圖譜。</p>
+<p>從知識圖譜的結構來看，是相對可被結構化。一個服務可以以各種方式被拆解成很多個方面，但大量的方面在當前是沒有結構化數據的（比如我們沒有每家餐廳的&rdquo;營業面積&ldquo;的數據）；甚至很多方面無法用結構化數據來表達（比如每家餐廳有否&rdquo;適合浪漫約會&ldquo;的環境）。</p>
+<p>因此，智能助理就算有了強大的 NLP，還需要全面的知識圖譜（結構化數據）和處理並傳遞非結構化數據的能力&mdash;&mdash;而這兩點，在目前是無解的。</p>
+<p><strong><strong>總結</strong></strong></p>
+<p>在"API 困境"解決之前，再加上 NLP 本身還有很長的路要走，基於人工智能的多任務服務 agent 不大可能達到 C 端滿意的水平。</p>
+<p>創業團隊各自最基礎的認知計算的能力不會有太大的區別，都是踩在世界頂尖大牛的肩膀上&mdash;&mdash;在這個領域創業團隊想和大公司鋼正面，不是很理性。</p>
+<p>創業團隊在垂直領域有些自己的技術突破可以創造一些階段性的優勢，但面對教育市場的大山而言，這點差異遠不足以 make a difference。</p>
+<p>在各自領域，開發者對人工智能相關技術的理解和其帶來的交互層面的有效應用，可能會在垂直商業應用上創造更大的差異&mdash;&mdash;比較起&rdquo;95% VS 98%的識別率&ldquo; 而言。</p>
+<p><strong><strong>關於我</strong></strong></p>
+<p>本人正在從事人工智能方面的創業，合夥人做算法和框架，我做產品和商業。我們親身經歷過 C 端助理的坑，結合過去一段時間和各家 VC 機構以及同一個戰壕的朋友溝通下來的一些心得，與大家分享。</p>
+<p>拋磚引玉，歡迎互噴。</p>
+
+
+
+</div>
+</div>
+</div>
+
+
+</div>
+</div>
