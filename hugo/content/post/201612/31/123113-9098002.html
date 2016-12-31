@@ -1,0 +1,47 @@
++++
+date = "2016-12-31T13:00:00"
+title = "USB 芯片原來靜悄悄地幹了好多事啊"
+titleimage = "http://pic3.zhimg.com/bfe1f4aad061327796d2868f98746f36.jpg"
+ga = 123113
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title">USB 芯片到底完成了哪些工作？</h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>意外發現知乎上還有這麼專業的話題，哈，班門弄斧一下。</p>
+<p>研究生兩年 FPGA 學習，入職從事通信 SOC 芯片，碰巧同事離職，接手 USB。半年從完全不懂 USB，到完成第兩顆芯片 USB2.0 前仿後仿驗證，一顆 USB3.0 前仿後仿驗證，支持第一個顆芯片 USB2.0 樣片測試，牽頭前同事遺留 USB3.0 測試。對 USB 算有些理解了，希望對關注者有幫助。</p>
+<p>問題 1：上圖，高速模塊一般分爲控制器 Controller 和 PHY 兩部分，Controller 大多爲數字邏輯實現，PHY 通常爲模擬邏輯實現。</p>
+<p>USB 芯片也分爲 Controller 部分和 PHY 部分。Controller 部分主要實現 USB 的協議和控制。內部邏輯主要有 MAC 層、CSR 層和 FIFO 控制層，還有其他低功耗管理之類層次。MAC 實現按 USB 協議進行數據包打包和解包，並把數據按照 UTMI 總線格式發送給 PHY（USB3.0 爲 PIPE）。CSR 層進行寄存器控制，軟件對 USB 芯片的控制就是通過 CSR 寄存器，這部分和 CPU 進行交互訪問，主要作爲 Slave 通過 AXI 或者 AHB 進行交互。FIFO 控制層主要是和 DDR 進行數據交互，控制 USB 從 DDR 搬運數據的通道，主要作爲 Master 通過 AXI/AHB 進行交互。PHY 部分功能主要實現並轉串的功能，把 UTMI 或者 PIPE 口的並行數據轉換成串行數據，再通過差分數據線輸出到芯片外部。</p>
+<p>USB 芯片內部實現的功能就是接受軟件的控制，進而從內存搬運數據並按照 USB 協議進行數據打包，並串轉換後輸出到芯片外部。或者從芯片外部接收差分數據信號，串並轉換後進行數據解包並寫到內存裏。</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-b8eca8125ed1855201b940aaf8fe7168_b.jpg" alt="">
+<p>問題 2：FPGA 不使用 USB 芯片或者硬核的話，必須用 FPGA 邏輯資源實現圖 1 圖中 Controller 部分，外加 PHY 芯片，軟件再按照協議實現對 USB 的控制。如果有 USB 芯片，則只需實現軟件控制部分。軟件控制部分協議 USB 1.1 UHCI/OHCI，USB 2.0 EHCI， USB 3.0 XHCI。</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div>
