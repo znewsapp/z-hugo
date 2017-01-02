@@ -1,0 +1,139 @@
++++
+date = "2017-01-02T10:00:00"
+title = "經典力學中有哪些違反直覺的現象 / 實驗？"
+titleimage = "http://pic2.zhimg.com/c18a757145ac5dea200b3ea74b4aa209.jpg"
+ga = 010210
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title"></h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>經典力學中反常識的東西不太多，因爲經典力學的整個框架就是基於&ldquo;常識&rdquo;的&mdash;&mdash;牛頓定律，作爲經典力學的聖經，看起來簡直是直觀得不能再直觀的東西了。後來的拉格朗日力學、哈密頓力學，雖然不再像牛頓力學那麼直觀，但都是與牛頓力學等價的。</p>
+<p>但是，這並不妨礙我們從中得到一些有趣的結論，一定程度上可以算得上反直覺：</p>
+<p>（先放個鳴謝：下文中大部分圖都來自清華大學李巖鬆老師的講義）</p>
+<p><strong>1. 進動</strong></p>
+<p>進動其實是比較常見的現象，但對於大多數人來說理解起來並不是非常直觀。</p>
+<p>如果你小時候玩過這種陀螺</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/aa79b094371aa8b1d96b64c37085450f_b.jpg" alt="">
+<p>你應該做過這樣的事&mdash;&mdash;讓陀螺轉起來以後，故意將它斜着放置。你會發現，陀螺不會倒，而是在自轉的同時，繞着過接觸點的鉛直線旋轉。這樣轉圈圈就叫進動。</p>
+<p>牛頓力學告訴我們，陀螺受到一個豎直向下的重力，重力對接觸點有一個力矩。直覺告訴我們，這力矩應該使它翻倒。</p>
+<p>但實驗表明它就是不倒。</p>
+<p>甚至，即使你像下圖那樣近乎平行地放置陀螺，它也不倒。</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/32d896dd01b0f9b049d0f6c1fd151a71_b.jpg" alt="">
+<p>是不是看起來非常不科學？</p>
+<p>這現象可以用一句話來解釋&mdash;&mdash;<strong>角動量是個矢量。</strong></p>
+<p>（好吧，雖然人家是贗矢量，但起碼旋轉變換和矢量是一樣的......不要瞧不起贗矢量......）</p>
+<p>陀螺初始是旋轉着的，因此具有一個沿軸的角動量。力矩是角動量改變的原因。對一個高速轉着的陀螺，它的初始角動量大小很大，重力矩的效果僅僅是改變了角動量的方向。進動就是角動量方向在不斷改變的體現。</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/990d1e561f2af372b9a5be97ffea81e2_b.jpg" alt="">
+<p>計算可得：</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5COmega%3D%5Cfrac%7Bmgl%7D%7BL_0%7D" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=l" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5COmega" alt="">
+<p>有興趣的讀者可以自行證明。具體的計算過程任何一本大物力學書上應該都有。</p>
+<p>進階版：</p>
+<p>上面講的是最 naive 的進動。現實中哪有這麼理想的情況啊。</p>
+<p>進動往往是和章動聯繫在一起的。</p>
+<p>章動就是一邊繞鉛直線進動一邊上下&ldquo;點頭&rdquo;。</p>
+<p>在有章動的情況下，陀螺進動的角速度不是定值&mdash;&mdash;隨着章動，它進動地忽快忽慢。</p>
+<p>甚至，還可以正着轉轉再反着轉轉。</p>
+<p>不信？</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/8582eee2db42d6be2b5ce80b66af6aa2_b.jpg" alt="">
+<p>上圖中 a 對應的是最老實的進動的情況，一邊週期性地點頭一邊本本分分地進動。</p>
+<p>b 圖就是看起來非常反科學的，正着轉反着轉交替的情況。</p>
+<p>c 對應 critical 的情況，在章動的最高點（就是尖尖那個點），進動角速度爲 0。</p>
+<p>陀螺自轉地越快，章動越小。</p>
+<p>若考慮陀螺的自轉動能遠大於重力勢能改變的最大值的情況（也就是轉得特別特別快的陀螺，因此這一情況被稱爲&ldquo;快陀螺&rdquo;），章動會很快衰減掉（變成純進動），而且陀螺旋轉的姿態會逐漸趨近於直立。因此，<strong>快陀螺特別穩定</strong>。</p>
+<p>玩抽陀螺時，當陀螺旋轉開始不穩，只要順着旋轉方向抽一鞭子，它轉速大增，同時可能會偏離豎直姿態，但轉着轉着就能轉回來，而且比之前更加穩定。</p>
+<p>這⼀現象也可以解釋⾼速旋轉的⼦彈總是自發選擇逆着空⽓阻⼒的⽅向飛⾏。</p>
+<p><strong>2.倒擺</strong></p>
+<p>單擺是我們都很熟悉的東西，從伽利略時代就被玩爛了。</p>
+<p>真的嗎？你確定你真的熟悉單擺嗎？</p>
+<p>如果我告訴你<strong>單擺還可以倒立在頂上擺</strong>，你信嗎？</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/e89fe50a3b4ada569b02d921c390caaa_b.jpg" alt="">
+<p>當然，一個平凡的單擺是沒法做到倒立的。倒擺發生的條件是&mdash;&mdash;擺的懸點不固定點，而是在平衡位置附近做小幅高頻的微振動（當然，還要求連接擺球的是一根硬杆而非軟繩）。</p>
+<p>看起來非常玄學，但這是真的。</p>
+<p>簡單地說，懸點振動，相當於使整個單擺處在一個非慣性參考系中。因此擺球受到一個週期性的慣性力。爲這個慣性力強行寫出一個（交變的）等效勢，經過一些的計算可以發現，在滿足某些特定條件時，有這樣一個倒立擺的穩定解。</p>
+<p>這個計算比較複雜，有興趣的讀者可以參閱朗道力學。</p>
+<p>來點乾貨：</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cddot%7Bx%7D%2B%5Comega%5E2%28t%29x%3D0" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Comega" alt="">
+<img class="content-image" src="http://pic2.zhimg.com/70/af85bf66ad13b9c7426daf29ad201d71_b.jpg" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Comega%3D2%5Comega_0" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Comega%3D10%5Comega_0" alt="">
+<p>黃線對應的是正常的單擺運動，也就是在底下的振動。</p>
+<p>綠線對應的是倒擺，也就是在頂上的振動。</p>
+<p><strong>3.傅科擺</strong></p>
+<p>（我發現我能想到的經典力學中比較反直覺的現象好像大多都出在旋轉與角動量這裏.....）.</p>
+<p>本來之前就想講講傅科擺。 @ChopinJan 的答案中已經提到了。姑且還是簡單說說吧。</p>
+<p>單擺的又一個奇妙產物。</p>
+<p>傅科擺其實就是一個擺長很長的正常單擺而已。</p>
+<p>傅科擺的運動可以描述爲：一邊擺動，一邊轉圈。</p>
+<p>畫出來基本是這樣的：</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/c2fe6b9d47a2d20558bb113368be4126_b.jpg" alt="">
+<p>它會轉圈的原因，是因爲&mdash;&mdash;它在地球上。</p>
+<p>地球不是一個慣性系。</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cbm%7BF_c%7D%3D-2m%5Cbm%7B%5Comega%7D+%5Ctimes+%5Cbm%7Bu%7D" alt="">
+<p>直觀地，由於地球的自轉，物體在地球上運動時會受到一個和運動方向垂直的等效力。北半球這個力向右，南半球這個力向左。也就是高中地理裏學過的地轉偏向力。</p>
+<p>由於科里奧利力的存在，上拋運動的物體其實並不會嚴格落在起拋點，而會稍微偏一點。</p>
+<p>只不過，由於這個力非常弱，大多數情況下都可以忽略不計。</p>
+<p>而單擺在運動的時候，這個效應則一直累計，因此，久而久之是能看出科里奧利力的影響的。</p>
+<p>這一影響就表現爲：一邊擺一邊轉圈。</p>
+<p>用傅科擺可以證明地球在自轉。還可以算出地球自轉的角速度。</p>
+<p>事實上，樓下某個答案說的一點不錯：</p>
+<p>直不直觀，主要取決於你的功底。</p>
+<p>上面說的基本上是和日常生活比較近的有趣現象，對於沒學過力學的童鞋們來說，這些現象是不是至少有一點反直覺呢？</p>
+<p>還有很多奇怪的東西，基本上非科班出身的學生是遇不到的。</p>
+<p>下面說兩個我學分析力學時感覺最玄妙最震撼的結論吧：</p>
+<p><strong>1.諾特定理（Noether Theorem)：</strong></p>
+<p><strong>系統的一個可微變換不變性（連續對稱性），必對應一個守恆量（運動積分）。</strong></p>
+<p>當物理學家費盡千辛萬苦爬上山頂時，才發現數學家已經在那裏等候多時了。</p>
+<p>搞物理的人辛辛苦苦尋找守恆量啊（想想拉普拉斯 - 龍格 - 楞次矢量吧），數學家大筆一揮：</p>
+<p>對稱性對應守恆量，一個不多一個不少。</p>
+<p>熟悉了這個結論，你會覺得這是世界最接近本質、最符合直觀的性質。</p>
+<p>但在第一次學的時候，簡直是。</p>
+<p><strong>2.有心力問題的穩定解：</strong></p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cbm%7BF%7D%28%5Cbm%7Br%7D%29%3D-f%28r%29%5Cfrac%7B%5Cbm%7Br%7D%7D%7Br%7D" alt="">
+<p>比如說，萬有引力，就是典型的有心力。這個問題開普勒就研究過，橢圓軌道嘛。</p>
+<p>再比如說，諧振子（質點連在彈簧上），也是典型的二體有心力。我們也能求出一個穩定的軌跡。</p>
+<p>然後呢？</p>
+<p>然後我們驚訝地發現，除了這兩種情況，其它的二體有心力問題我們都解不出來了。</p>
+<p>不是因爲我們太辣雞，而是，它就不存在一個穩定的解啊！</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/5d5d9dc31d663b3668d8fc25751755cd_b.jpg" alt="">
+<p>比如說，把萬有引力中的平方反比稍微改動一點，變成 1.99 次方反比，軌道就 TM 變成這樣了！</p>
+<p>這不是坑爹嗎？</p>
+<p><strong>伯特蘭定理（Bertrand Theorem）</strong>告訴我們：</p>
+<p><img class="content-image" src="http://www.zhihu.com/equation?tex=f%28%5Cbm%7Br%7D%29%5Cpropto+%5Cfrac%7B1%7D%7Br%5E2%7D" alt=""></p>
+<p>前者就是開普勒問題，後者就是諧振子問題。除此之外，其他情況全都沒有穩定閉合軌道。</p>
+<p>這一結果的深層次原因還是對稱性問題。這兩種力場具有比普通的三維旋轉 SO(3)更高的對稱性&mdash;&mdash;分別對應 SO(4)對稱和 SU(3)對稱。</p>
+<p>由剛纔的諾特定理，對於這兩種情況我們可以分別多寫出一個守恆量（除能量、動量、角動量守恆以外）。感興趣的同學可以自己去查一查（因爲我實在是懶得寫了）。</p>
+<p>順便提一句，感興趣的同學可以自行查一查<strong>牛頓轉軌道定理</strong>。然後你就會發現<strong>有理數是一個很美妙的東西。</strong></p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div>

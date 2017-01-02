@@ -1,0 +1,81 @@
++++
+date = "2017-01-02T11:00:00"
+title = "儀表盤顯示 92km/h，實際車速可能纔剛到 80km/h"
+titleimage = "http://pic4.zhimg.com/24ec89bf8c68b200e968951560cfec57.jpg"
+ga = 010211
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title">汽車的時速表爲什麼不能精確顯示實際車速？</h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>很簡單的問題但很有趣。手頭正好有可以測試的中級廉價量產車。還有一輛我自己的 BBA 德系。可以展示一些對比測試結果。</p>
+<p>說測試結果前普及一些相關背景知識：</p>
+<p><strong>1. 儀表顯示的車速是怎麼測到的？</strong></p>
+<p>整車上的車速數據來源有三個：一個是 ESP 通過車輪轉速計算的車速，這個已經考慮了輪胎尺寸和打滑等等因素，然後相應的車速計算結果會發到 CAN 通訊總線上，被其他控制器接收，其中也包括儀表顯示。</p>
+<p>另外兩個車速數據來源：分別是變速箱輸入軸轉速傳感器，還有輸出軸轉速傳感器，通過傳感器佈置的位置以及和車輪之間的轉速比可以間接計算出車速。但是這兩個速度信號一般不會發送到 CAN 總線上，只在變速箱控制系統內部使用，不會被儀表顯示接收。</p>
+<p>於是大多儀表顯示車速的唯一來源是 ESP 發到 CAN 總線的車速信號。</p>
+<p><strong>2. 爲什麼儀表顯示的車速那麼不準？</strong></p>
+<p>其實並不是 ESP 計算的車速如此不準。因爲傳感器本身有精度問題，同時測量轉速也有誤差，那麼我們在不能確定傳感器是否 100%準確的情況下，爲了保證駕駛員不會因爲顯示錯誤而超速，只能人爲對傳感器測量的數據&ldquo;作假&rdquo;後輸出，保證最終的顯示結果在法規規定的可靠範圍內。前面也有很多人已經說到了，<strong>總結來說就是顯示的車速一定要比實際車速高，但是又不能高得離譜。</strong>舉例歐盟的規定如下：</p>
+<blockquote>
+<ul>
+<ul>1. The indicated speed must never be less than the actual speed, i.e. it should not be possible to inadvertently speed because of an incorrect speedometer reading.</ul>
+</ul>
+<br>
+<ul>
+<ul>2. The indicated speed must not be more than 110 percent of the true speed plus 4 km/h at specified test speeds. For example, at 80 km/h, the indicated speed must be no more than 92 km/h.</ul>
+</ul>
+</blockquote>
+<p>那麼問題就來了，比如用歐盟的規定，一輛實際跑在 80km/h 的車，儀表顯示必須高於 80，但是又不能高於 92，這個給廠商留下了非常大的發揮餘地。也就是兩輛不同的車肩並肩跑在 80km/h，其實有一輛顯示的是 81，而另一輛可能顯示的是 92。。。這不是坑爹呢麼。。。</p>
+<p>那麼問題又來了，到底哪些車會顯示 81，哪些車會顯示 92 呢？無圖無真相，於是我做了如下的實驗：</p>
+<p>1. 駕駛某款廉價量產車，根據儀表分別勻速跑在 10，20，60 和 80kph，於此同時我採集了 CAN 上的 ESP 車速信號。根據前面的解釋，儀表顯示的是&ldquo;作假&rdquo;後的車速，而 ESP 車速暫且可以認爲是相對準確的&ldquo;真實&rdquo;車速，結果如下：</p>
+<p><strong>綠色代表從 ESP 採集到的車速，紫色是加速踏板位置，橫軸爲時間。</strong></p>
+<p><strong>儀表顯示 10kph 左右的時候，CAN 上採集到的實際車速大概在 7kph.</strong></p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-f3d9688a1dc1b10d5f8352edab77e200_b.jpg" alt="">
+<p><strong>儀表顯示 20kph 左右的時候，CAN 上採集到的實際車速大概在 17kph.</strong></p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-9d5eb5422099fb4499e8a67d5aa51ee5_b.jpg" alt="">
+<p><strong>儀表顯示 60kph 左右的時候，CAN 上採集到的實際車速大概在 53kph.</strong></p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-b1c3246af061a1cb11182b5603b30ff7_b.jpg" alt="">
+<p><strong>儀表顯示 80kph 左右的時候，CAN 上採集到的實際車速大概在 71kph.</strong></p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-13e9f86d2f7938843942a8a74ab3ef6d_b.jpg" alt="">
+<p>考慮到儀表並不是電子顯示，穩定車速的時候有人爲誤差。</p>
+<p>但是可以推斷的是這輛車使用的顯示車速算法很可能就是實際車速 + 10% + 1-2kph，正好滿足類似的法規要求。</p>
+<p>要麼就是簡單的分級添加絕對誤差: 低速顯示的時候加 3-4kph, 高速段加 7-9kph。</p>
+<p>這種簡單粗暴的處理方式有的時候還是很坑爹的。設想你跑在限速 10kph 的地方，壓線跑其實也只跑在 6-7kph 左右，就是 30%-40%的誤差。</p>
+<p>尤其是在同時使用 GPS 的時候會讓人更加迷惑，限速 60kph 的路段根據 GPS 測速跑在 60kph 的時候，有可能儀表顯示的已經是 68kph 了。到底該不該減速，會不會被超速抓拍???！！！此處應有問號臉。</p>
+<p>那麼說好的對比測試，我自己的 BBA 會出現什麼狀況呢？因爲我並沒有自己車的 CAN 設置，所以無法採集對應的 ESP 信號，用了一個曲線救國的解決方法。在我車上測試前先用一個 GPS 和前一輛測試車的 ESP 信號對應校準。發現 GPS 和前一輛車的 ESP 顯示一致，即 GPS 顯示的是真實車速。</p>
+<p>安裝該 GPS 在我的 BBA 上，之後分別跑 10kph，20kph，40kph 和 60kph 穩定顯示車速，直接說結果：</p>
+<p><strong>車速表顯示車速均爲 GPS 實際車速 +1 至 +2，並沒有出現大幅偏移，或者根據不同高低車速的分級處理。</strong></p>
+<p>爲什麼兩車會出現這麼大的差異，可以想象的主要原因之一是使用的 ESP 系統和傳感器生產質量和精度不同，一些車無法做到同樣的精度控制。要麼就是這輛廉價車更保守，更注重安全嘍。。。</p>
+<p>而從駕駛者的用戶體驗角度來說，必然是在符合法規前提條件下更精確顯示真實車速的後者更加符合用戶需求，更加高大上。</p>
+<p>所以如果有一天，土豪的你開豪車和屌絲朋友的爛車同行自駕，不要責怪他跑得慢，其中的苦衷和隱情辣麼大：</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-7f24fb786498b58808a4da136630c68a_b.jpg" alt="">
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div>
