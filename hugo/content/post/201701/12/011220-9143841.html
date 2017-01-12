@@ -1,0 +1,75 @@
++++
+date = "2017-01-12T20:00:00"
+title = "設計者離職了，需要擔心蘋果 Swift 語言的未來嗎？"
+titleimage = "http://pic2.zhimg.com/b946d0580c8beaa4f58d47cfcd2cad09.jpg"
+ga = 011220
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title">如何看待 Swift 之父 Chris Lattner 離職 Apple，去了特斯拉？</h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>我來列舉幾個事實：</p>
+<p>1、Chris 雖然離職 Apple 去了 Tesla，在告別的 <a href="http://link.zhihu.com/?target=https%3A//lists.swift.org/pipermail/swift-evolution/Week-of-Mon-20170109/030063.html">[swift-evolution] Update on the Swift Project Lead</a> 中他說：</p>
+<blockquote>I plan to remain an active member of the Swift Core Team, as well as a contributor to the swift-evolution mailing list.</blockquote>
+<p>所以，Swift 的未來的發展中，Chris 依然會繼續發揮作用。</p>
+<p>在 Chris 生涯中，Apple 已經徹底開放了 Swift，不僅僅是開源而已，還構建了一整套社區開放合作的規範，Swift 語言的協議也是很寬鬆，社區十分活躍。他可以說爲 Swift 及生態圈打下了一個很好的可持續的基礎。</p>
+<p>2、再看新的 Project Leader，Ted Kremenek 是何許人？這是他的 <a href="http://link.zhihu.com/?target=https%3A//www.linkedin.com/in/tedkremenek">linkedin.com 的頁面</a>，他從 2007 年開始就爲 Apple 工作，已經十年（只比 Chris 少一年）了。他是 Clang Static Analyzer 的主要作者，同樣在職業生涯中負責了圍繞 LLVM 工具鏈各種事情，現在是 Languages and Runtimes 的 Senior Manager，相當於底層工具鏈的老大了。通過這麼多年與 Chris 的共事，相信他完全有能力繼續領導 Swift 項目。</p>
+<p>3、除了前 Leader 和當前 Leader 以外，還有啥什麼變化？必須提到另外一個重要的事情，Apple 挖了不少 Rust 語言項目組的成員（包括 Rust 的創始人），他們正在爲 Swift 項目工作。詳見這裏的討論 <a href="http://link.zhihu.com/?target=https%3A//www.reddit.com/r/rust/comments/5n6fh2/chris_lattner_leaves_apple/dc94foa/">Chris Lattner leaves Apple &bull; /r/rust</a> 。這意味着什麼？Rust 和 Swift 是十分相似的語言，同樣構建於 LLVM 之上，設計理念相互借鑑，可謂同胞兄弟。Rust 先於 Swift 達到 ABI 穩定、自舉，另外，內存管理、併發處理、包管理等等也已經十分成熟。挖到 Rust 的人來爲 Swift 工作，這意味着能讓 Swift 項目吸收來自 Rust 的成功經驗，更好地發展下去。</p>
+<p>光舉例這三點，Swift 的未來還有啥擔心的？等着 Swift 像 Rust 一樣成熟穩定起來吧~</p>
+<p>PS：我好像在回答「Chris 走了以後 Swift 項目會怎麼發展？」</p>
+</div>
+</div>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>大公司的規章流程，有很大部分爲了避免風險。重要的人離開了，公司也能繼續保持運轉。只是對天才人物來說，他的影響力已經超出了公司範圍，有點信仰的味道。有些人，就算他什麼都不做，單純呆着，周圍的人也會覺得安心很多。</p>
+<p>最理想的情況是：作爲個人，無論已取得多少成績，也應該保持謙遜；作爲公司，無論規模多大，也應該尊重人才。</p>
+<p>我相信 Chris Lattner 就算離開了蘋果，Swift 團隊也繼續運轉。但他離開了蘋果，外界對 Swift 的信心就會減弱，對語言的發展是有影響的。雖說還是在 Swift Core Team, 但不會再全職工作了。Chris Lattner 離開蘋果後去特斯拉造車了。金錢是重要的，而對某些人來說早不是完全的考慮因素，或者對他來說，造車是更具挑戰性的工作吧。</p>
+<p>Swift 從開始到 3.0 階段，是開拓性的，從語言的角度已經超越了 Objective-C。Swift 3.0 - 4.0 更多是沿着既定目標，讓其穩定，現有的 Swift 團隊也可以很好完成。現階段，Chris Lattner 離開蘋果，對 Swift 具體開發工作沒有太大影響，更多影響是在精神，信心方面。</p>
+<p>Swift 語言本身，缺少一些東西，需要添加並行支持和完善反射。就看將來誰來完成了。其實沒有什麼好擔心的，我繼續敲 Swift 代碼。</p>
+</div>
+</div>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>自己目前就職的 Azul Systems 是一間做 JVM 的公司，其中也有項目是基於 LLVM 做 JVM 裏的字節碼到機器碼編譯器的。我們的一點擔憂是，Chris Lattner 的離開會讓 Google 對 LLVM 項目有更大的實質控制權，以後如果他們更隨意地把只對 Google 有用的功能 checkin 到主幹上的話會遇到的阻力會更少。這對社區的透明、均衡發展不是一件特別好的事。</p>
+<p>Chris 近年來雖然已經不怎麼過問 LLVM 自身的事，而是主要投入精力到 Swift 的研發上，但再怎麼說他也還是 LLVM 的精神領袖，再不濟也是個有影響力的吉祥物。LLVM 已經是社區的 LLVM，Chris 離開 Apple 對 LLVM 項目自身的存活與否已經不會有什麼影響，但對大公司間對項目的影響力的均衡恐怕還是有深遠的影響的。</p>
+<p>不只是他，最近一段時間 Apple 損失的 LLVM 核心開發還有好幾位有份量的。例如說主要在 LLVM 後端的 Evan Cheng 去年也從 Apple 去了 Facebook，然後他的幾位同事也跟着一起過去。積少成多，這些都對 Apple 對 LLVM 的影響力有所削弱。</p>
+<p>至於 Swift，相信它還是會好好地向前進的。最近大公司對 Swift 的支持也有所增加，像 IBM、華爲之類都有專門針對 Swift 語言做開發（改進效率、寫新的庫等等），使它可以用於更多領域。這都是好事。而 Swift 的主要控制權還是牢牢掌握在 Apple 手裏，Chris 的接班人看起來也很靠譜，這就放心了。</p>
+<p>（不代表僱主，僅代表自己觀點）</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div>
