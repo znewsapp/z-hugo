@@ -1,0 +1,71 @@
++++
+date = "2017-01-15T09:00:00"
+title = "「我們這是經濟系，同學你搞一堆物理公式做什麼？」"
+titleimage = "http://pic3.zhimg.com/c4b348cdb84b109657d37824170e28a6.jpg"
+ga = 011509
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title">量子博弈的機制是什麼？</h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>我先講一下我的糗事。我在讀的上財經濟學院有個規矩，博士三年級時要做箇中期宣講，類似於其他學校的開題報告吧。中期宣講沒有通過的要罰錢。正當我爲此事焦頭爛額之際，我院一個做運籌學的老師知道了我本科是學物理的，就找我做量子博弈。這簡直就是一根救命稻草。我看了一個月，大致知道是怎麼回事了，就去講了。結果臺下的老師都一頭霧水，不斷提問。最麻煩的是，一個做重複博弈的老師質疑這東西的經濟學意義。他說我們不是工學院，是經濟學院，經濟學用博弈論是要解釋現象的，不是說隨便在博弈論里加什麼東西都是經濟學，隨便加東西我任何結論都能推出來&hellip;&hellip;不過還好我最後似乎通過了，沒有罰錢。</p>
+<p>好了，言歸正傳。從上面可以看出，要我說量子博弈有什麼意義，我真答不上來，但是講一下量子博弈是什麼東西，我還是沒問題的。</p>
+<p>量子博弈就是要把經典博弈量子化，就是用量子力學的方法來描述博弈。這東西當然也不是憑空來的，我感覺應該是從量子信息來的，通訊可以看做是一種博弈。量子博弈也已經不是純理論的設想，而是可以在量子計算機上實現的。但是如果你要問日常生活中有沒有量子博弈或者怎麼在日常生活中實現量子博弈，我真不知道。</p>
+<p>之所以要對量子博弈做專門研究，是因爲量子博弈往往會產生和經典博弈不一樣的結果。原因有兩條：</p>
+<ol>
+<li>量子博弈的策略空間更大，經典博弈的策略空間只是一個子集。</li>
+<li>量子博弈中狀態可以糾纏。</li>
+</ol>
+<p>下面會通過兩個例子分別說明這兩點。</p>
+<p>Meyer（1999）是量子博弈的開山之作。這篇論文講了這麼一個故事。《星際迷航》的 Picard 船長被迫和 Q 玩一個遊戲。（我從沒看過《星際迷航》，所以不認識這兩個人。）盒子裏有一個硬幣，初始狀態是正面朝上，雙方都可以把手伸進盒子，選擇翻硬幣或者不翻硬幣。由於盒子是關着的，所以對方到底是翻了還是沒翻你看不見。行動順序是 Q 最先，然後 Picard，然後 Q。最後把盒子打開，如果硬幣是正面朝上，Q 贏，否則 Picard 贏。</p>
+<p>Picard 船長學過博弈論，知道這是一個二人零和博弈，納什均衡是雙方都採取混合策略，最後雙方的取勝概率都是 50%。於是他決定賭一把，結果 Q 贏了。他要求再玩一次，可是，不管玩多少次，他總是輸。於是 Picard 船長認爲對方作弊了。事實是，Picard 只能用經典的混合策略，而 Q 能用量子策略。</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%7CH%5Crangle" alt="">
+<p>在講 Q 的量子策略之前，先給沒有學過量子力學的同學介紹一下量子力學的基本知識。在經典世界裏，我們說一個硬幣要麼正面朝上要麼反面朝上，那就是隻可能是這兩種狀態，如上面一段，經典行動也就只能是使硬幣在這兩個狀態之間變化。不存在說使硬幣立起來，50% 正面朝上，50% 反面朝上的可能性，但這在量子世界中是可能的。</p>
+<p>量子世界中，正面朝上和反面朝上是<strong>測量</strong>時人們觀測到的<strong>本徵態</strong>，在沒有測量時，是可以處於<strong>疊加態</strong>的。在測量時，疊加態<strong>坍縮</strong>到一個本徵態，坍縮到哪個本徵態是有概率的。比如，一個疊加態在測量時有 50% 可能測出正面朝上，50% 可能測出反面朝上，另一個疊加態測出正面朝上的可能只有 30%，這就是兩個不同的疊加態。量子行動可以使硬幣在不同的疊加態中切換，比起經典行動只能在本徵態中切換，顯然行動空間大了很多。</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=+U%28a%2Cb%29%3D%5Cbegin%7Bpmatrix%7Da%26b%5C%5C%5Cbar%7Bb%7D+%26-%5Cbar%7Ba%7D+%5Cend%7Bpmatrix%7D" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=p" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=U%28%5Cfrac%7B1%7D%7B%5Csqrt%7B2%7D+%7D%2C%5Cfrac%7B1%7D%7B%5Csqrt%7B2%7D+%7D+%29" alt="">
+<p>從這個例子可以看出，量子博弈擴展了策略空間，量子策略優於經典策略。不過量子博弈更復雜更有趣的還是糾纏。</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=C" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%7CC%5Crangle" alt="">
+<p>接下來大招來了！</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=J" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=A" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=J%5E%7B%2B%7D+%28U_%7BA%7D%5Cotimes+U_%7BB%7D++%29J%7CCC%5Crangle" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=J%5E%7B%2B%7D+" alt="">
+<p>作者指出，當糾纏達到最大時，均衡就是帕累托最優。因爲糾纏而得到了和經典情形完全不一樣的結果。至於爲什麼會如此的深入原因，還是請有心深入鑽研的同學自己算一下。</p>
+<p>後面的研究還有繼續擴展到多人博弈、連續策略（用的是古諾競爭的例子）等等的，但終歸不離開酉算子策略和糾纏這兩點。</p>
+<p>總之，這個東西確實比較玄，對於非物理專業的人來說，第一是難懂，第二是不知道有什麼用。我也是一樣，不過在這裏寫的大概都是對的。感謝大家能堅持讀到最後！</p>
+<p>參考文獻</p>
+<p>Eisert, Wilkens and Lewenstein (1999): "Quantum Games and Quantum Strategies," <em>Physical Review Letters</em>.</p>
+<p>Meyer (1999): "Quantum Strategies," <em>Physical Review Letters</em>.</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div>
