@@ -1,0 +1,70 @@
++++
+date = "2017-01-19T17:00:00"
+title = "想要 VR 實現「視網膜」效果，先得有一臺更強的電腦"
+titleimage = "http://pic3.zhimg.com/d5ce7246e454df084a93e1ea2c784ca2.jpg"
+ga = 011917
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title">VR 頭顯需要多高的分辨率才能實現「視網膜」效果？刷新率要多高才能足夠真實？</h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>結論前置：</p>
+<blockquote>對於當前主流的頭戴式 VR 設備，需要雙目 12450*6840 或更高的分辨率（介於 8k 和 16k 之間）才能達到&ldquo;視網膜&rdquo;效果。<br>對於所有 VR 設備，需要達到 150-240fps 的刷新率才能讓一般人覺得足夠真實。<br>如此高的分辨率和刷新率需要數十倍於當前 PC 的硬件性能才能驅動。</blockquote>
+<p>&ldquo;視網膜&rdquo;效果是一個沒有清晰定義的概念。根據 Steve Jobs 在發佈 iPhone 4 時的定義，它是指在 10-12 英寸的距離上，設備的像素密度達到 300ppi（每英寸 300 像素）的水平時的顯示效果[1]。然而實際上人眼在 12 英寸的距離上的分辨率可以超過 900ppi[2]。我們在這裏採用 Jobs 的標準來討論。</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=ppd+%3D+2drtan%280.5%5E%7B%5Ccirc+%7D+%29" alt="">
+<p>想象一個頂角爲 1&deg; 的細長的等腰三角形，其高度 d 爲眼睛與屏幕的距離，r 即爲其底邊覆蓋的像素數量。根據 Jobs 的定義，要獲得視網膜顯示效果，需要至少 57ppd。</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%28110%5Ctimes+57%29%2A%28120%5Ctimes+57%29%3D6270%2A6840" alt="">
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-f39c248f5babdec8a2d01da9456ec371_b.jpg" alt="">
+<p>如上圖。目前的主流 VR 頭顯的像素密度只達到了這一標準的 1/6。我們在主流顯示設備的像素密度上翻的前一個 6 倍，花了二十多年（從 DOS 時代的 320*200 到目前主流的 1920*1080）。</p>
+<p>提高 VR 設備的像素密度，並不是單純地把高密度顯示面板造出來然後放進頭顯這麼簡單。從 2k 到 4k、4k 到 8k，每次升級看上去都只是數字翻了一倍，然而像素數量卻是呈平方級上升的，4k 是 2k 的 4 倍，8k 是 2k 的 16 倍。視網膜 VR 級別的分辨率，其像素數量是目前 Vive 的 33 倍。</p>
+<p>爲了滿足 VR 遊戲的需求，目前最頂級的 PC 的性能都可以被輕易榨乾。3D 遊戲的性能是與分辨率密切相關的，這意味着如果要提供相匹配視網膜 VR 的 3D 遊戲內容，計算機的性能也要相應地提升幾十倍。以摩爾定律計算，這個過程需要近 10 年。</p>
+<p>視頻信號的傳輸也是一個大問題。上圖每個方塊右上角給出了在該分辨率下以 90 Hz 的頻率發送未壓縮的每像素 24 bit 的視頻信號所需要的帶寬（不含音頻）。作爲參考，目前最新的 HDMI 2.0 標準可以傳輸最大 18 Gbps 的帶寬&mdash;&mdash;連視網膜 VR 所需求帶寬的 1/10 都達不到。爲此，我們必須使用更先進的傳輸方式，例如光纖傳輸。尚在襁褓之中的無線傳輸則會面臨更大的挑戰（開個腦洞，近場激光傳輸？）。</p>
+<p>很多朋友提到，由於人眼只能清晰地看到聚焦點周圍很小的範圍（2&deg;）[4]，利用這一特性，我們可以通過降低周圍的分辨率來降低對像素數量的需求，以及計算機和傳輸性能的要求。</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-cf57b85b7cd2a61e780f9bf5a0465733_b.jpg" alt="">
+<p>上圖是人類左眼的分辨率曲線（CC-BY-SA 3.0 授權）。可見只有眼球中央凹（Fovea centralis）附近的區域有較高的分辨率，周圍的分辨率急轉直下，甚至不及中央十一。</p>
+<p>要利用這一特性，我們需要在 VR 頭顯中植入眼球追蹤設備。它可以通過追蹤眼球中央凹的移動來獲知用戶的眼睛正看向哪個點，然後在這一點周圍使用全清晰度渲染，其他地方使用低清晰度渲染。目前眼球追蹤技術已經非常成熟，但相關產品都還是以頭顯插件的方式存在，比如我們這裏有一隻樣機，可以插入 Vive 頭顯使用；但由於設備太大，戴眼鏡的用戶就無法使用了；這個設備需要使用 USB 線連接，走線上也很繁冗。不過相信下一代的 VR 頭顯就會開始集成此類設備，也就不存在這些問題了。根據 nVidia 的說法，應用這一技術可以將渲染性能提高 2 到 3 倍[5][6]。</p>
+<p>不過眼球跟蹤並不能實際降低對頭顯像素數量的需求。有的朋友在此基礎上設想了一種機構，使得顯示面板可以快速根據眼球的位置來移動，這樣就只需要極低的分辨率了。我不能否認這種技術在未來出現的可能性，但人眼的轉動速度可以達到 900&deg;/s[7]，很難想像有何種設備既能夠提供足夠的扭矩來低延時地跟蹤這樣高速的移動，又能小到能放進頭顯裏（開個腦洞，也許使用類似 Olympus 微單防抖系統那樣的磁懸浮面板？）。</p>
+<p>換一種思路，由於目前的 VR 頭顯都是通過一塊（菲涅爾）透鏡來將矩形（接近正方形）的顯示面板矯正爲符合人眼的視野，面板上的某些像素實際上是被浪費掉的。譬如面板上只有內接的近圓形區域裏的內容纔會被看到，四個角上的像素實際上是完全用不到的，所以根本不需要去渲染。再比如由於透鏡的特性，邊緣的可視像素密度比中心要低，因此也沒有必要使用全分辨率渲染。nVidia 的 Multi-res Shading 技術就利用了這一特性，使得渲染性能可以提高 33%-50%[8]。</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-7ec4a14e6c7721ca44dfc98dbc3d0586_b.jpg" alt="">
+<p>nVidia Multi-res Shading 示意圖，邊緣的部分像素密度較低，因此以較低的精度渲染。</p>
+<p>儘管這些技術看上去能有效地節約像素數量，但需要注意的是，因爲生產難度和成本問題，實際情況下基本上不可能去生產像素密度不均勻的顯示面板。因此這些技術只能用於緩解對計算機性能的要求。</p>
+<p>刷新率方面，儘管我們知道 24 fps 已經能提供連續的畫面、60 fps 的遊戲對於絕大多數人來說已經足夠流暢；對於 VR 來說，爲了提供足夠的沉浸感，這些刷新率都遠遠不夠。理論上人眼最大可以感知到 1000 fps 的畫面（維基百科說的，我也沒有查到引用來源）；對於未經訓練的人來說，150-240 fps 的畫面已經顯得足夠真實[9]。因此 Vive、Oculus 的 90 Hz，以及 PSVR 的 120 Hz 都還太低。而如果要達到理想的刷新率，VR 對機器性能的需求和傳輸帶寬的壓力還會進一步提升一到兩倍。</p>
+<p>[1]：<a href="https://en.wikipedia.org/wiki/Retina_Display">Retina Display - Wikipedia</a></p>
+<p>[2]：<a href="http://www.cultofmac.com/173702/why-retina-isnt-enough-feature/">Why Retina Isn't Enough [Feature] | Cult of Mac</a></p>
+<p>[3]：<a href="http://www.androidauthority.com/worlds-highest-ppi-display-2098ppi-oled-display-sony-254182/">Insanely high 2098PPI OLED display from Sony makes your 1080p smartphone weep at night</a></p>
+<p>[4]：<a href="https://en.wikipedia.org/wiki/Fovea_centralis#Function">Fovea centralis - Wikipedia</a></p>
+<p>[5]：<a href="https://research.nvidia.com/sites/default/files/publications/foveated-sig16-etech.pdf">https://research.nvidia.com/sites/default/files/publications/foveated-sig16-etech.pdf</a></p>
+<p>[6]：<a href="http://www.roadtovr.com/nvidia-perceptually-based-foveated-rendering-research/">NVIDIA Says New Foveated Rendering Technique is More Efficient, Virtually Unnoticeable</a></p>
+<p>[7]：<a href="https://en.wikipedia.org/wiki/Saccade">Saccade - Wikipedia</a></p>
+<p>[8]：<a href="https://developer.nvidia.com/vrworks">NVIDIA VRWorks&trade;</a></p>
+<p>[9]：<a href="https://en.wikipedia.org/wiki/Frame_rate">Frame rate - Wikipedia</a></p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div>
