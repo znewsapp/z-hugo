@@ -1,0 +1,273 @@
++++
+date = "2017-01-23T07:00:00"
+title = "爸爸在你的名字裏藏了你博士學位的研究方向，你解一下"
+titleimage = "http://pic2.zhimg.com/10618d0702e4890a9839ffe1c8f80b6d.jpg"
+ga = 012307
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title">如何將一個英文單詞通過轉碼或者數學計算等手段隱藏在一箇中文字裏？</h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>2017 年 01 月 01 日，也就是我將要步入 27 歲的這一年的第一天，正當我準備出門歡度元旦的時候，我年邁的父親把我叫住。</p>
+<p>於是，發生瞭如下令我驚訝的對話。</p>
+<p>這段對話讓我知道了我的身世，瞭解了我父母的過去，以及我父母相隔 27 年對我的囑託。</p>
+<blockquote>父：兒子，很抱歉隱瞞了你那麼多年。其實，我和你媽媽不是普通的工人，你的身上遺傳了密碼學家的血液&hellip;<br>我：老爸，你逗我玩呢&hellip;<br>父：我們早在你出生的時候，就知道你會攻讀博士學位，並在 27 歲的那年畢業。<br>我：What The &hellip;&hellip;<br>父：你的名字&ldquo;巍然&rdquo;裏面，已經隱藏了你的畢業時間，甚至你博士的攻讀方向。正如我們所期待的，你去研究了公鑰密碼學。<br>我：（黑人問號&hellip;）<br>父：這裏有一個信封，你出生那天我在郵局把這封信寄給了我自己，你看上面有郵戳。<br>我：然後呢？<br>父：我現在打開它。你看，裏面有幾行數字。現在，用你學的密碼學知識，實現一個 RC4 算法。<br>我：我一個做公鑰密碼的，竟然要實現流加密算法&hellip; 行吧，實現完了，然後呢？<br>父：把你的名字用 UTF-8 編碼。<br>我：好了，&ldquo;巍然&rdquo;這個字符串用 byte 數組表示是[-27, -73, -115, -25, -124, -74]。<br>父：現在，用信上的&ldquo;1CAF19&rdquo;作爲密鑰，調用 RC4 解密前兩個 byte，也就是[-27, -73]。<br>我：這個容易，解密結果是[50, 55]。<br>父：再用 UTF-8 解碼這個 byte 數組，就是你博士畢業的年齡。<br>我：我靠，這，這怎麼可能？真的是 27。<br>父：現在，用信上的&ldquo;4A320F71&rdquo;作爲密鑰，調用 RC4 解密[-27, -73]，用&ldquo;56AE6761&rdquo;解密[-115, -25]，用&ldquo;34CADC7A&rdquo;解密[-124, -74]。<br>我：得到的是[-27, -123, -84, -23, -110, -91]。<br>父：再用 UTF-8 解碼這個 byte 數組，就是你的博士研究方向。<br>我：竟然是&ldquo;公鑰&rdquo;，老爸，我給你跪了&hellip;</blockquote>
+<p>&nbsp;</p>
+<p>上面就是搞笑一下啦~ 這個問題非常有意思！我一激動，花了 1 小時左右的時間寫了實現的代碼，構思了一下整個實現流程，應該是問題不大的。</p>
+<p>實際上，這是密碼學裏面很著名的一個問題：潛信道信息傳輸問題。所謂潛信道，指的是通過一段哈希值、加密的密文、數字簽名的結果隱蔽傳遞一段信息。</p>
+<ul>
+<li>對於一般人，這段信息和正常的哈希值、密文、數字簽名沒有任何區別。哈希值依然可以實現完整性驗證，密文依然可以正確解密得到明文，數字簽名依然可以實現驗證。</li>
+<li>對於潛信道接收者，其可以從哈希值、密文、數字簽名中得到隱蔽發送的信息。</li>
+</ul>
+<p>對這方面感興趣的知友們，可以看一看潛信道傳輸的開創者 Gustavus J. Simmons 於 1993 年在密碼學頂級會議 EUROCRYPT 上發表的論文《Subliminal Communication is Easy Using the DSA》，就明白具體實現的思路了（<a href="http://link.springer.com/chapter/10.1007/3-540-48285-7_18">Subliminal Communication is Easy Using the DSA</a>）。這篇論文由於已經過了版權年限，因此可以公開下載和閱讀。論文的閱讀需要一點抽象代數的知識，不過難度並不是特別大，相信有一定基礎的人都能讀懂的。</p>
+<p>&nbsp;</p>
+<p>最開始那段對話是如何做到的呢？其實思路很簡單。密碼學加密的目的是用密鑰將一段明文信息加密成一段看起來像隨機數的密文信息。我們反過來想：是否能找到一個密鑰，使得明文的加密結果正好等於指定的密文呢？換句話說：</p>
+<p><strong>能否找到一個密鑰，使得隱藏信息在密鑰下的加密結果恰好等於正常傳輸信息？</strong></p>
+<p>答案當然是肯定的。我們遍歷所有可能的密鑰值，不斷進行嘗試，總可能找到密鑰，使得隱藏信息的加密結果恰好等於名字本身。舉個例子：</p>
+<ul>
+<li>&ldquo;巍&rdquo;這個字的 UTF-8 編碼爲[-027, -073, -115]</li>
+<li>&ldquo;PhD&rdquo;詞語的 UTF-8 編碼爲[ 080, 104, 068]</li>
+<li>目標：找一個密鑰 key，使得[-027, -073, -115] = Encrypt(key, [080, 104, 068])</li>
+<li>把 key 保存好，需要的時候讓對方執行 Decrypt(key, [-027, -073, -115])，就可以解密得到[080, 104, 068]了。</li>
+</ul>
+<p>這裏有個問題，隨着名字長度的增長，找這個密鑰所花費的時間會指數級增大。如果名字長度爲 k 比特，那麼找到密鑰預計要花費 2^k 次操作。</p>
+<p>舉個例子，&ldquo;巍&rdquo;這個字的 UTF-8 編碼長度爲 24bit，&ldquo;PhD&rdquo;詞語的 UTF-8 編碼長度同樣爲 24bit。找一個長度大於 24bit（比如 64bit）的密鑰，使得[-027, -073, -115] = Encrypt(key, [080, 104, 068])，大概需要多長時間呢？具體時間我測了 3 次，最近一次測試結果如圖所示：</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-4d8de22256261b35c70c4aeb578a687f_b.jpg" alt="">
+<p>差不多需要 1 分鐘左右。</p>
+<p>技術是死的，人是活的嘛，我們可以把隱蔽信息按 byte 拆分，依次尋找對應的密鑰，然後再組合起來就好了呀！尋找 1byte=8bit 隱藏信息對應的密鑰需要花費 2^8=512 次操作，若隱蔽信息一共有 k 比特，則一共需要花費 512k 次操作，只不過代價是密鑰變長了&hellip;</p>
+<p>舉個例子，我們把&ldquo;PhD&rdquo;詞語 UTF-8 編碼裏面的[80]藏到&ldquo;巍&rdquo;這個字 UTF-8 編碼的[-27]中，把[104]藏到[-73]中，把[68]藏到[-115]中，即：</p>
+<ul>
+<li>找密鑰 key1，使得[-002] = Encrypt(key1, [080])</li>
+<li>找密鑰 key2，使得[-073] = Encrypt(key2, [104])</li>
+<li>找密鑰 key3，使得[-115] = Encrypt(key3, [068])</li>
+</ul>
+<p>我用我電腦測試了一下，結果如下圖：</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-d769a872e948f1a2b9bfbce6c6ed8aa2_b.jpg" alt="">
+<p>約需要 160ms。但實際上因爲 nanoTime()精度到不了那麼高，所以這個時間是有很大誤差的。</p>
+<p>既然這個速度太快了，我們嘗試把 2 個 byte 合成一組找密鑰，看看時間。測試結果如下圖：</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-44d25db1aeddaae22d6478b00b173174_b.jpg" alt="">
+<p><strong>約需要 218ms</strong>。需要強調的是，這個時間是比較準確的。因爲理論上 3 個 byte 和 2 個 byte 找密鑰的時間應該差 2^8=512 倍，而 60s 和 0.2s 差不多 300 倍，還是合理的。</p>
+<p>這樣一來，我們可以在任意名字裏面隱藏任意信息了，只不過需要密鑰的參與而已。</p>
+<p>&nbsp;</p>
+<p>不過這還不滿足父親題主的要求。孩子還沒出生我就想隱藏個信息，那孩子長大了，我怎麼向他（她）證明我是當時隱藏的信息，而不是現在隨便拿一臺電腦算了個密鑰呢？這就用到最開始故事中的方法了。這個方法其實挺常見的，在此引用 @嶽峯 答案<a href="https://www.zhihu.com/question/29770754/answer/45575293">個人作者被侵權時，怎樣證明該作品是自己的原創才具有法律效力？ - 嶽峯的回答 - 知乎</a>：</p>
+<blockquote>在國外，有的作家將自己的文稿通過郵局郵寄給自己，收到後不拆封，等到需要證明的時候拿出來，依靠信封上郵戳的時間和裏面的文稿就可以證明是自己的原創作品。這個方法簡單有效，雖然已經是互聯網時代了，但仍然被很多人沿用。</blockquote>
+<p>實際上，這個方法映射的是密碼學中的另一個領域：<strong>盲簽名</strong>。這個概念比潛信道傳輸的概念提出時間更早。盲簽名概念的提出甚至造就了第一個安全電子貨幣的誕生哦！在當時所引發的震動不亞於現在比特幣的熱潮。具體論文可以參考電子貨幣奠基人 David Chaum 於 1983 年在密碼學頂級會議 CRYPTO 上發表的論文《Blind Signatures for Untraceable Payments》（<a href="http://link.springer.com/chapter/10.1007/978-1-4757-0602-4_18">Blind Signatures for Untraceable Payments</a>）。這篇論文同樣過了版權期限，可以公開下載和閱讀。</p>
+<p>能不能不借助密鑰，直接在名字中隱藏有意義的信息呢？我感覺比較困難，因爲名字的編碼都是固定的，再怎麼進行操作，操作方法都是固定的。而且，我們需要對操作方法保密，這總需要父親題主自己保留一個祕密。我個人認爲並沒有使用密鑰的方法來的方便。</p>
+<p>@毛鳴 同學把握了真諦，在此引用他的評論作爲實際沒開始時那段故事的鐵證：</p>
+<blockquote>列個時間表：<br>1990 年，你爸寄了好多封信（我纔不信他能預測未來呢哼）<br>1992 年，Unicode 1.0.1 收錄中文字，包括文中用到的 4 個字<br>1993 年，UTF-8 正式公開<br>1994 年，RC4 實現被意外公開（我知道誰是幕後黑手了&hellip;&hellip;）<br>你的父母影響力很大啊&hellip;</blockquote>
+<p>嗯，&ldquo;我父母&rdquo;提前 3 年定義了 UTF-8 編碼，提前 4 年就知道了 RC4 算法的具體執行流程，流着這樣的密碼學血液，就問怕不怕~</p>
+<p>大家想試一試效果嗎？我這裏提供兩個方法：</p>
+<ul>
+<li>逐個 byte 依次隱藏，對應函數爲 findShortMessageKey()；</li>
+<li>2 個 byte 一組隱藏，對應函數爲 findLongMessageKey()。</li>
+</ul>
+<p>代碼支持任意長度信息隱藏在任意長度字符串中，同時支持密鑰長度的設定。源代碼參考如下：</p>
+<div class="highlight">
+<pre><code class="language-java"><span class="kn">import</span> <span class="nn">org.bouncycastle.crypto.StreamCipher</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.bouncycastle.crypto.engines.RC4Engine</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.bouncycastle.crypto.params.KeyParameter</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.bouncycastle.util.encoders.Hex</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.security.SecureRandom</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Created by Weiran Liu on 2017/1/18.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Hide messages in a known string.</span>
+<span class="cm"> */</span>
+<span class="kd">class</span> <span class="nc">HideMessage</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">int</span> <span class="n">longKeySize</span> <span class="o">=</span> <span class="mi">4</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">int</span> <span class="n">shortKeySize</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">byte</span><span class="o">[]</span> <span class="n">byteArrayName</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">byte</span><span class="o">[]</span> <span class="n">byteArrayHidden</span><span class="o">;</span>
+
+    <span class="n">HideMessage</span><span class="o">(</span><span class="n">String</span> <span class="n">nameString</span><span class="o">,</span> <span class="n">String</span> <span class="n">hiddenString</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">byteArrayName</span> <span class="o">=</span> <span class="n">nameString</span><span class="o">.</span><span class="na">getBytes</span><span class="o">();</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">byteArrayHidden</span> <span class="o">=</span> <span class="n">hiddenString</span><span class="o">.</span><span class="na">getBytes</span><span class="o">();</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"  Name in Bytes: "</span> <span class="o">+</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">byteArrayName</span><span class="o">));</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Hidden in Bytes: "</span> <span class="o">+</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">byteArrayHidden</span><span class="o">));</span>
+    <span class="o">}</span>
+
+    <span class="kd">static</span> <span class="kt">void</span> <span class="nf">setLongKeySize</span><span class="o">(</span><span class="kt">int</span> <span class="n">keySize</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">keySize</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Invalid given long key size "</span> <span class="o">+</span> <span class="n">keySize</span> <span class="o">+</span> <span class="s">", key size does not change"</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="n">HideMessage</span><span class="o">.</span><span class="na">longKeySize</span> <span class="o">=</span> <span class="n">keySize</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">static</span> <span class="kt">void</span> <span class="nf">setShortKeySize</span><span class="o">(</span><span class="kt">int</span> <span class="n">keySize</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">keySize</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Invalid given short key size "</span> <span class="o">+</span> <span class="n">keySize</span> <span class="o">+</span> <span class="s">", key size does not change"</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="n">HideMessage</span><span class="o">.</span><span class="na">shortKeySize</span> <span class="o">=</span> <span class="n">keySize</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kt">byte</span><span class="o">[][]</span> <span class="nf">findShortMessageKey</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">SecureRandom</span> <span class="n">secureRandom</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SecureRandom</span><span class="o">();</span>
+        <span class="kt">byte</span><span class="o">[][]</span> <span class="n">candidateKey</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="n">byteArrayHidden</span><span class="o">.</span><span class="na">length</span><span class="o">][</span><span class="n">shortKeySize</span><span class="o">];</span>
+        <span class="kt">byte</span><span class="o">[]</span> <span class="n">result</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">nameLevel</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">hiddenLabel</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">hiddenLabel</span> <span class="o">&lt;</span> <span class="n">byteArrayHidden</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">hiddenLabel</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">do</span> <span class="o">{</span>
+                <span class="n">secureRandom</span><span class="o">.</span><span class="na">nextBytes</span><span class="o">(</span><span class="n">candidateKey</span><span class="o">[</span><span class="n">hiddenLabel</span><span class="o">]);</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="n">CTREncryption</span><span class="o">(</span><span class="n">candidateKey</span><span class="o">[</span><span class="n">hiddenLabel</span><span class="o">],</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[]</span> <span class="o">{</span><span class="n">byteArrayHidden</span><span class="o">[</span><span class="n">hiddenLabel</span><span class="o">]});</span>
+            <span class="o">}</span> <span class="k">while</span> <span class="o">(</span><span class="n">result</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">!=</span> <span class="n">byteArrayName</span><span class="o">[</span><span class="n">nameLevel</span><span class="o">]);</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Candidate Key "</span> <span class="o">+</span> <span class="n">hiddenLabel</span> <span class="o">+</span> <span class="s">" = "</span>
+                    <span class="o">+</span> <span class="n">Hex</span><span class="o">.</span><span class="na">toHexString</span><span class="o">(</span><span class="n">candidateKey</span><span class="o">[</span><span class="n">hiddenLabel</span><span class="o">]).</span><span class="na">toUpperCase</span><span class="o">());</span>
+            <span class="n">nameLevel</span> <span class="o">++;</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">nameLevel</span> <span class="o">==</span> <span class="n">byteArrayName</span><span class="o">.</span><span class="na">length</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">nameLevel</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">candidateKey</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="n">String</span> <span class="nf">recoverShortMessage</span><span class="o">(</span><span class="kt">byte</span><span class="o">[][]</span> <span class="n">candidateKey</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">byte</span><span class="o">[]</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="n">candidateKey</span><span class="o">.</span><span class="na">length</span><span class="o">];</span>
+        <span class="kt">int</span> <span class="n">nameLevel</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">hiddenLabel</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">hiddenLabel</span> <span class="o">&lt;</span> <span class="n">candidateKey</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">hiddenLabel</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="kt">byte</span><span class="o">[]</span> <span class="n">tempResult</span> <span class="o">=</span> <span class="n">CTRDecryption</span><span class="o">(</span><span class="n">candidateKey</span><span class="o">[</span><span class="n">hiddenLabel</span><span class="o">],</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[]</span> <span class="o">{</span><span class="n">byteArrayName</span><span class="o">[</span><span class="n">nameLevel</span><span class="o">]});</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">arraycopy</span><span class="o">(</span><span class="n">tempResult</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">result</span><span class="o">,</span> <span class="n">hiddenLabel</span><span class="o">,</span> <span class="n">tempResult</span><span class="o">.</span><span class="na">length</span><span class="o">);</span>
+            <span class="n">nameLevel</span> <span class="o">++;</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">nameLevel</span> <span class="o">==</span> <span class="n">byteArrayName</span><span class="o">.</span><span class="na">length</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">nameLevel</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="n">result</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kt">byte</span><span class="o">[][]</span> <span class="nf">findLongMessageKey</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">byteArrayHidden</span><span class="o">.</span><span class="na">length</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="n">RuntimeException</span><span class="o">(</span><span class="s">"Hidden meesage byte array length must be an even number"</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">byteArrayName</span><span class="o">.</span><span class="na">length</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="n">RuntimeException</span><span class="o">(</span><span class="s">"Name meesage byte array length must be an even number"</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="n">SecureRandom</span> <span class="n">secureRandom</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SecureRandom</span><span class="o">();</span>
+        <span class="kt">byte</span><span class="o">[][]</span> <span class="n">candidateKey</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="n">byteArrayHidden</span><span class="o">.</span><span class="na">length</span> <span class="o">/</span> <span class="mi">2</span><span class="o">][</span><span class="n">longKeySize</span><span class="o">];</span>
+        <span class="kt">byte</span><span class="o">[]</span> <span class="n">result</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">nameLevel</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">hiddenLabel</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">hiddenLabel</span> <span class="o">&lt;</span> <span class="n">byteArrayHidden</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">hiddenLabel</span> <span class="o">+=</span> <span class="mi">2</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">do</span> <span class="o">{</span>
+                <span class="n">secureRandom</span><span class="o">.</span><span class="na">nextBytes</span><span class="o">(</span><span class="n">candidateKey</span><span class="o">[</span><span class="n">hiddenLabel</span> <span class="o">/</span> <span class="mi">2</span><span class="o">]);</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="n">CTREncryption</span><span class="o">(</span><span class="n">candidateKey</span><span class="o">[</span><span class="n">hiddenLabel</span> <span class="o">/</span> <span class="mi">2</span><span class="o">],</span>
+                        <span class="k">new</span> <span class="kt">byte</span><span class="o">[]</span> <span class="o">{</span><span class="n">byteArrayHidden</span><span class="o">[</span><span class="n">hiddenLabel</span><span class="o">],</span> <span class="n">byteArrayHidden</span><span class="o">[</span><span class="n">hiddenLabel</span> <span class="o">+</span> <span class="mi">1</span><span class="o">]});</span>
+            <span class="o">}</span> <span class="k">while</span> <span class="o">(</span><span class="n">result</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">!=</span> <span class="n">byteArrayName</span><span class="o">[</span><span class="n">nameLevel</span><span class="o">]</span> <span class="o">||</span> <span class="n">result</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">!=</span> <span class="n">byteArrayName</span><span class="o">[</span><span class="n">nameLevel</span> <span class="o">+</span> <span class="mi">1</span><span class="o">]);</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Candidate Key "</span> <span class="o">+</span> <span class="n">hiddenLabel</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="s">" = "</span>
+                    <span class="o">+</span> <span class="n">Hex</span><span class="o">.</span><span class="na">toHexString</span><span class="o">(</span><span class="n">candidateKey</span><span class="o">[</span><span class="n">hiddenLabel</span> <span class="o">/</span> <span class="mi">2</span><span class="o">]).</span><span class="na">toUpperCase</span><span class="o">());</span>
+            <span class="n">nameLevel</span> <span class="o">+=</span> <span class="mi">2</span><span class="o">;</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">nameLevel</span> <span class="o">==</span> <span class="n">byteArrayName</span><span class="o">.</span><span class="na">length</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">nameLevel</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">candidateKey</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="n">String</span> <span class="nf">recoverLongMessage</span><span class="o">(</span><span class="kt">byte</span><span class="o">[][]</span> <span class="n">candidateKey</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">byteArrayName</span><span class="o">.</span><span class="na">length</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="n">RuntimeException</span><span class="o">(</span><span class="s">"Name meesage byte array length must be an even number"</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="kt">byte</span><span class="o">[]</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="n">candidateKey</span><span class="o">.</span><span class="na">length</span> <span class="o">*</span> <span class="mi">2</span><span class="o">];</span>
+        <span class="kt">int</span> <span class="n">nameLevel</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">hiddenLabel</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">hiddenLabel</span> <span class="o">&lt;</span> <span class="n">candidateKey</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">hiddenLabel</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="kt">byte</span><span class="o">[]</span> <span class="n">tempResult</span> <span class="o">=</span> <span class="n">CTRDecryption</span><span class="o">(</span><span class="n">candidateKey</span><span class="o">[</span><span class="n">hiddenLabel</span><span class="o">],</span>
+                    <span class="k">new</span> <span class="kt">byte</span><span class="o">[]</span> <span class="o">{</span><span class="n">byteArrayName</span><span class="o">[</span><span class="n">nameLevel</span><span class="o">],</span> <span class="n">byteArrayName</span><span class="o">[</span><span class="n">nameLevel</span> <span class="o">+</span> <span class="mi">1</span><span class="o">]});</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">arraycopy</span><span class="o">(</span><span class="n">tempResult</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">result</span><span class="o">,</span> <span class="n">hiddenLabel</span> <span class="o">*</span> <span class="mi">2</span><span class="o">,</span> <span class="n">tempResult</span><span class="o">.</span><span class="na">length</span><span class="o">);</span>
+            <span class="n">nameLevel</span> <span class="o">+=</span> <span class="mi">2</span><span class="o">;</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">nameLevel</span> <span class="o">==</span> <span class="n">byteArrayName</span><span class="o">.</span><span class="na">length</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">nameLevel</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Hidden Message in bytes = "</span> <span class="o">+</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">result</span><span class="o">));</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="n">result</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">static</span> <span class="kt">byte</span><span class="o">[]</span> <span class="nf">CTREncryption</span><span class="o">(</span><span class="kt">byte</span><span class="o">[]</span> <span class="n">key</span><span class="o">,</span> <span class="kt">byte</span><span class="o">[]</span> <span class="n">plaintext</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">assert</span><span class="o">(</span><span class="n">key</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">plaintext</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">);</span>
+        <span class="n">KeyParameter</span> <span class="n">keyParameter</span> <span class="o">=</span> <span class="k">new</span> <span class="n">KeyParameter</span><span class="o">(</span><span class="n">key</span><span class="o">);</span>
+        <span class="n">StreamCipher</span> <span class="n">streamCipher</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RC4Engine</span><span class="o">();</span>
+        <span class="n">streamCipher</span><span class="o">.</span><span class="na">init</span><span class="o">(</span><span class="kc">true</span><span class="o">,</span> <span class="n">keyParameter</span><span class="o">);</span>
+        <span class="kt">byte</span><span class="o">[]</span> <span class="n">ciphertext</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="n">plaintext</span><span class="o">.</span><span class="na">length</span><span class="o">];</span>
+        <span class="n">streamCipher</span><span class="o">.</span><span class="na">processBytes</span><span class="o">(</span><span class="n">plaintext</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">plaintext</span><span class="o">.</span><span class="na">length</span><span class="o">,</span> <span class="n">ciphertext</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">ciphertext</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">static</span> <span class="kt">byte</span><span class="o">[]</span> <span class="nf">CTRDecryption</span><span class="o">(</span><span class="kt">byte</span><span class="o">[]</span> <span class="n">key</span><span class="o">,</span> <span class="kt">byte</span><span class="o">[]</span> <span class="n">ciphertext</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">assert</span><span class="o">(</span><span class="n">key</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">ciphertext</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">);</span>
+        <span class="n">KeyParameter</span> <span class="n">keyParameter</span> <span class="o">=</span> <span class="k">new</span> <span class="n">KeyParameter</span><span class="o">(</span><span class="n">key</span><span class="o">);</span>
+        <span class="n">StreamCipher</span> <span class="n">streamCipher</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RC4Engine</span><span class="o">();</span>
+        <span class="n">streamCipher</span><span class="o">.</span><span class="na">init</span><span class="o">(</span><span class="kc">false</span><span class="o">,</span> <span class="n">keyParameter</span><span class="o">);</span>
+        <span class="kt">byte</span><span class="o">[]</span> <span class="n">plaintext</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="n">ciphertext</span><span class="o">.</span><span class="na">length</span><span class="o">];</span>
+        <span class="n">streamCipher</span><span class="o">.</span><span class="na">processBytes</span><span class="o">(</span><span class="n">ciphertext</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">ciphertext</span><span class="o">.</span><span class="na">length</span><span class="o">,</span> <span class="n">plaintext</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">plaintext</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+<p>調用示例如下：</p>
+<div class="highlight">
+<pre><code class="language-java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">String</span> <span class="n">name</span> <span class="o">=</span> <span class="s">"巍然"</span><span class="o">;</span>
+    <span class="n">String</span> <span class="n">hide</span> <span class="o">=</span> <span class="s">"公鑰"</span><span class="o">;</span>
+    <span class="n">HideMessage</span> <span class="n">hideMessage</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HideMessage</span><span class="o">(</span><span class="n">name</span><span class="o">,</span> <span class="n">hide</span><span class="o">);</span>
+    <span class="n">HideMessage</span><span class="o">.</span><span class="na">setLongKeySize</span><span class="o">(</span><span class="mi">4</span><span class="o">);</span>
+    <span class="kt">byte</span><span class="o">[][]</span> <span class="n">candidateKey</span> <span class="o">=</span> <span class="n">hideMessage</span><span class="o">.</span><span class="na">findLongMessageKey</span><span class="o">();</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">hideMessage</span><span class="o">.</span><span class="na">recoverLongMessage</span><span class="o">(</span><span class="n">candidateKey</span><span class="o">));</span>
+
+    <span class="n">HideMessage</span><span class="o">.</span><span class="na">setShortKeySize</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
+    <span class="n">candidateKey</span> <span class="o">=</span> <span class="n">hideMessage</span><span class="o">.</span><span class="na">findShortMessageKey</span><span class="o">();</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">hideMessage</span><span class="o">.</span><span class="na">recoverShortMessage</span><span class="o">(</span><span class="n">candidateKey</span><span class="o">));</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+<p>我在&ldquo;知乎&rdquo;這個名字裏面隱藏了一段話，各密鑰長度爲 16byte，密鑰依次爲：</p>
+<div class="highlight">
+<pre><code class="language-text">Key 00 = EDE20EAFE2A53F89960243E67835EB79
+Key 01 = 90878DC31E9475BE760B025AEA340EC1
+Key 02 = 877066098F00956408DC8331B0E434D8
+Key 03 = 967C3E9C350D380C2D66C519DED5C09A
+Key 04 = F1417629CF92283C694C8D81DC8DE37A
+Key 05 = E2BC55790F4BE3F845BC391EACA43412
+Key 06 = 77D86F5AC3B8C3001975941F6E0FEEAE
+Key 07 = C5B5646B75350F3772ED4F6567FBC8A1
+Key 08 = E9EB9D5CEA80C584AD3816D34C00614E
+Key 09 = 83AFD62DAE14D042074B04054552E3F9
+Key 10 = FA893C4E5F36282DE62797553A4ECABB
+Key 11 = EDE3A2F37B56E94E3267459DBA1B2F62
+Key 12 = 786BD904220E12F352AFDCAF7C52BCB1
+Key 13 = 88DA076C83430B517193E2BC780C153D
+Key 14 = 0162ABB0A41FDAF8B7663A3C89E97DEC
+</code></pre>
+</div>
+<p>請知友們試一試，我隱藏了什麼信息？</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div>
