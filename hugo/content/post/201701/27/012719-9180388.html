@@ -1,0 +1,84 @@
++++
+date = "2017-01-27T19:00:00"
+title = "智能手機和電腦相比，誰更安全？"
+titleimage = "http://pic4.zhimg.com/4fc505987b1c36c80eaca8081a3bc7f3.jpg"
+ga = 012719
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title"></h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p><strong>首先，反對某回答中對基帶芯片的說法。</strong></p>
+<p>基帶跑的 RTOS 不是 TrustZone 的 Hypervisor 那樣對 Normal world（也就是所謂的 APP 運行的環境）有完全的控制力，相反它和 Normal world 基本是隔離開的，只會影響 Normal world 中和 telephony 相關的內容。2015 年 Mobile Pwn2Own 中，研究者展示了對 Samsung S6 中的高通基帶 RTOS 的攻破(<a href="http://link.zhihu.com/?target=http%3A//www.theregister.co.uk/2015/11/12/mobile_pwn2own1/">Samsung S6 calls open to man-in-the-middle base station snooping</a>)，完全控制了這臺手機的通訊功能，但是並沒有成功從基帶中獲取 Normal world 的權限。 對這項研究感興趣的讀者可以參考他們發表在 RECON 2016 Montreal 上的主題演講：<a href="http://link.zhihu.com/?target=https%3A//recon.cx/2016/recordings/recon2016-09-nico-golde-daniel-komaromy-Breaking-Band.mp4">Breaking Band - Nico Golde, Daniel Komaromy </a></p>
+<p>也反對某回答中&ldquo;一個安全而無用的系統遠不如一個不安全而有用的系統有價值&rdquo;的說法。如果你是所謂的 high value target，面臨的 threat 從釣魚攻擊到物理攻擊你的電子設備各種各樣，你還會認爲安全沒有價值？脫離了 Threat Model 談安全本身就是一個耍流氓的做法。如果目標本身沒有價值，那麼 TA 的安全，那自然是沒有價值的。反之，亦成立。</p>
+<p>然後，對於這個問題本身，我想它並沒有一個一定肯定或者否定的答案。</p>
+<p>客戶端安全攻防是一個螺旋式發展的階段。早些年，棧溢出堆溢出滿天飛，到處都是 RWX，隨便內核裏都可以 ret2usr，後來有了 stack cookie，有了 DEP，有了 ASLR，有了 SMAP/SMEP。攻擊者又發明了 ROP，info leak, JOP，ret2dir，而防禦者又提出了 CFG，CFI，pointer authentication 來緩解甚至阻止攻擊者的步伐。在公衆看不到的背後，發生着無聲但又激烈的對決。</p>
+<p><strong>從防禦手段上比較</strong></p>
+<p>而這些攻防技術上的發展，PC 和手機都在受益。例如在手機上，Android 4.1/IOS 4.3 引入了用戶態 Full ASLR，在 PC 上則由 Windows Vista 引入，並存在於後續所有 Windows 上。Windows XP SP2 引入了 DEP，而對等的 NX 則在 Android 2.3/iOS 5 中引入。</p>
+<p>當然雙方也互有先後手。例如 iOS/Windows 是最早引入內核 kASLR 的系統，而 Android 則落後很多, 即使到現在，主流 Android 手機纔剛剛開始普及 KASLR 這種防禦措施。</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-d06aac314751bae8730355aee663713c_b.jpg" alt="">
+<p>(Ref: <a href="http://link.zhihu.com/?target=https%3A//www.blackhat.com/docs/us-16/materials/us-16-Jang-Breaking-Kernel-Address-Space-Layout-Randomization-KASLR-With-Intel-TSX-wp.pdf">https://www.blackhat.com/docs/us-16/materials/us-16-Jang-Breaking-Kernel-Address-Space-Layout-Randomization-KASLR-With-Intel-TSX-wp.pdf</a>)</p>
+<p>如果非要講哪一家更領先的話，我倒是推薦最新版 Developer Preview 的 Windows 10。因爲據一些消息源，微軟在裏面加了很多喪心病狂的 mitigation（CFI 真的鋪開了！），相對於另外兩家動作要大很多。這一盤，算微軟 PC 代表隊逆轉得分。</p>
+<p><strong>從攻擊面上比較</strong></p>
+<p>上面談的是從內存破壞漏洞來講，各平臺的安全措施。從可能攻擊面來講，各平臺也各有千秋：</p>
+<p>隨着 Google 對 SELinux 的不斷加強，大刀闊斧的組件重構和上游對內核漏洞挖掘的投入，Android 的攻擊面正在變得越來越小。開源代碼的 Bug bounty program 也吸引了最多的研究者幫助 Google 修補漏洞。這方面，Google 領先。當然我說的是 Nexus/Pixel，國產手機代碼例如 MTK 驅動裏各種各樣的漏洞能一下子把 Google 的努力打回石器時代。</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-61cf30f83e43558dfdb8e4d71d6ca6d6_b.jpg" alt="">
+<p>而 iOS/macOS 上瀏覽器沙箱可以直接訪問顯卡相關驅動則是蘋果永遠的痛，Safari Technology Preview 正在試圖改變這個狀況。</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-1753bd9b117a64a6155cb45cc3fb7935_b.jpg" alt="">
+<p>(Apple 在推的另外一個對 Safari 的關鍵加固措施： JIT W-X. Ref: <a href="http://link.zhihu.com/?target=https%3A//www.blackhat.com/docs/us-16/materials/us-16-Krstic.pdf">https://www.blackhat.com/docs/us-16/materials/us-16-Krstic.pdf</a>)</p>
+<p>至於 Windows, win32k 這個 d 巨大的歷史包袱跑在內核裏，漏洞也是相當的多，由於 Windows 的向下兼容性要求，這個問題，可能要等微軟下一次重寫 NT 內核解決了。。</p>
+<p>這一局，Nexus/Pixel Android 暫時領先。</p>
+<p>客戶端防禦一般取決於安全團隊的推動力，以及該公司客戶端所面臨的現實威脅。例如蘋果一直認爲他們被 iOS 越獄所困擾，但 iOS 用戶態本身已經被嚴格限制，那麼他們就比較關注內核安全。Android 去年被 stagefright 狂炒了一番，今年就在 mediaserver 拆分上下了很大功夫。</p>
+<p><strong>從生態環境上比較</strong></p>
+<p>上面提了這麼多，但是對於普通用戶 / 非二進制安全行業從業者，其實都是大炮打蚊子。現在已經不是 10 年前 PC 網上隨便掛馬的時代，各種各樣的防禦，各種各樣的殺毒軟件已經消滅了大部分這樣的事情（但是如果你堅持用 Flash，堅持用 XP，當我沒講）。如果你不是 high-value-target，例如前段時間被以色列黑客公司拿一整套遠程越獄 Trident 打的阿拉伯記者，那麼很多情況下，你可能不需要操心上面這些問題。</p>
+<p>但下面這些問題，則是普通人需要切身關注的。生態安全問題。很多人一輩子估計都不會被一套 exploit 攻擊，那麼他們需要考慮的問題其實是，這個平臺 malware 是不是很多？是不是很容易就會被感染？如果被感染了，malware 是不是很容易就能對系統造成破壞，對我造成經濟損失？</p>
+<p>Windows 受歷史原因所限和國內國情，早已聲名狼藉。早些年所有進程 UID 一樣，能互相訪問，這簡直在手機上不可想象(現在已經有所改觀)。移動平臺的後起之秀吸收了先驅者的教訓：在用戶態，iOS 實現了強用戶態沙箱，進程間(TrustBSD + Code signing enforcing)，並由 Apple Store 審覈做了嚴格的規範，基本上高枕無憂。Android 早些年依賴於基於 Linux UID/GID 隔離的一個弱沙箱和基於 binder 的權限機制，後來引入了 SELinux 併成爲了主力，但用戶態進程權限還是比 iOS 大很多，而 Google Play 的審覈也比 Apple Store 鬆很多。並且早些年用戶態權限開放過大，短信攔截釣魚馬吃飽喝足，權限隨便申請，互相喚醒滿天飛，Google 也難辭其咎。</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-5ef5a88e010814f9b69123fe3fa60a2b_b.jpg" alt="">
+<p>（Google 的理想國，可惜在國內。。。Ref: <a href="http://link.zhihu.com/?target=https%3A//docs.google.com/presentation/d/1i2UkeqkQq6pvaRK1Je7RzlJMWqUpJCFucRIEJHcjLM8/mobilepresent%3Fslide%3Did.g898eac660_2_0">https://docs.google.com/presentation/d/1i2UkeqkQq6pvaRK1Je7RzlJMWqUpJCFucRIEJHcjLM8/mobilepresent?slide=id.g898eac660_2_0</a>)</p>
+<p>這其實就脫離了純安全技術對抗的領域，而走向了老生常談的 malware/greyware 的話題。很明顯，未越獄的 iOS 在這方面優勢巨大，Nexus/Pixel Android 和國內部分優秀廠商做的還不錯，而 Windows 在國內各種全家桶虎視眈眈的市場下，就很危險了。。</p>
+<p>這一局，Windows 慘敗。</p>
+<p><strong>從物理 / 數據安全上比較</strong></p>
+<p>如果你真的真的很有價值，需要經常考慮被查水錶的可能性，那麼數據安全 / 物理安全也是你需要考慮的。這方面 iOS 作爲最早支持上 TrustZone/Supervisor 級別和硬件級別加密的系統，也是領先一步。Android 在 M/N 之後推出的 Full disk encryption/file-base encryption 也滿足了大家的需求。</p>
+<p>而 Windows 則有一定問題，目前來講這方面還是各個筆記本廠商自己通過 TPM 去實現，但是給豬隊友就容易出事，你能相信 Thinkpad 就直接把密鑰放在一個所有用戶都可以訪問到的地方？但這還真的是。。（漏洞已經報告修復，但誰知道其他地方。。）</p>
+<p><strong>總結</strong></p>
+<p>還是那句話，脫離 Threat Model，談安全都是耍流氓。</p>
+<p><strong>如果你是高價值高智商人羣，隨時都有可能被人拿一套 0day 劈頭蓋臉砸上去。警惕性很高，從不亂裝應用，那建議你用終極威力加固版的 Nexus/Pixel Android （例如 Copperhead OS）+ 只用 Chrome，什麼 PXN, KASLR, CFI，JIT W-X，統統開起來。乾脆直接編譯個帶 ASAN 的跑最好。</strong><strong>如果你是普通人，那麼不越獄的 iPhone+ 及時更新的 Windows/macOS 足矣。因爲你的對手，是那些發送釣魚欺詐短信郵件、在各種地方掛程序誘導你下載執行的黑灰產，和拿 Nday 去掛馬的腳本小子苦力工。</strong></p>
+<p>還是那句話，最新版的系統，最新版的軟件，保留警惕性，遠離全家桶，開啓 Full disk-encryption，才能保平安。</p>
+<p>Refs:</p>
+<ol>
+<li><a href="http://link.zhihu.com/?target=https%3A//www.blackhat.com/docs/us-16/materials/us-16-Krstic.pdf">https://www.blackhat.com/docs/us-16/materials/us-16-Krstic.pdf</a> (From Apple Security Team on Blackhat 2016)</li>
+<li><a href="http://link.zhihu.com/?target=https%3A//docs.google.com/presentation/d/1i2UkeqkQq6pvaRK1Je7RzlJMWqUpJCFucRIEJHcjLM8/mobilepresent%3Fslide%3Did.p8">https://docs.google.com/presentation/d/1i2UkeqkQq6pvaRK1Je7RzlJMWqUpJCFucRIEJHcjLM8/mobilepresent?slide=id.p8</a> (From Android Security Team on BlackHat US 2015)</li>
+<li>Android Security Enhancements <a href="http://link.zhihu.com/?target=https%3A//source.android.com/security/enhancements/index.html">https://source.android.com/security/enhancements/index.html</a></li>
+<li><a href="http://link.zhihu.com/?target=https%3A//recon.cx/2016/recordings/recon2016-09-nico-golde-daniel-komaromy-Breaking-Band.mp4">https://recon.cx/2016/recordings/recon2016-09-nico-golde-daniel-komaromy-Breaking-Band.mp4</a> breaking-band Montreal, RECON 2016</li>
+<li><a href="http://link.zhihu.com/?target=https%3A//source.android.com/devices/media/framework-hardening.html">https://source.android.com/devices/media/framework-hardening.html</a> media framework hardening in Android</li>
+</ol>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div>
