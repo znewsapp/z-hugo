@@ -1,0 +1,139 @@
++++
+date = "2017-02-06T17:00:00"
+title = "600 人站一排，每次隨機殺一個奇數位的人，幾號最安全？"
+titleimage = "http://pic2.zhimg.com/0244a530518187162ad3595dcbdbe701.jpg"
+ga = 020617
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title"></h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p><strong>修正之後的結論：存活回合數期望最大的應該是 2，但最可能成爲最後一個存活的人的是 600。<br></strong></p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=P%28k%3BM%2CN%29" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=P%281%3B2%2C1%29+%3D+1" alt="">
+<p>考慮 M+1 個人殺 N+1 次的情況，則很容易得到：</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=P%282k%3B+M%2B1%2C+N%2B1%29+%3D+%5Cfrac%7Bk%7D%7B%5Clceil+%5Cfrac%7BM+%2B+1%7D%7B2%7D+%5Crceil%7D+P%282k-1%3B+M%2C+N%29+%2B+%281-%5Cfrac%7Bk%7D%7B%5Clceil+%5Cfrac%7BM+%2B+1%7D%7B2%7D+%5Crceil%7D%29+P%282k%3B+M%2C+N%29" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=P%282k+%2B+1%3B+M%2B1%2C+N%2B1%29+%3D+%5Cfrac%7B1%7D%7B%5Clceil%5Cfrac%7BM+%2B+1%7D%7B2%7D%5Crceil%7D+%2B+%5Cfrac%7Bk%7D%7B%5Clceil+%5Cfrac%7BM+%2B+1%7D%7B2%7D+%5Crceil%7D+P%282k%3B+M%2C+N%29+%2B+%281-%5Cfrac%7Bk+%2B+1%7D%7B%5Clceil+%5Cfrac%7BM+%2B+1%7D%7B2%7D+%5Crceil%7D%29+P%282k%2B1%3B+M%2C+N%29" alt="">
+<p>我們定性分析一下這個式子，無論奇數還是偶數，都從(M,N)的情況中，繼承自己和前一項的&ldquo;陣亡&rdquo;概率，同時補上自己是奇數（有被殺概率）或者是偶數（無被殺概率）的修正值。k 越小，前一項加權越小，後一項加權越大。奇數項有額外的加成。這樣，k 比較小的情況下，奇數項和偶數項的差異越來越大；而 k 越大，由於前後兩項平均、甚至前項比例超過後項的效果，奇數項和偶數項的差距變得越來越小。</p>
+<p>迭代下去的結果大致是一個上下波動然後衰減的樣式：1 的被殺概率最大，2 最小，3 又變大但小於 1，4 又變小但大於 2，依次類推。M 和 N 都比較大的時候，靠後位置的奇數位置、偶數位置差異變得很小，因爲它們經常相互轉換。而 1 永遠是奇數；2 只有很小的概率會轉換成 1。N 越大，存活概率的絕對值都變小，但存活概率與前後位置的關係變得更大，2 的相對安全優勢也越明顯。如果考慮最後一個存活的人的比例的話，N 很大的情況下，2 的優勢會很明顯。</p>
+<p>不過&hellip;&hellip;</p>
+<p>事實證明全憑臆想是不好的&hellip;&hellip;這裏忽略了一件事，一開始在 2，和最後幾輪在 2，意義是完全不同的。一開始奇數多，每個奇數被殺概率比較小，而最後幾輪被殺概率嚴重提高，而一開始在 2 的，很容易就滑到 1 去了。還是老老實實算一下遞推式&hellip;&hellip;</p>
+<p>存活概率：</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-2cc2fd237114e42cbfbeeac513df3b07_b.jpg" alt="">
+<p>殺至最後一人的存活概率。這也太直了吧！</p>
+<p>但其實並不是完美直線，而是奇數偶數一組跳變的，1 的存活概率是 0，（2,3）的存活概率幾乎一樣，（4,5）的存活概率幾乎一樣，依次類推，所以最後存活概率最大的是 600，它存活的概率幾乎就是 1/300。</p>
+<p>實際上似乎有</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=P%282k%3B+M%2C+M-1%29+%3D+P%282k%2B1%3B+M%2C+M-1%29+%3D+1+-+%5Cfrac%7Bk%7D%7B%5Clceil+%5Cfrac%7BM%7D%7B2%7D+%5Crceil%5Clceil+%5Cfrac%7BM-1%7D%7B2%7D+%5Crceil%7D" alt="">
+<p>我們代回去檢驗一下：</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=P%282k%3B+M%2B1%2C+M%29+%3D+%5Cfrac%7Bk%7D%7B%5Clceil+%5Cfrac%7BM+%2B+1%7D%7B2%7D+%5Crceil%7D+P%282k-1%3B+M%2C+M+-+1%29+%2B+%281-%5Cfrac%7Bk%7D%7B%5Clceil+%5Cfrac%7BM+%2B+1%7D%7B2%7D+%5Crceil%7D%29+P%282k%3B+M%2C+M+-+1%29" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%3D+%5Cfrac%7Bk%7D%7B%5Clceil+%5Cfrac%7BM+%2B+1%7D%7B2%7D+%5Crceil%7D+%281+-+%5Cfrac%7Bk+-+1%7D%7B%5Clceil+%5Cfrac%7BM%7D%7B2%7D+%5Crceil%5Clceil+%5Cfrac%7BM-1%7D%7B2%7D+%5Crceil%7D%29+%2B+%281-%5Cfrac%7Bk%7D%7B%5Clceil+%5Cfrac%7BM+%2B+1%7D%7B2%7D+%5Crceil%7D%29%281+-+%5Cfrac%7Bk%7D%7B%5Clceil+%5Cfrac%7BM%7D%7B2%7D+%5Crceil%5Clceil+%5Cfrac%7BM-1%7D%7B2%7D+%5Crceil%7D%29" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%3D+1+-+%5Cfrac%7Bk%7D%7B%5Clceil+%5Cfrac%7BM%7D%7B2%7D+%5Crceil%5Clceil+%5Cfrac%7BM-1%7D%7B2%7D+%5Crceil%7D+%2B+%5Cfrac%7Bk%7D%7B%5Clceil+%5Cfrac%7BM%7D%7B2%7D+%5Crceil%5Clceil+%5Cfrac%7BM-1%7D%7B2%7D+%5Crceil%5Clceil+%5Cfrac%7BM+%2B+1%7D%7B2%7D+%5Crceil%7D" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%3D+1+-+%5Cfrac%7B%28%5Clceil+%5Cfrac%7BM+%2B+1%7D%7B2%7D+%5Crceil+-+1%29k%7D%7B%5Clceil+%5Cfrac%7BM%7D%7B2%7D+%5Crceil%5Clceil+%5Cfrac%7BM-1%7D%7B2%7D+%5Crceil%5Clceil+%5Cfrac%7BM+%2B+1%7D%7B2%7D+%5Crceil%7D" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%3D+1+-+%5Cfrac%7B%5Clceil+%5Cfrac%7BM+-+1%7D%7B2%7D+%5Crceil+k%7D%7B%5Clceil+%5Cfrac%7BM%7D%7B2%7D+%5Crceil%5Clceil+%5Cfrac%7BM-1%7D%7B2%7D+%5Crceil%5Clceil+%5Cfrac%7BM+%2B+1%7D%7B2%7D+%5Crceil%7D" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%3D+1+-+%5Cfrac%7Bk%7D%7B%5Clceil+%5Cfrac%7BM%7D%7B2%7D+%5Crceil%5Clceil+%5Cfrac%7BM+%2B+1%7D%7B2%7D+%5Crceil%7D" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=P%282k+%2B+1%3B+M%2B1%3B+M%29+%3D+%5Cfrac%7B1%7D%7B%5Clceil%5Cfrac%7BM+%2B+1%7D%7B2%7D%5Crceil%7D+%2B+%5Cfrac%7Bk%7D%7B%5Clceil+%5Cfrac%7BM+%2B+1%7D%7B2%7D+%5Crceil%7D+P%282k%3B+M%2C+N-1%29+%2B+%281-%5Cfrac%7Bk+%2B+1%7D%7B%5Clceil+%5Cfrac%7BM+%2B+1%7D%7B2%7D+%5Crceil%7D%29+P%282k%2B1%3B+M%2C+N-1%29" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%3D+%5Cfrac%7B1%7D%7B%5Clceil%5Cfrac%7BM+%2B+1%7D%7B2%7D%5Crceil%7D+%2B+%281-%5Cfrac%7B1%7D%7B%5Clceil+%5Cfrac%7BM+%2B+1%7D%7B2%7D+%5Crceil%7D%29+%281+-+%5Cfrac%7Bk%7D%7B%5Clceil+%5Cfrac%7BM%7D%7B2%7D+%5Crceil%5Clceil+%5Cfrac%7BM-1%7D%7B2%7D+%5Crceil%7D%29" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%3D+%5Cfrac%7B1%7D%7B%5Clceil%5Cfrac%7BM+%2B+1%7D%7B2%7D%5Crceil%7D+%2B+%5Cfrac%7B%5Clceil+%5Cfrac%7BM+-+1%7D%7B2%7D+%5Crceil%7D%7B%5Clceil+%5Cfrac%7BM+%2B+1%7D%7B2%7D+%5Crceil%7D%28%5Cfrac%7B%5Clceil+%5Cfrac%7BM%7D%7B2%7D+%5Crceil%5Clceil+%5Cfrac%7BM-1%7D%7B2%7D+%5Crceil+-+k%7D%7B%5Clceil+%5Cfrac%7BM%7D%7B2%7D+%5Crceil%5Clceil+%5Cfrac%7BM-1%7D%7B2%7D+%5Crceil%7D%29" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%3D+1+-+%5Cfrac%7Bk%7D%7B%5Clceil+%5Cfrac%7BM%7D%7B2%7D+%5Crceil%5Clceil+%5Cfrac%7BM+%2B+1%7D%7B2%7D+%5Crceil%7D" alt="">
+<p>這提示我們也許應該用存活概率來表示遞推式，改寫一下，用 Q(k; M, N)來表示存活概率：</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=Q%282k%3B+M%2B1%2C+N%2B1%29+%3D+%5Cfrac%7Bk%7D%7B%5Clceil+%5Cfrac%7BM+%2B+1%7D%7B2%7D+%5Crceil%7D+Q%282k-1%3B+M%2C+N%29+%2B+%281-%5Cfrac%7Bk%7D%7B%5Clceil+%5Cfrac%7BM+%2B+1%7D%7B2%7D+%5Crceil%7D%29+Q%282k%3B+M%2C+N%29" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=Q%282k+%2B+1%3B+M%2B1%2C+N%2B1%29+%3D+%5Cfrac%7Bk%7D%7B%5Clceil+%5Cfrac%7BM+%2B+1%7D%7B2%7D+%5Crceil%7D+Q%282k%3B+M%2C+N%29+%2B+%281-%5Cfrac%7Bk+%2B+1%7D%7B%5Clceil+%5Cfrac%7BM+%2B+1%7D%7B2%7D+%5Crceil%7D%29+Q%282k%2B1%3B+M%2C+N%29" alt="">
+<p>的確可以去掉那個常數項，改寫成齊次的遞推式。</p>
+<p>在 N 不爲 M-1 的時候，得到的結果跟之前的分析基本一致（Q(600,300)）：</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-4128eb5b20daee724567eed09301453c_b.jpg" alt="">
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-07d4a36d776d149860334a1c14ac5c1f_b.jpg" alt="">
+<p>（0 實際上是 1）</p>
+<p>當 N 增大的時候，這個圖也有變化，下圖是 Q(600,500)：</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-e3614bce5c682f5923a912b85c875c0e_b.jpg" alt="">
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-62fc11eb2e6443fea9483f081fdf1267_b.jpg" alt="">
+<p>最安全的已經不是 2 了，而是向後移動，但並沒有移動到非常遠的地方。</p>
+<p>進一步增大的時候（Q（600,550））：</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-31cc48c0213d4dc3b7c232424345d502_b.jpg" alt="">
+<p>中間大部分地方都變平了，但是注意看那個尾巴，會下降一些，原因不明，但應該不是計算誤差，因爲隨着 N 增大，這個尾巴變得越來越明顯，以至於到 599 的時候，尾巴變成了整條直線。</p>
+<p>更有趣的是這個尾巴的朝向跟 N 的奇偶性密切相關（Q（600,551））：</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-b75909d3cf91e4eb03665df6bc548af8_b.jpg" alt="">
+<p>尾巴變成向上了。</p>
+<p>N 接近於 599 的時候：</p>
+<p>Q（600,595）</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-b28936b347c161309da9324bcc2cafbb_b.jpg" alt="">
+<p>波動越來越不明顯，而尾巴越來越明顯。</p>
+<p>Q（600,596）</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-d893e94a1e6e07cc13931de5b4633b9d_b.jpg" alt="">
+<p>Q（600,597）</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-dfbf112628a54fa76a274ae231814fe5_b.jpg" alt="">
+<p>Q（600,598）</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-85190016e76d0c3ac9de4fb1920b6b1e_b.jpg" alt="">
+<p>變成了一個這樣的奇怪曲線&hellip;&hellip;</p>
+<p>然後 599 就突變成了直線。只能說，數學真是太奇妙了。</p>
+<p>附 Python 代碼：</p>
+<div class="highlight">
+<pre><code class="language-python"><span class="k">def</span> <span class="nf">fr</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span> <span class="o">=</span> <span class="bp">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">b</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">a</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+
+<span class="c1"># Uncomment the following line to use fractions</span>
+
+<span class="c1"># from fractions import Fraction as fr</span>
+
+        
+<span class="k">def</span> <span class="nf">cal_p</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="n">P</span> <span class="o">=</span> <span class="p">[</span><span class="n">fr</span><span class="p">(</span><span class="mi">0</span><span class="p">)]</span> <span class="o">*</span> <span class="p">(</span><span class="n">m</span> <span class="o">-</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">M</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span> <span class="o">-</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">m</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">P2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">M</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">half</span> <span class="o">=</span> <span class="p">(</span><span class="n">M</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+        <span class="n">P</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fr</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">M</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">P2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">fr</span><span class="p">(</span><span class="n">i</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="n">half</span><span class="p">)</span> <span class="o">*</span> <span class="n">P</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">fr</span><span class="p">(</span><span class="n">half</span> <span class="o">-</span> <span class="n">i</span><span class="o">//</span><span class="mi">2</span><span class="p">,</span> <span class="n">half</span><span class="p">)</span> <span class="o">*</span> <span class="n">P</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">P2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">fr</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">half</span><span class="p">)</span> <span class="o">+</span> <span class="n">fr</span><span class="p">(</span><span class="n">i</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="n">half</span><span class="p">)</span> <span class="o">*</span> <span class="n">P</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">fr</span><span class="p">(</span><span class="n">half</span> <span class="o">-</span> <span class="n">i</span><span class="o">//</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">half</span><span class="p">)</span> <span class="o">*</span> <span class="n">P</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">P</span> <span class="o">=</span> <span class="n">P2</span>
+    <span class="k">return</span> <span class="n">P</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+    
+<span class="k">def</span> <span class="nf">plot_q</span><span class="p">(</span><span class="n">M</span><span class="p">,</span><span class="n">N</span><span class="p">):</span>
+    <span class="n">P</span> <span class="o">=</span> <span class="n">cal_p</span><span class="p">(</span><span class="n">M</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">P</span><span class="p">[</span><span class="mi">1</span><span class="p">:]]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre>
+</div>
+<p>如果考慮存活回合數的期望值的話，由於 N 很大的時候存活概率本身就比較小，最後的確應該是 2 的平均存活回合數比較有優勢吧。</p>
+<p>解釋一下當 N 比較大的時候，爲什麼隨着 N 的奇偶性變化，最後一段的概率忽大忽小呢？</p>
+<p>因爲我們的 M = 600 是個偶數，當殺奇數人的時候，最後一輪排在最後一個位置的人不會被殺，而殺偶數人時，最後這一輪排在最後一個位置的人可能被殺，而就是這一點點差別導致了差異；殺奇數人時，最後一段很容易成爲最後一個人，所以存活概率變大了，在殺 599 人的時候，甚至這是唯一的存活可能性；殺偶數人時，反而是成爲倒數第二個人比較划算，所以最後一小段反而概率下降了。</p>
+<p>猜一猜，598 那個曲線的極值點在什麼位置？</p>
+<p>在[0,600]的黃金分割點上。</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div>
