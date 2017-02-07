@@ -1,0 +1,50 @@
++++
+date = "2017-02-07T20:00:00"
+title = "世界末日的時候，能用 GPS 導航去找諾亞方舟嗎？"
+titleimage = "http://pic3.zhimg.com/041b9a6ad63e1b39c5482e9ac73c3336.jpg"
+ga = 020720
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title">如果地球上所有設施都失去了發電能力，GPS 還能用嗎？</h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>這個問題其實挺有意義，我們平常一說 GPS 系統第一反應就是天上的 GPS 星座，但實際上完整的 GPS 系統是由空間部分 / 地面控制部分 / 用戶機 三部分組成</p>
+<p>GPS 的衛星大概運行在 20000km 高的軌道上，這個高度已經遠遠超出了大氣層的外層高度，但是衛星在空間中運行除了可能大氣干擾，還有可能受到來自太陽的太陽風等因素影響。這些影響使 GPS 衛星的軌道參數在一段時間之後會發生改變。</p>
+<p>而通過 GPS 的定位原理（參見&nbsp;<a href="https://www.zhihu.com/question/48430988/answer/112241728">GPS 軍碼協議有多複雜，爲啥沒法破解？ </a>）我們知道衛星本身的位置是 GPS 進行定位的基準，如果衛星本身的軌道參數發生變化，就會使定位結果失真，影響定位精度，於是要定期對衛星軌道參數進行校準，另外星上的原子鐘也需要定期校準以便提升定位精度。</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-9d7f9c18b75f212b42d8f820ad372b87_b.jpg" alt="">
+<p>上圖來自 GPS 官方網站 <a href="http://www.gps.gov/systems/gps/control/">GPS.govControl Segment</a></p>
+<p>AFSCN：U.S. Air Force Satellite Control Network 美國空軍衛星控制網</p>
+<p>爲了精確測定衛星位置，並對衛星進行相應控制，GPS 在全球各處佈置了多個不同功能的地面設施。 主控站(Main Control Station)位於科羅拉多州的 Colorado Springs 美軍基地（紅色五星）。其他的地面站裏，藍色圓點 / 黃色三角是由美國軍方掌握的設施，紫色圓點是由 NGA（National Geospatial-Intelligence Agency，應該叫美國國家地理情報局？）運行的監測站，這些監測站一方面利用複雜的設備監測衛星發出的定位信號，另一方面也會使用傳統的衛星測控手段對衛星進行跟蹤，以確定衛星軌道參數的變化。</p>
+<p>這些監測站的觀測信息傳回 MCS，MCS 分析之後生成的控制信息通過地面上的天線（GPS 系統自有天線或者共享的 AFSCN 天線）上傳至衛星。這些控制信息可以將衛星上的原子鐘以納秒級別的精度進行校準，並且更新衛星的軌道參數。這些參數由地面監測站觀測結果、空間天氣預報（和地面的天氣預報不是一回事哦~）和其他多種因素通過卡爾曼濾波混合而來。</p>
+<p>北斗的情況也差不多，只不過一開始沒有美國的條件全球均勻設站，只能在境內設站，所以在設計星座時針對這個侷限做過優化。現在也在尋求海外佈置地面站。</p>
+<p>所以，當地面設施失效後，大概在幾天的時間段內 GPS 系統還能勉強使用，在更長的時間之後由於系統運行誤差無法得到改正，用戶得到的定位結果將逐漸失真，直到誤差大到無法使用。</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div>
