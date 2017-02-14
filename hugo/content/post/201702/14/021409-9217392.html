@@ -1,0 +1,391 @@
++++
+date = "2017-02-14T09:00:00"
+title = "科學領域中目前有意義的最大數字是多少？"
+titleimage = "http://pic4.zhimg.com/5e34cb14bf02401f662d2069af9c84ff.jpg"
+ga = 021409
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title"></h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>科學領域的數字，都很小，用多重指數（多層科學計數法）就可以表達出來。</p>
+<p>1 層指數：粒子的數目。</p>
+<p>1 摩爾是 6&times;10^23，而整個可觀測宇宙範圍內的質子數則是 136&times;2<sup>256</sup>（約爲 1.575&times;10<sup>79</sup>。這個奇怪的表達式是 Arthur Eddington 給出的），光子數是 1.1&times;10<sup>89</sup>，而所有的基本粒子的數目則約爲 10<sup>97</sup>。</p>
+<p>2 層指數：粒子的排列。</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=10%5E%7B10%5E%7B120%7D%7D" alt="">
+<p>3 層指數：龐加萊迴歸時間。<a href="https://arxiv.org/pdf/hep-th/9411193v2.pdf">看這篇文章的第 8 頁</a></p>
+<p>到這個層次，單位已經不重要了（於是會出現&ldquo;Planck times, millenia, or whatever&rdquo;）。</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cexp%28%5Cexp%284%5Cpi+M%5E2%29%29" alt="">
+<p>&nbsp;</p>
+<p>題主一定會想：才這麼點大，太無趣了。因爲現實世界實在是太小太小了。如果你踏入數學領域，那麼你將看到更加巨大的數字。</p>
+<p>這些&ldquo;更加巨大的數字&rdquo;，我主張分成 3 類。第一類，最小的，是可定義、可計算的數，或者能被這樣的數限制住的數。第二類，更大的，是可定義、不可計算的數，或者能被可定義的數限制住，卻沒有算法可以計算的數。第三類，最大的，則是不可定義的數。</p>
+<p><strong>一、Moser 數</strong></p>
+<p>見<a href="https://www.zhihu.com/question/53024250/answer/133129194">白書旭的回答</a>。作爲對比，&ldquo;5 放進一個 4 邊形&rdquo;就已經超過科學領域的最大數字了。</p>
+<p><strong>二、Graham 數</strong></p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=3%5Cunderbrace%7B%5Cuparrow%5Cuparrow%5Ccdots%5Cuparrow%5Cuparrow%7D_%7B3%5Cuparrow%5Cuparrow%5Cuparrow%5Cuparrow3%7D3" alt="">
+<p><strong>三、Goodstein 數列</strong></p>
+<p>這是一個非常重要的東西，從這裏我們將引出序數在大數裏的運用。</p>
+<p>首先，把一個正整數 n 寫成下面這種形式，稱作&ldquo;k 進制形式&rdquo;。</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=n%3Da_1k%5E%7Bb_1%7D%2Ba_2k%5E%7Bb_2%7D%2B%5Ccdots%2Ba_mk%5E%7Bb_m%7D" alt="">
+<p>其次，定義&ldquo;以 k 爲底的遺傳記法&rdquo;。如果 n&lt;k，那麼 n 是以 k 爲底的遺傳記法。如果想把一個不小於 k 的數寫成以 k 爲底的遺傳記法，那就要先寫成 k 進制形式，然後把指數都寫成以 k 爲底的遺傳記法。</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=a_1" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=a_%7Bn%7D%5C+%28n%3E1%29" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=a_1%3D10" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=a_2%3D83" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=a_3%3D1025" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=a_4%3D15625" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=a_5%3D279935" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=5%5Ctimes7%5E7%2B5%5Ctimes7%5E5%2B5%5Ctimes7%5E4%2B5%5Ctimes7%5E3%2B5%5Ctimes7%5E2%2B5%5Ctimes7%2B5%3D4215755" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=a_6%3D4215754" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=5%5Ctimes7%5E7%2B5%5Ctimes7%5E5%2B5%5Ctimes7%5E4%2B5%5Ctimes7%5E3%2B5%5Ctimes7%5E2%2B5%5Ctimes7%2B4" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=a_7%3D84073323" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=a_n%3D0" alt="">
+<p>下面的定理令人吃驚：</p>
+<blockquote>所有的 Goodstein 數列都只有有限項。</blockquote>
+<p>這樣我們就能定義出 Goodstein 函數了。</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=G%28n%29" alt="">
+<p>於是，G(1)=1，只有兩項：1,0。</p>
+<p>G(2)=3，只有四項：2,2,1,0。</p>
+<p>G(3)=5，只有六項：3,3,3,2,1,0。</p>
+<p>G(4)則比較大。</p>
+<p>第 1 項：2^2=4；</p>
+<p>第 2 項：3^3-1，但這種寫法不是以 3 爲底的遺傳記法，得改寫成 2*3^2+2*3+2 才行。</p>
+<p>第 3 項：2*4^2+2*4+1</p>
+<p>第 4 項：2*5^2+2*5</p>
+<p>第 5 項：2*6^2+2*6-1=2*6^2+6+5</p>
+<p>第 6 項：2*7^2+7+4</p>
+<p>第 10 項：2*11^2+11</p>
+<p>第 11 項：2*12^2+12-1=2*12^2+11</p>
+<p>第 12 項：2*13^2+10</p>
+<p>第 22 項：2*23^2</p>
+<p>第 23 項：2*24^2-1=24^2+23*24+23</p>
+<p>第 24 項：25^2+23*25+22</p>
+<p>第 46 項：47^2+23*47</p>
+<p>第 47 項：48^2+23*48-1=48^2+22*48+47</p>
+<p>&hellip;&hellip;</p>
+<p>雖然我們沒有辦法把它一項一項地列出來，但可以想象出，這個過程，如果總是用遺傳記法來表示，那麼就像是一個倒計時的鐘表，只不過每一個&ldquo;小時&rdquo;值好多&ldquo;分鐘&rdquo;，每一個&ldquo;分鐘&rdquo;值好多&ldquo;秒&rdquo;，而且隨着項數的增加，每一個&ldquo;分鐘&rdquo;值的&ldquo;秒&rdquo;數會增多，每一個&ldquo;小時&rdquo;值的&ldquo;分鐘&rdquo;數也會增多，但不管怎樣，這個倒計時總會結束。</p>
+<p>無獨有偶，集合論中的序數（ordinal）剛好也具有這種性質。如果一個序數的序列，每一項都小於前一項，那麼一定只能有有限項。像剛纔的倒計時那樣，&ldquo;每一項都小於前一項&rdquo;的方式，可以是扣掉這一&ldquo;秒&rdquo;，也可以是把一個&ldquo;分鐘&rdquo;換成許多&ldquo;秒&rdquo;，把一個&ldquo;小時&rdquo;換成許多&ldquo;分鐘&rdquo;等等。這就啓發我們定義一種通用的、基於序數的&ldquo;倒計時&rdquo;，稱作 Hardy hierarchy。</p>
+<ol>
+<li><img class="content-image" src="http://www.zhihu.com/equation?tex=H_0%28n%29%3Dn" alt="">，其中 n 是任意自然數。</li>
+<li><img class="content-image" src="http://www.zhihu.com/equation?tex=H_%7B%5Calpha%2B1%7D%28n%29%3DH_%5Calpha%28n%2B1%29" alt="">，其中 n 是任意自然數，&alpha;是任意序數。</li>
+<li><img class="content-image" src="http://www.zhihu.com/equation?tex=H_%5Calpha%28n%29%3DH_%7B%5Calpha%5Bn%5D%7D%28n%29" alt="">，其中 n 是任意自然數，&alpha;是非零極限序數。</li>
+</ol>
+<p>而最後這個表達式中的&alpha;[n]，就是把一個&ldquo;小時&rdquo;換成許多&ldquo;分鐘&rdquo;的方式。</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Calpha%3D%5Comega%5E%7B%5Cbeta_1%7D%5Ctimes+a_1%2B%5Comega%5E%7B%5Cbeta_2%7D%5Ctimes+a_2%2B%5Ccdots%2B%5Comega%5E%7B%5Cbeta_m%7D%5Ctimes+a_m" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cbeta_1%3E%5Cbeta_2%3E%5Ccdots%3E%5Cbeta_m" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Comega%5E%7B%5Cbeta%7D%5Bn%5D%3D%5Comega%5E%7B%5Cbeta%5Bn%5D%7D" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=G%28n%29%3DH_%7B%5Calpha%7D%283%29-3" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=H_%7B%5Comega%5E%7B%5Comega%2B1%7D%7D%2863%29" alt="">
+<p><strong>四、TREE(3)</strong></p>
+<p>TREE(3)源於 TREE 函數。</p>
+<p>在所有由&ldquo;頂點 k 染色的樹&rdquo;組成的，而且滿足下面的兩個條件的序列中，序列的最大長度就記作 TREE(k)。</p>
+<ol>
+<li>任意正整數 i，序列的第 i 項只有不超過 i 個頂點</li>
+<li>任意正整數 i&lt;j，序列的第 i 項不能<strong>嵌入</strong>第 j 項</li>
+</ol>
+<p>這裏，頂點染色的樹之間的嵌入關係比較複雜，但可以轉換成下面這個比較簡單的定義。如果樹 A 能夠通過有限次&ldquo;去掉一個葉子&rdquo;和&ldquo;去掉一個子頂點數爲 1 的頂點，並把它的子頂點和它的父頂點連接起來&rdquo;操作變成樹 B，那麼 B 就能嵌入 A。</p>
+<p>定義到此爲止。</p>
+<p>來試一試吧！我們用一對括號表示一個頂點，最外層的括號表示根頂點，一對括號裏面一層的括號是它的子頂點。用不同括號（如()、[]、{}、&lt;&gt;、（）、【】、《》等）表示不同的頂點顏色。</p>
+<p>TREE(1)=1</p>
+<ol>
+<li>()，只有 1 個頂點的樹</li>
+</ol>
+<p>TREE(2)=3</p>
+<ol>
+<li>首先是[]，然後我們就不能用任何帶有[]的樹了。</li>
+<li>然後(())</li>
+<li>()</li>
+</ol>
+<p>接下來就到 TREE(3)了。</p>
+<ol>
+<li>首先當然是{}</li>
+<li>然後[[]]，當然，這裏我們只列了一種可能的序列，因此我們只能得出 TREE(3)的一個下限。</li>
+<li>[()()]</li>
+<li>[(()())]，注意，由於最外面的小括號有 2 個子頂點，所以不能直接去掉，意味着這個樹不能嵌入[()()]。</li>
+<li>[(((())))]</li>
+<li>(([((()))]))</li>
+<li>([((()))][][])</li>
+<li>([((()))][]()())</li>
+<li>([((()))]()()()())</li>
+<li>([((()))](())(())())</li>
+<li>([((()))](()()())()())</li>
+</ol>
+<p>&hellip;&hellip;</p>
+<p>接下來的事情有點複雜，所以我們還需要一個輔助函數來幫忙&mdash;&mdash;tree 函數。</p>
+<p>在所有滿足下面的兩個條件的&ldquo;樹列&rdquo;中，&ldquo;樹列&rdquo;的最大長度記作 tree(n)。</p>
+<ol>
+<li>任意正整數 i，&ldquo;樹列&rdquo;的第 i 項只有不超過<strong>i+n</strong>個頂點</li>
+<li>任意正整數 i&lt;j，&ldquo;樹列&rdquo;的第 i 項不能嵌入第 j 項</li>
+</ol>
+<p>tree 和 TREE 的不同之處在於，tree 的序列中，頂點數可以更多，但它全都只能用一種顏色。但，tree 和 TREE 的相同之處在於，有限樹的嵌入關係是<a href="https://en.wikipedia.org/wiki/Well-quasi-ordering">Well-quasi-ordering</a>。這就直接使得 TREE(n)和 tree(n)都是有限值，有點類似於 Goodstein 數列和序數。但和序數不同的是，樹與樹之間是可以互不嵌入的，但序數與序數之間肯定得有一個小於等於另一個。</p>
+<p>不過，我們仍然可以作一個從有限樹到序數的對應，使得如果兩個樹之間有嵌入關係，那一定是序數小的樹嵌入序數大的；而任意兩個樹，序數大的樹一定不能嵌入序數小的。然後，把初始的樹選成一個儘可能大的序數，按照 Goodstein 數列那裏說的辦法，一點一點地降下來，直到 0 爲止。最後用 Hardy hierarchy 把 tree(n)還有 TREE(3)表示出來！</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cvarphi%281%2C0%2C%5Ccdots%2C0%2C0%29" alt="">
+<p>爲了表示更大的序數，我們需要一點新記號&mdash;&mdash;&phi;函數。</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cvarphi%280%2C%5Calpha%29%3D%5Comega%5E%5Calpha" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cvarphi%28%5Cgamma%2B1%2C0%29%5B0%5D%3D0" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cvarphi%28%5Cgamma%2B1%2C0%29%5Bn%2B1%5D%3D%5Cvarphi%28%5Cgamma%2C%5Cvarphi%28%5Cgamma%2B1%2C0%29%5Bn%5D%29" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cvarphi%28%5Cgamma%2B1%2C%5Cdelta%2B1%29%5B0%5D%3D%5Cvarphi%28%5Cgamma%2B1%2C%5Cdelta%29%2B1" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cvarphi%28%5Cgamma%2B1%2C%5Cdelta%2B1%29%5Bn%2B1%5D%3D%5Cvarphi%28%5Cgamma%2C%5Cvarphi%28%5Cgamma%2B1%2C%5Cdelta%2B1%29%5Bn%5D%29" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cvarphi%28%5Calpha%2C0%29%5Bn%5D%3D%5Cvarphi%28%5Calpha%5Bn%5D%2C0%29" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cvarphi%28%5Calpha_1%40%5Cbeta_1%2C%5Calpha_2%40%5Cbeta_2%2C%5Ccdots%2C%5Calpha_m%40%5Cbeta_m%29" alt="">
+<ol><ol>
+<li><img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cvarphi%28%5C%23%2C%5Calpha%40%5Cbeta%29%5Bn%5D%3D%5Cvarphi%28%5C%23%2C%5Calpha%5Bn%5D%40%5Cbeta%29" alt="">，其中&alpha;是非零極限序數</li>
+<li><img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cvarphi%28%5C%23%2C%5Calpha%2B1%40%5Cbeta%29%5Bn%5D%3D%5Cvarphi%28%5C%23%2C%5Calpha%40%5Cbeta%2C1%40%5Cbeta%5Bn%5D%29" alt="">，其中&beta;是非零極限序數</li>
+<li><img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cvarphi%28%5C%23%2C%5Calpha%2B1%40%5Cbeta%2B1%29%5B0%5D%3D0" alt="">，<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cvarphi%28%5C%23%2C%5Calpha%2B1%40%5Cbeta%2B1%29%5Bn%2B1%5D%3D%5Cvarphi%28%5C%23%2C%5Calpha%40%5Cbeta%2B1%2C%5Cvarphi%28%5C%23%2C%5Calpha%2B1%40%5Cbeta%2B1%29%5Bn%5D%40%5Cbeta%29" alt=""></li>
+<li><img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cvarphi%28%5C%23%2C%5Calpha%40%5Cbeta%2C%5Cgamma%2B1%29%5Bn%5D%3D%5Cvarphi%28%5C%23%2C%5Calpha%5Bn%5D%40%5Cbeta%2C%5Cvarphi%28%5C%23%2C%5Calpha%40%5Cbeta%2C%5Cgamma%29%2B1%29" alt="">，其中&alpha;是非零極限序數</li>
+<li><img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cvarphi%28%5C%23%2C%5Calpha%2B1%40%5Cbeta%2C%5Cgamma%2B1%29%5Bn%5D%3D%5Cvarphi%28%5C%23%2C%5Calpha%40%5Cbeta%2C1%40%5Cbeta%5Bn%5D%2C%5Cvarphi%28%5C%23%2C%5Calpha%2B1%40%5Cbeta%2C%5Cgamma%29%2B1%29" alt="">，其中&beta;是非零極限序數</li>
+<li><img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cvarphi%28%5C%23%2C%5Calpha%2B1%40%5Cbeta%2B1%2C%5Cgamma%2B1%29%5B0%5D%3D%5Cvarphi%28%5C%23%2C%5Calpha%2B1%40%5Cbeta%2B1%2C%5Cgamma%29%2B1" alt="">，<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cvarphi%28%5C%23%2C%5Calpha%2B1%40%5Cbeta%2B1%2C%5Cgamma%2B1%29%5Bn%2B1%5D%3D%5Cvarphi%28%5C%23%2C%5Calpha%40%5Cbeta%2B1%2C%5Cvarphi%28%5C%23%2C%5Calpha%2B1%40%5Cbeta%2B1%2C%5Cgamma%2B1%29%5Bn%5D%40%5Cbeta%29" alt=""></li>
+</ol></ol>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cvarphi%280%2C%5Calpha%29%3D%5Comega%5E%5Calpha" alt="">
+<p>其中#表示任意多個（或者 0 個）形如&ldquo;&alpha; @ &beta;&rdquo;的項，&ldquo;&alpha; @ 0&rdquo;項可直接寫作&ldquo;&alpha;&rdquo;，&ldquo;0 @ &beta;&rdquo;這樣的項則可以省略。</p>
+<p>那麼，接下來便是 TREE(3)的序列中，有限樹到序數的對應。</p>
+<ul>
+<li>[]對應<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cvarphi%281%40%5Comega%2C0%29" alt=""></li>
+<li>([])對應<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cvarphi%281%40%5Comega%2C0%29%2B1" alt=""></li>
+<li>(([]))對應<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cvarphi%281%40%5Comega%2C0%29%2B2" alt=""></li>
+<li>([]())對應<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cvarphi%281%40%5Comega%2C0%29%2B%5Comega" alt=""></li>
+<li>([](()()()))對應<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cvarphi%281%40%5Comega%2C0%29%2B%5Cvarphi%281%2C0%29" alt=""></li>
+<li>([][])對應<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cvarphi%281%40%5Comega%2C0%29%5Ctimes2" alt=""></li>
+<li>(([][]))對應<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cvarphi%281%40%5Comega%2C0%29%5Ctimes2%2B1" alt=""></li>
+<li>(([][])(()()()))對應<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cvarphi%281%40%5Comega%2C0%29%5Ctimes2%2B%5Cvarphi%281%2C0%29" alt=""></li>
+<li>(([])[])對應<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cvarphi%281%40%5Comega%2C0%29%5Ctimes3" alt=""></li>
+<li>((([]))[])對應<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cvarphi%281%40%5Comega%2C0%29%5Ctimes4" alt=""></li>
+<li>(([]())[])對應<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cvarphi%281%40%5Comega%2C0%29%5Ctimes%5Comega%3D%5Comega%5E%7B%5Cvarphi%281%40%5Comega%2C0%29%2B1%7D" alt=""></li>
+<li>(([][])[])對應<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cvarphi%281%40%5Comega%2C0%29%5E2%3D%5Comega%5E%7B%5Cvarphi%281%40%5Comega%2C0%29%5Ctimes2%7D" alt=""></li>
+<li>((([][])[])[])對應<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cvarphi%281%40%5Comega%2C0%29%5E3%3D%5Comega%5E%7B%5Cvarphi%281%40%5Comega%2C0%29%5Ctimes3%7D" alt=""></li>
+<li>(([])([]))對應<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cvarphi%281%40%5Comega%2C0%29%5E%5Comega%3D%5Comega%5E%7B%5Comega%5E%7B%5Cvarphi%281%40%5Comega%2C0%29%2B1%7D%7D" alt=""></li>
+<li>(([][])([][]))對應<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cvarphi%281%40%5Comega%2C0%29%5E%7B%5Cvarphi%281%40%5Comega%2C0%29%7D%3D%5Comega%5E%7B%5Comega%5E%7B%5Cvarphi%281%40%5Comega%2C0%29%5Ctimes2%7D%7D" alt=""></li>
+<li>((([][])([][]))(([][])([][])))對應<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Comega%5E%7B%5Comega%5E%7B%5Comega%5E%7B%5Comega%5E%7B%5Cvarphi%281%40%5Comega%2C0%29%5Ctimes2%7D%7D%7D%7D" alt=""></li>
+<li>([]()())對應<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cvarphi%281%2C%5Cvarphi%281%40%5Comega%2C0%29%2B1%29" alt=""></li>
+<li>([](())())對應<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cvarphi%282%2C%5Cvarphi%281%40%5Comega%2C0%29%2B1%29" alt=""></li>
+<li>([][]())對應<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cvarphi%28%5Cvarphi%281%40%5Comega%2C0%29%2C1%29" alt=""></li>
+<li>([](())(()))對應<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cvarphi%281%402%2C%5Cvarphi%281%40%5Comega%2C0%29%2B1%29" alt=""></li>
+<li>([][][])對應<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cvarphi%28%5Cvarphi%281%40%5Comega%2C0%29%402%2C1%29" alt=""></li>
+<li>([]()()())對應<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cvarphi%281%403%2C%5Cvarphi%281%40%5Comega%2C0%29%2B1%29" alt=""></li>
+<li>([][][][])對應<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cvarphi%28%5Cvarphi%281%40%5Comega%2C0%29%403%2C1%29" alt=""></li>
+<li>([]()()()())對應<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cvarphi%281%404%2C%5Cvarphi%281%40%5Comega%2C0%29%2B1%29" alt=""></li>
+<li>[()]對應<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cvarphi%281%40%5Comega%2C1%29" alt=""></li>
+<li>[(())]對應<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cvarphi%281%40%5Comega%2C2%29" alt=""></li>
+<li>[((()))]對應<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cvarphi%281%40%5Comega%2C3%29" alt=""></li>
+<li>&hellip;&hellip;</li>
+</ul>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Ctext%7BTREE%7D%283%29%3EH_%7B%5Comega%5E%7B%5Cvarphi%281%40%5Comega%2C3%29%2B%5Cvarphi%281%40%5Comega%2C0%29%7D%7D%28%5Ctext%7Btree%7D%28%5Ctext%7Btree%7D%283%29%29%29" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=H_%7B%5Cvarphi%281%40%5Comega%2C0%29%7D%28n%29" alt="">
+<p><strong>五、SCG(3)</strong></p>
+<p>如果說 TREE 函數是因爲有限樹之間的嵌入關係是 well-quasi-ordering 而成爲有限值，那麼 SCG 函數則是因爲有限圖之間的嵌入關係是 well-quasi-ordering 而成爲有限值&mdash;&mdash;前者是後者的一種特殊情況。SCG 是 subcubic graph 的縮寫，這個函數的完整定義如下：</p>
+<p>在所有滿足下面的三個條件的&ldquo;圖列&rdquo;中，&ldquo;圖列&rdquo;的最大長度記作 SCG(n)。</p>
+<ol>
+<li>所有圖的所有頂點的度都不超過 3</li>
+<li>任意正整數 i，&ldquo;圖列&rdquo;的第 i 項只有不超過 i+n 個頂點</li>
+<li>任意正整數 i&lt;j，&ldquo;圖列&rdquo;的第 i 項不能<strong>嵌入</strong>第 j 項</li>
+</ol>
+<p>圖的嵌入關係又可以這麼定義。如果圖 A 通過有限次&ldquo;把一條邊分成兩段，中間添加一個頂點&rdquo;的操作，圖 B 通過有限次&ldquo;去掉一個度爲 0 的頂點&rdquo;和&ldquo;去掉一條邊&rdquo;的操作，成爲相同的圖，那麼圖 A 就能嵌入圖 B。</p>
+<p>因爲有限圖之間的嵌入關係是 well-quasi-ordering，所以我們也可以作一個從有限圖（每個頂點的度不超過 3）到序數的對應，像前面 tree 函數中所作的那樣。只不過複雜得多，所需的序數也大得多&mdash;&mdash;大得連&phi;函數都無法表示（可以用<a href="https://en.wikipedia.org/wiki/Ordinal_collapsing_function">ordinal collapsing function</a>表示）。然後把這些大得連&phi;函數都無法表示的序數放到 Hardy hierarchy 裏面，那就是 SCG 函數的增長率。</p>
+<p>作爲對比，SCG(3)&gt;TREE(TREE(&hellip;TREE(TREE(3))&hellip;))，其中有 TREE(3)個 TREE。</p>
+<p>（不寫 SCG(3)的近似表達式了，太複雜）</p>
+<p><strong>六、燃燒數（fusible number）</strong></p>
+<blockquote>給你們足夠過的能夠燃燒的繩子，已知每根繩子燒完需要 1 分鐘，但是繩子不均勻，所以你沒有辦法在繩子燃燒的中途判斷時間。那麼你將如何測量出 45 秒？</blockquote>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=S_0%3D%5C%7B0%5C%7D" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=S_%7Bn%2B1%7D%3D%5C%7B%5Cfrac%7Ba%2Bb%2B1%7D%7B2%7D%7Ca%5Cin+S_n%5Cwedge+b%5Cin+S_n%5C%7D" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=S%3D%5Cbigcup_%7Bn%3D0%7D%5E%5Cinfty+S_n" alt="">
+<p>這樣，開頭的問題就很明顯啦。S 中先有 0，然後取 a=0、b=0 就有 1/2，最後取 a=0、b=1/2 就有 3/4。</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=m%28x%29%3D%5Cmin%5C%7Ba%5Cin+S%7Ca%3Ex%5C%7D-x" alt="">
+<p>也就是說，m(x)是超過 x 的能燒出的最小數與 x 的差。</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=m_1%28x%29%3D-%5Clog_2m%28x%29" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=m_1%280%29%3D1" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=m_1%281%29%3D3" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=m_1%282%29%3D10" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=m_1%283%29%3E2%5Cuparrow%5Cuparrow%5Cuparrow%5Cuparrow%5Cuparrow%5Cuparrow%5Cuparrow%5Cuparrow%5Cuparrow16" alt="">
+<p>這個函數增長得比 Goodstein 函數快，但比 ZFC 的可證性極限要慢。而它的準確的增長率仍是個未解之謎。</p>
+<p><strong>七、Loader 數</strong></p>
+<p>如果僅僅給你們 512 個字符（不計空白）的空間，編出一段程序，在一臺假想的、有着足夠大的內存的計算機上，運行足夠長的時間，你最多能讓它輸出多大的數呢？乍一看，512 個字符少之又少，甚至根本難以把像 TREE 函數、SCG 函數那樣的東西定義出來，然而 Ralph Loader 卻寫出了下面這段 C 語言代碼，輸出一個瘋狂的大數&mdash;&mdash;Loader 數。</p>
+<div class="highlight">
+<pre><code class="language-c"><span class="cp">#define R { return</span>
+<span class="cp">#define P P (</span>
+<span class="cp">#define L L (</span>
+<span class="cp">#define T S (v, y, c,</span>
+<span class="cp">#define C ),</span>
+<span class="cp">#define X x)</span>
+<span class="cp">#define F );}</span>
+
+<span class="kt">int</span> <span class="n">r</span><span class="p">,</span> <span class="n">a</span><span class="p">;</span>
+<span class="n">P</span> <span class="n">y</span><span class="p">,</span> <span class="n">X</span>
+   <span class="n">R</span> <span class="n">y</span> <span class="o">-</span> <span class="o">~</span><span class="n">y</span> <span class="o">&lt;&lt;</span> <span class="n">x</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">Z</span> <span class="p">(</span><span class="n">X</span>
+   <span class="n">R</span> <span class="n">r</span> <span class="o">=</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">?</span> <span class="mi">0</span> <span class="o">:</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">Z</span> <span class="p">(</span><span class="n">x</span> <span class="o">/</span> <span class="mi">2</span> <span class="n">F</span>
+<span class="n">L</span> <span class="n">X</span>
+   <span class="n">R</span> <span class="n">x</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">&gt;&gt;</span> <span class="n">Z</span> <span class="p">(</span><span class="n">x</span> <span class="n">F</span>
+<span class="cp">#define U = S(4,13,-4,</span>
+<span class="n">T</span>  <span class="n">t</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="kt">int</span>
+      <span class="n">f</span> <span class="o">=</span> <span class="n">L</span> <span class="n">t</span> <span class="n">C</span>         
+      <span class="n">x</span> <span class="o">=</span> <span class="n">r</span><span class="p">;</span>
+   <span class="n">R</span>
+         <span class="n">f</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">?</span>
+         <span class="n">f</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="o">?</span>
+         <span class="n">f</span> <span class="o">-</span> <span class="n">v</span> <span class="o">?</span> <span class="n">t</span> <span class="o">-</span> <span class="p">(</span><span class="n">f</span> <span class="o">&gt;</span> <span class="n">v</span><span class="p">)</span> <span class="o">*</span> <span class="nl">c</span> <span class="p">:</span> <span class="nl">y</span> <span class="p">:</span>
+         <span class="n">P</span> <span class="n">f</span><span class="p">,</span> <span class="n">P</span> <span class="n">T</span>  <span class="n">L</span> <span class="n">X</span>  <span class="n">C</span> 
+                          <span class="n">S</span> <span class="p">(</span><span class="n">v</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span> <span class="n">t</span>  <span class="n">U</span> <span class="n">y</span> <span class="n">C</span>  <span class="n">c</span><span class="p">,</span> <span class="n">Z</span> <span class="p">(</span><span class="n">X</span> <span class="p">)))</span>
+         <span class="o">:</span>
+         <span class="n">A</span> <span class="p">(</span><span class="n">T</span>  <span class="n">L</span> <span class="n">X</span>  <span class="n">C</span> 
+                <span class="n">T</span>  <span class="n">Z</span> <span class="p">(</span><span class="n">X</span> <span class="p">)</span> <span class="n">F</span>
+<span class="p">}</span>
+<span class="n">A</span> <span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span>
+   <span class="n">R</span> <span class="n">L</span> <span class="n">y</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+      <span class="o">?</span> <span class="mi">5</span> <span class="o">&lt;&lt;</span> <span class="n">P</span> <span class="n">y</span><span class="p">,</span> <span class="nl">X</span> 
+      <span class="p">:</span> <span class="n">S</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">Z</span> <span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="n">F</span>
+<span class="cp">#define B (x /= 2) % 2 &amp;&amp; (</span>
+<span class="n">D</span> <span class="p">(</span><span class="n">X</span> 
+<span class="p">{</span>
+   <span class="kt">int</span>
+      <span class="n">f</span><span class="p">,</span>
+      <span class="n">d</span><span class="p">,</span>
+      <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="n">t</span> <span class="o">=</span> <span class="mi">7</span><span class="p">,</span>
+      <span class="n">u</span> <span class="o">=</span> <span class="mi">14</span><span class="p">;</span>
+   <span class="k">while</span> <span class="p">(</span><span class="n">x</span> <span class="o">&amp;&amp;</span> <span class="n">D</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span> <span class="n">C</span>  <span class="n">B</span> <span class="mi">1</span><span class="p">))</span>
+      <span class="n">d</span> <span class="o">=</span> <span class="n">L</span> <span class="n">L</span> <span class="n">D</span> <span class="p">(</span><span class="n">X</span> <span class="p">)</span> <span class="n">C</span>
+         <span class="n">f</span> <span class="o">=</span> <span class="n">L</span> <span class="n">r</span> <span class="n">C</span>
+         <span class="n">x</span> <span class="o">=</span> <span class="n">L</span> <span class="n">r</span> <span class="n">C</span>
+         <span class="n">c</span> <span class="o">-</span> <span class="n">r</span> <span class="o">||</span> <span class="p">(</span>
+            <span class="n">L</span> <span class="n">u</span><span class="p">)</span> <span class="o">||</span> <span class="n">L</span> <span class="n">r</span><span class="p">)</span> <span class="o">-</span> <span class="n">f</span> <span class="o">||</span>
+            <span class="n">B</span> <span class="n">u</span> <span class="o">=</span> <span class="n">S</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">r</span> <span class="n">C</span> 
+                   <span class="n">t</span> <span class="o">=</span> <span class="n">A</span> <span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span> <span class="n">C</span>
+            <span class="n">f</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">&amp;</span> <span class="n">B</span>  <span class="n">c</span> <span class="o">=</span> <span class="n">P</span> <span class="n">d</span><span class="p">,</span> <span class="n">c</span> <span class="n">C</span> 
+                              <span class="n">t</span>  <span class="n">U</span> <span class="n">t</span> <span class="n">C</span> 
+                              <span class="n">u</span>  <span class="n">U</span> <span class="n">u</span><span class="p">)</span> <span class="p">)</span>
+             <span class="n">C</span>
+         <span class="n">c</span> <span class="o">&amp;&amp;</span> <span class="n">B</span>
+            <span class="n">t</span> <span class="o">=</span> <span class="n">P</span>
+               <span class="o">~</span><span class="n">u</span> <span class="o">&amp;</span> <span class="mi">2</span> <span class="o">|</span> <span class="n">B</span>
+                  <span class="n">u</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">P</span> <span class="n">L</span> <span class="n">c</span> <span class="n">C</span>  <span class="n">u</span><span class="p">)</span> <span class="n">C</span> 
+               <span class="n">P</span> <span class="n">L</span> <span class="n">c</span> <span class="n">C</span>  <span class="n">t</span><span class="p">)</span> <span class="n">C</span>
+            <span class="n">c</span> <span class="o">=</span> <span class="n">r</span>  <span class="n">C</span>
+         <span class="n">u</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">&amp;</span> <span class="n">B</span> 
+            <span class="n">c</span> <span class="o">=</span> <span class="n">P</span> <span class="n">t</span><span class="p">,</span> <span class="n">c</span> <span class="n">C</span> 
+            <span class="n">u</span>  <span class="n">U</span> <span class="n">t</span> <span class="n">C</span> 
+            <span class="n">t</span> <span class="o">=</span> <span class="mi">9</span> <span class="p">);</span>
+   <span class="n">R</span> <span class="n">a</span> <span class="o">=</span> <span class="n">P</span> <span class="n">P</span> <span class="n">t</span><span class="p">,</span> <span class="n">P</span> <span class="n">u</span><span class="p">,</span> <span class="n">P</span> <span class="n">x</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span> <span class="n">C</span> 
+                                <span class="n">a</span> <span class="n">F</span>
+<span class="p">}</span>
+<span class="n">main</span> <span class="p">()</span>
+   <span class="n">R</span> <span class="n">D</span> <span class="p">(</span><span class="n">D</span> <span class="p">(</span><span class="n">D</span> <span class="p">(</span><span class="n">D</span> <span class="p">(</span><span class="n">D</span> <span class="p">(</span><span class="mi">99</span><span class="p">))))</span> <span class="n">F</span>
+</code></pre>
+</div>
+<p>這裏，假定整數類型可以容納足夠大的數而不溢出，當這段程序從 main 函數結束的時候，它的返回值就是 Loader 數。</p>
+<p>Loader 數的建立是基於一種強規範化的形式系統&mdash;&mdash;構造演算而得到的。它是如此巨大，直到目前，仍然沒有人能把它估計出來。</p>
+<p><strong>八、Busy beaver</strong></p>
+<p>現在，我們將遠離第一類大數，進入第二類大數的領域，而 Busy beaver 則是第二類大數的大門。毫不誇張地說，第一類數和第二類數之間的差別，正如人與神仙之間的差別。因爲，</p>
+<ul>
+<li><strong>第二類大數是不可計算的。</strong></li>
+</ul>
+<p>不僅如此，生成第二類大數的函數，它們的增長率都會超過<strong>一切</strong>可計算的函數。前面所述的大數，不論是 Graham 數、TREE(3)還是 Loader 數，它們都有算法把它算出來，只是你需要的時間、空間可能會很多罷了。</p>
+<p>下面是這個函數的定義。</p>
+<p><strong>在所有 n 狀態、2 色的、能夠停機的圖靈機中，從開始運行到停機爲止所經過的最大步數，記作 BB(n)。</strong></p>
+<p>很簡潔，對不對？但這個定義裏面就包含了一個不可解的問題&mdash;&mdash;你怎麼知道一個圖靈機能不能停機？你可能會想，試着運行一下不就明白了？可是，當它運行了很多很多步以後，看上去還沒有停機，那樣你怎麼能知道它到底是&ldquo;不能停機&rdquo;，還是&ldquo;能停機&rdquo;只不過需要更多的步數呢？</p>
+<p>不過，對於某個特定的圖靈機，如果你仔細琢磨，還是能得出它能否停機的結論的。但是，不存在這樣一種<strong>算法</strong>，對於所有的圖靈機，都能判斷出能否停機。因此，也就不存在這樣一種算法，能夠對於所有的正整數 n，得出 BB(n)的值。這，正是&ldquo;不可計算&rdquo;的含義。</p>
+<p>BB(1)=1</p>
+<p>BB(2)=4</p>
+<p>BB(3)=6</p>
+<p>BB(4)=13</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=BB%285%29%5Cge4098" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=BB%286%29%5Cge3.514%5Ctimes10%5E%7B18267%7D" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=BB%287%29%5Cge10%5E%7B10%5E%7B10%5E%7B10%5E%7B18705352%7D%7D%7D%7D" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=BB%2810%29%3E3%5Cuparrow%5Cuparrow%5Cuparrow3" alt="">
+<p>BB(18)&gt;Graham 數</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=BB%2838%29%3EH_%7B%5Comega%5E%7B%5Comega%5Ctimes2%7D%7D%28167%29" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=BB%2864%29%3EH_%7B%5Comega%5E%7B%5Comega%5E2%7D%7D%284098%29" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=BB%2885%29%3EH_%7B%5Cvarphi%281%2C0%29%7D%281907%29" alt="">
+<p>BB(1919)則被證明獨立於 ZFC。</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=BB%282n%2B4%29%3E3%5Cuparrow%5En3" alt="">
+<p>與 Busy beaver 處在同一等級的，還有從元胞自動機、標記系統、&lambda;演算、組合子演算、各式各樣的高級編程語言等等這些系統引申出的函數。例如評論裏所說的，如果我們定義 f(x)爲&ldquo;一個長度爲 x 的 C 語言程序能輸出的最大數（規則類似於 Loader 數）&rdquo;，那麼 f(512)至少是 Loader 數，並且這個 f 函數也是不可計算的，和 BB(n)增長得一樣快的，增長得比一切可計算函數都快的。</p>
+<p>神仙，也有俯瞰人間的時候。當這些不可計算的&ldquo;神仙&rdquo;下凡，來到人間的時候，便成了可計算的函數。然而這些所謂的可計算的函數卻可以輕輕鬆鬆地超越前面那些大數。這些&ldquo;神仙&rdquo;，一種通用的&ldquo;凡間裝束&rdquo;，就是&mdash;&mdash;</p>
+<p>設 T 是一個形式演繹系統。可以把某個圖靈機能停機這種命題轉換成 T 中的命題。首先列出 T 中所有不超過 n 個字符的證明，然後在這些證明之中找出&ldquo;圖靈機 M 能停機&rdquo;（其中圖靈機 M 是 2 色的、不超過 n 狀態的圖靈機）的證明，最後取所有這些圖靈機從開始運行到停機爲止所經過的最大步數，記作 BB(T,n)。</p>
+<p>既然上面這個定義已經是一種計算的辦法，那麼這個函數就是可計算的了。對於任何形式演繹系統 T，BB(T,n)的可計算性在 T 中不能被證明，而且 BB(T,n)總是增長得比 T 能夠證明可計算的任何函數都要快。</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=H_%7B%5Cvarphi%281%2C0%29%7D%28n%29" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=BB%28%5CPi_1%5E1%5Ctext%7B-CA%7D_0%2B%5Ctext%7BBI%7D%2Cn%29" alt="">
+<p>ZFC，BB(ZFC,n)增長得肯定比燃燒數快，甚至可能比 Loader 數裏面定義的 D 函數還快。</p>
+<p>而在 ZFC 之上，則是 ZFC 再加上&ldquo;存在具有&lsquo;某性質&rsquo;的基數&rdquo;一條公理，所得的玩意兒。其中最爲強大的，加的是下面這條公理：（不知道怎麼翻譯）</p>
+<p>I0: There exists a cardinal number &rho; that satisfy "There exists a nontrivial elementary embedding</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=j%3AL%28V_%7B%5Crho%2B1%7D%29%5Cmapsto+L%28V_%7B%5Crho%2B1%7D%29" alt="">
+<p>即使&ldquo;神仙&rdquo;下凡，隱藏了絕大部分的實力，成爲 BB(ZFC+I0,n)，也能傲視&ldquo;可計算的&rdquo;羣雄。</p>
+<p><strong>九、&Xi;函數</strong></p>
+<p>即便是&ldquo;神仙&rdquo;一樣的第二類大數，它們之間也有高下之分。上面說到的 busy beaver，雖然能夠傲視&ldquo;可計算的&rdquo;羣雄，卻是第二類大數的領域裏最下等的角色。</p>
+<p>&Xi;函數是由組合子演算中的 SKI 演算引申出來的。爲了理解它的定義，我們首先需要了解 SKI 演算。</p>
+<p>首先定義 SKI 演算中的&ldquo;公式&rdquo;：</p>
+<p>S 是一個公式。K 是一個公式。I 是一個公式。</p>
+<p>如果字符串 a 和 b 都是公式，那麼(ab)也是一個公式。</p>
+<p>然後是演算本身。下面 3 種操作的有限次複合稱作&beta;- 規約：</p>
+<ol>
+<li>把形如(((Sa)b)c)的公式變換爲((ac)(bc))</li>
+<li>把形如((Ka)b)的公式變換爲 a</li>
+<li>把形如(Ia)的公式變換爲 a</li>
+</ol>
+<p>SKI 演算的計算能力和圖靈機一樣強。因此，按照下面的方法定義出的 SKI 函數，其增長率與 busy beaver 相當：</p>
+<p>把不能進行&beta;- 規約的公式稱作&beta;- 範式。從所有長度不超過 n 的公式開始，通過&beta;- 規約，所能得到的最長的&beta;- 範式的長度記作 SKI(n)。這裏，&ldquo;長度&rdquo;指的是一個公式裏字母的個數，不計括號。</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Ctext%7BSKI%7D%285%29%5Cge6" alt="">
+<p>下面就是&Xi;函數超越 busy beaver 的辦法。定義一個新符號：&Omega;，作爲一種公式。它在&beta;- 規約中的地位相當特殊：</p>
+<ul>
+<li>對於形如(((&Omega;a)b)c)的公式，如果 a 能夠通過&beta;- 規約得到 I，那麼把(((&Omega;a)b)c)變換爲 b，否則變換爲 c。</li>
+</ul>
+<p>這個符號有能力引起一些悖論。可以證明存在一個這樣的公式 p，它可以&beta;- 規約爲(((&Omega;p)(((SI)I)((SI)I)))I)。引出的問題是，p 能不能&beta;- 規約爲 I 呢？如果能，那麼根據新規則，(((&Omega;p)(((SI)I)((SI)I)))I)將變換爲(((SI)I)((SI)I))，它就不能&beta;- 規約爲 I；如果不能，那麼根據新規則，(((&Omega;p)(((SI)I)((SI)I)))I)將變換爲 I。對於任意的公式，它是否會引起這樣的悖論，是不可判定的（沒有通用的算法），這就使得它比 busy beaver 還要強大。</p>
+<p>最後，&Xi;函數定義如下：在含有&Omega;的 SKI 演算中，從所有長度不超過 n 的公式開始，通過&beta;- 規約，所能得到的最長的&beta;- 範式的長度記作&Xi;(n)。</p>
+<p>&Xi;(1)=1</p>
+<p>&Xi;(2)=2</p>
+<p>&Xi;(3)=3</p>
+<p>&Xi;(4)=4</p>
+<p>&Xi;(5)=6</p>
+<p>&Xi;(6)=17</p>
+<p>&Xi;(7)=51</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5CXi%288%29%5Cge98" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5CXi%289%29%5Cge167" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5CXi%2810%29%5Cge296" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5CXi%2811%29%5Cge513" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5CXi%2812%29%5Cge846" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5CXi%2813%29%5Cge196606" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5CXi%2814%29%5Cge3%5Ctimes2%5E%7B256%7D-2" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5CXi%2815%29%3E256%5E%7B256%5E%7B257%7D%7D" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5CXi%2818%29%3E65536%5Cuparrow%5Cuparrow65536" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5CXi%2824%29%3E2%5Cuparrow%5Cuparrow%282%5Cuparrow%5Cuparrow65540%29" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5CXi%2843%29%3EH_%7B%5Comega%5E%7B%5Comega%2B1%7D%7D%282%29%5Ctimes5" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5CXi%2850%29%3EH_%7B%5Comega%5E%7B%5Comega%2B2%7D%7D%282%29%5Ctimes5" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5CXi%2857%29%3EH_%7B%5Comega%5E%7B%5Comega%2B3%7D%7D%282%29%5Ctimes5" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5CXi%2868%29%3EH_%7B%5Comega%5E%7B%5Comega%5Ctimes2%2B1%7D%7D%282%29%5Ctimes5" alt="">
+<p>人們對&Xi;函數了解得太少，還不知道當 n 有多大的時候&Xi;(n)能夠超越 busy beaver。</p>
+<p><strong>十、Rayo 數</strong></p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=10%5E%7B100%7D" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=10%5E%7B100%7D" alt="">
+<p>人們對 Rayo 函數了解得實在太少，還未發現它的一些函數值。</p>
+<p>（全文完）</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div>
