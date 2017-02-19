@@ -1,0 +1,77 @@
++++
+date = "2017-02-19T19:00:00"
+title = "賽車起步時翹起車頭是如何做到的？"
+titleimage = "http://pic1.zhimg.com/1f89984e4a4b7ffb531cf26780b60134.jpg"
+ga = 021919
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title"></h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>作爲一名教理論力學的教師，好像有時也被人叫做獸，不回答這個問題怎麼都說不過去吧。其實這是學生的一個基本的練習題，不過發現竟然有學生做錯，令我很生氣。樓上有幾位說的很有道理，但有點把簡單的問題複雜化了。但說質心位置改變的則是不對的。汽車不是麪糰，質心可以隨便揉來揉去的。試想如果前輪離地的話，質心能改變到後軸上嗎？因爲按照這種說法，只有質心完全移到後軸上（或者之後） 前輪纔會離地。</p>
+<p>小汽車一般是前輪驅動的(事實上後輪驅動也是一樣，這裏爲了分析方便假定前輪驅動)，這樣扭矩作用在前輪上，前輪會受到一個扭矩（力偶）和一個地面的摩擦力，注意這個摩擦力方向是向前的（理解不了的想象一下車陷在坑裏打滑時驅動輪受的摩擦力的情況），除此以外還有地面的豎直向上的支持力。後輪一般是從動輪，受車身的牽引力、地面的摩擦力（這個摩擦力是向後的）和豎直向上的支持力。然後車子還有自身的重力。</p>
+<p>但是對於車輪和車子組成的整體來說，所受到的外力只有五個：汽車自身的重力、前後輪受到的地面的豎直向上的支持力（兩個）和摩擦力（兩個，主動輪向前，從動輪向後）。汽車就是在這幾個外力的作用下前進，說的更具體些是在地面給主動輪的摩擦力作用下前進。至於主動輪上的扭矩和從動輪受到車身的牽引力等，對於汽車來說都是內力。因爲車輪受到發動機傳動機構傳遞過來的扭矩，也同時會給傳動機構（車身）一個反作用扭矩，後輪也是一樣，受到車身的牽引的同時也會給車身一個反作用力。這兩個內力在分析汽車的簡單運動時是不考慮的。打個比方，發動機再牛 B 的汽車在冰面上打滑，也是跑不快的，所以要想跑起來還得靠地面的摩擦力。</p>
+<p>好了，話說回來。怎麼分析汽車在上面提到的五個外力下面的運動呢？因爲運動起來了，汽車有加速度，利用牛頓第二定律（這裏爲了簡單把汽車當成質點了。因爲此處不涉及汽車的轉動，屬於剛體平移問題，這樣處理是沒有問題的）</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5CSigma%5Cbar%7BF%7D+_%7Bi%7D%3Dm%5Cbar%7Ba%7D+" alt="">
+<img class="content-image" src="http://pic4.zhimg.com/70/d92013e1c9ed763c3238b6a2692bdcdb_b.jpg" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=a" alt="">
+<p>列兩個&ldquo;平衡&rdquo;方程求解前後輪受到地面的壓力：</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=mg%5Ccdot+c%2BFg%5Ccdot+h-F_%7B+BN%7D%5Ccdot+%28b%2Bc%29%3D0" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=-mg%5Ccdot+b%2BFg%5Ccdot+h%2BF_%7B+AN%7D%5Ccdot+%28b%2Bc%29%3D0" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=F_%7BAN%7D+%3D%5Cfrac%7Bm%28gb-ah%29%7D%7Bb%2Bc%7D+" alt="">
+<p>從這兩個結果可見，當汽車加速前進時，也就是題主所說的起步時，</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=F_%7BAN%7D+%3D%5Cfrac%7Bm%28gb-ah%29%7D%7Bb%2Bc%7D+" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=m%28gb-ah%29%3D0" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=a%3C0" alt="">
+<p><strong>具體效果可以想象一下張開雙腿一前一後站在公共汽車裏，汽車加速減速時你雙腿的感覺。</strong></p>
+<p>注意，這種慣性力效應只與加速度有關，而與速度無關，所以啓車和急剎車時感受最明顯，因爲此時加速度最大。而速度起來以後，加速度反而不大，因此沒有什麼感覺了。</p>
+<p>&nbsp;</p>
+<p>1、有同學問後輪驅動情況會怎樣？</p>
+<p>事實上後輪驅動結論完全一樣。</p>
+<p>因爲到底前輪還是後輪驅動影響的只是前後輪的摩擦力的大小和方向。</p>
+<p>但從求解前後輪所受地面壓力的平衡方程可以看到，摩擦力的大小、正負對結果沒有影響，</p>
+<p>因爲兩輪受到的摩擦力對兩輪着地點的力矩都爲 0。</p>
+<p>所以不管是哪個輪子驅動的，只要驅動力在地面，結論一樣。</p>
+<p>2、有同學問這個問題是否應該用角動量守恆來處理</p>
+<p>回答是 NO</p>
+<p>首先這裏不涉及角動量守恆的問題。</p>
+<p>其次，考慮角動量的話需要考慮的是車輪的轉動。車輪的轉動慣性確實會給結果帶來一些影響，如果要考慮的話也可以，在正文中列力矩平衡方程時加上兩個車輪的慣性力偶就可以了。但是車輪的質量相對與整車來說太小，這個慣性力偶也很小，影響不大，所以計算中把車輪的加速（減速）轉動效應忽略了。</p>
+<p>3、有同學說前驅車車頭不可能上翹</p>
+<p>事實上前驅車的翹頭現象確實不如後驅車明顯。有兩個原因：</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=c%3Cb" alt="">
+<p>（2）因爲是前驅車，所以翹頭時（前輪壓力減小）地面的靜摩擦力減小，車子獲得的驅動力也相應減小，因而加速度減小，所以前輪壓力又會趨於正常。這決定了前驅車的加速度不可能非常大，所以性能好的轎車（特別是賽車）要選用後輪驅動或四輪驅動。</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=h" alt="">
+<p>再補充一點。</p>
+<p>說白了，其實是慣性力對汽車支承點的力矩效應引起的。如果能理解慣性力這一概念的話。</p>
+<p>慣性力是由加速度引起的，只要有加速度就有慣性力效應存在。</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=a%3D%5Cfrac%7Bv%5E%7B2%7D+%7D%7BR%7D+" alt="">
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div>
