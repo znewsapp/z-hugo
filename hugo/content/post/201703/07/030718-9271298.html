@@ -1,0 +1,107 @@
++++
+date = "2017-03-07T18:00:00"
+title = "中國傳統的榫卯結構，爲什麼在現代建築中用得這麼少？"
+titleimage = "http://pic3.zhimg.com/6df7133ee0e493bf8834cca9dfa9752a.jpg"
+ga = 030718
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title"></h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>這是一個老問題了，不過我想分享一點暫時還沒有出現的東西。我想從節點受力的角度談談。</p>
+<p>&ldquo;爲什麼現代建築的木結構中傳統榫卯不再大量出現&rdquo;。</p>
+<p>只是自己一點微小的想法，不一定正確。</p>
+<p>榫卯很精巧，榫卯很華美。</p>
+<p>我參與過做榫卯結構，就是 @戴可青 答案裏面提到的那個結構: )，那個 ANSYS 的分析一開始就是我帶着師弟做的，最初的方案還不是這樣的呢，後面拼裝結構的結果都是師弟做得。</p>
+<p><a href="https://www.zhihu.com/question/24175751/answer/104960949">榫卯結構，爲什麼現在使用這麼少？ - 戴可青的回答 - 知乎</a></p>
+<p>但是榫卯從受力角度來說，並不是木材利用的最優方案，特別是在現代建築工業的環境下。因爲傳統的木榫卯這種設計從結構設計角度來說違反了結構設計的一個重要原則：</p>
+<p><strong>節點性能不能低於構件</strong></p>
+<p>這一點幾乎不需要我去多廢話大家就能感覺到，使用榫卯的桌椅大部分時候都是在榫卯處損壞，也就是結構的節點處。結構的節點壞了，等於和它相連的構件都發生了失效，所以一般的設計原則是節點的性能不能低於構件，從這個角度來說，傳統榫頭榫眼構成的榫卯是不太符合現代結構工程的設計理念的。下面詳細說說。</p>
+<p>談受力不能拋開材料，首先需要了解一下木材，木材在工程學上和另外兩種常見的建材&mdash;&mdash;鋼材，混凝土相比，有一個很大的差異&mdash;&mdash;顯著的各向異性。各向異性指材料在不同的方向受同樣的力時表現出不同的力學性能，材料多多少少都會有各向異性，即使時鋼材混凝土也不例外，但鋼材各向異性不顯著，混凝土各向異性主要體現在拉壓性能不同但不同方向可以使用同一個本構表示，忽略材料的方向一般不會有不能接受的誤差，對工程的影響一般可以忽略，但是木材則不然。</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-6594ea1d63064878f1549588a7e801c5_b.jpg" alt="">
+<p>圖 1.木材截面</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-8a97bafe9083d88be0b79abbe28f84f0_b.jpg" alt="">
+<p>圖 2.木材微觀結構</p>
+<p>第一張照片是常見的木材照片，第二張是木材顯微鏡下照片。無論宏觀微觀我們都能看到木材是有內部結構的，顯然不同方向結構的力學行爲是不同的，這種內部結構的存在這也就導致了了木材的力學特性是各項異性。</p>
+<p>木材組成方式是軸向的纖維聚成整體，因此就力學性能而言，會表現出兩類特性，一是順着纖維方向的，二是纖維連接方向的，如果再考慮樹木生長的過程&mdash;&mdash;形成層一層一層的向外擴展，木材在纖維連接上還存在層內和層間兩種差別，這種差別直觀的體現就是年輪。所以木材細分的話，存在三個方向&mdash;&mdash;軸向、徑向和絃向。一般把軸向受力稱爲順紋受力，弦向和徑向受力稱爲橫紋受力。</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-a1b9224d7f80bb7bdcfe99a8d130152c_b.jpg" alt="">
+<p>圖 3.三個受力方向</p>
+<p>纖維本身強度是遠高於纖維之間連接強度的，所以導致順紋拉伸、順紋壓縮、橫紋切斷等需要破壞纖維本身的受力模式下，木材表現出的強度及塑性發展，都要好於順紋剪切、橫紋拉伸等破壞纖維連接的受力模式。</p>
+<p>一般來說木材強度最大的受力方向是順紋受拉方向，相對而言，順紋受壓、橫紋切斷受力也很大，所以木材最優利用方式是做拉壓桿件，其次是做彎的樑。但是節點區域受力複雜，往往處在多向應力狀態，本身就不利於木材發揮，同時，拼插的榫卯，一邊需要的開槽挖洞做榫眼，另一邊要縮小截面做榫頭，實際上是嚴重削弱節點的。關於榫卯受力，還是可以用 ANSYS 建模做一下。</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-2747fc18317fc75202a7175a693ecc89_b.jpg" alt="">
+<p>圖 4.榫卯節點模型</p>
+<p>做一個最常見的榫卯結構，一個方形榫眼，方形榫頭。材料調整一下彈模和泊松比，由於只看彈性階段應力應變，並且只是想簡單說明不利受力狀態，所以不考慮各向異性和裝配產生預應力了。</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-b7a28cac7241ea51ff32eab5745f79ee_b.jpg" alt="">
+<p>圖 5.邊界條件</p>
+<p>紫色的底邊固定，紅色面上施加一個彎矩</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-23e1a70115bb39bc8a0e55c14d1c3be2_b.jpg" alt="">
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-bf78bc461efaa4a749c272f31cdb48a8_b.jpg" alt="">
+<p>圖 6. 接觸設置、網格劃分</p>
+<p>榫卯是分離的結構，所以分析時候還得設置接觸，網格細化（所以榫卯不是分析友好的結構~）</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-736570ccd6f9d2edf30e6a964b50325e_b.jpg" alt="">
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-ec64561e916242c1cf5ee505d7a9513f_b.jpg" alt="">
+<p>圖 7.位移和等效應力雲圖</p>
+<p>首先可以看一下等效應力，在遠離榫卯的區域兩根杆件都表現出很明顯的樑的特性，外層應力最大，中間存在一箇中性層。但是榫卯區域應力變化劇烈而且複雜。如果就這樣放一個不知所云的有限元結果也就沒必要寫這個答案了。有限元的結果對於大部分吃瓜羣衆來說不直觀，我來做個直觀的解釋。</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-2c86857fed1f32adac0b489a2d5e9b44_b.jpg" alt="">
+<p>圖 8.榫卯分離圖</p>
+<p>榫卯不是一個整體，榫頭和榫眼之間原本是分離的，因此榫卯的接觸面是隻能受壓不能受拉的，一有拉力就會分離。</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-8059ae1ed6e9e5e34c8c66cb486730d8_b.jpg" alt="">
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-43df476e95b3ea6656b76638fe8dfeb8_b.jpg" alt="">
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-ba52e9f3045535fc536e652ea6e2571f_b.jpg" alt="">
+<p>圖 9.榫卯區域變形示意圖</p>
+<p>在受端部的彎矩之後榫頭杆件有一個微微轉動的趨勢，榫頭和榫眼之間在我標紅的區域會緊密貼合，其他地方會微微分離。具體變形可以參考下圖，雲線標記的位置就是貼合緊密的區域，</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-6f52cde17d92f6e9caed22c276078911_b.jpg" alt="">
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-bd98fd9ca6754453c6f55ff20850a8e4_b.jpg" alt="">
+<p>圖 10.榫頭杆件受力狀態示意圖</p>
+<p>這樣，對於榫頭杆件來說它受到的力就是一個彎矩兩對壓力，這就是個最簡單的蹺蹺板，這樣一組力恰好平衡。但是根據槓桿原理可以想見這麼短的力臂壓力會非常大。</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-ef1917fe3f8be38dc48c0a0f2786e464_b.jpg" alt="">
+<p>圖 11.榫頭位置 y 向正應力雲圖</p>
+<p>有了定性概念分析我們再回頭看看計算結果，榫頭的應力圖就很顯著的表現出這種特點。這是 Y 向正應力結果，上下兩塊深藍色區域就是承受巨大壓力的緊密接觸區域</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-ddffd118f66d67080d651fa3ad643d32_b.jpg" alt="">
+<p>圖 12.圖片截取自榫卯 APP</p>
+<p>回到最初和大家說的木材的特性，橫紋受壓是非常不利的，還記得嗎？一般來說木纖維沿着杆件長度方向，那麼榫頭的位置就處在橫紋受壓狀態，所以這是第一點不利。</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-091c762ebac422d63cd1ca701bf98b1c_b.jpg" alt="">
+<p>圖 13.榫眼位置剪切面示意圖</p>
+<p>再看看榫眼，榫眼是在這個區域受壓，但是是局部受壓，壓力在擴散過程中是依靠剪力傳遞的，所以會導致榫眼邊界附近剪應力很大，就是黃色虛線標示的剪切面。</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-9ecbd7722c7092b85f1c436aade1496a_b.jpg" alt="">
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-1a797fee9edc5e7f765e17049feba31c_b.jpg" alt="">
+<p>圖 14.隼眼位置 xy 剪應力</p>
+<p>我們現在來看看剪應力，確實這個區域出現了極大的剪應力。同時要注意到，這個位置的受剪是順紋剪切，也是不利受力狀態之一。</p>
+<p>所以，就是這樣一個簡單的榫卯，最常見受力方向，榫頭榫眼都處在了不利受力狀態，對於更復雜的糉角榫、燕尾榫等，在建築結構中受到拉壓彎剪扭等更復雜的力時，受力狀態更加不利。如果要保證榫卯的強度就不得不用更多的材料，而這些材料對於杆件部分來說是浪費的。因此現代的木結構都針對這個問題做了很多改進，比如採用金屬連接件代替木材傳力，使用一些改性工藝處理木材增強木材不利狀態的強度。</p>
+<p>傳統的榫卯本身是對材料相對浪費的設計方式，因此在建築這樣很計較成本的領域自然就會式微，但是傢俱則不同，一來傢俱對成本敏感性更低，二來傢俱承載了文化傳統，使用榫卯是一種文化傳承和高端象徵，所以在傢俱領域榫卯還是相當有市場的。</p>
+<p>以上就是我自己對榫卯的一點想法，不一定正確，如有錯誤還望不吝賜教。</p>
+<p>最後補一個複雜榫卯的結果，我覺得結果是有點問題的，接觸面太多，得再仔細調整，但是算一次太久了，不想折磨自己的筆記本，大家也就看個熱鬧吧</p>
+<p><a href="http://link.zhihu.com/?target=http%3A//www.tudou.com/programs/view/_dhhyXBdqtc/"> Kawai Tsugite Joint http://www.tudou.com/programs/view/_dhhyXBdqtc/ </a></p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-d23f089d21b645deed20a8bb3894f466_b.jpg" alt="">
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-2b876e1ed06a01e16f361883dafa8fdf_b.jpg" alt="">
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-d0067ca1f3f5cea1dd6fbfe48685a3fb_b.jpg" alt="">
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div>
