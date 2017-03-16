@@ -1,0 +1,73 @@
++++
+date = "2017-03-16T07:00:00"
+title = "315 · 人臉識別系統認不出假照片，能認出長得一模一樣的韓國選美小姐嗎？"
+titleimage = "http://pic2.zhimg.com/06bf4dd855adef3ca0ef1feb270f1eed.jpg"
+ga = 031607
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title"></h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>UIUC 的 Jiabin Huang 同學曾經對 13 年 Miss Daegu 的選手做過分析。</p>
+<p>原帖在此，非常歡樂：</p>
+<p><a href="http://jbhuang0604.blogspot.com/2013/04/miss-korea-2013-contestants-face.html?m=1">http://jbhuang0604.blogspot.com/2013/04/miss-korea-2013-contestants-face.html?m=1</a></p>
+<p>用大白話翻譯一下：先手工對齊鼻子眼睛嘴，然後用 Candes et al 的<a href="http://www.columbia.edu/~jw2966/Candes11-JACM.pdf">Rubust PCA </a>來重建圖像（第二列）。這一步主要是去掉頭髮等遮擋物造成的影響。</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/5a76cfa9ce905f81ab2033d78c32978d_b.jpg" alt="">
+<p>再然後，上傳統方法 SVD 做 eigen analysis。發現 eigenvalue 只有 6 個非零元素&mdash;&mdash;換句話說，20 名參賽選手的臉只有 6 個自由度。</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/3e3482f8dc09233a714ce3eeaa55bd0c_b.jpg" alt="">
+<p>在 eigenfaces 的 6 維空間中，可以比較輕鬆地計算兩個人的相似程度，再降維到 2D 空間，20 個選手的分佈情況大概是這樣的：</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/f67ef53f88565f434436fcfb0b0a8ab9_b.jpg" alt="">
+<p>這張圖大概就從一個側面回答了樓主的問題。在有效可靠的表達下，這些臉還是能夠被區分出來的。但是大家可以看到，有幾個點（人臉）靠的很近，說明這幾個臉在算法的特徵空間下，區分難度非常大。對應到真人照片，是這三個：</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/9475229fe71f0913a8038abd4368ad88_b.jpg" alt="">
+<p>從視覺效果上看，這三位選手，我也很難分清楚他們是不是同一個人換了妝，還是不同的人&hellip;&hellip;</p>
+<p>按照這個思路，就可以找出&ldquo;長(zheng)得最相似&rdquo;的，和&ldquo;長(zheng)得最不一樣&rdquo;的參賽選手。</p>
+<p>最後兩個 gif 分別是長得最像的人和最不像的人的大串燒（相鄰兩幀相似度最大，或者最小）。</p>
+<p>再後來，選美結果出來了。長得最像的三個人和最特殊的三個人中，各有一人進入總票數三甲。貼主認爲這和 <a href="http://www.jstor.org/stable/40062652?seq=1&amp;">JSTOR 這篇文章</a> 中提到的觀點很相似，即平均臉漂亮，但是最漂亮的臉一般不是平均臉。</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+
+
+
+<div class="question">
+<h2 class="question-title"></h2>
+
+<div class="answer">
+
+<div class="content">
+<p>更多關於 2017 年央視 315 晚會相關討論，請查看：<a href="https://www.zhihu.com/topic/20076042">2017 年央視 315 晚會</a></p>
+<h1 class="zm-editable-content"><a class="zu-edit-button" href="/answer/117992/javascript:;" name="edit"></a></h1>
+</div>
+</div>
+
+
+</div>
+
+
+</div>
+</div>
