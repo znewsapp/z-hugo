@@ -1,0 +1,128 @@
++++
+date = "2017-03-25T10:00:00"
+title = "對着電腦踢了 1417 次點球，這是我見過的最無聊的教授"
+titleimage = "https://pic2.zhimg.com/v2-d025c18344811d0e7efe78bba45499f5.jpg"
+ga = 032510
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title">博弈論用來解釋和解決現實問題和現象的效果如何？都有哪些實例？</h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>誰添加的情感／兩性關係的標籤？爲什麼還在博弈論之前？？這樣也太赤果果了吧&hellip;&hellip;</p>
+<p>先簡短的回答問題，<strong>博弈論用來解釋和解決現實問題和現象的效果如何？都有哪些實例？</strong></p>
+<p>博弈論裏面不同的模型解釋現實問題和現象的效果不一，大多數都因爲衆多條件限制（主要是現實太複雜）解釋解決現實問題的效果不會太理想。</p>
+<p>不過也有<strong>解釋的好的</strong>，比如：<strong>Ignacio Palacios-Heurta(2003)&nbsp;</strong>用 Mixed Strategy 解釋 1417 次 FIFA 比賽罰球中 Kicker 和 Goalie 選擇往左往右的問題就解釋的相當精準（&ldquo;<strong>Professional Play Minimax</strong>&rdquo;），後來這篇文章發在了<strong>Review of Economic Studies</strong>上。</p>
+<p>(樓主活了那麼多年，這是我見過的最無聊的教授（們），對着電腦數 1417 次，而且以樓主參加建模國賽數汽車的經歷，肯定會數錯重數。)</p>
+<p>爲方便對 Game theory 還不怎麼了解的知友，先介紹兩個概念：</p>
+<p><strong>什麼是 Mixed Strategy?</strong></p>
+<p>拿@馮晗 老師（老師好）舉的 Game theory 裏面最經典的囚徒困境的栗子來說，囚徒們單純的選我是坦白從寬還是抗拒從嚴這叫 Pure Strategy， 囚徒們說我今天喝多了可能 80% 的機率坦白從寬，20％ 的機率抗拒從嚴這就叫 Mixed Strategy。</p>
+<p><strong>什麼是 Mixed Strategy Nash Equilibrium?</strong></p>
+<p>就是如果 A 囚徒發現，如果給定 B 囚徒選坦白從寬抗拒從嚴的概率，A 囚徒選擇坦白從寬還是抗拒從嚴其實是沒有差異的，反之亦然，這時候 A、B 囚徒的 Strategy 就叫 MSNE。</p>
+<p>鋪墊完畢。</p>
+<p><strong>無聊教授們做了什麼？</strong></p>
+<p>他們先統計了這 1417 次罰球中如果 Kicker(射門的)選擇射左邊，Goalie（守門的）也選擇撲向左邊，那麼 Kicker 有 0.58 的概率贏，假設拿到 0.58 的效用，Goalie 有 0.42 的概率贏，假設拿到 0.42 的效用。(即下圖中第一個是 kicker 的效用)</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/7366e7962a822d3b5fc3533b875c42e1_b.jpg" alt="">
+<p>然後無聊教授們就根據這個數據和 Mixed Strategy Nash Equilibrium 的模型算出了，在這 1417 次罰球中，到底 Kicker/Goalie 往左的概率是多少，往右的概率是多少。</p>
+<p><strong>怎麼算的？</strong></p>
+<p>核心就是 MSNE 的 insight：往左和往右的概率必須讓他們選左選右的效用<strong>無差異。</strong></p>
+<p><strong>即：給定一個選手的 Mixed Strategy, 另一個選手的 Mixed Strategy 必須使他選擇不同 Strategy 的效用無差異。</strong></p>
+<p>計算過程如下：</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/bd13c6febefe5774faea45247e64ced0_b.jpg" alt="">
+<p>那這個我們算出來的結果和真實結果比相差多少呢？</p>
+<p>還好我們有無聊教授（和他們的 RA 們）我們不用自己數 1417 次罰球：</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/08aa3e095338acd66bb1509a37a73f3b_b.jpg" alt="">
+<p>（上面一行是算出的結果，下面一行是真實統計值）</p>
+<p>有興趣的同學還可以搜下這篇講網球的：</p>
+<p>M.Walker and J.Wooders ,American Economic Review(2001)"Minimax Play and Wimbeldon" volume91,pp 1521-1538。</p>
+<p>1。<strong>Game theory 的模型對於我們生活其實還是有用的，可能我們並不能在公司談判，追妹紙等博弈的時候畫個樹形圖神馬的決定要採取什麼策略，但是很多模型提供的 insight，往往能帶給人不少啓發。</strong></p>
+<p>2。<strong>模型總是有很多假設很多抽象，現實太複雜，對於單個的 situation 沒有太大意義，但是如果數據多了（比如 1417 次罰球），就能分辨出那些是對預測無用的 noise 哪些是 essence，這時候用 game theory 模型纔有意義。</strong></p>
+<p>這學期學習 game theory 的時候一直在思考，如何把學到的各種 theory 應用到生活之中。</p>
+<p>後來發現這個根本就不現實好嘛。</p>
+<p>現實生活中太多雜音太多幹擾項了。</p>
+<p>不過我還是發現我學過的 game theory 模型包含的<strong>insight 其實是能帶給我們遠超模型本身的啓發的。</strong></p>
+<p><strong>1.Prisoner's dilemma</strong></p>
+<p><em>A Beautiful Mind</em>裏面 Nash 在酒吧大喊亞當斯密是錯的，每個人都追求私利有時候並不能帶來效用最大化，指的就是&nbsp;<a href="http://en.wikipedia.org/wiki/Prisoner's_dilemma">Prisoner's dilemma</a>&nbsp;這個模型，@馮晗 老師的答案<a href="http://www.zhihu.com/question/22581215/answer/21890580">博弈論用來解釋和解決現實問題和現象的效果如何？都有哪些實例？</a> 分別用 perfect imformation 和 imperfect imformation 兩種模式闡述了這個模型，寫的非常好，大家可以先去看看馮老師的答案。</p>
+<p>但是這個模型的 insight 其實就是<strong>合作可能帶來的效用更大，但是在沒有條件溝通或者沒有信息的情況下，大家的選擇往往會損害彼此的利益。</strong></p>
+<p><strong>2.Repeated Prisoner's Dilemma</strong></p>
+<p>還是從大家熟悉的模型說起，不過這次是&nbsp;<a href="http://en.wikipedia.org/wiki/Repeated_game">Repeated game</a>，RPD 模型其實就是玩很多遍囚徒困境模型，每個人的 Pay off 用 n 次玩法的 discount 來表示。</p>
+<p>在 Repeated PD 裏面，納什均衡根據你選擇的策略（Trigger 啊 tit for tat 啊神馬的）有所變化，但是 insight 仍然很簡單。</p>
+<p><strong>在有預期會多次博弈的情況下，大家的選擇會更傾向於合作達到彼此利益最大化。</strong></p>
+<p>比如說你現在是採購方，想選個供貨商，你暗示他你以後有經常買的需求，或者是你逛淘寶的時候，暗示賣家貨好的話會介紹同學同事來買，賣家欺騙你的可能性就會降低。</p>
+<p><strong>3. Nash Equilibrium</strong></p>
+<p>Nash Equilibrium 不是個模型，但是 Nash Equilibrium 給我帶來的啓發也蠻大的。</p>
+<p>什麼是 NE?</p>
+<p><strong>就是給定博弈雙方的行爲，每一個博弈方如果改變它的策略，並不能增加自己的效用。這種情況就是納什均衡。</strong></p>
+<p>NE 並不一定是效用最大的情況，比如囚徒困境裏面兩名囚徒如果都抗拒從嚴他們的效用其實比都坦白要大，但是 NE 是現實中最可能達到的均衡結果。所以博弈論裏面相當的一部分內容就是尋找各種 NE。上面舉的罰球的栗子就是一種叫做 Mixed Strategy NE 的東西。</p>
+<p>那 NE 帶給我什麼啓發呢？如果你和別人合作，你們合作的現狀是 NE 的話，即你的合作方改變自己的策略並不能帶來效用的提高，這種合作纔是可持續且穩定的。</p>
+<p><strong>以上的模型都是比較簡單的模型，可能 insight 也 straightforward 一點。有興趣的同學可以自己學習一下下面這個稍複雜點的模型。</strong></p>
+<p><strong>4.Signal Game</strong></p>
+<p>@徐惟能 老師提到的 signal 其實就是這個模型</p>
+<p>拿我們作業題舉例子吧，這個模型其實是關於選擇要不要讀 MBA 的。有興趣的同學可以看一下。</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/24ff031ff42e354cf9b4300a6b92a456_b.jpg" alt="">
+<p>其中：</p>
+<p>1－找工作的</p>
+<p>2－僱主</p>
+<p>H－1 的能力是 High</p>
+<p>L－1 的能力是 Low</p>
+<p>D－1 選擇讀 MBA</p>
+<p>U－1 選擇不讀 MBA</p>
+<p>M－2 選擇讓 1 當 Manager</p>
+<p>B－2 選擇讓 1 當 Blue-collar worker</p>
+<p>我們假設 1 能力是 High 的概率是 1/4，即得：</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/9d3d1fabfcb4c0d563dc5a5779af78de_b.jpg" alt="">
+<p>第一個 NE 很好解釋，如果僱主在你讀不讀 MBA 得情況下都讓你當工人，那無論是你能力高低，你都最好不要讀 MBA。</p>
+<p>第二個 NE 很有意思了，如果僱主讓沒 MBA 得當工人，有 MBA 得當 Manager，那僱員就會在自己能力高得時候去讀 MBA，付出代價向僱主發出一個 signal，我願意付出代價讀 MBA，僱員也會在自己能力低的時候選擇不讀 MBA，節省信號成本。</p>
+<p>完整題目可見（Q2）：<a href="https://www.dropbox.com/s/nmj91yiw61t8seu/hw4_2.pdf">Dropbox - hw4_2.pdf</a> 答案：<a href="https://www.dropbox.com/s/i9p5y512disfsvk/solutions_hw4_2.pdf">Dropbox - solutions_hw4_2.pdf</a></p>
+<p>至於 signal 模型的 insight，我也沒想到一個很好的辦法表述，大家自己想想吧。</p>
+<p>博弈論的模型還有很多，centipede, voting, bertrand/cournot's duopoly 等等&hellip;&hellip;</p>
+<p>以前我學習經濟學，金融學模型的時候，包括 game theory 模型的時候，總會想，那麼多假設條件，現實又那麼複雜，這些模型怎麼用？</p>
+<p>後來我才發現，現實不是單單複雜的，<strong>現實是複雜而又簡單的。</strong></p>
+<p>2012 年寒假我們做 p2p 借貸研究的時候，我專門去買了&nbsp;<a href="http://www.amazon.com/The-Lending-Club-Story-transforming-ebook/dp/B00A22QIKM">The Lending Club Story</a>，也讀了其它的相關論文，發現單個借款人的還款能力可能判斷起來比較困難，但是如果有 10000 個借款人，我們來判斷裏面有百分之多少 default，default 之後的 recovery rate，就會相對靠譜一點，因爲我們可以計算經濟形勢對羣體的影響，可以分析羣體收入的分佈，職業的分佈，計算不同的因素對 default 的影響。</p>
+<p>一句話概括就是，<strong>樣本多了之後，我們可以看出哪些是噪音 noisy，哪些是真正對我們想要的結果有影響的因素 essence。這時候模型纔有意義。</strong></p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+
+
+
+<div class="question">
+<h2 class="question-title"></h2>
+
+<div class="answer">
+
+<div class="content">
+<p>更多討論，查看 知乎圓桌 &middot;&nbsp;<a href="https://www.zhihu.com/roundtable/gametheory?utm_campaign=official_account&amp;utm_source=zhihudaily&amp;utm_medium=link&amp;utm_content=roundtable">日常經濟學 &middot; 博弈人生</a></p>
+</div>
+</div>
+
+
+</div>
+
+
+</div>
+</div>
