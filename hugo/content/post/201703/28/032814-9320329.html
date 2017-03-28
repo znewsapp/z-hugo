@@ -1,0 +1,100 @@
++++
+date = "2017-03-28T14:00:00"
+title = "升級 iOS 10.3 後存儲空間變多了，這都是 APFS 的功勞"
+titleimage = "https://pic4.zhimg.com/v2-33e01ccdcddc12dc6354109c9c14513f.jpg"
+ga = 032814
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+<div class="question">
+<h2 class="question-title"></h2>
+<div class="answer">
+
+
+
+<div class="content">
+<p>文章來自<a href="https://www.zhihu.com/org-intro">機構帳號</a>：<a class="author-link" href="https://www.zhihu.com/org/shao-shu-pai-46" target="_blank">少數派</a></p>
+<hr>
+<p>很多用戶在升級 iOS 10.3 後，發現設備的可用存儲空間莫名變多了，這裏面很大一部分是 APFS（Apple File System）文件系統的功勞。APFS 是什麼？它帶來了哪些改變？蘋果爲什麼要更新 APFS？這篇文章爲你一一詳解。</p>
+<p><strong><strong>APFS 帶來了哪些改變？</strong></strong></p>
+<p>目前在售的 Mac 和 iOS 設備都採用了基於閃存的 SSD 存儲。相對於機械硬盤，SSD 沒有可移動的磁頭，能即時訪問到硬盤內的任何一處，所以不再需要擔心「磁盤碎片」帶來的性能下降。但是，同價位下， SSD 容量要比機械硬盤小不少，所以需要儘可能節省空間。APFS 對 SSD 做出了大量針對性的技術創新，改變了傳統的「複製」和「備份」的概念。</p>
+<ul>
+<li><strong>文件克隆（Clones），複製不再佔空間</strong></li>
+</ul>
+<p>傳統印象裏，複製一個 100MB 的文件意味着要花費額外的 100MB 空間來存儲第二份文件。但在 APFS 下，「複製」只會創造一個新的標記，並未佔用更多空間，如果修改其中一個文件，APFS 會保留相同的部分，只存儲發生變化的部分。複製的時間會變得極短，也更加節省電力。<strong>這意味着，你將一個大小爲 1GB 的文件複製 10 次，在以前的 HFS+ 中，系統會存儲 10 個不同的備份，共佔用 10GB 硬盤空間。而在 APFS 中，即使你複製 100 次，該文件在你的設備裏也只會佔用 1GB 空間。</strong></p>
+<p>在以往的 iOS 系統中，由於沙盒機制的影響，在 A 應用中的文件如果要被 B 應用調用的話，需要再複製一遍，佔用雙倍的空間，而這一問題將在 APFS 中被徹底解決。</p>
+<img class="content-image" src="https://pic3.zhimg.com/v2-c98ba0b45814b31b34ed33a9fb6b22fe_b.png" alt="">
+<ul>
+<li><strong>磁盤快照（Snapshot），備份輕鬆一瞬間</strong></li>
+</ul>
+<p>越來越多的人已經習慣給自己的文件和磁盤做備份，以便遇到問題時能找回備份。在 Clones 的原理之上，APFS 在備份方面設計了 Snapshot 技術，可以記錄下文件在某刻的狀態，因爲這種備份同樣是基於增量的，只有文件發生變化的那一部分會佔用更多的空間，所以你大可以更頻繁的去備份數據，而不用擔心它們把你的磁盤佔滿。</p>
+<p>同樣，當這項技術被應用於 Time Machine 之後，備份的速度和效率都會更高。</p>
+<img class="content-image" src="https://pic3.zhimg.com/v2-20eea6ae642bddbeb13b829cdf02ac3e_b.png" alt="">
+<ul>
+<li><strong>空間共享（Space Sharing），再也不怕分區滿</strong></li>
+</ul>
+<p>用 PC 的時候，很多人都有「C 盤滿了」過的尷尬，在傳統的分區模式下，單一分區空間不足時，其他分區的剩餘空間是「遠水解不了近渴」的。APFS 全新的 Space Sharing 技術將傳統的分區虛擬爲 Container（容器），只要幾個容器在一個 APFS 磁盤下，那麼每個都可以自由變大和縮小的（最大是磁盤的理論空間），<strong>任意一個缺乏空間的時候，整個 APFS 下的冗餘空間任君調遣，再也不用擔心下載的時候提示空間不足的尷尬了</strong>。</p>
+<img class="content-image" src="https://pic4.zhimg.com/v2-3ecca5eeba3a62ddee7cb6c4d710645f_b.png" alt="">
+<ul>
+<li><strong>服務質量（I/O QoS），性能提升看得見</strong></li>
+</ul>
+<p>APFS 也提升了整個系統在 SSD 上的性能表現，APFS 提供了 Extensible block allocator 等技術，對於更大容量的 SSD 的做了優化。藉助 I/O QoS（服務質量）技術，APFS 的延遲得到大幅改善，對數據的不同訪問被劃分到不同的優先級中，<strong> APFS 會優先處理對用戶感知明顯的操作，用戶會明顯感覺自己的設備變快了</strong>。</p>
+<p>除了文件存儲的新技術，APFS 的安全性也比 HFS+ 有所提升，這體現在兩個方面：一個是加密層面，另一個是使用層面。</p>
+<ul>
+<li><strong>Encryption（加密技術），設備丟失也不怕</strong></li>
+</ul>
+<p>在之前的 Mac OS 以及 iOS 中都已經有了形式豐富的數據加密方式，此次 APFS 做了統一整合，提供了三種加密方式：</p>
+<ol>
+<li>無加密</li>
+<li>單密鑰加密</li>
+<li>多密鑰加密</li>
+</ol>
+<img class="content-image" src="https://pic1.zhimg.com/v2-3cc55071e94b8a7e1c05975e7682864c_b.png" alt="">
+<p>多密鑰模式的意思是，你可以用密鑰 A 給設備加密，然後再用額外的密鑰 B 給部分數據加密，即便哪天你的電腦硬件不幸落入歹人之手，對方也只是開了鎖 A，只要沒有密鑰 B，這部分數據就永遠是安全的。這項技術也解決了一個長期以來的問題，以往我們更換設備的時候都被囑咐要反覆往磁盤裏存儲幾遍無關數據，擔心個人隱私被不法之徒恢復，而以後只要把密鑰刪除，就不用反覆寫數據了。</p>
+<ul>
+<li><strong>Crash Protection（崩潰保護），數據讀取低風險</strong></li>
+</ul>
+<p>正在編輯文檔，寫着寫着斷電了，文件打不開了怎麼辦？APFS 引入了 Copy-on-Write 機制，編輯文件時原有數據並不會被當即修改，修改會在一個新的位置完成，只有確定新的數據已經編輯完成，舊的數據纔會被刪除。</p>
+<p>同樣，當現有設備升級到 APFS 的過程中，會先在磁盤的空餘區間先完成數據的轉換，然後再覆蓋舊有數據。即便系統升級過程中軟件崩潰或者意外的跌落事故等，也可以最大程度確保數據的安全。</p>
+<p><strong><strong>蘋果爲什麼要更新 APFS？</strong></strong></p>
+<p>在 APFS 之前。蘋果的文件管理系統歷經三代變化，最早期型號的 Mac 使用了名爲 MFS（Macintosh File System）的文件系統，但沒過多久，蘋果發現 Mac 用戶生成的文件數量和複雜程度都在與日俱增，於是在 1985 年推出了 HFS 文件系統，這也成爲今後幾十年 Mac 文件系統的基礎。1998 年，蘋果在 HFS 的基礎上，升級出了 HFS+（又稱 OS X Extended）文件系統。HFS+ 仍然是迄今爲止 Mac 的文件系統標準，同樣也是 iPod 及 iOS 設備的文件系統基礎。</p>
+<p>在計算機領域，一項使用 30 年的技術絕對不是而立之年，而是垂垂老矣，30 年的時間，蘋果已經從一家計算機生產商變成了一個蓬勃生長的生態，APFS 的出現，也是爲了爲整個生態做好依託。</p>
+<ul>
+<li><strong>支持最新軟硬件技術</strong></li>
+</ul>
+<p>在 WWDC 2016 發佈 APFS 時，蘋果直言 HFS+ 和它的前任 HFS 當時完全是針對軟盤和機械硬盤設計，考慮的還是 KB 和 MB 級的文件規模。而今天，早已是屬於 SSD 和 TB 乃至 PB 級數據的時代了，存儲硬件領域的創新呼喚新的文件系統的到來。而 HFS+ 當年爲了照顧其餘硬件的設計，譬如元數據有全局鎖，同一時間只有一個進程可以訪問更新文件系統等爲當年低頻 CPU 做的優化，反而成了當下多核高性能處理器的累贅。</p>
+<img class="content-image" src="https://pic4.zhimg.com/v2-fe7804517604479ee4d2a73f0a8531f7_b.jpg" alt="">
+<p>同時，移動互聯網的發展讓設備的使用場景和形態發生了巨大變化，移動使用中常見的意外 Bug、斷電等都對數據的安全性提出了新要求，層出不窮的網絡安全事件也對數據加密提升了標準。</p>
+<ul>
+<li><strong>協調統一生態系統</strong></li>
+</ul>
+<p>對蘋果而言，APFS 還擔負着統一生態的責任。雖然當前 iOS 設備同樣使用 HFS+ 文件系統，但在不同的設備的執行方式和功能都有區別，Mac 產品和 iOS 產品線之間在代碼上不盡相同，這種混亂的狀態也給開發者製造了麻煩。</p>
+<img class="content-image" src="https://pic2.zhimg.com/v2-dbba500e4fa4f732a195fe95f7e562d9_b.png" alt="">
+<p>同樣在 WWDC 上，蘋果用了「結束混亂」的字眼，APFS 將在從 Apple Watch 到 Mac Pro 之間所有不同體積和用途的產品上保持一致，代碼將完全統一，從蘋果維護更新和開發者調用 API 的角度都更爲方便，也可以保證新技術能被不同設備一致享用。</p>
+<p>無論如何，iOS 從 10.3 開始使用 APFS 已成定局。蘋果官方表示 APFS 對 HFS+ 的兼容性非常好，用戶不會遭遇到程序不能使用等問題，唯一需要注意的是 APFS 分區將不能被之前版本的 Mac OS 支持，所以如果你把移動存儲介質格式化爲 APFS 格式的話，在朋友的舊版系統中可能會無法讀取。</p>
+<p>一個屬於 APFS 的新時代即將到來，是時候向它張開雙臂擁抱未來了。</p>
+<p>本文由 @<a class=" wrap external" href="http://link.zhihu.com/?target=https%3A//sspai.com/user/125/updates" target="_blank" rel="nofollow noreferrer">CYfoxcat</a> 首發於<a class=" wrap external" href="http://link.zhihu.com/?target=https%3A//sspai.com/post/38377" target="_blank" rel="nofollow noreferrer">少數派</a>。</p>
+<hr>
+<p>「知乎<span class="lG">機構</span><span class="lG">帳號</span>」是<span class="lG">機構</span>用戶專用的知乎<span class="lG">帳號</span>，與知乎社區內原有的個人<span class="lG">帳號</span>獨立並行，其使用者爲有正規資質的組織<span class="lG">機構</span>，包括但不限於科研院所、公益組織、政府機關、媒體、企業等。這不僅是知乎對<span class="lG">機構</span>的「身份認證」，更是涵蓋了內容流通機制、<span class="lG">帳號</span>規範等全套<span class="lG">帳號</span>體系。和個人<span class="lG">帳號</span>一樣，<span class="lG">機構</span><span class="lG">帳號</span>開通不需要任何費用，同時也受社區規範的監督管理，並要遵守相關協議。目前<span class="lG">機構</span><span class="lG">帳號</span>入駐採用邀請制。您可以通過 &nbsp;<a href="http://zhihu.com/org-intro" target="_blank">什麼是「知乎機構帳號」</a>&nbsp;來了解更多<span class="lG">機構</span><span class="lG">帳號</span>信息。&nbsp;</p>
+
+
+
+</div>
+</div>
+</div>
+
+
+</div>
+</div>
