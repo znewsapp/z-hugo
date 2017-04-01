@@ -1,0 +1,137 @@
++++
+date = "2017-04-01T10:00:00"
+title = "讓機器人去冰箱裏拿瓶可樂有多難？"
+titleimage = "https://pic1.zhimg.com/v2-c6fb8781f84c9931bc94b9530831c4c4.jpg"
+ga = 040110
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title">機器人抓取時怎麼定位的？用什麼傳感器來檢測？</h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>忽然想起，自己是《機器視覺與應用》課程助教，所以這題也可以簡單說一些東西。</p>
+<p>首先，我們要了解，機器人領域的視覺（Machine Vision）跟計算機領域（Computer Vision）的視覺有一些不同：機器視覺的目的是<strong>給機器人提供操作物體的信息</strong>。所以，機器視覺的研究大概有這幾塊：</p>
+<ul>
+<li><strong>物體識別（Object Recognition）</strong>：在圖像中檢測到物體類型等，這跟 CV 的研究有很大一部分交叉；</li>
+<li><strong>位姿估計（Pose Estimation）</strong>：計算出物體在攝像機座標系下的位置和姿態，對於機器人而言，需要抓取東西，不僅要知道這是什麼，也需要知道它具體在哪裏；</li>
+<li><strong>相機標定（Camera Calibration）</strong>：因爲上面做的只是計算了物體在相機座標系下的座標，我們還需要確定相機跟機器人的相對位置和姿態，這樣纔可以將物體位姿轉換到機器人位姿。</li>
+</ul>
+<p>當然，我這裏主要是在物體抓取領域的機器視覺；SLAM 等其他領域的就先不講了。</p>
+<p>由於視覺是機器人感知的一塊很重要內容，所以研究也非常多了，我就我瞭解的一些，按照由簡入繁的順序介紹吧：</p>
+<p><strong>0. 相機標定</strong></p>
+<p>這其實屬於比較成熟的領域。由於我們所有物體識別都只是計算物體在相機座標系下的位姿，但是，機器人操作物體需要知道物體在機器人座標系下的位姿。所以，我們先需要對相機的位姿進行標定。</p>
+<p>內參標定就不說了，參照張正友的論文，或者各種標定工具箱；</p>
+<p>外參標定的話，根據相機安裝位置，有兩種方式：</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-76c986e09af64fe2c06dfb1898e8485d_b.jpg" alt="">
+<ul>
+<li>Eye to Hand：相機與機器人極座標系固連，不隨機械臂運動而運動</li>
+<li>Eye in Hand：相機固連在機械臂上，隨機械臂運動而運動</li>
+</ul>
+<p>兩種方式的求解思路都類似，首先是眼在手外（Eye to Hand）</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-9e484dc2ba4fe476046d800297c324d2_b.jpg" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=A_i" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=CX%3DXD" alt="">
+<p>這種結構的求解有很多方法，我這邊給出一個參考文獻：</p>
+<blockquote>Shiu, Yiu Cheung, and Shaheen Ahmad. "Calibration of wrist-mounted robotic sensors by solving homogeneous transform equations of the form AX= XB."<em>ieee Transactions on Robotics and Automation</em> 5.1 (1989): 16-29.</blockquote>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=AX%3DXB" alt="">
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-fedabb98fcc56660d068d7c29b4aec5f_b.jpg" alt="">
+<p><strong>1. 平面物體檢測</strong></p>
+<p>這是目前工業流水線上最常見的場景。目前來看，這一領域對視覺的要求是：快速、精確、穩定。所以，一般是採用最簡單的<strong>邊緣提取</strong>+<strong>邊緣匹配 / 形狀匹配</strong>的方法；而且，爲了提高穩定性、一般會通過主要打光源、採用反差大的背景等手段，減少系統變量。</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-bc2b97bcf16998a6255973be34aba11a_b.jpg" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%28x%2Cy%2C%5Ctheta%29%5ET" alt="">
+<p>另外，這種應用場景一般都是用於處理一種特定工件，相當於只有位姿估計，而沒有物體識別。</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%28x%2Cy%2Cz%2Crx%2Cry%2Crz%29%5ET" alt="">
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-a2ad13ba91917b29517611589fa85c97_b.jpg" alt="">
+<p><strong>2. 有紋理的物體</strong></p>
+<p>機器人視覺領域是最早開始研究有紋理的物體的，如飲料瓶、零食盒等表面帶有豐富紋理的都屬於這一類。</p>
+<p>當然，這些物體也還是可以用類似邊緣提取 + 模板匹配的方法。但是，實際機器人操作過程中，環境會<strong>更加複雜</strong>：光照條件不確定（光照）、物體距離相機距離不確定（尺度）、相機看物體的角度不確定（旋轉、仿射）、甚至是被其他物體遮擋（遮擋）。</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-66dcc122be376f76036ced3247478f26_b.jpg" alt="">
+<p>幸好有一位叫做 Lowe 的大神，提出了一個叫做 SIFT （Scale-invariant feature transform）的超強<strong>局部特徵點</strong>：</p>
+<blockquote>Lowe, David G. "Distinctive image features from scale-invariant keypoints."<em>International journal of computer vision</em> 60.2 (2004): 91-110.</blockquote>
+<p>具體原理可以看上面這篇被引用 4 萬 + 的論文或各種博客，簡單地說，這個方法提取的特徵點只跟物體表面的某部分紋理有關，與光照變化、尺度變化、仿射變換、整個物體無關。</p>
+<p>因此，利用 SIFT 特徵點，可以直接在相機圖像中尋找到與數據庫中相同的特徵點，這樣，就可以確定相機中的物體是什麼東西（<strong>物體識別</strong>）。</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-7273c6591de7498f7c8c8d11a23a3990_b.jpg" alt="">
+<p>對於不會變形的物體，特徵點在物體座標系下的位置是固定的。所以，我們在獲取若干點對之後，就可以直接求解出相機中物體與數據庫中物體之間的單應性矩陣。</p>
+<p>如果我們用深度相機（如 Kinect）或者雙目視覺方法，確定出每個特徵點的 3D 位置。那麼，直接求解這個 PnP 問題，就可以計算出物體在當前相機座標系下的位姿。</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-bcbae1023e3a626597c481540b15058e_b.jpg" alt="">
+<p>&uarr; 這裏就放一個實驗室之前畢業師兄的成果</p>
+<p>當然，實際操作過程中還是有很多細節工作纔可以讓它真正可用的，如：先利用點雲分割和歐氏距離去除背景的影響、選用特徵比較穩定的物體（有時候 SIFT 也會變化）、利用貝葉斯方法加速匹配等。</p>
+<p>而且，除了 SIFT 之外，後來又出了一大堆類似的特徵點，如 SURF、ORB 等。</p>
+<p><strong>3. 無紋理的物體</strong></p>
+<p>好了，有問題的物體容易解決，那麼生活中或者工業裏還有很多物體是沒有紋理的：</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-50c4d480ec55d95790036bc3cfa06a22_b.jpg" alt="">
+<p>我們最容易想到的就是：是否有一種特徵點，可以描述物體形狀，同時具有跟 SIFT 相似的不變性？</p>
+<p>不幸的是，據我瞭解，目前沒有這種特徵點。</p>
+<p>所以，之前一大類方法還是採用基於<strong>模板匹配</strong>的辦法，但是，對匹配的特徵進行了專門選擇（不只是邊緣等簡單特徵）。</p>
+<p>這裏，我介紹一個我們實驗室之前使用和重現過的算法 LineMod：</p>
+<blockquote>Hinterstoisser, Stefan, et al. "Multimodal templates for real-time detection of texture-less objects in heavily cluttered scenes." <em>Computer Vision (ICCV), 2011 IEEE International Conference on</em>. IEEE, 2011.</blockquote>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-d1e188a9de2ec79bcccbdaee18980f1c_b.jpg" alt="">
+<p>簡單而言，這篇論文同時利用了<strong>彩色圖像的圖像梯度</strong>和<strong>深度圖像的表面法向</strong>作爲特徵，與數據庫中的模板進行匹配。</p>
+<p>由於數據庫中的模板是從一個物體的多個視角拍攝後生成的，所以這樣匹配得到的物體位姿只能算是初步估計，並不精確。</p>
+<p>但是，只要有了這個初步估計的物體位姿，我們就可以直接採用 ICP 算法（<a href="https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Iterative_closest_point">Iterative closest point</a>）匹配物體模型與 3D 點雲，從而得到物體在相機座標系下的精確位姿。</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-e9c920f35a2afe96ee25f3ac43ab8cae_b.jpg" alt="">
+<p>當然，這個算法在具體實施過程中還是有很多細節的：如何建立模板、顏色梯度的表示等。另外，這種方法無法應對物體被遮擋的情況。（當然，通過降低匹配閾值，可以應對部分遮擋，但是會造成誤識別）。</p>
+<p>針對部分遮擋的情況，我們實驗室的張博士去年對 LineMod 進行了改進，但由於論文尚未發表，所以就先不過多涉及了。</p>
+<p><strong>4. 深度學習</strong></p>
+<p>這一點，我在另一個問題（<a href="https://www.zhihu.com/question/40333794/answer/153048773">有沒有將深度學習融入機器人領域的嘗試？有哪些難點？ - 知乎</a>）中有介紹。這裏就簡單說一下：</p>
+<p>由於深度學習在計算機視覺領域得到了非常好的效果，我們做機器人的自然也會嘗試把 DL 用到機器人的物體識別中。</p>
+<p>首先，對於物體識別，這個就可以照搬 DL 的研究成果了，各種 CNN 拿過來用就好了。<a href="https://www.zhihu.com/question/40333794/answer/153048773">有沒有將深度學習融入機器人領域的嘗試？有哪些難點？ - 知乎</a> 這個回答中，我提到 2016 年的『亞馬遜抓取大賽』中，很多隊伍都採用了 DL 作爲物體識別算法。</p>
+<p>然而， 在這個比賽中，雖然很多人採用 DL 進行物體識別，但在物體位姿估計方面都還是使用比較簡單、或者傳統的算法。似乎並未廣泛採用 DL。 如 @周博磊 所說，一般是採用 semantic segmentation network 在彩色圖像上進行物體分割，之後，將分割出的部分點雲與物體 3D 模型進行 ICP 匹配。</p>
+<p>當然，直接用神經網絡做位姿估計的工作也是有的，如這篇：</p>
+<blockquote>Doumanoglou, Andreas, et al. "Recovering 6d object pose and predicting next-best-view in the crowd." <em>Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition</em>. 2016.</blockquote>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-efe110dc07d9297b3c98be3eb155658f_b.jpg" alt="">
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-35559d5738d8f015b5557ec72945deb0_b.jpg" alt="">
+<p>它的方法大概是這樣：對於一個物體，取很多小塊 RGB-D 數據（只關心一個 patch，用局部特徵可以應對遮擋）；每小塊有一個座標（相對於物體座標系）；然後，首先用一個自編碼器對數據進行降維；之後，用將降維後的特徵用於訓練 Hough Forest。</p>
+<p><strong>5. 與任務 / 運動規劃結合</strong></p>
+<p>這部分也是比較有意思的研究內容，由於機器視覺的目的是給機器人操作物體提供信息，所以，並不限於相機中的物體識別與定位，往往需要跟機器人的其他模塊相結合。</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-30e2e804d141a53877707a063ecd200b_b.jpg" alt="">
+<p>我們讓機器人從冰箱中拿一瓶『雪碧』，但是這個 『雪碧』 被『美年達』擋住了。</p>
+<p>我們人類的做法是這樣的：先把 『美年達』 移開，再去取 『雪碧』 。</p>
+<p>所以，對於機器人來說，它需要先通過視覺確定雪碧在『美年達』後面，同時，還需要確定『美年達』這個東西是可以移開的，而不是冰箱門之類固定不可拿開的物體。</p>
+<p>當然，將視覺跟機器人結合後，會引出其他很多好玩的新東西。由於不是我自己的研究方向，所以也就不再班門弄斧了。</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+
+
+
+<div class="question">
+<h2 class="question-title"></h2>
+
+<div class="answer">
+
+<div class="content">
+<p>更多討論，查看<span class="s1">&nbsp;</span>知乎圓桌<span class="s1">&nbsp;&middot;&nbsp;<a class="internal" href="https://www.zhihu.com/roundtable/jiqiganzhi?utm_campaign=official_account&amp;utm_source=zhihudaily&amp;utm_medium=link&amp;utm_content=roundtable">人工智能 &middot; 機器感知</a></span></p>
+</div>
+</div>
+
+
+</div>
+
+
+</div>
+</div>
