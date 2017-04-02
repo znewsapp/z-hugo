@@ -1,0 +1,71 @@
++++
+date = "2017-04-02T14:00:00"
+title = "所謂的「扁平化風潮」，顯示器跟不上，設計師再牛也不行"
+titleimage = "https://pic4.zhimg.com/v2-a07ef9c8fbcac631625975f6e3ed0f9b.jpg"
+ga = 040214
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title">爲什麼很多東西不能超前造出來？</h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>別的製造業不是很瞭解，但是我可以回答下圖形界面扁平化爲什麼不能超前實現。</p>
+<p>背後的原因是顯示器的能力問題，包括分辨率和顏色數。</p>
+<p>在圖形界面設計風格上軟件業兜了個大圈又回到了遠點</p>
+<p>看看這個 DOS 下的 微軟的 Editor，是不是很扁平，沒有邊框沒有陰影沒有圓角，非常平。</p>
+<p>但這不是微軟刻意這樣的，而是當時的設備的能力限制</p>
+<p>雖然軟件界面上寫着，Copyright 1995 實際上這個軟件應該是 90 年以前就有了</p>
+<p>那時只能用 16 色甚至只有灰度的顯示器，如果要照顧單色顯示器達到一致的顯示效果，那麼只有黑(0,0,0) 白(255,255,255) 深灰(128,128,128) 淺灰(192,192,192)四個顏色可以用，括號裏是 RGB 值。而且是字符界面，而非圖形界面，字符界面只能用 25 行 80 列的字符來拼界面，所以只能這樣了。</p>
+<p><a href="https://upload.wikimedia.org/wikipedia/en/6/66/MSDOS_Edit.png">https://upload.wikimedia.org/wikipedia/en/6/66/MSDOS_Edit.png</a></p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-873e32b67aeb51438d25658977ab65c9_b.jpg" alt="">
+<p>過了幾年，少量彩色高分辨率顯示器普及了，顏色數最高到 256 色，分辨率達到 VGA（640x480）。爲了照顧部分 16 色顯示器，所以 Windows 3.1 還是主要用 16 種顏色。由於分辨率和顏色數增加，設計師們被壓力多年的設計慾望得到釋放，迫不及待地用兩條不同顏色的線條來裝飾按鈕，正所謂 3DButton，按下去還有凹陷效果，其實就是換了邊框顏色。</p>
+<p><a href="https://upload.wikimedia.org/wikipedia/en/7/73/Windows_3.11_workspace.png">https://upload.wikimedia.org/wikipedia/en/7/73/Windows_3.11_workspace.png</a></p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-d52606103a5891b27f0ff08b8d6803ee_b.jpg" alt="">
+<p>這時候你會發現，所有界面都是直角的，並不是設計師們領悟了 Metro 風格的精髓而是，分辨率太低，導致畫出的圓角看起來是鋸齒狀的，如下圖</p>
+<p><a href="http://a.jstxdm.com/d/file/content/2017/01/586efcf072eeb.png">http://a.jstxdm.com/d/file/content/2017/01/586efcf072eeb.png</a></p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-22e786d0fcb4eb846b61685188a89ecb_b.jpg" alt="">
+<p>然後時間到了 90 年代末左右，顯示器已經發展到了 真彩色（1600 萬色），分辨率至少有 1024x768。 設計師們發現終於不用在 16*16 的小框框裏用 16 色逐點畫圖標了，可以畫點有真實感的圖標了，於是</p>
+<p>圖標從這樣</p>
+<p><a href="http://www.alixixi.cn/upload/image/design/2010-8/201082915244140831.jpg">http://www.alixixi.cn/upload/image/design/2010-8/201082915244140831.jpg</a></p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-550231966e4f2ee6562af806314f8853_b.jpg" alt="">
+<p>變成了這樣：</p>
+<p><a href="http://img.zcool.cn/community/0331941554c76fe00000158fcd21992.jpg">http://img.zcool.cn/community/0331941554c76fe00000158fcd21992.jpg</a></p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-c0dbc7a7d14d0c9b791e63141e62723d_b.jpg" alt="">
+<p>但是設計師的慾望還是被壓抑住一大半，因爲圖標只能到 32x32，如果用 48x48 則太大了，需要等後來 1080p 的顯示器出現。</p>
+<p>那麼這時候爲什麼沒有出現扁平化設計呢？因爲分辨率還是不夠，在 iPhone4 出現視網膜屏幕之前，顯示器的 DPI 都很低，一般在 96DPI 到 125DPI 之間，而視網膜屏要 300DPI 以上。</p>
+<p>由於扁平化設計不可能都用直角邊，不可能只用橫豎兩種線條，必然有斜線和曲線，但是分辨率不達到視網膜水平，斜線和曲線就會有鋸齒，即使採用了抗鋸齒算法也還是能看到邊緣模糊。</p>
+<p>比如：上圖那些彩色圖標，邊緣都是不平滑的。具體看下圖，雖然有網絡圖片有損壓縮的問題，但是可以看到圓角有鋸齒狀。</p>
+<p><a href="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTFF5zrW5gD9oQWeJmuBAXKteyO00gBHbZ6GO2NLgib4oj5_el2">https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTFF5zrW5gD9oQWeJmuBAXKteyO00gBHbZ6GO2NLgib4oj5_el2</a></p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-0fdbd668576bdbbe37203c6829185dfd_b.jpg" alt="">
+<p>扁平化風潮是從 iOS 7 開始的，iOS7 是 2013 年底發佈的，同時發佈的還有 iPhone5s，那時 iPhone4 以前的手機基本淘汰差不多了，視網膜屏幕基本普及，至少在 iOS 設備裏普及了。</p>
+<p>扁平化的界面設計風格是隻能在高分辨率屏幕普及後纔有可能出來。</p>
+<p>所以軟件 UI 不可能一開始就是扁平化設計，受顯示器能力制約，那麼高分辨率顯示器能否超前造出來呢，那個受更多顯示器製造工藝的限制，即使你超前造出來了，那麼高分辨率那麼多顏色，CPU 做圖形渲染根本算不過來，直到今天如果沒有 GPU 的圖形加速，純靠 CPU 根本無法支持 1080p 以上的分辨率，而像樣的 PC GPU 要到 2000 年以後纔有，成熟的手機的 GPU 則要等到 2008 年以後。</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div>
