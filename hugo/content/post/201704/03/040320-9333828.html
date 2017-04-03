@@ -1,0 +1,87 @@
++++
+date = "2017-04-03T20:00:00"
+title = "機器人的定位技術，順手也能解救路癡的人類"
+titleimage = "https://pic4.zhimg.com/v2-9448850f98dbd8f8d970323cfbe19a9b.jpg"
+ga = 040320
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title">機器人能通過觀察環境明白自己在哪嗎？機器人定位的方式對解決「人類路癡」問題有幫助嗎？</h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>各位似乎都直接把定位的解決方案歸結爲 SLAM 了，作爲一個比較熟悉視覺 SLAM 的菜雞，我認爲 SLAM 僅僅是其中的一個技術點，講講不同的吧。先聲明，這篇回答主要泛泛而談，暫不涉及任何技術細節，如有需要歡迎深入探討。</p>
+<p>題主在題中問到的是機器人如何通過視頻序列來給自己定位，@周博磊 大神的答案已經比較完善了，不僅可以通過視覺 SLAM，還可以通過類似於場景識別，記憶全局定位的方式來處理。</p>
+<p>而題目中所問的&ldquo;機器人定位&rdquo;這個關鍵詞，其實是個挺大的 topic，因此在這個答案中，我想順勢把機器人&ldquo;定位&rdquo;這個問題稍微展開一下，希望能夠拋磚引玉。</p>
+<p>定位是機器人學時至今日最大的難題（我認爲沒有之一）。主要原因在於，沒有任何一種傳感器能夠保證全天候，高精度地運行（具體每個傳感器的特性就不展開來說了，有需要再討論）。而由於人類主要依賴於視覺系統進行定位（其實還包括慣性感知系統），所以長期以來 AI 界對定位的解決方案主要從視覺方面進行切入。另一方面，機器人學方向的學者大多出身於機械方向，本着最實用穩定的原則，更多地依賴於視覺之外的其它高精度傳感器，如 RTK-GPS, 激光雷達，超聲波等。只是近年來由於視覺傳感器低成本高信息量的特性，Robot Vision 方向開始越發趨向火熱，Sensor Fusion 的方式更是獲得了廣泛的認同。</p>
+<p>簡單來說，定位可以分爲<strong>絕對定位</strong>與<strong>相對定位</strong>兩種方式。絕對定位直接獲得世界座標系的位置，相對定位假設起始點的位置爲原點，之後的定位全部相對於原點的座標系。</p>
+<p><strong>絕對定位</strong>需要地圖。僅僅告訴機器人一個絕對的世界座標，它是無法自主移動導航的，因爲它不知道什麼地方可以走，什麼地方是障礙物。</p>
+<p>而地圖如何構建，本身就是一件複雜且困難的事情。（此處省略十萬字）</p>
+<p><strong>相對定位</strong>需要至少一個定位點的絕對座標。</p>
+<p>IMU，Camera，Lidar 都是相對定位的重要傳感器。它們通過在連續兩個時刻獲取感知數據，然後關聯起來，計算出這兩個時刻的相對位移和旋轉。通過不斷地迭代這個過程，可以獲得最新一個時刻，相對於起始點的位移與旋轉。在這個過程中，數據關聯，pose 計算等等都非常，非常容易產生誤差，且誤差的分佈很難估計！</p>
+<p>&nbsp;</p>
+<p>講真，對於題主所問的&ldquo;是否對路癡有幫助&rdquo;這一點，我的答案絕對是 YES。簡單舉例，在 kitti 的 visual odometry 榜單上，從每 100m 到 800m 的平均定位誤差如果超過 5%，就得排在 20 名以後了，這還只是已經公開的評測結果。</p>
+<p>這是什麼概念呢？機器人每向前走 1000m，自己認爲的前進距離爲 950-1050m（中間還有若干旋轉），試問哪一個人能做到呢？作爲一個曾經的無線電測向一級運動員，長期奔跑於毫無路標的野地中，深知失去了先驗信息與全局定位 + 地圖，人類自身的定位能力是多麼薄弱。很多時候在山裏轉了一圈，還以爲回到了原地（就算有指北針也是搞笑好嘛！！），可是最後覆盤的時候發現是在幾公里開外&hellip;&hellip;何況，現在的機器人視覺 SLAM 還是有閉環檢測能力（loop closure）的，就是，走了一圈發現自己回到了原地，就會提醒自己，把之前的定位誤差全攤平了&hellip;&hellip;人類，這方面其實挺弱的&hellip;&hellip;</p>
+<p>因此結論是：機器人定位的方式一定可以解決&ldquo;路癡&rdquo;的問題。即使不是路癡（我一向對自己的方向感十分自信，但在野外的時候，真心真心做不到），目前的定位能力也一定優於人類本身，請相信科技的力量~~~~~</p>
+</div>
+</div>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>SLAM 是做定位的傳統方法，網上可以搜到很多相關文獻。缺點很明顯，SLAM 本質是個 matching 的問題，需要存儲大量的 dense frame 的數據，以及進行大量的特徵匹配(feature matching)，以及特徵跟蹤(feature tracking)。想了解 SLAM 的最新進展的可以直接拉到文章最下面的鏈接。</p>
+<p><strong>這裏提兩個我所知道的比較有意思的基於深度學習的 visual localization 的工作，</strong>可能這個回答跟題主的問題本身關係不大，機器人主要還是在用 SLAM 進行定位。</p>
+<p><strong>PoseNet:</strong><a href="https://link.zhihu.com/?target=http%3A//mi.eng.cam.ac.uk/projects/relocalisation/">Visual Localisation</a><a href="https://link.zhihu.com/?target=http%3A//mi.eng.cam.ac.uk/projects/relocalisation/">Visual Localisation</a>。劍橋大學 Cipolla 組在 ICCV&lsquo;15 的一個工作，通過神經網絡來直接回歸相機的 6-DOF pose。主要做的是街道或者建築物的定位，就是拍張街道圖，估計拍攝者的當前 pose（位置和拍攝方向）。</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-324206fa81fa2adf88d3494972177ea4_b.jpg" alt="">
+<p>這裏訓練數據採集有點意思，是直接用手持手機視頻去拍建築，然後從手機導出來的視頻直接做 SfM(Structure from Motion)， 這樣每個 frame 的 pose 就可以從 SfM 的結果知道了，然後再用神經網絡去迴歸擬合這個 pose，也算是 unsupervised learning 了。idea 本質我覺得是從 3D 點雲裏面去匹配 2D 的圖片，作者利用了一個神經網絡來做這事兒，這樣就使得 testing 時候的匹配直接轉化成一個神經網絡的 feedforward pass，速度極快，所以這個框架其實可以擴展到很多機器人的應用之中去。</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-bfc20c2c80424226e3c4d7610bcf6925_b.jpg" alt="">
+<p><strong>PlaNet</strong> (<a href="https://link.zhihu.com/?target=https%3A//static.googleusercontent.com/media/research.google.com/en//pubs/archive/45488.pdf">https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/45488.pdf</a>)。Google 在 ECCV&rsquo;16 發表的一個工作，做的是一個圖片定位網絡。非常虎的是他們用到了 9 千萬張 geo-tagged images，然後把全球的地圖用一種 adaptive split 的辦法分成 26263 個格子（類），然後直接暴力地花了 2.5 個月訓練一個 inception 分類網絡。對比了之前基於 image retrieval 的 Im2GPS（<a href="https://link.zhihu.com/?target=http%3A//graphics.cs.cmu.edu/projects/im2gps/">IM2GPS: estimating geographic information from a single image</a>）的結果，好出一大截。然後玩 GeoGuessr 遊戲，也比人好很多。說到這裏，GeoGuessr(<a href="https://link.zhihu.com/?target=https%3A//geoguessr.com/">GeoGuessr - Let&amp;amp;#x27;s explore the world!</a>)這個遊戲本身含蠻有意思，不知不覺就玩了半小時@.@. 。只有 Google 才能訓練這麼虎的定位網絡，不得不感慨在這個深度學習的時代，數據和計算資源爲王。。。</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-5cb5e020efe8f2a81e72d131144d0f21_b.jpg" alt="">
+<p>最後再分享個我前同事 Tomas（這人好像也是一些同學的男神？）寫的一個博客文章, 很好地討論了 SLAM 相關的最新進展和文獻：<a href="https://link.zhihu.com/?target=http%3A//www.computervisionblog.com/2016/01/why-slam-matters-future-of-real-time.html">The Future of Real-Time SLAM and Deep Learning vs SLAM</a></p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+
+
+
+<div class="question">
+<h2 class="question-title"></h2>
+
+<div class="answer">
+
+<div class="content">
+<p>更多討論，查看<span class="s1">&nbsp;</span>知乎圓桌<span class="s1">&nbsp;&middot;&nbsp;<a class="internal" href="https://www.zhihu.com/roundtable/jiqiganzhi?utm_campaign=official_account&amp;utm_source=zhihudaily&amp;utm_medium=link&amp;utm_content=roundtable">人工智能 &middot; 機器感知</a></span></p>
+</div>
+</div>
+
+
+</div>
+
+
+</div>
+</div>
