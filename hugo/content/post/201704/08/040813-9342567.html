@@ -1,0 +1,72 @@
++++
+date = "2017-04-08T13:00:00"
+title = "零線中沒有電壓但有電流，這用歐姆定理說不通啊"
+titleimage = "https://pic4.zhimg.com/v2-f49ed9b16de522dbc99b50e47265d7f3.jpg"
+ga = 040813
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title">爲什麼零線上沒有電？</h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>這是因爲零線的起始端接了地，所以零線的電壓十分接近大地的零電位。</p>
+<p>由於零線線路也存在電阻，因此零線電流流過後會產生壓降，故而零線還是有一點電壓的。</p>
+<p>當零線斷裂後，由於用電設備在三相上分佈並不均勻，因此斷裂點後部的零線電壓會上升，嚴重時會上升到相電壓。</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-a36427eb4d9b3e4485195c0aec9b0692_b.jpg" alt="">
+<p>這也是規範中不建議使用 TN-C 接地系統，以及零線需要重複接地的原因。</p>
+<p>不過，題主十之八九指的不是零線，而是 TN-S 或者 TN--C-S 下的 N 線。</p>
+<p>看了評論區的評論，再看看題主的問題，我突然意識到，知友們對零線是否有電的認知存在誤區。</p>
+<p>其實這個問題在我以前的回答貼中已經多次談到了。</p>
+<p><strong>我們大家都讀過歐姆定律，心中留下這樣的印象：一隻電阻，如果它兩端有電壓的話，那麼它一定有電流流過。對於零線，它的電壓爲零，那麼按歐姆定律，零線中就一定沒有電流。但是零線中不但有電流，而且還很大？這不是違反歐姆定律嗎？</strong></p>
+<p>這就是知友們對零線上爲何有電的認識誤區之所在。</p>
+<p>現在，我們來把這個問題用中學的知識來解釋一番。如下：</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-62814852563eb37a39688b5203daf042_b.jpg" alt="">
+<p>我們先求圖 1 的總電阻：</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=R%3DR_1%2BR_2%2BR_3%3D10%2B50%2B100%3D160%5COmega+" alt="">
+<p>我們再求圖 1 的總電流：</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=I%3D%5Cfrac%7BE%7D%7BR%7D+%3D%5Cfrac%7B220%7D%7B160%7D+%3D1.375A" alt="">
+<p>於是，R1 兩端的電壓</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=U_%7BR1%7D+%3DIR_%7B1%7D+%3D1.375%5Ctimes+10%3D13.75V" alt="">
+<p>這裏的電壓 U 又叫做路端電壓。</p>
+<p>現在，我們來看圖 2。</p>
+<p>圖 2 中，我們把圖 1 電路分成 4 個節點，分別是 A 點、B 點、C 點和 D 點。我們來求一求這四個節點的電壓。</p>
+<p>爲了求節點電壓，必須先確定電路中零電位的參考點。圖 2 中，我們定義 D 點爲零電位點。於是：</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=U_A%3DU_%7BR1%7D%2BU_%7BR2%7D%2BU_%7BR3%7D%3D13.75%2B68.75%2B137.5%3D220V" alt="">
+<p>這就是各個節點的電壓。</p>
+<p><strong>注意：節點 D 的電壓爲零，但是流過節點 D 的電流是 1.375A！！！</strong></p>
+<p>我們來看下圖：</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/e703d2d28165304a8e01fbda9bd2a495_b.jpg" alt="">
+<p>這張圖是國際電工委員會 IEC 的標準 IEC60364 中對 TN-C 接地系統的權威解釋圖。圖中的 PEN 線就是零線。</p>
+<p>我們看到，零線的起始端（左側）是接地的，所以零線起始端的電壓爲零。儘管零線也存在線路電阻，且零線的頭尾電壓也有偏差，但爲了討論方便起見，我們認爲零線的電壓爲零。</p>
+<p>那麼是不是零線的電壓爲零，那麼零線就應該沒有電流流過？想想我們剛纔計算 D 點的電壓和電流就知道了：</p>
+<p><strong>儘管零線的電壓爲零，但零線的電流不一定爲零，甚至會取很大的值。</strong></p>
+<p>那麼原因是什麼？原因是：<strong>零線電壓是節點電壓，不能用歐姆定律求得的電阻電壓來理解它！</strong></p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div>
