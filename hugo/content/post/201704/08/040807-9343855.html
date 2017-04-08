@@ -1,0 +1,141 @@
++++
+date = "2017-04-08T07:00:00"
+title = "用這款「教學軟件」，我們來講講計算器的工作原理"
+titleimage = "https://pic4.zhimg.com/v2-94ef9172f8a3afff3847f340cd8010d7.jpg"
+ga = 040807
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title">計算器計算出「1+1=2」的整個計算過程是怎樣的？爲什麼能秒算？</h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>【強答注意】</p>
+<p>這樣可愛的問題，用一款教學軟件來回答特別合適(&bull;̀&omega;&bull;́)✧</p>
+<p>首先當然是介紹一下軟件裏的元件啦</p>
+<p>====基礎元件====</p>
+<p>【電線】</p>
+<p>回答裏將用到白色藍色兩種電線，你需要用它搭成所需電路的基本結構。</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-26509d9ac922c13ad274f0ae5ec84e04_b.jpg" alt="">
+<p>【開關】</p>
+<p>顧名思義，它有兩種狀態，分別表示開和關。</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-2312ae67c29123954a8f8f793e30f422_b.jpg" alt="">
+<p>（關上的開關）</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-37ce110e53bfc22a77389ef47f67d96e_b.jpg" alt="">
+<p>（打開的開關）</p>
+<p>【電路信號】</p>
+<p>將電路信號鋪在電線上來表示接通電線。它也有兩種狀態，熄滅或激活，我們可以稱之爲&ldquo;0&rdquo;和&ldquo;1&rdquo;。</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-9a7ec4c8a261bb096783dd5bd3fa1168_b.jpg" alt="">
+<p>（熄滅的電路）</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-cfca48847475f1771113c7cde70ef027_b.jpg" alt="">
+<p>（激活的電路）</p>
+<p>【指示燈】</p>
+<p>當它被連接到激活的電路時，會被點亮。用於使電路狀態更便於觀測。</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-5f97e8cc9c9711993e00e10de4d1a4cb_b.jpg" alt="">
+<p>（被點亮的指示燈）</p>
+<p>【信號源】</p>
+<p>它會使相連的電路保持激活狀態。但是當它被一條激活的電路指向時，它會熄滅。</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-59cc4e81f066a92365d86d295d9592a2_b.jpg" alt="">
+<p>【二極管】</p>
+<p>它使電路信號只能單向通過。</p>
+<p>（暫缺圖）</p>
+<p>====&ldquo;與&rdquo;，&ldquo;或&rdquo;，&ldquo;非&rdquo;====</p>
+<p>要使電路能夠完成一些複雜的算法，當然不能只是接通 0 和 1，還要能對他們進行一些運算。與或非這三個門就是門電路的基礎。</p>
+<p>【非門】</p>
+<p>非即是輸入與輸出相反，需要一個輸入端一個輸出端。</p>
+<p>在學習軟件中我們可以用這個結構表示：</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-e4e54e4061430f1e2d5ea7db85455ea5_b.jpg" alt="">
+<p>（右側開關輸入，左側輸出）</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-dfd91b61fac2ec309885c8e1ea9e5a4f_b.jpg" alt="">
+<p>（右側開關開啓時的狀態）</p>
+<p>可以看到，非門這種結構：</p>
+<p>輸入 0，輸出 1。</p>
+<p>輸入 1，輸出 0。</p>
+<p>【或門】</p>
+<p>或即是皆可，或門有兩個輸入端，一個輸出端。只要有任意一個輸入端被激活，輸出端便被激活。</p>
+<p>我們用這種結構表示或門：</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-67c605753c9c86b62a22056a4ac3828e_b.jpg" alt="">
+<p>（下方爲輸入端，上方輸出）</p>
+<p>或門一共有 4 種狀態：</p>
+<p>輸入 0，0。輸出 0。</p>
+<p>輸入 0，1。輸出 1。</p>
+<p>輸入 1，0。輸出 1。</p>
+<p>輸入 1，1。輸出 1。</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-7d620d4b1de6445983a6f6b8c90b9750_b.jpg" alt="">
+<p>（或門的四種狀態）</p>
+<p>【與門】</p>
+<p>與門和或門同樣需要兩個輸入端，有一個輸出端。</p>
+<p>我們這樣表示它:</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-5ef58551c3f1947a2a0a023888c3323b_b.jpg" alt="">
+<p>（其實它是由三個非門與一個或門組成的）</p>
+<p>它同樣也有四種狀態：</p>
+<p>輸入 0，0。輸出 0。</p>
+<p>輸入 0，1。輸出 0。</p>
+<p>輸入 1，0。輸出 0。</p>
+<p>輸入 1，1。輸出 1。</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-72f1d883bc1e1d7efd6339c825cfb5ba_b.jpg" alt="">
+<p>（與門的四種狀態）</p>
+<p>====半加器====</p>
+<p>用 2 進製表示的話，0 是 0，1 是 1，2 是 10。</p>
+<p>我們想要 1+1=2，其實可以理解爲我們希望：</p>
+<p>輸入 1，1。得到 10。</p>
+<p>因爲軟件中一個輸出端只能表示兩種狀態，所以我們更改一下，讓它有兩個有順序區分的輸出，稱爲低位與進位。變成:</p>
+<p>輸入 1，1。得到 1，0。</p>
+<p>當然我們希望它在各個情況下都有正確的表達，所以是：</p>
+<p>輸入 0，0。輸出 0，0。</p>
+<p>輸入 0，1。輸出 0，1。</p>
+<p>輸入 1，0。輸出 0，1。</p>
+<p>輸入 1，1。輸出 1，0。</p>
+<p>那麼我們就開始構造我們的加法器把(&bull;̀&omega;&bull;́)✧</p>
+<p>答主注意到其中&ldquo;輸入 0，1。輸出 0，1。輸入 1，0。輸出 0，1。&rdquo;單看低位的輸出，很像是或門的結構。</p>
+<p>那就先搭一個大大的或門吧！</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-0ff27b628d8bd6e583767f150426c37c_b.jpg" alt="">
+<p>然後只看進位的話，四種情況都很像與門。</p>
+<p>那就接出一條與門吧(&bull;̀&omega;&bull;́)✧</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-b140bc04b7e23761c4dc5fea6b22fea2_b.jpg" alt="">
+<p>（藍線接出的與門）</p>
+<p>可是這時的計算並不正確，當輸入&ldquo;0，0&rdquo;，&ldquo;0，1&rdquo;與&ldquo;1，0&rdquo;時，它會正確地反饋&ldquo;0，0&rdquo;，&ldquo;0，1&rdquo;和&ldquo;0，1&rdquo;。</p>
+<p>輸入&ldquo;1，1&rdquo;時，輸出會是&ldquo;1，1&rdquo;。</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-60897cf9cb240f18623051dcb427fbf4_b.jpg" alt="">
+<p>那就讓進位爲 1 時，低位變成 0 唄！</p>
+<p>於是在藍線後接一個非門，再與白線併入與門。這樣只要進位爲 1，經非門後的進位將阻止與門的激活。</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-5c7d0ecce056ecfb48b6413a64e80f97_b.jpg" alt="">
+<p>最後再將藍線接出，作爲最終的進位，第二次運算後的白線接出，作爲最終的低位。</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-6d627fa17c7ae4506c97a09b15bf8736_b.jpg" alt="">
+<p>然後在四種輸入狀態下驗證：</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-c653fdfdb5c3b7ece18d30cf62dbe47b_b.jpg" alt="">
+<p>雖然輸出端有點遠，但是仔細看的話，會發現在四種輸入狀態下，結果都是完全正確的！</p>
+<p>那這個巨大的未優化的半加器就完成啦！</p>
+<p>(&bull;̀&omega;&bull;́)✧</p>
+<p>如果我們在這個基礎上，將低位與上一個半加器的進位進行一次加法（0+0 或 0+1 或 1+0 或 1+1），結果的進位再與自身的進位相加（0+0 或 0+1 或 1+0，不存在 1+1），並導出進位。他就變成了一個可堆疊的全加器！</p>
+<p>當然在結構上進行優化的話，可以讓它體積更小，更易堆疊。</p>
+<p>如果你有足夠的耐力和腦力，搭出 3000 萬個門電路單元，附加上儲存單元，也許你也可以搞出一套操作系統，去算算三體的太陽到底會怎麼運動。</p>
+<p>(&bull;̀&omega;&bull;́)✧</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div>
