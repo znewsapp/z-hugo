@@ -1,0 +1,80 @@
++++
+date = "2017-04-26T08:00:00"
+title = "不同的閃存都有什麼區別？"
+titleimage = "https://pic4.zhimg.com/v2-d3869a4f82d79cba530cc091090e55cf.jpg"
+ga = 042608
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+<div class="question">
+<h2 class="question-title">淺談 SSD，eMMC，UFS</h2>
+<div class="answer">
+
+
+
+<div class="content">
+<p>這個時候發這篇文章難免有蹭熱點的嫌疑^但作爲一個計算機體系結構的研究生，在這些名詞滿天飛的時候，我的好奇心是抑制不住的，想一探這幾樣技術的究竟。<strong>本文不對某一特定事件進行點評，僅從技術角度分析對比一下這三種技術。</strong>就算是當做自己的技術儲備 + 科普了<strong>。</strong></p>
+<p>首先，這三種技術都是屬於閃存（Flash Memory）的不同種類，區別主要在於控制器，接口標準以及更底層的 Flash 芯片標準。它們在電腦 / 手機等系統中的主要作用是作爲存儲設備（storage）/ 文件系統。（注意它們雖然叫也 memory，但和運存的 memory 是完全兩回事兒）</p>
+<p>以前電腦系統中的主要的存儲設備是機械式磁盤，訪問速度慢，體積龐大，功耗高，而且對震動非常敏感，因此很難用於小型化的移動設備裏。Flash Memory 出現後，由於沒有移動部件，幾乎完美解決了以上機械硬盤的各種問題，因此很快在各種移動設備中獲得廣泛應用。（當然，Flash 的寫操作和壽命的問題也比較複雜，但這不是本文的討論重點） 而且基於 Flash 的 SSD 硬盤性能普遍好於傳統機械硬盤，因此也成爲了 PC/ 服務器的主流存儲設備。</p>
+<p>那麼既然 SSD，eMMC，UFS 都是 Flash，它們的區別在哪呢？</p>
+<p>想要了解它們的區別，首先要了解他們解決的問題。</p>
+<p>SSD 主要作用是取代 PC/ 服務器 上的 HDD 硬盤，它需要：</p>
+<ul>
+<li>超大容量（百 GB~TB 級別）</li>
+<li>極高的並行性以提高性能</li>
+<li>對功耗，體積等要求並不敏感</li>
+<li>兼容已有接口技術 （SATA，PCI 等）</li>
+</ul>
+<p>而 eMMC 和 UFS 主要都是針對移動設備發明的，它們需要：</p>
+<ul>
+<li>適當的容量</li>
+<li>適當的性能</li>
+<li>對功耗 ，體積的要求極其敏感</li>
+<li>僅需遵循一定的接口標準 （稍後解釋）</li>
+</ul>
+<p>爲了直觀感受一下區別，我剛纔特意找來了一個 PCIe 的 SSD，如下圖，上面黑色的芯片就是 Flash：</p>
+<img class="content-image" src="https://pic3.zhimg.com/v2-4958dd9767acd849bd3da262ffb9b3a2_b.jpg" alt="">
+<p>我又拆了一個手機，它裏面的 Flash 芯片是這樣的（中間那個最大的黑色芯片）：</p>
+<img class="content-image" src="https://pic1.zhimg.com/v2-e1234132e3704779f8e88ac69593593c_b.jpg" alt="">
+<p>看到區別了嗎？ （之前寫的文章各種被人盜轉，只好給圖打碼了，見諒）</p>
+<p>一個 SSD，爲了達到高並行高性能的要求，<strong>有多個 Flash 芯片</strong>，這樣就可以在每個芯片上進行相互獨立的讀寫操作，以並行性來提高硬盤吞吐量，還可以增加冗餘備份。而手機中爲了節省空間和功耗，通常只有一片密度較高的 Flash 芯片。</p>
+<p>管理一個 Flash 芯片，和管理多個 Flash 芯片，策略肯定是不一樣的，因此它們的控制器 （controller）就完全不同了。而且 PC 上需要兼容 SATA 或 PCIe 或 m2 接口，這樣你電腦硬盤壞了的時候，可以拔下來換上另一塊同樣接口的硬盤能照樣用。而手機上的 Flash 芯片大多是直接焊在主板上的，基本上不需要考慮更換的問題，所以只要遵從一個特定標準，能和 CPU 正常通訊就好了。因此接口的不同也是 SSD 和 eMMC，UFS 的重要區別之一。</p>
+<p>好了，SSD 和 （eMMC， UFS）的區別說完了，下面說一下可能很多人會關心的 eMMC 和 UFS 的區別了。</p>
+<p>eMMC 和 UFS 都是面向移動端 Flash 的標準，區別在於，二者的接口技術大相徑庭。</p>
+<p>eMMC 是一個起源較早的技術，全稱叫 embedded MultiMedia Card，爲什麼單單 e 是小寫呢？ 因爲先有的 MMC 啊。所謂 MMC，大家可能沒聽過但肯定都見過，通俗來說就是所謂的內存卡。</p>
+<img class="content-image" src="https://pic2.zhimg.com/v2-2b971ab56807571163e88189ec048bf9_b.jpg" alt="">
+<p>MMC 前面加了個 embedded，主要就是爲了突出現在這個設備是 embedded 在電路板上。eMMC 和 MMC 一樣，沿用了 8 bit 的並行接口。在傳輸速率不高的時代，這個接口夠用了。但隨着設備對接口的帶寬要求越來越高，想把並行接口速率提高也越來越難。eMMC 的最新 5.1 標準理論最高值最高可以達到 400 MB/s，再往上提高頻率也不是不行，但就未必划算了。</p>
+<p>好在這幾年接口串行化大潮轟轟烈烈。所謂接口串行化，簡單來說就是工程師們發現：與其用一個比較寬的並行接口以較低的速率傳輸，用一個串行接口用非常高的速率傳輸似乎更划算一些（帶寬，功率，成本各方面綜合考慮）。所以這個時候 UFS 應運而生，用高速串行接口取代了並行接口，而且還是全雙工的，也就是可以讀寫同時進行。所以相比 eMMC， UFS 的理論性能提高不少，甚至可以達到一些 SSD 的水準。可以在下圖直觀感受一下，藍色的是 UFS，紅色的是 eMMC，當然是越高越好：</p>
+<img class="content-image" src="https://pic1.zhimg.com/v2-ba48837215d491d335c4f29a30c049dc_b.png" alt="">
+<p>（圖片引自[1] Micron 的文檔)</p>
+<p>最後，大家可能比較關心的一個問題：我設計好了一個使用 UFS 的系統，然後悲傷地發現沒有 UFS 可以用了，那能不能直接換成 eMMC 呢？</p>
+<p>答案是不行的，因爲 UFS 和 eMMC 接口完全不兼容，控制器也不可通用。下面兩個示意圖分別是 eMMC 和 UFS 的接口（圖片引自[2][3] JEDEC 標準）。</p>
+<img class="content-image" src="https://pic3.zhimg.com/v2-613f7f6da5d7435ed67b2c82a3b0a09a_b.png" alt="">
+<img class="content-image" src="https://pic4.zhimg.com/v2-63ac626aadf5012ea7a18cb1d72cd017_b.png" alt="">
+<p>即使是示意圖，也能看出兩者的明顯差別。eMMC 有兩條總線，分別傳輸指令數據輸入和輸出，而且因爲是並行總線還要有額外的 data strobe。而 UFS 則是有兩條差分的數據 lane，指令和數據都是以 packet 的形式發送的。就更不要提二者的信號線的電氣特性也有很大差別了。這些將直接導致控制側（CPU 那邊）SoC 的控制器和電路設計會有很大不同。</p>
+<p>所以一個系統的 SoC 以及電路板一定要經過重新設計，才能把 UFS 替換成 eMMC，這不是在生產線上換個 Flash 芯片那麼簡單的事兒，還得經過比較長時間的設計和測試才行。否則想要快速拿出替代方案的話，恐怕從一開始就要設計兩套方案了，嗯。</p>
+<p>[1] <a class=" wrap external" href="http://link.zhihu.com/?target=https%3A//www.micron.com/about/blogs/2016/november/ufs-is-here-and-its-very-fast" target="_blank" rel="nofollow noreferrer">UFS is here, and it&rsquo;s very fast!</a></p>
+<p>[2] JEDEC-JESD84-B51</p>
+<p>[3] JEDEC-JESD220C</p>
+
+
+
+</div>
+</div>
+</div>
+
+
+</div>
+</div>
