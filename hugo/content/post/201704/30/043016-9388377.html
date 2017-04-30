@@ -1,0 +1,79 @@
++++
+date = "2017-04-30T16:00:00"
+title = "順風耳和千里眼誰更厲害？"
+titleimage = "https://pic2.zhimg.com/v2-434157a1a8725ef006fa3696e7096f39.jpg"
+ga = 043016
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title">耳朵和眼睛誰接收信息的速度更快？</h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>這是一個非常深刻的問題，目前沒辦法有好的解答。主要的困難是我們並不完全瞭解神經系統對外界信息的編碼方式（the neural code）。在<strong>環境中哪些信息被如何運用於系統的不同任務</strong>這個大坑被填滿前，準確地回答這個問題是不可能的。</p>
+<p>所以在現階段這一問題作爲<strong>思維體操</strong>的意義，可能大於其作爲科學問題的價值。下面的討論都僅僅是初步的嘗試，提供一些思路而已。</p>
+<p>-</p>
+<p>看到這個題目時我的第一反應是<strong>刷新頻率</strong>：考慮隨時間週期變化的信號，<strong>頻率多高時無法分辨</strong>？是視覺還是聽覺能夠分辨的頻率高呢？</p>
+<p><a href="http://daily.zhihu.com/story/7452789">@Millie M 的回答從微觀角度</a> 給出了聽覺更快的結論，非常精彩。</p>
+<p>我在另一個回答介紹過從宏觀（行爲）層面進行的研究，結論是視覺和聽覺的最小探測閾值是接近的，但聽覺的<strong>平均</strong>探測閾值（~10ms）要低於視覺（~50ms） [1]。也就是說，人羣而言眼睛對閃爍的探測頻率要低於耳朵對聲音間斷的探測頻率。也是聽覺更快。</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-ef3bc2a9e3147a8c221832e223cd362b_b.jpg" alt="">
+<p>但這個對比侷限於特定的測量方式（光源的閃爍或聲音的中斷），似乎只是反映了<strong>對單個刺激的反應延時</strong>，還不能代表廣義的接收<strong>信息的速度</strong>。</p>
+<p>接收信息的速度，單位自然應該是<strong>比特 / 秒</strong>纔對。</p>
+<p>-</p>
+<p>那麼，我們的問題就變成了：<strong>大腦每秒通過眼睛和耳朵分別能接收多少比特的信息？</strong></p>
+<p>以視覺爲例。</p>
+<p>首先要明確，儘管直覺上較爲簡潔，但這一問題並不等價於視網膜所接收到圖像的信息熵。考慮一臺播放黑白雪花點的電視機，其信息量是遠大於任何節目的。但我們顯然能夠從電視節目中得到更多的信息。爲什麼呢？<strong>信息量取決於信息接收端（大腦）對環境信息（圖像）的編碼方式</strong>。</p>
+<p>比如，我們可以想象一個&ldquo;字母 A 辨認機器&rdquo;，包括一個攝像頭，一片處理數據的芯片，和用於輸出狀態的熒幕。其攝像頭的分辨率極高，但對圖像的處理僅限於判斷圖片中是否含有字母 A，並在熒幕上顯示 A 或者空白。那麼，這臺機器的編碼方式就決定了在每個程序週期（不放設爲 <strong>1s</strong>），其輸出端只能接收到 1 比特的信息。也就是說，如果我們把整個機器看做是一個傳感器，其從攝像頭接收信息的速率爲 1bps。按照這種思路，我們只要想辦法獲得大腦對視覺信息的編碼方式，就可以根據環境輸入算出視覺處理器每秒實際獲得的信息量了。</p>
+<p>但這一類比應用於大腦時會遇到一個嚴重的問題：神經系統對感官信息的處理是<strong>多通道和多層級</strong>的。投射在視網膜的環境信息，同時傳送到<strong>多個下游迴路</strong>（當然每一個的編碼我們都沒有完全弄清楚&mdash;&mdash;就連視網膜本身的算法也超級複雜還在研究...），並且進行層級處理（類似於深度學習；事實上深度學習的靈感就是從視覺系統得來），<strong>在不同的層級可影響不同的下游非視覺迴路</strong>。。。這就意味着，難以找到一個節點，並宣稱這一節點的輸出速率就代表了大腦處理視覺信息的速率 *。</p>
+<p>鑑於這個困難，我們暫時放棄大腦能接收多少信息這個問題，直接退縮到感官本身&mdash;&mdash;視網膜和耳蝸。</p>
+<p>-</p>
+<p>下面處理每秒能夠通過<strong>視神經</strong>和<strong>耳蝸神經</strong>進入中樞神經系統的兩類信息的<strong>最大可能速率</strong>。</p>
+<p>人體中每個視網膜有約 1 百萬個視神經節細胞向大腦傳出軸突（神經細胞用於傳遞信息的&ldquo;導線&rdquo;）。兩隻眼睛加在一起，就是約 2 百萬條軸突 [2]。爲了便於計算，簡化爲 10<sup>6</sup> 個通道。這些通道顯然不是相互獨立的，但有證據表明它們的相互關聯主要限制於兩兩之間的微弱連接 [3,4]。</p>
+<p>視網膜的計算很複雜，但我們暫時忽略這一點，假設視網膜對視覺信息的編碼時刻最大化地利用了每一條軸突所能承載信息量的上限。</p>
+<p>Rieke, Warland, 和 Bialek 通過兩種機械感受器（牛蛙內耳的震動感受細胞和蟋蟀的絲狀毛細胞）研究了神經元的編碼效率，發現這些細胞的信息編碼率約爲 200bps [5]。</p>
+<p>在對果蠅視覺中運動方向敏感細胞的研究中，Strong 等人給出的編碼率爲 90bps [6]。</p>
+<p>（這一節寫完發現幾乎全是 Bialek 的工作...）</p>
+<p>這些研究無疑侷限於各自考察的細胞類型，但作爲粗略的估計，我們假設視網膜每個神經節細胞的信息輸出速率爲 10<sup>2</sup> bps 。那麼視網膜整體的信息輸出就在 10<sup>2</sup> * 10<sup>6</sup> = 10<sup>8</sup> bps =<strong> 100 Mbps 這個量級</strong>。需要注意，這只是一個上界。</p>
+<p>按照同樣的邏輯，耳蝸（約 10<sup>4</sup> 個輸出通道 [7]）的信息輸出則在 1 Mbps 的量級。當然，直接比較這兩個數量也沒有多大意義&mdash;&mdash;不就是比較神經纖維的數量嘛。</p>
+<p>有必要重申，這些數量級的計算侷限於神經元羣體本身的信息編碼能力上限，實際生活中視覺 / 聽覺刺激本身的特徵很可能決定了單位時間內得到處理的信息量。（除非你問 Bialek， 他或許會告訴你都用上了（逃</p>
+<p>* 當然，並不是毫無希望。事實上對具體任務中信息處理速度的研究仍然是很有趣的，例如 Verghese 和 Pelli 就考察了在各種視覺任務中被試短時間（看一眼）內能夠準確處理的信息量（雖然不是速率） ，給出的結論當然是很少（50 比特）[8]。</p>
+<p>[1] Humes, Larry E., et al. "The effects of age on sensory thresholds and temporal gap detection in hearing, vision, and touch." <em>Attention, Perception, &amp; Psychophysics</em> 71.4 (2009): 860-871.</p>
+<p>詳見 <a href="https://www.zhihu.com/question/52397668/answer/130361776">人眼幀數是否不能高於 30 ，李安 120 幀的電影是否沒有意義？</a></p>
+<p>[2] Jonas, Jost B.; et al. (May 1992). "Human optic nerve fiber count and optic disc size". <em>Investigative Ophthalmology &amp; Visual Science</em>. <strong>33</strong> (6).</p>
+<p><strong>[3] Schneidman, E., Berry, M. J., Segev, R., &amp; Bialek, W. (2006). Weak pairwise correlations imply strongly correlated network states in a neural population. Nature, 440(7087), 1007&ndash;1012. </strong></p>
+<p>這篇雖然和同年的另一篇研究發現幾乎相同，但得到了大牛和跨領域結合的雙重加持（提出了視杆神經元的網絡結構符合伊辛模型）</p>
+<p>[4] Shlens, J., Field, G. D., Gauthier, J. L., Grivich, M. I., Petrusca, D., Sher, A., &hellip; Chichilnisky, E. J. (2006). The Structure of Multi-Neuron Firing Patterns in Primate Retina. Journal of Neuroscience, 26(32), 8254&ndash;8266.</p>
+<p>[5] Rieke, F., Warland, D., &amp; Bialek, W. (1993). Coding Efficiency and Information Rates in Sensory Neurons. Europhysics Letters (EPL), 22(2), 151&ndash;156.</p>
+<p>[6] Strong, S. P., K&ouml;berle, R., de Ruyter van Steveninck, R. R., &amp; Bialek, W. (1998). Entropy and Information in Neural Spike Trains. Physical Review Letters, 80(1), 197&ndash;200.</p>
+<p><strong>[7] Spoendlin, H., &amp; Schrott, A. (1989). Analysis of the human auditory nerve. Hearing Research, 43(1), 25&ndash;38.</strong></p>
+<p>這篇文章超有意思！是對人體耳蝸的結構研究。忍不住貼一張圖：在耳蝸不同區域每個內耳毛細胞對應的纖維數量，果然是在 1kHz 最高（~15 個）。內耳毛細胞在不同頻率的分佈則近乎均勻。</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-fde002d86c3e1cacd26f5d3aad5f6cce_b.jpg" alt="">
+<p>[8] Verghese, P., &amp; Pelli, D. G. (1992). The information capacity of visual attention. Vision Res, 32(5), 983&ndash;995.</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div>
