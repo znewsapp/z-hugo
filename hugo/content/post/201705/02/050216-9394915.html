@@ -1,0 +1,162 @@
++++
+date = "2017-05-02T16:00:00"
+title = "AI 領域的名詞好難懂，這篇文章可以讓你全面瞭解"
+titleimage = "https://pic4.zhimg.com/v2-41d7b2117ed0c6e4ac4186551b2448c3.jpg"
+ga = 050216
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+<div class="question">
+<h2 class="question-title">大話「人工智能、數據科學、機器學習」綜述</h2>
+<div class="answer">
+
+
+
+<div class="content">
+<blockquote>
+<p>作者系美國克萊姆森大學數學科學系運籌學碩士，Ph.D. Candidate，後跳槽至歐盟瑪麗居里博士項目，期間前往意大利 IBM Cplex 實習半年，現任德國海德堡大學數學與計算機學院、交叉學科計算中心、離散與組合優化實驗室助理研究員。</p>
+</blockquote>
+<p>寫作此文需要 6 小時，包含 4 個帶圖實例，目的是從宏觀上剖析和理解這三個術語，適合不同階段人工智能（縮寫<strong>AI</strong>）、數據科學、機器學習（縮寫<strong>人數機</strong>）愛好者，完整閱讀可能需要 20 分鐘。留言和評論請前往本文在知乎專欄的原鏈接，有問必回。</p>
+<p>前言：學科交叉乃大勢所趨，新興學科應市場需求孕育而生。<strong>人數機</strong>，便產生在這樣的時代背景下。什麼，你所在的學校至今還沒開設相關專業？不必驚慌，老牌資本主義國家德國同樣如此。但是，學好微積分、線代、優化、統計、編程，你和人數機可能只是倆三堂專業課的距離。本文旨在從宏觀的視角剖析人數機，具體到某個學科或問題，請參見文中給出的鏈接。</p>
+<p>機器學習、深度學習、增強學習，這些&ldquo;學習&rdquo;都是什麼鬼？3 中的回答或許會讓你大跌眼鏡。</p>
+<p>本文提綱：</p>
+<p>1，人數機的概念 2，AI 的應用領域 3，AI 的解法－機器學習 4，機器學習底層的模型－運籌、統計 5，AI 的算法 6，強 AI vs 弱 AI 7，AI 學術界、工業界的全球排名</p>
+<p>書歸正傳，我們一起<strong>逐點擊破人數機這個大泡泡</strong>，力求以最通俗易懂的語言<strong>還原他們高大上外表下弱小的真面目</strong>（數學模型 + 算法）。</p>
+<p>本文部分內容節選自我在下面問題的回答：</p>
+<p><a class="internal" href="https://www.zhihu.com/question/20747381/answer/161858582">機器學習、優化理論、統計分析、數據挖掘、神經網絡、人工智能、模式識別之間的關係是什麼？ - 知乎</a></p>
+<p>首先我把最近火起來的，關於人數機最熱門的幾個術語都列出來，因爲不知道它們的話，你可能已經 OUT 了。</p>
+<p>人工智能、數據科學、大數據、機器學習、神經網絡、深度學習、計算機視覺、自然語言處理、增強學習、（無）監督學習、數據挖掘、文本挖掘、模式識別、虛擬現實、增強現實、GPU 計算、並行計算、物聯網、工業 4.0、智能供應鏈、智能 xx、商業智能、xx 智能、圖像處理、自動駕駛、統計推斷、（凸）優化、K-means 算法、Ford-Fulkerson 算法等等。（歡迎評論區補充&ldquo;火&rdquo;的術語）</p>
+<p>下文我嘗試把這些術語按照<strong>概念、應用、模型、方法、算法</strong>來進行分類。</p>
+<p><strong>1，概念 -- 人工智能（Artificial Intelligence）、數據科學（Data Science）、大數據（Big Data）</strong></p>
+<p>這三個術語最大，放在第一個說 -- 他們屬於概念。</p>
+<p>簡單地說，計算機能像人一樣思考並自動處理任務，就可以稱爲<strong>人工智能</strong>，即教計算機完成人想完成的複雜的或具有高度重複性的任務。（這裏需要注意計算機能理解的只是數據，包括向量和矩陣）</p>
+<p>從這個概念出發，那麼計算機從發明至今，可以說就頂着&ldquo;人工智能&rdquo;的帽子了。比如我們學習任何一門計算語言的循環語句，就很好地服務於這個宗旨。你寫一個 for i=1..100，就等於讓計算機給你重複做了 100 遍活。還嫌不夠多？把 100 改成 1 個億吧。讓（&ldquo;教&rdquo;）電腦給你幹活，<strong>這就是人工智能</strong>。</p>
+<p>由於人工智能&ldquo;教&rdquo;計算機處理的，通常都是很大的數據。例如圖像處理，對於計算機來說，一張 1000*1000 的圖片在它看來只是 100 萬個像素（灰度圖是 100 萬個數字，RGB 圖是 100 萬 *3 的一個向量）。</p>
+<p>因此數據科學、大數據也屬於人工智能概念的範疇，它們和人工智能一樣，僅僅是被炒起來的&ldquo;術語&rdquo;。而理解上面三段話，你就擁有了和小白吹牛的資本。</p>
+<p>這些行業到底有多熱，看看薪資就能略知一二：</p>
+<p><a class="internal" href="https://www.zhihu.com/question/56552107/answer/149452103">國內(全球)TOP 互聯網公司、學術界(人工智能)超高薪的攬才計劃有哪些？ - 知乎</a></p>
+<p>再舉個比循環語句稍稍複雜點的例子：預測（Forecasting、Prediction）。</p>
+<p>給你一堆點（x_i,y_i）,人眼一看，根據數據以往的趨勢，下一個點 x_n 的 y 座標 --y_n 應該出現在箭頭所指的地方。但是如果有 1000 堆類似數據等你預測呢？你需要 1000 個人來描這個點麼？NO，你只需要教會計算機如何根據 x_n 預測出 y_n 的值。-- 很簡單，學過統計的應該都知道線性迴歸（Linear Regression），用最小二乘法根據以往的數據（x_i,y_i）算出線性係數 b_0 和 b_1，那麼預測函數 y=b_0+b_1*x，電腦就可以根據這個公式來預測後面所有的 y 值。當然有進階版的分段線性迴歸(piecewise linear fitting)，歡迎聽下回分解。</p>
+<img class="content-image" src="http://pic1.zhimg.com/v2-72c9952f8f501ccbe978b38df33e3b7c_b.png" alt="">
+<p>2，<strong>應用 -- 模式識別（Pattern Recognition）、</strong><strong>計算機視覺（Computer Vision）、自然語言處理（Natural Language Processing）、數據挖掘（Data Mining）、物聯網（Intenet of Things）、商業智能（Business Inteligence）、自動駕駛（Auto Driving）、雲計算（Cloud Computing）、虛擬增強現實（Virtual Augmented Reality）</strong>等</p>
+<p>這些都屬於人工智能和大數據的<strong>應用</strong>場景。</p>
+<p>模式識別：把一堆雜亂無章的數據或像素（圖像）裏深藏的&ldquo;模式&rdquo;或規則用計算機自動識別出來。</p>
+<p>計算機視覺、圖像處理：&ldquo;教&rdquo;計算機像人一樣識別圖像或視頻中的模式。</p>
+<p>自然語言處理：同樣的，計算機看待人說的話只是一段段音頻信號（signal），或者更底層些，只是一個 x 座標爲時間 t 的二維數據。如何把電信號翻譯成文字（text），需要人來&ldquo;教&rdquo;它。</p>
+<p>數據挖掘：從一大堆數據裏挖掘出你想要的有用的信息。怎麼樣，是不是和模式識別有點異曲同工之妙？不過其主要數據對象是數據庫（Database），類似的還有文本挖掘（text mining）。</p>
+<p>物聯網：把所有東西（例如家電）都聯網，並實時保持數據的連通，然後計算機處理這些數據。例如根據主人的生活習性自動開關暖氣。</p>
+<p>商業智能：人工智能應用在商業大數據領域。例如銀行欺詐性交易的監測。</p>
+<p>自動駕駛：顧名思義，內置在汽車甚至設置在雲端的計算機自動給你開車。利用的是計算機處理汽車上的攝像頭實時產生的圖片信息，以及雷達產生的信號。</p>
+<p>雲計算：把計算任務傳送到&ldquo;雲端&rdquo;，得出結果後再傳送回來。雲端可能是一個大的計算機集羣（Cluster），難點在於如何協同 CPU 和 GPU。</p>
+<p>虛擬、增強現實（VR、AR）：VR 眼鏡應該都體驗過吧？未來的趨勢，3D 電影演唱會等，足不出戶體驗現場感。Pokemon Go 是 AR 最好的例子，使虛擬和現實混合在一起。倆者的核心技術都在計算機視覺裏，包括校準、3D 重建、識別、追蹤等等。</p>
+<p>通過以上九個術語的翻譯，相信媽媽再也不用擔心我被&ldquo;概念&rdquo;的炒作矇蔽雙眼了。</p>
+<p>再舉個例子：模式識別（Pattern Recognition）裏的圖像分割（Image Segmentation）。</p>
+<p>給你一張圖片，你自然知道描出圖裏所有物體的輪廓，把該圖分割成了幾塊，該圖的&ldquo;模式&rdquo;就被識別出來了。但是給你 100，1000 張圖呢？你還有耐心一張張用手描輪廓？這時候你需要教計算機如何畫這個輪廓，並且不僅僅限於幾張圖，這個模型或算法必須適用於絕大多數的圖片。這就是模式識別和圖像分割。</p>
+<img class="content-image" src="http://pic4.zhimg.com/v2-e267cf095b0f632cc7f414340dbade0f_b.jpg" alt="">
+<p><strong>3，方法 -- 機器學習（Machine Learning）</strong></p>
+<p>前面討論了概念和應用，那麼用什麼方法來實現 2 中的應用呢？機器學習便是最有力的方法之一。把機器學習單獨放在方法裏，是爲了體現其重要性。雖然它是一門建立在統計和優化上的新興學科，但是在人工智能、數據科學等領域，它絕對是核心課程中的核心。</p>
+<p>機器學習，顧名思義，教機器如何&ldquo;學習&rdquo;，或讓機器自己&ldquo;學習&rdquo;。因此從字面上看就天然的屬於人工智能範疇。<strong>&ldquo;學習&rdquo;這個看似高深的術語，在 1 線性迴歸的例子裏，僅僅指求解(學習)b0, b1 這倆個係數。任何其他炒得火熱的&ldquo;xx 學習&rdquo;，也只是求解一些參數－說得都很好聽，僅此而已。</strong></p>
+<p>對於統計和運籌學這倆門基礎學科來說，機器學習又是應用（見下面四類問題），因爲它大量地用到了統計的模型如馬爾可夫隨機場（Markov Random Field--MRF），和其他學科的模型，如偏微分方程（變分法等），最後通常轉化成一個能量函數最小化的優化問題。</p>
+<p><strong>機器學習的核心在於建模和算法，學習得到的參數只是一個結果（見 5）。</strong></p>
+<p>機器學習裏最重要的四類問題（按學習的結果分類）：</p>
+<p><strong>預測（Prediction）</strong>-- 可以用如迴歸（Regression）等模型。</p>
+<p><strong>聚類（Clustering）</strong>-- 如 K-means 方法。</p>
+<p><strong>分類（Classification）</strong>-- 如支持向量機法（Support Vector Machine）。</p>
+<p><strong>降維（Dimensional reduction）</strong>-- 如主成份分析法（Principal component analysis (PCA)-- 純矩陣運算）。</p>
+<p>前三個從字面意思就好理解，那麼爲什麼要降維呢？因爲通常情況下，一個自變量 x 就是一個維度，機器學習中動不動就幾百萬維，運算複雜度非常高。但是幾百萬維度裏，可能其中幾百維就包含了 95%的信息。因此爲了運算效率，捨棄 5%的信息，我們需要從幾百萬維中找出這包含 95%信息的維度。這就是降維問題。</p>
+<p>機器學習按學習方法的分類：</p>
+<p><strong>監督學習</strong>（Supervised Learning，如深度學習），</p>
+<p><strong>無監督學習</strong>（Un-supervised Learning，如聚類），</p>
+<p><strong>半監督學習</strong>（Semi-supervised Learning），</p>
+<p><strong>增強學習</strong>（Reinforced Learning）。</p>
+<p>這裏不從晦澀的定義上深入展開，舉倆個例子或許效果更好。</p>
+<p>郵件分類的例子：</p>
+<p>郵件管理器中的垃圾郵件和非垃圾郵件的分類，就是一個典型的機器學習的分類問題。這是一個有監督的學習問題（Supervised Learning），什麼叫有監督呢？計算機是在你的監督（標記）下進行學習的。簡單地說，新來一封郵件，你把他標記爲垃圾郵件，計算機就學習該郵件裏有什麼內容才使得你標記爲&ldquo;垃圾&rdquo;；相反，你標記爲正常郵件，計算機也學習其中的內容和垃圾郵件有何不同你才把它標記爲&ldquo;正常&rdquo;。可以把這倆個分類簡單的看成"0"和&ldquo;1&rdquo;的分類，即二分問題（Binary Classification）。並且，隨着你標記越來越多，計算機學習到的規律也越來越多，新出現一封郵件標記的正確率也會越來越高。</p>
+<p>當然分類可不止用在判別垃圾郵件，其他應用例如銀行欺詐交易的判別(商業智能範疇)，計算機視覺裏給計算機一張圖片，分類爲狗還是貓（著名的 ImagNet，可是把圖片分成了 2 萬多類）。等等。</p>
+<p>前面講了監督學習，無監督學習即在沒有人工標記的情況下，計算機進行預測、分類等工作。</p>
+<p>再來一個例子 -- 聚類（Clustering）-- 無監督的學習</p>
+<p>事先沒有對圖中的點進行標記類別，左圖在計算機看來，僅僅是 12 個點（x，y 座標），但是人眼可以判別它大致可以分爲三類（這時，123，321，132 代表的都是相同的聚類，順序沒有關係）。如何教計算機把數據歸類呢？這就是聚類問題。其中最經典的算法叫 K-means。</p>
+<img class="content-image" src="http://pic2.zhimg.com/v2-aece3ae746b30f3e853f9711571b3659_b.png" alt="">
+<p>半監督介於倆者之間，增強學習牽扯到更深的運籌、隨機過程、博弈論基礎，這裏暫時不展開。</p>
+<p>機器學習作爲新創的學科或方法，被廣泛地應用於人工智能和數據科學等問題的求解。按照行業的說法，神經網絡、深度學習、增強學習等模型都屬於機器學習的範疇。</p>
+<p>本節最後出一個思考題，1 中的線性迴歸屬於監督還是無監督學習呢？</p>
+<p><strong>4，模型 -- 運籌學（Operations Research</strong>（O.R.）<strong>）、凸優化（Convex Optimization）、統計分析（Statistical Analysis）、神經網絡（Neural Network）、深度學習（Deep Learning）</strong></p>
+<p>把它們歸到一類，因爲他們都是一種解決實際問題的模型。例如解決圖像分割問題，你可以用統計的模型（如馬爾可夫隨機場），也可以用神經網絡模型，當然也可以用深度學習，即<strong>卷積神經網絡模型（Convolutional Neural Networks）</strong>。</p>
+<p>統計和運籌作爲有深厚淵源的學科，這倆個名詞本身就能成爲一個專業，其下又有無數的分支和方向。他們本身研究的對象就是大數據，因此和人工智能、數據科學有着天然的淵源。最近因爲人數機的興起，統計、凸優化模型也再度熱了起來（特別是概率圖模型）。相信他們和人工智能會起到相輔相成、互相促進的效果。</p>
+<p>神經網絡（監督學習門下，需要有標籤的數據）和深度學習，相比前倆個龐大學科，充其量只能算一個基於圖論（Graph Theory）的模型。神經網絡也是由來已久，剛開始的全連接神經網絡（Fully Connected Neural Network）以及多層神經網絡，都是傳統神經網絡，由於參數多計算(學習這些參數)的複雜度很高，因此實用性不強沒有得到足夠的重視。直到近些年卷積神經網絡的橫空出世，深度神經網絡（Deep Neural Network）已基本秒殺其他一切傳統方法，缺點是需要有標籤的龐大的數據集以及訓練時間過長（計算機資源）。</p>
+<p>當然人工智能，特別是深度學習有過熱的趨勢，導致炒概念這樣不良風氣的產生，甚至有偷換概念之嫌。下面鏈接乃計算機視覺領軍人物之一加州大學洛杉磯分校 UCLA 統計學和計算機科學教授 Song-Chun Zhu 的訪談錄，給深度學習潑一點冷水。 <a class=" wrap external" href="http://link.zhihu.com/?target=http%3A//mp.weixin.qq.com/s%3F__biz%3DMzI3MTM5ODA0Nw%3D%3D%26mid%3D100000002%26idx%3D2%26sn%3D32face7f1acb17e07f3c38dde41d880e" target="_blank" rel="nofollow noreferrer">初探計算機視覺的三個源頭、兼談人工智能｜正本清源</a></p>
+<p>由於 O.R.出身，把運籌放在最後一點 -- 樓主必須<strong>正本清源 O.R.的在人工智能中扮演的重要角色。</strong></p>
+<p>在機器學習裏我已提到，這裏再強調一遍，幾乎所有的人工智能問題最後會歸結爲求解一個優化問題（Optimization Problem）。而<strong>研究如何求解優化問題的學科，正是運籌學。</strong></p>
+<p>運籌學的作用，不僅限於求解其他模型（如統計）最後產生的優化問題，也可以作爲模型本身（<strong>優化模型</strong>）來解決人工智能問題。</p>
+<p>優化模型包含目標函數和約束條件。優化問題就是求解<strong>滿足</strong><strong>約束條件的情況下使得目標函數最優</strong>的解。敬請讀者們關注我的運籌專欄，聽我下回仔細分解。這裏只提一點，大家所熟知的支持向量機，其實完全可以看作運籌中的二次規劃（Quadratic Programming）問題。</p>
+<p><a class="internal" href="https://zhuanlan.zhihu.com/operations-research">[運籌帷幄]大數據和人工智能時代下的運籌學 - 知乎專欄</a></p>
+<p>最後嘮叨一句樓主的科研方向，就是用運籌學中的混合整數規劃（Mixed Integer Nonlinear Programming）模型建模，解決人工智能中的應用，如圖像分割。</p>
+<p>由於版面有限，不再具體展開。關於運籌學你所要知道的幾乎一切，都在下面：</p>
+<p><a class="internal" href="https://zhuanlan.zhihu.com/p/25579864">運籌學 -- 一門建模、優化、決策的科學 - 知乎專欄</a></p>
+<p><strong>5，算法 --K-means，</strong><strong>Ford-Fulkerson</strong></p>
+<p>做過人工智能實際 / 科研項目的人知道，解決一個實際問題就像小時候解應用題，從假設未知數開始（已是模型的範疇），一般步驟便是數學建模 - 設計算法 - 編程實現，並以此反覆推敲。因此爲了文章的完整性，加上算法這一節。</p>
+<p>K-means 在 3 的聚類問題中已提到，這裏重點講講最大流以及算法和模型之間的關係。</p>
+<p>Ford-Fulkerson 算法屬於運籌學或圖論 - 網絡流問題（Network Flow Problem）中一個非常經典的問題 - 最大流問題（Max Flow Problem）的算法，它在圖像處理特別是圖像分割中，有着極爲重要的應用。</p>
+<p>如圖：把一張 3*3 像素的圖像看作 3*3 個點的圖（圖論術語裏的圖），並且把上下左右相鄰的點用邊連接起來，組成 edge（圖論裏的邊）。這麼一來，圖像分割問題就完美地轉換成了一個基於圖論（或者 network flow）的優化問題。如下圖，九個像素的圖被最大流算法用綠線分割成了倆個部分（segment），綠線即爲最小分割（min cut），這裏 s 點和 t 點是爲了構建網絡流模型額外增加的倆個點（terminal node）。</p>
+<img class="content-image" src="http://pic1.zhimg.com/v2-50c2ff44ecec55ff26a0963aacec95b0_b.png" alt="">
+<p>下面討論模型和算法的關係，引自我在下面的回答：</p>
+<p><a class="internal" href="https://www.zhihu.com/question/50623000/answer/121833512">想學數據分析（人工智能）需要學哪些課程？ - 知乎</a></p>
+<p>這裏強調下數學建模的重要性，爲何要數學建模呢？的確很多 naive 的算法完全不需要建立在數學模型之上，比如 clustering 裏面經典的 EM 算法，是一個 iterative method，基本一眼就能看出算法的思路然後編程實現。那麼基於數學模型上的算法有何妙處呢？答案是一個好的數學模型，往往是被研究了幾十甚至幾百年的學科，比如圖論，很多性質都已經被研究得很透徹可以直接使用。回到上面的例子，我建立的這個網絡流的模型，是一個被研究了很久的模型，因此我可以直接使用其很多已知的好定理或算法來服務我的問題，比如這裏基於裏 max flow 的 Ford-Fulkerson 算法，如果能在其基礎上做改進，等於站在巨人的肩膀。因此這就是數學建模的重要之處。</p>
+<p>往往同一個問題，從不同的角度去看可以有千百種數學建模方法，而不同的數學模型差別往往巨大。而數學建模又是解決一個實際問題的第一步，在這基礎上才考慮算法和數據結構設計。因此，數學模型和背後的數學基礎在我看來是重中之重，也是我推薦學習的課程的核心。當然了，計算機系出生的朋友，數學這個層面學習得不是很深，可以偏向於算法的設計和實現，它們也是重要的。</p>
+<p><strong>6，強人工智能（</strong>Strong AI 或 Artificial General Intelligence<strong>） vs 弱人工智能（</strong>Applied AI，narrow AI，weak AI）</p>
+<p>上面嘮叨了那麼多，說來說去都是建立在以二進制爲機理的圖靈計算機上的&ldquo;弱人工智能&rdquo;，即計算機需要人去&ldquo;教&rdquo;它怎麼做。而人工智能、神經網絡的最終目的，是模仿人腦的機理和組成(腦神經元、神經網絡)，讓計算機能像人一樣具有思維、自主意識，自行學習和決策，稱爲&ldquo;強人工智能&rdquo;。</p>
+<p>這裏不得不提到母校德國<strong>海德堡大學</strong>物理系和英國曼徹斯特大學牽頭的歐盟&ldquo;人腦計劃&rdquo;，其最終目的就是打破計算機的二進制機理，模仿人腦神經元(Neuron)放電(spark)的隨機性，打造出一臺能像人腦一樣&ldquo;思考&rdquo;的計算機。從此計算機不再二進制（0 或 1），而是可以取[0,1]間的隨機值。另外工業界如 IBM 也在打造此類計算機。</p>
+<p>此機一旦面世，以往一切慣例將被打破，&ldquo;強人工智能&rdquo;的新紀元或許會隨之到來。</p>
+<p><strong>7，人工智能學術界、工業界全球排名</strong></p>
+<p>按照本文作者的尿性，最後不出意外會給個排名。今天也不例外，排名不分先後。</p>
+<p><strong>學術界：</strong>人工智能等新興學科通常設置在計算機系，此處可參考 CS 排名</p>
+<p>美國憑藉教授數量一如既往地排在前頭：CMU、斯坦福、MIT、UC 伯克利、哈佛、普林斯頓</p>
+<p>英國倫敦也是 AI 重地：牛津、劍橋、帝國理工再加愛丁堡</p>
+<p>加拿大可謂深度學習孵化地，DL 三傑都和🍁國有淵源：多大、蒙特利爾、UCB</p>
+<p>歐洲因教職稀少排名自然弱，瑞士倆校拔得頭籌，ETH、EPFL，海德堡 HCI 五教授之陣容理應占得一席，哦，原來三個隸屬物理系。</p>
+<p>亞洲新加坡、香港你來我往，日本東大山河日下，中國清華異軍突起，姚班功不可沒。</p>
+<p><strong>工業界：</strong>憑藉着財大氣粗吸引人才，以及計算能力和數據量的優勢，工業界在 AI 領域或許已經趕超學術界</p>
+<p>美國自然是全球 AI 中心（硅谷、西雅圖、波士頓、紐約）：Google 剛請來了斯坦福李飛飛（sabbatical）以及多大的 Geoffrey Hinton，Facebook 有 NYU 的<a class=" wrap external" href="http://link.zhihu.com/?target=http%3A//www.nature.com/nature/journal/v521/n7553/full/nature14539.html%23auth-1" target="_blank" rel="nofollow noreferrer">Yann LeCun</a>, 微軟、IBM 研究院早已名聲在外，Amazon 雲計算一家獨大，還有 Uber、Airbnb、LinkedIn 等新貴互聯網公司的助力。</p>
+<p>英國倫敦：DeepMind 被 Google 收購，Google、微軟等在倫敦都設有研究院。</p>
+<p>歐洲：IBM、Google 在蘇黎世和慕尼黑都有研究院，擴招中；amazon 在盧森堡有研究院；德國傳統公司，如拜耳、博世、西門子等紛紛發力 AI 建立研究院，寶馬奔馳奧迪等車場也投注自動駕駛。最後說說海德堡，SAP 總部所在地，還有 NEC、ABB 等歐洲研究院。</p>
+<p>加拿大：加拿大政府在多倫多剛成立人工智能研究院－<a class=" wrap external" href="http://link.zhihu.com/?target=http%3A//www.vectorinstitute.ai/" target="_blank" rel="nofollow noreferrer">Vector Institute</a> ，G Hinton 任首席科學顧問，Google 在蒙特利爾準備成立新研究院，可見 Yoshua Bengio 領導的深度學習研究院名聲在外。</p>
+<p>中國：北有科技之都北京，得天獨厚的優勢，微軟亞洲研究院培養起了中國一大批 AI 大佬；百度、京東以及地平線機器人、滴滴等一大批互聯網新貴開始嶄露頭角。南有深圳，華爲、騰訊、大疆、順豐等也毫不示弱。</p>
+<p><strong>到此，相信讀者們可以更有自信地吹&ldquo;人工智能、數據科學、機器學習&rdquo;的牛逼了。</strong></p>
+<p>後記：話說寫專欄就像發文章（paper），paper 數少的學者（比如我），前期就該多堆砌數量；paper 多的，就該以質量和引用數（citation，知乎裏可以類比爲贊數）爲重。比如這篇和下一篇：1，人工智能綜述；2，人工智能的底層引擎 -- 運籌學，原先想着併成一篇的。最後拆分成倆篇，一來可以多水一篇 paper，二來篇幅一長怕讀者朋友們消化不來，三來人工智能這麼火，不給它單獨一個名份實在說不過去，四來作爲本專欄的核心，運籌學在 2 中的標題能顯得更高大上。於是乎，今天先講 1，也敬請讀者朋友們期待 2-- 力求以運籌學的角度建模人數機。</p>
+<hr>
+<p>&nbsp;</p>
+<p>歡迎大家關注我的運籌學專欄，會陸續發佈運籌學、人工智能相關乾貨：</p>
+<p><a class="internal" href="https://zhuanlan.zhihu.com/operations-research">[運籌帷幄]大數據和人工智能時代下的運籌學 - 知乎專欄</a></p>
+<p><strong>關於人工智能需要讀博麼，歡迎來我 5.14 號舉辦的一場關於讀博的知乎 live 深度探討：《</strong><strong><a href="https://www.zhihu.com/lives/838439360306237440?utm_campaign=zhihulive&amp;utm_source=zhihudaily&amp;utm_medium=daily_story">讀博：理想與現實如何雙贏</a>》<br></strong></p>
+<p><strong>以及如何靠人工智能作爲副業賺外塊：</strong></p>
+<p><strong><a class="internal" href="https://www.zhihu.com/question/28485035/answer/163350976">副業賺的比主業賺的多是什麼體驗？ - 知乎</a><br></strong></p>
+<p>最後與本文相關的一些乾貨回答：</p>
+<p><a class="internal" href="https://www.zhihu.com/question/22686770/answer/113176244">運籌學（最優化理論）如何入門？ - 知乎</a></p>
+<p><a class="internal" href="https://www.zhihu.com/question/25120338/answer/156852547">機器學習中的優化理論，需要學習哪些資料才能看懂？ - 知乎</a></p>
+<p><a class="internal" href="https://www.zhihu.com/question/34444491/answer/121840831">數據分析、大數據、數據挖掘或者數據分析學習相關的網站推薦幾個？ - 知乎</a></p>
+<p><a class="internal" href="https://www.zhihu.com/question/20451261/answer/132574610">中國計算機視覺的前途在哪？機器視覺工程師又何去何從？ - 知乎</a></p>
+<p><a class="internal" href="https://www.zhihu.com/question/34310860/answer/108146170">數據科學（Data Science/Analytics）、人工智能出身，可以在諮詢行業做些什麼？</a></p>
+<p>最後是通往未來人工智能、數據科學家的傳送門：</p>
+<p><a class="internal" href="https://zhuanlan.zhihu.com/p/22000807">歐洲、北美、全球留學及人工智能、數據科學深度私人諮詢，從此 DIY - 知乎專欄</a></p>
+
+
+
+</div>
+</div>
+</div>
+
+
+</div>
+</div>
