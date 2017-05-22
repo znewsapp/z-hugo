@@ -1,0 +1,69 @@
++++
+date = "2017-05-22T09:00:00"
+title = "谷歌發佈了比 GPS 更厲害的 VPS，室內室外釐米級定位"
+titleimage = "https://pic1.zhimg.com/v2-3ffd4a65b225a02c66f7e3f8c88e0bf0.jpg"
+ga = 052209
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title">如何評價 Google I/O 2017 推出的室內定位技術 WorldSense？</h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>Google VPS 所代表的新一代視覺定位，將會對 AR/VR 以及移動機器人產生劃時代的影響。</p>
+<p><em>答主本人：移動機器人創業中，對 Google Tango 和 VPS 有天生的好感。</em></p>
+<p>Google 此次發佈的 VPS 全稱是 Visual Positioning Service，建立在 Google Tango 和 Google 地圖之上。地圖服務是一個家喻戶曉的服務，而 Tango 是 Google 從 2013 年甚至更早就開始研發的一項通過計算機視覺進行定位的項目。Google 歷史上有很多看似不務正業的發明，比如 Gmail、AlphaGo、發射衛星等等，而脫胎於 Google Tango 的這項 VPS 業務，已經爲我們打開了另外一片廣闊的天地。</p>
+<p><strong><strong>VPS 是什麼？</strong></strong></p>
+<p>VPS 跟我們熟悉的 GPS（Global Positioning System）是對應的。但 VPS 適用的場景更多，理論上室內室外均可以應用；而 GPS 從原理上就限制到了只能適用於室外。</p>
+<p>GPS 在今天佔據了基於位置服務（Location-based Services）的大部分份額，但它並不完美。例如打車、送餐，時常還是免不了需要電話溝通更精確的上車地點或者取餐位置。這是因爲 GPS 使用經緯度座標，這跟一般人的定位方式差別巨大。我們會更習慣於&ldquo;在星巴克門口上車&rdquo;，或者在&ldquo;小區大門口取餐&rdquo;。</p>
+<p>Google Tango 採用的技術，就跟我們人類的定位方式更爲接近，使用手機攝像頭採集視覺信息來做定位。目前在 Google VPS 系統中使用的視覺信息會比&ldquo;星巴克&rdquo;和&ldquo;小區大門&rdquo;更細節一些，比如說&ldquo;星巴克大門的左上角&rdquo;，或者&ldquo;小區大門牌匾的右下角&rdquo;。這樣的優勢也很明顯：&ldquo;我在小區大門牌匾的右下角前 1 米&rdquo;就比&ldquo;我在小區大門前 1 米&rdquo;更精確。</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-c17babbf1ab3392df133d6fcb260c989_b.jpg" alt="">
+<p><strong><em>Google 官方放出的 VPS 示意圖，金色的點都是視覺參考點</em></strong></p>
+<p><strong>VPS 的原理就決定了它在適用範圍（室內 + 室外）和精度（理論上達到釐米級）上都大大超越 GPS。</strong>VPS 在定位時會同時採用幾十個甚至幾百個這樣的參考點來做定位。除了使用視覺參考點，VPS 一般還會使用慣性傳感器來進一步提升精度。</p>
+<p><strong>幾十年前，人類就把組成 GPS 系統的幾十顆衛星放上天了，爲什麼 VPS 到今天才實用化？它真的有那麼困難嗎？</strong></p>
+<p>Tango 不止是一款軟件，實際上是軟件和硬件相結合的產物。這裏麪包含的黑科技也是伴隨着智能手機時代的爆發，歷時 5 年被開發出來的，並非一日之功。有關 Tango 的硬件黑科技和軟件算法的原理，可以參考技術大牛的解答：</p>
+<p><a href="https://www.zhihu.com/question/58728216/answer/160596346">Google Project Tango 有哪些黑科技？</a></p>
+<p>以及：</p>
+<p><a href="https://www.zhihu.com/question/22808308/answer/160541906">如何評價 Google 的 Project Tango ？</a></p>
+<p>除了上面提到的參考點定位，VPS 還需要解決的一大難題就是開機初始化問題。我們都有這樣的體驗：在飛機上睡了一覺，到了一個新城市，此時你還能走路，但對於自己身處何方就完全懵逼了。</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-7871fb4506c366be08d78bc5c7b11f58_b.jpg" alt="">
+<p><strong><em>視覺重定位的使用過程跟玩 Pokemon Go 很相似</em></strong></p>
+<p>如果沒有 GPS 導航地圖，VPS 怎麼解決這個問題呢？大致的過程是：你掏出 Tango 手機，對着周圍的場景拍一張照片並上傳到雲端服務器， VPS 系統將這張照片跟 Google 街景做匹配查找，並返回正確結果&ldquo;在 A 市機場 6 號門口的星巴克大門左下角前 1 米處&rdquo;。從操作上來說，跟玩 Pokemon Go 的過程是類似的，掏出手機打開攝像頭就可以了。</p>
+<p><strong><strong>VPS 能有什麼應用呢？</strong></strong></p>
+<p><strong>VPS 的應用 - AR 增強現實</strong></p>
+<p>AR 增強現實是將虛擬物體疊加到真實世界上，這種疊加需要精確的知道觀察者在真實世界中的位置和視角，這些信息正是 VPS 能夠提供的。</p>
+<p>Pokemon Go 僅僅是利用了 GPS 定位信息，精度在幾米這個量級，就能造就一款風靡全球的遊戲。當一個 AR 設備配合上 VPS 的時候，理論精度可以達到釐米級。Pokemon Go 會變得更真實，小精靈不再會有點假的懸浮在空中，而是精確的站立在桌面上。</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-46e316f6b2db39f5f128c55b30e31435_b.jpg" alt="">
+<p><em><strong>左邊是 GPS 定位的 AR 效果，右邊是 VPS 定位的 AR 效果，明顯真實不少</strong></em></p>
+<p>如果我們戴的是 AR 眼鏡或者使用 Tango 手機，再配合上 VPS，它們能創造的應用就完全只受想象力的控制了：看一眼檯燈就能開關燈屬於初級技能；新到一個地方，視野中呈現出到達目的地的路徑，這算中級；如果用戶和專車都接入了同一個 VPS 系統，站在路邊，不用打電話，專車就可以精確的停在身邊，再也不怕司機找不到地方了，這算不算高級呢？</p>
+<p><strong>VPS 的應用 - 移動機器人</strong></p>
+<p>VPS 的另一個名稱，vSLAM（visual simultaneous localization and mapping，即視覺同步定位與建圖技術），原本就是在移動機器人上發展起來的一項技術。機器人要像人一樣移動，也面臨&ldquo;我是誰，我在哪裏，我要去哪裏&rdquo;這樣的根本性問題，除了使用 GPS，機器人專家們也教會了機器人用 VPS 的方式來定位，開發出了很多類似 Google VPS 但更適合於機器人的 VPS 系統。如果某一天在路上看到有很多個攝像頭的配送機器人，很有可能它的移動就是由 VPS 來引導的。</p>
+<p><em>文中圖片均來自於網絡。轉載請註明出處。</em></p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div>
