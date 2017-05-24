@@ -1,0 +1,85 @@
++++
+date = "2017-05-24T14:00:00"
+title = "AlphaGo：「你先連下三子，擺好了叫我一聲就行」"
+titleimage = "https://pic1.zhimg.com/v2-987e095aa8447186ace6926a9a3a33d4.jpg"
+ga = 052414
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title">如何理解 Deepmind 稱最新版 AlphaGo 能讓李世乭版本的 AlphaGo  三子？</h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>今天，在浙江舉辦的未來圍棋峯會會場上，DeepMind 團隊首席科學家 David Sliver 介紹了 AlphaGo 的最新進展。</p>
+<p>其中的這張圖，吸引了吃瓜羣衆的眼球。</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-e86cad6c4e7395e897a10f2c0e5101a4_b.jpg" alt="">
+<p>簡單說，就是最新版的 AlphaGo<strong>（以下簡稱 Master）</strong>，能夠讓對戰李世乭版本的 AlphaGo<strong>（以下簡稱 AlphaGo-Lee）</strong>三子。讓三子是什麼概念？有請柯潔爲大家解說。</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-ca48754428e9ccec1a65d21f46b093fa_b.jpg" alt="">
+<p>這個問題，我們還可以再深入一點討論。</p>
+<p>前幾年的《圍棋天地》雜誌，每期有個固定欄目，《36 問》，就是問一位職業棋手 36 個問題。其中一問就是，你認爲你和圍棋之神的差距多大。我的印象中，除了個別奇葩答案以外，認爲棋神讓自己三個，雙方旗鼓相當的職業棋手是最多的。與之對應，AlphaGo 的機械臂黃士傑博士，去年也曾在推特上說，他也認爲圍棋之神不能讓頂尖職業棋手四個子。</p>
+<p>等等，現在 Master 能讓 AlphaGo-Lee 三子，而 AlphaGo-Lee 戰勝了李世乭，那麼 Master 豈不是至少能讓李世乭三子？也就是說，最新版本的 AlphaGo，已經和圍棋之神能夠平起平坐了？</p>
+<p>非也。</p>
+<p>去年 5 月，就在 AlphaGo- 李世乭五番棋之後，David Silver 在倫敦大學學院做報告，其中也有一張類似的圖。</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-fa46f8ad9b9f86ecb8769eed4480ba2c_b.jpg" alt="">
+<p>（這圖拍的，應該召喚饒羅翔老師）</p>
+<p>圖中說，AlphaGo-Lee 能夠讓 Nature 雜誌上那一版本的 AlphaGo（以下簡稱 AlphaGo-Nature）三到四子。這裏的讓子是帶貼目的，所以要打一個小小的折扣。打完折扣以後取平均值，可以認爲 AlphaGo-Lee 能夠讓 AlphaGo-Nature 三子。</p>
+<p>注意，在這張圖裏，AlphaGo-Lee 的等級分是 4500 分！而今天峯會上的圖，AlphaGo-Lee 只有 3600+ 分。這也容易解釋。在上圖的左下角，有一行小字：&ldquo;<strong>注意：等級分評估基於自對弈結果</strong>&rdquo;。也就是說，4500 這個分數是 AlphaGo 的不同版本之間互相戰鬥之後，根據比分評估的。而 3600+ 這個分數，是根據 AlphaGo-Lee 與人類的對局結果評估的。AlphaGo-Lee 和人類一共就下了五盤棋，也就是對李世乭的 4 勝 1 負。李世乭當時的等級分在 3550 分左右。根據貝葉斯 ELO 算法，將 AlphaGo-Lee 的分數定爲 3600+，恰如其分。</p>
+<p>那麼問題來了，按照 AlphaGo 自評估的 4500 分，她理應碾壓李世乭，爲什麼最後還輸了一局呢？</p>
+<p>這裏涉及到一個概念，&ldquo;<strong>過擬合</strong>&rdquo;。</p>
+<p>過擬合，在機器學習領域指，在訓練 AI 的過程中，因爲樣本太少或訓練時間太長等原因，訓練結果只適應（特殊的）訓練樣本，而不適應一般情形。用一張圖說明。</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-e4a8b389c755a70bcd080a36672e2115_b.jpg" alt="">
+<p>綠線代表過擬合模型，黑線代表正則化模型。雖然綠線完美的匹配訓練數據，但太過依賴，並且與黑線相比，對於新的測試數據上具有更高的錯誤率。 （來自維基百科）</p>
+<p>過擬合這個概念，具體表現到 AlphaGo 身上，就是新版本的 AlphaGo 更善於對付舊版本的 AlphaGo，而相對不善於對付一般性的對手，比如李世乭。</p>
+<p>講回 DeepMind 團隊今天的報告。</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-e86cad6c4e7395e897a10f2c0e5101a4_b.jpg" alt="">
+<p>現在再看這張圖，應該就豁然開朗了。Master 的 4700 分，同樣是基於自對弈的評分。Master 能讓 AlphaGo-Lee 三子，可能含有過擬合的水分。<strong>因此，Master 能否讓柯潔三子，以現有數據無法判斷。</strong></p>
+<p>也許你想問，Master 到底能讓柯潔幾個呢？</p>
+<p><strong>我的看法是，棋手的水平越高，讓子的難度就越大</strong>。剛學圍棋的人，可能被一個連業餘段位都沒有的棋手讓九個以上。水平相當的業餘棋手之間，有&ldquo;互讓三子好勝負&rdquo;的說法。而據 @傅奇軒 說，李世乭九段經常在北京，找業餘 6 段棋手下帶彩的讓三子棋。一盤一萬美金，李世乭大致勝負各半。頂尖職業棋手和高水平的業餘棋手相比，可以算是兩個世界的人，但最多也就讓三個子。想讓柯潔三個子，難度非常大，也許棋神能做到。</p>
+<p>另外，AlphaGo 也有技術問題要解決。對李世乭版本的 AlphaGo，逆風局穩定性遠不如順風局。而讓子棋從一開始就是大逆風局。AlphaGo 在逆風局會如何表現，是未來的一大看點。</p>
+<p>個人觀點。如果現版本的 AlphaGo 對戰柯潔，我覺得讓兩個子會有看頭，讓三個子我 all in 柯潔。</p>
+<p>柯潔應該對自己有信心。今天他發的微博，大概是這個小心機婊在給自己減壓吧。無論如何，明天，持白棋的柯潔，請加油！</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+
+
+
+<div class="question">
+<h2 class="question-title"></h2>
+
+<div class="answer">
+
+<div class="content">
+<p>更多討論，查看 知乎圓桌 &middot;&nbsp;<a href="https://www.zhihu.com/roundtable/kejie-vs-alphago?utm_campaign=official_account&amp;utm_source=zhihudaily&amp;utm_medium=link&amp;utm_content=roundtable">人機對弈終章</a></p>
+</div>
+</div>
+
+
+</div>
+
+
+</div>
+</div>
