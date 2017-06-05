@@ -1,0 +1,54 @@
++++
+date = "2017-06-05T08:00:00"
+title = "該崩潰的時候就崩潰吧，至少寫程序應該是這樣"
+titleimage = "https://pic3.zhimg.com/v2-acaf71e47a8acdb6cc8152404a076c0e.jpg"
+ga = 060508
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title">應該如何理解 Erlang 的「任其崩潰」思想？</h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>&ldquo;就讓它崩潰&rdquo;（Let it Crash）這個思想很好，不過這個思想和 Erlang 沒有什麼直接關係，這個思想適用於任何一種語言、任何一種平臺、任何一種服務。</p>
+<p>很多年前，我第一次聽到這個觀念，是在微軟去上 Jeff Richter 講 C#的課，Jeff Richter 可是微軟技術教育的老前輩了，他在課上就說：別去捕獲你不知道該怎麼處理的 exception，由它去吧。</p>
+<p>我一愣，問道：不去捕獲 exception，那我們的程序就崩了呀。</p>
+<p>Jeff 說：<strong>讓他崩，因爲 crash is awesome!!!</strong></p>
+<p>我呆了，勉強同意他的觀點，倒不是因爲我被說服了，只是因爲他是一個老同志老前輩。</p>
+<p>幾個月後，我處理了一個線上 bug，狠狠被刺痛了一回，徹底改變了我的觀點。</p>
+<p>那一整子，正好我輪上 on-call，產品環境總是爆出的一個問題， .net 服務進程跑着跑着就死了，可是又搞不清楚什麼原因，每次只能重啓服務器，然後去分析 dump 文件，分析又分析不出什麼所以然來，就這麼折騰了一個星期，是不是就有 on-call 電話打過來要處理，真是苦不堪言。</p>
+<p>最後，是一個晚上我突然靈光一下，心想&hellip;&hellip;（此處省略 10000 字），我當時怎麼分析出來的不重要，重要的是最後我發現問題的根源，是因爲前人寫的 code 太銼了，<strong>很多 exception 被拋出來之後，都被 catch 住，然後打了一個 log，然後繼續運行，這就是邪惡的根源</strong>。</p>
+<p>本來，當發生這些 exception 的時候，可以直接 crash 的，這樣工程師只要檢查 crash 時間之前的 log，就能夠很容易發現問題；可是，前人寫得代碼卻生吞了這些 exception，然後裝作沒事人一樣繼續運行，<strong>程序的狀態已經不正常了，卻依然在苟且運行</strong>，這樣的不正常狀態越積越多，終有撐不住死掉的時候，但是，<strong>那已經是幾周之後了</strong>，工程師怎麼可能會把表現的問題和幾周前的 log 關聯起來！</p>
+<p>所以說，吞掉 exception，不讓該 crash 的情況 crash，害人害己，我深深咒罵這麼寫 code 的前人。</p>
+<p>很多初級選手選擇吞掉 exception 堅持不 crash，是爲了讓服務&ldquo;持續穩定運行&rdquo;，爲了讓服務&ldquo;具有高可用性&rdquo;，錯！錯得厲害！要讓服務穩定而高可用，靠的可不是一臺服務器，應該用多服務的方式來應對，即使在產品環境下，出了不能處理的 exception，就應該由它去，不該你處理的異常就別去處理，讓調用棧上流的去處理，如果調用棧上層也沒有人處理，那就崩潰吧，<strong>暴露問題總比隱藏問題要好。</strong></p>
+<p>回想 Jeff Richter 所說的：當 exception 發生的時候，表示不可預料的事情發生了，每個函數只應該處理它能夠處理的 exception，如果不能處理，就放它過去，交由上面的（人）去處理，處理不了就讓它崩潰。</p>
+<p>Let it Crash!</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-042aa40c42d3cc69b72513b76a20f8c5_b.jpg" alt="">
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div>
