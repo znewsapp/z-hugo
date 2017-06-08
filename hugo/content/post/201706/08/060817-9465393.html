@@ -1,0 +1,99 @@
++++
+date = "2017-06-08T17:00:00"
+title = "蘋果要下架《王者榮耀》，這謠言越傳越離譜"
+titleimage = "https://pic1.zhimg.com/v2-4570557b705b203015dc5299fceddeb8.jpg"
+ga = 060817
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+<div class="headline-background">
+<a class="headline-background-link" href="http://tech.sina.com.cn/i/2017-06-07/doc-ifyfuzmy2506697.shtml">
+<div class="heading">相關新聞</div>
+<div class="heading-content">蘋果嚴禁應用熱更新，《王者榮耀》、12306 等受影響</div>
+<i class="icon-arrow-right"></i>
+</a>
+</div>
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title"></h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>很多人都在猜測，蘋果要對熱更新動刀子了，甚至還傳出了&ldquo;王者榮耀、12306 等大批使用熱更新機制的遊戲和應用不執行就會被下架&rdquo;的傳聞。</p>
+<p>但事實真的是這樣嗎？</p>
+<p><strong>先做一個科普：什麼是熱更新，爲何要熱更新？</strong></p>
+<p>熱更新簡而言之，服務器在不關閉的情況下，用戶打開應用即可下載安裝更新的代碼運行，這是目前移動遊戲更新的主流方式之一。</p>
+<p>舉個例子，主流的遊戲都會根據不同的節假日做大型的活動運營，這種運營基本都是即時性的，熱更新是滿足這種需求最有效的方式之一。</p>
+<p>而如果通過提交 App Store 審覈的方式下發更新，考慮到 Android 和 iOS 同步，大型遊戲可能需要 1 個月甚至更長的審覈週期，這一點蘋果也應該心知肚明。</p>
+<p><strong>再說全文重點</strong>：</p>
+<p>熱更新並未被禁止！熱更新並未被禁止！熱更新並未被禁止！</p>
+<p><strong>接着來看看蘋果最新通知是怎麼說的：</strong></p>
+<p>以下是通知原文：</p>
+<blockquote>Dear Developer,<br><br>In March of this year we notified you that your app contains code designed explicitly with the capability to change your app&rsquo;s behavior or functionality after App Store Review approval, which is not in compliance with section 3.3.2 of the Apple Developer Program License Agreement and App Store Review Guideline 2.5.2. We requested that you remove any code, frameworks, or SDKs that fall in line with the functionality described above before submitting the next update for your app for review.<br><br>As of this message, we have not received a compliant update for your app.<br><br>To ensure there is no interruption of the availability of your app, please submit an update by June 12th, 2017. If we do not receive an update by that date, your app may be removed from the App Store.</blockquote>
+<p><strong>以下是對應的翻譯：</strong></p>
+<blockquote>親愛的開發者<br><br>在今年 3 月我們已經發過消息提醒，你的 App 內似乎有一些熱更新（即繞過 App Store 審覈的更新）的代碼，這些代碼違反了蘋果開發者協議的 3.3.2 條款與 App Store 審覈指南的 2.5.2 條款。以及，我們曾要求你移除所有相關代碼、框架或 SDK，並且重新提交版本。<br><br>在這條消息推送時，我們還沒有收到過你進行過相應的調整。<br><br>爲了確保你的 App 在 App Store 內的正常運行，請在 2017/6/12 之前提交一次更新。如果不做調整的話，你的 App 可能會從 App Store 下架。</blockquote>
+<p><strong>圍觀蘋果熱更新政策的正確姿勢</strong></p>
+<p>蘋果官方給開發者發出的通知，關鍵就在這句話：<strong>我們曾要求你移除所有相關代碼、框架或 SDK，並且重新提交版本。</strong></p>
+<p>我們從一位匿名開發者那裏找到了這樣的答案：</p>
+<blockquote>不符合 2.5.2 條款， App 包含熱更新代碼，特別提到了 dlopen（），dlsym（），respondingToSelector:, performSelector:, method_exchangeImplementations（）這些函數，但是蘋果沒有禁用熱更新，只是禁用了幾種熱更新框架和技術，而 JSPatch 等蘋果不讓使用的原因是，能夠直接修改代碼，可以修改到功能，這樣其實繞過了蘋果的審覈，其他的蘋果禁止使用的框架也是如此。</blockquote>
+<p>關於應對措施，這位開發者的方案是這樣的：</p>
+<blockquote>後期提交的版本，要麼沒有熱更新，要麼只能用 React Native 框架熱更新，其他如 JSPatch、RolloutIO、TriggerIO、WAX(Lua) 等都不能用。</blockquote>
+<p>也就是說，<strong>要求移除相關代碼、框架和 SDK 只是爲了規範開發者的代碼，這會衝擊到部分熱更新解決方案，但不等於封殺熱更新，合理採用熱更新機制的產品，不存在也沒理由被下架。</strong></p>
+<p>這一點，我們從&ldquo;<a href="https://www.zhihu.com/question/56794578">如何看待蘋果禁止 JSPatch 等 iOS APP 熱更新方案？</a>&rdquo;這個話題中，一位來自白鷺時代的開發者 @王澤 的回答中也找到了相應的答案。</p>
+<blockquote>截止目前爲止，我們也沒有收到使用白鷺引擎打包遊戲的開發者收到了蘋果警告郵件的消息。</blockquote>
+<p>對於那些受到警告郵件的開發者，王鐸的解釋如下：</p>
+<blockquote>目前爲止收到警告郵件的開發者絕大部分使用了 JS-Patch 或 Rollout 類庫，剩下未直接使用這些類庫的開發者，目前初步估計很可能是在集成的第三方 SDK 中使用了上述框架。而未採用上述框架的熱更新技術，目前爲止並未收到影響。而絕大部分遊戲引擎由於並沒有調用這些類庫，也自然沒有受到影響。</blockquote>
+<p>所以蘋果確實對於採用熱更新機制提出了嚴格的要求，但如果解讀爲禁用封殺熱更新，並不準確。</p>
+<p><strong><strong>蘋果爲何要這麼做？</strong></strong></p>
+<p>蘋果禁止濫用熱更新機制，和 iOS 封閉的做法本質上是一致的，爲了應用生態的安全可控和體驗的一致性，畢竟 App Store 堪稱是蘋果最大的現金牛之一。</p>
+<p>數據顯示，到目前爲止 App Store 給開發者的收入分成高達 700 億美元，去年就達到了 200 億美元。</p>
+<p>市場研究公司 Macquarie 的分析師 Ben Schachter 在報告中這樣寫道，&ldquo; App Store 是有史以來最好的商業模式之一，蘋果的投資者不需要依賴於蘋果的創新來驅動該模式的前進。&rdquo;</p>
+<p>任何一個小細節都有可能搞砸 App Store 這塊大蛋糕，尤其是採用 JSPatch 熱更新這種蘋果無法把控的應用更新機制。</p>
+<p>據瞭解，今年二月份網絡安全公司 Fire Eye 發現 JSPatch 存在安全漏洞，一旦黑客發現和利用這個後門，他們就能夠訪問到設備中的照片、麥克風和剪貼板數據以及其他涉及個人隱私的功能，App Store 中有 1220 款應用程序可能會受此影響。</p>
+<p>所以，蘋果有必要對採用這類機制的開發者提出了&ldquo;移除所有相關代碼、框架或 SDK，並且重新提交版本&rdquo;的要求。</p>
+<p>總結下來，<strong>蘋果的禁止了部分熱更新的函數、框架和代碼，但未禁用熱更新機制，所以那些關於王者榮耀、12306 等產品被下架的內容，可能是對蘋果開發者條款的誤讀，只能說你被騙了。</strong></p>
+<p><strong><em>by 蘇揚</em></strong></p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+
+
+
+<div class="question">
+<h2 class="question-title"></h2>
+
+<div class="answer">
+
+<div class="content">
+<p>「知乎機構帳號」是機構用戶專用的知乎帳號，與知乎社區內原有的個人帳號獨立並行，其使用者爲有正規資質的組織機構，包括但不限於科研院所、公益組織、政府機關、媒體、企業等。這不僅是知乎對機構的「身份認證」，更是涵蓋了內容流通機制、帳號規範等全套帳號體系。和個人帳號一樣，機構帳號開通不需要任何費用，同時也受社區規範的監督管理，並要遵守相關協議。目前機構帳號入駐採用邀請制。您可以通過<span class="s1"> &nbsp;<a href="http://zhihu.com/org-intro"><span class="s2">什麼是「知乎機構帳號」</span></a>&nbsp;</span>來了解更多機構帳號信息。</p>
+</div>
+</div>
+
+
+</div>
+
+
+</div>
+</div>
