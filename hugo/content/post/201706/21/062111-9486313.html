@@ -1,0 +1,138 @@
++++
+date = "2017-06-21T11:00:00"
+title = "我們分析了 815 部電影，發現電影評分真的存在偏差"
+titleimage = "https://pic2.zhimg.com/v2-ba5f58add88ae9205f88baff507b40d9.jpg"
+ga = 062111
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+<div class="question">
+<h2 class="question-title">爲什麼這部電影的豆瓣評分我不認可？—— 數據分析的視角</h2>
+<div class="answer">
+
+
+
+<div class="content">
+<p>文章來自<a href="https://www.zhihu.com/org-intro"><span class="s1">機構帳號</span></a>：<a class="PostIndex-authorName" href="https://www.zhihu.com/people/shu-ju-bing-shan" target="_blank">數據冰山</a></p>
+<hr>
+<p>不知道大家有沒有這樣的經歷 &mdash;&mdash; 看了一部電影，但對豆瓣的評分並不認可</p>
+<p>比如，之前看<strong>西遊伏妖篇</strong>，我就很疑惑，爲什麼分數這麼低？畢竟，周星馳是我很喜歡的導演</p>
+<img class="content-image" src="https://pic3.zhimg.com/v2-f84813d976ac1d6da670fb241cc78cee_b.jpg" alt="">
+<p>而且，評論區也出現了截然相反的評價</p>
+<img class="content-image" src="https://pic3.zhimg.com/v2-577c24f4583e3a890f69d369547cf18e_b.jpg" alt="">
+<p>再比如最近的<strong>神奇女俠 Wonder Woman</strong>，雖然分數不錯，但我並不覺得很好看</p>
+<p>此外，一直以來也有&ldquo;<strong>愛樂之城 / 摔跤吧爸爸</strong>評分偏高了嗎？&rdquo;等類似的問題。所以，會想問 &mdash;&mdash; <strong>爲什麼有的電影分數高 / 低，但是我們並不認同？</strong>是不是豆瓣電影的分數有問題？</p>
+<p>之前，從<a class="internal" href="https://zhuanlan.zhihu.com/p/24815577">國內外評價差異（和 IMDB 比較）</a>的角度分析過，比如<strong>赤壁 / 讓子彈飛</strong>，國內外的評價並不一致，但還有沒有別的原因？</p>
+<p><strong><strong>1. 數據概況</strong></strong></p>
+<p>選取 2008-2017, <a class=" wrap external" href="https://link.zhihu.com/?target=https%3A//www.douban.com/doulist/3524358/" target="_blank" rel="nofollow noreferrer">國內公映</a>的電影。限制豆瓣評分人數在 2W 以上，一方面討論大家較爲熟悉、主流的電影，另一方面也儘量減少水軍等的影響。總共 815 部電影，評分分佈如圖</p>
+<img class="content-image" src="https://pic1.zhimg.com/v2-226fa1c9ff3e021d00a16e21618fa338_b.jpg" alt="">
+<p>包括了很多大家熟悉的電影</p>
+<img class="content-image" src="https://pic2.zhimg.com/v2-98a9d51eb3d494883ca022903138525d_b.jpg" alt="">
+<p><strong><strong>2. 評分的差異</strong></strong></p>
+<p><strong>2.1 西遊 vs. 杜拉拉</strong></p>
+<p>仔細觀察<strong>西遊</strong>的評分，會發現和相同評分的電影（<strong>杜拉拉昇職記</strong>）的分佈差別很大。</p>
+<img class="content-image" src="https://pic4.zhimg.com/v2-6badbcd46712e0ae475f09d3d0e41a97_b.jpg" alt="">
+<p>兩者評分相同，評價人數也很多（20W, 17W），但 5 星和 1 星的比例差別很大[1]。</p>
+<p>什麼意思呢？</p>
+<p>● 杜拉拉昇職記：大家都覺得很一般，所以評分集中在了 3 星</p>
+<p>● 西遊伏妖篇：同時有不少人覺得不錯 / 較差，在 1 星和 5 星有不少的分佈。</p>
+<p>也就是說，<strong>儘管兩者（平均）分數相同，但是背後的看法非常不同，評分差異很大，</strong>這也正好對應了上面，西遊出現兩種截然相反的熱評的情況。</p>
+<p><strong>2.2 怎麼衡量評分差異</strong></p>
+<p>評分分佈的差異，可以用方差來衡量，計算方法如下</p>
+<img class="content-image" src="https://pic4.zhimg.com/v2-51a98b7bbf4de038e035fc733f0d99af_b.jpg" alt="">
+<p>也就是計算 <strong>評分偏離平均分的程度 [2]</strong>。下文使用標準差（STD），方差開方即可。可以做出標準差（STD） - 豆瓣評分（Rating ）散點分佈圖[3]。爲了便於比較，做標準差 97% 範圍線。</p>
+<img class="content-image" src="https://pic2.zhimg.com/v2-f3cf2cb88f5e1e88eada31056ecc4c41_b.jpg" alt="">
+<p>可以看到西遊和杜拉拉昇職記的 STD 差別確實很大，西遊的標準差排在前 3% ，爭議性是巨大的，而杜拉拉則小很多。 另外，還發現散點圖的有兩個特點</p>
+<p>● 收斂：分數越高（比如從 6 分到 10 分），STD 分佈的範圍越來越窄，值越來越小</p>
+<p>● 不對稱： 理論上來說，這張圖應該是關於 6 分對稱的，因爲顛倒一下評星的順序（e.g. 5 星 -&gt; 1 星, 4 星 -&gt; 2 星），就能得到對稱的 STD 值，但實際並不對稱。</p>
+<p>對於收斂，可以從平均分怎麼計算出來的角度理解：平均分越高，佔高分的比例越大，因此評分差異較小。至於不對稱，後面再說。</p>
+<p><strong>2.3 典型電影</strong></p>
+<p>這裏，可以看到很多典型評價差異很大的電影，比如<strong>刺客聶隱娘，一步之遙</strong> 等等都在這張圖的上方，STD 很高</p>
+<img class="content-image" src="https://pic1.zhimg.com/v2-022103fbcd23b83fd0586618592d0398_b.jpg" alt="">
+<p>交互式圖表地址: <a class=" external" href="https://link.zhihu.com/?target=https%3A//cdn.rawgit.com/cqcn1991/movie-compare/master/clusters.html" target="_blank" rel="nofollow noreferrer"><span class="invisible">https://</span><span class="visible">cdn.rawgit.com/cqcn1991</span><span class="invisible">/movie-compare/master/clusters.html</span><span class="ellipsis"></span></a></p>
+<p>可以拿他們和 STD 較低的電影比較</p>
+<img class="content-image" src="https://pic1.zhimg.com/v2-5c94b60471e43c8f6a255cda805152b4_b.jpg" alt="">
+<p>這裏可以問一個問題 &mdash;&mdash; <strong>這些電影的分數相同，但同樣好看 / 不好看嗎？</strong></p>
+<p>比如，<strong>刺客聶隱娘</strong>和<strong>我 11</strong>的分數一樣，但他們一樣好看嗎？</p>
+<p>顯然不是</p>
+<p>和前面的比較類似，刺客聶隱娘雖然評分較高，但其 5 星 /1 星和我 11 差別很大。爲什麼呢？大家可能早有耳聞，看評論，也能看到</p>
+<img class="content-image" src="https://pic2.zhimg.com/v2-ec8acbec1138c71264c31fadac4ed205_b.jpg" alt="">
+<p>可能的原因，是刺客聶隱娘畫面極具美感，但另一方面，劇情卻讓人看不懂。所以評分上出現了較大的分歧。一步之遙也是類似，算是比較有名的例子了。</p>
+<p>而<strong>爸爸去哪兒</strong>，也能從評論中看到一些端倪</p>
+<img class="content-image" src="https://pic4.zhimg.com/v2-4c8d5c590afcb118233e05f36ac6b2d3_b.jpg" alt="">
+<p>可能的原因是，一方面是娛樂性優秀，帶着小孩看電影的家長觀衆們覺得很好，另一方面，有人覺得這不是電影，純屬圈錢。</p>
+<p>通常，我們總是在討論一部電影評分的高低，但這只是平均分，當大家看法一致的時候，這個分數會很有參考價值。但<strong>當評分差異很大（STD 很大）的時候，這個分數的作用就有限了。</strong></p>
+<p><strong><strong>3. 電影評分的形狀</strong></strong></p>
+<p><strong>3.1 總共有幾種形狀？ </strong></p>
+<p>從評分的分佈，很容易想到關於評分形狀的<a class="internal" href="https://www.zhihu.com/question/20996501">段子</a></p>
+<img class="content-image" src="https://pic3.zhimg.com/v2-98e018e7b5a113f04f377684b4574e8e_b.jpg" alt="">
+<p>那麼，電影的評分，會有多少種形狀呢？</p>
+<p>可以用 K-Means 來做，輸入數據爲 5 個評分等級的比例。實際可以把類別分得很細，這裏簡單分成 6 種，比較有代表性，結果如下圖</p>
+<img class="content-image" src="https://pic3.zhimg.com/v2-2e8f272633fcbcb5f3b5f8b9050f402a_b.jpg" alt="">
+<p>交互式圖表地址: <a class=" external" href="https://link.zhihu.com/?target=https%3A//cdn.rawgit.com/cqcn1991/movie-compare/master/clusters.html" target="_blank" rel="nofollow noreferrer"><span class="invisible">https://</span><span class="visible">cdn.rawgit.com/cqcn1991</span><span class="invisible">/movie-compare/master/clusters.html</span><span class="ellipsis"></span></a></p>
+<p>這些分佈，相當於電影評分的典型形狀，兩頭和中間對應了大家熟知的 P, b 和鐘形分佈[4]。需要注意的是，高 STD 的電影因爲其形狀差異很大，並不適用於這個分類。</p>
+<p>這可以部分解釋，爲什麼散點圖是非對稱的 &mdash;&mdash; 因爲有很多 4 星爲主的電影，但很少有 2 星爲主的電影。畢竟，大多時候給的評價都是一般（3 星），或爛片（1 星），<strong>很少會有電影&ldquo;精確爛到 2 星&rdquo;。</strong></p>
+<p>每個形狀下，也能看到 STD 高 / 低的電影，比如<strong>魔獸，愛樂之城</strong>等等。</p>
+<img class="content-image" src="https://pic3.zhimg.com/v2-f07a3b485e4d1adc0beb1313a0a8b11e_b.jpg" alt="">
+<img class="content-image" src="https://pic2.zhimg.com/v2-f55fba21e653470f5831ccdc01eeb8f9_b.jpg" alt="">
+<p>依然可以問這個問題 &mdash;&mdash; <strong>這些電影分數相同，但是同樣好看嗎？</strong></p>
+<p>像<strong>愛樂之城,</strong> 雖然評分和<strong>薩利機長</strong>一樣，都算典型的好電影了，但是打 5 星的明顯比薩利機長多，也側面說明了爲什麼有人疑惑其分數&ldquo;是否偏高&rdquo;。<strong>魔獸</strong>，則可能有粉絲加成的影響。其他電影不再具體討論，大家可以自己分析~</p>
+<p><strong>3.2 奇怪的形狀</strong></p>
+<p>還有一些奇怪形狀的電影，比如<strong>人間&middot;小團圓，小時代 4, 長城</strong>，並不屬於上述任何一種典型分佈</p>
+<img class="content-image" src="https://pic3.zhimg.com/v2-341f1e8741f35a55398c5b6615f6882a_b.jpg" alt="">
+<p>這是爲什麼？</p>
+<p>具體原因不得而知。但實際上，這是典型的<strong>混合分佈</strong>的特徵，也就是說，由幾個分佈疊加得到。</p>
+<p>如果把最差評分和中等評分混合起來（各按 50% 算），可以得到和上面非常相似的形狀</p>
+<img class="content-image" src="https://pic4.zhimg.com/v2-6a31d4cb432404cd63621bf15dd8f7df_b.jpg" alt="">
+<p>那麼，有沒有可能真的是混合分佈呢？</p>
+<p>查看評論，不難發現，對於<strong>人間&middot;小團圓</strong>，是 ZZ 因素導致了對其評分的極大差別。</p>
+<img class="content-image" src="https://pic2.zhimg.com/v2-b81e5c9ebebec5ca59d5fab299937b85_b.jpg" alt="">
+<p>小時代可能也是類似。有人看到郭小四就要打一星，另一方面，原著粉們則表示還算不錯。</p>
+<p>那麼<strong>長城</strong>呢？可以查看近期的評價。需要注意的是，這時不太可能有水軍了，因爲這時候的分數對票房毫無意義。簡單看一下前兩頁，發現 2-3 星居多</p>
+<img class="content-image" src="https://pic1.zhimg.com/v2-7d82e271d8178b9ec40b38e42f704ab8_b.jpg" alt="">
+<p>和當初的差評還是有差距的。更靠譜的當然是抓數據，不過豆瓣官方並沒有公開相關的數據，這個以後有機會再補吧~ 延伸出來的問題是，惡評如流的電影，在下映之後，還會有那麼多差評嗎？</p>
+<p><strong><strong>4. 總結</strong></strong></p>
+<p>本文主要做了兩件的工作</p>
+<p>● 用標準差（STD）展示了電影評分的差異情況，能看到不少評價差異很大的電影</p>
+<p>● 對評分的形狀，用 K-Means 分類，可以看到評分形狀的幾大類型</p>
+<p>回到我們最開始的問題 &mdash;&mdash; <strong>爲什麼有的電影分數高 / 低，但是我們並不覺得如此？是分數有問題嗎 ?</strong></p>
+<p><strong>原因在於，那只是個平均分而已</strong></p>
+<p>而有意思的也在於此 &mdash;&mdash; 大多數人在談論豆瓣的評分的時候，<strong>都知道這是平均分，也都能看到分數的分佈情況</strong>。而且大多數時候，這個平均分是有效的，因爲大家的評價較爲接近（STD 較小）</p>
+<p>但是，<strong>很少有人注意到評分的分歧大小</strong>（即 STD 的大小）。所以，當看到一部 STD 很大的電影，平均分和我們感受不符時，我們疑惑了，進而覺得豆瓣的評分有問題。實際上，只是<strong>因爲人們的評價差異太大（STD 太大），</strong><strong>使平均分的意義變得比較有限了而已</strong><strong>。</strong></p>
+<p>最後，我在想，有沒有可能給豆瓣評分旁邊加上一個小標籤？比如，對 STD 特別大的電影，在旁邊加個&ldquo;分歧警告&rdquo;標籤，註明 &ldquo;<strong>這部電影的評價差異水平達到了前 3%，平均分的參考意義較爲有限</strong>&rdquo;，進一步還可以分開展示好評 / 差評，向用戶解釋評價差異具體如何。這樣或許能減少一些人們對（平均）評分的疑慮。</p>
+<p>然後，分析有什麼疏漏或者沒講清楚的地方，也歡迎大家指出~</p>
+<p>[1] 這裏採用的是豆瓣的評分柱狀圖，畫法並不標準（佔比最大爲定寬），但適用於基本的比較</p>
+<p>[2] 理論上，ordinal data 不適於計算均值、方差，可見 <a class=" wrap external" href="https://link.zhihu.com/?target=https%3A//news.ycombinator.com/item%3Fid%3D2423313" target="_blank" rel="nofollow noreferrer">Recommender Systems: We're doing it (all) wrong</a><a class=" wrap external" href="https://link.zhihu.com/?target=https%3A//stats.stackexchange.com/questions/67551/calculate-mean-of-ordinal-variable" target="_blank" rel="nofollow noreferrer">Calculate mean of ordinal variable</a> 。不過，算均值固然不嚴謹，但是更好的做法，應該是轉換成一個可以量化的值，比如考慮每個值之間不同的 distance, 而不是全盤否定。簡單起見，本文直接當作離散值計算均值、方差。</p>
+<p>另外，豆瓣 /IMDB 的分數並不是簡單的平均值，不過實際區別很小。但無論是衆數 / 中位數 / 加權平均，都沒有太大影響。因爲本文討論的是，&ldquo;當用一個分數來代表電影的水平時，什麼時候這個分數是有效的，什麼時候是無效的？&rdquo; 無論這個分數的算法如何，都會存在失效的時候（即分歧較大時）。</p>
+<p>[3] 實際 STD 的尺度沒有這麼大。這樣畫圖類似於把 STD 做規整化，更方便於比較。</p>
+<p>[4] 理論上可構成的形狀要更多，比如 5 星 /1 星各佔 50% 的凹形，但這些形狀在實際數據中並不存在，所以得到的聚類結果中也沒有這些形狀。</p>
+<p>文：<a class="member_mention" href="https://www.zhihu.com/people/cc2ba444d987d797a797fe9e23889362">@子珂</a></p>
+<p>源代碼:&nbsp;<a class=" wrap external" href="https://link.zhihu.com/?target=https%3A//github.com/cqcn1991/movie-compare" target="_blank" rel="nofollow noreferrer">cqcn1991/movie-compare</a></p>
+<p>文中涉及的交互式散點圖:&nbsp;<a class=" external" href="https://link.zhihu.com/?target=https%3A//cdn.rawgit.com/cqcn1991/movie-compare/master/clusters.html" target="_blank" rel="nofollow noreferrer"><span class="invisible">https://</span><span class="visible">cdn.rawgit.com/cqcn1991</span><span class="invisible">/movie-compare/master/clusters.html</span></a></p>
+<hr>
+<p>歡迎關注微信公衆號：數據冰山</p>
+<p><a class="internal" href="https://zhuanlan.zhihu.com/hemingke">數據冰山 - 知乎專欄</a></p>
+<hr>
+<p>「知乎機構帳號」是機構用戶專用的知乎帳號，與知乎社區內原有的個人帳號獨立並行，其使用者爲有正規資質的組織機構，包括但不限於科研院所、公益組織、政府機關、媒體、企業等。這不僅是知乎對機構的「身份認證」，更是涵蓋了內容流通機制、帳號規範等全套帳號體系。和個人帳號一樣，機構帳號開通不需要任何費用，同時也受社區規範的監督管理，並要遵守相關協議。目前機構帳號入駐採用邀請制。您可以通過<span class="s1">&nbsp;&nbsp;<a href="http://zhihu.com/org-intro"><span class="s2">什麼是「知乎機構帳號」</span></a>&nbsp;</span>來了解更多機構帳號信息。</p>
+
+
+
+</div>
+</div>
+</div>
+
+
+</div>
+</div>
