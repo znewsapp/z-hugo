@@ -1,0 +1,170 @@
++++
+date = "2017-06-28T20:00:00"
+title = "新一輪勒索病毒又開始爆發，這次連切爾諾貝利也遭殃了"
+titleimage = "https://pic4.zhimg.com/v2-f57304043a04931e39d3bb303d528d77.jpg"
+ga = 062820
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+<div class="headline-background">
+<a class="headline-background-link" href="http://tech.sina.com.cn/roll/2017-06-28/doc-ifyhmtrw4308162.shtml">
+<div class="heading">相關新聞</div>
+<div class="heading-content">全新勒索病毒爆發 北京網信辦等部門發佈防範指南</div>
+<i class="icon-arrow-right"></i>
+</a>
+</div>
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title">2017 年 6 月底爆發的勒索病毒 Petrwrap 是什麼？是否會進一步影響中國？</h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>網上詳細的分析報告都出來了。</p>
+<p>我直接整理一下。</p>
+<p>如果要看詳細的直接看文末分析報告。</p>
+<p>此答案末尾會更新事件進展。</p>
+<p>樣本：</p>
+<p><a href="http://link.zhihu.com/?target=https%3A//www.virustotal.com/en/file/027cc450ef5f8c5f653329641ec1fed91f694e0d229928963b30f6b0d7d3a745/analysis/">Antivirus scan for 027cc450ef5f8c5f653329641ec1fed91f694e0d229928963b30f6b0d7d3a745 at 2017-06-28 00:35:40 UTC</a></p>
+<p><strong><strong>1.是什麼？</strong></strong></p>
+<p>Petya 類似於永恆之藍，但是不同的是，它不會對電腦中的每個文件都進行加密，而是加密 NTFS 分區、覆蓋 MBR、阻止機器正常啓動，影響更加嚴重。攻擊者通過發送惡意的求職郵件進行魚叉攻擊，如果想要恢復，需要支付價值相當於 300 美元的比特幣。</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-6f0f8a81cb7e8e712f4e9de69c11808d_b.jpg" alt="">
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-adf61928dc85b4298fe7361152fe95c3_b.jpg" alt="">
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-315ee5e34ef9966f3f0bc603a7f3558c_b.jpg" alt="">
+<p>Petya 勒索病毒變種會通過郵箱附件傳播，利用攜帶漏洞的 DOC 文檔進行攻擊。中毒後，病毒會修改系統的 MBR 引導扇區，當電腦重啓時，病毒代碼會在 Windows 操作系統之前接管電腦，執行加密等惡意操作。電腦重啓後，會顯示一個僞裝的界面，此界面實際上是病毒顯示的，界面上假稱正在進行磁盤掃描，實際上正在對磁盤數據進行加密操作。</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-f69beb6c486cc20c9f2383f39fa2a1b8_b.jpg" alt="">
+<p>Petya 利用（MS17-010)SMB 漏洞進行內網傳播。</p>
+<p>至於是否利用了（CVE-2017-0199）RTF 漏洞進行釣魚攻擊，目前存疑。</p>
+<p>有安全廠商認爲此事和（CVE-2017-0199）無關</p>
+<blockquote><strong>感染源頭是 CVE-2017-0199 漏洞嗎？</strong> 根據我們捕獲的樣本分析，並沒有發現相應依據。 目前多家安全公司報道稱此次攻擊是利用攜帶 CVE-2017-0199 漏洞附件的釣魚郵件進行投放，該樣本（SHA256:FE2E5D0543B4C8769E401EC216D78A5A3547DFD426FD47E097DF04A5F7D6D206）執行後下載 myguy.xls（SHA256:EE29B9C01318A1E23836B949942DB14D4811246FDAE2F41DF9F0DCD922C63BC6）文件，進一步該樣本會請求域名<a href="http://french-cooking.com">http://french-cooking.com</a>，下載新的 Payload (SHA256：120d1876883d4d2ae02b4134bcb1939f270965b7055cb4bdbd17dda1d4a4baa2)，經過微步在線確認，該樣本爲 LokiBot 家族，並非 Petya 家族（注：此樣本會請求域名 COFFEINOFFICE.XYZ 進行進一步的惡意行爲），跟此次事件沒有直接關係，也並非最初始的感染源頭。</blockquote>
+<p><strong><strong>2.怎麼傳播？</strong></strong></p>
+<ul>
+<li>郵箱傳播</li>
+<li>MeDoc</li>
+</ul>
+<p>（來自思科 Talos、ESET、卡巴斯基實驗室的分析稱，黑客首先攻擊了烏克蘭的會計軟件廠商 M.E.Doc，隨後黑客通過 M.E.Doc 的更新服務器推送推給用戶。用戶更新軟件時，便感染了病毒）</p>
+<p>同時 Petya 會嘗試在內存或者本地文件系統中提取密碼，尋求入侵其他系統的途徑。</p>
+<p>隨後，Petya 會利用 PsExec 和 WMI。PsExec 原本是用來遠程執行操作的工具，而 Petya 把它用來在其他電腦執行惡意代碼。如果受感染的電腦擁有整個網絡的管理權限，整個網絡中的電腦都可能被感染。</p>
+<p><strong><strong>3.感染過程</strong></strong></p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-73b01f973b6a154bd548154962b47a53_b.jpg" alt="">
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-86a3261da7322a0371feb6ec5eefbd94_b.jpg" alt="">
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-eb597bae385d45c5d05ce8f4a265a8bf_b.jpg" alt="">
+<div class="highlight">
+<pre><code class="language-text">C:\Windows\dllhost.dat \\10.141.2.26 -accepteula -s -d C:\Windows\System32\rundll32.exe &ldquo;C:\Windows\perfc.dat&rdquo;,##1 60 &ldquo;RCAD\ryngarus.ext:FimMe21Pass!roy4&Prime;&rdquo;RCAD\svcomactions:3GfmGeif&rdquo;
+
+c:\windows\system32\wbem\wmic.exe /node:&rdquo;IP_ADDR&rdquo; /user:&rdquo;User&rdquo; /password:&rdquo;PWD&rdquo; process call create &ldquo;c:\windows\system32\rundll32.exe&rdquo; \&rdquo;c:\windows\perfc.dat\&rdquo; #1
+</code></pre>
+</div>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-fa2c9e7ef30a9f52af56ad3d5b0bac27_b.jpg" alt="">
+<p><strong><strong>4.主要功能描述</strong></strong></p>
+<ul>
+<li>系統重啓，惡意 MBR 加載；</li>
+<li>檢測磁盤是否被加密，如果沒有則顯示僞造 的檢測磁盤界面、並加密 MFT；</li>
+<li>顯示紅色的勒索界面，讓用戶輸入祕鑰；</li>
+</ul>
+<p><strong><strong>5.會不會進一步影響中國？</strong></strong></p>
+<p><strong>會。已經影響。</strong></p>
+<p><strong><strong>6.怎麼辦？</strong></strong></p>
+<p>1.打補丁</p>
+<p>䃼丁地址：</p>
+<p>rtf:</p>
+<p><a href="http://link.zhihu.com/?target=https%3A//portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2017-0199">{{windowTitle}}</a></p>
+<p>SMB:</p>
+<p><a href="http://link.zhihu.com/?target=https%3A//technet.microsoft.com/en-us/library/security/ms17-010.aspx">Microsoft Security Bulletin MS17-010 - Critical</a></p>
+<p>2.暫時關閉 WMIC 功能。</p>
+<p>分析報告:</p>
+<p><a href="https://zhuanlan.zhihu.com/p/27594160">https://zhuanlan.zhihu.com/p/27594160</a></p>
+<p><strong><em>事件進展:</em></strong></p>
+<p><em>6.28-</em></p>
+<p>Posteo 宣佈關閉勒索病毒製作者的郵箱賬戶 wowsmith123456@posteo.net，而該郵箱地址是 Petya 勒索信息顯示的唯一聯繫方式，是勒索病毒作者確認比特幣支付的手段。也就是說，受害者目前無法再交付贖金&hellip;&hellip;</p>
+</div>
+</div>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>回答來自機構帳號：<a class="avatar-link" href="https://www.zhihu.com/org/a-li-yun-yun-qi-she-qu-48" target="_blank"><span class="name">阿里云云棲社區</span></a></p>
+<hr>
+<p>看到十七兄的精彩分析順手點個贊，在這裏社區附上阿里雲安全部門專家的安全建議作爲補充：</p>
+<p>阿里雲安全團隊第一時間拿到病毒樣本，並進行了分析：</p>
+<blockquote><strong>這是一種新型勒索蠕蟲病毒。電腦、服務器感染這種病毒後會被加密特定類型文件，導致系統無法正常運行。</strong><br><strong>目前，該勒索蠕蟲通過 Windows 漏洞進行傳播，一臺中招可能就會感染局域網內其它電腦。</strong></blockquote>
+<p><strong><strong>一、Petya 與 WannaCry 病毒的對比</strong></strong></p>
+<p><strong>1、加密目標文件類型</strong></p>
+<p>Petya 加密的文件類型相比 WannaCry 少。</p>
+<p>Petya 加密的文件類型一共 65 種，WannaCry 爲 178 種，不過已經包括了常見文件類型。</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-a64b9cb388ad76b2e9cb42744d73817f_b.jpg" alt="">
+<p><strong>2、支付贖金</strong></p>
+<p>Petya 需要支付 300 美金，WannaCry 需要支付 600 美金。</p>
+<p><strong><strong>二、雲用戶是否受影響？</strong></strong></p>
+<p><strong>截止發稿，雲上暫時未發現受影響用戶。</strong></p>
+<p>6 月 28 日凌晨，阿里雲對外發布了公告預警。</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-913772cc79588016af0e06f669fa93e6_b.jpg" alt="">
+<p><strong><strong>三、勒索病毒傳播方式分析</strong></strong></p>
+<p>Petya 勒索蠕蟲通過 Windows 漏洞進行傳播，同時會感染局域網中的其它電腦。電腦感染 Petya 勒索病毒後，會被加密特定類型文件，導致電腦無法正常運行。</p>
+<p>阿里雲安全專家研究發現，Petya 勒索病毒在內網系統中，主要通過 Windows 的協議進行橫向移動。</p>
+<p>主要通過 Windows 管理體系結構（Microsoft Windows Management Instrumentation），和 PSEXEC（SMB 協議）進行擴散。</p>
+<p>截止到當前，黑客的比特幣賬號(1Mz7153HMuxXTuR2R1t78mGSdzaAtNbBWX)中只有 3.39 個比特幣（1 比特幣=2459 美金），33 筆交易，說明已經有用戶支付了贖金。</p>
+<p><strong><strong>四、技術和加密過程分析</strong></strong></p>
+<p>阿里雲安全專家對 Petya 樣本進行研究後發現，操作系統被感染後，重新啓動時會造成無法進入系統。如下圖顯示的爲病毒僞裝的磁盤掃描程序。</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-95d410e8bd487bf26304c1999b190cc8_b.jpg" alt="">
+<p>Petya 病毒對勒索對象的加密，分爲以下 7 個步驟：</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-dd0a26d89c7d87dc390b31a220ffb1c5_b.jpg" alt="">
+<p>首先，函數 sub_10001EEF 是加密操作的入口。遍歷所有磁盤，對每個固定磁盤創建一個線程執行文件遍歷和加密操作，線程參數是一個結構體，包含一個公鑰和磁盤根路徑。</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-c66f0704ad35c80798226e84dc91a237_b.jpg" alt="">
+<p>然後，在線程函數（StartAddress）中，先獲取密鑰容器，</p>
+<p>pszProvider="MicrosoftEnhanced RSA and AES Cryptographic Provider"</p>
+<p>dwProvType=PROV_RSA_AES Provider 爲 RSA_AES。</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-8e6286b02e975f6bc0c3955ef6d70770_b.jpg" alt="">
+<p>調用 sub_10001B4E，通過 CryptGenKey 生成 AES128 密鑰，用於後邊進行文件加密。</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-0ea12da56afe286cc9d8daeb598d1d38_b.jpg" alt="">
+<p>如果生成密鑰成功，接着調用 sub_10001973 和 sub_10001D32，分別是遍歷磁盤加密文件和保存密鑰的功能。</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-766f8ba458515ee11cc24c64e3f59ab5_b.jpg" alt="">
+<p>在 sub_10001973 函數中判斷了只對特定文件後綴加密。</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-f8d4e492228d5154c98233d68cb4f73b_b.jpg" alt="">
+<p>sub_10001D32 函數功能是將密鑰加密並寫入磁盤根路徑的 README.TXT 文件中，</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-f56eebd1d68b757c6aab448145b55fce_b.jpg" alt="">
+<p>該函數在開始時調用了 sub_10001BA0 獲取一個程序內置的公鑰</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-361b5d4f0b0a9a031e919e7b0a26b0ac_b.jpg" alt="">
+<p>之後，調用 sub_10001C7F 導出 AES 密鑰，在這個函數中用前邊的公鑰對它加密。</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-c1abe3456f5aa5e9b405de0aa0ef1da6_b.jpg" alt="">
+<p>最後，在 README.TXT 中寫了一段提示付款的文字，並且將加密後的密鑰寫入其中。</p>
+<p>因爲密鑰經過了程序中內置的公鑰加密，被勒索對象必須要有黑客的私鑰才能解密。這也就造成了勒索加密的不可逆性。</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-043f6bc6ce4c48b0717aa4bf101af705_b.jpg" alt="">
+<p><strong>五、安全建議</strong></p>
+<p>目前勒索者使用的郵箱已經被關停，不建議支付贖金。</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-20e853b57b82b3f94141d96ecb680261_b.jpg" alt="">
+<p>所有在 IDC 託管或自建機房有服務器的企業，如果採用了 Windows 操作系統，立即安裝微軟補丁。</p>
+<p>對大型企業或組織機構，面對成百上千臺機器，最好還是使用專業客戶端進行集中管理。可靠的數據備份可以將勒索軟件帶來的損失最小化。</p>
+<p><strong>相關內容推薦：</strong></p>
+<p><a href="http://link.zhihu.com/?target=http%3A//click.aliyun.com/m/24432/">WanaCrypt0r 勒索蠕蟲完全分析報告</a></p>
+<hr>
+<p>「知乎機構帳號」是機構用戶專用的知乎帳號，與知乎社區內原有的個人帳號獨立並行，其使用者爲有正規資質的組織機構，包括但不限於科研院所、公益組織、政府機關、媒體、企業等。這不僅是知乎對機構的「身份認證」，更是涵蓋了內容流通機制、帳號規範等全套帳號體系。和個人帳號一樣，機構帳號開通不需要任何費用，同時也受社區規範的監督管理，並要遵守相關協議。目前機構帳號入駐採用邀請制。您可以通過<span class="s1">&nbsp;&nbsp;<a href="http://zhihu.com/org-intro"><span class="s2">什麼是「知乎機構帳號」</span></a>&nbsp;</span>來了解更多機構帳號信息。</p>
+<p>&nbsp;</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div>
