@@ -1,0 +1,256 @@
++++
+date = "2017-07-09T07:00:00"
+title = "從一個本該死掉的遊戲講起，遊戲開發到底有多難？"
+titleimage = "https://pic2.zhimg.com/v2-36bf233424c6b3ae798f3f5c7e6970d5.jpg"
+ga = 070907
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+<div class="question">
+<h2 class="question-title"></h2>
+<div class="answer">
+
+
+
+<div class="content">
+<p>遊戲爲什麼難開發這個問題，已經有很多人在知乎上回答過這個問題，大家出發的角度大多數從項目管理角度出發，偶爾也有從技術角度出發的，我這裏正好有一份資料，展示了 Bioshock 開發的全貌。</p>
+<p>我第一次拿到這個份文檔的時候，是 <a class="member_mention" href="http://www.zhihu.com/people/bf866279f5ca9b430487a6b51cd129cb">@陳灼</a> 當時 2K China 的設計老大通過內部郵件發給我的（當時是鍾文的翻譯，這個版本我沒有聯繫上鍾文，只好自己重新再翻一遍，好處是補充了一些其他我知道的資料），當時對遊戲開發的理解還非常膚淺，看看也就過去了。時過境遷，2015 年的時候 Chris Kline 吧這份視頻發到了 Youtube 上，令人遺憾的是，前後兩個版本的視頻觀看人數相加都不到 1000 份，我是翻閱資料想給 Bioshock 十週年寫點東西的時候纔想起來我看過（記性好的好處），這份資料比較清晰的從內部的視野展示出了 Bioshock 的整個開發過程，中間吐槽內容妙語連珠，結合這些年的開發經驗來看，感慨良多。</p>
+<p>我覺得這份資料的另一個好處是把好的作品和好的開發流程區分開來，我覺得國內有一些開發者認爲好的作品就有好的開發流程，或者好的開發流程能就一定能帶來好的作品，這些都不完全對（主要還是要天命不要過低，否則團隊叛亂：-5.00）。Bioshock 的開發過程歷經波折，希望這份資料能從設計方面理解爲什麼遊戲開發艱難，對遊戲的設計迭代有個正確的理解和認識。尤其是站在開發者角度。</p>
+<p><strong>演講的名字叫做&ldquo;Saying Yes to the player, The Evolution of Bioshock&rdquo;</strong></p>
+<p><strong><strong>提要</strong></strong></p>
+<p>Bioshock 總共開發了 5 年。但其中有兩年是處於停滯狀態，Bioshock 實際上是 IG(Irrational Games)最早期的幾個項目之一，因爲種種原因被凍結了項目。中間去做了 SWAT4 和 Tribes:Vengeance，Freedom Force vs. The Third Reich，中間找到了發行商 Take Two ，把人數從 25 人擴張到了 120 人以上，涉及到的工作室遍佈全球，主要包括美國，英國，澳大利亞和中國。</p>
+<p>重新啓動 Bioshock 的原因是，IG 的上一個 PS2 的項目 The Lost 並沒有得到發行，雖然這次選擇勢必要謹慎，但兩個創始人 Ken Levine 和 Jon Chey 意識到，遊戲市場已經變了，雖然 IG 遊戲向來口碑不錯，但如果不從這種中小型的 Title 中跳到一個比較大的 Title 上，工作室就完蛋了。</p>
+<p>Bioshock 的開發一共可以分爲四個階段(演講實際超過 4 個部分)</p>
+<p><strong><strong>Phase 1: Sci-Fi Demo</strong></strong></p>
+<p>前面說道 The Lost 沒有成功發行，2002 年，IG 需要一個作品重新提振自己的士氣，IG 的想法很簡單，就是複製 SS2 的成功，當然他們沒有 SS 系列的版權，他們使用了 The lost 的引擎和代碼庫做了一個原型。</p>
+<p>原型非常像 SS2，裏面包含了一個水下實驗室和一些 eel man 沒有腿的怪物。這個和最終的版本相似度不大，除了都是在水下之外，沒什麼相似的地方。</p>
+<p><strong><strong>Phase 2： More "pen and paper"</strong></strong></p>
+<p>重新思考設計，這個階段大部分人主要是去做了 swat 4 和 T：V， 只留了非常少的人在做 bioshock 的工作：主要包括</p>
+<ul>
+<li>Robb waters 負責美術部分</li>
+<li>Dorian hart 和 Ken Levine 負責遊戲設計部分</li>
+<li>Chris Kline 負責 AI 部分</li>
+</ul>
+<p>這個時候都是些非常高層次上的討論，這部分只維持了一到兩個月，因爲 SWAT 的需求的人手逐步增加。這個階段最主要的工作是關於故事的討論，值得注意的是，這個時候並沒有一丁點關於理性客觀主義和安 蘭德的內容，</p>
+<p>用 CK 的話來形容，就是:</p>
+<blockquote><strong>There wasn&rsquo;t any notion of Ayn Rand or Objectivism at this time, but this was when we came up with the ideals that those characters would eventually represent.</strong><br><strong>Such as the ideas of GENETIC EXPERIMENTATION, POST-WAR POLITICS, and &ldquo;GETTING AWAY FROM GOVERNMENT&rdquo;. </strong></blockquote>
+<p>沒有理性客觀主義，也沒有安 蘭德</p>
+<p>作爲一個不算太大的工作室，如何讓自己的作品從其他 aaa 遊戲裏面脫穎而出，Ken 認爲 AI 部分是 Bioshock 區別於其他遊戲的主要賣點（畫面啊，爆炸啊, 這些都拼不了），Ken 對 AI 有種執着，如果看過專欄早一點的內容的話有關於這個的討論</p>
+<p><a class="internal" href="https://zhuanlan.zhihu.com/p/27385381"><span class="invisible">https://</span><span class="visible">zhuanlan.zhihu.com/p/27</span><span class="invisible">385381</span><span class="ellipsis"></span></a></p>
+<p>AI 部分的主要靈感來源於當時發售不久的 GTA 系列，他們試圖做一個"Living World"，自成生態系統的遊戲會讓整個遊戲世界比他本身看起來更大，而且這種浮現式的 Gameplay 讓遊戲整個的 Gameplay 價值都得以提高。</p>
+<p>他們想出了一個方案，有三個種類的 AI，分別是</p>
+<ul>
+<li>Drones （後來改成了 gatherers，後來又變成了 little sisters）</li>
+<li>Cops （cops 這個概念也借用自 gta,後來改成了 protectors，再後來又變成了 big daddies）</li>
+<li>Aggressors（後來變成了 splicers）</li>
+</ul>
+<p>這個設計是從頭到尾都沒有變過的。強有力的 Cops 保護無助的 drones，而 aggressors 則一直想獲得 drones 的資源。 玩家更多的扮演的是旁觀者，他如何和其他 AI 的交互，導致了整個遊戲的走向。</p>
+<p><strong><strong>The long winter 2002-2004</strong></strong></p>
+<p>這段時間完全是沒有 Bioshock 的開發的，主要是在開發前面說的是那個三個遊戲。這段時間 IG 的兩個工作室（澳大利亞和美國）因爲都在使用 unreal 製作 fps 遊戲，他們進行了不錯的技術共享，關係也近了不少，爲以後聯合開發 Bioshock 打下了基礎。</p>
+<p><strong><strong>Phase 3 Selling Bioshock</strong></strong></p>
+<p>04 年的時候 IG 完成了 T:V 和 SWAT4 的開發，這時候 IG 發現自己在 6 個月內發售了三款 AAA 級別的遊戲，重新拾取了信心。他們得着手找一個發行商來給自己點錢，然後繼續製作 Bioshock.</p>
+<p>當時對 Bioshock 最大的問題是，Bioshock 是 SS2 的精神續作，而 SS2 是一款雖然口碑不錯，但商業上失敗的作品，IG 很難說服冷血的資本主義發行商來給一款商業失敗的作品扔錢做續作。</p>
+<p>他們用兩天時間做了一個只有 30 秒的 DEMO，拿了一份 Pitch 給發行商去看，這個 Demo 僅有一個房間類似於一個廢棄的納粹實驗室，不帶任何介紹，沒有 ai,也沒有動畫，甚至沒有 Gameplay，展示的只有氣氛和感覺（具體可以看視頻，雖然質量很渣，CK 的總結非常到位，全體笑場），Ken 趙本山附體，忽悠了很多人。</p>
+<p>同時爲了讓髮型商相信自己的遊戲能夠買的好，他們採取了一個&ldquo;曲線救國&rdquo;的策略，其背後的邏輯是：</p>
+<ul>
+<li>發行商不喜歡把冒風險，他們更喜歡把錢扔到已有的用戶羣的遊戲裏面</li>
+<li>如果我們能讓公衆喜歡上 System Shock 2，那麼發行商會認爲 Shock-style 的遊戲會有巨大的潛在用戶。</li>
+<li>如果我們正在製作一款 Shock-style 的遊戲，那麼發行商會輕易的看到 Bioshock 的市場前景。</li>
+</ul>
+<p>同年 10 月 IG 聯繫，Gamespot 做了一次獨家報道，Ken 坐下來宣傳了一波 SS2 的理念和 Bioshock 的一些願景，報道在羣衆中引起了激烈的反響，曲線策略成功了，很多發行商找到了 IG。</p>
+<p>CK 對此的總結是：</p>
+<blockquote>if you are trying to pitch a game, find a way to make it seem successful.</blockquote>
+<p>最終 IG 選擇了 T2 作爲自己的發行商，原因主要有以下幾點：</p>
+<ul>
+<li>T2 對於 Emergent games 有過發行經驗</li>
+<li>T2 在 IP（intellectual property）上進行賭博式的投資經驗都還比較成功，最典型的就是 GTA 系列</li>
+<li>T2 正在組織自己全新的牌子 2K Games, 如果投到門下，會獲得比較多的資源支持。</li>
+</ul>
+<p><strong>Phase 4: Pre-production 預製作</strong></p>
+<p>2005 年 7 月開始整個項目進入預製作階段，有了發行商和資金的支持，製作組終於可以做一些事情了。但實際情況是，現在大家除了之前的一些點子之外，其他的什麼都還不知道，甚至連一份遊戲設計文檔都沒有。</p>
+<p>新的時間表是這樣的：</p>
+<ul>
+<li>發售日期定在 2007 年的 6 月 1 號</li>
+<li>7 個月時間用來預製作</li>
+<li>14 個月的全力開發</li>
+</ul>
+<p>處於上次失敗的經驗，首發只考慮在 Xbox 360 上面，PC 的計劃延遲到 6 個月之後。</p>
+<p>預製作的前三個月主要集中在三個部分的設計工作</p>
+<ul>
+<li>氣氛，節奏和機制</li>
+<li>環境和生物美術設計 / 概念設計</li>
+<li>技術規劃</li>
+</ul>
+<p>設計的基本思路是從 SS2 出發，保留原來比較好的設計，剔除掉沒用的設計（很實用主義的主意）。</p>
+<p>Dorian Hart 在一次內部討論中定義了&ldquo;什麼是 Bioshock&rdquo;：</p>
+<p>Bioshock 是一個保持了 SS2 那種緊張而恐怖的的 FPS 遊戲，不像傳統純 FPS 遊戲那樣腎上腺素飆升的快速和激烈。整個遊戲中稀少的資源和音畫的恐怖共同營造了遊戲的緊張氣氛。</p>
+<p>決定從 SS 保留的內容，主要是讓遊戲緊張和恐怖的部分還有有限的資源控制。</p>
+<p>Ken 認爲 SS2 遊戲失敗的地方在於前期所有的玩法一擁而上，讓玩家不知所措，而且 UI 十分難用，最致命的點在於畫面非常平庸，玩家雖然害怕，但並不是害怕裏面的怪物設計，而是被畫面太差嚇到了。</p>
+<p>另一個設計點是，所有遊戲中的 AI 都是會進化的。美術負責完成氣氛和 AI 的設計工作，而程序做着手開始製作新的引擎 VE2 (Vengeance Engine 2), 程序組決定專門抽調一組人手來負責遊戲核心之外的部分，比如如何移植到主機上等等。</p>
+<p>技術團隊十分想做一個世界級的主機遊戲引擎，但他們不確定應該用什麼來達成這個目標，自己得 VE1 肯定是不行，Unreal 3 又處於相對初期的階段，對項目來說肯定是等不到 Unreal 本身成熟才行，但團隊又確實想用 Unreal 的技術，因爲看起來很 Coooooool.</p>
+<p>所以他們做了一個十分大膽的決定，做一個&ldquo;弗蘭肯斯坦&rdquo;引擎，把 VE1 和 UE2，UE2.5，UE3 拼在一起；他們首先買了所以版本的 UE 版權，然後偷取裏面所有的自己覺得好用的技術組成了 VE2, 這也是爲什麼雖然說 Bioshock 是用 UE3 做的，但卻不那麼像用 UE3 做出的遊戲的主要原因。這種拼接也給後面的移植工作挖了大坑，主要受害人是 <a class="member_mention" href="http://www.zhihu.com/people/b3ca17a58fd525cfb99176cbb65250e6">@Rickrui</a></p>
+<p>VE2 中主要的技術包括</p>
+<ul>
+<li>新的渲染程序（爲了配合 Bioshock 特有的美術風格）</li>
+<li>新的音效系統（主要基於 FMOD）</li>
+<li>新的動畫系統（主要基於 Havok）</li>
+<li>新的 Flash UI</li>
+<li>Console 的 Baking 和 Deployment 系統</li>
+<li>縮減了內存消耗</li>
+</ul>
+<p>3 個月的設計工作結束後，剩下的工作是要做一個 Vison Demo, 主要工作是驗證整個項目的可行性，也就是常說的 Vertical Slice.</p>
+<p>Vison Demo 的效果可以看視頻，這個時候的 Little Sister 還不是一個小女孩，而是一條條蟲子&hellip;&hellip;</p>
+<p>如下圖：</p>
+<img class="content-image" src="http://pic2.zhimg.com/v2-8bc7cf71d096f50f097eea9705ec4fe5_b.png" alt="">
+<p>Vison demo 總結下來是</p>
+<ul>
+<li>遊戲系統還可以</li>
+<li>Living world 的 AI 還算能用</li>
+<li>Ui 雖然醜陋，但還可以，形式也一直保持到了遊戲的最後。</li>
+<li>Big dady 的設計很成功</li>
+<li>其他的方面可以說是完全失敗了</li>
+<li>完全憑運氣纔在 360 上運轉成功過。</li>
+<li>Gameplay 完全不行，沒什麼代入感</li>
+<li>藝術方向乏味，不恐怖也沒有什麼新鮮感。完全感覺不到像是一個水下都市,玩家更像是被困在一個山洞裏。</li>
+</ul>
+<p>AI 的表現對玩家來說毫無意義，玩家不能瞭解他們之間的關係。他們之間打起來看起來是完全隨機的，玩家根本不想保護 drones（little sister）， 更想一腳把她踩死。emergance gameplay 這條算是失敗了。</p>
+<p>版本的 post-mortem 十分痛苦，因爲整個來說是失敗的，總結的教訓是，團隊花費了大量的時間在製作已經熟悉的東西上面，比如物品欄系統，多子彈類型系統，屬性系統等等。理應花費更多的時間去研究不熟悉的東西，比如藝術方向，rapture 的塑造，AI 系統作爲遊戲的核心，也沒有得到更多的檢視。</p>
+<p>Ken 堅持一個想法，就是先把一個房間做對，然後再以這個爲模版擴充出去。這個想法最終起到了非常好的效果，藝術團隊很快就找到了一個新的方向，並作了一套新的美術資源。</p>
+<p>之前 AI 方面的想法是角色都做成之前是正常人，是被基因修正過之後才變爲現在這個樣子的。這個想法被證明是失敗和不切實際的。</p>
+<p>既要實現功能，又要造型顯得不蠢，這個不太容易做到。角色都顯得很幻想化，而且不嚇人。嚴重變異後的生物會對動畫造成很大的困難。還有就是嚴重變異的角色不太能通過換衣服和身上的附件作換裝，節省資源。</p>
+<img class="content-image" src="http://pic4.zhimg.com/v2-af0874bb44a9a76a4d01fd9cc376b20b_b.png" alt="">
+<div class="highlight">
+<pre><code class="language-text">這個角色沒有脖子，導致他作轉向動畫很難表現。
+</code></pre>
+</div>
+<img class="content-image" src="http://pic4.zhimg.com/v2-faf3a7f13c5afcf79ea9b9df2267595b_b.png" alt="">
+<div class="highlight">
+<pre><code class="language-text">這個角色沒有脖子，而且只有一隻手，還要拿個霰彈槍，動畫做完看起來不蠢很困難。
+</code></pre>
+</div>
+<p>最糟糕的當屬 little sister 的設計。本來採集者這種生物設計成海蟲意圖是讓玩家產生某種道德上的選擇衝突，玩家如果消滅這種無助的生物體，應該是感到非常不安的。然而設計成這種軟體蟲樣式的採集者，玩家看上去第一反應就是踩死它而且毫無道德上的負罪感。</p>
+<img class="content-image" src="http://pic2.zhimg.com/v2-8bc7cf71d096f50f097eea9705ec4fe5_b.png" alt="">
+<p>改進環境設計的辦法是，設計師在場景中放一些粉色的方塊，讓藝術家來改進，效果也並不理想，設計師和藝術家總會發生爭執，這些爭執讓藝術家們很難做出有說服力的場景。</p>
+<p>AI 也必須得改進，改成以玩家爲中心，攻擊者不再攻擊採集者，攻擊者也不能再互相攻擊，或者無理由的攻擊保衛者，更重要的是動畫上的改進，動畫一直是 ig 的短板。還有就是重新傳達採集者和保護者的關係，這個就是後來著名的 Big Daddy - Little Sister 體系。</p>
+<p>實際上 Little sister 的候選方案極多，從猴子到青蛙都有，據說猴子還是個比較受歡迎的選項。以下列出的是候選方案的圖片：</p>
+<img class="content-image" src="http://pic2.zhimg.com/v2-aacc93ee3ba5a38c212d7f59eb626749_b.png" alt="">
+<img class="content-image" src="http://pic3.zhimg.com/v2-2d3f0e7fd22f8b5c32278e895ef7d2ca_b.png" alt="">
+<img class="content-image" src="http://pic2.zhimg.com/v2-824112d8a89a76208eb2733c1db56139_b.png" alt="">
+<img class="content-image" src="http://pic2.zhimg.com/v2-7520af12d85e15046ecb99e1494cd16d_b.png" alt="">
+<img class="content-image" src="http://pic4.zhimg.com/v2-c1e571121b6359d7977fca652d793b4b_b.png" alt="">
+<p>最後當然還是小女孩這個選項獲勝了，大家還是不大能夠對小女孩下手。Little sister 的這張臉實際上是照着女演員 Christina Ricci 的臉來做的。</p>
+<img class="content-image" src="http://pic2.zhimg.com/v2-5d3e1e7ca87f1db9c22a2e7fc06f790d_b.png" alt="">
+<p>動畫組設計了一系列的動畫，來表現 little sister 的動畫。</p>
+<p><strong><strong>Phase 5 全力製作 full production 階段</strong></strong></p>
+<p>2005 年九月開始進入全力開發階段。前面說到 vision demo 基本上可以說是失敗了。但對於 ig 來說，他們沒有時間和精力做第二次了，前面所有的失敗要在製作階段補回來。</p>
+<p>這個階段新加入了一位藝術總監，Scott Sinclair 給美術組提供了很大的幫助。程序組目標是完成長達 280 頁設計文檔中的所有內容，整個進展雖然不錯，但後期由於設計的大幅修改，程序組不得不不斷跟進和實現那些新增的功能。設計組雖然有一個設計文檔，但還是在尋求正確的設計，很多設計都十分不清晰，ck 稱這個階段爲&ldquo;pretend full production&rdquo;。</p>
+<p>看起來好像都沒什麼問題，大家都在按部就班的做。而最大的問題反而就是沒有問題，沒有人關注整體的情況。有的功能開發出來之後發現設計早已經改了，或者這些功能已經在設計上刪除了，由於技術先行於設計太多，設計師甚至忘了自己曾經要求過某些功能；前面這些如果都能接受的話，那麼開發中的功能接到設計的通知停止製作，這就是逼程序員造反了。美術部門的問題也很大，美術部門創造出來的關卡完全沒有遊戲性，也沒有考慮故事性和關卡之間的連續性，而這也不能完全怪美術組本身，這時候故事還沒有完全定稿，rapture 非常特殊，他的關卡的連續性需要故事來承載。很多美術組一開始創建的場景最後都不得不做非常大的修改；這些工作極大的消耗了團隊的時間和精力。</p>
+<p>團隊都知道是有問題的，但管中窺豹的工作模式讓每個人都看不到問題的具體所在。</p>
+<p>解決問題的辦法往往來自外部，就是在公衆面前丟人的威脅（one way to fix this which is the threat of public humiliation， 笑）。</p>
+<p>2006 年的 E3 如期而至，搞砸了就在 E3 上丟大人了，這讓團隊重新團結了起來。必須集中所有的能力所有的點子讓 E3 的版本變的好玩，Bioshock 的每個部分都挺怪異的，故事設定，美術風格，AI 系統這些東西，必須要讓這些怪異的系統在玩家眼裏看起來是好玩的，有意思的，但如何向玩家證明這些系統是好玩的呢？甚至，如何向自己證明這些是好玩的呢？</p>
+<p>設計組開始轉換了思路，要停止考慮玩家在遊戲中能&ldquo;做&rdquo;什麼，而是換成玩家在遊戲中&ldquo;感受&rdquo;到了什麼。要展示給玩家 emergent experences 是多 cool, 還有 within over-arching narrative context .</p>
+<p>之前的遊戲系統的遊戲體驗是非常隨機的，但玩家是習慣於線性的遊戲體驗和敘事體驗的，如何能夠適應玩家或者說讓玩家覺得這個東西不錯呢？</p>
+<p>這個 demo 完成之後，團隊中的成員終於意識到自己做的是個什麼樣的遊戲了。</p>
+<p>Demo 是一個限行的 demo，但裏面的事件是預先寫好的，實際遊戲中它們應該隨機發生。錄製 demo 的時候，儘管已經有了腳本，但 ai 還是會露餡，操作 demo 的人只能一出現這種情況就把自己的視線移開。</p>
+<p>雖然粗糙，但這個 demo 是成功的，他啓發了團隊，Bioshock 的結構就應該是強大的線性敘述元素，加上短期的非線性 gameplay。</p>
+<p>E3 點 Demo 非常成功，IG 一直不大引人注意，這次有點受寵若驚，但團隊很快就冷靜下來了。大衆的反應沒有媒體那麼好，ig 定製了一個媒體的用戶調查的服務（Gamespy Gamespot 還是 IGN 的），結果顯示大衆興趣並不是那麼大，他們必須得找出到底哪出了毛病。</p>
+<p>結果就是，大衆很困惑，這到底是個什麼定位的遊戲呢？是個 RPG 還是個 FPS 呢？還是個什麼其他的類型？這次的方法是 IG 改變了自己的市場策略，IG 直接的告訴玩家，這就是一個 FPS 遊戲，告訴玩家這個遊戲是一個新的概念："Shooter 2.0", 你玩過最有深度的設計遊戲。</p>
+<p>2K 也從這個 Demo 看到了巨大的潛力，雖然要更多的錢，更多的人和更多的時間，但 2k 覺得值，放開了資源讓 IG 去做，2K 增加了 Bioshock 的預算，而且加了 5 個月的開發時間，2K 談成了和微軟的獨佔協議，這意味着微軟的相關資源會在市場上起到很大的幫助。</p>
+<p><strong><strong>MICOSOFT X06 event</strong></strong></p>
+<p>微軟邀請 IG 參加這次 X 06 的發佈會，並準備把 Bioshock 作爲主打對象，並且給了一個&ldquo;大屏幕&rdquo;的機會，雖然機會千載難逢，但微軟的時間壓力也很大，只有三週時間。</p>
+<p>這時候雖然技術和美術的問題都基本解決，但 gameplay 還是沒那麼穩定，Gameplay 太像 SS2 了，節奏太慢，操作麻煩，IG 開始擔心這根本抓不住玩家的心，IG 的目標是推銷這個 shooter 2.0 的概念，而且不僅要讓記者媒體們叫好，還要讓玩家們叫好。Ken 舉行了一個被下屬稱爲&ldquo;come to jesus&rdquo;的會，列出了到底遊戲中哪些東西是 cool 的：</p>
+<ul>
+<li>和多個機器人戰鬥</li>
+<li>刺客型的 ai, 比如 houdini splicers</li>
+<li>新強化過的 &ldquo;Rosie&rdquo;型的 protectors</li>
+<li>隔空取物功能</li>
+</ul>
+<p>這些東西確實很 Cool，但是如何把這些東西傳達給玩家呢？這些系統如何組織起來增強玩家能力的？玩家如何利用環境，Plasmid 或者其他 AI 來完成自己的目標呢？更主要的是，如何向玩家展示自己是一個快速的射擊遊戲，而不是一個需要動腦的其他遊戲呢？</p>
+<p>設計師 Bill Gardner 想出了一個絕妙的主意，將這個 Demo 變成一個&ldquo;Gameplay Story&rdquo;,即把 Demo 組織成故事，告訴玩家最後的目標，然後展示給玩家看在 Bioshock 裏是如何達到這些目標的。Demo 內容是玩家需要獲得 little sister 的 Adam, 而 Little sister 則被 Big Daddy 保護着，直接打到 Big Daddy 是十分困難的；然後 Demo 中就展示瞭如何利用這些環境來達到這個十分困難的目標, 利用警衛機器人，利用地上的油，利用火焰和隔空取物能力，等等。</p>
+<p>Demo 很成功，或許對團隊本身來說更成功，大家終於找到了一個令人激動的方向。當然壞的東西也有，就這樣一個小小的 demo,已經把引擎的性能壓榨到了極限，而雪上加霜的是，ken 這時候跑過來說，我覺得整個遊戲都應該是這個樣子的（CK 的反應是感覺跌入了深淵）&hellip;&hellip;</p>
+<p><strong><strong>The Final Push</strong></strong></p>
+<p>這是整個遊戲開發最關鍵的部分，最後這十個月成爲了遊戲成功的關鍵，也是在這個階段，整個遊戲的變動最大。可以說最終也是最重要的一步就是 focus test。 Focus test 的主要目標是弄明白玩家爲什麼不懂開發者的設計或者初衷。X 06 之前團隊主要的測試方法還是親友之間的測試，雖然有很多正向的反饋，但大多數是處於友情的友好說辭，即使有不好的反饋，反饋的方向也不對，往往是我想要 xx 系統在這個遊戲裏等等這種主觀意向很強的意見。IG 這時候真正想知道的反饋是：</p>
+<ul>
+<li>公正的</li>
+<li>客觀的</li>
+<li>可被執行的</li>
+</ul>
+<p>而更重要的是，你會買這個遊戲嗎？如果你不想買，爲什麼？</p>
+<p>IG 找了一個專業的 focus testing 的團隊，CK 說相信微軟和 bungie 也有這樣的測試團隊，其實不止微軟，很多公司也會自己專門組織 focus testing 的團隊。測試團隊的人員從不會玩遊戲的到特別硬核的玩家。團隊通過單面鏡觀察測試人員的反應，遊戲只給了簡單的一份介紹，然後就開發給玩家去玩，團隊不提供任何幫助，即使他們被卡住的時候也不提供幫助，僅僅是觀察（有個玩家甚至爲了過一扇門卡住了三個小時），然後記錄他們卡住的地方，這給 IG 團隊提供了巨大的幫助，</p>
+<p>團隊發現不是系統或者什麼有問題，而是這些東西如何展現給玩家有問題。比如第一關涌入了太多的東西，玩家很快就懵了，根本沒有融入到遊戲中。玩家獲得了新的能力也不會用或者說不在乎，就只會使用原先的武器槍械，然後武器槍械沒有能力的配合也變弱了，於是玩家就非常失望。玩家不會和 Big daddy 互動，因此就不能獲得 adam 當然也就不能提升他們的屬性，遊戲也就越玩越差。另一點是 bioshock 是一個對話很多的遊戲，但對話太多了，介紹了太多的背景和相關知識，玩家根本注意不到關鍵信息。而這些東西恰恰是 bioshock 與別人不同的地方，或者說優於別人的地方，而由於展示的關係，這些優秀的東西都被玩家錯過了。</p>
+<p>測試的結果讓團隊醒了過來，他們開發了太久的遊戲，他們自己已經不是目標用戶了，他們自己陷得太深了。團隊決定，所有沒有經過 focus testing 的東西不能加進遊戲。設計團隊回到黑板前，把整個遊戲流程打散重新組合，教學內容重做，把所有內容一點一點的教給玩家，有些地圖被重新設計，原來沙盒漫遊式的風格被完全拋棄，變成了找鑰匙，玩家必須掌握一些關鍵的 plasmid 技巧才能繼續前進。</p>
+<p>Focus test 的效果顯著，在測試之前，大部分玩家玩完之後都比較沮喪；而測試之後，bioshock 的 demo 是 xbox live 上最成功的 Demo 之一。</p>
+<p>團隊花了兩個月來改進這些內容，目標非常簡單，不添加任何新的東西，只是把玩家不懂的東西改好，並確保體驗一直是好的。</p>
+<p>這時候團隊內部還是有一些人保持着我們應該做的更 rpg 向一些，經過激烈的爭執，rpg 的想法被從遊戲中剔除，bioshock 明確的方向就是 fps 遊戲，這個階段雖然痛苦，但是是必須的。</p>
+<p>剔除 rpg 的結果之一就是將角色成長中的屬性概念剝離，角色的成長只與 plasmid 關聯，而 plasmid 會技能進化。</p>
+<p>遊戲中本來 adam 起到貨幣作用（動作遊戲的魂差不多），但最終還是將 adam 和貨幣分離了，因爲玩家搞不懂爲什麼拿一個基因物品當貨幣。</p>
+<p>另外一點是，以前版本里獲得新能力是不能直接生效的，玩家必須橫跨半個關卡找到機器才能將 plasmid 裝在自己身上並使用，這一條在 focus test 中讓測試者很難使用到新的技能，於是製作團隊製作了新的界面，讓玩家獲得新的能力的時候立刻就能裝備這個能力，而且獲得新技能的場景直接就有能夠應用這些新技能的場景，讓玩家感受到技能的強大之處。還有一點是，之前的版本里有很多被動的 plasmid 像緩慢恢復生命這些，另外一些是主動的 Plasmid 比如電擊這些，這些東西都叫 plasmid 讓玩家太迷惑了，於是團隊引入了一個 tonic 的概念，實際上什麼都沒改，只是爲了讓玩家分清楚主動給技能和被動技能的分別。還有就是讓 Plasmid 更具回報感。</p>
+<p>在這個階段，Little sister 大多數情況下不是被玩家擊殺的，而是一些 NPC 衝突的流彈之類的殺死，玩家打着打着就發現 Little Sister 被炸飛出屏幕了。這大大降低了玩家的道德選擇成本，Little sister 和 Big daddy 的聯繫也不是那麼緊密，玩家可以輕鬆的把 Big daddy 引走，然後趁機收割 Little sister。但 x 06 demo 顯示的是，如果 Big daddy 足夠強力，整個戰鬥會非常的 cool, so let's make it happen all the time!. 玩家想要 Little sister, 那必須要跨過 Big daddy 的屍體才行。爲了提高玩家的道德選擇的感覺，還特意加入了收割的畫面。</p>
+<p>Ken 經常講一個關於 ss2 的笑話：當他和 John 完成 ss2 的時候，確實不知道公衆如何認知 SS2, 我們想要做個不可跳過的片頭來告訴玩家我們這個遊戲多好玩，我們可不想在 bioshock 裏面加入這個。</p>
+<p>另一個重要的人物是 2K 的 VP Greg Gobbi,他投入了極大的熱情在 Bioshock 上，按分鐘的分析遊戲的每一個環節並提出意見，他的理念非常清晰&ldquo;遊戲的前 20 分鐘必須能牢牢的抓住玩家&rdquo;如果抓不住，那你就完蛋了。</p>
+<p>Greg 在波士頓工作了一段時間，幫助重新設計遊戲的第一關，Greg 的另一個口號是&ldquo;say yes to the player&rdquo;這也是 CK 的演講主題，這極大的幫助了整個團隊。Greg 會拿一個板子問團隊爲什麼我不能做這？爲什麼我不能做那？答案很簡單就是：設計團隊根本沒做相應的設計。</p>
+<p>類似的問題比如：</p>
+<ul>
+<li>爲什麼我能隔空抓取物品，但是不能隔空抓取屍體？</li>
+<li>爲什麼我能凍住敵人，但凍不住機器？</li>
+<li>爲什麼我把敵人都點燃，他還沒什麼反應？</li>
+<li>爲什麼打破了液氮瓶，卻滅不了火？</li>
+<li>爲什麼燃燒技能不能融化冰塊？</li>
+</ul>
+<p>Greg 不斷的 push 團隊去改進這些內容，雖然技術部門爲此增加了很多工作量，但帶來的效果是顯而易見的，就是遊戲世界變的更加可信和統一，如果玩家想到了某些戰術，這些戰術大部分是可用的。</p>
+<p>最令 CK 抓狂的是 Greg 問："<strong>我爲什麼不能把酒瓶子點燃做一個莫洛托夫燃燒瓶，然後我用超能力把他扔出去爆炸？</strong>"最 CK 乎是重寫了整個系統的代碼來實現這個功能，就是爲了讓 Greg 閉嘴。</p>
+<p>另外一個向玩家說&ldquo;yes&rdquo;的功能是 adptive training 系統，也就是檢測玩家如果卡住了，那麼會跳出一些提示，提示玩家該怎麼做，團隊測試了很久，寫了很多提示內容。</p>
+<p>還有一些比如傾斜身體的設計被刪除了，爲了玩家更好的雙持，一手超能力，一手槍械更方便的去玩遊戲。另外一些刪除的東西是一些意義不明的小型 plasmid，比如放火和火球對玩家來說這明明就是一個技能，爲什麼做成兩個？整合這些小型的 plasmid 讓玩家玩起來感覺更好，而且也節省了代碼的維護工作。</p>
+<p>這時候大家終於意識到剩下的就是排好時間表改進這些東西。</p>
+<p>這個時候故事還沒有完成，整個故事重寫了四次左右，最終版本直到一月份左右才完成，這給配音帶來了巨大的壓力，然而 altas 這個主要角色在 focus test 中效果非常不好，玩家非常討厭他，於是兩個月之後又把他這部分重寫了一遍。</p>
+<p>離遊戲發售還有五個月左右的時候，大家還在專注 Gameplay 的調整，但運行速度和穩定性都很差，核心技術組停下所有新東西的製作，全力投入到優化的工作中，最後關頭還是做了很多非常嚇人的工作，像是發售前三個月重寫物理系統等等，雖然是必須做的，但也產生了不少的 bug。</p>
+<p>最後一部分是自動化測試</p>
+<p>直到發售前三個月，遊戲的穩定性還是拿不準的，所以最後階段每個人都參與了測試，每個晚上都在跑自動測試，自動測試記錄了很多信息，比如存檔功能，內存泄漏等等，如果開始項目的話，推薦使用自動化測試。</p>
+<p><strong><strong>一些題外話</strong></strong></p>
+<p>今年是 Bioshock 發售十週年。他讓 IG 從一箇中等規模的工作室變成了一個能夠揮舞一億美元預算，幾百人協同工作的龐然大物，又讓他在巔峯之後解散。</p>
+<p>回頭看過來 Bioshock 第一代的開發歷程非常波折，裏面充斥着各種不確定的因素。如果 2K 沒有相信 System Shock 具有市場潛力，如果 06 年的 Demo 沒有做成功，如果 Little Sister 最後真的是按照原始意願做成一個蟲子，如果 Greg 沒有傾注全力的提意見&hellip;&hellip;這些都是如果，每一個如果後面都是全軍覆沒風險。</p>
+<p>AAA 遊戲開新 IP 的難度非常高，創新度太高，用戶會接受不了，很多 Immersive Sims 的遊戲都有叫好不叫座的前科，創新度太低品牌 IP 又無法確立。2K 後面的賭博式投資總體來說失敗大於成功，比如 The Bureau: XCOM Declassified, Battleborn, 還有 Evolve 和等等。</p>
+<p>十年時間，Bioshock 的很多開發設計經驗已經不太具備參考價值了，更多的東西變成了默認的行業標準，比如前文說的在新技能的發現地直接配給可以使用的場景等等。但從這份經歷裏，能看到的東西是每個開發者在開發中都會經歷的內容：開發太久導致自己對自己遊戲的疲憊和麻木，自己反而變成了非目標用戶；很多不切實際的開發想法，各個部門之間的配合摩擦，發行商的利益驅動和投機心態反過來讓開發者也想方設法的通過引導用戶來引導發行商的注意力，前兩天 System Shock 1 代也發佈了要用 UE4 製作一個新的高清版&hellip;&hellip;</p>
+<p>不知道大家注意到沒有，最令 Bioshock 引以爲豪的故事部分，其實反而是最後才完成的，中間所有的開發重點都是圍繞着讓遊戲的 Gameplay 更加好玩，還有就是務實的開發態度，直接問哪些是 Cool 的東西，並沒有像傳言中的那樣搞一些很玄幻的東西加到遊戲中，讓人覺得設定如何牛逼，故事如何如何厲害；然後就可以躺在上面沾沾自喜。</p>
+<p>行百里者半九十，最後的 Focus testing 部分是非常重要的部分，但有多少開發者能找到符合這樣三條標準的意見呢？</p>
+<ul>
+<li>公正的</li>
+<li>客觀的</li>
+<li>可被執行的</li>
+</ul>
+<p>我自己也開發遊戲，也會參與公司組織和自己組織的反饋觀察中，也會陷入到建議的泥沼中，深知其苦，但真的開發者又有多少人能分清泥沼中的東西</p>
+<p>另一個方面是顯示了，歐美遊戲開發服務的發達和環境的優異，其實國內的開發能力很多大的公司已經達到國際水平，但相應的服務卻跟不上，且不論 CK 演講中提到的遊戲媒體服務（IGN 的用戶分析和遊戲調研），Focus Testing 這個比較常用的服務，開發者中（我指有錢的哪些）也還沒那麼普及。</p>
+<img class="content-image" src="http://pic2.zhimg.com/v2-18633be99d22d28213fafb8781035279_b.png" alt="">
+<img class="content-image" src="http://pic2.zhimg.com/v2-418c189d1d27d246210dad2c2f997c79_b.png" alt="">
+<p>MGS4 的 Focus Testing 章魚迷彩玩家用不到，讓開發組也很頭疼。</p>
+<p>還有一個是管理層，這個見仁見智，文章裏 Greg 作爲 VP 級別的人物參與遊戲設計和開發，本身事件挺討厭的事情，但恰好他懂，而且歐美管理層懂遊戲設計的人還真不在少數，國內管理層插手設計的也不在少數，而我親身經歷過一個管理層說出：&ldquo;我這輩子玩電子遊戲沒超過 30 分鐘&rdquo;。請你們想象下我當時的心情。</p>
+<p>團隊合作，塑造英雄和團隊合作歷來是兩大主題，除了上文中提到的衆多開發者，視頻裏其實還漏掉了另一個非常重要的設計師 Paul Hellquist，他也是 Bioshock 的設計師之一，不過他更爲讓人熟知的 title 是 Borderlands 系列的創意總監，他在項目中也起到了很多作用，這些人都是項目開發中的英雄。</p>
+<p>我覺得作爲開發者不應該像觀衆一樣亂捧所謂&ldquo;神作&rdquo;而去窮極模仿，應該腳踏實地的琢磨玩家喜歡什麼樣的遊戲。Bioshock 在遊戲一開頭說&ldquo;No God or kings, only man&rdquo;</p>
+<p>對遊戲開發也是&ldquo;沒有神作，只有人作&rdquo;, 開發者也會有自己的問題，沒有作品人會順風順水的開發出來，都經歷了自己的磨難。真正行業內的人都知道，觀衆假&ldquo;神作&rdquo;之手做的惡，不比開發者少，且不論線下的爭執和討論，多少人假神作之名讓發行商把開發者套死，做出一個又一個的續作搞到開發組智窮力竭，人才散盡，一幕一幕的歷史從未停止重複上演。</p>
+<img class="content-image" src="http://pic4.zhimg.com/v2-be3251cf0f726d9bae073ee7dd534377_b.jpg" alt="">
+<p>這篇太長了，我估計沒幾個人能看完，在最後放一個小彩蛋，08 年的時候 Bioshock 由中電博亞，也就是杉果的母公司引入到中國，但由於衆所周知的原因，遊戲中的屍體導致遊戲不能過審，這時候這個修改的工作就落到了 2K China 的身上，修改工作很撓頭，負責的程序員完全想不出什麼別的辦法，只能把屍體都替換成遊戲中的工具箱，沒想到居然過審了！本以爲此事影響到此爲止，後來 09 年的時候，我打開了一款名叫盒子世界的遊戲&hellip;&hellip;不知道二者之間有沒有聯繫，逃。</p>
+<p>參考資料：</p>
+<p><a class=" external" href="http://link.zhihu.com/?target=https%3A//www.youtube.com/watch%3Fv%3DBp_Zy39SphQ%26index%3D2%26list%3DFLwAC9uCGYIKvMzz4PjLxmmw%26t%3D3708s" target="_blank" rel="nofollow noreferrer"><span class="invisible">https://www.</span><span class="visible">youtube.com/watch?</span><span class="invisible">v=Bp_Zy39SphQ&amp;index=2&amp;list=FLwAC9uCGYIKvMzz4PjLxmmw&amp;t=3708s</span><span class="ellipsis"></span></a></p>
+<p><a class=" external" href="http://link.zhihu.com/?target=https%3A//www.youtube.com/watch%3Fv%3DYOlrbWCSJkYhttps%3A//www.youtube.com/watch%3Fv%3DYOlrbWCSJkYhttps%3A//www.youtube.com/watch%3Fv%3DYOlrbWCSJkY" target="_blank" rel="nofollow noreferrer"><span class="invisible">https://www.</span><span class="visible">youtube.com/watch?</span><span class="invisible">v=YOlrbWCSJkYhttps://www.youtube.com/watch?v=YOlrbWCSJkYhttps://www.youtube.com/watch?v=YOlrbWCSJkY</span><span class="ellipsis"></span></a></p>
+
+
+
+</div>
+</div>
+</div>
+
+
+</div>
+</div>
