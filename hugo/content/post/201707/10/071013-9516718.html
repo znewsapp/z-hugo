@@ -1,0 +1,74 @@
++++
+date = "2017-07-10T13:00:00"
+title = "開放了自動駕駛 Apollo 代碼，百度能用它搭起無人車系統嗎？"
+titleimage = "https://pic1.zhimg.com/v2-a935c12f8f6fb1604aa49a986dfeada8.jpg"
+ga = 071013
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+<div class="headline-background">
+<a class="headline-background-link" href="http://tech.sina.com.cn/roll/2017-07-07/doc-ifyhweua4277311.shtml">
+<div class="heading">相關新聞</div>
+<div class="heading-content">百度阿波羅平臺開放首日登頂 Github 排行榜</div>
+<i class="icon-arrow-right"></i>
+</a>
+</div>
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title">如何評價百度自動駕駛 ApolloAuto 在 Github 上發佈的代碼？</h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>原本想編譯完代碼再評論的，但這段時間實在太忙，就先試着說說看。權當拋磚引玉。</p>
+<p>首先，這個項目是基於<strong> ROS </strong>的，這可能有兩個原因（自行二選一）：</p>
+<p>① 這個平臺主要是面向研究機構的，使用 ROS 可以大大提高開發速度；</p>
+<p>② 開發人員一時半會沒法搞出一個「無人車操作系統」，所以就先用現有的 ROS（機器人操作系統） 來替代，反正上面的人不懂。</p>
+<p>其次，這個項目<strong>整體框架</strong>是比較合理的，無人車系統所需要的大多數關鍵模塊都包含了，開發者也很容易就能將自己的算法整合到這個框架裏。說明百度自己的無人車項目還是有一定技術積累的。</p>
+<p>（我不是專業的碼農，所以在代碼角度沒辦法過多評論，但我看它代碼時有一種看 g2o 代碼既視感，所以應該是寫得不錯的）。</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-0ef75693fd7a9307c191b31b2b6e67b7_b.jpg" alt="">
+<p>然而，<strong>算法方面</strong>就如知友們所說的那樣不如人意了。似乎只公開了控制（control）與定位（localization）的代碼，搭建無人車系統的另外兩個關鍵模塊（perception 和 planning）都沒有公開：</p>
+<p>定位 Localization：RTK GPS + IMU，沒看到 Kalman Filter；</p>
+<p>感知 Perception：這塊應該是用來識別障礙物，車道線，交通燈等各種信息的模塊，算是無人駕駛系統中非常關鍵的一塊。這次百度並沒有公開這個；</p>
+<p>預測 Prediction：這個主要是基於感知信息進行預測，所以也沒有公開；</p>
+<p>決策 Decision：這個屬於無人車系統最高層的決策系統，它的作用是基於現有的信息來判斷下一步動作，沒有感知，所以這部分也沒公開；</p>
+<p>規劃 Planning：這個應該是一般意義上的全局規劃器，用途是找到可行路徑，一般會採用各種各樣的花式規劃算法，然後這次 Apollo 中也沒有提供這部分內容；</p>
+<p>控制 Control：這個其實就是局部規劃器，用途是讓無人車沿着規劃的軌跡運行，這個項目中提供了基於 LQR 的算法，這部分還算可以。</p>
+<p>由於這麼多關鍵算法都沒有公開，所以，就目前的情況來看，想<strong>花三天時間用 Apollo 搭建自己的無人駕駛系統基本是不可能的</strong>。</p>
+<p>（雖然 Apollo 的文檔裏沒有說用它就能搭建完整的無人車系統，但是百度這次的「開發者大會」着實有這樣宣傳的誤導傾向，以致於不懂技術的媒體都跟風報道）</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-6996e779ecc68f6a116e53239e0cdaa7_b.jpg" alt="">
+<p>再者，就是所謂的<strong>仿真系統</strong>。百度「開發者大會」上，陸奇着重強調用他們的仿真系統，就可以大大減少實際車輛的實驗時間。</p>
+<p>當然，仿真環境在無人系統中的作用是不言而喻的。但是，從下面這個界面，我是看不出它能提供多少仿真信息。（<strong>如果之後有時間測試，我會補充修改</strong>）</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-039c4cbb2c99465948d032651dbfb7e6_b.jpg" alt="">
+<p>另外，我想問，ROS 中本來就有的 gazebo，或者那麼多其他仿真平臺不好用麼？做動力學控制，強化學習都是可以的：</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-ce1b172a179982dc18bfc6cdd40d4ee7_b.jpg" alt="">
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-3bbb5c79d82f9abcaf590966d4034aaa_b.jpg" alt="">
+<p>總體上來說，我感覺 Apollo 項目作爲一個定位爲開放的「無人車操作系統」，實在是誠意不夠，用我當時第一眼看到它代碼後發的朋友圈來形容簡直合適：</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-09ec3b8a4caa360f09eef67a7c1f18c4_b.jpg" alt="">
+<p>PS: 開發者大會上陸奇和李彥宏信心滿滿的態度讓我不禁懷疑，百度高層似乎對這個情況不自知，這是最可怕的地方。</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div>
