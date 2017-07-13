@@ -1,0 +1,158 @@
++++
+date = "2017-07-13T07:00:00"
+title = "想應聘最火熱的人工智能，先做這幾道面試題吧"
+titleimage = "https://pic4.zhimg.com/v2-1e6b23dfe1edaa60469102cca0a3ae23.jpg"
+ga = 071307
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title">如果你是面試官，你怎麼去判斷一個面試者的深度學習水平？</h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>以下問題來自@Naiyan Wang</p>
+<ul>
+<li>CNN 最成功的應用是在 CV，那爲什麼 NLP 和 Speech 的很多問題也可以用 CNN 解出來？爲什麼 AlphaGo 裏也用了 CNN？這幾個不相關的問題的相似性在哪裏？CNN 通過什麼手段抓住了這個共性？</li>
+<ul>
+<li><a href="https://link.zhihu.com/?target=https%3A//www.researchgate.net/publication/277411157_Deep_Learning">Deep Learning -Yann LeCun, Yoshua Bengio &amp; Geoffrey Hinton</a></li>
+<li><a href="https://link.zhihu.com/?target=https%3A//docs.google.com/presentation/d/1TVixw6ItiZ8igjp6U17tcgoFrLSaHWQmMOwjlgQY9co/pub%3Fslide%3Did.p">Learn TensorFlow and deep learning, without a Ph.D.</a></li>
+<li><a href="https://link.zhihu.com/?target=http%3A//vdisk.weibo.com/s/AoN5oNl5t04h">The Unreasonable Effectiveness of Deep Learning -LeCun 16 NIPS Keynote</a></li>
+<li>以上幾個不相關問題的相關性在於，都存在局部與整體的關係，由低層次的特徵經過組合，組成高層次的特徵，並且得到不同特徵之間的空間相關性。如下圖：低層次的直線／曲線等特徵，組合成爲不同的形狀，最後得到汽車的表示。<img class="content-image" src="http://pic4.zhimg.com/70/v2-8555de443211e31f6e3967fe0fab83b3_b.jpg" alt=""></li>
+<li>CNN 抓住此共性的手段主要有四個：局部連接／權值共享／池化操作／多層次結構。</li>
+<li>局部連接使網絡可以提取數據的局部特徵；權值共享大大降低了網絡的訓練難度，一個 Filter 只提取一個特徵，在整個圖片（或者語音／文本） 中進行卷積；池化操作與多層次結構一起，實現了數據的降維，將低層次的局部特徵組合成爲較高層次的特徵，從而對整個圖片進行表示。如下圖：<img class="content-image" src="http://pic4.zhimg.com/70/v2-27961b1ce1d39d970fae7e40fd99edf3_b.jpg" alt=""></li>
+<li>上圖中，如果每一個點的處理使用相同的 Filter，則爲全卷積，如果使用不同的 Filter，則爲 Local-Conv。</li>
+</ul>
+<li>爲什麼很多做人臉的 Paper 會最後加入一個 Local Connected Conv？</li>
+<ul>
+<li><a href="https://link.zhihu.com/?target=https%3A//research.fb.com/wp-content/uploads/2016/11/deepface-closing-the-gap-to-human-level-performance-in-face-verification.pdf%3F">DeepFace: Closing the Gap to Human-Level Performance in Face Verification</a></li>
+<li>以 FaceBook DeepFace 爲例：<img class="content-image" src="http://pic4.zhimg.com/70/v2-e37ce5df4fdfed2567506d03b7b0a6bf_b.jpg" alt=""></li>
+<li>DeepFace 先進行了兩次全卷積＋一次池化，提取了低層次的邊緣／紋理等特徵。</li>
+<li>後接了 3 個 Local-Conv 層，這裏是用 Local-Conv 的原因是，人臉在不同的區域存在不同的特徵（眼睛／鼻子／嘴的分佈位置相對固定），當不存在全局的局部特徵分佈時，Local-Conv 更適合特徵的提取。</li>
+</ul>
+</ul>
+<p>以下問題來自@抽象猴</p>
+<ul>
+<ul>
+<li>什麼樣的資料集不適合用深度學習?</li>
+<ul>
+<li>數據集太小，數據樣本不足時，深度學習相對其它機器學習算法，沒有明顯優勢。</li>
+<li>數據集沒有局部相關特性，目前深度學習表現比較好的領域主要是圖像／語音／自然語言處理等領域，這些領域的一個共性是局部相關性。圖像中像素組成物體，語音信號中音位組合成單詞，文本數據中單詞組合成句子，這些特徵元素的組合一旦被打亂，表示的含義同時也被改變。對於沒有這樣的局部相關性的數據集，不適於使用深度學習算法進行處理。舉個例子：預測一個人的健康狀況，相關的參數會有年齡、職業、收入、家庭狀況等各種元素，將這些元素打亂，並不會影響相關的結果。</li>
+</ul>
+<li>對所有優化問題來說, 有沒有可能找到比現在已知算法更好的算法?</li>
+<ul>
+<li><a href="https://link.zhihu.com/?target=https%3A//pan.baidu.com/share/link%3Fuk%3D1730478110%26shareid%3D233740338">機器學習－周志華</a></li>
+<li>沒有免費的午餐定理：<img class="content-image" src="http://pic1.zhimg.com/70/v2-ee269730f637849151525ab8ac299840_b.jpg" alt=""></li>
+<li>對於訓練樣本（黑點），不同的算法 A/B 在不同的測試樣本（白點）中有不同的表現，這表示：對於一個學習算法 A，若它在某些問題上比學習算法 B 更好，則必然存在一些問題，在那裏 B 比 A 好。</li>
+<li>也就是說：對於所有問題，無論學習算法 A 多聰明，學習算法 B 多笨拙，它們的期望性能相同。</li>
+<li>但是：沒有免費午餐定力假設所有問題出現機率相同，實際應用中，不同的場景，會有不同的問題分佈，所以，在優化算法時，針對具體問題進行分析，是算法優化的核心所在。</li>
+</ul>
+</ul>
+</ul>
+<ul>
+<li>用貝葉斯機率說明 Dropout 的原理</li>
+<ul>
+<li><a href="https://link.zhihu.com/?target=http%3A//mlg.eng.cam.ac.uk/yarin/PDFs/Dropout_as_a_Bayesian_approximation.pdf">Dropout as a Bayesian Approximation: Insights and Applications</a></li>
+</ul>
+</ul>
+<ul>
+<ul>
+<li>何爲共線性, 跟過擬合有啥關聯?</li>
+<ul>
+<li><a href="https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Multicollinearity">Multicollinearity－Wikipedia</a></li>
+<li>共線性：多變量線性迴歸中，變量之間由於存在高度相關關係而使迴歸估計不準確。</li>
+<li>共線性會造成冗餘，導致過擬合。</li>
+<li>解決方法：排除變量的相關性／加入權重正則。</li>
+</ul>
+</ul>
+</ul>
+<ul>
+<li>說明如何用支持向量機實現深度學習(列出相關數學公式)</li>
+<ul>
+<li>這個不太會，最近問一下老師。</li>
+</ul>
+<li>廣義線性模型是怎被應用在深度學習中?</li>
+<ul>
+<li><a href="https://link.zhihu.com/?target=http%3A//blog.shakirm.com/2015/01/a-statistical-view-of-deep-learning-i-recursive-glms/">A Statistical View of Deep Learning (I): Recursive GLMs</a></li>
+<li>深度學習從統計學角度，可以看做遞歸的廣義線性模型。</li>
+<li>廣義線性模型相對於經典的線性模型(y=wx+b)，核心在於引入了連接函數 g(.)，形式變爲：y=g&minus;1(wx+b)。</li>
+<li>深度學習時遞歸的廣義線性模型，神經元的激活函數，即爲廣義線性模型的鏈接函數。邏輯迴歸（廣義線性模型的一種）的 Logistic 函數即爲神經元激活函數中的 Sigmoid 函數，很多類似的方法在統計學和神經網絡中的名稱不一樣，容易引起初學者（這裏主要指我）的困惑。下圖是一個對照表：<img class="content-image" src="http://pic1.zhimg.com/70/v2-29d9d42212fd2294e71c2f3e760791d4_b.jpg" alt=""></li>
+</ul>
+</ul>
+<ul>
+<ul>
+<li>什麼造成梯度消失問題? 推導一下</li>
+<ul>
+<li><a href="https://link.zhihu.com/?target=https%3A//medium.com/%40karpathy/yes-you-should-understand-backprop-e2f06eab496b%23.urj9svxwg">Yes you should understand backdrop－Andrej Karpathy</a></li>
+<li><a href="https://link.zhihu.com/?target=https%3A//www.quora.com/How-does-the-ReLu-solve-the-vanishing-gradient-problem">How does the ReLu solve the vanishing gradient problem?</a></li>
+<li>神經網絡的訓練中，通過改變神經元的權重，使網絡的輸出值儘可能逼近標籤以降低誤差值，訓練普遍使用 BP 算法，核心思想是，計算出輸出與標籤間的損失函數值，然後計算其相對於每個神經元的梯度，進行權值的迭代。</li>
+<li>梯度消失會造成權值更新緩慢，模型訓練難度增加。造成梯度消失的一個原因是，許多激活函數將輸出值擠壓在很小的區間內，在激活函數兩端較大範圍的定義域內梯度爲 0。造成學習停止<img class="content-image" src="http://pic4.zhimg.com/70/v2-d081992735ff19112770f8aa8e273c13_b.jpg" alt=""></li>
+</ul>
+</ul>
+</ul>
+<p>以下問題來自匿名用戶</p>
+<ul>
+<ul>
+<li>Weights Initialization. 不同的方式，造成的後果。爲什麼會造成這樣的結果。</li>
+<ul>
+<li>幾種主要的權值初始化方法： lecun_uniform / glorot_normal / he_normal / batch_normal</li>
+<li>lecun_uniform:<a href="https://link.zhihu.com/?target=https%3A//www.researchgate.net/profile/Yann_Lecun/publication/2811922_Efficient_BackProp/links/0deec519dfa1dc2f30000000.pdf">Efficient BackProp</a></li>
+<li>glorot_normal:<a href="https://link.zhihu.com/?target=http%3A//jmlr.org/proceedings/papers/v9/glorot10a/glorot10a.pdf">Understanding the difficulty of training deep feedforward neural networks </a></li>
+<li>he_normal:<a href="https://link.zhihu.com/?target=https%3A//arxiv.org/pdf/1502.01852.pdf">Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification</a></li>
+<li>batch_normal:<a href="https://link.zhihu.com/?target=https%3A//arxiv.org/pdf/1502.03167.pdf">Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift</a></li>
+</ul>
+</ul>
+</ul>
+<ul>
+<li>爲什麼網絡夠深(Neurons 足夠多)的時候，總是可以避開較差 Local Optima？</li>
+<ul>
+<li><a href="https://zhuanlan.zhihu.com/">The Loss Surfaces of Multilayer Networks</a></li>
+</ul>
+<li>Loss. 有哪些定義方式（基於什麼？）， 有哪些優化方式，怎麼優化，各自的好處，以及解釋。</li>
+<ul>
+<li>Cross-Entropy / MSE / K-L 散度</li>
+</ul>
+</ul>
+<ul>
+<li>Dropout。 怎麼做，有什麼用處，解釋。</li>
+<ul>
+<li><a href="https://link.zhihu.com/?target=https%3A//www.quora.com/How-does-the-dropout-method-work-in-deep-learning">How does the dropout method work in deep learning?</a></li>
+<li><a href="https://link.zhihu.com/?target=https%3A//arxiv.org/pdf/1207.0580.pdf">Improving neural networks by preventing co-adaptation of feature detectors</a></li>
+<li><a href="https://link.zhihu.com/?target=https%3A//arxiv.org/pdf/1312.6197.pdf">An empirical analysis of dropout in piecewise linear networks</a></li>
+</ul>
+<li>Activation Function. 選用什麼，有什麼好處，爲什麼會有這樣的好處。</li>
+<ul>
+<li>幾種主要的激活函數：Sigmond / ReLU ／PReLU</li>
+<li><a href="https://link.zhihu.com/?target=http%3A//jmlr.org/proceedings/papers/v15/glorot11a/glorot11a.pdf">Deep Sparse Rectifier Neural Networks</a></li>
+<li><a href="https://link.zhihu.com/?target=https%3A//arxiv.org/pdf/1502.01852.pdf">Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification</a></li>
+</ul>
+</ul>
+<p>有幾個問題時間原因還沒來的及展開回答，最近會補上。</p>
+<p>完整版移步<a href="https://zhuanlan.zhihu.com/p/25005808">知乎專欄</a></p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div>
