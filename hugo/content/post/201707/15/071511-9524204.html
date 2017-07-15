@@ -1,0 +1,118 @@
++++
+date = "2017-07-15T11:00:00"
+title = "最早在金字塔內發現的數字 142857，到底有多神奇？"
+titleimage = "https://pic3.zhimg.com/v2-f2156b0c26ac8e46a59f405d235b1a72.jpg"
+ga = 071511
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title">142857 這個數爲什麼這麼神祕呢？還有其他的嗎？</h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>（這是一個初中數學水平就可以閱讀的答案 ^_^）</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cpi" alt="">
+<p>爲什麼說這個數是 <strong>走馬燈數</strong> 呢？</p>
+<p>這是因爲，它 2~6 倍，都恰好是這六個數字的重新排列</p>
+<p>：285714,428571,571428,714285,857142&hellip;&hellip;</p>
+<p>並且是 <strong>按次序 </strong>排列的哦，如下圖所示，是不是很像 &ldquo;走馬燈&rdquo; 呢？</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-6b64b407ec63e62fbcb00a045c08aa5e_b.jpg" alt="">
+<p>這樣的&ldquo;走馬燈&rdquo; 性質實在是讓人嘖嘖稱奇。於是我們開始好奇，142857 爲什麼會具有這樣神奇的性質？ 是否還會有其他數具有這樣的性質呢？</p>
+<p>先回答第一個問題。</p>
+<p>數學系的人也許會高冷地回答你：<strong>因爲 10 是模 7 的一個原根</strong>。</p>
+<p>但這個回答，一定是令 99 % 的人懵逼的。</p>
+<p>大部分普通人恐怕會問：&ldquo;原根&rdquo; 是什麼？</p>
+<p>當然，也許還有些連初中數學都還給老師的人，會問：&ldquo;模&rdquo; 是什麼，哈？</p>
+<p>這個問題，其實正是讓數學小白們叩開 <strong>初等數論 </strong>大門的偉大機會啊！</p>
+<p>我相信，要完整地理解這個問題的來龍去脈，對於初中數學水平的人，大概也就需要半個小時而已~</p>
+<p>當然，需要 3 個很簡單的前提條件：</p>
+<ol>
+<li>你知道 <strong>質數</strong>（素數）的概念：只能被 1 和自身整除的數；也知道 <strong>互質 </strong>的含義（最大公約數爲1）；</li>
+<li>你會 <strong>豎式計算</strong>；</li>
+<li>你已經知道：142857*7=999999；</li>
+</ol>
+<p>那麼，下面我們開始吧~</p>
+<p><strong>一、豎式計算的奧祕</strong></p>
+<p>既然你已經知道了 142857*7=999999，那麼你一定很容易聯想到 1/7 會有 142857 的循環節。畢竟 1000000 除以 7 餘 1 嘛！豎式計算告訴我們，產生循環幾乎是顯然的：</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-feb0ef71a8b56774efda8949cf12dc43_b.jpg" alt="">
+<p>仔細觀察一下豎式計算，你會發現一個很有趣的現象：</p>
+<p>前 6 次相減，餘數分別 3、2、6、4、5、1，恰好遍歷了比 7 小的 1~6，這就意味着，下一個餘數無論是幾，都必然會和前面的重複，從而必須產生循環。</p>
+<p>這個現象揭示了一個簡單的定理：</p>
+<p><strong>定理 1.1：1/n 的小數展開，其循環節長度不超過 n-1。</strong></p>
+<p>如果循環節恰好爲 n-1 ，在豎式計算的每一步中，餘數一定遍歷了 1，2，&hellip;，n-1，那麼顯然，1/n, 2/n,&hellip;， (n-1)/n 的豎式計算，一定能和 1/n 的豎式計算中的某一步銜接起來，循環節會形成 &ldquo;走馬燈&rdquo; 的效果。</p>
+<p>反之，對於任意一個&ldquo;走馬燈數&rdquo;，我們可以把它當做循環小數的循環節，而循環小數必然可以表示成分數 k/n，若循環節小於 n-1，那麼餘數必然不能遍歷 1，2，&hellip;，n-1，那麼 &ldquo;走馬燈&rdquo; 的效果則不會出現。於是我們得到了另一個定理：</p>
+<p><strong>定理 1.2：對每一個 &ldquo;走馬燈數&rdquo; ，都存在自然數 n，走馬燈數爲 1/n 的小數展開後的循環節，且這個循環節恰好有 n-1 位。</strong></p>
+<p>接下來，我們需要尋找滿足條件的 n，初等數論 的大門將緩緩打開。</p>
+<p><strong><strong>二、費馬不只發現了&ldquo;費馬大定理&rdquo;</strong></strong></p>
+<p>在這一部分，我們需要接觸 3 個初等數論的基礎概念：</p>
+<ol>
+<li><strong>同餘</strong>：若 a 除以 n 和 b 除以 n 的餘數相同，則稱 a 和 b 對模 n 同餘，記作 <img class="content-image" src="http://www.zhihu.com/equation?tex=a+%5Cequiv+b+" alt=""> (mod n)；</li>
+<li><strong>歐拉函數</strong>：小於 n 的正整數中與 n 互質的數的數目，記爲 <img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cphi%28n%29" alt=""> ；</li>
+<li><strong>剩餘系</strong>：對全體自然數，按照除以 n 的餘數可以分成 n 類，每一類構成的集合叫做 <strong>剩餘類</strong>；在每一個剩餘類中取一個數，構成的集合叫做 <strong>完全剩餘系</strong>；在每一個和 n 互質的剩餘類中取一個數，構成的集合叫<strong> 簡化剩餘系</strong>。易見，一個模 n 的簡化剩餘系中有 <img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cphi%28n%29" alt=""> 個元素。</li>
+</ol>
+<p>關於歐拉函數，舉 2 個例子：</p>
+<ol>
+<li>比如 6，在 1、2、3、4、5 中，只有 1 和 5 是和 6 互質的，所以 <img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cphi%286%29%3D2" alt=""> ;</li>
+<li>對於任意質數 p，顯然 1~ p-1 都和其互質，因此 <img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cphi%28p%29%3Dp-1" alt=""> 。</li>
+</ol>
+<p>於是我們很快可以得到一個定理：</p>
+<p><strong>定理 2.1（費馬-歐拉定理）：若 a 和 m 互質，則 </strong></p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=a%5E%7B%5Cphi%28m%29%7D%5Cequiv+1+" alt="">
+<p>這是第一個需要稍微思考一下的定理。但證明也並不複雜：</p>
+<p>在 1~ m-1 中取一個模 m 的簡化剩餘系，從小到大排列爲</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=x_%7B1%7D%2Cx_%7B2%7D%2C...%2Cx_%7B%5Cphi%28m%29%7D" alt="">
+<p>，任意兩個數之間的差都小於 m-1，考慮每個數的 a 倍，由於 a 和 m 互質，顯然有：</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=ax_%7Bi%7D+%5Cnot+%5Cequiv+ax_%7Bj%7D+%28i+%5Cneq+j%29" alt="">
+<p>於是</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=ax_%7B1%7D%2Cax_%7B2%7D%2C...%2Cax_%7B%5Cphi%28m%29%7D" alt="">
+<p>也構成了模 m 的簡化剩餘系。</p>
+<p>則有：</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=x_%7B1%7D%C2%B7x_%7B2%7D%C2%B7...%C2%B7x_%7B%5Cphi%28m%29%7D%5Cequiv+ax_%7B1%7D%C2%B7ax_%7B2%7D%C2%B7...%C2%B7ax_%7B%5Cphi%28m%29%7D+%3D+a%5E%7B%5Cphi%28m%29%7Dx_%7B1%7D%C2%B7x_%7B2%7D%C2%B7...%C2%B7x_%7B%5Cphi%28m%29%7D" alt="">
+<p>那麼：</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=m%7C+x_%7B1%7D%C2%B7x_%7B2%7D%C2%B7...%C2%B7x_%7B%5Cphi%28m%29%7D%28a%5E%7B%5Cphi%28m%29%7D-1%29" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=x_%7B1%7D%C2%B7x_%7B2%7D%C2%B7...%C2%B7x_%7B%5Cphi%28m%29%7D" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=m%7C%28a%5E%7B%5Cphi%28m%29%7D-1%29" alt="">
+<p>特別地，當 m 爲質數的時候，結合歐拉函數的定義，我們得到了費馬小定理：</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=a%5E%7Bp-1%7D%5Cequiv+1+" alt="">
+<p>費馬大定理是我們耳熟能詳的，但其實費馬小定理也是初等數論中比較基本的定理哦！</p>
+<p><strong>三、原根，以及 A001913</strong></p>
+<p>在費馬-歐拉定理中，取 a=10，當 m 與 10 互質的時候，纔有：</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=10%5E%7B%5Cphi%28m%29%7D+%5Cequiv+1+" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cphi%28m%29" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cphi%283%29%3D2" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=a%5Ek+%5Cequiv+1+" alt="">
+<p>因此我們得到了最終的結果：</p>
+<p><strong>定理3： 對每一個 &ldquo;走馬燈數&rdquo;，必然存在自然數p，走馬燈數爲 1/p 小數展開後的循環節，且 p 的充要條件是： ① p 是質數； ② p 與 10 互質； ③ 10 是模 p 的一個原根。</strong></p>
+<p>有一個收錄了各種數列的網站叫 OEIS，它恰好收錄了走馬燈數相關的 p： <a href="http://oeis.org/A001913">A001913</a></p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-ec07a4c084e50fe0990d5a27b716a1b4_b.jpg" alt="">
+<p>與此同時，還給出了 &ldquo;走馬燈數&rdquo; 數列：<a href="http://oeis.org/A180340">A180340 </a></p>
+<p>142857, 588235294117647, 52631578947368421, 434782608695652173913, 344827586206896551724137931, 212765957446808510638297872340425531914893617, 169491525423728813559322033898305084745762711864406779661</p>
+<p>這便是第二個問題的答案了。</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div>
