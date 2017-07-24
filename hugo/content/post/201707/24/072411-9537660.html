@@ -1,0 +1,72 @@
++++
+date = "2017-07-24T11:00:00"
+title = "爲什麼拿相機對着電腦屏幕拍照，照片總會出現波紋？"
+titleimage = "https://pic3.zhimg.com/v2-d4257cc9d1d0ef8a12d13f960c55a216.jpg"
+ga = 072411
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title"></h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>這就是傳說中的<strong>莫爾條紋（Moir&eacute; Pattern）</strong>啦。一言以蔽之，就是<strong>空間頻率相近</strong>的兩組圖案<strong>相互干涉</strong>，會有<strong>更低頻率</strong>（更寬間距）的圖案顯示出來。其中空間頻率是指其中特徵條紋間距的倒數。</p>
+<p>說得這麼玄乎，其實道理很簡單啦！比如在兩張透明塑料紙上分別畫一排豎線，上面那張每隔 1 mm 畫一條，下面那張每隔 1.1 mm 畫一條，很容易發現，豎線每隔 11 mm 就會重疊一次。細線重疊位置附近，露出的間隙較大，顯得<strong>明亮</strong>；而細線不重疊的位置附近，露出的間隙較小，顯得<strong>灰暗</strong>。這樣就形成了週期爲 11 mm 的明暗分佈來，整體看上去就是一個<strong>間距更大的粗條紋</strong>，從而很容易被<strong>眼睛</strong>感受到，<strong>如附圖 1</strong>。當兩者有一定<strong>夾角</strong>時，條紋傾斜，<strong>如附圖 2。</strong></p>
+<p>以上只是一維週期圖案對應的情況。那麼二維情況如何呢？我想你在生活中一定盯着兩層<strong>相互重疊的窗紗或者鏤空座椅背</strong>看過吧？又或者&hellip;&hellip;<strong>美腿絲襪</strong>？細心的你一定會發現，在原有細密條紋的基礎上隱隱約約有間距更寬的粗條紋出現。當兩層窗紗不完全平行或者自身有所起伏時，這些條紋還會彎彎扭扭。用攝像頭拍電視屏幕時也是類似的情形：<strong>電腦屏幕上縱橫的像素網格相當於第一層窗紗，手機攝像頭裏的 CMOS 或者 CCD 傳感器陣列相當於第二層窗紗</strong>，甚至手機顯示屏相當於第三層窗紗，於是拍攝得到的圖案也是有莫爾條紋的啦。再加上角度偏離時的透視、鏡頭成像時的畸變，以及屏幕本身的微小形變，拍攝到的莫爾條紋同樣可以有不同程度的彎彎扭扭。 其中一個加上<strong>透視</strong>效果後，條紋呈曲線狀，<strong>如附圖 3。</strong></p>
+<p><strong>附註：</strong></p>
+<p>其實圖像干涉可以是<strong>空間</strong>上的，也可以是<strong>時間</strong>上的。前者即爲上述<strong>莫爾條紋</strong>，後者則表現爲因有限刷新率和掃描過程導致的<strong>明暗閃爍</strong>條紋。看題目本身的表述，我主觀感覺提問者指的應該是前者，所以就這麼答啦。</p>
+<p>另外，從數字信號處理的角度看，以上現象也可以大概理解爲<strong>頻率混疊</strong>，需要分析<strong>信號頻率與抽樣率</strong>的關係。不過這樣有點把簡單問題複雜化了，題主既然對這個現象提問，應該是沒有學習過這方面知識的，舉個類似<strong>遊標卡尺兩列豎線</strong>的例子足夠說明原理啦。</p>
+<p>我一直認爲，答題或科普可深可淺，對於不同的讀者羣需要不同的解釋方法。例如莫爾條紋的<strong>數學推導</strong>方面，對小學生，可以用<strong>最小公倍數</strong>的概念作說明；對於中學生，可以用三角函數的<strong>和差化積、積化和差</strong>公式來推導；對於本科以上讀者，可以從數字信號處理中離散<strong>傅里葉變換</strong>角度深入分析。</p>
+<p>-</p>
+<p>關於評論區大家普遍關心的幾個問題的澄清：</p>
+<p>1. 很多朋友提到<strong>屏幕刷新率</strong>導致的明暗條紋，這個與莫爾條紋無關。刷新率導致的條紋是時間上的不同步導致的，而莫爾條紋僅僅是空間上週期圖案的效應。附圖 4 和附圖 5 可以清晰地說明這一點。例如，<strong>附圖 5&nbsp;</strong>中同時有與刷新率有關的縱向明暗條紋和彎曲的彩色莫爾條紋，而當調整屏幕刷新率到合適頻率後，與刷新有關的條紋消失，僅留下<strong>附圖 4&nbsp;</strong>中純粹的莫爾條紋。</p>
+<p>2. 莫爾條紋與柵線的空間頻率直接相關，也就是說對柵線間距變化很敏感。正因如此，相機拍攝時的距離遠近、放大縮小、焦距調整、手的抖動等，都會導致屏幕柵線在攝像頭傳感器陣列上對應的投影圖案中間距的變化，從而使條紋變形，甚至消失。別忘了正文中一開始強調的<strong>&ldquo;空間頻率相近&rdquo;</strong>幾個字。</p>
+<p>3.目前的<strong>視網膜屏</strong>（Retina 屏幕）分辨率大於 300 dpi，即每英寸柵線大於 300 條，太密集了，莫爾條紋不明顯。但是仔細調整相機間距，還是可以看到的，比如我附圖 4 中的就是。另外，打印機目前分佈率普遍大於 300 dpi，也是類似的。</p>
+<p>4. 目前很多相機或者手機，爲了消除莫爾條紋，會在硬件或軟件方面自動處理，所以條紋會有所減弱。一個典型的例子，是用相機拍照時，很可能自動處理弱化條紋；而拍照預覽時，尚未經過算法處理，條紋更明顯，此時對屏幕截圖，結果也比直接拍照要明顯。</p>
+<p>5. 圖片本身是數字圖像，也是離散的點組成的，所以在手機上放大、縮小、旋轉時也會有莫爾條紋，不過目前這方面的消除算法已經成熟，所以不那麼明顯。不過對於比較大的圖片，在手機上做放大預覽時，有時候需要一定的時間，這個過程中剛放大時能看到莫爾條紋，大概 1s 不到算法調整後又會消失。</p>
+<p>6. 其實有些屏幕本身還會有另一種條紋，大家似乎都沒有提到，不過我也補充下吧。如<strong>附圖 6</strong>中的同心環彩色條紋，這個與以上完全無關，是屏幕本身結構導致的光學現象，與偏振有關，這裏不做贅述。非磨砂的液晶屏更容易看到，尤其是側面傾斜觀察時。它的特點是關了電腦也能看到，而且肉眼看就有，與相機無關。這個容易區分。</p>
+<p>-</p>
+<p>附圖</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-02e0f0f82783e9aca5ad057814084663_b.jpg" alt="">
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-36ad395bb3c02e0506e7ee0f179b2ed5_b.jpg" alt="">
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-9db6b2fd51e0959c2e91879b46acf96d_b.jpg" alt="">
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-e50c3e5178d4573350fbb8c3872b92bf_b.jpg" alt="">
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-fb073e718ea849f024146e516e5258bc_b.jpg" alt="">
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-d513bc66e3647455cf7d176de21d6f0e_b.jpg" alt="">
+<p>最後，還有你們要的慾望絲襪，不，漁網絲襪：</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-09a8b64e393a6504d848e44a387aa731_b.jpg" alt="">
+<p>嗯，其實是椅背啦！好好辦公，別想那些沒用的！（不要問我爲什麼椅子少了一個扶手&hellip;&hellip;）</p>
+<p>-</p>
+<p>正文部分內容原載<strong>中科院物理所微信公衆號 </strong> 每週五的 <strong>問答專欄 </strong>第 66 期 第 2 題。我是原作者本人。</p>
+<p>鏈接：<a href="https://mp.weixin.qq.com/s/r2IErK5g_PruRxygPD9mFA">https://mp.weixin.qq.com/s/r2IErK5g_PruRxygPD9mFA</a></p>
+<p>我們是一個幾十人組成的<strong>校園科普社團</strong>。歡迎關注，謝謝支持！</p>
+<p>另附一個之前寫的與光的干涉有關的回答：</p>
+<p><a href="https://www.zhihu.com/question/27062939/answer/193840353">https://www.zhihu.com/question/27062939/answer/193840353</a></p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div>
