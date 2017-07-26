@@ -1,0 +1,119 @@
++++
+date = "2017-07-26T20:00:00"
+title = "小時候玩的魂鬥羅，背景老是黑色的，想過爲什麼嗎？"
+titleimage = "https://pic1.zhimg.com/v2-a30f8b7406706d035011d85037640354.jpg"
+ga = 072620
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title">FC 魂鬥羅的背景爲何都是黑色的，夜晚的感覺，是爲了省內存麼？</h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>FC 遊戲的畫面組成，簡單來說就是 1 個背景層 +64 個 8*8 像素的活動塊。</p>
+<p>找了張超級魂鬥羅的圖（小時候窮，家裏沒有魂鬥羅，只有超級魂鬥羅，打過無數遍）。</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-cf65e162fafd0daac37f7dc17090b920_b.jpg" alt="">
+<p>大家可以看到，這個直升機 BOSS，如果單純用活動塊來組成，那麼，64 個活動塊是遠遠不夠的！</p>
+<p>所以，聰明的製作人想出了一個奇技淫巧，就是用背景層（加粗）來做 BOSS。</p>
+<p>因爲這是背景層，並且 FC 只支持一層背景，只要它移動，就是整個畫面都在移動，所以只能用純色的背景，不然就露餡了。比如說，如果畫面上多了一個月亮，那麼，直升機在動，月亮也會跟着直升機一起動。所以只能用純色的背景。</p>
+<p>而且，黑色又是看起來最&ldquo;正常&rdquo;的顏色（可以強行解釋成夜晚），所以 FC 大部分巨大 BOSS 都是晚上打的。</p>
+<p>當然，也不一定要黑色，比如</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-ba1a9f89d118fad788534fdc89a7e1d2_b.jpg" alt="">
+<p>你們以爲自己打的是敵人？其實打的是背景。</p>
+<p>大家看這 2 張圖</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-b04c768d2dcec25966f5361c4fd88f6f_b.jpg" alt="">
+<p>這張圖是有背景的，就是天上那些雲（其實嚴格來說，地面 樓房 雲都是背景）</p>
+<p>然後走過這個房子之後</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-818cbf6c1dab7e8b945755da51d2f3fb_b.jpg" alt="">
+<p>背景就變成純黑的了</p>
+<p>這就是爲了用背景繪製 BOSS，把背景的其他東西都去掉了</p>
+<p>然後，打完 BOSS 之後</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-bd2e0e336ebe24f9e07cd6dd35b8a3fe_b.jpg" alt="">
+<p>果然，雲又回來了&hellip;&hellip;</p>
+<p>另一個關鍵點是，FC 活動塊是 64 個，但是同行活動塊最多 8 個，如果同行超過 8 個，就會出現閃爍現象。</p>
+<p>也就是說寧可讓一些活動塊消失，也要讓同行活動塊控制在 8 個以內。</p>
+<p>再回到這個圖</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-b04c768d2dcec25966f5361c4fd88f6f_b.jpg" alt="">
+<p>可以很直觀地看出，這些小兵，由於超過同行活動塊的限制，產生閃爍，變得殘缺不全。</p>
+<p>再回到這關的直升機 BOSS</p>
+<p>之前說過，BOSS 是背景，但是 BOSS 身上的組件有可能是活動塊，比如說 BOSS 身上的炮管。</p>
+<p>那就測試一下吧</p>
+<p>看準，起跳，截圖</p>
+<p>成果如下</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-a1b2fa4cb77fae402e52bcb3e7b4d818_b.jpg" alt="">
+<p>沒有閃爍！沒有閃爍！</p>
+<p>炮管如果是活動塊組成，一個活動塊的像素是 8*8，那麼一個炮管至少要 2*2 個活動塊疊加，人物也要 2*2 個活動塊，再加上爆炸產生的那個衝擊波，同一行至少要 12 個活動塊，遠超過了同行 8 個的限制，肯定是會產生閃爍的。</p>
+<p>所以，直升機就是 100% 背景構成的。</p>
+<p>有位網友 @Winston qiu 說，爲什麼會產生閃爍現象，在這就稍微說一下。</p>
+<p>我們先來個找茬遊戲。</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-d9f458240e8e436d3294e44cf06916b9_b.jpg" alt="">
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-1a9b4c937ff5e8e8013b2b098ab26d14_b.jpg" alt="">
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-73c68404432d9da9e02ac88a6ab9adb1_b.jpg" alt="">
+<p>無獎競猜，大家能找出 3 張圖有幾個區別？</p>
+<p>前面說過，寧可讓活動塊消失，也要使同行活動塊控制在 8 個。</p>
+<p>但是，總不能讓同一個活動塊消失，不然敵人都隱形了，那怎麼玩？（而且第一張圖是讓子彈消失，那就要命了，怎麼死的都不知道）</p>
+<p>那怎麼辦？輪流來唄。</p>
+<p>FC 的畫面是每秒 30 幀，這一幀讓這幾個活動塊消失，下一幀讓那幾個活動塊消失，誰也不吃虧。</p>
+<p>你消失一下，我消失一下，看起來就是閃爍的感覺了。</p>
+<p>不要問我爲什麼主角顏色那麼奇怪，我會告訴你我用觸摸屏玩不開無敵根本打不到關底嗎？</p>
+<p>一位知友 @Trueng Charlie 看出問題來了，如果直升機和地面都是同一層背景的話，爲何兩者會相對位移？</p>
+<p>其實這個是用了水平切割原理， @Thinkraft 的一篇文章寫的很詳細了，我就通俗地說一下吧。</p>
+<p>FC 畫面是一行一行地輸出的，但是輸出的時候可以把這些行給錯開，造成相對位移的現象。</p>
+<p>FC 上很多遊戲都用了這個方法造成 N 多層卷軸的假象，比如忍者龍劍傳系列。</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-30eaf97148be73aeeeee3166ca0f0ad8_b.jpg" alt="">
+<p>比如忍者龍劍傳 2 的這張圖，草地 火車 森林 遠山都是相對移動的，4 重卷軸，厲不厲害？達到了 sFC 的水準。</p>
+<p>這就是水平切割的威力。</p>
+<p>羣衆：明明說相對位移，你放一張靜態圖，搞毛線啊？</p>
+<p>沒錯，靜態圖看不出什麼東西。</p>
+<p>但是，再看一組忍者龍劍傳的圖就明白了。</p>
+<p>相對冷門的一款 GB 上的《忍者龍劍傳 決戰摩天樓》</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-9a13e4dcf8b28fe03e9cbbcd5663a536_b.jpg" alt="">
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-138b348bfe6447d179953c34c06846fb_b.jpg" alt="">
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-1befd85b9abcd00365c3af8bf01fea6d_b.jpg" alt="">
+<p>大家可以明白了吧，這就是隼龍如何切割 bos&hellip;&hellip;呸，水平切割如何切割 BOSS 的。</p>
+<p>很慚愧，明明說的是 FC，結果用了 GB，因爲 FC 上實在想不出更好的例子了，如果大家能想到的話，請告訴我。</p>
+</div>
+</div>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>BOSS 戰方面 @真把你打了 說得對，純色背景是因爲 BOSS 本身的圖形也是用背景層實現的，一方面防止動起來露餡，一方面也是爲了<strong>節省 Pattern Table 容量</strong>，而後者也適用於 BOSS 戰以外的各種畫面。或者說，不是你省不省的問題，而是隻有這麼多東西可用。</p>
+<p>FC 的顯存分配中，背景層 Pattern Table 只有 128*128（2bit 色），而整個屏幕輸出分辨率是 256*240。也就是說，<strong>最多隻能有大約 1/4 的背景面積由完全不重複的圖形構成</strong>。所以重複元素是必需的，你畫成石頭也好、樹林也好、雲彩也好，總之屏幕上一大半面積的圖像都需要使用重複元素構成。</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-7ab9713331cde29df925cfaae6bb3ee9_b.jpg" alt="">
+<p>而最簡單的重複，莫過於純色顯示了。只要在 256 個 8*8 的 Pattern 塊當中留出 1 個純色塊，就可以複製平鋪出大面積的畫面。至於這個塊的顏色到底是黑色還是什麼其它顏色，只是色盤編號問題，運行起來性能是一樣的，無所謂&mdash;&mdash;馬里奧的地上關背景就是藍色。只是黑色更適用於大部分氣氛比較成人的遊戲。</p>
+<p>甚至你這個塊的圖案內容也可以是任意 8*8 的 4 色圖形，運行起來性能也是一樣的。當然論美工效果還是純色比較好看。例如我強行修改顯存內容，用$1E 的 pattern 替換 $00 之後，原本看上去很自然的夜空就變成了下圖這種鬼畜的樣子。</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-4c89e99c9b4fb196975ba1a8f0f736ef_b.jpg" alt="">
+<p>所以很多遊戲選擇純黑背景的理由說來很簡單，只是<strong>在機能限制下追求儘可能美觀的畫面</strong>。</p>
+<p>順便說一下，如果你想知道屏幕上哪些東西是背景、哪些是活動塊，沒必要跳起來一幀一幀截圖做實驗。FCEUX 這樣的模擬器 debug 功能很強大，背景層和活動塊層可以分別選擇顯示或屏蔽，而且你可以實時查看顯存內容。如圖：魂鬥羅 1 當中的炮臺就是不折不扣的背景。</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-a0c7e3c7a328b9e01c1ccd42239d8eb7_b.jpg" alt="">
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div>
