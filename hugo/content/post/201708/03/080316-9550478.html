@@ -1,0 +1,51 @@
++++
+date = "2017-08-03T16:00:00"
+title = "看看人家《星際爭霸》，秒開，你《魔獸爭霸》，哎……"
+titleimage = "https://pic1.zhimg.com/v2-3c7d9fb81be50a32606dfba0fa002434.jpg"
+ga = 080316
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title">同爲暴雪出品，爲什麼《星際爭霸》在進入戰鬥時，可以實現秒開，而《魔獸爭霸 3》需要很長時間的載入過程？</h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>原因 1：加載的工作量不同。</p>
+<p>用 ProcMon 稍微監控一下從點擊按鈕&rarr;讀秒倒數&rarr;加載地圖&rarr;進入戰局的過程，</p>
+<p>SC（v1.18，Lost Temple）是這樣的：</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-3bb2be878682e32de6dfb62156e5ea11_b.jpg" alt="">
+<p>而 WC3（v1.26，Lost Temple）是這樣的：</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-a9f571d739147ebe9d7369c730abdd59_b.jpg" alt="">
+<p>後者光是 ReadFile 的操作數量就是前者的近 4 倍，截圖中未顯示的 CPU 使用時間（SC：0.42 秒；WC3：2.38 秒）更是近 6 倍。畢竟 WC3 版地圖上到處都是樹，一張圖 5000 多個物件（SC 版 LT 的物件基本全是礦，總數 100 出頭）。這說的還只是普通的對戰地圖，像 3C、DotA 這種帶自定義技能的 RPG 圖又是另一個概念了。</p>
+<p>原因 2：電腦的配置代差。</p>
+<p>從 SC 到 ROC 近 4 年半的時間，按摩爾定律主流配置性能已經翻三番（8 倍）了。SC 的系統需求是 Pentium 90MHz+16MB 內存；而 ROC 是 Pentium 400MHz+128M 內存。一個 640*480*256 色的遊戲，說白了用 ROC 的底線配置去跑 SC 已經是高標準了，何況主頻上 G 的 P4。所以說你覺得 WC3 讀圖慢，SC 秒進，那只是特定時期的特定體驗，換成現在的碾壓配置基本都是秒進。如果回到 SC1 剛出的那年，呵呵，那時候網吧還不叫網吧，叫電腦房，一排排的紅警、Duke3D、真侍魂，那配置玩 SC，一個啓動畫面就能讀上兩分鐘，雙擊遊戲圖標就可以上廁所去了，回來還沒進。</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-074739e7aa4fd66af8d0e6ab069cc364_b.jpg" alt="">
+<p>就是這張圖，歲數小的朋友可能都不認識。因爲 SC1.0 沒火多久 BW1.04 就出了，讀盤畫面也被換成了綠皮 K 姐大特寫（電腦房配置依然要卡 1 分鐘以上），然後大家都歡快地去小狗變飛龍了。</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div>
