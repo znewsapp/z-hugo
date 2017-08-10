@@ -1,0 +1,95 @@
++++
+date = "2017-08-10T12:00:00"
+title = "大誤 · 做動畫片的事，怎麼能叫難"
+titleimage = "https://pic1.zhimg.com/v2-975eff389584be553eb5a0080ff9ea14.jpg"
+ga = 081012
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title">如何做出一部類似於迪士尼皮克斯的 3D 動畫？</h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>感覺好有難度，我來嘗試答一下。</p>
+<p>動畫的本質是講一個故事。因此如果故事太差，其他方面再厲害也難以彌補。所以在考慮做動畫之前，你得有一個好故事，並且以劇本的形式呈現。或者說，如果沒有現成劇本的話，那你就得有一個好的編劇。比如皮克斯的編劇可以是這樣的：</p>
+<p><a href="https://zhuanlan.zhihu.com/p/24928825">皮克斯導演安德魯&middot;斯坦頓教你如何講故事</a></p>
+<p>然後就可以開始做動畫啦！</p>
+<p>首先，你要有一個導演。具體是做什麼可以參考答案：<a href="https://www.zhihu.com/question/35631787">動畫片的導演主要工作是什麼？ - 知乎</a></p>
+<p>其次，最好有一個製片人。具體是做什麼可以參考答案：<a href="https://www.zhihu.com/question/20386478/answer/14979697">製片人需要具備哪些條件和能力？主要負責什麼工作？ - 知乎</a></p>
+<p>當然，我們假設題主能力爆表可以身兼此二職並且雙修到達了皮克斯的導演和製片人的水平。那麼再往下看。</p>
+<p>你要有人可以把故事變成分鏡，把角色的每個動作畫出來，這要求很強的手繪能力。</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-896526f076ba9930d82e968f5c54ce5c_b.jpg" alt="">
+<p>然後要有動畫師用 Maya、ZBrush 之類把手繪的角色建模，變成 3D 模型，然後繪製羽毛的方向、分佈等等。</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-6ab6d4204542936911ce5d8762678ae8_b.jpg" alt="">
+<p>大概就是上面這樣，意會。</p>
+<p>然後因爲要有動作，所以這些肢體要綁定到骨骼上，每個三角形頂點都有對於一些骨骼的權重，這樣在骨骼動起來的時候，三角形網格也會跟着動，這一步叫做 Rigging。</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-c6fb8690ab46f5cf02e01e2e5a527590_b.jpg" alt="">
+<p>之後就是要根據分鏡，把每個角色在 shot 的動作、表情通過變動骨骼、控制點等等表演出來。這一步大概需要十幾個富有經驗的動畫師。</p>
+<p>再之後就是各種特效了，比如水、沙子、毛髮、肌肉、煙霧、火焰之類的物理模擬。這些有的用現成軟件，比如 Houdini、RealFlow 等等可以搞定。</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-3ee263b56bd506d335b246b394dea6e9_b.jpg" alt="">
+<p>（Houdini 模擬雲）</p>
+<p>有的不太行。比如現在是物理模擬追求無比精細的時代，因爲計算量巨大，頂級的工作室會要求物理模擬也可以在分佈式集羣上運行，而現有的商業軟件不支持集羣。怎麼辦呢？</p>
+<p>那就得自己開發了。於是你需要一些軟件工程師，來開發自己的新工具。對於上面這個例子，這些工程師既要有對物理模擬很熟悉的，像分析力學、連續介質力學、數值計算之類，還得有精通並行編程，熟悉 MPI 那一套的。</p>
+<p>如果能真實模擬這個效果的技術還不存在，那麼你就得需要研究團隊了，於是你需要一些做物理模擬的 PhD、博士後，或者相關領域的教授來爲你研究這個技術。迪士尼擁有全世界最強大的研究團隊之一，在相關領域的頂刊發表數量可以進入世界前三。</p>
+<p>比如《冰雪奇緣》中模擬雪的技術：</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-886c9e5bcad44753ff6d1cf5e6e0b571_b.jpg" alt="">
+<p>中文講解：<a href="https://zhuanlan.zhihu.com/p/24183491">如何用科學的姿勢堆一個雪人 - 知乎專欄</a></p>
+<p>（文章裏包含了原技術文檔的鏈接）</p>
+<p>再比如《海洋奇緣》裏模擬大面積流體的技術：</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-e2f70653217efdf8abd5995334b05647_b.jpg" alt="">
+<p>中文講解：<a href="https://zhuanlan.zhihu.com/p/27339811">WonderList 論文心願單 - SIGGRAPH 2017</a></p>
+<p>然後，你需要一個負責燈光、着色和渲染的團隊，通常燈光設計會使用 Katana 之類的軟件，把這些網格、體素等等和紋理、光照等結合，渲染要追求高精度，因此至少是 Arnold，通常是自己開發的渲染器。Redshift、Renderman 之類更多用於預覽。</p>
+<p>然後還需要成百上千臺計算機，用來建立渲染農場，這樣才能在有效的時間內，把這些複雜效果、模型繪製出來。</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-a58cbc84cb4ba905323b3f7b91d8a4c7_b.jpg" alt="">
+<p>解釋一下。渲染算法有很多，常用的比如 Path-Tracing、雙向 Path-Tracing、Metropolis Light Transport、Energy Redistribution Path Tracing 等等，大概過程就是光源發光線，打到物體表面根據不同材質以不同概率向各方向反彈，最後被攝像機收集的過程。這中間計算量很大。用單機的話，要到達電影級可能一幀就得幾十個小時。因此要用分佈式集羣來搞，俗稱叫做渲染農場（Render Farm）。一般大公司都有自己的。網上也有租賃服務，當然，不便宜。</p>
+<p>如果渲染時候採樣數不夠，就會有各種噪點，比如這樣，從上到下采樣數依次遞增，越多、計算時間越長越清晰：</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-5c117df0c335c5418487b9f698ca5ca0_b.jpg" alt="">
+<p>當然這跟渲染算法也有關係，跟所用材質也有關係。碰上覆雜的材質，比如毛髮、泡沫、沙礫等等，如何渲染的高效並真實呢？這時候你又需要研究團隊了，於是你需要一些渲染方向的 PhD、博士後，或者相關領域的教授來爲你研究這個技術。比如最近有研究用神經網絡高效渲染毛髮的技術：</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-d2df472962ff1818d97d28a7ea6d6325_b.jpg" alt="">
+<p><a href="http://people.eecs.berkeley.edu/~lingqi/">Ling-Qi Yan</a></p>
+<p>最後，你需要後處理團隊，將這些效果、角色等在 Nuke 或者自家開發的軟件裏合成爲最終的圖。</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-ffeb9b7dd06e9c0087130956234d9b71_b.jpg" alt="">
+<p>如果劇情比較複雜，那麼可能會有成百上千個分鏡，每個分鏡可能會改進數十個版本才達到最終的要求，這些版本可能會涉及上百位員工。在進度緊張的情況下，如此多的資源、人力如何管理呢？那麼就需要專門的管理平臺，比如 Shotgun（<a href="https://www.shotgunsoftware.com/">Production Tracking, Scheduling, Review, and Asset Management</a>）：</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-e31ed799d9af287cc9f9485ddd7330c5_b.jpg" alt="">
+<p>( &epsilon;:)⌒ﾞ(.&omega;.)⌒ﾞ(:3 )⌒ﾞ(&middot;&omega;&middot;)⌒ﾞ( &epsilon;:)⌒ﾞ(.&omega;.)</p>
+<p>終於視覺上差不多了，然而聽覺也很重要，畢竟這年頭已經不流行默片了。</p>
+<p>所以你要有一個作曲。這不僅要求你有彈奏、編曲能力，也要求能對應情節和影片本身的畫面變動，相應的變動 BGM。然後如果是管絃樂得有一個樂隊，當然如果電子樂，找個好點的音色庫，很多時候用 MIDI 直接電腦合成也可以接受。</p>
+<p>然後還得有一個聲效，專業用詞叫 Foley artist，根據大海、沙灘、翅膀扇動等相應物理過程，給動畫配物理效果音，並且要做到聲場真實，像這樣：</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-cc2d045709f6a92edacdf590d3689648_b.jpg" alt="">
+<p>這個比較需要經驗和腦洞，一個比較經典的例子就是電影《星球大戰》裏面的爆能槍的聲音，是可以通過用扳手敲擊固定電線杆的斜拉鋼絲繩得到的，像這樣：</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-e5ebf917daf700fe875d67805cfcc888_b.jpg" alt="">
+<p>如果有人物的話，你還得請一位或幾位聲優，最好是老戲骨，還得能唱。這個其實很關鍵，聲優選不好就會很齣戲，甚至會讓觀衆犯尷尬癌。好的聲優比如這樣：</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-c97f2f58b4d6706bd593432a134d821b_b.jpg" alt="">
+<p>噢不好意思，是這個：</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-ae696bdd86f1c775151bf8bc0dff2f4f_b.jpg" alt="">
+<p>這樣下來，再添加一些其他細節，你便可以做出一部類似於迪士尼皮克斯的 3d 動畫了！</p>
+<p>( &epsilon;:)⌒ﾞ(.&omega;.)⌒ﾞ(:3 )⌒ﾞ(&middot;&omega;&middot;)⌒ﾞ( &epsilon;:)⌒ﾞ(.&omega;.)</p>
+<p>上面這個答案僅僅說了做出優質動畫的冰山一角，這是沒有辦法的，因爲答主沒有在這個答案裏寫一本書的能力。你看，不說那些長片，就算是六分鐘的短片，比如 Piper 這樣的（<a href="https://www.bilibili.com/video/av6923460/">《鷸》Piper 2016 </a>），參與人員列表就有數十人，還不包括那些工具開發人員、研究人員等&hellip;&hellip;</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div>
