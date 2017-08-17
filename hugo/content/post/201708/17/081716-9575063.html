@@ -1,0 +1,63 @@
++++
+date = "2017-08-17T16:00:00"
+title = "小時候只覺得停電很好玩，卻沒想過爲什麼大家會一起停電"
+titleimage = "https://pic3.zhimg.com/v2-59b4550c7b511c8f043e4212b2712482.jpg"
+ga = 081716
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title">大面積停電一般有哪些原因？</h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>說幾個較爲出名的大停電事故：</p>
+<p>1. <strong>南澳州 16 年九月份的全州大停電事故</strong>。下圖可以看看南澳範圍有多大。此事故發生主要原因是南澳地區高度依賴風電和鄰近兩州的外來供電，而當日出現極端天氣，風力發電機組過載跳閘（這一塊繼保裝置的設定未和 system operator 提前溝通），緊接着連接周邊兩州的 interconnector 過載跳閘，導致南澳電力系統直接崩潰。</p>
+<p>澳洲政府最近要求其首席科學家出了一份澳洲未來電力市場安全分析報告，我導師和我負責了電力系統安全評估的部分，詳見專欄：<a href="https://zhuanlan.zhihu.com/p/27379063">南澳大斷電之後的政府反思</a></p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-b8dd25b865d4bb090fec9d7fd75de5a6_b.jpg" alt="">
+<p>2. <strong>意大利 2003 年大斷電事件</strong>，下圖可以看到歐洲地圖裏整個意大利全部&ldquo;黑&rdquo;了。此次事故是因爲極端天氣導致電力傳輸線故障，然後一系列的 cascade effect 直接導致意大利電力系統崩潰。</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-35355af6eb960962dc0f9f1edd997ef9_b.jpg" alt="">
+<p>3. <strong>同年，美國東北部也經歷了一次大斷電</strong>，見下圖，有沒有發現美帝少了一塊，哈哈哈哈。這張圖被奉爲很多電力系統 PPT 用來開頭的經典照片。</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-c1d1f1c40188dfd947eedfcee1a3cf96_b.jpg" alt="">
+<p>以上三個大事故是我聽得較多的。</p>
+<p>接着我們來談談電力系統大範圍崩潰的原因。在此之前我得先說明一下電力系統的運行規則。當前電網的運行規則一般是"N-1"或者"N-2"。"N-1"原則是說當系統內任意一個機組或是任意一條傳輸線出現故障時，系統還能穩定運行。所以電力系統工程師在跑潮流（Optimal Power Flow）測試電力系統可靠性時，需要看電力系統是否能在當前條件下失去一個組件後同時滿足以下兩個條件：</p>
+<ol>
+<li><strong>有足夠的發電備用容量來快速彌補缺失的發電容量</strong></li>
+<li><strong>在其他發電機組增發時，系統內任意一條線不（長時間）過載。</strong></li>
+</ol>
+<p>先說第一點，這要求系統有足夠的備用機組容量，而且要有能提供頻率響應的，旋轉備用的，還有 standing reserve 的，以在不同的時間節點替換其他備用機組。下面兩張圖來自於我自己的 thesis，第一張是談頻率響應的，第二張是談旋轉備用的，總結了在 GB 系統裏主要的備用服務的啓動和持續時間要求。</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-e4419ee9970a15340b03bc5ed08425d4_b.jpg" alt="">
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-8c929d0937f047ecc9479b8bc73a2b78_b.jpg" alt="">
+<p>關於備用的容量的要求，一般來說頻率響應算法較爲複雜，我在<a href="https://www.zhihu.com/question/35918477/answer/132108126">Kevin Zhang：爲什麼電力系統頻率由負荷決定？</a>提到過，在此就不贅述了。旋轉備用的算法一般是系統內最大的在線機組（或者傳輸線）的容量加上負載（1%）和風電和光伏發電的預測誤差。</p>
+<p>上面談了容量問題，接着談談傳輸線限制。拿英國來說，從英格蘭到蘇格蘭的過道位置傳輸線是異常關鍵的（見下圖），它保證了高地的風電能傳輸到英格蘭，也能夠在風電不足時，英格蘭這邊能提供可靠的發電給蘇格蘭。所以我們在跑 OPF 時，主要關注的就是這兩條線的運行狀態，保證在線斷了之後，系統兩側各自有足夠的備用發電容量。</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-79e41f0a8eafda705195946141547b21_b.jpg" alt="">
+<p>所以綜上所述，大面積停電主要就是電力系統備用不足，而系統又無法及時&ldquo;止損&rdquo;（需要相關設備），切斷與區域負載連接，最後整個系統就崩塌了。當然系統崩塌後，blackstart 服務也是很重要的，在這裏就不贅述了。</p>
+<p>那麼回來談談臺灣事故，無非就是備用容量準備不足，導致系統頻率下降過快，整個系統直接崩了。繼續反核？那你去建燃氣機組嘛，有錢就行&hellip;&hellip;</p>
+<p><strong>最後說一句，電力系統的可靠性和經濟性一般來說是此消彼長的，如何判定平衡點，真的是一件很 tricky 的事情。國網南網在系統可靠性方面做的很不錯，真的沒得黑。各位以後遇到停電事故，少點抱怨，多點理解吧。</strong></p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div>
