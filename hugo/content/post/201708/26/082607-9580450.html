@@ -1,0 +1,91 @@
++++
+date = "2017-08-26T07:00:00"
+title = "分析了 8000 多首中文歌，這是最開心和最傷感的 Top 10"
+titleimage = "https://pic2.zhimg.com/v2-e80298752e020b2cef227dbf60185fdd.jpg"
+ga = 082607
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+<div class="question">
+<h2 class="question-title">【算法告訴你】華語歌曲裏，最開心和最傷感的分別是...</h2>
+<div class="answer">
+
+
+
+<div class="content">
+<p>音樂軟件 Spotify 對每首歌的各項特質都打了分。其中一個指標叫&ldquo;效價&rdquo;（valence），描述該歌曲會讓聽衆開心還是傷感，最高分爲 1 （&ldquo;極度開心&rdquo;），最低分爲 0 （&ldquo;極度傷感&rdquo;）。&ldquo;效價&rdquo;是個心理學名詞，用來評判音樂是 Spotify 自創的。官方沒有解釋&rdquo;效價&rdquo;是如何計算出來的，我們只知道判斷依據是曲子，沒有考慮歌詞。</p>
+<p>我抓了 Spotify 上 66 位華語歌手的 8,000 多首歌曲 *，可以看出哪些歌手是陽光派，哪些是感傷系。</p>
+<img class="content-image" src="https://pic1.zhimg.com/v2-57563ab9f059a6b5ba1c11a61e6c5e70_b.png" alt="">
+<p>上圖中，每個長方形中的那條豎線就是該歌手所有歌曲的&ldquo;效價&rdquo;中位數&mdash;&mdash;唱嘻哈的 MC Hot Dog、張震嶽、潘瑋柏得分很高，機器認爲他們是正能量歌手；歌后蔡琴、新一輩的李健、再年青一代的林宥嘉、楊宗緯則是感傷系。</p>
+<p>長方形左側的那條寬，表示該歌手有 25% 的歌比那個值分數更低（更傷感）。長方形右側的那條款，表示有 25% 的歌比那個值分數更高（更開心）。一個解讀就是，蕭亞軒、蔡依林、順子，作品之間情緒差異比較大（長方形很寬），而楊宗緯、劉若英、李健，作品情緒比較單一（長方形很窄）。*</p>
+<p>--</p>
+<p>如果我們把所有的歌曲單獨排名，可以得到如下的 Top 10 列表：</p>
+<img class="content-image" src="https://pic1.zhimg.com/v2-af4ef6e4e3f048b2ed08f8392dec3f70_b.png" alt="">
+<p>可以看出，只聽曲子的機器還是沒法 100% 判斷歌曲的情感。機器認爲&ldquo;最快樂&rdquo;的《愛的初體驗》第一句歌詞就是：</p>
+<blockquote>如果說你要離開我　請誠實點來告訴我<br>不要偷偷摸摸的走　像上次一樣等半年</blockquote>
+<p>我想過把所有歌曲在 Spotify 打分的基礎上根據歌詞情緒加權，不過以我目前的水平，還沒能找到合適的判別方法。主要難度在於，藝術作品力求&ldquo;側面表達&rdquo;，不會像淘寶和大衆點評買家一樣直接（&ldquo;發貨太慢&rdquo;、&ldquo;菜裏有蟲&rdquo;）。</p>
+<p>很多歌曲的歌詞只寫意，不直接抒情。例如周杰倫的《青花瓷》：</p>
+<blockquote>天青色等煙雨 而我在等妳<br>炊煙裊裊升起 隔江千萬裏<br>在瓶底書漢隸仿前朝的飄逸<br>就當我爲遇見妳伏筆</blockquote>
+<p>還有些作品說的是&ldquo;反話&rdquo;，例如劉若英的《很愛很愛你》：</p>
+<blockquote>很愛很愛你　所以願意<br>捨得讓你　往更多幸福的地方飛去<br>很愛很愛你　只有讓你<br>擁有愛情　我才安心</blockquote>
+<p>人類一眼就可以看出這是分手歌，但是機器抓到這麼多&ldquo;愛你&rdquo;和&ldquo;幸福&rdquo;，不太可能認爲它是傷感歌曲。如果歌詞完全是正面、直接表達，我們通常認爲它不是一個好作品，例如《愛情買賣》：</p>
+<blockquote>出賣我的愛 逼着我離開<br>最後知道真相的我眼淚掉下來<br>出賣我的愛 你背了良心債<br>就算付出再多感情 也再買不回來<br>當初是你要分開 分開就分開<br>現在又要用真愛把我哄回來</blockquote>
+<p>根據歌詞判斷情緒的難點就在這裏。當然了，Spotify 在條件限制的情況下，還是給出了準確的評判。光聽曲子，《愛的初體驗》確實非常正能量。Top 10 裏其他的歌曲，例如《野蠻遊戲》、《速配程度》，還是挺符合我們人類對它們的判斷。上述歌曲的評論區經常能見到下面這樣的評論：</p>
+<img class="content-image" src="https://pic4.zhimg.com/v2-85b6e06835ee285e8fa0bf00ccc0477b_b.png" alt="">
+<p>接下來，我們來看最傷感 Top 10：</p>
+<img class="content-image" src="https://pic1.zhimg.com/v2-977af39be6161c0f08004c6ad11c61dc_b.png" alt="">
+<p>前三名都是無伴奏音樂（有辦法可以自動把無伴奏音樂排除在外，但是爲了避免誤傷，我還是都留下來了）。伍佰的《少女的心》和楊乃文的《你好美》算是機器認定的最傷感華語歌曲。大家如果有興趣，可以去聽一下這兩首歌，確實非常傷心。《你好美》的歌詞也是亮點。</p>
+<p>最後，除了&ldquo;效價&rdquo;，Spotify 還計算了其他幾項指標：</p>
+<ul>
+<li>acousticness（不插電程度）</li>
+<li>danceability（適合跳舞程度，根據節拍、韻律穩定度、節拍強度、整體規律程度來計算）</li>
+<li>energy（&ldquo;雞血&rdquo;程度，根據動態範圍、聲響、音色、進入時長、熵計算）</li>
+<li>instrumentalness（伴奏程度）</li>
+<li>liveness（&ldquo;現場&rdquo;程度）</li>
+<li>loudness（聲響）</li>
+<li>speechiness（&ldquo;說話&rdquo;程度）</li>
+<li>tempo（節拍，單位是 BPM 節拍 / 每分鐘）</li>
+</ul>
+<p>上述指標的部分排名如下：</p>
+<img class="content-image" src="https://pic3.zhimg.com/v2-f2b1a53f2614a67b59f25ea1e3215b52_b.png" alt="">
+<p>可以看出，機器（也）認爲李榮浩的歌聽起來都一樣...</p>
+<p>--</p>
+<p>以上就是 Spotify 公開的全部數據。如果有收聽數據，顯然能發現更多更好玩的事情，但收聽數據肯定是最高級機密，所以不會公開。國內的音樂 app 除了網易幾年前發佈過一次年度收聽排行榜，其他好像什麼都沒有。不知道各家音樂 app 在買版權、贊助節目的同時，能不能分享些數據或者寫點文章。</p>
+<p>--</p>
+<p>注 1：圖中的圓點表示異常值。具體怎麼讀圖，請搜索&ldquo;箱形圖&rdquo;，這裏不再展開。</p>
+<p>注 2：抓取歌曲的篩選標準如下：</p>
+<ol>
+<li>由主流普通話 / 國語歌手演唱</li>
+<li>不是混音或現場版</li>
+<li>不是重複歌曲（熱門歌曲通常會出現在很多後來的&ldquo;精選專輯&rdquo;裏）</li>
+<li>可以是錄音室專輯裏的翻唱歌曲</li>
+<li>可以是無歌詞歌曲、無伴奏旁白（因爲無法準確剔除）</li>
+<li>由於 Spotify 版權問題，所以部分歌手收錄的歌曲較少（例如羅大佑、張靚穎、逃跑計劃）</li>
+<li>只發表過一張錄音室專輯的歌手（例如草東沒有派對、萬年青年旅店）參與此排名無意義，因此不考慮</li>
+</ol>
+<p>注 3：Spotify 這幾項指標裏相關性比較高的是 energy、danceability 和 valence。Valence 和 tempo 幾乎沒有任何相關。</p>
+<p>注 4：數據來源爲 Spotify API - <a class=" wrap external" href="http://link.zhihu.com/?target=https%3A//developer.spotify.com/web-api/get-audio-features/" target="_blank" rel="nofollow noreferrer">Get Audio Features for a Track</a>；靈感來源爲美國網友對 Radiohead 歌曲的分析 <a class=" wrap external" href="http://link.zhihu.com/?target=http%3A//rcharlie.com/2017-02-16-fitteR-happieR/%23analysis" target="_blank" rel="nofollow noreferrer">fitteR happieR</a></p>
+<p>注 5：音樂和情感分析，歡迎專業人士批評指正</p>
+<p>注 6：請勿轉載，否則會被舉報。喜歡的話請直接用&ldquo;分享&rdquo;按鈕分享原文，謝謝</p>
+
+
+
+</div>
+</div>
+</div>
+
+
+</div>
+</div>
