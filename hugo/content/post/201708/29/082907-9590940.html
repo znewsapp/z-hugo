@@ -1,0 +1,128 @@
++++
+date = "2017-08-29T07:00:00"
+title = "七夕過後，妹子說這是她見過最獨特的表白方式"
+titleimage = "https://pic1.zhimg.com/v2-25df51024cb72fd96511e5f93fadde38.jpg"
+ga = 082907
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+<div class="question">
+<h2 class="question-title">七夕專題：用 Excel 作一個甜蜜蜜牌計算器送給 Ta</h2>
+<div class="answer">
+
+
+
+<div class="content">
+<p>七夕情人節快到了，作爲單身汪、單身喵的你，看着別人成雙成對</p>
+<img class="content-image" src="https://pic3.zhimg.com/v2-4592d9a1b771c4043e5f0892182aa4f2_b.png" alt="">
+<p>而你還是孤單一個人，形影相弔</p>
+<img class="content-image" src="https://pic1.zhimg.com/v2-d20beab37dcdfb4cdaf7abcfe2622bb8_b.png" alt="">
+<p>如果有了心儀的 Ta，趁七夕情人節，趕緊向他表白吧。</p>
+<p>問題來了，該如何向心儀的 Ta 表白呢？該如何表白呢？如何表白呢？</p>
+<p>........思考三分鐘.....</p>
+<p>........思考三小時.....</p>
+<p>........思考三天....</p>
+<p>........思考三個月.....</p>
+<p>........思考三.........</p>
+<p>難道你要思考三年才能表白？不用思考了，我們既然是表哥表妹，那就用 Excel 這個養家餬口的生產力工具，動手做一個計算器送給 Ta。來，先來看效果</p>
+<p>注：</p>
+<p>本計算器由《&ldquo;偷懶&rdquo;的技術：打造財務 Excel 達人》讀者羣 通州|天山湖 製作，在此表示感謝。</p>
+<img class="content-image" src="https://pic4.zhimg.com/v2-1b2a0636b70c61e689e3248f5f01f083_b.png" alt="">
+<p>上面的計算器是通過設置單元格邊框和底色來製作的，但這還不足以打動 Ta，我們再加點功能，用數字來表白：</p>
+<img class="content-image" src="https://pic4.zhimg.com/v2-011b360f398424ab59e45b1609870457_b.gif" alt="">
+<p>除了如上圖中在單元格直接輸入數字外，也可以在單元格中輸入簡單的算式，比如，你可以問 ta:</p>
+<p>今年七夕是 2017 年 8 月 28 日，距離去年 3 月 26 日多少天？</p>
+<p>Ta 肯定答不上來，你可以很老練的說：</p>
+<p>在 Excel 中，日期就是數字，它們可以直接相減的，我們用 Excel 來計算相差多少天，我在 Excel 裏做了一個計算器，我們用它來算算：</p>
+<img class="content-image" src="https://pic3.zhimg.com/v2-ce08ee49296bed2acc1fe8b88d6a8626_b.gif" alt="">
+<p>就這樣，你很自然地就表白了。</p>
+<p>如果你懂 VBA 的話，還可將計算器做成點擊各數字單元格和運算符單元格可在顯示屏單元格錄入數字並運算的功能，那樣就更完美了。</p>
+<p>製作這計算器，用到了三個功能</p>
+<p>1、設置單元格格式</p>
+<p>2、條件格式</p>
+<p>3、自定義格式</p>
+<p>下面介紹一下如何製作這個計算器。</p>
+<p><strong>一、先來看一下外觀如何製作</strong></p>
+<p>計算器的外觀所用的功能我們每天都在用，那就是設置單元格的邊框。</p>
+<p>Step1：選定某單元格區域，先將單元格設置爲灰色，然後，設置上邊框和左邊框的亮色</p>
+<img class="content-image" src="https://pic4.zhimg.com/v2-923327e80c5751849de75851589ad92b_b.png" alt="">
+<p>注意：邊框線條顏色要設爲白色。</p>
+<p>設置後效果如下</p>
+<img class="content-image" src="https://pic1.zhimg.com/v2-1b7708c89358aecde26477f1508135cc_b.png" alt="">
+<p>Step2：設置下邊框和右邊框的爲暗色</p>
+<img class="content-image" src="https://pic4.zhimg.com/v2-84e92d3f1ad8641ed79b9963b671150b_b.png" alt="">
+<p>設置後效果如下圖：</p>
+<img class="content-image" src="https://pic1.zhimg.com/v2-760a9491d342116e4e48cc399f8ef134_b.png" alt="">
+<p>設置好後，就有浮雕凸起的效果。</p>
+<p>如果我們將左邊和上邊設置爲暗色，右邊和下邊設置爲亮色，則爲凹陷的效果：</p>
+<img class="content-image" src="https://pic2.zhimg.com/v2-9f5b6c5282386c38979162b945fc02e5_b.png" alt="">
+<p>其他的一些製作細節比如合併單元格、單元格底色的設置就不一一介紹了。請大家自己設置。</p>
+<p>我們還可用這種方法來模仿製作窗體。</p>
+<img class="content-image" src="https://pic4.zhimg.com/v2-ef687b956b9b506f69e73c8c39c46a83_b.png" alt="">
+<p><strong>二、如何讓輸入指定的數字顯示爲特定字符</strong><strong>如何讓輸入指定的數字顯示爲特定字符比如輸入 520，顯示爲&rdquo;我愛你&ldquo;呢？</strong></p>
+<p><strong>方法 1：使用上一篇文章所用到的自定義格式。</strong></p>
+<p>但這種方法最多隻能顯示三條表白。</p>
+<p>自定義格式分爲四節，中間用分號隔開：</p>
+<div class="highlight">
+<pre><code class="language-text">正數格式;負數格式;零值格式;文本
+</code></pre>
+</div>
+<p>比如下圖，正色顯示爲藍色，設千位分隔數，二位小數，負數顯示紅色，設千位分隔數，二位小數，零值顯示爲短槓 -，其自定義格式爲：</p>
+<div class="highlight">
+<pre><code class="language-text">[藍色]#,##0.00_ ;[紅色]-#,##0.00 ;-
+</code></pre>
+</div>
+<img class="content-image" src="https://pic1.zhimg.com/v2-73ecc1c66905da11c2661a7ba970d094_b.png" alt="">
+<p>自定義格式還可做簡單的條件判斷，用於條件判斷時是下面的語法格式</p>
+<p><strong>[條件 1]滿足條件 1 的格式；[條件 2]滿足條件 2 的格式;不滿足條件 1 和 2 時的格式；文本格式</strong></p>
+<p>比如要將大於等於 80 的數字顯示爲優秀，60-80 的顯示爲及格，小於 60 的顯示不及格，如果是文本則顯示&ldquo;輸錯了，請輸入數字&rdquo;，則使用下面的自定義格式：</p>
+<div class="highlight">
+<pre><code class="language-text">[&gt;=80]"優秀";[&gt;=60]"及格";"不及格";"輸錯了,請輸入數字"
+</code></pre>
+</div>
+<img class="content-image" src="https://pic4.zhimg.com/v2-795ffb4ecc0d5b3995741612633670c7_b.png" alt="">
+<p><strong>方法 2：使用條件格式</strong></p>
+<p>由於自定義格式，最多隻能顯示三個條件加一個文本格式，並且只能用於簡單的條件判斷，有一定的侷限性，要突破四個條件的效果，我們可以結合使用條件格式這一功能。</p>
+<p>開始選項卡 -- 條件格式，然後按下圖的方法依次建立條件判斷的規則</p>
+<img class="content-image" src="https://pic4.zhimg.com/v2-61ab56562b0cae19cc03dfb4d0db433f_b.png" alt="">
+<p>如果要根據包含關係判斷，比如只要輸入的數字中包含 520 都顯示&ldquo;我愛你&rdquo;，則條件判斷規則如下：</p>
+<div class="highlight">
+<pre><code class="language-text">=NOT(ISERR(FIND("520",F9,1)))
+</code></pre>
+</div>
+<img class="content-image" src="https://pic4.zhimg.com/v2-95ec42ebd5980d8274d2c80f58836d9f_b.png" alt="">
+<p>建立後，條件規則如下：</p>
+<img class="content-image" src="https://pic2.zhimg.com/v2-00d929622a21eceaf87e08f94b240e75_b.png" alt="">
+<p><strong><strong>三、知識點回顧</strong></strong></p>
+<p>1、單元格格式</p>
+<p>將單元格的上邊框和左邊框設爲的亮色（較淺的顏色），下邊框和右邊框設爲暗色（較深的顏色），則顯示爲浮雕凸起的效果。將上邊框和左邊框設爲的暗色，下邊框和右邊框設爲亮色，則顯示爲凹陷的效果。</p>
+<p>2、自定義格式</p>
+<p>自定義格式分爲四節，中間用分號隔開：</p>
+<p><strong>正數格式;負數格式;零值格式;文本</strong></p>
+<p>自定義格式還可用於簡單的條件判斷，用條件判斷只能有三條。用於條件判斷時，其語法格式爲：</p>
+<p><strong>[條件 1]滿足條件 1 的格式；[條件 2]滿足條件 2 的格式;不滿足條件 1 和 2 時的格式；文本格式</strong></p>
+<p>3、我們可以聯用自定義格式和條件格式，做出更多更豐富的顯示效果。</p>
+<hr>
+<p>本文首發於微信公衆號：Excel 偷懶的技術</p>
+
+
+
+</div>
+</div>
+</div>
+
+
+</div>
+</div>
