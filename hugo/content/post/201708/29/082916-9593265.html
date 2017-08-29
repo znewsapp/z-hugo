@@ -1,0 +1,68 @@
++++
+date = "2017-08-29T16:00:00"
+title = "哎呀，一個手滑把重要文件給刪了，還有機會恢復嗎？"
+titleimage = "https://pic3.zhimg.com/v2-00351acd5dac637c5ecef5abdc8a2fb6.jpg"
+ga = 082916
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title">在硬盤中，我們刪掉的文件去哪裏了？而爲什麼文件在專門的公司又能被恢復？恢復的原理是什麼？</h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p><strong>創建文件：</strong></p>
+<p>蓋大樓（文件本體），同時製作一個指向樓的路標（指針）。用戶通過路標就能找到樓。</p>
+<p><strong>&ldquo;刪除&rdquo;文件（移動至回收站）：</strong></p>
+<p>在路標上寫一個&ldquo;拆&rdquo;字。</p>
+<p><strong>恢復文件（從回收站恢復）：</strong></p>
+<p>將路標上的&ldquo;拆&rdquo;字抹掉。</p>
+<p><strong>&ldquo;完全&rdquo;刪除文件（這裏的&ldquo;完全&rdquo;刪除指的是 Shift+Delete 直接刪除，或從回收站刪除）：</strong></p>
+<p>把路標拆了，樓先留着。這樣，只記路標位置的用戶就無法找到這個樓的具體位置了，而且也不會消耗太多的時間（畢竟拆路標比拆樓容易多了）。</p>
+<p>此時，雖然樓還在原地，但是這塊地已經被系統認定爲&ldquo;空地&rdquo;了&mdash;&mdash;文件本體佔據的空間被加入到硬盤可用空間中。</p>
+<p><strong>恢復文件（恢復&ldquo;完全&rdquo;刪除的文件）：</strong></p>
+<p>因爲廢棄的大樓還在原地，專業的搜救隊（數據恢復工具）還是有可能找到它的。然而樓附近很可能都是廢墟（被刪除數據），它們可能會干擾搜救隊的判斷，造成搶救失敗。<strong>一般來說，搜救隊會嘗試將樓 1：1 整體複製到其他場所</strong>，這樣如果搶救失敗了，用戶還有機會請求其他搜救隊的幫助；而如果原地搶救，萬一失敗，可能會對樓造成無法逆轉的破壞。</p>
+<p>在英文維基百科上有一些搜救隊的聯繫方式，如有需要可以參考：<a href="https://en.wikipedia.org/wiki/List_of_data_recovery_software">List of data recovery software</a></p>
+<p><strong>恢復文件的原理：</strong></p>
+<p>從一片廢墟中找到目標大樓的&ldquo;招牌&rdquo;。找到之後，以找到的樓爲原型，在其他地方建造一模一樣的新樓。</p>
+<p>（招牌：絕大多數的文件都以特定內容開頭和結尾，比如 GIF 格式圖片一定是以 GIF87a 或者 GIF89a 開頭、十六進制數字&ldquo;3B&rdquo;結尾。只要定位到特定文件頭、文件尾，基本就能確定這部分數據屬於同一個文件，以及判斷出該文件的格式）</p>
+<p><strong>再創建文件：</strong></p>
+<p>施工隊到達施工現場後，發現這裏已經有大樓存在，但是這個大樓已經廢棄，於是把它炸了，蓋新的樓。這時候原來的樓就徹底找不到了，最多隻能搶救出一部分殘骸。</p>
+<p>（注：以上信息僅對普通硬盤有效；<strong>如果使用的是</strong><strong><strong>SSD 固態硬盤，且</strong></strong><strong><strong><strong><strong>SSD</strong></strong></strong>硬盤本身和操作系統都支持 <a href="https://en.wikipedia.org/wiki/Trim_(computing)">Trim </a>指令 ，則在執行</strong><strong><strong>&ldquo;完全&rdquo;</strong>刪除操作的同時，</strong><strong><strong>會</strong>立刻開始拆樓，因此刪除的數據無法找回</strong>。感謝<a href="http://www.zhihu.com/people/cantaloup">老趙</a> 和 <a href="http://www.zhihu.com/people/superheasy">superheasy </a>補充）</p>
+<p>-</p>
+<p>有知友問到如何徹底刪除文件，補充一段。</p>
+<p><strong>&ldquo;粉碎&rdquo;文件（使用第三方工具，在普通硬盤上徹底刪除文件）：</strong></p>
+<p>將原來的樓炸掉，然後在廢墟上搭建違章建築（全零、全一，或者隨機無用數據）。搭建完成後，將違章建築炸掉，再搭建新的違章建築。如此反覆一定次數後，原來的樓就連渣都找不到了。</p>
+<p>該操作需要在炸樓後蓋新樓（且可能會蓋好幾次），因此速度非常慢。</p>
+<p>能夠完成此工作的工程隊（文件粉碎工具）有很多，請自行查找。</p>
+<p><strong>請不要在 SSD 固態硬盤上使用文件粉碎工具，因爲：</strong></p>
+<p>1.SSD 硬盤的壽命與寫入數據的次數有關。文件粉碎工具會多次寫入數據，嚴重影響硬盤壽命。</p>
+<p>2.由於耗損平均技術（ <a href="https://en.wikipedia.org/wiki/Wear_leveling"><strong>Wear leveling</strong></a>），在 SSD 硬盤上無法強行指定寫入數據的位置，這一點與普通硬盤不同。也就是說，SSD 硬盤上搭建的違章建築很可能和原來的樓位置完全不同，無法達到破壞樓的效果。</p>
+<p>3.由於上文中提到的 <a href="https://en.wikipedia.org/wiki/Trim_(computing)">Trim</a>指令，一般並不需要刻意執行&ldquo;粉碎文件&rdquo;操作。</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div>
