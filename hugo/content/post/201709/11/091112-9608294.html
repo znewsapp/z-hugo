@@ -1,0 +1,153 @@
++++
+date = "2017-09-11T12:00:00"
+title = "大誤 · 今吾欲借 Python 利器取子名"
+titleimage = "https://pic4.zhimg.com/v2-7d7abfcc4f24491f15be5ff21f0b0d47.jpg"
+ga = 091112
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+<div class="question">
+<h2 class="question-title">如何利用 Python 給你的寶寶取個好名字（姓名測算）</h2>
+<div class="answer">
+
+
+
+<div class="content">
+<p>今，丁酉年，公曆 9 月 3 日，於家中休憩，靜坐品茗，藤椅樓臺，望窗外熙攘，甚是閒適。</p>
+<p>忽微信一震，一友問之：其妻懷胎七月有餘，欲取子名，思之良久，未果。</p>
+<p>爲人母，爲人父，欲於限時內得名，實則難矣。</p>
+<p>翻詩經，閱楚辭，望詩詞歌賦，聞平仄韻律。</p>
+<p>時人信風水，依生辰八字，亦勿與其親相音疊字，唯恐不敬，且求其名念來朗口脫俗，得衆心水，實則難上加難矣。</p>
+<img class="content-image" src="http://pic2.zhimg.com/v2-0e3a496790f3ec0b8fda642aa07705b9_b.gif" alt="">
+<p>爲解其憂，吾度之，驚現漢程網，君可告其誕辰年月日時，及欲起姓名，在線測算，剖析五格數理，解讀八字五行，二者以百分制出，數值可觀可參可考。</p>
+<p>手機行至：<a class=" wrap external" href="http://link.zhihu.com/?target=http%3A//m.life.httpcn.com/xingming/" target="_blank" rel="nofollow noreferrer">姓名測試打分_姓名測試_名字測試打分_測名字打分_漢程網</a></p>
+<img class="content-image" src="http://pic3.zhimg.com/v2-890aa9f0099e4ba35631d0f68f2d08fe_b.png" alt="">
+<p>電腦行至：<a class=" wrap external" href="http://link.zhihu.com/?target=http%3A//life.httpcn.com/xingming.asp" target="_blank" rel="nofollow noreferrer">姓名測試打分_姓名測試_名字測試打分_測名字打分_漢程網</a></p>
+<img class="content-image" src="http://pic1.zhimg.com/v2-f57c80a341f92a7631b7570b9116b434_b.png" alt="">
+<p>今吾欲借 Python 利器，依百家姓庫，賴單字雙名庫，逐一測算列表，以得其名。</p>
+<p>以手機端爲例，F12 之：</p>
+<img class="content-image" src="http://pic1.zhimg.com/v2-092b0a4191114939c2bbd142430452e0_b.png" alt="">
+<p>可知 Request URL 爲：</p>
+<div class="highlight">
+<pre><code class="language-python3"><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">m</span><span class="o">.</span><span class="n">life</span><span class="o">.</span><span class="n">httpcn</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">m</span><span class="o">/</span><span class="n">xingming</span><span class="o">/</span>
+</code></pre>
+</div>
+<p>Request Method 爲：</p>
+<div class="highlight">
+<pre><code class="language-python3"><span class="n">POST</span>
+</code></pre>
+</div>
+<p>則此 URL 必有表單數據，若吾傳不同表單（POST 年月日時姓名），必返吾不同測算結果。</p>
+<p>如圖所示：</p>
+<img class="content-image" src="http://pic1.zhimg.com/v2-b22f04995231c393d7e81d70998beacc_b.png" alt="">
+<p>至此，萬事已備，代碼可編：</p>
+<div class="highlight">
+<pre><code class="language-python3"><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">urllib.parse</span>
+<span class="kn">from</span> <span class="nn">lxml</span> <span class="k">import</span> <span class="n">etree</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s2">"http://m.life.httpcn.com/m/xingming/"</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">'act'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'submit'</span>  <span class="c1"># 默認值</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">'data_type'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'0'</span> <span class="c1"># 日期類型，0 表示公曆，1 表示農曆</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">'RenYue'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'0'</span>    <span class="c1"># 默認爲 0</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">'year'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'1985'</span>   <span class="c1"># 輸入出生年份</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">'month'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'7'</span>     <span class="c1"># 輸入出生月份</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">'day'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'6'</span>       <span class="c1"># 輸入出生日</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">'hour'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'11'</span>     <span class="c1"># 輸入出生時</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">'minute'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'5'</span>    <span class="c1"># 輸入出生分</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">'zty'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'0'</span>       <span class="c1"># 真太陽時，默認不使用爲 0</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">'wxxy'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'0'</span>      <span class="c1"># 喜用五行，0 表示自動分析，1 表示自定喜用神</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">'xing'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'張'</span>     <span class="c1"># 輸入姓，也可複姓</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">'ming'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'無忌'</span>   <span class="c1"># 輸入名，也可單字名</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">'sex'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'1'</span>       <span class="c1"># 性別，0 表示女孩，1 表示男孩</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">'isbz'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'1'</span>      <span class="c1"># 默認值爲 1</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">'accept'</span><span class="p">:</span> <span class="s2">"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8"</span><span class="p">,</span>
+    <span class="s1">'accept-encoding'</span><span class="p">:</span> <span class="s2">"gzip, deflate"</span><span class="p">,</span>
+    <span class="s1">'accept-language'</span><span class="p">:</span> <span class="s2">"zh-CN,zh;q=0.8"</span><span class="p">,</span>
+    <span class="s1">'content-type'</span><span class="p">:</span> <span class="s2">"application/x-www-form-urlencoded"</span><span class="p">,</span>
+    <span class="s1">'host'</span><span class="p">:</span> <span class="s2">"m.life.httpcn.com"</span><span class="p">,</span>
+    <span class="s1">'origin'</span><span class="p">:</span> <span class="s2">"http://m.life.httpcn.com"</span><span class="p">,</span>
+    <span class="s1">'referer'</span><span class="p">:</span> <span class="s2">"http://m.life.httpcn.com/xingming/"</span><span class="p">,</span>
+    <span class="s1">'upgrade-insecure-requests'</span><span class="p">:</span> <span class="s2">"1"</span><span class="p">,</span>
+    <span class="s1">'user-agent'</span><span class="p">:</span> <span class="s2">"Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1"</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s2">"POST"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+<span class="n">response</span><span class="o">.</span><span class="n">encoding</span> <span class="o">=</span> <span class="s1">'UTF-8'</span>
+
+<span class="n">selector</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">HTML</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+<span class="c1"># 解析得到&ldquo;五格數理&rdquo;分數</span>
+<span class="n">wuge_score</span> <span class="o">=</span> <span class="n">selector</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'//div[@class="mui-collapse-content hc-cha-content"]/div[1]/div/text()'</span><span class="p">)</span>
+<span class="c1"># 解析得到&ldquo;八字五行&rdquo;分數</span>
+<span class="n">bazi_score</span> <span class="o">=</span> <span class="n">selector</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'//div[@class="mui-collapse-content hc-cha-content"]/div[4]/div/text()'</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"姓名：張無忌"</span> <span class="o">+</span> <span class="s1">'</span><span class="se">\t</span><span class="s1">'</span> <span class="o">+</span> <span class="s2">"五格數理分數："</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">wuge_score</span><span class="p">)</span>  <span class="o">+</span> <span class="s1">'</span><span class="se">\t</span><span class="s1">'</span> <span class="o">+</span> <span class="s2">"八字五行分數："</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">bazi_score</span><span class="p">))</span>
+</code></pre>
+</div>
+<p>RUN 之，得其分：</p>
+<img class="content-image" src="http://pic1.zhimg.com/v2-9761846042378720a211ff1d1d764bcc_b.png" alt="">
+<p>傳一名可測，則傳百名、千名、萬名皆可測，姓固定（黃氏、李氏等），汝只須備足男女芳名於 TXT 中，動態讀取，動態傳入 params 參數，交於爬蟲快速執行，汝即可得一芳名錶，選之：</p>
+<img class="content-image" src="http://pic2.zhimg.com/v2-a769ea044c3afb6e937dea32e6359b01_b.png" alt="">
+<p>執筆至此，遂已完工。</p>
+<p><strong>然，衆人皆疑，何爲五格數理？何爲五行八字？分高分低，竟有好壞順逆之分？</strong></p>
+<p>且聽吾慢慢道來。</p>
+<p>八字，即生辰八字，系某君出生之幹（天干）支（地支）歷日期。</p>
+<p>年干與年支之組謂年柱，月干與月支之組謂月柱，日干與日支之組謂日柱，時干與時支之組謂時柱，共計四柱，四干與四支即謂四柱八字。</p>
+<p>年月日時，即爲八字。</p>
+<p>八字命理，可推人之事業、婚姻、財運、學業、健康諾諾，亦稱指迷算命。</p>
+<p><strong><strong>何爲天干？何爲地支？</strong></strong></p>
+<p>古之曆法，甲、乙、丙、丁、戊、己、庚、辛、壬、癸爲&ldquo;十天干&rdquo;，子、醜、寅、卯、辰、巳、午、未、申、酉、戌、亥爲&ldquo;十二地支&rdquo;。</p>
+<p>二者按序相配，即得干支紀法。</p>
+<p>天干與五行、陰陽相對，如表：</p>
+<img class="content-image" src="http://pic4.zhimg.com/v2-63c0e7977615a8a25cb74ac24a1200b7_b.png" alt="">
+<p>地支與五行、陰陽相對，如表：</p>
+<img class="content-image" src="http://pic3.zhimg.com/v2-b3fe635d77f4032b8dc84dd3e297cbae_b.png" alt="">
+<p>天干與地支相組，甲子、乙丑、丙寅、丁卯......癸亥，六十爲一週期，即爲一甲子。用以紀日、紀年。</p>
+<p>譬如，某君生於 1985 年 7 月 6 日 11 時 05 分：</p>
+<img class="content-image" src="http://pic2.zhimg.com/v2-b39264f50af2101025a47866f601b16d_b.png" alt="">
+<p>測算可得：</p>
+<img class="content-image" src="http://pic1.zhimg.com/v2-3d6f51515267aa78da03aac1aefa1f50_b.png" alt="">
+<p>由天干、地支表排算，0 個金 1 個水 2 個木 4 個火 1 個土，故該時辰缺金，須取帶金之名（如鑫、鋒、釗等字），以補先天時辰之缺。</p>
+<p><strong><strong>何爲五格數理？</strong></strong></p>
+<p>五格數理即 81 數理，由日本所創，根據姓名之筆劃數，對應 1～81 數理，用以推算時運、性情、兇吉等。<a class=" wrap external" href="http://link.zhihu.com/?target=https%3A//baike.baidu.com/item/%25E4%25BA%2594%25E6%25A0%25BC%25E6%2595%25B0%25E7%2590%2586/10276449%3Ffr%3Daladdin" target="_blank" rel="nofollow noreferrer">五格數理_百度百科</a></p>
+<p>分天格、地格、人格、外格、總格。</p>
+<p>天格：即指人事父母、長輩、上司，姓之筆畫加一得天格數（如張，天格 12）</p>
+<p>地格：代表子女、部屬，名之筆畫相加得地格數（如無忌，地格 19）</p>
+<p>人格：代表自我，姓之筆畫與首名相加得人格數（如張無，人格 23）</p>
+<p>外格：指同輩之兄弟、朋友、甚至配偶，尾名之筆畫加一得外格數（如忌，外格 08）</p>
+<p>總格：無代表，姓與名筆畫之和（如張無忌，總格 30）</p>
+<img class="content-image" src="http://pic1.zhimg.com/v2-31ba9984a74fba3852ed3767354ca3e0_b.png" alt="">
+<p>綜上解析，汝可得何以爲五行八字，何爲五格數理，結合生辰八字、姓名筆畫，自行測算。</p>
+<p><strong><strong>文末，君有一言告之：</strong></strong></p>
+<p><strong>人無完人、金無足赤，行之灑脫、運籌帷幄，人生在世、貴在平衡狀態。切勿過於迷信。</strong></p>
+<p>參考：</p>
+<p><a class=" wrap external" href="http://link.zhihu.com/?target=https%3A//github.com/peiss/chinese-name-score" target="_blank" rel="nofollow noreferrer">peiss/chinese-name-score</a></p>
+<p><a class="internal" href="https://zhuanlan.zhihu.com/p/27097051">60 秒 GET 小技能 - 爬蟲快速構建 post 參數法</a></p>
+<p><a class=" wrap external" href="http://link.zhihu.com/?target=http%3A//www.buyiju.com/bzzs/" target="_blank" rel="nofollow noreferrer">八字知識,生辰八字,八字入門,八字基礎,子平八字_卜易居</a></p>
+
+
+
+</div>
+</div>
+</div>
+
+
+</div>
+</div>
