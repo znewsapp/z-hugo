@@ -1,0 +1,115 @@
++++
+date = "2017-09-24T12:00:00"
+title = "大誤 · 朝四川盆地裏倒碗水"
+titleimage = "https://pic4.zhimg.com/v2-af199aa620d283e87a9bc278bad815e7.jpg"
+ga = 092412
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title">如果在宜昌或者重慶一帶將長江完全截流，四川盆地能否變成世界最大淡水湖？</h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>這是個嚴重腦洞的問題，就不要太嚴謹了。如果要認真分析，需要考慮的因素太多了，比如長江的水量和水源、湖泊水體的重量對湖底產生的沉降等影響、周圍山體及截流水壩的抗壓能力、地質活動對湖泊的長期影響、泥沙淤積和流水侵蝕、甚至因爲局部氣候及生態變化而引發的各種連鎖反應等等一大堆，換成人話就是：不可能。要知道，地球是一個動態的非常複雜的系統，要造這麼大一個湖泊，並不是簡簡單單截個流就可以的。別的不說，這麼多水從哪來？四川盆地大約 23 萬平方千米，哪怕它是個平底鍋，覆蓋 1 米的水，那也是 230 立方千米，這可是兩個巴爾喀什湖的水呀...</p>
+<p>但這個問題並不是完全無聊，我以前帶 GIS 課的時候就出過類似的腦洞問題，用來訓練柵格數據的使用和處理方法（只不過淹的是猶他盆地及鹹海 233）。如果只考慮地形因素，完全不考慮別的因素（甚至不考慮水源以及需要注水的時間），我們就可以用 DEM 高程數據來模擬一下這個&ldquo;四川湖&rdquo;的最大面積。雖然說這個問題本身沒什麼實際意義，純屬腦洞，但類似的方法可以用在很多方面，特別是根據地形來做自然災害分析，以及在石油工業裏尋找構造油藏等。網上流行的&ldquo;海平面升高 xx 米之後，xx 會被淹沒&rdquo;一系列的地圖，大部分都是通過這個方法來做的。</p>
+<p>現在，我們假設有一個站在上帝視角的人，截斷了長江三峽，然後往四川盆地裏倒水，並設湖底及周圍地形不改變，求形成的湖泊能達到的最大面積。四川的同學們不要瑟瑟發抖也不要舉報了，這只是個技術型腦洞，況且我們重慶比你們先被淹 233...</p>
+<p>首先我們需要 DEM 數據。以下是 USGS 公開免費提供的 GTOPO30 的 DEM 高程數據，水平方向分辨率大約在 1km 左右，並不是很高，所以這裏只能做一個大概的分析。更高一些分辨率的數據 USGS 也有提供，但是處理起來很費時間，有興趣的可以自己去試試。</p>
+<p>拼接並調整好 DEM，進行統一尺度的着色渲染，四川盆地的範圍很明顯：</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-71fccecfa3882cc2df2f6f34ef0b541d_b.jpg" alt="">
+<p>如果在長江三峽&ldquo;關門&rdquo;，形成一個湖泊在理論上是肯定沒問題的。問題就是這個湖泊到底能有多大。在這裏，限制湖泊大小的就是由附近幾座山組成的&ldquo;湖岸&rdquo;了。</p>
+<p>我們改變一下四川盆地及周圍的着色分佈，可以更清楚地看一下週圍的地形：</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-47e2be9ad26dfdb4c7dfe92ad567aff2_b.jpg" alt="">
+<p>很顯然，西邊的青藏高原、南邊的雲貴高原，作爲湖岸問題不大，主要的懸念在北部那條四川盆地和漢中平原之間的大巴山脈，以及盆地東南側的大婁山。這兩座山脈上的山谷會形成讓湖水外泄的出水口，所以它們的高程決定了四川盆地這個湖泊到底能有多大。這就是和&ldquo;木桶效應&rdquo;一樣的原理。</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-34a5eab88ff3fd44f4899d5634a9c9d0_b.jpg" alt="">
+<p>（該圖來自網絡）</p>
+<p>所以，接下來的工作就是對四川盆地的高程數據進行 Reclassify 了。如果不想用 Reclassify，也可以偷懶，直接根據高程的分類對 DEM 進行分色渲染。對於這個問題，具體做法就是先找最低海拔，然後向上加水。按這個數據，最低海拔爲 53 米（在 AOI 最下游的三峽那裏），我就向上按 50 米的梯度加水，比如第一次 +50 米，就是找海拔 103 米以下的區域，設爲淹沒區，以此類推。</p>
+<p>這是漲水前的四川盆地（重新着色並添加 Hillshade 和 Curvature，以突出地形）：</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-4385f0b2493b879ad2f77ee35b3a0109_b.jpg" alt="">
+<p>漲水 50 米後，變化不明顯，差不多開始淹沒現在的三峽庫區：</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-b1ee3d08c1adb60b9b111dfe180f8118_b.jpg" alt="">
+<p>漲水 100 米，繼續變化不明顯，萬州、涪陵等地的沿江地帶可能被淹沒：</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-cef2fb44f9f27c59575a8ed90c78d25c_b.jpg" alt="">
+<p>漲水 150 米，重慶市區開始受到影響，可能朝天門碼頭外的一些階梯沒了；廣陽島珊瑚壩這些肯定沒了：</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-062047379867eaf3cf4286f0dc5a5336_b.jpg" alt="">
+<p>漲水 200 米，開始發生明顯變化，重慶市區基本全部淹沒，烏江、渠江、涪江甚至沱江、赤水河沿岸也開始大規模淹水：</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-eec05555af4af5e25bf511438330d2be_b.jpg" alt="">
+<p>漲水 250 米，盆地東南部開始大範圍積水，長壽湖和淹沒區連成一片，沱江、渠江和涪江沿岸嚴重積水，宜賓開始受影響：</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-750fd683f244df9194cabf2f9f56decb_b.jpg" alt="">
+<p>漲水 300 米，淹沒區增加的速度明顯變快，遂寧、南充、廣安、內江、自貢等地淹沒，嶽池縣附近形成島嶼：</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-d6531629646bd4efe5b84cd61b592e4b_b.jpg" alt="">
+<p>漲水 350 米，四川盆地淹沒過半，水面抵達簡陽、樂山：</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-2d4b8e89ed45625187b5660e380287ae_b.jpg" alt="">
+<p>漲水 400 米，川東嶺谷逐漸形成島嶼，資陽、樂山等地完全淹沒，水面抵達眉山一帶，逼近成都：</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-bf19a49799088d91bfe94d1ede366a00_b.jpg" alt="">
+<p>漲水 450 米，成都被淹，華鎣山和內江丘陵形成孤島，龍泉山形成半島，赤水河水位上升明顯：</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-93aceb34d5699ea9687aacec82b532cb_b.jpg" alt="">
+<p>淹水 500 米，湖面繼續向盆地西側邊緣的龍門山靠攏，成都平原（包括廣漢、德陽）幾乎完全淹沒：</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-3a36d07087e7832549fd3aac1f1847b9_b.jpg" alt="">
+<p>漲水 550 米，龍泉山成爲島嶼，水面抵達都江堰，嘉陵江上游開始明顯漲水：</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-ddf46dbf705ea8164c5e1a948d9d8487_b.jpg" alt="">
+<p>漲水 600 米，內江附近的丘陵幾乎全滅，金沙江水位上升，水面在烏江兩岸開始急速擴張，但還不能漫過大婁山：</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-33ba7c58348982c86b0a5bf35fd88749_b.jpg" alt="">
+<p>漲水 650 米，各島嶼繼續縮小：</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-9e900573173975e164aacb9d1ab74773_b.jpg" alt="">
+<p>漲水 700 米，淹沒區深入大巴山和大婁山，但還不能漫過山去：</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-a7fbc53546076ecc04bd4ce5a5282386_b.jpg" alt="">
+<p>漲水 750 米，東南方向的淹沒區面積明顯增大，湖泊已經達到極限：</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-282d63eb8ce47679ca63f09d9d8f41fd_b.jpg" alt="">
+<p>漲水 800 米，終於漏了，洪水傾瀉而出，至少產生三個出水口，一個在北部，通過大巴山聯通漢中平原，另兩個都在東南，通過一系列山谷聯通湖北的平原地區：</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-3892e17b415dfdf9a49491eb4c83be2e_b.jpg" alt="">
+<p>因此，湖泊的最高水位應該介於漲水 750 米和 800 米之間，這裏我就不去詳細尋找那個臨界點了，考慮到 DEM 數據的分辨率其實並不算太高，因此我就選擇漲水 750 時的湖面作爲最終的面積，放在中國及亞洲的地圖上看，就是這樣的：</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-432a7cc6968eda57d47c17c84a3fad62_b.jpg" alt="">
+<p>現在，就可以將這個湖泊和世界一些主要湖泊的面積進行對比了。注意：下面這些地圖，湖泊的輪廓都有一些變化，原因是，如果要直接對比位於世界不同地區的湖泊的面積，就要改變投影，保證地圖是等面積的。</p>
+<p>世界最大湖，裏海，面積還是明顯大於&ldquo;四川湖&rdquo;的：</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-45ae24bc5322da035d3d5f923768d731_b.jpg" alt="">
+<p>世界最深的湖，貝加爾湖，面積明顯小於&ldquo;四川湖&rdquo;，至於水量，有興趣的同學可以根據 DEM 數據來計算一下&ldquo;四川湖&rdquo;的水量：</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-bc25222c53288ef1c3639ac084a25be4_b.jpg" alt="">
+<p>&ldquo;淡水地中海&rdquo;，北美五大湖，加起來還是比&ldquo;四川湖&rdquo;大許多的：</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-9eb3d45a7222fc566e1956b8ae936863_b.jpg" alt="">
+<p>如果單看五大湖中的蘇必利爾湖（也是有一點點爭議的世界最大淡水湖），就不及&ldquo;四川湖&rdquo;大了：</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-7f178bb389bb23bfe1b4a108bc85d947_b.jpg" alt="">
+<p>插播一個冷知識：爲什麼說蘇必利爾湖是世界最大淡水湖這個說法有一點點爭議？因爲按照嚴格的對湖泊的定義，五大湖中的密歇根湖及休倫湖其實是一個湖，它們之間水位落差爲 0，連接它們的麥基納克水道並非河流，而是和這兩個湖結爲一體的湖峽。這兩個湖加起來，面積就超過蘇必利爾湖了。不過因爲約定俗成，而且麥基納克水道實在太窄，因此一般來說，密歇根湖和休倫湖被算成了兩個湖。</p>
+<p>非洲最大湖，維多利亞湖，基本上能被&ldquo;四川湖&rdquo;吃下去：</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-903484ee65e64060f6be3ee52b76c2cd_b.jpg" alt="">
+<p>維多利亞湖加上非洲的老二和老三（坦噶尼客湖、馬拉維湖）才能超過：</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-ee25f1b875288a6faaab973c1fc039bc_b.jpg" alt="">
+<p>加拿大的一對大湖（大奴湖、大熊湖）：</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-a68f53de294cf34a4e8485ce92fcab23_b.jpg" alt="">
+<p>再對比幾個國家吧：</p>
+<p>白俄羅斯：</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-75fc1b6d9a56ebf17c13d9d2c455d2ad_b.jpg" alt="">
+<p>朝鮮和韓國：</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-d532a07083f8e74f51067c4903aa7fac_b.jpg" alt="">
+<p>英國：</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-260f19c150ea2d0916e731cd47f18afb_b.jpg" alt="">
+<p>新西蘭的北島：</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-1a2f5ff4e8421d878380458c876b024a_b.jpg" alt="">
+<p>知乎專欄：地球的那些事兒</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div>
