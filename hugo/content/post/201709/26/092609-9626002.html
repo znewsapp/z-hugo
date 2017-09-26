@@ -1,0 +1,70 @@
++++
+date = "2017-09-26T09:00:00"
+title = "你騎着共享單車經過的軌跡，都被我們用來做城市規劃了"
+titleimage = "https://pic4.zhimg.com/v2-7f8939f40ed72ae81c60f8a73a0eed8b.jpg"
+ga = 092609
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title">如何用共享單車數據來做城市規劃？</h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>的確，近年來蓬勃發展的共享單車極大地解決了人們共同面臨的&ldquo;最後一公里&rdquo;難題，然而，共享單車發展迅猛，自行車道建設卻始終沒有能夠跟上腳步。幸運的是摩拜單車大量的軌跡數據爲我們提供了一種新的思路：利用大數據和 AI 技術，使用一種數據驅動的方式更爲合理地<strong>規劃自行車道的建設</strong>，讓城市規劃更加美好。那麼，大數據驅動自行車道建設到底是怎麼實現的呢？</p>
+<p>-</p>
+<p>在剛剛結束的 SIGKDD 2017 大會上，<strong>微軟亞洲研究院城市計算組發表了一篇名爲&ldquo;Planning Bike Lanes based on Sharing Bikes&rsquo; Trajectories&rdquo;的論文</strong>，利用摩拜自行車的軌跡大數據解決如今城市自行車道的規劃問題，最終形成企業、政府和廣大人民羣衆的三贏局面。</p>
+<p><strong><strong>大數據 Freestyle：城市自行車道規劃</strong></strong></p>
+<p>從城市角度看，自行車道的規劃存在一定的要求和限制: 首先，建設每條專門的自行車道都需要消耗一定的資源，比如政府預算和道路空間等；其次，自行車道作爲一種公共資源，政府希望它能夠更好地服務更多的人，並覆蓋更長的個人騎行軌跡；最後，爲了施工和管理的便利，政府更希望這些道路的建設能夠在整個路網上連成有限個區域（下圖右圖），而不是在整個城市中分散的分佈（下圖左圖）。然而，要同時滿足這些建設限制要求的規劃是一個非常困難的組合優化問題。</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-44fc29248965f260caaea4dd63f0c32e_b.jpg" alt="">
+<p>幸運的是，摩拜單車的用戶在使用過程中記錄了非常有價值的軌跡信息，真實地反映了人們的騎行需求，使得我們有機會<strong>利用大數據和數據挖掘技術更有效、合理地規劃自行車道的建設</strong>。</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-4e744e5ecd08cc45dcfc47b8e5b67cf5_b.jpg" alt="">
+<p>在 KDD 2017 大會上所發表的&ldquo;Planning Bike Lanes based on Sharing Bikes&rsquo; Trajectories &rdquo;論文中，我們提出了一個基於貪心思想的近似解法，來實現自行車道規劃方案的推薦。該算法包括兩個步驟：1. 基於路網距離的空間聚類；2. 基於貪心的網絡擴展（Greedy Network Expansion）。</p>
+<p>在第一步計算中，我們首先根據用戶在各條道路上的騎行數據選出 Top-M 條用戶騎行最頻繁的候選路段，然後利用這些路段之間的距離進行 hierarchical spatial clustering （層次空間聚類，每次我們都合併兩個路網距離上最接近的路段聚類，並知道最後的結果只剩下 K 個聚類）。最後在每個聚類（cluster）中，我們會選擇騎行最頻繁的路段作爲下一步貪心網絡擴展的起始點。</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-b7012d73a9a1b36d03f1243560af98ae_b.jpg" alt="">
+<p>在第二步的計算中，每一次我們都將這些起始路段的鄰接路段作爲候選集合，然後檢驗每一個候選路段所能夠帶來的單位長度上所有軌跡分數的提升。接下來，我們每一輪都選擇能夠給現有方案帶來最大提升的路段作爲結果，直至預算被使用完（如下圖所示）。</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-3406b3ac20333bd3cd6e88806ed67220_b.jpg" alt="">
+<p>通過以下計算方式，每條軌跡都會爲新的路段給出一個得分:</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-a89a4fc2a396171499d927f021ffb6c1_b.jpg" alt="">
+<p>其中，segs(&tau;)表示這條軌跡被我們的建設方案所分成的連續的段數，s.l 表示每一段的長度，而&alpha;則是一個調節參數，當該數值越大時，更多的分數就會被給予更連續的規劃方案，因爲在連續的自行車道上騎行會有更好的體驗。比如，相對於下圖 a 中不連續的自行車道設計方案，用戶更希望在 b 圖中設計的自行車道方案上騎行。</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-e83f837df03ac630616c7af5df0d6348_b.jpg" alt="">
+<p>a. Broken 2km b. Continuous 2km</p>
+<p>利用該算法，我們在上海的摩拜單車數據上做了一系列的實驗。比如，想在上海周邊 5 個區域內建設 30km 的自行車道，下圖就是算法所推薦的一個方案，可以看到算法覆蓋了這個區域所有的 6 個地鐵站。</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-dbc9dcb763160bb0f452861bf3cd8a2d_b.jpg" alt="">
+<p>爲了更好地評估算法所產生的自行車道規劃方案的優劣，我們親自去了上海做了實地調研。在金運路地鐵站附近，我們發現除了有規模不小的萬達虹橋商場，周圍 2 公里內還坐落着許多高密度的居民區。騎行在這個區域內是最方便的出行方式，所以我們在這裏看到了密度很高的騎行數據。我們還發現，在這個區域內政府只在主要幹道上修建了專門的自行車道（下圖中藍色線道路），我們的算法同樣也給出了在這裏修建自行車道的建議。</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-6ad7020081482f33babf71dbc3389c23_b.jpg" alt="">
+<p>更進一步，我們的算法在那些支路和小區周圍的道路上也給出了修建自行車道的建議（上圖紅色線道路），因爲那些道路連接了各個居民區，從數據上也可以看到很多騎行軌跡。但是目前這些地方並沒有專門的自行車道，由於各種不規範停車，自行車用戶只能在人行道上騎行，或者在機動車道中間騎行，這樣的騎行體驗自然大打折扣，交通事故的發生也在所難免。</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-e4cbe066275db055874f24f32ef057d8_b.jpg" alt="">
+<p>而根據我們系統提出的建議，政府可以在這些支路上修建自行車道，或者先在這些地方增強違章停車的管理，以減少事故發生的可能性，並且提升民衆的騎行體驗。</p>
+<p>該系統得到了上海市政府的高度評價。上海市徐彙區發改委副主任張嵐說：&ldquo;根據人們騎行共享單車的數據分析結論，爲政府合理規劃自行車道提供了重要的決策參考。&rdquo;</p>
+<p>總的來說，我們在本篇論文中提出了一種更加以數據爲驅動的方案，利用大量摩拜單車的軌跡數據爲政府推薦自行車道的規劃和建設。最終，我們希望能夠利用大數據和人工智能這些新興技術，實現企業、政府和廣大人民羣衆的三方共贏，打造一個更加便利、美好、智能的生活環境！</p>
+<p>-</p>
+<p>以上回答摘選自微軟研究院 AI 頭條，<a href="https://mp.weixin.qq.com/s?__biz=MzAwMTA3MzM4Nw==&amp;mid=2649441578&amp;idx=1&amp;sn=7250a6603adaf9137d3987b01b4683d8&amp;chksm=82c0acaeb5b725b865917e39377f217a3045677206a0b7e7cff6ea13aa6083fa11b820f4b52f#rd">大數據 freestyle: 共享單車軌跡數據助力城市合理規劃自行車道</a>。</p>
+<p>感謝大家的閱讀。</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div>
