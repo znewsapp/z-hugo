@@ -1,0 +1,86 @@
++++
+date = "2017-10-07T15:00:00"
+title = "爲什麼一提到專家，腦子裏想到的是「磚家」？"
+titleimage = "https://pic4.zhimg.com/v2-14fb7a8ca38b89e96534011a2093f6c7.jpg"
+ga = 100715
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+<div class="question">
+<h2 class="question-title"></h2>
+<div class="answer">
+
+
+
+<div class="content">
+<p>到底是誰最先想出&ldquo;磚家&rdquo;這種說法，現在也許已經無法考證了；然而這種說法的盛行，無疑折射出一種廣泛存在的社會現狀：<strong>我們不相信專家，或者起碼是其中的一部分</strong>。特別是當持有對立觀點的雙方進行辯論時，雙方都會選擇性地從&ldquo;專家&rdquo;意見中選擇或者解讀出有利於己方的結論，攻擊對方的&ldquo;專家&rdquo;不可信也不失爲一種有效的進攻手段。那麼，到底是什麼因素導致我們相信一部分&ldquo;專家&rdquo;，而不相信另一部分呢？</p>
+<p>Cheng &amp; Hsiaw (2016) 提供了一種新的行爲經濟學視角，作者將其稱爲&ldquo;Pre-screening&rdquo;，其核心的想法是：我們不僅不知道世界的真實狀態&mdash;&mdash;因此我們需要從專家那裏獲取信號來加以&ldquo;學習&rdquo;&mdash;&mdash;也不知道我們的信號來源，也即&ldquo;專家&rdquo;本身的可信程度。當我們確信專家的可信程度時，我們可以直接根據信號進行貝葉斯更新來（理性地）調整我們對於世界真實狀態的信念（我們稱這樣的人爲 Bayesian）；然而，當專家的可信程度也未知時，我們需要先根據信號推斷專家的可信程度，然後再結合可信程度以及信號調整我們對於世界真實狀態的信念（我們稱這樣的人爲 Pre-screener）。注意到，在這一過程中每個信號都被使用了兩次（作者稱之爲&ldquo;double-counting data&rdquo;），這樣做的結果是過度推斷：舉例來說，某位老師在批改卷子時，由於對某個學生存在&ldquo;差生&rdquo;的印象而將其回答得不明確的答案判爲錯，然後又因爲得分低而認爲自己對該學生是&ldquo;差生&rdquo;的判斷正確&mdash;&mdash;顯然，這位老師的做法在一定程度上陷入了循環論證和錯誤的&ldquo;自我強化&rdquo;。（這個例子來自 Rabin &amp; Schrag(1999)；本文作者提出，如果將本文中先更新專家可信程度再更新世界真實狀態信念的順序顛倒過來，所得到的結論將會接近於 Rabin &amp; Schrag(1999)所建立的 Confirmation Bias 模型的結論。）</p>
+<p>由於 Bayesian 和 Pre-screener 對信號的使用方式不同，即使面對的是相同的信號，雙方仍然會產生分歧；甚至不同於對 Bayesian 我們有&ldquo;信號順序不影響信念&rdquo;的結論，對於兩個 Pre-screnner，當收到一連串只有次序不同的信號時，也會產生不同的信念進而造成分歧。</p>
+<p>先描述一下本文中模型的設定：</p>
+<p>世界真實狀態有兩種可能 A 或 B，個人只知道其先驗分佈，需要通過專家給出的信號 a 或 b 來做出推斷；專家的可信度有兩種可能 H 或 L，可信度高（H）的專家以嚴格大於 1/2 的概率 pH 給出與真實狀態對應的信號（A 對應 a，B 對應 b），而可信度低（L）的專家給出對應信號的概率 pL 將更接近 1/2（也就是說，以各 1/2 的概率給出信號的專家最不可信）。</p>
+<p>這裏有個重要的假設：<strong>專家的行動不是策略性的</strong>，換言之，我們假定專家不會因爲自己的利益而扭曲信號。這一假設並不符合現實，事實上策略性行動也是我們不相信&ldquo;專家&rdquo;的重要原因之一，作者對此的迴應是：本文做出這樣的假設，目的在於區分不同的 channel 的影響，也就是說，如果 A 和 B 兩種因素都存在時導致了 C 的結果，我們無從知道這其中 A 和 B 是否都起作用，此時需要控制住其中一種因素而只考慮另一種因素髮揮作用；另外，作者也認爲，有理由相信即使引入策略性行動的假設，結論在大方向上也不會發生變化。</p>
+<p>個人對於世界真實狀態和專家可信程度各有一個先驗分佈的&ldquo;信念&rdquo;，下文的小部分結論對這兩者的先驗分佈不加限制，這樣的好處是，<strong>我們的分析可以從任意時間點&ldquo;開始&rdquo;</strong>，而不用考慮之前已經接收到的信號和進行的學習；但大部分結論都要求<strong>世界真實狀態（的先驗分佈）是等可能的</strong>，這樣的假定也很自然&mdash;&mdash;在沒有任何信息的情況下，也只能猜測概率是一半一半。</p>
+<p>作者定義一組信號序列的&ldquo;<strong>信息內容（Information Content）</strong>&rdquo;爲其中包含的 a 信號的數量 na 和 b 信號的數量 nb，如上所述，Bayesian 的推斷只和&ldquo;信息內容&rdquo;有關，而和信號次序無關。由於 A/a 和 B/b 的對稱性，除非另加說明，下文的結論都假設已收到的信號中 na 大於 nb。</p>
+<p>最後，作者定義，對於信息內容 na 大於 nb 的一組信號，如果 Pre-screener 推斷爲狀態 A 的概率嚴格大於 Bayesian 的推斷，則稱爲<strong>樂觀（optimistic）</strong>，嚴格小於則稱爲<strong>悲觀（pessimistic）</strong>；如果 Pre-screener 推斷專家可信度爲 H 的概率嚴格大於 Bayesian 的推斷（注意 Bayesian 雖然也可以根據信號更新對於專家可信程度的信念，但是不會用這一更新的信念而仍是用先驗分佈推斷世界的真實狀態），則稱爲<strong>過度相信（overtrust）</strong>，嚴格小於則稱爲<strong>信心不足（undertrust）</strong>。作者特別強調這些用詞本身並不意味着 A 是更好的狀態，選擇 A 完全只是出於對稱性的考慮，並且使用這樣的詞彙可以方便敘述。</p>
+<p>模型的假設和用語基本上都交代清楚了，我們來看看作者給出了哪些結論：</p>
+<blockquote><strong>命題 1：</strong> 當世界真實狀態等可能時，Pre-screener 和 Bayesian 對於世界真實狀態的推斷在事前的期望是相同的，但是這兩者的差的平方在事前的期望嚴格爲正。</blockquote>
+<p>換言之，這兩種人<strong>在事前的預期沒有分歧</strong>，但是一定<strong>存在至少一組信號序列使得兩者在事後產生分歧</strong>。</p>
+<blockquote><strong>命題 2： </strong>Pre-screener 是<strong>樂觀</strong>的當且僅當他<strong>過度相信</strong>專家；反之，Pre-screener 是<strong>悲觀</strong>的當且僅當他對專家<strong>信心不足</strong>。</blockquote>
+<p>由於我們總是假設信號序列中包含有更多的 a 信號，如果 Pre-screener 更相信專家是可信的，自然也就更相信世界處於狀態 A；其它結論亦然。</p>
+<p>這一結論可以推廣到兩個 Pre-screener 之間的比較：</p>
+<blockquote><strong>命題 3： </strong>如果兩個 Pre-screener，分別稱爲 J 和 M，收到了&ldquo;信息內容&rdquo;相同但順序不同的兩組信號序列，則<strong>J 比 M 更樂觀當且僅當 J 比 M 更相信專家</strong>，反之，<strong>J 比 M 更悲觀當且僅當 J 比 M 更不相信專家</strong>。（此處&ldquo;樂觀&rdquo;、&ldquo;悲觀&rdquo;、&ldquo;更（不）相信&rdquo;的定義類比上文）</blockquote>
+<p>接下來，作者轉向另一個問題：隨着新的信號出現，信念和分歧會如何演變？</p>
+<blockquote><strong>引理 1：</strong>當世界真實狀態等可能時，如果 Pre-screener 收到一組信息內容爲 na 和 nb 的信號序列，則當該序列爲<strong>先 na 個 a 信號再 nb 個 b 信號時，對專家的信任最高</strong>；當該序列爲<strong>先 nb 次(a, b)交替再 na-nb 個 a 信號時，對專家的信任最低</strong>。</blockquote>
+<p>可以看出，<strong>連續的相同信號會給人&ldquo;高可信度&rdquo;的第一印象</strong>，反之，<strong>連續的交替信號則會給人&ldquo;低可信度&rdquo;的第一印象</strong>；由於 Pre-screener 過分重視已有信息，第一印象的影響將會更加持續。</p>
+<p>問題來了，需要多少次反向衝擊才能扭轉第一印象呢？</p>
+<blockquote><strong>命題 4</strong>：當世界真實狀態等可能時，爲了<strong>扭轉正面的第一印象</strong>，假設在 na 個 a 信號之後緊跟着 m 次(a,b)交替：當 na 爲 1 或 2 時，<strong>只需 m=1 次交替</strong>就能使 Pre-screener 轉向悲觀；當 na 大於等於 3 且 pL 和 pH 滿足一定條件時，正面第一印象將<strong>持續到至少 m'&gt;3 次反面衝擊</strong>之後；爲了<strong>扭轉負面的第一印象</strong>，假設在 nb 次(a,b)交替後緊跟着 m 個 a 信號，則當 pL 和 pH 滿足一定條件時，負面第一印象<strong>總能持續到至少 m*&gt;3 次正面衝擊</strong>之後。</blockquote>
+<p>命題 4 給出的是<strong>下限</strong>，命題 5 則討論了更加長期的影響（換言之給出了<strong>上限</strong>）：</p>
+<blockquote><strong>命題 5</strong>：當世界真實狀態等可能時，無論 pL 和 pH 如何取值，<strong>正面的第一印象總能夠被扭轉</strong>；當 pH 充分高時，<strong>負面的第一印象永遠不可能被扭轉</strong>。</blockquote>
+<p><strong>信號的來源</strong>同樣影響到信念與分歧的演變，如果信號來自同一個專家，我們有：</p>
+<blockquote><strong>命題 6</strong>：如果 Pre-screener 先收到 k 個 a 信號，之後又<strong>從同一個專家處</strong>收到 k 個 b 信號，則此時他與 Bayesian<strong>對專家可信程度的推斷不同</strong>，但<strong>對於世界真實狀態的後驗概率不存在分歧</strong>。</blockquote>
+<p>反之，如果部分信號來自第二個專家，我們有：</p>
+<blockquote><strong>命題 7</strong>：當世界真實狀態等可能時，如果 Pre-screener 先收到 k 個 a 信號，之後又<strong>從第二個專家處</strong>收到 k 個 b 信號（假設兩個專家的先驗分佈概率相同但獨立），那麼：<br>1. Pre-screener 認爲<strong>狀態 A 比狀態 B 可能性更高</strong>，且<strong>第一個專家比第二個專家更有可能是高可信度 H；</strong><br>2. 當 k 趨於無窮時，對於 Pre-screener 來說，<strong>狀態 A 的後驗概率趨於 1，第一個專家爲高可信度 H 且第二個專家爲低可信度 L 的後驗概率也趨於 1</strong>。</blockquote>
+<p>這一結論的根源是，當第二個專家發出第 1 個至第 k-1 個 b 信號時，由於前 k 個 a 信號的影響，Pre-screener 對於第二個專家可信度低的印象都會加深一點，而到第 k 個 b 信號時，對第二個專家的可信度低的印象恰好達到最大值（只有在此之後接着收到 b 信號纔會開始降低）。</p>
+<blockquote><strong>命題 8</strong>：繼續考慮上一命題的場景，不過允許專家一次性傳遞多個獨立信號，則<br>1. 假如第一個專家獲得了獨立的 k 個 a 信號，則<strong>分成 k 次發出比一次性發出 k 個更能獲得 Pre-screener 的信任</strong>；<br>2. 第二個專家仍然在第一個專家發送完信號後行動，假如第二個專家獲得了獨立的 k 個 b 信號，則<strong>一次性發出這 k 個信號將比分成 k 次發出更能獲得 Pre-screener 的信任</strong>，但是<strong>並不能達成逆轉</strong>。</blockquote>
+<p>由於 Pre-screener 對可信度的印象會累積，第一個專家分成 k 次發出相同的 a 信號將會不斷獲得累積加成；反之，第二個專家一次性發出 k 個 b 信號，雖然避免了負面印象的累積，但無法抵消第一個專家的上述&ldquo;加成&rdquo;，因此 Pre-screener 仍然更相信第一個專家。</p>
+<p>最後，作者試圖將自己的理論和已有文獻的解釋，特別是 Confirmation Bias 加以區分：</p>
+<blockquote><strong>命題 9</strong>：從世界真實狀態等可能的先驗分佈出發，Pre-screener 接收到一組信號序列後，形成了對世界真實狀態的後驗分佈的信念；如果某個 Bayesian 對世界真實狀態的先驗分佈的信念與該後驗分佈相同，則當 Pre-screener 又接收到一個新信號後：<br>1.(a) 如果新信號加入後，a 信號的數量仍嚴格多於 b 信號，且<strong>新信號提高了專家的可信度</strong>，則<strong>Pre-screener 比 Bayesian 更樂觀</strong>；<br>(b) 如果新信號加入後，a 信號的數量仍嚴格多於 b 信號，且<strong>新信號降低了專家的可信度</strong>，則<strong>Pre-screener 比 Bayesian 更悲觀</strong>；<br>(c) 如果新信號加入後，<strong>a 信號的數量和 b 信號相等</strong>，或<strong>新信號不影響專家的可信度</strong>，則<strong>Pre-screnner 和 Bayesian 不會產生爭議</strong>。<br>2. 如果此時 Pre-screener 對專家可信程度的後驗分佈信念和 Bayesian 對專家可信程度的先驗分佈信念也相同，那麼新信號加入後，<strong>Pre-screener 對專家可信程度的新信念和 Bayesian 更新後的信念相同。</strong>（再次強調，Bayesian 雖然可以進行更新，但是不會用更新後的信念作爲下一步的權重）</blockquote>
+<p>爲什麼這與 Confirmation Bias 不同呢？Confirmation Bias 認爲，如果我們堅信某一狀態是真實狀態，我們將採信證實這一信念的證據而忽視否定這一信念的證據，進而加強我們的信念；但在命題 9 中，如果採信證實信念的證據（a 信號）反而降低了專家的可信度（這是有可能的），竟然會削弱我們的信念。作者認爲，後一種情況在現實中也是能普遍地被觀察到的。</p>
+<blockquote><strong>命題 10</strong>： 當世界真實狀態等可能時：<br>1. 當<strong>na 顯著大於 nb</strong>，且<strong>不同可信度專家之間很難區分</strong>（比如高可信度專家的 pH 充分接近 1/2）時，<strong>Pre-screener 總是比 Bayesian 樂觀</strong>，表現出 Confirmation Bias；<br>2. 當<strong>na 多於 nb 但充分接近</strong>，且<strong>不同可信度專家之間很容易區分</strong>（高可信度專家的 pH 充分接近 1）時，<strong>Pre-screener 總是比 Bayesian 悲觀</strong>，與 Confirmation Bias 的預測相反。</blockquote>
+<p>作者還討論了其它一些解釋該問題的框架，例如過度自信（Over-confidence）、處理信息的能力有限導致的未注意（Inattention）、媒體的策略性說服（Media and Persuasion）、有限理性（Bounded Rationality）等。作者的一些觀點包括：</p>
+<ol>
+<li>部分框架假設了異質的先驗信念，而<strong>未解釋這種異質性的來源</strong>；本文建立的模型解釋了爲何從同質的先驗信念出發，獲得&ldquo;相同&rdquo;的信息也會產生異質的後驗信念。</li>
+<li>對於有限能力或有限理性的框架，作者的觀點我覺得可以概括爲&ldquo;殺雞焉用牛刀&rdquo;：如果在貝葉斯框架下通過一定的 modification 就能進行解釋，則無需動用這些大殺器。</li>
+<li>作者對於策略性行動的反駁，在上文中已經提到過了。另外，作者認爲本文的結論也給出了一些策略性行動的建議（比如命題 8 中是一次性發出多個信號還是分多次發出信號）。然而，我個人認爲這樣的反駁是不充分的：在進一步的理論分析完成之前，我們無法打包票說，引入專家的策略性行動一定不會改變結論&mdash;&mdash;特別是當我們<strong>知道專家會策略性行動</strong>時，我們會以此進一步改變對於信號的理解或使用方式；更何況，這裏<strong>完全沒有涉及到對專家的效用函數和成本函數的討論</strong>，而顯然這兩者都會對最終結論產生影響。（另一篇工作論文，Deb, Pai &amp; Said(2017)就討論了這樣一種情況：公司希望僱傭高質量專家，但是專家的質量無法直接觀測，於是公司要求專家對未來某個公開事件進行預測；專家自己可以獲得私有的信息，並有策略地向公司提供信號以提高公司對自己質量的評估）</li>
+<li>最後，作者指出，本文的大部分結論都是可測試的（Testable），因此我們完全可以通過實驗的方式將本文的模型與其它框架加以區分。</li>
+</ol>
+<p>最後總結一下本文的觀點，方便營銷號們寫爆文（寫了 10w+ 以後致謝我一下就好），如果想蹭熱點的話，我覺得最近李薛之爭是個不錯的切入點。</p>
+<p>除了專家有策略地行動之外，對專家意見的分歧可能還有一個重要的原因：我們不知道專家的可信程度，需要通過他們給出的信號進行推斷，在這一過程中陷入了&ldquo;pre-screening&rdquo;重複使用信息導致過度推斷的陷阱。</p>
+<p>在&ldquo;pre-screening&rdquo;的過程中，我們發現：我們對專家的信任程度與對世界真實狀態的推斷高度相關；專家提供證據的順序很重要，是多次提供少量新證據還是一次性提供大量新證據也會影響信任程度<strong>（很符合心理學家在法庭上的發現）</strong>；如果我們只有一個信息源，第一印象比較重要，正面的第一印象總會被扭轉，負面的第一印象則可能永遠持續<strong>（就像&ldquo;狼來了&rdquo;的故事那樣）</strong>；但如果我們有多個信息源，則第一印象將會異常重要，先來的專家會選擇逐步放出證據來提高可信度，後來的專家需要一次性提供遠多於前面專家的反方向證據纔有可能扭轉局勢<strong>（正所謂&ldquo;造謠張張嘴，闢謠跑斷腿&rdquo;）</strong>；但是，我們也並不像 Confirmation Bias 所描述的那麼盲目地相信有利於己方的證據，而是會根據證據來源的可信度變化相應調整我們的信念<strong>（換言之，闢謠還是能成功的）</strong>。</p>
+<p>Reference:</p>
+<p>Cheng, I. H., &amp; Hsiaw, A. (2016). Distrust in Experts and the Origins of Disagreement. <em>SSRN Working Paper.</em></p>
+<p>Deb, R., Pai, M. M., &amp; Said, M. (2017). Evaluating Strategic Forecasters. <em>SSRN Working Paper</em></p>
+<p>Rabin, M., &amp; Schrag, J. L. (1999). First impressions matter: A model of confirmatory bias. <em>The Quarterly Journal of Economics</em>, <em>114</em>(1), 37-82.</p>
+<p><em>(Photo credit: <a class=" wrap external" href="http://link.zhihu.com/?target=https%3A//www.flickr.com/photos/karenbaijens/16241866468/" target="_blank" rel="nofollow noreferrer">KarenBaijens</a> via <a class=" wrap external" href="http://link.zhihu.com/?target=https%3A//visualhunt.com/re/281a47" target="_blank" rel="nofollow noreferrer">Visualhunt.com</a> / <a class=" wrap external" href="http://link.zhihu.com/?target=http%3A//creativecommons.org/licenses/by/2.0/" target="_blank" rel="nofollow noreferrer">CC BY 2.0</a>)</em></p>
+
+
+
+</div>
+</div>
+</div>
+
+
+</div>
+</div>
