@@ -1,0 +1,119 @@
++++
+date = "2017-10-14T15:00:00"
+title = "想明白 iPhone X 的人臉識別是怎麼工作的，先得了解這道「光」"
+titleimage = "https://pic3.zhimg.com/v2-e5dc45c4698771e7001e1ae1c27ba8b6.jpg"
+ga = 101415
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+<div class="question">
+<h2 class="question-title">科普文 · 結構光發展簡史</h2>
+<div class="answer">
+
+
+
+<div class="content">
+<p><strong>背景知識</strong></p>
+<p>【針孔相機模型：射線方程】</p>
+<img class="content-image" src="https://pic1.zhimg.com/v2-2150f3f16b36e8877f09aabbb42383a8_b.jpg" alt="">
+<img src="http://www.zhihu.com/equation?tex=O" alt="O">
+<p>爲了方便描述，我們之後將把針孔模型對稱翻轉過來，如上圖虛線所示，從數學的角度，它們是等價的。</p>
+<p>【針孔相機雙目確定物點模型：射線相交得到點】</p>
+<img class="content-image" src="https://pic2.zhimg.com/v2-22f6ca10fe1842321500f031a80233f1_b.jpg" alt="">
+<img src="http://www.zhihu.com/equation?tex=Q" alt="Q">
+<p><strong>被動測距</strong></p>
+<p>【雙目測距：匹配特徵】</p>
+<img class="content-image" src="https://pic4.zhimg.com/v2-37b9cce1d20027848ac8920fdad0308f_b.jpg" alt="">
+<p>圖中上部左右兩幅照片是兩個標定好的相機對同一個場景拍攝並對準後的，圖中下部是上圖場景中的高度分佈，顏色越深離相機越遠。</p>
+<img class="content-image" src="https://pic3.zhimg.com/v2-6a4680f1e1bb4cdc1412f3e82e04f9d2_b.jpg" alt="">
+<p>我們把上面的場景抽象成草圖，舉例而言，顯示器在相機 0 和相機 1 中不同的像位置是確定顯示器空間所在位置的關鍵，那麼爲什麼高度分佈是塊狀的？</p>
+<p>這是因爲由於拍攝的場景缺少特徵點，以下圖爲例，如果說左圖中白色盒子頂上的四個點我們還可以在右圖中找的到，那麼圖中紅色點在右圖我們就根本找不到對應的點。由於特徵點的稀缺，雙目測距中是不可能實現像素級點對點的匹配的。</p>
+<img class="content-image" src="https://pic4.zhimg.com/v2-1bc7790fc73027fc422bea415fa20beb_b.jpg" alt="">
+<p><strong>主動結構光</strong></p>
+<p>【結構光：匹配拓撲網格】</p>
+<p>如果說特徵點的缺失是雙目測距的一大痛點，有學者就提出，既然缺少特徵點不如我就造一些特徵點出來，這就是結構光。iPhoneX 的人臉識別用的就是這一項技術。</p>
+<img class="content-image" src="https://pic4.zhimg.com/v2-cd88025770482557a57bf51b6d1c01eb_b.jpg" alt="">
+<p>iPhoneX 中有兩個與此相關的傳感器，分別是 Infrared camera 和 Dot projector，前者是相機，而後者是一個點陣投影儀。從數學上說，一部分投影儀是可以用逆向針孔相機模型描述的，也就是說如果我知道投影面上的某一個點，我就可以知道由這個點投影出的一條射線，這條射線遇到一個面，線面相交的點就會被投影儀點亮。這裏我們爲什麼說&ldquo;一部分&rdquo;投影儀可以等價於針孔相機，這個問題在後面會談到。</p>
+<img class="content-image" src="https://pic2.zhimg.com/v2-ca7de8d7029e36f8fde445df18909061_b.jpg" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=P_0" alt="">
+<img class="content-image" src="https://pic2.zhimg.com/v2-db14b86842a64621769bbb72d12930b1_b.jpg" alt="">
+<p>在實際的應用當中，會根據待測面形的特點確定拓撲網格的結構。舉例而言，對於 iPhoneX 的結構光主要測量的人臉，因此它的結構光在設計過程中，加密了人臉中眼、鼻、口的光點數量，使得在人臉識別中更具有特徵的眼、鼻、口的採樣率更高，深度數據真實性更強。主動結構光拓撲網格匹配已經遠遠強於被動雙目測距的特徵匹配，但是即便如此依然無法實現像素級點對點的匹配，無法實現的原因我們會在下一節講到。</p>
+<p>主動投射結構光和被動雙目測距相比既有好處也有壞處，好處是大大提高了測量準確度和分辨率，壞處則是需要有主動式投影光源。舉個很顯而易見的例子，由於投影光源在遠距離的情況下就失效了，遠距離的測距主要還是用被動雙目測距的方法。當然遠距離的測距還有很多別的更可行的方案，比如激光雷達，但是本文只討論結構光體系內的技術。</p>
+<p>【結構光：匹配相位分佈】</p>
+<p>我們爲了測量的面形保真，必須儘可能的提高採樣點的數量。上一節拓撲網格匹配結構光裏採樣點的提高有一個上限，那就是 CCD 必須可以區分採樣點，否則在 CCD 中採樣點糊成一團，也就失去了拓撲網格標號。因此這裏有一對矛盾，一方面要儘可能的提高採樣率，一方面又不能超過 CCD 的分辨能力。</p>
+<img class="content-image" src="https://pic1.zhimg.com/v2-d488366350e8d83f0f9135381afb22cc_b.jpg" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%28%5Cvarphi_x%2C%5Cvarphi_y%29" alt="">
+<img class="content-image" src="https://pic1.zhimg.com/v2-e7d102e875fa83fa00c1e2faa250fd70_b.jpg" alt="">
+<p>以四步相移爲例，上圖右圖是投影儀投出的 X 方向相移正弦條紋，左圖是 CCD 拍攝到的由於面形引起的 X 方向變形條紋。對這兩組圖求包裹相位，並解包裹得到 X 方向相位分佈情況。</p>
+<img class="content-image" src="https://pic3.zhimg.com/v2-c07385c43e5c880bf425dd313b3b4dd2_b.jpg" alt="">
+<p>舉例而言，投影面和 CCD 的像素數都是 512*512，對於投影面上的一個像素（下圖右圖紅點），我能找到它的 X 方向相位值，根據這個相位值，能夠找到 CCD 面上具有這個相位值的所有像素（下圖左圖紅線），通過這個 X 方向相位值，能夠把投影面上的點和 CCD 面上的線關聯起來。</p>
+<img class="content-image" src="https://pic4.zhimg.com/v2-ab4f6766088ca768adb1f6b52f740463_b.jpg" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5CLeftrightarrow%28%5Cvarphi_x%2C%5Cvarphi_y%29%5CLeftrightarrow" alt="">
+<p>【結構光：匹配編碼】</p>
+<p>肯定有讀者會問上面都已經實現了像素級點對點匹配，分辨率的提高都已經到頭了，那麼這項技術還可以怎麼演進呢？這裏我們就要談一談相移法的優缺點了，相移法是屬於一種優點和缺點都極爲顯著的方法，優點是，通過相移解相位的方法，犧牲了時間（多幅條紋投影），以粗的條紋獲得了細的分辨率，缺點是正弦條紋極易被幹擾，這就導致了相位圖失真，CCD 像素和投影面像素的一一對應性被破壞。</p>
+<img class="content-image" src="https://pic3.zhimg.com/v2-c0b526069c99dfbdac181e61518a1ea2_b.jpg" alt="">
+<p>因此，學者就提出，能不能把步子邁得小一點，我們不要求像相移法那樣高的分辨率，但是 CCD 像素和投影面像素的一一對應性必須要保證。由此就提出了以編碼作爲傳遞不變量，確定像素的對應性。</p>
+<p>以下圖爲例，我們對藍色點進行編碼，通過 XY 兩個方向一共 6 幅由疏到密的二值條紋，我們能夠得到一串表明藍色點位置的 6 位編碼，101101，其中 1 代表在這一位上是白色，0 代表黑色。編碼位數越高越能準確的描述藍色點的位置，當然位數越高同樣意味着條紋越密，位數的上限取決與 CCD 能夠分辨的最小二值條紋粗細。二值條紋的抗干擾能力顯著高於正弦條紋。</p>
+<img class="content-image" src="https://pic1.zhimg.com/v2-714fb41f4c517ea2b79f5a6a19578dc8_b.jpg" alt="">
+<p>下圖是慕尼黑光博會上某個展商的裝置，用一個投影儀一個相機以及編碼圖樣實現了三維測量，實際上它所用的圖樣（編碼位數）最後遠遠高於我截的這 6 幅圖。</p>
+<img class="content-image" src="https://pic4.zhimg.com/v2-3f041e423d96a91cf98201c1db725cdb_b.jpg" alt="">
+<p>【雙目結構光：不能或者不想標定投影儀】</p>
+<p>還記得我們前面有一節講到只有一部分投影儀可以用逆向針孔相機模型來描述，受限於投影儀的凸透鏡成像法則，大多數情況下很難用一個通用的模型來描述投影儀整個羣體，比如說，投影面放在投影儀透鏡焦面上的準直投影就不能用逆向針孔相機模型來描述。</p>
+<p>這意味這投影儀不能用射線方程來描述，也就意味着又要解決一個相機解欠定的問題，自然我們想到了再引入一個相機。</p>
+<img class="content-image" src="https://pic1.zhimg.com/v2-d95b6b814dfcd7064f2538e7dd1381bc_b.jpg" alt="">
+<p>請注意，因爲這裏的投影儀不是射線模型，因此我也就不畫成前文投影儀的樣子了。</p>
+<img class="content-image" src="https://pic3.zhimg.com/v2-4cecdd94f48f6224cee9200b1a765626_b.jpg" alt="">
+<p>和前面的結構光匹配編碼類似，只是我們現在匹配的是兩臺相機當中的編碼而不是匹配投影儀和相機的編碼。</p>
+<p>【交叉偏振結構光：解決反光問題】</p>
+<p>反光是所有結構光的大敵，包括被動雙目測距，主動結構光掃描。因爲反光會造成採集信號丟失，相當於雙目測距失去一目，方程欠定有無窮多解。</p>
+<img class="content-image" src="https://pic4.zhimg.com/v2-4db67d60620a08c532712e71a1873cd7_b.jpg" alt="">
+<p>所以結構光只能用在粗糙表面測量上，下圖表明瞭兩種表面反射光的形態。左圖是粗糙表面反射光形態，粗糙表面會講投影光線均勻的散開，只要有一支被 CCD 接受我們就可以確定投影像素和 CCD 像素的對應關係。右圖是類鏡面反射光形態，反射光中，光強最強的主瓣沿着反射定律確定的反射光方向，而旁瓣則在主瓣周圍散開，越遠離主瓣光強越弱。結構光無法處理反光就是因爲 CCD 接收不到光線。類鏡面反射光形態和粗糙表面反射光形態並不是一成不變的。一些材質的粗糙表面在某些角度的光線或者光強大於一定的值之後也會表現出類鏡面反射光的特點。</p>
+<img class="content-image" src="https://pic3.zhimg.com/v2-a78cd28b4ac2696adcc936c4593f6be2_b.jpg" alt="">
+<p>爲了解決這個問題，學者就提出投影交叉偏振結構光的方法。其原理是反射光是 s 分量佔優的部分偏振光，只有當入射角是布魯斯特角時，反射光是 s 線偏振光。根據這個原理，大量的含水面的風光攝影都用到了與 s 光正交的偏振鏡來抵消 s 光以達到減弱反光的效果。</p>
+<img class="content-image" src="https://pic1.zhimg.com/v2-5e91e0728b021e880e27c3a105673570_b.jpg" alt="">
+<p>通過給投影儀加裝偏振鏡的方法，我們可以得到一對具有正交偏振方向的投影光，下圖兩個藍色圈中的即是兩個不同偏振方向的投影儀。</p>
+<img class="content-image" src="https://pic3.zhimg.com/v2-50ca5bd6f98636166f425264ad0b3fde_b.jpg" alt="">
+<p>通過交叉偏振投影結構光的方法，總有一個方向能夠極大的降低反光，再通過拍攝到無反光的結構光的相機的位置，可以按照前文所述得到三維信息。</p>
+<p>【此處插播一條廣告：我的研究方向是 Deflectometry，即純鏡面的結構光三維測量，利用反光來檢測鏡面面形，歡迎同行不吝賜教。】</p>
+<p>【Phase Measuring Profilometry：既不標定投影儀也不用雙目】</p>
+<p>Phase Measuring Profilometry，中文名爲：相位測量輪廓術。</p>
+<p>前文的所有測量包括被動雙目和主動結構光都屬於絕對測量，這裏的 Phase Measuring Profilometry（PMP）是一種相對測量的手段。既不標定投影儀也不用雙目，這勢必意味着我們方程又回到了欠定無窮多解的問題上。好在相移干涉法給了一個思路，我們可以通過給一個絕對高度的參考面，測量的是待測面與參考面的相對高度，由此得到待測面的絕對高度。</p>
+<img class="content-image" src="https://pic4.zhimg.com/v2-ed18b8f326fdb7a15b1492ad154569bf_b.jpg" alt="">
+<p>相機拍攝參考面的四步相移正弦圖樣，解包裹相位得到相位分佈，如下下圖右圖。</p>
+<img class="content-image" src="https://pic3.zhimg.com/v2-f9ede86384236eb79860198b3d2fe586_b.jpg" alt="">
+<p>相機拍攝待測面的四步相移正弦圖樣，解包裹相位得到相位分佈，如下圖左圖。</p>
+<img class="content-image" src="https://pic3.zhimg.com/v2-3377d1a53a421405d7374898bdc67ef6_b.jpg" alt="">
+<p>PMP的核心在於標定&ldquo;相位--高度&rdquo;的映射：</p>
+<img src="http://www.zhihu.com/equation?tex=%5Cfrac%7B1%7D%7Bh%28x%2Cy%29%7D%3Da%28x%2Cy%29%2Bb%28x%2Cy%29%5Cfrac%7B1%7D%7B%5CPhi%28x%2Cy%29%7D%2Bc%28x%2Cy%29%5Cfrac%7B1%7D%7B%5CPhi%5E2%28x%2Cy%29%7D" alt="\frac{1}{h(x,y)}=a(x,y)+b(x,y)\frac{1}{\Phi(x,y)}+c(x,y)\frac{1}{\Phi^2(x,y)}">
+<img src="http://www.zhihu.com/equation?tex=h%28x%2Cy%29" alt="h(x,y)">
+<img src="http://www.zhihu.com/equation?tex=a%28x%2Cy%29" alt="a(x,y)">
+<img class="content-image" src="https://pic1.zhimg.com/v2-a9b90e6141259a3e0896cbfb047cb754_b.jpg" alt="">
+<p>【後 PMP 時代】</p>
+<p>後 PMP 主要朝着這麼幾個方向，降低投影條紋數，提高三維重構算法，提高分辨率以及一些難測量面形的測量方案設計。</p>
+<p>本文中用到了以下回答中的圖：</p>
+<p><a class="internal" href="https://zhihu.com/question/54347759/answer/177870402">結構光的概念及其實現三維成像的主要原理是什麼？</a></p>
+<p><a class="internal" href="https://zhihu.com/question/31772426/answer/151156975">電視劇裏的嬰兒都是哪裏找來的？</a></p>
+<p>其他的一些圖來源於網絡，源出處不明，歡迎認領。</p>
+<p>歡迎分享，轉載請註明出處。</p>
+
+
+
+</div>
+</div>
+</div>
+
+
+</div>
+</div>
