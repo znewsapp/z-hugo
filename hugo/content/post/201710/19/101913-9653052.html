@@ -1,0 +1,160 @@
++++
+date = "2017-10-19T13:00:00"
+title = "谷歌稱新一代人工智能出世了，它以 100:0 完勝阿爾法狗"
+titleimage = "https://pic2.zhimg.com/v2-e5d7e8f7d9d8538a2ba4d36ace2c6025.jpg"
+ga = 101913
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title">如何評價 DeepMind 發表在 Nature 上的 AlphaGo Zero？</h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>我讀着新論文，對比前一個版本的論文（即 AlphaGo Fan 版本）。直觀感受如下：</p>
+<p>舊版 AlphaGo：</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-eb5bf0dce50da9192bde72db4d0eeb0c_b.jpg" alt="">
+<p>AlphaGo Zero:</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-6d3ca1859d627985780cf2450afd7765_b.jpg" alt="">
+<hr>
+<p>如果我對圍棋一無所知，讀初代 AlphaGo 的論文，可能會有以下疑問：</p>
+<p>策略網絡和價值網絡，結構和功能很接近啊，爲什麼不合併成一個呢？</p>
+<p>爲什麼要用專家的棋譜作爲初始訓練樣本？從一張白紙開始訓練豈不是更具有普遍性？</p>
+<p>快速走子是什麼鬼？只用價值網絡評估不是更有效率嗎？</p>
+<p>爲什麼要輸入圍棋知識？AlphaGo 的強化學習過程難道學不到這些知識嗎？</p>
+<p>舊版的 AlphaGo，雖然神功小成，但斧鑿痕跡顯著。好似一隻機器人女友，雖有絕色容顏，卻長着機械手、聲音冷如谷歌娘（誤）。理想的圍棋人工智能，應該是簡潔、優雅、渾然天成，就像死宅們的老婆新垣結衣一樣（大霧）。</p>
+<p>而新版的 AlphaGo，真的造出了栩栩如生的 Gakki（誤）。</p>
+<p>具體地說，AlphaGo Zero 相比於初代 AlphaGo，有以下幾點改進：</p>
+<p>1、將策略網絡和價值網絡合並，組成一個可以同時輸出策略 p 和價值 v 的新網絡。</p>
+<p>1.1、簡化了新網絡的結構。新策略&middot;價值網絡的輸入特徵平面由 48 個減少到了 17 個。其中，涉及圍棋知識的輸入特徵（氣(liberty)、徵子(ladder)）被刪去。</p>
+<p>2、新策略&middot;價值網絡只需通過強化學習來訓練，無需監督學習。即無需輸入人類高手棋譜作爲初始訓練樣本，只需用隨機落子作爲初始訓練樣本。</p>
+<p>3、優化了蒙特卡洛搜索樹，主要是省去了快速走子(rollout policy)，節約大量實戰計算成本。</p>
+<p>3.1、 快速走子策略也需要輸入大量人類已知的圍棋知識，比如如何點死大眼(Nakade, 如點死直三、丁四、刀把五等棋型的唯一招法）。省去快速走子，也就省去了輸入這些知識的麻煩。</p>
+<p>4、改卷積網絡爲殘差網絡，提高訓練效率。</p>
+<p>留下的，是一個從零開始訓練的神經網絡，以及用簡單到不能再簡單的 MCTS 算法行棋的 AlphaGo Zero。</p>
+<p><strong>知易行難</strong>。這些改進貌似不難想到，是因爲 AlphaGo Zero 本來就是研究者理想中的女神。而初版 AlphaGo 不夠女神，不是因爲研究者不想，而是暫時做不到。舉個例子，AlphaGo Fan 版本中，神經網絡的輸入由 48 個特徵平面構成。其中兩個平面分別表示，某一步棋是否是成功的徵子，和某一步棋是否是成功的逃徵子。</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-a47c04479712c8574510a08d25f5dd52_b.jpg" alt="">
+<p>這是徵子的基本圖。白 1 逃跑，黑 2、4 以下分別從兩側叫吃白棋，使白方始終只有一口氣。一直追到棋盤盡頭，白方最終無路可逃。黑棋大獲全勝。</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-7f4645769679f343811ffddc99943fde_b.jpg" alt="">
+<p>而如果徵子路上有對方的小夥伴接應，比如上圖右上角的黑棋。那麼徵子就會失敗，並且白棋滿盤皆輸。</p>
+<p>徵子是圍棋的基本知識，初學者在前兩三節課就會學到。但實戰的徵子可以非常複雜，甚至搞暈職業棋手。</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-2593b6a6f67b9acd0c2ffdfca41c3f58_b.jpg" alt="">
+<p>這張圖來自職業棋譜，趙善津勝王銘琬。注意，白棋中央一大坨已經被徵死了。白方看錯了引徵，招致全盤皆輸。</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-316bbaec0c99a269c18a7dfdad92ed4f_b.jpg" alt="">
+<p>徵子也能搞暈神經網絡。我剛纔在某計算機圍棋的討論區看到 Joona Kiiski 網友的觀點，和大家分享一下：</p>
+<blockquote>- The learning was based on self-play. Understanding ladders is perhaps not so important if your opponent doesn't understand them either... Every time a decisive ladder appears on the board, the result is practically a coin toss.<br><br>- And as others have pointed out, unlike almost all other go features, ladders are not at all a local feature. The features need to build up through a huge number of convolution layers, before it works. And it's difficult to build this understanding incrementally (unlike e.g. life &amp; death where you can start with simple cases and then move to more difficult cases), so we lack bias to direct the learning to the right direction.</blockquote>
+<p>大意如下：</p>
+<blockquote>和絕大部分圍棋的特徵（比如死活、官子、定式等）不同，徵子完全不是局部特徵，而是全局特徵。這就意味着，在神經網絡能正確處理徵子之前，徵子的特徵需要通過大量卷積層來慢慢建立。這會給神經網絡的訓練帶來潛在的麻煩。</blockquote>
+<p>更要命的是，在徵子上一旦出現失誤，大勝的棋局會直接變成大敗。</p>
+<p>據此可以推測，徵子的這些麻煩特性，使得初代 AlphaGo 不得不把徵子作爲輸入神經網絡的特徵之一。（另一個軟件 Zen，即使和初代 AlphaGo 做了類似的處理，實戰的徵子依然會偶爾出錯，被人類棋手逆襲了好多盤。）</p>
+<p>AlphaGo Zero 的神經網絡，大膽省去了徵子特徵的輸入。細細品味訓練過程，略微吃驚：神經網絡直到訓練的（相對）後期才學會徵子。</p>
+<blockquote>如果對局雙方（黑 AlphaGo- 白 AlphaGo）都不懂徵子，那麼總體結果也不會差太多吧。每個徵子的結果就好像投硬幣一樣隨機，總的勝負加起來差不多是零（大誤）。</blockquote>
+<p>或許是開發團隊好運，更有可能是反覆嘗試以後才成功。總之，在徵子上，AlphaGo Zero 涉險過關。</p>
+<p>同理，分拆策略、價值網絡，以及採用快速走子，是舊版 AlphaGo 的暫時妥協，而在新版終於得以解決。</p>
+<p>DeepMind，及其母公司谷歌的終極目標不是破解圍棋，而是造出通用人工智能。通用智能不需要額外專業知識。AlphaGo Zero 在無圍棋知識輸入的前提下達到如此高度，可以說離通用智能又近了一步。</p>
+<p>大道至簡。對於 AlphaGo，最簡潔的，就是最美的。</p>
+<hr>
+<p>說棋。</p>
+<p>摒棄人類棋譜輸入，從零（Zero 因此得名）開始訓練阿爾法狗。去年穀李大戰以來，棋迷翹首以盼的&ldquo;純淨版&rdquo;阿爾法狗終於問世。</p>
+<p>更恐怖的是，Zero 經過三天訓練就達到 AlphaGo Lee 的水平 （即去年戰勝李世乭的版本，ELO ~3750。對比今日柯潔 ELO ~3660.），節約了 90%+ 的時間。見下圖。</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-593e310a1bec545556d4e85e3504258e_b.jpg" alt="">
+<p>四十天之後，Zero 甚至超越了姐妹版本 Master，對 Master 實現 90% 勝率。Master 和 Zero 的主要區別是，Master 有人類棋譜輸入，經歷監督學習（SL）而非強化學習（RL）。</p>
+<p>我在論文中學到了一句拉丁語，starting <em>tabula rasa, </em>從一張白紙開始<em>。</em>看 Zero 的訓練過程，就像看一個嬰兒成長，妙趣橫生。</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-d4e3d497ea06aa5e1b43ea62659f07c2_b.jpg" alt="">
+<p>第三個小時，如同幼兒堆石子。第二十小時，有板有眼。第 70 小時，複雜局面處理自如，已是頂尖高手。</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-12c61aea43d08c6e443125e87841471e_b.jpg" alt="">
+<p>看 AlphaGo 學會的定式，更是有趣。A 行是 AlphaGo 在訓練過程中學會的人類定式。B 行則是在訓練的不同階段，AlphaGo 最喜歡的定式。</p>
+<p>B 行第一個，黑棋下在 1,1，顯然是賣萌，此時大概是第 10 個小時。B 行第二個，黑星位，白棋外靠（！），黑退，白扳粘的變化。此變化不在人類課本當中，白 2 略驚悚，直觀看也是白棋稍虧。果然，在 40 小時以後，本定式被無情淘汰（見下圖）。</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-25eb77d4c84d1c89bf92236b46e5a29b_b.jpg" alt="">
+<p>第三變，點三三！千呼萬喚始出來。</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-ce2e7e628d345d8ca740d85f209cd8ae_b.jpg" alt="">
+<p>20 小時以後此變化出現頻率猛增，並一度達到 3%，此後緩慢回落，最終穩定在 0.5%。這是我曾經最喜歡的定式之一，也是定式書上必介紹的一個基本型。黑地白勢，各得其所。</p>
+<p>作爲對比，點三三的另一變如下：</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-7dce50ab175defcb08e239ab00cf2f78_b.jpg" alt="">
+<p>在五十小時後，黑 5 飛的頻率大增。至 70 小時，此變頻率達 0.2%。從最終的自戰對弈來看，此變的頻率似乎超過了黑 5 扳（有待查證）。很有意思，AlphaGo 對此定式的認識過程和人類有些相似。長久以來，黑 5 扳都是點三三的標準變化。直到最近十年左右，黑 5 飛纔開始變得頻繁起來。由於 Master 的影響，人類棋手開始頻繁點三三，並且把黑 5 飛作爲標準變化。上圖的後續只是此定式的一變，在 Zero 自戰譜中還看到了一些微小的改動。</p>
+<p>下一個&ldquo;定式&rdquo;最有意思。</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-fd7a256994353810213122ca4a024450_b.jpg" alt="">
+<p>1-5 正常。白 6 奇思妙想！人類絕少在開局階段往二路下。白 10 貼以後，黑棋需要補斷，白棋活角。局部尚未定型，得失不明。可惜此變曇花一現，不知 AlphaGo 是否發現了局部更好的手段。</p>
+<p>欣賞一局完全體 Zero 的棋譜</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-c3d5267c2336c401da70ac5fb7df7e3d_b.jpg" alt="">
+<p>37-41，瀟灑、放肆、不拘一格。狀態爆表的一流棋手偶爾也有如此表演，而這對於 AlphaGo 只是正常操作。</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-7c8a50868ca1c413a218e43b80b5543c_b.jpg" alt="">
+<p>白 130. 官子同樣滴水不漏。（黑只能在 A 位接。若在 B 位吃，白 O17 即可出棋。白棋點完以後，T17 有先手味道。）</p>
+<p>Zero 的 Elo 等級分是 5000 分，人間已無敵手。但其左右互搏仍互有勝負，可見離圍棋上帝尚有距離。Zero 當爲近階段圍棋人工智能的高峯，但尚不是圍棋的終點。</p>
+<hr>
+<p>於我，AlphaGo Zero 還有以下幾個懸念：</p>
+<p>1、Zero 的策略&middot;價值網絡是否對所有貼目值都生效，還是隻針對 7.5 目。（論文中未指明）再進一步，AlphaGo Zero 心目中的最佳貼目是多少。</p>
+<p>2、Zero 的官子，特別是小官子階段，是否會犯錯。重點是，有無因爲官子失誤而被翻盤的棋局。</p>
+<p>3、以大貼目爲前提，Zero 會如何應對白方的模仿棋。</p>
+<p>希望明天能在 Reddit 上得到解答。</p>
+<hr>
+<p>三千年的圍棋，AlphaGo 只用三天走過。謹以《賀新郎&middot;讀史》結束本文：　　　</p>
+<p>人猿相揖別。只幾個石頭磨過，小兒時節。銅鐵爐中翻火焰，爲問何時猜得？不過幾千寒熱。人世難逢開口笑，上疆場彼此彎弓月。流遍了，郊原血。</p>
+<p>一篇讀罷頭飛雪，但記得斑斑點點，幾行陳跡。五帝三皇神聖事，騙了無涯過客。有多少風流人物？盜跖莊屩流譽後，更陳王奮起揮黃鉞。歌未竟，東方白。</p>
+</div>
+</div>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>剛看完了論文，說點自己的想法。</p>
+<p>從技術上說，最主要的創新是以下兩點：</p>
+<ul>
+<li><strong>從多網絡到單網絡。</strong>原 AlphaGo 用了兩個網絡，決策網絡用於預測可能的走法，價值網絡用於評價當前局勢的優劣。這次的 AlphaGo Zero 將這兩個網絡合二爲一，新的網絡同時輸出走法 p 和局勢打分 v。</li>
+<li><strong>從卷積網絡到殘差網絡</strong>（此處再次膜拜 Kaiming He 大神）</li>
+</ul>
+<p><strong>論文作者證明了架構的改變對結果的影響非常大！請參考下面的對比圖。</strong>&ldquo;dual&rdquo;表示使用合併的網絡，&ldquo;sep&rdquo;表示分開的網絡，&ldquo;conv&rdquo;表示一般的卷積網絡，&ldquo;res&rdquo;表示殘差網絡。使用同樣的訓練樣本，同樣的訓練步數，dual-res 的 elo 分值比原先 Alpha Go 的 sep-conv 架構高出了 1000 多分，可見新的網絡架構提升了網絡的表達能力，訓練起來也更加簡單。</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-9e38c1369a33a64d8a93a3776fb189dd_b.jpg" alt="">
+<p><strong>另外有人疑惑的是，算法是如何進行通過自我博弈來學習的？</strong>詳細解釋一下，假設一開始有一個完全隨機的網絡 N，這個網絡完全是一個圍棋小白，不具備任何的知識。根據上面的架構，N 有兩個輸出，預測的走法 p 和對局勢優劣的判斷 v。如果稍微有一點點機器學習的相關知識，就會知道訓練網絡是需要<strong><em>訓練樣本</em></strong>的。應該如何得到訓練樣本？參考原論文中的訓練過程：</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-0a31a216892fba09a57a20ce93a1ca43_b.jpg" alt="">
+<p>在 a 步驟，N 網絡利用自身的輸出 p 和 v，自己和自己對弈。<strong>不管此時 N 網絡是什麼水平，最終都會有一個勝利者，我們就用勝利者的走子方式作爲 N 網絡的訓練正樣本。</strong></p>
+<p>再到 b 步驟。此時用 a 步驟得到的訓練樣本進行訓練，就得到一個新的 N 網絡。由於使用了勝利者的走子進行訓練，<strong>這個 N 網絡會比之前的 N 網絡稍微&ldquo;強一點點&rdquo;。然後再重複自我對弈 -&gt;訓練 -&gt;自我對弈&hellip;&hellip;的過程，N 網絡就會不斷迭代變得越來越厲害。</strong>如果你知道 DQN 算法或者 Policy Graident 算法，就會發現這種迭代過程是和它們一模一樣的。</p>
+<p><strong>可以預見的是，這篇文章之後，很快會有一大波&ldquo;AlphaGo&rdquo;橫空出世，每個圍棋愛好者都可以擁有自己的&ldquo;AlphaGo&rdquo;。</strong>原因有二，一是之前訓練一個 AlphaGo 需要收集大量人類棋局數據，這其實是有門檻的，現在連蒐集棋譜數據也不用了，直接就可以訓練。二是需要的資源也大大減少。打敗李世石的那個 AlphaGo，需要在多臺服務器上用 48 個 TPU 訓練幾個月的時間，這種資源別說是個人，就算是公司也很難的負擔得起。<strong>作爲對比，這次的 AlphaGo 僅僅需要一臺機器 4 個 TPU，訓練 3 天就可以打敗之前的 AlphaGo，</strong>在計算資源的需求上少了太多，相信用單個 GPU 也能達到比較 decent 的結果。</p>
+<p>最後，上一張官方的動圖，可以直觀感受到深度強化學習的威力<strong>（只用 40 天，超越人類幾千年的經驗）</strong>：</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-d15383a2f1e130b663cb888f2ade18ef_b.gif" alt="">
+<p>如果想要真正瞭解 AlphaGo Zero 背後的原理，可以通過 Q Learning -&gt; SARSA -&gt; DQN -&gt; Policy Gradient 算法的學習路徑來學習，AlphaGo 使用的算法就是 DQN 和 Policy Gradient 的結合，相關資料網上有很多，就不再詳述了。</p>
+</div>
+</div>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>老實說這篇 Nature 要比上一篇好很多，方法非常乾淨標準，結果非常好，以後肯定是經典文章了。</p>
+<p>Policy network 和 value network 放在一起共享參數不是什麼新鮮事了，基本上現在的強化學習算法都這樣做了，包括我們這邊拿了去年第一名的 Doom Bot，還有 ELF 裏面爲了訓練微縮版星際而使用的網絡設計。另外我記得之前他們已經反覆提到用 Value network 對局面進行估值會更加穩定，所以最後用完全不用人工設計的 default policy rollout 也在情理之中。</p>
+<p>讓我非常吃驚的是僅僅用了四百九十萬的自我對局，每步僅用 1600 的 MCTS rollout，Zero 就超過了去年三月份的水平。並且這些自我對局裏有很大一部分是完全瞎走的。這個數字相當有意思。想一想圍棋所有合法狀態的數量級是 10^170（見<a class=" wrap external" href="http://link.zhihu.com/?target=https%3A//tromp.github.io/go/legal.html" target="_blank" rel="nofollow noreferrer">Counting Legal Positions in Go</a>），五百萬局棋所能覆蓋的狀態數目也就是 10^9 這個數量級，這兩個數之間的比例比宇宙中所有原子的總數還要多得多。僅僅用這些樣本就能學得非常好，只能說明卷積神經網絡（CNN）的結構非常順應圍棋的走法，說句形象的話，這就相當於看了大英百科全書的第一個字母就能猜出其所有的內容。用 ML 的語言來說，CNN 的 induction bias（模型的適用範圍）極其適合圍棋漂亮精緻的規則，所以稍微給點樣本水平就上去了。反觀人類棋譜有很多不自然的地方，CNN 學得反而不快了。我們經常看見跑 KGS 或者 GoGoD 的時候，最後一兩個百分點費老大的勁，也許最後那點時間完全是花費在過擬合奇怪的招法上。</p>
+<p>如果這個推理是對的話，那麼就有幾點推斷。一是對這個結果不能過分樂觀。我們假設換一個問題（比如說 protein folding），神經網絡不能很好擬合它而只能採用死記硬背的方法，那泛化能力就很弱，Self-play 就不會有效果。事實上這也正是以前圍棋即使用 Self-play 都沒有太大進展的原因，大家用手調特徵加上線性分類器，模型不對路，就學不到太好的東西。一句話，重點不在左右互搏，重點在模型對路。</p>
+<p>二是或許卷積神經網絡（CNN）系列算法在圍棋上的成功，不是因爲它達到了圍棋之神的水平，而是因爲人類棋手也是用 CNN 的方式去學棋去下棋，於是在同樣的道路上，或者說同樣的 induction bias 下，計算機跑得比人類全體都快得多。假設有某種外星生物用 RNN 的方式學棋，換一種 induction bias，那它可能找到另一種（可能更強的）下棋方式。Zero 用 CNN 及 ResNet 的框架在自學習過程中和人類世界中圍棋的演化有大量的相似點，在側面上印證了這個思路。在這點上來說，說窮盡了圍棋肯定是還早。</p>
+<p>三就是更證明了在理論上理解深度學習算法的重要性。對於人類直覺能觸及到的問題，機器通過採用有相同或者相似的 induction bias 結構的模型，可以去解決。但是人不知道它是如何做到的，所以除了反覆嘗試之外，人並不知道如何針對新問題的關鍵特性去改進它。如果能在理論上定量地理解深度學習在不同的數據分佈上如何工作，那麼我相信到那時我們回頭看來，針對什麼問題，什麼數據，用什麼結構的模型會是很容易的事情。我堅信數據的結構是解開深度學習神奇效果的鑰匙。</p>
+<p>另外推測一下爲什麼要用 MCTS 而不用強化學習的其它方法（我不是 DM 的人，所以肯定只能推測了）。MCTS 其實是在線規劃（online planning）的一種，從當前局面出發，以非參數方式估計局部 Q 函數，然後用局部 Q 函數估計去決定下一次 rollout 要怎麼走。既然是規劃，MCTS 的限制就是得要知道環境的全部信息，及有完美的前向模型（forward model），這樣才能知道走完一步後是什麼狀態。圍棋因爲規則固定，狀態清晰，有完美快速的前向模型，所以 MCTS 是個好的選擇。但要是用在 Atari 上的話，就得要在訓練算法中內置一個 Atari 模擬器，或者去學習一個前向模型（forward model），相比 actor-critic 或者 policy gradient 可以用當前狀態路徑就地取材，要麻煩得多。但如果能放進去那一定是好的，像 Atari 這樣的遊戲，要是大家用 MCTS 我覺得可能不用學 policy 直接當場 planning 就會有很好的效果。很多文章都沒比，因爲比了就不好玩了。</p>
+<p>另外，這篇文章看起來實現的難度和所需要的計算資源都比上一篇少很多，我相信過不了多久就會有人重複出來，到時候應該會有更多的 insight。大家期待一下吧。</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div>
