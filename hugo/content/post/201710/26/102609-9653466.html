@@ -1,0 +1,86 @@
++++
+date = "2017-10-26T09:00:00"
+title = "和朋友聚餐玩個遊戲，看看最後誰來買單"
+titleimage = "https://pic1.zhimg.com/v2-98f62303e9025c1c78b5110f29db4b3c.jpg"
+ga = 102609
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title"></h2>
+
+<div class="answer">
+
+<div class="content">
+<p>3 人先約定好誰當 A、誰當 B、誰當 C，然後同時伸出手，每個人都只有手心朝上或者手背朝上 2 種選擇，然後統計手心朝上的人數：0 人或 3 人則 A 買單，1 人則 B 買單，2 人則 C 買單。</p>
+<p>在任何 2 人都沒有互相串通的前提下，這個遊戲公平嗎？如果不公平，哪方佔優哪方劣勢？</p>
+<p>-</p>
+<p>A 發現遊戲並不公平，於是他決定放棄優勢。在伸手前，他將會聲明自己怎麼出。作爲一個無聊的人，他有 50% 的概率按聲明出手，也有 50% 概率戲弄 B 與 C。</p>
+<p>這樣會更公平嗎？</p>
+<p>假設 A 是一個很靠譜的人 BC 都很願意相信他的話，假設 A 是一個很不靠譜的人，BC 都不願意相信他的話，這樣還公平嗎？</p>
+</div>
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="question">
+<h2 class="question-title">3 人聚餐後，想玩一個遊戲來決定誰買單，這個遊戲公平嗎？</h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>首先，這是三個人的博弈，不能預先假設每個人都是隨機的來出正反。其次，三個人都沒有佔優策略，所以我們的思路是先假設沒有純策略，先計算出混合策略的概率，然後來算期望支付。</p>
+<p>假定三個人出手心的概率爲</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=p_a%2C+p_b%2C+p_c" alt="">
+<p>，那麼出手背的概率就是</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=1-p_a%2C+1-p_b%2C+1-p_c" alt="">
+<p>。我們假定付錢效用爲 -1，不付錢效用爲 0.</p>
+<p>ABC 出手心手背的期望收益相等，對於 A 來說,如果自己出手心，那麼只有當其他人都出手心自己才付錢，如果自己出手背，那麼只有其他人都出手背才付錢，所以手心手背期望相等，就意味着：</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=p_bp_c%3D%281-p_b%29%281-p_c%29%5CRightarrow+p_b+%2B+p_c+%3D+1" alt="">
+<p>對於 B 來說，B 出手心，則只有另外倆人都出手背才付錢，B 出手背，則任意一個人出手心付錢。</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%281-p_a%29%281-p_c%29+%3D+p_a%281-p_c%29+%2B+%281-p_a%29p_c" alt="">
+<p>化簡之後得：</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=1%2B+3p_ap_c+%3D+2%28p_a+%2B+p_c%29+" alt="">
+<p>對於 C 來說，C 出手心，只有另外兩個人有一個人出手心才付錢，C 出手背，則另外倆人出手心才付錢：</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=p_ap_b+%3D+p_a%281-p_b%29+%2B+%281-p_a%29p_b" alt="">
+<p>化簡之後得：</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=3p_ap_b+%3D+p_a+%2B+p_b+" alt="">
+<p>現在就聯立解這三個式子，發現</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=p_a+%3D+1%2F2%2C+p_b+%3D+1%2C+p_c+%3D+0" alt="">
+<p>, 也就是說在納什均衡的時候，C 的均衡策略是出手背, B 的均衡策略是出手心，然後 A 以 1/2 的概率出手背和手心。</p>
+<p>這樣的話，A 是始終不用付錢的，因爲 B 和 C 的策略在均衡的時候是不同的；而Ｂ和 C 均有一半的概率付錢，完全取決於 A 是手心還是手背。</p>
+<p>這個結論可能很難讓人接受，但是考慮到納什均衡的定義，如果一個狀態，沒有人能夠通過改變的自己的策略獲利，那麼這個均衡不管多麼不可能，都是納什均衡。我們就來看看 B 和 C 能不能做的更好：</p>
+<ol><li>如果 C 不選擇手背，選擇手心，其他人策略不變，那麼顯然，C 在 A 選擇手背的時候要付錢，在 A 選擇手心的時候不付錢，依然是 1/2 的概率付錢；</li>
+<li>如果 B 不選擇手心，選擇手背，其他人策略不變，一樣的，B 會在 A 選擇手心的時候付錢，A 選擇手背的時候不付錢，還是 1/2 的概率；</li>
+</ol><p>所以我們就得到了一個這樣的納什均衡，A 是唯一一個隨機出手心手背的人，期望收益爲 0；而 B 出手心，C 出手背，B 和 C 的期望收益都爲 -0.5. 所以就可以回答題主的問題了，這是對 A 有很大傾斜的機制，均衡的時候 A 不但不用付錢，還有了隨機決定 B 和 C 誰付錢的權力。</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div><script type="“text/javascript”">window.daily=true</script>
