@@ -1,0 +1,65 @@
++++
+date = "2017-11-01T11:00:00"
+title = "一個普通程序員，如何通過自學向人工智能靠攏？"
+titleimage = "https://pic2.zhimg.com/v2-35c416ad7b2bb1514773a49860da8d01.jpg"
+ga = 110111
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title"></h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>本人碼農，從六月開始正式接觸機器學習（其實五年前的本科畢設就是在生物信息領域應用神經網絡的項目，但是非常淺薄），深吸一口氣，先要聲明“人之患在好爲人師”，我用的步驟只是適合我，下面的內容僅供參考。</p>
+<p><strong>第一步：複習線性代數。</strong>（學渣的線代忘了好多 -_-||）</p>
+<ul><li>懶得看書就直接用了著名的——<a href="http://open.163.com/special/opencourse/daishu.html">麻省理工公開課：線性代數</a>，深入淺出效果拔羣，以後會用到的 SVD、希爾伯特空間等都有介紹；</li>
+<li>廣告：邊看邊總結了一套筆記 <a href="https://github.com/zlotus/notes-linear-algebra">GitHub - zlotus/notes-linear-algebra: 線性代數筆記</a>。</li>
+</ul><p><strong>第二步：入門機器學習算法。</strong></p>
+<ul><li>還是因爲比較懶，也就直接用了著名的——<a href="http://open.163.com/special/opencourse/machinelearning.html">斯坦福大學公開課 ：機器學習課程</a>，吳恩達教授的老版 cs229 的視頻，講的非常細（算法的目標 -&gt;數學推演 -&gt;僞代碼）。這套教程唯一的缺點在於沒有介紹最近大火的神經網絡，但其實這也算是優點，讓我明白了算法都有各自的應用領域，並不是所有問題都需要用神經網絡來解決；</li>
+<li>多說一點，這個課程裏詳細介紹的內容有：一般線性模型、高斯系列模型、SVM 理論及實現、聚類算法以及 EM 算法的各種相關應用、PCA/ICA、學習理論、馬爾可夫系列模型。課堂筆記在：<a href="http://cs229.stanford.edu/materials.html">CS 229: Machine Learning (Course handouts)</a>，同樣非常詳細。</li>
+<li>廣告：邊看邊總結了一套筆記 <a href="https://github.com/zlotus/notes-LSJU-machine-learning">GitHub - zlotus/notes-LSJU-machine-learning: 機器學習筆記</a></li>
+</ul><p><strong>第三步：嘗試用代碼實現算法。</strong></p>
+<ul><li>依然因爲比較懶，繼續直接使用了著名的——<a href="https://www.coursera.org/learn/machine-learning/home/welcome">機器學習 | Coursera</a> ，還是吳恩達教授的課程，只不過這個是極簡版的 cs229，幾乎就是教怎麼在 matlab 裏快速實現一個模型（這套教程裏有神經網絡基本概念及實現）。這套課程的缺點是難度比較低，推導過程非常簡略，但是這也是它的優點——讓我專注於把理論轉化成代碼。</li>
+<li>廣告：作業參考 <a href="https://github.com/zlotus/Coursera_Machine_Learning_Exercises">GitHub - zlotus/Coursera_Machine_Learning_Exercises: Machine Learning by Andrew Ng from Coursera</a></li>
+</ul><p><strong>第四步：自己實現功能完整的模型</strong>——進行中。</p>
+<ul><li>還是因爲比較懶，搜到了 cs231n 的課程視頻 <a href="https://www.youtube.com/playlist?list=PLkt2uSq6rBVctENoVBg1TpCC7OQi31AlC">CS231n Winter 2016 - YouTube</a> ，李飛飛教授的課，主講還有 Andrej Karpathy 和 Justin Johnson，主要介紹卷積神經網絡在圖像識別 / 機器視覺領域的應用（前面神經網絡的代碼沒寫夠？這門課包你嗨到爆~到處都是從零手寫~）。這門課程的作業就更貼心了，直接用 Jupyter Notebook 佈置的，可以本地運行並自己檢查錯誤。主要使用 Python 以及 Python 系列的科學計算庫（Scipy/Numpy/Matplotlib）。課堂筆記的翻譯可以參考 <a href="https://zhuanlan.zhihu.com/p/22339097">智能單元 - 知乎專欄</a>，主要由知友杜客翻譯，寫的非常好~</li>
+<li>在多說一點，這門課對程序員來說比較走心，因爲這個不像上一步中用 matlab 實現的作業那樣偏向算法和模型，這門課用 Python 實現的模型同時注重軟件工程，包括常見的封裝 layer 的 forward/backward、自定義組合 layer、如何將 layer 組成網絡、如何在網絡中集成 batch-normalization 及 dropout 等功能、如何在複雜模型下做梯度檢查等等；最後一個作業中還有手動實現 RNN 及其基友 LSTM、編寫有助於調試的 CNN 可視化功能、Google 的 DeepDream 等等。（做完作業基本就可以看懂現在流行的各種圖片風格變換程序了，如 <a href="https://github.com/cysmith/neural-style-tf">cysmith/neural-style-tf</a>）另外，這門課的作業實現非常推崇 computational graph，不知道是不是我的幻覺……要注意的是講師 A.K 的語速奇快無比，好在 YouTube 有自動生成解說詞的功能，準確率還不錯，可以當字幕看。</li>
+<li>廣告：作業參考 <a href="https://github.com/zlotus/cs231n">GitHub - zlotus/cs231n: CS231n Convolutional Neural Networks for Visual Recognition (winter 2016)</a> （我的在作業的 notebook 上加了一些推導演算哦~可以用來參考:D）</li>
+</ul><p>因爲最近手頭有論文要撕，時間比較緊，第四步做完就先告一段落。後面打算做繼續業界傳奇 Geoffrey Hinton 教授的<a href="https://www.coursera.org/learn/neural-networks/home/welcome">Neural Networks for Machine Learning | Coursera</a>，再看看 NLP 的課程 <a href="http://cs224d.stanford.edu/">Stanford University CS224d: Deep Learning for Natural Language Processing</a>，先把基礎補完，然後在東瞅瞅西逛逛看看有什麼好玩的……</p>
+<p>PS：一直沒提諸如 TensorFlow 之類的神器，早就裝了一個（可以直接在 conda 中爲 Tensorflow 新建一個 env，然後再裝上 Jupyter、sklearn 等常用的庫，把這些在學習和實踐 ML 時所用到的庫都放在一個環境下管理，會方便很多），然而一直沒時間學習使用，還是打算先忍着把基礎部分看完，抖 M 總是喜歡把最好的留在最後一個人偷偷享受 2333333（手動奸笑</p>
+<p>PS**2：關於用到的系統性知識，主要有：</p>
+<ul><li>線性代數，非常重要，模型計算全靠它~一定要複習紮實，如果平常不用可能忘的比較多；</li>
+<li>高數 + 概率，這倆只要掌握基礎就行了，比如積分和求導、各種分佈、參數估計等等。（評論中有知友提到概率與數理統計的重要性，我舉四肢贊成，因爲 cs229 中幾乎所有算法的推演都是從參數估計及其在概率模型中的意義起手的，參數的更新規則具有概率上的可解釋性。對於算法的設計和改進工作，概統是核心課程，沒有之一。答主這裏想要說的是，當拿到現成的算法時，僅需要概率基礎知識就能看懂，然後需要比較多的線代知識才能讓模型高效的跑起來。比如最近做卷積的作業， 我手寫的比作業裏給出的帶各種 trick 的 fast 函數慢幾個數量級，作業還安慰我不要在意效率，豈可修！）</li>
+</ul><p>需要用到的編程知識也就是 Matlab 和 Numpy 了吧，Matlab 是可以現學現賣的；至於 Python，就看題主想用來做什麼了，如果就是用來做機器學習，完全可以一天入門，如果想要做更多好玩的事，一天不行那就兩天。（貼一個 Python/Numpy 的簡要教程：<a href="http://cs231n.github.io/python-numpy-tutorial/">Python Numpy Tutorial</a>，是 cs231n 的課堂福利。）</p>
+<p>我感覺機器學習的先修就這麼點，記得 Adobe 的馮東大神也說過機器學習簡直是 21 世界的黑科技——因爲理論非常簡單但是效果驚人的好。</p>
+<p>-</p>
+<p>既然提到好玩的，牆裂推薦 <a href="https://www.kaggle.com/">Kaggle: Your Home for Data Science </a>，引用維基上的介紹：</p>
+<blockquote>Kaggle 是一個數據建模和數據分析競賽平臺。企業和研究者可在其上發佈數據，統計學者和數據挖掘專家可在其上進行競賽以產生最好的模型。這一衆包模式依賴於這一事實，即有衆多策略可以用於解決幾乎所有預測建模的問題，而研究者不可能在一開始就瞭解什麼方法對於特定問題是最爲有效的。Kaggle 的目標則是試圖通過衆包的形式來解決這一難題，進而使數據科學成爲一場運動。</blockquote>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div><script type="“text/javascript”">window.daily=true</script>
