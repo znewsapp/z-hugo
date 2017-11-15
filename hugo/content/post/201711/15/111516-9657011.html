@@ -1,0 +1,67 @@
++++
+date = "2017-11-15T16:00:00"
+title = "讓 Valve 修 bug 寫文道歉，這位選手真是前無古人後無來者"
+titleimage = "https://pic4.zhimg.com/v2-62a792088ccd05a3b0480a0f8e9b0727.jpg"
+ga = 111516
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title">有沒有爲了選手修改遊戲 / 運動項目的事情？</h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>Loda，一個 Valve 寫文道歉的選手</p>
+<p>故事發生在 2015 年的 Esportal Dota 2 League，Alliance 對陣 NIP 的比賽。</p>
+<p><strong>故事背景</strong></p>
+<p>Loda 操刀大魚人，想從陰影中跳踩謎團。</p>
+<p>結果 ---- 大魚空踩了。</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-67d1edf96f2be7a989d6864b5fb294ba_b.jpg" alt="">
+<p><strong>問題分析</strong></p>
+<p>好多觀衆嘲笑 Loda 先踩後跳的操作，但真的是 Loda 太菜了嗎？</p>
+<p><strong>事實上，這是尋路機制的 bug 和轉身機制導致的。</strong></p>
+<ul><li>斯拉達下達了在樹林處停止的命令，但由於尋路機制的 bug，導致<strong>生成路徑的最後一步包含了一個不該有的轉身動作</strong>；</li>
+<li>由於大部分英雄使用技能 / 物品時需要面向目標方向 11.5°以內，因此錯誤的轉身動作導致大魚背離跳刀的目標位置，因此跳刀未正常使用出來；</li>
+<li>在大魚轉身完畢使用跳刀前，大魚下達了踩的指令，<strong>這個命令覆蓋了跳刀的指令</strong>，因此便出現了原地踩的情況。</li>
+</ul><p>下面的視頻中，你將看到 Loda 的操作是沒有問題的，致命的、錯誤的轉身動作導致了這個失誤。</p>
+<p><iframe src="https://vdn.vzuu.com/daily_mp4/40aa738a-c612-11e7-9b29-0242ac112a15None.mp4?auth_key=2141454124-0-0-285d691a6d29077c3c04cbf4efd63772&amp;expiration=2141454124&amp;disable_local_cache=0" width="320" height="180" frameborder="0" allowfullscreen></iframe></p>
+<p><strong>問題解決</strong></p>
+<p>在 2015 年 3 月 6 日，valve 修復了尋路機制 bug，並專門寫了一篇博客解釋這個 bug 並向 Loda 道歉（地址在此：<a href="http://blog.dota2.com/2015/03/various-pathfinding-fixes/">Various Pathfinding Fixes</a>）：</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-c7dfbd90f1a1d05a22f4185464ab4c3a_b.jpg" alt="">
+<p>但是事情還沒完。</p>
+<p>不知道大家想過沒有，爲什麼轉身中下達的命令（踩）會取代產生轉身的命令（跳）？</p>
+<p>這是因爲在 6.84 以前，若你沒有面向目標或位置（在施法角度以外），但目標或位置在施法距離內，對他或該位置施放技能時，你的英雄會先轉身，而這個轉身命令將<strong>進入遊戲內的命令序列</strong>中。這就意味着一旦施法動作開始，在此轉身期間如果你對英雄作出其他指令，那麼這個轉身指令會被打斷，並且執行後作出的指令。</p>
+<p>而則 6.84 則改掉了這個機制。從 6.84 開始，只要英雄進入了施法距離開始轉身施法，再發出其他的指令也會添加到轉身之後等待執行。</p>
+<p>這個細微的改動主要是影響閃爍匕首，在這之前如果你在施法角度外時，要進行閃爍並施放技能，那就很容易意外取消你的閃爍指令（因爲閃爍匕首沒有施法前搖）。</p>
+<p>在下面的視頻中，你將看到如果大魚轉身時下達了其他指令，轉身並不會被打斷，後下達的命令會存貯在隊列中，在上一個指令完成後生效。</p>
+<p><iframe src="https://vdn.vzuu.com/daily_mp4/acdbb150-c61b-11e7-bbda-0242ac112a08None.mp4?auth_key=2141450304-0-0-382ab77c8afd5b2cc7d11af24633faab&amp;expiration=2141450304&amp;disable_local_cache=0" width="320" height="180" frameborder="0" allowfullscreen></iframe></p>
+<p>更新日誌在此：<a href="http://www.dota2.com/684">Dota 2 - 6.84 Gameplay Update</a></p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-02bd92de2408237ca8e40615f0d3e408_b.jpg" alt="">
+<p>因爲一個選手修復了一個 bug 並修改了一個機制，Loda 真是前無古人後無來者。</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div><script type="“text/javascript”">window.daily=true</script>
