@@ -1,0 +1,86 @@
++++
+date = "2017-11-20T07:00:00"
+title = "Atlas 機器人會跳躍、旋轉、後空翻，這背後的技術是什麼？"
+titleimage = "https://pic3.zhimg.com/v2-42b3513da24602a8c73e351a7fb97d8a.jpg"
+ga = 112007
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+<div class="question">
+<h2 class="question-title">嘗試揭開 Boston Dynamics 新發布 Atlas 後空翻的面紗——其背後的技術淺析</h2>
+<div class="answer">
+
+
+
+<div class="content">
+<p>2017 年 11 月 16 日，一段 Atlas 跳躍、旋轉、後空翻的視頻幾乎驚豔了整個機器人圈，各大媒體紛紛做了報道，我也在 <a class="internal" href="https://www.zhihu.com/question/68242379">如何看待 Boston Dynamic 2017.11.16 新發布的機器人 Atlas 視頻？</a> 發表了情懷感言，當然只有情懷是不夠的，作爲技術工科男，還是應該多思考下其背後到底有什麼技術。</p>
+<p>還是情懷一下：BD 的這段視頻可以說是冰凍三尺非一日之寒，不信的話，你來看看這段視頻：<a class=" wrap external" href="http://link.zhihu.com/?target=http%3A//v.youku.com/v_show/id_XMjQ2OTk2OTU2%3D%3D.html%3Fsharefrom%3Diphone%26sharekey%3D759756826db830fc05e1368a7de588434%26from%3Dtimeline%26isappinstalled%3D0%26source%3D" target="_blank" rel="nofollow noreferrer">let robot in MIT 麻省理工學院 腿實驗室的早期作品 單足 雙足 四足 跳躍機器人</a>，更多研究成果和視頻可以看：<a class=" wrap external" href="http://link.zhihu.com/?target=http%3A//www.ai.mit.edu/projects/leglab/home.html" target="_blank" rel="nofollow noreferrer">MIT Leg Laboratory</a>。這個是三十年前的故事，若想了解如今的 BD，看看這個網站：<a class=" wrap external" href="http://link.zhihu.com/?target=https%3A//www.bostondynamics.com/" target="_blank" rel="nofollow noreferrer">Boston Dynamics is changing your idea of what robots can do. | Boston Dynamics</a>。</p>
+<p>近幾年 BD 的產品還是很多的，包括 Handle、SpotMini、Atlas、Spot、LS3、WildCat、BigDog、SandFlea 和 RHex，詳情見<a class=" wrap external" href="http://link.zhihu.com/?target=https%3A//www.bostondynamics.com/robots" target="_blank" rel="nofollow noreferrer">Boston Dynamics | Boston Dynamics</a>。知乎中也有大神講解了<a class="internal" href="https://www.zhihu.com/question/48160959?from=profile_question_card">波士頓動力是一傢什麼性質的公司?</a>。</p>
+<p>BD 是 Marc Raibert（<a class=" wrap external" href="http://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Marc_Raibert" target="_blank" rel="nofollow noreferrer">Marc Raibert - Wikipedia</a>）離開 MIT LegLab 之後創立的公司，Marc Raibert 於 1980 年在 CMU 創建了 Leg Lab，1986 年離開 CMU，去了 MIT，直到 1995 年。1992 年，他創建了 Boston Dynamic，a simulation and robotics company。在創建公司之後，他們服務過包括美國國防高級研究計劃局（DARPA）在內的很多軍方機構，甚至獲得了國防部幾千萬美金的投資。此時，BD 與 Gill Pratt 有分不開的聯繫，Gill Pratt 是 Marc Raibert 的學生。而 Gill Pratt 是前 DARPA 機器人挑戰賽的負責人，因此 BD 一直得到 DARPA 的投資也是情理之中。BD 於 2013 年被谷歌收購，但是 2016 年傳出豐田要接手谷歌旗下的 BD 的消息（<a class=" wrap external" href="http://link.zhihu.com/?target=https%3A//baijia.baidu.com/s%3Fold_id%3D479403" target="_blank" rel="nofollow noreferrer">豐田接手谷歌旗下波士頓動力６大原因 - 百家號</a>），這個時候 Gill Pratt 離開了 DARPA，是豐田研究院（TOYOTA Research Institution，TSI）的負責人。後來消息不了了之。2017 年，BD 被軟銀（SoftBank）收購。</p>
+<p>書歸正傳，在大概瞭解的 BD 後，下面回顧下 Atlas 的經典動作 - 後空翻。</p>
+<p><iframe src="https://vdn.vzuu.com/daily_mp4/267549cc-cccf-11e7-a392-0242ac112a13None.mp4?auth_key=2141827034-0-0-109c203f4c5e8fade599cb79e68a7b22&amp;expiration=2141827034&amp;disable_local_cache=0" width="320" height="180" frameborder="0" allowfullscreen></iframe></p>
+<hr><p>在介紹 Atlas 後空翻的技術之前，先來介紹些預備知識。</p>
+<p><strong>1. Atlas 屬於 Limbed system（Spring Handbook of Robotics 的 P419-441）的一種類型，貼幾張圖片吧。</strong></p>
+<img class="content-image" src="https://pic1.zhimg.com/v2-043b6ea952e5ed338fd59066b22b098c_b.jpg" alt="">
+<img class="content-image" src="https://pic4.zhimg.com/v2-4d6c17b5fd7c89894f73ca4c5c975df3_b.jpg" alt="">
+<img class="content-image" src="https://pic3.zhimg.com/v2-aa9ff206038205ce2c1f2bf75960f3d6_b.jpg" alt="">
+<img class="content-image" src="https://pic3.zhimg.com/v2-ba158c2b50a8be18e6e54183279f5e1e_b.jpg" alt="">
+<img class="content-image" src="https://pic2.zhimg.com/v2-294b5a177fc91ebb514c4c4aff179d05_b.jpg" alt="">
+<img class="content-image" src="https://pic1.zhimg.com/v2-03f27081b94fe5ce0061e0c3cd8f818c_b.jpg" alt="">
+<img class="content-image" src="https://pic2.zhimg.com/v2-06e0798c2910afb0c3727bc5773d0491_b.jpg" alt="">
+<img class="content-image" src="https://pic3.zhimg.com/v2-afac58fef160261220a5381dbe6abdd2_b.jpg" alt="">
+<img class="content-image" src="https://pic1.zhimg.com/v2-af654d80afba5c5c23d38cb2923532ac_b.jpg" alt="">
+<img class="content-image" src="https://pic1.zhimg.com/v2-0467fb0f44d45784cebb0ebc02418298_b.jpg" alt="">
+<p><strong>2. 進一步細化，Atlas 屬於 Legged Robots（Spring Handbook of Robotics 的 P1203-1263）。</strong></p>
+<p><strong>Altas 的難點並不是後空翻這個動作，難點是在後空翻前的運動規劃和接觸地面後的控制（例如如何保持平衡，如何控制接觸力等）。</strong>（One of the major difficulties in making a legged robot walk or run is keeping its balance: where should the robot place its feet, how should it move its body in order to move safely in a given direction, even in case of strong perturbations? This difficulty comes from the fact that contact forces with the environment are an absolute necessity to generate and control locomotion, but they are limited by the mechanical laws of unilateral contact）。</p>
+<p><strong>1）The Dynamic of Legged Locomotion</strong></p>
+<p>Atlas 最爲關鍵的是動力學建模，一般根據 Lagrangian 和 Newton and Euler 建立模型，來一段貼圖：</p>
+<img class="content-image" src="https://pic2.zhimg.com/v2-f7bd6c45c7dfc85da7b60a145f56786d_b.jpg" alt="">
+<p>上面的這段話可以解釋後空翻實際並不難，下面來解釋：</p>
+<p>在 Flight Phases，Atlas 並沒有與環境接觸，因此沒有任何的接觸力 f_i，此時牛頓方程簡化爲：</p>
+<img class="content-image" src="https://pic1.zhimg.com/v2-148532ac7093b0b9e5988feeee455190_b.jpg" alt="">
+<p>在空中的過程實際是個拋物線運動，因此沒有辦法在空中改變 Atlas 的運動。上式中的歐拉公式可以簡化爲：</p>
+<img class="content-image" src="https://pic2.zhimg.com/v2-5f2a19ae1b030348b31b52d37201e8c1_b.jpg" alt="">
+<p>在這種情況下，Atlas 既可以控制關節的運動，也可以控制整體的旋轉，前提是在落地之前。</p>
+<img class="content-image" src="https://pic2.zhimg.com/v2-fa415ccb13159ed42cc9a0df6c1a2ca1_b.jpg" alt="">
+<p>綜上所述，在空中運動過程中，Atlas 無法改變運動，但是可以改變姿態，也就是後空翻或是前空翻等複雜動作，只要在落地之前完成動作即可，當然跳以前也需要做步態和運動等的規劃。</p>
+<p><strong>2）In Contact with the Ground</strong></p>
+<p>接觸面包括了 flat ground 或是 multiple surfaces 等，視頻中的接觸面近似 flat，若是 multiple surfaces，在控制上將會更爲複雜。</p>
+<p>無論是什麼樣的接觸面，Atlas 與地面接觸時的瞬間接觸力是非常大的，因此對電機有非常高的要求，BD 很聰明，選用了液壓伺服控制。若是電機的話，可能分分鐘爆掉。即使是液壓伺服控制，也要考慮主動或是被動柔順的控制。</p>
+<p>個人覺得落地後的平衡相比於 walk 或是 run 的平衡相對簡單，若是能將 walk 或是 run 過程中的平衡控制好，也許落地後的平衡相對較爲容易，但是在跳躍之後與地面接觸時的力控制就變成了難點。</p>
+<p>在空中的時間設計尤爲重要，若是時間較短，Atlas 完不成空翻動作；若是時間較長，Atlas 需要不停地調整姿態，以保證在接觸地面前做好平衡的動作。</p>
+<p><strong>當然整個過程沒有那麼簡單，下面給出參考文獻，有興趣的朋友可以精讀下面的內容（Spring Handbook of Robotics 的 P1206-1263）。</strong></p>
+<p><strong>① In Contact with a Flat Ground：The Center of Pressure. In Contact with Multiple Surfaces.</strong></p>
+<p><strong>② Contact Models.</strong></p>
+<p><strong>③ Compliant Contact Models.</strong></p>
+<p><strong>④ Rigid Contact Models.</strong></p>
+<p><strong>⑤ Hybrid and Nonsmooth Dynamics.</strong></p>
+<p><strong>⑥ Stability Analysis - Not Falling Down.</strong></p>
+<p><strong>⑦ Generation of Dynamic Walking and Running Motions.</strong></p>
+<p><strong>⑧ Motion and Force Control.</strong></p>
+<p><strong>⑨ Towards Move Efficient Walking.</strong></p>
+<p><strong>⑩ Diffenert Contact Behaviors。</strong></p>
+<p><strong>內容實在是太多，不可能通過一篇文章解釋清楚，所以只給出了大概的解釋和內容，起到拋磚引玉的效果。</strong></p>
+<p><strong>參考文獻：</strong>Siciliano B, Khatib O. Springer Handbook of Robotics[J]. Springer Handbook of Robotics, 2016.</p>
+
+
+
+</div>
+</div>
+</div>
+
+
+</div>
+</div><script type="“text/javascript”">window.daily=true</script>
