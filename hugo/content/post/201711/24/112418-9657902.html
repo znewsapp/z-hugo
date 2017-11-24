@@ -1,0 +1,86 @@
++++
+date = "2017-11-24T18:00:00"
+title = "按下電源鍵那一刻起，你電腦裏已經同時發生了好多事"
+titleimage = "https://pic3.zhimg.com/v2-8c0e6cb34b4f4a5ffedb0f22510a84ba.jpg"
+ga = 112418
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+<div class="question">
+<h2 class="question-title">按下電源鍵後發生了什麼？電腦是如何優雅地開機的？</h2>
+<div class="answer">
+
+
+
+<div class="content">
+<p>一個程序是如何開始運行的呢？這個問題，一千個人有一千種回答。電腦用戶說：“雙擊程序圖標就行了啊。”；初級程序員信心滿滿的回答：“是從 main 函數開始執行的。”；高級程序員也許會和你聊到 c 運行時庫，那裏纔是程序編譯運行的第一條指令；而熟悉操作系統的專家卻並不知道如何說起，程序加載器、重定位、堆和棧的建立、進程和線程的創建等等細節閃過腦海，哪裏纔是真正的源頭呢？</p>
+<p>同樣問道計算機是如何啓動的，也許答案就是按下電源鍵而已。但在那個簡單到極致的動作後面卻隱藏了複雜的機理。啓動的開始並不僅僅是操作系統引導，亦或 BIOS 運行，甚至 CPU 在 reset vector 執行第一條指令之前，很多事情已經發生了。正如地球生命的發端並不由人類的到來而伊始，祕密隱藏在遠古而不爲人知的遠古時代。讓我們順着時間回溯，站在一切發生的起點：“電源鍵按下”，通過時間的流轉，梳理其中所有的硬件軟件過程，來深入瞭解計算機的工作原理。</p>
+<p><strong><strong>史前時代：上電時序</strong></strong></p>
+<p>上電時序，也叫做 Power-up Sequence，是指電源時序關係。它牽扯到諸多計算機部件，在正式開始時間之旅之前，我們來介紹一下所有參與的小夥伴們。</p>
+<img class="content-image" src="https://pic2.zhimg.com/v2-2608b5d26d0e6167c16899e44706981d_b.jpg" alt="">
+<p><strong>電源</strong></p>
+<p>ATX 電源提供 +12V、-12V、+5V、-5V、+3V 和 +5VSB 等六種電壓。也就是我們圖上的兩個白色的電源接入口。主板其他的不同電壓是主板上的變壓線路轉換過來的，他們包括 +3VSB、+1.5VSB、1.8VDual、2.5VDual、3VDual、VCore、VTDDR 等等很多。</p>
+<p>+12V 主要是給 CPU 內核供電，它可以單獨給 PCIe 設備供電，包括顯卡等等。+5V 應用最廣，給 USB 等等外設供電。+5VSB 等各種帶 SB 的電壓，是提供 Stand By 的供電，即在 S3 Sleep 時提供電力，保障喚醒和刷新。</p>
+<p>主板右邊中間那個鈕釦電池，它叫做 RTC 電源，永不掉電。除非電池沒電並且沒接任何外部電源。 RTC 用以保持機器內部時鐘的運轉和保證 CMOS 配置信息在斷電的情況下不丟失。</p>
+<p><strong>時鐘</strong></p>
+<p>電腦中的 CPU，AGP、PCI 插槽、SATA、USB 端口和 PS/2 端口等在通信速度上有很大差異，所以需要提供不同的時鐘頻率。由 ck410、ck505 和 iCLK 等芯片將原先散佈在不同地方的晶振和分頻電路整合在一起，爲 CPU、SATA、PCI、USB 等等設備提供基礎頻率。</p>
+<p><strong>電源時序控制芯片 / 電路</strong></p>
+<p>主板對於上電的要求是很嚴格的，各種上電的必備 條件都要有着先後的順序，一項條件滿足後纔可以轉到下一步，如果其中的某一個環節出現了故障，則整個上電過程不能繼續下去。誰來控制和協調整個時序過程呢？不同的主板、芯片組、代際之間都有不同的方案，在筆記本上過去經常採用 EC 的方案、臺式機則很多用 SIO 或者定製芯片。現在很多電源時序控制被整合進了 ME 中，在面向嵌入式設備的 Atom 系列主板上則越來越多的引入了在手機等設備上常用的 PMIC。</p>
+<p><strong>時間開始</strong></p>
+<p>我們通過一個古老的例子來了解一下開機的整個過程：</p>
+<img class="content-image" src="https://pic3.zhimg.com/v2-2278dff7860f5f706da5d595d6ddb4ea_b.jpg" alt="">
+<ol><li>在 G3（未接電源）情況下，RTC 電源提供 RTC_RST#和 VCC_RTC 電源給南橋。</li>
+<li>插入電源或者電池。系統進入 G2，S5 的狀態。EC 檢查電源的可靠性，併發送 PM_RSMRST#通知南橋各種 SB 電壓已經準備完畢。南橋復位，部分功能 SB 功能激活，進入待機狀態。</li>
+<li><strong>用戶按下電源鍵，時間開始。</strong></li>
+<li>EC 收到 PWRSW#信號，通過 PM_PWRBTN#通知南橋。南橋收到 PM_PWRBTN#信號後依次拉高 SLP_S5#，SLP_S4#，SLP_S3#信號給 EC。</li>
+<li>EC 發出 PCON#給 ATX 電源。</li>
+<li>ATX 電源接到低電平的 PSON#信號後，開始工作，發出各路基本電壓給主板上的各個元件。</li>
+<li>基本電壓變換的其他電壓也被轉換出來。</li>
+<li>電源發出 PWROK#給 EC，EC 轉交給南橋和北橋（有的話）</li>
+<li>VRM 和 CPU 通訊，根據 VID 送出 Vcore</li>
+<li>VRM 發生 VRMPWRGD#給南橋，表示核心電壓 OK。</li>
+<li>南橋發送 PLT_RST#給北橋。</li>
+<li>南橋發送 PWRGOOD#給 CPU。</li>
+<li>北橋在收到 PLT_RST#信號後，1 秒鐘後發生 CPU_RST#，讓 CPU 復位</li>
+</ol><p>時序圖如下：</p>
+<img class="content-image" src="https://pic4.zhimg.com/v2-e0edcf87644dd4f4bbc8f7ef53c1ba67_b.jpg" alt="">
+<p><strong><strong>青銅時代：神祕消失的時間</strong></strong></p>
+<p>在 CPU 復位後，是不是要立刻跳到 reset vector 開始執行 BIOS 程序了呢？還沒有，pcode、on die rom 會在這個階段執行，TXT、boot guard 等安全保障措施也在這裏運行。</p>
+<p><strong><strong>城邦時代：UEFI 的四個階段</strong></strong></p>
+<p>CPU 終於開始執行 reset vector 的代碼了，這就進入了我們熟悉的 UEFI 的世界。我們之前已經有很多文章都有介紹 UEFI 的各個階段，這裏簡單回顧一下：</p>
+<img class="content-image" src="https://pic3.zhimg.com/v2-dc5dc520ffdb324601c8c7f772d4810a_b.jpg" alt="">
+<p>• 在 SEC 階段，系統從復位開始運行（由主機引導處理器取回的第一指令），通過初始化處理器高速緩存（Cache）來作爲臨時內存使用，我們有了堆棧，從而可以執行 c 程序，然後轉到 PEI 階段。</p>
+<p>• 在 PEI 最開始階段，僅少量棧和堆可用，我們需要找到並使能足夠我們使用的永久內存，通常是內存顆粒或內存條（DIMM），然後轉入 DXE。</p>
+<p>• DXE 階段有了永久存儲空間，真正開始負責初始化核心芯片，然後轉換到 BDS 階段。</p>
+<p>• 核心芯片初始化完成後 BDS 階段開始，並繼續初始化引導操作系統（輸入，輸出和存儲設備）所需的硬件。 縱觀 PI 的整個階段，BDS 對應的是“執行 UEFI 驅動程序模型”來引導 OS 這一過程。</p>
+<p>UEFI 引導階段步驟和驅動程序衆多，經過多年發展，核心代碼已經超過一百萬行，儼然已經是個獨立的小王國了。要理解 UEFI，<strong>必須理解 UEFI 的目的：初始化硬件，安全啓動操作系統，併爲操作系統提供統一的硬件抽象</strong>。所有紛繁複雜的驅動和表象後面，都在爲了這一目的服務。只要抓住這條主線，再遇到其他的知識點也就會豁然開朗了。</p>
+<p><strong><strong>近代和現代：引導程序和操作系統</strong></strong></p>
+<p>UEFI 會在 BDS 階段後加載操作系統引導程序，也就是 OS loader。不同的 OS 有不同的 Loader。一般用戶都十分熟悉，我們這裏不再贅述。</p>
+<p><strong>另外傳統 BIOS 和 BIOS 引導方式已經被淘汰</strong>。Intel 也宣佈對傳統 BIOS 兼容模式（CSM）在 2020 後不再支持（參考資料 1）。網上諸多 Int3、引導扇區等內容，除非對歷史有興趣，全部可以一笑而過了。</p>
+<p><strong><strong>結論</strong></strong></p>
+<p>按下電源鍵，CPU 並不是第一個得到通知並立刻執行代碼的。簡單的開機後面隱藏瞭如此豐富的內容，這是很多人想象不到的。很多主板，尤其是很多服務器主板，從按下電源鍵到 CPU 開始執行 UEFI 固件程序，期間經歷了很多隱藏的片段。這些片段可長可短，有的轉瞬即逝、有的卻讓人等上片刻。它們究竟是什麼，爲什麼存在，值得大家細細探究。</p>
+<p>至於按下電源鍵如何關機，見專欄另一篇文章：<a class="internal" href="https://zhuanlan.zhihu.com/p/27257961">按下電源鍵後發生了什麼？電腦是如何關機的？</a></p>
+<p><strong><strong>參考資料：</strong></strong></p>
+<p>[1]: <a class=" wrap external" href="http://link.zhihu.com/?target=http%3A//tech.sina.com.cn/roll/2017-11-18/doc-ifynwxum3322297.shtml" target="_blank" rel="nofollow noreferrer">Intel 計劃徹底封殺 Windows 7 系統：2020 年之前搞定</a></p>
+
+
+
+</div>
+</div>
+</div>
+
+
+</div>
+</div><script type="“text/javascript”">window.daily=true</script>
