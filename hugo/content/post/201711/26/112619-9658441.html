@@ -1,0 +1,60 @@
++++
+date = "2017-11-26T19:00:00"
+title = "在計算器上按 tan 89.9999 會得到 180/π，這是什麼巧合嗎？"
+titleimage = "https://pic1.zhimg.com/v2-499022a052277369f1d09449172abb40.jpg"
+ga = 112619
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title"></h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>Well...這個觀察力厲害了...</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-df19906958b87f5ee36a34284929f76a_b.jpg" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=1%C2%B0%3D%5Cfrac%7B%5Cpi%7D%7B180%7D%5Ctexttt%7Brad%7D" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Ctan+%2890%C2%B0-x%C2%B0%29" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=f%28x%29%3D%5Ccot+%5Cleft%28%5Cfrac%7B%5Cpi+x%7D%7B180%7D%5Cright%29" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=f%27%28x%29%3D-%5Cfrac%7B1%7D%7B180%7D+%5Cpi+%5Ccsc+%5E2%5Cleft%28%5Cfrac%7B%5Cpi+x%7D%7B180%7D%5Cright%29" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=f%27%27%28x%29%3D%5Cfrac%7B%5Cpi+%5E2+%7D%7B32400%7D%5Csin+%5Cleft%28%5Cfrac%7B%5Cpi+x%7D%7B90%7D%5Cright%29+%5Ccsc+%5E4%5Cleft%28%5Cfrac%7B%5Cpi+x%7D%7B180%7D%5Cright%29" alt="">
+<p>算死我了...所以泰勒展開式就是:</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=f%28x%29%3D%5Ctan+%5Cleft%28%5Cfrac%7B%5Cpi+%7D%7B2%7D-%5Cfrac%7B%5Cpi+x%7D%7B180%7D%5Cright%29%3D%5Cfrac%7B180%7D%7B%5Cpi+x%7D-%5Cfrac%7B%5Cpi+x%7D%7B540%7D%2BO%5Cleft%28x%5E3%5Cright%29" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=x%3D1%2F10000" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=f%5Cleft%28%5Cfrac%7B1%7D%7B10%5E4%7D%5Cright%29%3D%5Cfrac%7B18000%7D%7B%5Cpi+%7D-%5Cfrac%7B%5Cpi+%7D%7B54000%7D-0" alt="">
+<p>所以這就是數值一樣但是多四個零的原因了...</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-c1b5a76b936f20999a6753a290b0fda0_b.jpg" alt="">
+<p>當然其實計算器的 tan 是用 sin/cos 算得...</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=f%28x%29%3D%5Cfrac%7B1-%5Cfrac%7B%5Cpi+%5E2+x%5E2%7D%7B64800%7D%2B%5Cfrac%7B%5Cpi+%5E4+x%5E4%7D%7B25194240000%7D%2BO%5Cleft%28x%5E5%5Cright%29%7D%7B%5Cfrac%7B%5Cpi+x%7D%7B180%7D-%5Cfrac%7B%5Cpi+%5E3+x%5E3%7D%7B34992000%7D%2BO%5Cleft%28x%5E5%5Cright%29%7D" alt="">
+<p>省略高階無窮小然後化簡就是:</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=f%28x%29%3D%5Cfrac%7B180%7D%7B%5Cpi+x%7D%2B%5Cpi+x+%5Cleft%28%5Cfrac%7B90%7D%7B%5Cpi+%5E2+x%5E2-194400%7D-%5Cfrac%7B1%7D%7B720%7D%5Cright%29" alt="">
+<p>差別不大...高階項處理不同而已</p>
+<hr><p>但其實浮點的處理很複雜,還有一系列標準和過程, 導致在某個值之後會突變成別的東西...</p>
+<p>可以看看這個: <a href="https://www.zhihu.com/question/60522534">爲什麼 tan 90°拿計算器算出來是 1.63312394e16？</a></p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div><script type="“text/javascript”">window.daily=true</script>
