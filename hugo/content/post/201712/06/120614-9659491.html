@@ -1,0 +1,63 @@
++++
+date = "2017-12-06T14:00:00"
+title = "- 電腦手機又變慢了，都怪 CPU- 你還真是冤枉它了"
+titleimage = "https://pic2.zhimg.com/v2-e27d1ecb9debd52ebafae8cc460b856d.jpg"
+ga = 120614
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+<div class="question">
+<h2 class="question-title">CPU 能用多久？會不會因爲老化而變慢？</h2>
+<div class="answer">
+
+
+
+<div class="content">
+<p>電腦和手機用久了，都會越來越慢。“電腦老舊了。”大家都是這樣認爲的。就像人一出生就無可避免的滑向命運的終點，兒時的玩具會隨着我們長大而變舊和破損，CPU 作爲手機和電腦的心臟和大腦，會不會隨着我們使用而越來越慢，進而完全停止工作呢？相信我們很多人在腦海中偶爾會飄過類似的疑問。這是真的嗎？我們先來看看 CPU 的壽命是如何決定的。</p>
+<p><strong><strong>浴缸曲線模型（Bathtub Curve Model）</strong></strong></p>
+<p>和大多數半導體設備一樣，CPU 的可靠性我們可以通過失效率來衡量。如果我們以時間爲 x 軸，y 軸爲失效率。CPU 的失效率曲線如下：</p>
+<figure><img class="content-image" src="http://pic1.zhimg.com/v2-55256629860119acb674afa3132ea82c_b.jpg" alt=""><figcaption>失效率曲線</figcaption></figure><p>藍色的曲線叫做<strong>早期失效期</strong>(Infant Mortality)，表明 CPU 在開始使用時,失效率很高,但隨着產品工作時間的增加,失效率迅速降低。它的原因是由於製造和原材料帶來的缺陷。</p>
+<p>紅色的直線叫做<strong>隨機失效期</strong>(Random Failures)，它是質量缺陷、材料弱點、環境和使用不當等因素引起的。它是個常數，它在 CPU 整個生命週期是個常數。</p>
+<p>綠色曲線是<strong>耗損失效期</strong>(Wear-out)，它在前期極低，後期開始錯誤後極具提高。是老化失效的原因。</p>
+<p>綜合上面三種曲線，綜合失效率是紫色曲線，它呈現兩頭高，中間低的特徵，形狀像個浴缸，我們把它叫做<strong>浴缸曲線</strong>（Bathtub）模型。CPU 在生命週期中的這種特點，表現在開始時故障率很高，如果沒有問題，則可以穩定工作很久，到最後開始老化失效，故障率急劇升高。</p>
+<p><strong><strong>Burn-in</strong></strong></p>
+<p>許多人看到這裏都會大吃一驚：“什麼，CPU 早期失效率這麼高？是不是我剛買的 CPU 馬上就要壞了?”CPU 製造廠商並不希望大規模的退貨發生，畢竟所有 CPU 至少都有 3 年的質保期。CPU 廠商會封測期間，把 CPU 放入高溫的環境下洗個澡（heat soaking），並加上高壓。這樣幾個小時就相當於過了好幾周。在把 CPU 拿出來測試，不好的淘汰掉，好的就可以進入浴缸曲線的底部穩定期，才能出貨。這個工序叫做老化（Burn-in）。如圖：</p>
+<figure><img class="content-image" src="http://pic1.zhimg.com/v2-bbdfca009d66d33a4fef87a8ab2564c4_b.jpg" alt=""></figure><p>這樣挑選後 CPU 直接跳過早期失效期，進入了穩定期。大家的 CPU 纔會有 3 年質保。</p>
+<p><strong><strong>3 年之後呢，CPU 會降速嗎？</strong></strong></p>
+<p>就像超市裏的牛奶寫的保質期 3 天，實際上 5 天之後大多數牛奶還是可以喝的一樣。3 年質保只是最小值，實際上大部分 CPU 用上 7 年以上都是沒有問題的。那麼多年後進入<strong>耗損失效期</strong>(Wear-out)後 CPU 會怎麼樣呢？首先，CPU 的速度是恆定的，都是一個基頻乘以一個比例(Ratio)出來的。基頻現在 Intel CPU 一般是 100MHz，我們用的 3G CPU，Ratio 就是 30，下來剛好 3GHz。而基頻和 Ratio 在整個生命期是不變的，從而 CPU 運算速度是不變的。Wear out 的後果是出錯而不是降頻，而很多種出錯都會被 CPU 的錯誤檢測發現並報告或者糾正，詳情請參閱本專欄的另一篇文章<a class="internal" href="https://zhuanlan.zhihu.com/p/27827649">計算機硬件出錯了會發生什麼？</a>，如果發現出錯，就是 CPU 開始進入失效期，以後錯誤會越來越多。</p>
+<p><strong><strong>CPU 爲什麼會失效？</strong></strong></p>
+<p>實際上 CPU 失效的原因有好幾個，我們今後會專門撰文介紹。它們的統一特點就是高溫高電壓會加速失效。如圖：</p>
+<figure><img class="content-image" src="http://pic4.zhimg.com/v2-8428058ffee9510930a9ce3c392fddbb_b.jpg" alt=""><figcaption>失效與電壓的關係（來源 anandtech）</figcaption></figure><p>粉色的曲線是高溫曲線，黃色是正常溫度，而藍色則是配備了好的散熱系統。可以看出高溫和高電壓嚴重影響了 CPU 的失效率。這也是爲什麼超頻後不再享受質保的原因。</p>
+<p><strong><strong>結論</strong></strong></p>
+<p>CPU 使用長了並不會降頻，如果我們把電腦和手機變慢的罪魁禍首歸咎於 CPU，那真是錯怪它了。那麼爲什麼電腦手機會越用越慢呢？原因很多，軟件原因是安裝軟件越來越多等等；硬件原因也許就是風扇髒了，轉速慢了，造成溫度過高而降頻（<a class="internal" href="https://zhuanlan.zhihu.com/p/27624654">CPU 風扇停轉後會發生什麼？CPU 憑什麼燒不壞</a>）;或者 SSD 的空間滿了 / 沒有啓動 Trim（<a class="internal" href="https://zhuanlan.zhihu.com/p/27294558">雜說閃存番外：手機爲什麼越用越卡和閃存寫放大</a>）造成速度極大降低等等。</p>
+<p>最後強調一下 CPU 的 Wear-out 是隨着<strong>使用時間</strong>進行的。如果你把電腦放上幾年不動，CPU 並不會老化，反倒是 SSD 的內容丟失了（<a class="internal" href="https://zhuanlan.zhihu.com/p/27380955">雜說閃存番外：我們的數據存在固態硬盤上安全嗎？</a>）</p>
+<p>-</p>
+<p>其他 CPU 相關文章：</p>
+<p><a class="internal" href="https://zhuanlan.zhihu.com/p/29743431">CPU 製造的那些事之一：i7 和 i5 其實是孿生兄弟！？</a></p>
+<p><a class="internal" href="https://zhuanlan.zhihu.com/p/29767262">CPU 製造的那些事之二：Die 的大小和良品率</a></p>
+<p><a class="internal" href="https://zhuanlan.zhihu.com/p/30409360">爲什麼 CPU 的頻率止步於 4G?我們觸到頻率天花板了嗎？</a></p>
+<p><a class="internal" href="https://zhuanlan.zhihu.com/p/30513730">爲什麼晶圓都是圓的不是方的？</a></p>
+<p><a class="internal" href="https://zhuanlan.zhihu.com/p/30549356">爲什麼"電路"要鋪滿整個晶圓？</a></p>
+<hr><p>歡迎關注微信公衆號：UEFIBlog</p>
+
+
+
+</div>
+</div>
+</div>
+
+
+</div>
+</div><script type="“text/javascript”">window.daily=true</script>
