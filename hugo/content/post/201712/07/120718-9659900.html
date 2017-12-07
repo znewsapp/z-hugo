@@ -1,0 +1,138 @@
++++
+date = "2017-12-07T18:00:00"
+title = "發現一個神奇的數：「37」"
+titleimage = "https://pic1.zhimg.com/v2-b441c1d782c2f5a8ea7a82e50d76ea9c.jpg"
+ga = 120718
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title"></h2>
+
+<div class="answer">
+
+<div class="content">
+<p>按計算器 1-9 的數字排列，</p>
+<p>從任意數字開始以<strong>順時針或逆時針</strong>的順序<strong>依次</strong>按出一個六位數<strong>構成矩形，</strong></p>
+<p>爲什麼所有按出的 6 位數都能被 37 整除?</p>
+<img src="https://pic3.zhimg.com/50/v2-ec99a24afe663d522652b79477042876_hd.jpg" alt="">
+</div>
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="question">
+<h2 class="question-title">爲什麼九宮格順或逆時針，任選 6 個數字都能被 37 整除？</h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>有時候我覺得 Zhihuer 觀察力都是神級的，想我當年也是計算器玩壞好幾個的人，怎麼就沒發現這個呢……</p>
+<p>作爲這個月以來<strong>唯一不是作業 &amp; 釣魚的提問</strong>， 我就認真回答吧。</p>
+<p>這個問題非常有趣。</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Ccolor%7Bblue%7D%7B%E5%A4%A7%E5%AE%B6%E5%85%88%E7%8E%A9%E4%B8%80%E4%B8%8B%E6%89%BE%E6%89%BE%E5%8F%8D%E4%BE%8B%7D" alt="">
+<p>我會給出我完整的思路，而<strong>不單單是解答。</strong></p>
+<hr><p><strong>表面原因</strong></p>
+<p>37 是個很有趣的數字。</p>
+<p>首先</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=999%3D3%5E3%C3%9737" alt="">
+<p>，這就給出了一種判斷 37 倍數的方法。</p>
+<p>一個數三位三位反覆累加，如果最終的三位數能被 37 整除那麼原來的數字能被 37 整除。</p>
+<p>是不是和</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=3" alt="">
+<p>的倍數的判斷有點像?正常，</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=9%3D3%5E2" alt="">
+<p>嘛。</p>
+<blockquote>引證一<br>Trivial !!!</blockquote>
+<p>其次能被 37 整除的</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=3n" alt="">
+<p>位數都有循環整除性。</p>
+<blockquote>引證二: 以三位數爲例<br><br>設三位數爲 <img class="content-image" src="http://www.zhihu.com/equation?tex=%5Coverline%7Babc%7D" alt=""> ，用表達式表示爲： <img class="content-image" src="http://www.zhihu.com/equation?tex=%5Coverline%7Babc%7D%3D100a%2B10b%2Bc" alt=""> ，<br>因爲是 37 的倍數，則可表示爲: <img class="content-image" src="http://www.zhihu.com/equation?tex=100a%2B10b%2Bc%3D37k%2Ck%5Cin%5Cmathbb%7BZ%7D" alt=""><br>這個數乘 11 得 <img class="content-image" src="http://www.zhihu.com/equation?tex=1100a%2B110b%2B11c%3D11%C3%9737k" alt=""> ，它仍舊是 37 的倍數 <br><br>另一方面三位數 <img class="content-image" src="http://www.zhihu.com/equation?tex=%5Coverline%7Bcab%7D" alt=""> 可表示爲： <img class="content-image" src="http://www.zhihu.com/equation?tex=100c%2B10a%2Bb" alt=""> ，<br>這個數與 <img class="content-image" src="http://www.zhihu.com/equation?tex=1100a%2B110b%2B11c" alt=""> 的和爲:<br><img class="content-image" src="http://www.zhihu.com/equation?tex=1110a%2B111b%2B111c%3D111%C3%97%2810a%2Bb%2Bc%29%3D37%C3%973%C3%97%2810a%2Bb%2Bc%29" alt=""><br>因此 <img class="content-image" src="http://www.zhihu.com/equation?tex=%5Coverline%7Bcab%7D" alt=""> 也是 37 的倍數， 同理 <img class="content-image" src="http://www.zhihu.com/equation?tex=%5Coverline%7Bbca%7D" alt=""> 也是 37 的倍數。<br>同理可證 <img class="content-image" src="http://www.zhihu.com/equation?tex=3n" alt=""> 位數都有這種循環整除性。</blockquote>
+<p>整除 3，6，9 的時候這個性質也能叫全排整除性……</p>
+<p>其他就沒有了，只能循環整除了。</p>
+<hr><p><strong>實際原因</strong></p>
+<p>以上是我本來就知道的， 雖然這麼解釋有點怪怪的</p>
+<blockquote><strong>怎麼計算器的排列正好就能排出這麼個數呢?</strong></blockquote>
+<p>但是當我真的打開計算器開始玩之後我發現上面被表面現象所迷惑了。</p>
+<p>我們來透過現象看本質。</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-cfbc8b65060394e91fd252616028a2b8_b.jpg" alt="">
+<p>按照題主的說法。</p>
+<p>如圖紅線選擇三個數字，896，後面可以接 325 或者 547。</p>
+<p>可以驗證，這兩個都能被 37 整除</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cbegin%7Baligned%7D+%7B%5Ccolor%7Bred%7D%7B896%7D%7D%5C+%7B%5Ccolor%7Bblue%7D%7B325%7D%7D%2F37+%3D+24225%5C%5C+%7B%5Ccolor%7Bred%7D%7B896%7D%7D%5C+%7B%5Ccolor%7Bblue%7D%7B547%7D%7D%2F37+%3D+24231%5C%5C+%5Cend%7Baligned%7D" alt="">
+<p>然後我突然想到，選 214 會怎麼樣?</p>
+<p>也可以?那 658 呢?也可以?!</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cbegin%7Baligned%7D+%7B%5Ccolor%7Bred%7D%7B896%7D%7D%5C+%7B%5Ccolor%7Bgreen%7D%7B214%7D%7D%2F37+%3D+24222%5C%5C+%7B%5Ccolor%7Bred%7D%7B896%7D%7D%5C+%7B%5Ccolor%7Bgreen%7D%7B658%7D%7D%2F37+%3D+24234%5C%5C+%5Cend%7Baligned%7D" alt="">
+<p>そうですね，我思路可能跑偏了……</p>
+<hr><p>用我之前說的那種判別法試試:</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cbegin%7Baligned%7D+%26%7B%5Ccolor%7Bred%7D%7B896%7D%7D%2B%7B%5Ccolor%7Bblue%7D%7B325%7D%7D%3D1221%5Cto222%5C%5C+%26%7B%5Ccolor%7Bred%7D%7B896%7D%7D%2B%7B%5Ccolor%7Bblue%7D%7B547%7D%7D%3D1443%5Cto444%5C%5C+%26%7B%5Ccolor%7Bred%7D%7B896%7D%7D%2B%7B%5Ccolor%7Bgreen%7D%7B214%7D%7D%3D1110%5Cto444%5C%5C+%26%7B%5Ccolor%7Bred%7D%7B896%7D%7D%2B%7B%5Ccolor%7Bgreen%7D%7B658%7D%7D%3D1554%5Cto555%5C%5C+%5Cend%7Baligned%7D" alt="">
+<p>都是 111 的倍數?</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=111%3D37%C3%973" alt="">
+<p>，自然也是 37 的倍數。</p>
+<p>說的是呢，我思路確實跑偏了。。。</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=999%3D111%C3%973%5E2" alt="">
+<p>於是整除性質與</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=37" alt="">
+<p>相似。</p>
+<p>考慮這樣一個數陣:</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cbegin%7Barray%7D%7Blll%7D+%5Csquare+%26+a+%26+a%2B1+%5C%5C+b%2B2+%26+%5Csquare+%26+a-2+%5C%5C+b-1+%26+b+%26+%5Csquare+%5C%5C+%5Cend%7Barray%7D+" alt="">
+<p>這個數字是:</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Coverline%7Ba%28a%2B1%29%28a-2%29b%28b-1%29%28b%2B2%29%7D" alt="">
+<p>它的三分數位和是:</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cbegin%7Baligned%7D+%26100a%2B10%28a%2B1%29%2B%28a-2%29%5C%5C+%2B%26100b%2B10%28b-1%29%2B%28b-2%29%5C%5C+%3D%26111a%2B8%2B111b-8%5C%5C+%3D%26111%28a%2Bb%29%5C%5C+%5Cend%7Baligned%7D" alt="">
+<p>哦！原來如此……</p>
+<p>如果前三個數是</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Coverline%7Ba%28a%2Bp%29%28a%2Bq%29%7D" alt="">
+<p>那後三個數就選</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Coverline%7Bb%28b-p%29%28b-q%29%7D" alt="">
+<p>於是六位數</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Coverline%7Ba%28a%2Bp%29%28a%2Bq%29b%28b-p%29%28b-q%29%7D" alt="">
+<p>必定能被 3，9，27，37，111 整除。</p>
+<p>且有循環整除性!</p>
+<hr><p>等等，還沒結束， 這和手機的鍵盤排列有關嗎? 隨便換一個數陣都成立嗎?</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-8d6210dc661a3b4d9fc8d5050107d3b4_b.jpg" alt="">
+<p>考慮這樣兩個數字，957 486， 301 153。</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cbegin%7Baligned%7D+%26%7B%5Ccolor%7Bred%7D%7B957%7D%7D%2B%7B%5Ccolor%7Bred%7D%7B486%7D%7D%3D1443%5C%5C+%26%7B%5Ccolor%7Bblue%7D%7B301%7D%7D%2B%7B%5Ccolor%7Bblue%7D%7B153%7D%7D%3D454%5C%5C+%5Cend%7Baligned%7D" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=301%5C+153" alt="">
+<p>無法整除</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=111" alt="">
+<p>，爲什麼呢?</p>
+<p>因爲原來的鍵盤排列是等差數陣啊</p>
+<p>你想想 0 的正確位置是哪?</p>
+<p>3 下面!</p>
+<hr><p>一個數陣如果能保持平移不變性，旋轉不變性，鏡像不變性，那纔可以有這個神奇的現象!</p>
+<p>顯然等差數陣滿足這個條件。</p>
+<p>當然有些循環數陣對於某些模式也滿足條件。</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cbegin%7Barray%7D%7Bccccccccc%7D+%5Ccolor%7Bred%7D1+%26+2+%26+%5Ccolor%7Bred%7D3+%26+4+%26+5+%26+6+%26+7+%26+8+%26+9+%5C%5C+1+%26+2+%26+3+%26+4+%26+5+%26+6+%26+7+%26+8+%26+9+%5C%5C+1+%26+2+%26+%5Ccolor%7Bred%7D3+%26+4+%26+%5Ccolor%7Bred%7D5+%26+6+%26+7+%26+8+%26+9+%5C%5C+1+%26+2+%26+3+%26+4+%26+5+%26+6+%26+7+%26+8+%26+9+%5C%5C+1+%26+2+%26+3+%26+4+%26+%5Ccolor%7Bred%7D5+%26+6+%26+%5Ccolor%7Bred%7D7+%26+8+%26+9+%5C%5C+1+%26+2+%26+3+%26+4+%26+5+%26+6+%26+7+%26+8+%26+9+%5C%5C+1+%26+2+%26+3+%26+4+%26+5+%26+6+%26+7+%26+8+%26+9+%5C%5C+1+%26+2+%26+3+%26+4+%26+5+%26+6+%26+7+%26+8+%26+9+%5C%5C+1+%26+2+%26+3+%26+4+%26+5+%26+6+%26+7+%26+8+%26+9+%5C%5C+%5Cend%7Barray%7D" alt="">
+<blockquote>練習題:<br>考慮一個數前六位是 133557，你能寫出後六位使得這個 12 位數能被 37 整除嗎？</blockquote>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div><script type="“text/javascript”">window.daily=true</script>
