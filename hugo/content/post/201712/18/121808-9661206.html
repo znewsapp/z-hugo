@@ -1,0 +1,54 @@
++++
+date = "2017-12-18T08:00:00"
+title = "找手機、找鑰匙、找公交卡……這期間大腦裏發生了什麼？"
+titleimage = "https://pic3.zhimg.com/v2-519fc9ca72c711fa7c0592121b2c2e86.jpg"
+ga = 121808
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+<div class="question">
+<h2 class="question-title">真實場景下的視覺搜索</h2>
+<div class="answer">
+
+
+
+<div class="content">
+<p>我們每天從睜開眼睛開始，每時每刻都在做的一件事就是找東西，更書面化一點，視覺搜索。比如在雜亂無章的書桌上找鑰匙，在擁擠的食堂找同伴的面孔，在街道上找一個特定的店鋪，這時候你會意識到你在做這件事，因爲費勁。但大多時候，視覺搜索這件事發生地悄無聲息，你根本不會覺察到，比如你想打開一個桌面上的文件，你得先找到這個文件的位置。雖然這時候的搜索發生地非常自動化，但我們的大腦其實在這個過程中做了不少工作，就像我在一篇文章裏讀到的很喜歡的一句話，“The results presented here are in many ways a case study of one of the central lessons of cognitive science: that how effortless and natural a process feels is a poor guide to how much work is supporting that process beneath the surface. ”（大意：這個結果從多方面例證了認知科學的啓示：一個感覺起來自然不費勁的加工過程背後其實有大量的支持工作)。</p>
+<p>在視覺搜索這個任務以及背後的認知過程，心理學家 / 腦科學家的研究非常之多，也開始地很早。大多數的視覺搜索研究都採用比較簡單的範式（圖 1），比如在多個色塊中搜索一個不同顏色的色塊，在多個有一定朝向的線段中搜索一個不同朝向的線段，或者採用更復雜一點的刺激，搜索字母或者圖形等。這些採用簡單刺激的研究的好處在於剝離掉很多無關因素的影響，但相應地，和我們實際生活中的搜索任務相差較多。<strong>所以現在很多的研究開始關注真實場景下的視覺搜索（visual search in a real-world scene），這些研究結果也可以爲機器視覺提供支持：如何在機器上重建人類的視覺搜索能力。</strong></p>
+<figure><img class="content-image" src="https://pic3.zhimg.com/v2-0eb1f084c32b32b79df49b747d358b40_b.jpg" alt=""><figcaption>圖 1 快來找我呀！</figcaption></figure><p>那麼，真實場景下的視覺搜索研究和簡單的視覺搜索關注的問題有什麼不一樣呢？</p>
+<p><strong>第一：情境線索(contextual cues)</strong></p>
+<p>在簡單的視覺搜索任務中，目標（你要找的東西）出現的位置通常是隨機的，可能出現在場景中的任意位置。但是在真實場景下的視覺搜索任務，目標的可能位置是受到限制的。比如你要下面這張圖（圖 2）上找直升機，那麼你肯定會在天上（圖片的上方）去找，而不會從沙漠（圖片的下方）去找，這時候“天空”就是情境線索，限制了目標可能出現的位置。相反地，如果要去搜索吉普車，“沙漠”就成了情境線索。</p>
+<figure><img class="content-image" src="https://pic3.zhimg.com/v2-f506431afbbb2a18501b5a26270ea9b2_b.jpg" alt=""><figcaption>圖 2 找直升機 / 吉普車</figcaption></figure><p><strong>第二：物物共存關係(object-object occurrence)</strong></p>
+<p>物物共存關係指的是有些物體在真實生活中總是成對出現的 ，但你在搜索物體 a 的時候可以依賴於物體 b 的位置。如圖 3 所描述的，如果當物體（煙囪）沒有出現在預期的位置（房頂），而是出現在樹上的時候，視覺搜索成績就會下降。從眼動的數據（圖中的綠點）中，我們也可以看出被試從去預期的位置（房頂）搜索煙囪。</p>
+<figure><img class="content-image" src="https://pic2.zhimg.com/v2-adeab462fe13c7c006116bd523b3b562_b.jpg" alt=""><figcaption>圖 3 咦 煙囪去哪兒了？(Eckstein, 2011)</figcaption></figure><p>這兩個因素在我們真實的搜索中起到關鍵性的作用，因此在構建模型過程中納入這些簡單的視覺搜索範式沒有覆蓋的因素也是至關重要的。 Torralba 等人構建了一個基於情境線索的模型：情境引導模型（contextual guidance model, 圖 4）。</p>
+<figure><img class="content-image" src="https://pic3.zhimg.com/v2-f7803ee66ca7a59f9f39395d8152583b_b.jpg" alt=""><figcaption>圖 4 情境引導模型</figcaption></figure><p><strong>這個模型基於兩條通路：局部特徵通路和全局特徵通路。</strong></p>
+<p>局部特徵通路指的是獨立地計算各個空間位置的特徵，構建一個突顯地圖。這個突顯地圖的產生依賴於顏色、紋理等基本的特徵。從心理學的概念來講，這是自下而上的一個加工過程，我們的注意力總是不自覺地被突顯程度高的刺激吸引。多個腦成像的研究表明，這個自下而上的突顯地圖反映在從初級視覺皮層到頂葉區域（Li, 2002; Goldberg, Bisley,Powell, &amp; Gottlieb, 2006; Gottlieb, Kusunoki, &amp; Goldberg,1998)。而全局特徵通路計算的整個情境因素，從而提供目標可能出現的位置的信息。研究者希望通過這個模型來預測人在真實場景下的視覺搜索行爲。研究者發現，這個情境引導模型在預測人的早期的注視行爲上是較爲有效的，而且跟僅僅基於突顯地圖構建的模型比較來看也是更好的（圖 5）。</p>
+<figure><img class="content-image" src="https://pic2.zhimg.com/v2-8587728b392b3b630ca76c4a471a6edf_b.jpg" alt=""><figcaption>圖 5 黑：真實觀察者數據；紅：情境引導模型的預測數據；藍：基於突顯地圖的模型的預測數據</figcaption></figure><p>完。這篇文章沒有總結句。</p>
+<p>這篇文章的內容主要基於 Journal of vision 上的一篇綜述，很有意思的是這篇綜述的補充材料裏還有對三位現實生活中的視覺搜索專家（一名漁夫、一名放射科醫生、一名衛星圖像分析員）的採訪，可以說非常接地氣了。</p>
+<p>距離我上次寫專欄文章已經快五個月了（發現知乎的插入圖片功能好用了很多！），一方面是因爲忙於搬磚，一方面也是感到生動有趣地寫科普是一件很難的事情。令人高興的是，我的博士期間的第一篇文章昨天正式 online 了，所以今天也算心安理得地不務正業一下。與大家共勉～</p>
+<p>引用</p>
+<p>Eckstein, M. P. (2011). Visual search: a retrospective..<em>Journal of Vision</em>, 11(5), 14-14.</p>
+<p>Torralba, A., Oliva, A., Castelhano, M. S., &amp; Henderson, J. M. (2006). Contextual guidance of eye movements and attention in real-world scenes: The role of global features in object search. Psychological Review, 113,766–786.</p>
+<p>等。</p>
+
+
+
+</div>
+</div>
+</div>
+
+
+</div>
+</div><script type="“text/javascript”">window.daily=true</script>
