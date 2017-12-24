@@ -1,0 +1,145 @@
++++
+date = "2017-12-24T07:00:00"
+title = "爲了造出這傢伙，CS 出身的我把機械、電子、軟件都給學會了"
+titleimage = "https://pic4.zhimg.com/v2-8418668fc343528cb0b1cf4feed4fee7.jpg"
+ga = 122407
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title">如何製作一個機器人？</h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>等這個問題好久了，趕緊強答一波。</p>
+<p>先上視頻。</p>
+<p><iframe src="https://vdn.vzuu.com/daily_mp4/1a54440e-e2f0-11e7-bf70-0242ac112a0aNone.mp4?auth_key=2144751528-0-0-85506d7b121cfbeea54341819fc79c4b&amp;expiration=2144751528&amp;disable_local_cache=0" width="320" height="180" frameborder="0" allowfullscreen></iframe></p>
+<p>這是我和大腿同學@黯倦魔女（以下簡稱腿哥）大三暑假開始製作的一個機器人，屬於 <a href="https://en.wikipedia.org/wiki/Ballbot">Ballbot</a> 家族，其運動方式用爹媽的話來說就是獅子踩球，或者可以理解成獨輪平衡車。Ballbot 的始祖是 Ralph Hollis 教授的 CMU Ballbot, 大概長這樣(圖片來自 <a href="https://en.wikipedia.org/wiki/Ballbot">Ballbot - Wikipedia</a>)：</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-d188db99786ffaf3783ead2d3600d859_b.gif" alt="">
+<p>最初的念頭源於某個下午茶後，我和腿哥說起暑假漫漫該如何是好，不如找點樂子造個機器人玩玩。想起之前在 IEEE Spectrum 上看到的 <a href="https://spectrum.ieee.org/automaton/robotics/robotics-software/042910-a-robot-that-balances-on-a-ball">A Robot That Balances on a Ball</a>，呆萌又順從，大概長這樣(圖片來自 <a href="https://en.wikipedia.org/wiki/Ballbot">Ballbot - Wikipedia</a>)：</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-7778b8f7ae01adeadfdf0ea050bf7880_b.gif" alt="">
+<p>便一拍大腿，決定造個這個，代號球波（Qiubot）……</p>
+<p>接下來回到正題，如何製作一個機器人(球波）。</p>
+<p><strong>第 0 步：找一個金主。（壕們可忽略）</strong></p>
+<p>爲其重要性，這一步列在最前，因爲財力往往決定了製作體驗和機器人的性能。但這不一定要最先做，只是需要 keep in mind，機器人是個燒錢貨，一般造價不菲且十分容易超預算。對於在讀的學生來說，最划算的當然是學校買單，既能學到東西又無需降低生活質量，更重要的是可以不用在想法或性能上妥協，零件可挑最貴的買（逃</p>
+<p>具體操作方式因人而異，可以參加學校的機器人比賽，社團或者加入實驗室。剛開始的時候以上幾點對我們都不適用，於是我和腿哥只能自掏腰包，各出一半。一開始我們小心翼翼，零件都挑便宜的買，多少耽誤了些進度。等到球波頗具雛形後，我們向學院申請資助，提出造好後可以在學校每年一度的開放日上展示。老師們很開心，表示可提供包養並予以鼓勵，敞開膀子幹吧少年！</p>
+<p>這裏給個參考，這是被包養前我們在第一版球波上的花費，總計 2000 多人民幣，雖然不算多，但也將近一個月的伙食……</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-f6e1c7f6f9dc12e43f9fc20db111f6df_b.gif" alt="">
+<p>獲得贊助後，買東西都經學校下單，我們便沒再統計花費。沒有財務之憂後我們的消費速度直線上升，後來買四個金屬萬向輪的價格就已經超過了這個數，當然我們的進度也大大加快，花錢畢竟能省時間。</p>
+<p>算上不少花在試錯上的錢，粗略估計球波總造價在一萬人民幣左右。這筆錢對大部分學生黨來說還是值得心疼的，但對財大氣粗的某港校就不值一提了。</p>
+<p><strong>技能習得</strong>：淘寶上砍價的能力和一開始就要有燒別人錢的心態</p>
+<p><strong>第 1 步：建模及製圖。(機器人構造簡單的可略過）</strong></p>
+<p>鑑於我和腿哥都是 CS 出身，沒任何機械背景，在直接上手之前我們決定還是先規劃一下。本想用經典的 SolidWorks 畫圖，無奈我們都是 mac 用戶也沒有財力支持正版，於是選擇了 Autodesk 的 Fusion 360。後來發現其功能強大不輸 Solidworks，且學生免費，支持水果，在這裏強烈安利一波。</p>
+<p>點亮了一些基本的製圖技能後發現想象力是最大的限制因素。沒學過機械設計，就自己腦補各零件應該有的樣子。後來發現其實一開始畫錯（醜）並不是問題，重要的是之後不斷迭代不斷改進。</p>
+<p>折騰了一個下午第一版的球波設計圖誕生了，大概長這樣（Ballbot 實際上三個輪子足夠平衡，爲了後面方便寫程序就用了四輪）：</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-482106a7d0c22dabe8eab5c44b056871_b.gif" alt="">
+<p>加材料渲染之後長這樣：</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-2b09702a156e092546d92ef4f784d848_b.gif" alt="">
+<p>我之前在 robocon 隊裏呆過，跟裏面大觸們的圖比起來固然是個渣，然而它在兩個純碼農的眼裏簡直騷氣沖天。</p>
+<p><strong>技能習得</strong>：CAD 製圖和基本的機械設計</p>
+<p><strong>第 2 步：組裝機械部分</strong></p>
+<p>終於到了 hardcore 的部分，手指上的傷疤似乎還在隱隱作痛。</p>
+<p>從最簡單的做起，第一步是球波的支撐板，也就是上圖圓形透明的那塊板。我們採用常見亞克力板，買回來後厚着臉皮找機械系的教授借用他們的激光切割機。支撐板 get。</p>
+<p>第二步，支撐板和電機的連接部分。這個沒有現成的部件，我們決定使用 3D 打印。實驗室有臺壞掉的 3D 打印機，一直沒人用。於是我們花了一個晚上修好了 3D 打印機，花了一個晚上調試然後再花一晚上打印。連接部件 get。大概長這樣：</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-8b82fb3e2be94cde03094a40971e86d0_b.gif" alt="">
+<p>起初我們設計的時候只考慮其功能，結果因爲 3D 打印機精度不錯加上這玩意設計得太尖銳，安裝的時候手指沒少被割傷，後來學乖了邊角都得加光滑過度。然後因爲打印材料的熱脹冷縮及打印機的精度問題，打出來的零件尺寸跟設計圖會有誤差，一開始計算尺寸的時候就得把這個考慮進去。還有各種各樣的問題，總而言之硬件都是坑……</p>
+<p><strong>技能習得</strong>：3D 打印機的維修調試及花式擰螺絲</p>
+<p><strong>第 3 步：搭建電路部分</strong></p>
+<p>終於到了更 hardcore 的部分，看着照片彷彿還能聞到燒焦的味道。</p>
+<p>在把電機安裝到支撐板上之前，需要確認電機能按預想地運轉。我們使用樹莓派（Raspberry pi）作爲主控，用 gpio 接四個電機驅動板，每個驅動板接一個步進電機。選用步進電機是因爲它扭矩比較大。電路接好後大概長這樣：</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-5740b3f110c59eff9d0c5650cad65546_b.gif" alt="">
+<p>一通電，電機就歡快地轉了起來。我和腿哥正準備彈冠相慶，電機就越轉越慢最後完全停下來了，空氣中瀰漫着一股塑料燒焦的味道。</p>
+<p>一陣緊鑼密鼓的調試之後發現因爲電流太大，L298N 電機驅動板激發了過熱保護。而且電線載流量太小，這裏一個步進電機就是 1.5A，4 個就是 6A，而有些電路用的還是彩虹（杜邦）線……naive 了……</p>
+<p>一陣緊鑼密鼓的調試之後發現 L298N 就是個坑貨，我們決定換上一般 3D 打印機使用的 A4988 步進電機驅動板。媽媽再也不用擔心我宕機了。</p>
+<p>換了線換了板後繼續試，電機又歡快的轉了起來。</p>
+<p>於是我們把電機安裝到支撐板上</p>
+<p><iframe src="https://vdn.vzuu.com/daily_mp4/84356148-e2fd-11e7-ac1e-0242ac112a0aNone.mp4?auth_key=2144751547-0-0-8b4ccdd45cd04d2fb6c6281ece0abc13&amp;expiration=2144751547&amp;disable_local_cache=0" width="320" height="180" frameborder="0" allowfullscreen></iframe></p>
+<p>再加上 IMU，用傳感器的姿態控制電機的轉速和方向。</p>
+<p><iframe src="https://vdn.vzuu.com/daily_mp4/c94525fc-e2fd-11e7-b247-0242ac112a04None.mp4?auth_key=2144751567-0-0-604698b087a069f9a23462839199a971&amp;expiration=2144751567&amp;disable_local_cache=0" width="320" height="180" frameborder="0" allowfullscreen></iframe></p>
+<p>看上去就只差把球波倒過來調個 PID 了！！</p>
+<p>然而還是太 naive。我們發現電機轉得並不順滑，時不時會跳步或者停頓。一陣緊鑼密鼓的調試之後發現是因爲電機控制代碼寫得不夠實時，用來控制電機的 PWM 頻率不夠穩定。改進了代碼之後情況有所好轉，然而問題還是存在。又一陣緊鑼密鼓的調試之後發現問題的關鍵在於實時的代碼跑在一個非實時的操作系統之下，整個系統就還是非實時的……於是乾脆把控制電機的代碼放在 Arduino 上，樹莓派只處理 IMU 的數據，二者用串口通信。雖然這樣也還是不能保證實時性，但效果比之前好多了。</p>
+<p><strong>技能習得</strong>：步進電機的使用及硬件花式 debug 法</p>
+<p><strong>第 4 步：寫控制代碼</strong></p>
+<p>這一步是我們的老本行嘿嘿……然而這是一個 flag，回過頭來看這一步花的時間最多。</p>
+<p>爲搭建測試環境，我們拆了實驗室的一張桌子，這樣便獲得了一個完美的支架：</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-4a6afff387a043d588173a7026d2b192_b.gif" alt="">
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-b188cf159065c1a92637bbbade513ef4_b.gif" alt="">
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-99c229156c907076d8d67b0d4abd20e2_b.gif" alt="">
+<p>爲了不用盲調 PID，我們用 rosserial 接上 ROS，再用 rqt_plot 畫出 roll 和 pitch 角度的實時曲線，大概長這樣：</p>
+<p><iframe src="https://vdn.vzuu.com/daily_mp4/6aaf9ac6-e2fe-11e7-bf70-0242ac112a0aNone.mp4?auth_key=2144751578-0-0-474220b9bc8ad25f37193241d7625ab9&amp;expiration=2144751578&amp;disable_local_cache=0" width="320" height="180" frameborder="0" allowfullscreen></iframe></p>
+<p>PID 調一調，球波居然真的搖搖晃晃站了起來！</p>
+<p><iframe src="https://vdn.vzuu.com/daily_mp4/c81a8afe-e2fe-11e7-8af5-0242ac112a03None.mp4?auth_key=2144751620-0-0-e8edbdd7a29e17fe5a77b1b5f4d0127e&amp;expiration=2144751620&amp;disable_local_cache=0" width="320" height="180" frameborder="0" allowfullscreen></iframe></p>
+<p>然而堅持不了多久就會倒下去，怎麼調 PID 都沒有用。一陣緊鑼密鼓的調試之後並沒有解決辦法。</p>
+<p>這樣過了一段有事沒事調 PID 的日子，快要絕望的時候，突然想起可以請教一下 Masaaki Kumagai 教授，就是前面提到的<a href="https://spectrum.ieee.org/automaton/robotics/robotics-software/042910-a-robot-that-balances-on-a-ball">A Robot That Balances on a Ball</a>的主人。於是抱着試一試的心態給教授發了郵件。沒想到教授秒回，並給出了許多建設性意見。</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-f456cd8ad6f65986d475ecab334646aa_b.gif" alt="">
+<p>嗯，看來這種搖搖晃晃站不穩的情形教授也遇到過，獲得不少心理安慰。接下來需要解決問題。一是教授提到的 backlash，我們一陣緊鑼密鼓的調試之後發現萬向輪輪面與球的接觸存在不少間隙，會導致一些起伏，於是決定換上輪面更加完整的全鋁合金萬向輪，大概長這樣</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-5cfc96feda7caad00d8411727512ef03_b.gif" alt="">
+<p>球波的顏值瞬間提高了不少（800 軟妹幣一個的代價……）。</p>
+<p>然而，換上之後問題更嚴重了。一是輪子直徑增大導致電機提供的扭力不再夠用。二是金屬的輪子和光滑的保齡球之間摩擦太小。最終結果就是 backlash 更加嚴重。</p>
+<p>解決方案有二，一是換扭力大的電機（爲此重新設計了銜接部分，也更換了驅動板），二是給保齡球加一層塑膠膜（汽車輪轂噴膜）。換上之後顏(cheng)值(ben)再漲二十百分點。</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-d2168fccfbb8e23a9d34fb4320b3f5bf_b.gif" alt="">
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-2d539085bc981a13168e7142f0cfe048_b.gif" alt="">
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-036976ef13e7ad47ed797bdffee1aa06_b.gif" alt="">
+<p>爲節省空間把驅動板外殼給拆了</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-5f97e393513885de8fb79550a9531cfe_b.gif" alt="">
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-dc8ebe062d0c4b32820ed6a930a8b471_b.gif" alt="">
+<p>然後是提高控制頻率。我們直接擯棄了樹莓派（不實時的都是辣雞……）換上了 Arduino Mega，用頻率穩定的 interrupt 機制輸出 PWM 控制電機。</p>
+<p>除此之外，還爲 IMU 設計了一個減震裝置（又是一條血路……）以減少噪聲，雖然後來發現不是很有必要。</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-51e80dab7420a7a53598311b132d7b75_b.gif" alt="">
+<p>升級之後長這樣，小夥簡直帥氣逼人：</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-43335e0ef41a55a91b65c9154595af12_b.gif" alt="">
+<p>這次在直接上手調 PID 之前我們吸取了教訓(這玩意太重，每次扶着調完整個手臂都在抖），打算先測試一下整個系統 work 不 work。</p>
+<p>於是我們用第一版球波剩下的零件隨手搭了一個二輪平衡車來練習調 PID……</p>
+<p><iframe src="https://vdn.vzuu.com/daily_mp4/0fe19ad4-e300-11e7-8da4-0242ac112a06None.mp4?auth_key=2144751625-0-0-a352b0eb5ac581de215990798aeb278b&amp;expiration=2144751625&amp;disable_local_cache=0" width="320" height="180" frameborder="0" allowfullscreen></iframe></p>
+<p>加個遙控</p>
+<p><iframe src="https://vdn.vzuu.com/daily_mp4/3680aea0-e300-11e7-8da4-0242ac112a06None.mp4?auth_key=2144751632-0-0-6425837daf06247f5bb07282333f57a8&amp;expiration=2144751632&amp;disable_local_cache=0" width="320" height="180" frameborder="0" allowfullscreen></iframe></p>
+<p>然後把電池整合到車上</p>
+<p><iframe src="https://vdn.vzuu.com/daily_mp4/46c5b1c0-e300-11e7-ac1e-0242ac112a0aNone.mp4?auth_key=2144751641-0-0-e464a4dad8a8c5dee6735dfeffda8c1e&amp;expiration=2144751641&amp;disable_local_cache=0" width="320" height="180" frameborder="0" allowfullscreen></iframe></p>
+<p>加個蓋就可以賣了……咳咳……扯遠了</p>
+<p>回到球波，把所有東西都整合到一起，吹一口仙氣，就可以出爐了！</p>
+<p><iframe src="https://vdn.vzuu.com/daily_mp4/75014c84-e300-11e7-a647-0242ac112a0aNone.mp4?auth_key=2144751649-0-0-d3bebad3cd62a3b9b5afdb3d82f3299e&amp;expiration=2144751649&amp;disable_local_cache=0" width="320" height="180" frameborder="0" allowfullscreen></iframe></p>
+<p>這樣，一個機器人（球波）就製作好了。</p>
+<p><strong>技能習得</strong>：敢於迭代，敢於推倒重來（尤其是硬件）的大無畏精神</p>
+<p>至於你問我這玩意花這麼多時間精力搞出來有什麼用嘛（被問一萬次了）……</p>
+<p>沒事的時候可以跟小夥伴練習傳接球（波）</p>
+<p><iframe src="https://vdn.vzuu.com/daily_mp4/b3f3571c-e304-11e7-bf70-0242ac112a0aNone.mp4?auth_key=2144751675-0-0-39a2b2aa5c5858b4055309eb67500abb&amp;expiration=2144751675&amp;disable_local_cache=0" width="320" height="180" frameborder="0" allowfullscreen></iframe></p>
+<p>（感謝 @龏秂犚 同學的出鏡）</p>
+<p>然後可以帶去參加科技展，逗逗小朋友。</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-bddcce24851e904fe7a93a5fdca2260c_b.gif" alt="">
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-74bf53077e2c942b27bf53250e94f3c1_b.gif" alt="">
+<p>最後還可以給它搭建個網站：<a href="http://qiubot.com">qiubot.com</a> 就可以昭告世人（給你捐錢）啦！</p>
+<p>後續：拜訪祖師爺</p>
+<p>來到 CMU 後有幸拜訪了 Ralph Hollis 教授，一償夙願。</p>
+<p>他們實驗室還有個用電磁驅動輪子（球）的 Ballbot，直接省去了電機，整個機器人就只有一個球在底下自己動，可謂腦洞不小。除此之外這位白髮蒼蒼的老爺爺還有一車跟電磁有關的黑科技，鑑於他有商業合作就不放上來了。最後一臉粉絲相地和 CMU Ballbot 同框一張（教授太高真不是我腿短……）</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-f52eb7b0842d8de7f6493fa0b483dec9_b.gif" alt="">
+<p>後記：製作球波前後近半年有餘，從大三暑假到大四下學期。其間也忙着別的比賽，上課，畢業設計和申請學校，中途一度擱置。申請結束後總算有時間了卻這樁心事。最後的球波仍有很多可改進之處，但作爲一條 CS 狗從硬件的坑裏拉扯出這樣一個機器人我要給自己頒發一朵小紅花。</p>
+<p>造過球波後，越發認爲自己搭建一個機器人是學習 Robotics 的最佳方式，從機械到電子到軟件，只有自己踏過坑才能深刻地理解。</p>
+<p>回到本問題，題主其實不用擔心知識儲備不夠，只需要敢於跳坑，一個一個解決遇到的問題，自然而然就會積累下寶貴的實踐經驗和各種亂七八糟的知識，且這樣學到的東西纔會讓你畢生難忘（像炸電池這種事我纔不會說……</p>
+<p>完。</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div><script type="“text/javascript”">window.daily=true</script>
