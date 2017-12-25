@@ -1,0 +1,75 @@
++++
+date = "2017-12-25T17:00:00"
+title = "指責蘋果「故意弄慢老手機，逼用戶換機」前，先看看到底發生了什麼"
+titleimage = "https://pic1.zhimg.com/v2-eed67b11c74b96727892be6097b354ec.jpg"
+ga = 122517
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+<div class="question">
+<h2 class="question-title">如何正確理解蘋果「降速門」中降速的意思？到底降了多少呢？</h2>
+<div class="answer">
+
+
+
+<div class="content">
+<p>最近蘋果刻意降速的新聞可是佔據了各個頭條，嚇得我趕緊取消了老婆 iPhone 7 手機的系統更新。所有的新聞看起來似乎是升級系統後老手機包括還算新的 iPhone 7 速度也會下降不少。甚至哈佛大學也來湊熱鬧，公佈了一項谷歌搜索趨勢研究，分析了歷年 iPhone 發佈前後，網友們搜索“蘋果手機變慢”關鍵詞的峯值。結果發現，“iPhone Slow”的搜索趨勢，正好與蘋果歷次新機的發佈時間相吻合：</p>
+<figure><img class="content-image" src="http://pic1.zhimg.com/v2-86616ad2e659c895edbf448d6892c810_b.jpg" alt=""></figure><p>並和三星做了對比，發現並未與新款三星手機發布的時間重合。結果暗指蘋果故意弄慢老手機，逼迫用戶換機。一時間蘋果又爲它的傲慢付出了代價，成爲千夫所指，輿論譴責甚囂塵上，甚至被告上法庭。</p>
+<p>單純價值判斷總是輕鬆的，可以爲大腦節約不少能量。但作爲可以獨立思考的人，我們在做出價值判斷之前，應該確實瞭解一下蘋果公司的辯解，並分析它的辯護有沒有道理，再做出自己獨立的判斷。</p>
+<p><strong><strong>事件起因</strong></strong></p>
+<p>時間最早可以追述到 1 年多前，在寒冷的天氣裏，iPhone4/5 會在電池還有 40%甚至 60%的情況下，突然斷電，而且無法開機，直到插上電源。在插上電源後，電池電量直接變成正常，用戶抱怨很大。於是蘋果公司推出了新的系統升級，用戶驚喜的發現，問題解決了，斷電的情況沒有再出現（參考資料 3）。於是一切都恢復了平靜，世界再次和平。</p>
+<p>但另一個聲音慢慢出現了：“升級系統後，手機變慢了！”。大家開始只是猜測，沒有實證，直到 Reddit 的一個帖子引起了大家的注意（參考資料 2），宣稱有證據指出，讓舊機器變慢是蘋果的刻意做法，這一消息很快傳遍了全球。Geekbench（沒錯，就是那個給 A11 打高分的測評軟件）創始人 John Poole 於是親自跑分做了驗證（參考資料 1），證實相對 iOS 10.2.1，11.2.0 確實對 CPU 性能做了 throttling。GeekBench 的結果原先總是傾向於蘋果，這次卻爆了這個新聞，蘋果公司坐不住了，發佈了官方聲明。</p>
+<p>我們看一下蘋果公司怎麼說的：</p>
+<blockquote>Our goal is to deliver the best experience for customers, which includes overall performance and prolonging the life of their devices. Lithium-ion batteries become less capable of supplying peak current demands when in cold conditions, have a low battery charge or as they age over time, which can result in the device unexpectedly shutting down to protect its electronic components. <br>Last year we released a feature for iPhone 6, iPhone 6s and iPhone SE to smooth out the instantaneous peaks only when needed to prevent the device from unexpectedly shutting down during these conditions. We’ve now extended that feature to iPhone 7 with iOS 11.2, and plan to add support for other products in the future.</blockquote>
+<p>中文版：</p>
+<blockquote>我們的目標是向客戶提供最好的體驗，其中包括總體性能和延長設備使用壽命。在低溫環境中，鋰離子電池提供峯值電流的能力會降低，隨着時間推移，存儲的電量會減少，這會導致設備爲保護電子部件而關機。去年我們針對 iPhone 6、iPhone 6s 和 iPhone SE 發佈了一個特性，在需要時平抑瞬時峯值電流，防止設備在上述情況下關機。在 iOS 11.2 中，我們爲 iPhone 7 發佈了這一特性，並計劃在未來使之支持其他產品。</blockquote>
+<p>GeekBench 的用詞比較晦澀，throttling 不是 IT 人士估計不知道意思。而蘋果公司聲明更加具有”藝術“：<strong>Smooth out</strong> the instantaneous peaks only when blabla 和”在需要時平抑瞬時峯值電流“。而且這還是一個"feature"。這些背後真是的情況如何？</p>
+<p><strong><strong>實驗數據</strong></strong></p>
+<p>我們先看一下 John Poole 的實驗結果：</p>
+<figure><img class="content-image" src="http://pic2.zhimg.com/v2-b2d20edeecb319ee27cf65faeef05bc5_b.jpg" alt=""><figcaption>iPhone 6S 和 10.2.0 iOS</figcaption></figure><figure><img class="content-image" src="http://pic3.zhimg.com/v2-25140f6e675b8c3ca9f8c204b96d69ce_b.jpg" alt=""><figcaption>iPhone 6s 和 11.2.0 iOS</figcaption></figure><p>上面兩個圖是 KDE 圖（Kernel density estimation），橫軸是 GeekBench4 在 iPhone 6s 的 Benchmark 數據，縱軸是密度。</p>
+<p>如何理解這兩個圖呢？其實很簡單，這是個分佈曲線圖，他測試了很多 iPhone 6s，發現在運行 10.2.0 時候，benchmark 結果集中在 2500 分；而在運行 11.2.0 時，benchmark 的結果分散在很多地方，中間有很多尖峯。有部分還在 2500 分，而也有很大部分集中在 1500 分，甚至 1000 分！性能下降了一半多！</p>
+<p>這說明從 10.2.0 到 11.2.0 升級之後，iphone 6s 可能性能會下降，而且可能會大幅下降！那麼到底爲什麼有的下降多，有的幾乎不降低呢？原因在於電池，如果電池沒有怎麼消耗，則性能不變或下降不大，電池越老，性能下降越大。這個可以從一位叫做 Sam 的用戶那裏得到印證。他原來的 iPhone 手機很慢，他用 DasherX 測試發現手機頻率最高 600MHz:</p>
+<figure><img class="content-image" src="http://pic1.zhimg.com/v2-c83b1ce7c3bf5e14ee0e759056dad258_b.jpg" alt=""></figure><p>在更換了新的電池，CPU 變成了 1400MHz，上升了 2 倍多：</p>
+<figure><img class="content-image" src="http://pic4.zhimg.com/v2-61d9ff33fb16fde4dbf400b1407dadf3_b.jpg" alt=""></figure><p><strong><strong>Why &amp; How</strong></strong></p>
+<p>蘋果公司爲什麼要這麼做呢？當然是電池的老化問題。鋰離子電池能量密度很大，而手機的電池又是裏面能量密度最大的類型 Li-Cobalt：</p>
+<figure><img class="content-image" src="http://pic1.zhimg.com/v2-57783e99e53fcbbc2cdd1c8d35758318_b.jpg" alt=""></figure><p>鋰離子電池優點很多，但是也有缺點：需要特殊電路保護防止電壓 / 電流過載，這些保護電路構成了 Smart Battery，我們在將來會專門撰文介紹它是如何供電、充電以及和 CPU 交互的（<a class="internal" href="https://zhuanlan.zhihu.com/p/32294053"><span class="invisible">https://</span><span class="visible">zhuanlan.zhihu.com/p/32</span><span class="invisible">294053</span><span class="ellipsis"></span></a>）。這裏需要強調鋰電池的防過載閾值會隨着老化和溫度降低而降低。這就解釋了爲什麼前面 iPhone 手機斷電的問題。在溫度降低後，老化的電池在 iPhone 需要大規模算力的時候，輸出電流觸發了智能電池的保護，而自動斷電了。而蘋果的辦法就是規避這種情形，顯然武斷地提高保護閾值太冒險了，那麼只有從算力上打算盤了。</p>
+<p>如何限制算力呢？讀過我們專欄關於 CPU 系列的文章的同學應該會回憶起我們介紹 CPU 主頻的一系列文章：</p>
+<p><a class="internal" href="https://zhuanlan.zhihu.com/p/25675218">CPU 省電的祕密（一）：EIST</a></p>
+<p><a class="internal" href="https://zhuanlan.zhihu.com/p/25675911">睿頻：榨乾 CPU 所有的潛力（CPU 電源管理系列番外篇）</a></p>
+<p><a class="internal" href="https://zhuanlan.zhihu.com/p/30409360">爲什麼 CPU 的頻率止步於 4G?我們觸到頻率天花板了嗎？</a></p>
+<p><a class="internal" href="https://zhuanlan.zhihu.com/p/31572908">CPU 能用多久？會不會因爲老化而變慢？</a></p>
+<p>我們就會知道 CPU 主頻是一個基頻乘以倍頻（ratio)來得到的，X86 是這樣，ARM 也是。所以蘋果公司應該是通過鎖定最高倍頻的方式，限制系統的最高性能。並且電池越老，鎖定的值越低。這就是所謂的"Smooth out"了。</p>
+<p><strong><strong>對用戶的影響</strong></strong></p>
+<p>看到性能下降一半多，很多人要大驚失色了。其實，大部分用戶平時並不會觸及最高倍頻，影響並不大。如果大家手機一直在最高倍頻下工作，很快手機就沒電了。只有在玩大型遊戲等等時候，會碰到這個問題，而且用戶會發現性能下降十分嚴重。GeekBench 等測試軟件往往會將性能推到極限，該問題暴露的也更加徹底。</p>
+<p><strong><strong>結論</strong></strong></p>
+<p>我可以明確的說，我不喜歡蘋果。在我小的時候，AppleII 啓迪了我，是我踏入計算機世界的原因，iPhone 的推出更是開啓了一個時代。但現在蘋果帶給我的更多的是傲慢、壓抑和冰冷，曾經高冷的微軟倒是慢慢溫情脈脈起來。相對蘋果手機，我更喜歡安卓系統，也許是我的屌絲性格加上安卓的開放和 Linux 的自由吸引了我。但我並不反對老婆變成蘋果的擁躉，每個人都有自己的選擇，而我更愛選擇的自由。</p>
+<p><strong>蘋果的辯護目前看來是站得住腳的，高通的 CPU 也有過發熱太大被手機廠商鎖到低頻的情況。</strong>但是我並不欣賞蘋果的做法。我認爲充分告知用戶，讓用戶自己做出選擇會是個好主意。也許蘋果認爲讓用戶在死機和降頻之間選擇，用戶一定會選擇降頻，還會徒增煩惱。於是蘋果“大大”主動幫助用戶解決了選擇的煩惱，畢竟蘋果總是自我標榜，要“教育”消費者，消費者並不知道自己要什麼。也許這就是我多年拒絕蘋果手機的原因：選擇並不可怕，可拍的是被選擇和沒有選擇！</p>
+<p>最後請大家思考一下：爲什麼蘋果會爆出來降頻問題，而三星等並沒有？電池不是都要老化嗎？</p>
+<p>我的思考公佈在下一期的<strong>其他</strong>裏：<a class="internal" href="https://zhuanlan.zhihu.com/p/32294053"><span class="invisible">https://</span><span class="visible">zhuanlan.zhihu.com/p/32</span><span class="invisible">294053</span></a></p>
+<p><strong>參考資料：</strong></p>
+<p>[1]: <a class=" wrap external" href="http://link.zhihu.com/?target=https%3A//www.geekbench.com/blog/2017/12/iphone-performance-and-battery-age/" target="_blank" rel="nofollow noreferrer">iPhone Performance and Battery Age</a></p>
+<p>[2]: <a class=" wrap external" href="http://link.zhihu.com/?target=https%3A//www.reddit.com/r/iphone/comments/7inu45/psa_iphone_slow_try_replacing_your_battery/" target="_blank" rel="nofollow noreferrer">PSA: iPhone slow? Try replacing your battery! • r/iphone</a></p>
+<p>[3]: <a class=" wrap external" href="http://link.zhihu.com/?target=https%3A//www.theverge.com/2017/2/24/14724586/iphone-6-6s-random-power-off-bug-fix-ios-10-update" target="_blank" rel="nofollow noreferrer">Latest iOS 10 update has significantly reduced iPhone 6 and 6S random shutdown issues</a></p>
+<p>[4]: <a class=" wrap external" href="http://link.zhihu.com/?target=https%3A//www.reddit.com/user/TeckFire" target="_blank" rel="nofollow noreferrer">TeckFire (u/TeckFire) - Reddit</a></p>
+
+
+
+</div>
+</div>
+</div>
+
+
+</div>
+</div><script type="“text/javascript”">window.daily=true</script>
