@@ -1,0 +1,58 @@
++++
+date = "2017-12-30T08:00:00"
+title = "谷歌翻譯最近進化速度突然加快，作爲 Google 員工我來說說爲什麼"
+titleimage = "https://pic4.zhimg.com/v2-db1fec7cc90fd9d45db04c3be77a7b07.jpg"
+ga = 123008
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title">谷歌翻譯這幾個月的進化速度突然加快是什麼原因？</h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p><strong>作爲 Google 員工，我來談談兩個令我體會比較深刻的原因吧。</strong></p>
+<p><strong>1. 神經網絡 / 深度學習在機器翻譯上的飛速進展。</strong></p>
+<p>大概在 14 年左右的時候，關於在機器翻譯上應用神經網絡 / 深度學習的論文開始大量地被髮表。[<a href="https://papers.nips.cc/paper/5346-sequence-to-sequence-learning-with-neural-networks.pdf">Sutskever et al., 2014</a>]把基於 RNN 的序列到序列（seq2seq）模型應用於機器翻譯的任務上。</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-f4101a6b8cffa0f9843da821545bb623_b.jpg" alt="">
+<p>後來因爲單純的 seq2seq 對於長句的效果不佳，引入了注意力機制（Attention）。[<a href="https://arxiv.org/pdf/1409.0473.pdf">Bahdanau et al., 2015</a>, <a href="http://aclweb.org/anthology/D15-1166">Luong et al., 2015</a>]。</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-61222900de6e964577cf86a1c45c439f_b.jpg" alt="">
+<p>大概的意思是把編碼層的輸出和解碼層的輸出結合起來計算一個含有對齊信息的上下文向量(Context Vector)。由於帶上了對齊信息，對長句的翻譯效果有了顯著的提高。</p>
+<p>再後來是去年誕生的 GNMT [<a href="https://arxiv.org/pdf/1609.08144.pdf">Wu et al., 2016</a>]，在上述工作的基礎上加入了一些改進，如：</p>
+<p>1）用 WordPiece 來解決低頻詞的問題。這個就相當於是子詞，如 wordpiece 會被拆分成 word 和 piece 兩個子詞。</p>
+<p>2）加入了殘差連接（ResNet），提高了更深的網絡的可訓練性。</p>
+<p>3）雙向 RNN。</p>
+<p>基本上，每一次改進都是在原先的神經網絡中一些新的結構來改善原先模型不足的地方。不得不說，神經網絡其中一個美妙之處就在於可以很容易地通過在上面加結構 / 連接來改變模型性質，所以<strong>實驗一種新的模型不是一件難事</strong>，這也是促成神經網絡在各個應用上研究大爆發的其中一個原因。</p>
+<p>當然，爲了解決 RNN 訓練慢的問題，後來又有研究者提出了基於 CNN 的方法[<a href="https://arxiv.org/abs/1705.03122">Gehring et al. 2017</a>]，純粹 Attention 的方法[<a href="https://arxiv.org/abs/1706.03762">Vaswani, et al., 2017</a>]。這些方法擯棄了傳統的 RNN 方法，不過我們仍然可以看到組成這些模型的各個子結構大部分都是一些已經存在的結構。</p>
+<p>另外值得一提的是，上述模型都是端到端的模型（模型的輸入和輸出都是句子），不需要我們去處理語法 / 句法之類的問題。這其實就是<strong>降低了機器翻譯研究的門檻</strong>，即不需要太多的領域內的專業知識。</p>
+<p><strong>2. <a href="https://www.tensorflow.org/">Tensorflow</a>在 Google 內部的廣泛應用，以及 Google 內部對 Tensorflow 強大的基礎設施支持。</strong></p>
+<p>Google 有着大量的機器集羣，並且對 Tensorflow 有着很好的支持。在這些集羣上部署神經網絡訓練任務是一件輕而易舉的事情。基本上，我們只需要指定所需要的資源，就可以把我們的訓練任務部署在機器集羣上。這就大大地降低研究的成本。這不但把研究者們從這些瑣碎的事情上解放出來專心於網絡結構的研究，而且可以讓研究者們同時進行很多實驗去驗證他們的想法、快速迭代。<strong>快速迭代對於研究真的非常非常重要</strong>。</p>
+<p>當然，<strong>硬件革新也是很重要的</strong>，近年來 GPU 越來越快，並且 Google 自家也開發了專門用於機器學習的 TPU。這都是對於<strong>減低實驗時間成本</strong>有着很積極的作用。</p>
+<p>順帶一提，Google 已經在 Tensorflow 的官方教程中加入了關於機器翻譯的教程（<a href="https://www.tensorflow.org/versions/master/tutorials/seq2seq">https://www.tensorflow.org/versions/master/tutorials/seq2seq</a>）。如果哪位同學對這個感興趣的話，可以比較容易地跟着上面的教程，開發一個自己的機器翻譯模型出來。</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div><script type="“text/javascript”">window.daily=true</script>
