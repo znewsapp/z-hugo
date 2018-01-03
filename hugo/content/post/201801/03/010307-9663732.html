@@ -1,0 +1,166 @@
++++
+date = "2018-01-03T07:00:00"
+title = "用 Python 給頭像加上聖誕帽"
+titleimage = "https://pic2.zhimg.com/v2-a66311d9d76a8d0ed6d8f019209bab31.jpg"
+ga = 010307
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+<div class="question">
+<h2 class="question-title"></h2>
+<div class="answer">
+
+
+
+<div class="content">
+<p><strong><strong>引言</strong></strong></p>
+<p>去年聖誕節，大家紛紛@官方微信給自己的頭像加上一頂聖誕帽。當然這種事情用很多 P 圖軟件都可以做到。但是作爲一個學習圖像處理的技術人，還是覺得我們有必要寫一個程序來做這件事情。而且這完全可以作爲一個練手的小項目，工作量不大，而且很有意思。</p>
+<p><strong><strong>用到的工具</strong></strong></p>
+<ul><li>OpenCV（畢竟我們主要的內容就是 OpenCV...）</li>
+<li>dlib（前一篇文章剛說過，dlib 的人臉檢測比 OpenCV 更好用，而且 dlib 有 OpenCV 沒有的關鍵點檢測。）</li>
+</ul><p>用到的語言爲 Python。但是完全可以改成 C++ 版本，時間有限，就不寫了。有興趣的小夥伴可以拿來練手。</p>
+<p><strong><strong>流程</strong></strong><strong><strong>一、素材準備</strong></strong></p>
+<p>首先我們需要準備一個聖誕帽的素材，格式最好爲 PNG，因爲 PNG 的話我們可以直接用 Alpha 通道作爲掩膜使用。我們用到的聖誕帽如下圖：</p>
+<figure><img class="content-image" src="https://pic3.zhimg.com/v2-e7d77f146d993f2a1a95bd86162a2c75_b.jpg" alt=""></figure><p>我們通過通道分離可以得到聖誕帽圖像的 alpha 通道。代碼如下：</p>
+<div class="highlight">
+<pre><code class="language-python"><span class="n">r</span><span class="p">,</span><span class="n">g</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">a</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">hat_img</span><span class="p">)</span> 
+  <span class="n">rgb_hat</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">merge</span><span class="p">((</span><span class="n">r</span><span class="p">,</span><span class="n">g</span><span class="p">,</span><span class="n">b</span><span class="p">))</span>
+  
+  <span class="n">cv2</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="s2">"hat_alpha.jpg"</span><span class="p">,</span><span class="n">a</span><span class="p">)</span>
+</code></pre>
+</div>
+<p>爲了能夠與 rgb 通道的頭像圖片進行運算，我們把 rgb 三通道合成一張 rgb 的彩色帽子圖。Alpha 通道的圖像如下圖所示。</p>
+<figure><img class="content-image" src="https://pic2.zhimg.com/v2-1419c0d79ad50e64ca08a33124afb140_b.jpg" alt=""></figure><p><strong><strong>二、人臉檢測與人臉關鍵點檢測</strong></strong></p>
+<p>我們用下面這張圖作爲我們的測試圖片。</p>
+<figure><img class="content-image" src="https://pic2.zhimg.com/v2-ad46e525773ebd4027bc2e093b522561_b.jpg" alt=""></figure><p>下面我們用 dlib 的正臉檢測器進行人臉檢測，用 dlib 提供的模型提取人臉的五個關鍵點。代碼如下：</p>
+<div class="highlight">
+<pre><code class="language-python"> <span class="c1"># dlib 人臉關鍵點檢測器</span>
+      <span class="n">predictor_path</span> <span class="o">=</span> <span class="s2">"shape_predictor_5_face_landmarks.dat"</span>
+      <span class="n">predictor</span> <span class="o">=</span> <span class="n">dlib</span><span class="o">.</span><span class="n">shape_predictor</span><span class="p">(</span><span class="n">predictor_path</span><span class="p">)</span>  
+  
+      <span class="c1"># dlib 正臉檢測器</span>
+      <span class="n">detector</span> <span class="o">=</span> <span class="n">dlib</span><span class="o">.</span><span class="n">get_frontal_face_detector</span><span class="p">()</span>
+  
+      <span class="c1"># 正臉檢測</span>
+      <span class="n">dets</span> <span class="o">=</span> <span class="n">detector</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+  
+      <span class="c1"># 如果檢測到人臉</span>
+      <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">dets</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>  
+          <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">dets</span><span class="p">:</span>
+              <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="n">h</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">left</span><span class="p">(),</span><span class="n">d</span><span class="o">.</span><span class="n">top</span><span class="p">(),</span> <span class="n">d</span><span class="o">.</span><span class="n">right</span><span class="p">()</span><span class="o">-</span><span class="n">d</span><span class="o">.</span><span class="n">left</span><span class="p">(),</span> <span class="n">d</span><span class="o">.</span><span class="n">bottom</span><span class="p">()</span><span class="o">-</span><span class="n">d</span><span class="o">.</span><span class="n">top</span><span class="p">()</span>
+              <span class="c1"># x,y,w,h = faceRect  </span>
+              <span class="n">cv2</span><span class="o">.</span><span class="n">rectangle</span><span class="p">(</span><span class="n">img</span><span class="p">,(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),(</span><span class="n">x</span><span class="o">+</span><span class="n">w</span><span class="p">,</span><span class="n">y</span><span class="o">+</span><span class="n">h</span><span class="p">),(</span><span class="mi">255</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="mi">2</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+  
+              <span class="c1"># 關鍵點檢測，5 個關鍵點</span>
+              <span class="n">shape</span> <span class="o">=</span> <span class="n">predictor</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+              <span class="k">for</span> <span class="n">point</span> <span class="ow">in</span> <span class="n">shape</span><span class="o">.</span><span class="n">parts</span><span class="p">():</span>
+                  <span class="n">cv2</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">img</span><span class="p">,(</span><span class="n">point</span><span class="o">.</span><span class="n">x</span><span class="p">,</span><span class="n">point</span><span class="o">.</span><span class="n">y</span><span class="p">),</span><span class="mi">3</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+  
+              <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">"image"</span><span class="p">,</span><span class="n">img</span><span class="p">)</span>
+              <span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">()</span>  
+</code></pre>
+</div>
+<p>這部分效果如下圖：</p>
+<figure><img class="content-image" src="https://pic4.zhimg.com/v2-8550305c839c9b2322ce8c5d46037acf_b.jpg" alt=""></figure><p><strong><strong>三、調整帽子大小</strong></strong></p>
+<p>我們選取兩個眼角的點，求中心作爲放置帽子的 x 方向的參考座標，y 方向的座標用人臉框上線的 y 座標表示。然後我們根據人臉檢測得到的人臉的大小調整帽子的大小，使得帽子大小合適。</p>
+<div class="highlight">
+<pre><code class="language-python">        <span class="c1"># 選取左右眼眼角的點</span>
+              <span class="n">point1</span> <span class="o">=</span> <span class="n">shape</span><span class="o">.</span><span class="n">part</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+              <span class="n">point2</span> <span class="o">=</span> <span class="n">shape</span><span class="o">.</span><span class="n">part</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+  
+              <span class="c1"># 求兩點中心</span>
+              <span class="n">eyes_center</span> <span class="o">=</span> <span class="p">((</span><span class="n">point1</span><span class="o">.</span><span class="n">x</span><span class="o">+</span><span class="n">point2</span><span class="o">.</span><span class="n">x</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span><span class="p">,(</span><span class="n">point1</span><span class="o">.</span><span class="n">y</span><span class="o">+</span><span class="n">point2</span><span class="o">.</span><span class="n">y</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span><span class="p">)</span>
+  
+              <span class="c1"># cv2.circle(img,eyes_center,3,color=(0,255,0))  </span>
+              <span class="c1"># cv2.imshow("image",img)</span>
+              <span class="c1"># cv2.waitKey()</span>
+  
+              <span class="c1">#  根據人臉大小調整帽子大小</span>
+              <span class="n">factor</span> <span class="o">=</span> <span class="mf">1.5</span>
+              <span class="n">resized_hat_h</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">rgb_hat</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">w</span><span class="o">/</span><span class="n">rgb_hat</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">factor</span><span class="p">))</span>
+              <span class="n">resized_hat_w</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">rgb_hat</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">w</span><span class="o">/</span><span class="n">rgb_hat</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">factor</span><span class="p">))</span>
+  
+              <span class="k">if</span> <span class="n">resized_hat_h</span> <span class="o">&gt;</span> <span class="n">y</span><span class="p">:</span>
+                  <span class="n">resized_hat_h</span> <span class="o">=</span> <span class="n">y</span><span class="o">-</span><span class="mi">1</span>
+  
+              <span class="c1"># 根據人臉大小調整帽子大小</span>
+              <span class="n">resized_hat</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">rgb_hat</span><span class="p">,(</span><span class="n">resized_hat_w</span><span class="p">,</span><span class="n">resized_hat_h</span><span class="p">))</span>
+</code></pre>
+</div>
+<p><strong><strong>四、提取帽子和需要添加帽子的區域</strong></strong></p>
+<p>按照之前所述，去 Alpha 通道作爲 mask。並求反。這兩個 mask 一個用於把帽子圖中的帽子區域取出來，一個用於把人物圖中需要填帽子的區域空出來。後面你將會看到。</p>
+<div class="highlight">
+<pre><code class="language-python">        <span class="c1"># 用 alpha 通道作爲 mask</span>
+              <span class="n">mask</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">a</span><span class="p">,(</span><span class="n">resized_hat_w</span><span class="p">,</span><span class="n">resized_hat_h</span><span class="p">))</span>
+              <span class="n">mask_inv</span> <span class="o">=</span>  <span class="n">cv2</span><span class="o">.</span><span class="n">bitwise_not</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
+</code></pre>
+</div>
+<p>從原圖中取出需要添加帽子的區域，這裏我們用的是位運算操作。</p>
+<div class="highlight">
+<pre><code class="language-python">        <span class="c1"># 帽子相對與人臉框上線的偏移量</span>
+              <span class="n">dh</span> <span class="o">=</span> <span class="mi">0</span>
+              <span class="n">dw</span> <span class="o">=</span> <span class="mi">0</span>
+              <span class="c1"># 原圖 ROI</span>
+              <span class="c1"># bg_roi = img[y+dh-resized_hat_h:y+dh, x+dw:x+dw+resized_hat_w]</span>
+              <span class="n">bg_roi</span> <span class="o">=</span> <span class="n">img</span><span class="p">[</span><span class="n">y</span><span class="o">+</span><span class="n">dh</span><span class="o">-</span><span class="n">resized_hat_h</span><span class="p">:</span><span class="n">y</span><span class="o">+</span><span class="n">dh</span><span class="p">,(</span><span class="n">eyes_center</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">resized_hat_w</span><span class="o">//</span><span class="mi">3</span><span class="p">):(</span><span class="n">eyes_center</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">resized_hat_w</span><span class="o">//</span><span class="mi">3</span><span class="o">*</span><span class="mi">2</span><span class="p">)]</span>
+  
+              <span class="c1"># 原圖 ROI 中提取放帽子的區域</span>
+              <span class="n">bg_roi</span> <span class="o">=</span> <span class="n">bg_roi</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+              <span class="n">mask_inv</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">merge</span><span class="p">((</span><span class="n">mask_inv</span><span class="p">,</span><span class="n">mask_inv</span><span class="p">,</span><span class="n">mask_inv</span><span class="p">))</span>
+              <span class="n">alpha</span> <span class="o">=</span> <span class="n">mask_inv</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">/</span><span class="mi">255</span>
+  
+              <span class="c1"># 相乘之前保證兩者大小一致（可能會由於四捨五入原因不一致）</span>
+              <span class="n">alpha</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">alpha</span><span class="p">,(</span><span class="n">bg_roi</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">bg_roi</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+              <span class="c1"># print("alpha size: ",alpha.shape)</span>
+              <span class="c1"># print("bg_roi size: ",bg_roi.shape)</span>
+              <span class="n">bg</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">bg_roi</span><span class="p">)</span>
+              <span class="n">bg</span> <span class="o">=</span> <span class="n">bg</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">'uint8'</span><span class="p">)</span>
+</code></pre>
+</div>
+<p>這是的背景區域（bg）如下圖所示。可以看到，剛好是需要填充帽子的區域缺失了。</p>
+<figure><img class="content-image" src="https://pic3.zhimg.com/v2-d78b9f0e858baf3dbda5e55b0e02235b_b.jpg" alt=""></figure><p>然後我們提取帽子區域。</p>
+<div class="highlight">
+<pre><code class="language-python">        <span class="c1"># 提取帽子區域</span>
+              <span class="n">hat</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">bitwise_and</span><span class="p">(</span><span class="n">resized_hat</span><span class="p">,</span><span class="n">resized_hat</span><span class="p">,</span><span class="n">mask</span> <span class="o">=</span> <span class="n">mask</span><span class="p">)</span>
+</code></pre>
+</div>
+<p>提取得到的帽子區域如下圖。<strong>帽子區域正好與上一個背景區域互補。</strong></p>
+<figure><img class="content-image" src="https://pic4.zhimg.com/v2-ee07edeb2e5b27661b468b6e6328e35d_b.jpg" alt=""></figure><p><strong><strong>五、添加聖誕帽</strong></strong></p>
+<p>最後我們把兩個區域相加。再放回到原圖中去，就可以得到我們想要的聖誕帽圖了。這裏需要注意的就是，相加之前 resize 一下保證兩者大小一致，因爲可能會由於四捨五入原因不一致。</p>
+<div class="highlight">
+<pre><code class="language-python">        <span class="c1"># 相加之前保證兩者大小一致（可能會由於四捨五入原因不一致）</span>
+              <span class="n">hat</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">hat</span><span class="p">,(</span><span class="n">bg_roi</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">bg_roi</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+              <span class="c1"># 兩個 ROI 區域相加</span>
+              <span class="n">add_hat</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">bg</span><span class="p">,</span><span class="n">hat</span><span class="p">)</span>
+              <span class="c1"># cv2.imshow("add_hat",add_hat) </span>
+  
+              <span class="c1"># 把添加好帽子的區域放回原圖</span>
+              <span class="n">img</span><span class="p">[</span><span class="n">y</span><span class="o">+</span><span class="n">dh</span><span class="o">-</span><span class="n">resized_hat_h</span><span class="p">:</span><span class="n">y</span><span class="o">+</span><span class="n">dh</span><span class="p">,(</span><span class="n">eyes_center</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">resized_hat_w</span><span class="o">//</span><span class="mi">3</span><span class="p">):(</span><span class="n">eyes_center</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">resized_hat_w</span><span class="o">//</span><span class="mi">3</span><span class="o">*</span><span class="mi">2</span><span class="p">)]</span> <span class="o">=</span> <span class="n">add_hat</span>
+</code></pre>
+</div>
+<p>最後我們得到的效果圖如下所示。</p>
+<figure><img class="content-image" src="https://pic3.zhimg.com/v2-bc3fbcb7f33b8be6f7294e20deb563ae_b.jpg" alt=""></figure><p>文章首發於：CVPy 公衆號，歡迎關注。</p>
+<p>本文全部代碼的 Github 鏈接：<a class=" wrap external" href="https://link.zhihu.com/?target=https%3A//github.com/LiuXiaolong19920720/Add-Christmas-Hat" target="_blank" rel="nofollow noreferrer">LiuXiaolong19920720/Add-Christmas-Hat</a>。(我的第一個 Github 上百 star 的項目竟是這麼誕生的...）。</p>
+<p>Dlib 的安裝包：<a class=" wrap external" href="https://link.zhihu.com/?target=https%3A//pypi.python.org/pypi/dlib" target="_blank" rel="nofollow noreferrer">Python Package Index</a>。（我不知道這個安裝的時候是否需要 boost.python，安裝成功的反饋一下。）</p>
+
+
+
+</div>
+</div>
+</div>
+
+
+</div>
+</div><script type="“text/javascript”">window.daily=true</script>
