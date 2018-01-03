@@ -1,0 +1,102 @@
++++
+date = "2018-01-03T09:00:00"
+title = "爲了玩微信「跳一跳」，還有什麼是人類不能動用的……"
+titleimage = "https://pic1.zhimg.com/v2-12df982f04a521b67bfbf598ab1d274c.jpg"
+ga = 010309
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+<div class="question">
+<h2 class="question-title">Python 玩「跳一跳」 iOS+Win 硬件實現</h2>
+<div class="answer">
+
+
+
+<div class="content">
+<p>感謝來自 <a class="member_mention" href="http://www.zhihu.com/people/8f78ada5ca50594852bd2de7b1df8e08">@神奇的戰士</a> 的跳躍距離算法</p>
+<p>原項目地址：<a class=" wrap external" href="http://link.zhihu.com/?target=https%3A//github.com/wangshub/wechat_jump_game" target="_blank" rel="nofollow noreferrer">wangshub/wechat_jump_game</a></p>
+<p>知乎專欄：<a class="internal" href="https://zhuanlan.zhihu.com/p/32452473">教你用 Python 來玩微信跳一跳</a></p>
+<hr><blockquote>謝謝大家，非常開心。想說一下，我是因爲手邊只有樹莓派才用樹莓派控制舵機的，它畢竟是一臺 200+ 的小型計算機，肯定是大材小用了。我的新 Arduino 已經在路上，到了之後會做一個使用 Arduino 的方案。但是 pyFirmata 這個庫我只在樹莓派上實驗過，Windows 平臺還不知道能不能兼容，所以並不是很確定最終效果。如果不行我還有一個備選方案。想要自己動手做一個的知友們可以不用急着買樹莓派，給我一兩天的時間。</blockquote>
+<p>本項目源碼： <a class=" wrap external" href="http://link.zhihu.com/?target=https%3A//github.com/yangyiLTS/wechat_jump_game_iOS" target="_blank" rel="nofollow noreferrer">yangyiLTS/wechat_jump_game_iOS</a></p>
+<p>目前已有的 iOS 跳一跳輔助需要 macOS 環境下的 WebDriverAgentRunner。而現在介紹的方法在 Windows 環境下物理實現，<strong>不需要 macOS </strong>也不需要越獄。</p>
+<p>先上效果</p>
+<p><img class="content-image" src="https://pic2.zhimg.com/80/v2-3e1798157c8a6bd266ad1fba08fd12c1_b.jpg" alt=""></p>
+<p><strong>運行環境&amp;工具</strong></p>
+<ul><li>Python 3.6 in Windows</li>
+<li>Python Pillow 庫</li>
+<li>局域網環境</li>
+<li>iToools Airplayer</li>
+<li>樹莓派 或 arduino （本文使用樹莓派）</li>
+<li>SG90 舵機</li>
+<li>杜邦線、紙板</li>
+<li>一小塊海綿</li>
+<li>橙子或其它多汁水果（可選）</li>
+</ul><p><strong><strong>基本思路</strong></strong></p>
+<ol><li>使用 iOS 自帶 Airplay 服務將遊戲畫面投影到電腦上。</li>
+<li>使用 Pillow 庫截取電腦屏幕，獲得遊戲畫面。</li>
+<li>分析圖片，計算出跳躍距離，乘以時間係數獲得按壓時間。</li>
+<li>將按壓時間發送至樹莓派，樹莓派控制舵機點擊手機屏幕。</li>
+</ol><p><strong><strong>原理 &amp; 步驟</strong></strong></p>
+<p><strong>舵機 &amp; 控制器部分</strong></p>
+<ul><li>樹莓派（OS：Raspbian Jessie）連接上局域網，下載 servo_control.py 到樹莓派。拿一根杜邦線粘在舵機的擺臂上，並且固定好舵機在紙板上，如圖：</li>
+</ul><figure><img class="content-image" src="https://pic3.zhimg.com/v2-a406ecdb5f4ec4f1274f293251786e47_b.jpg" alt=""></figure><ul><li>取一小塊海綿，約 10mm*10mm*5mm，不必太精確。海綿中間挖一個小洞。大概是這樣：</li>
+</ul><figure><img class="content-image" src="https://pic2.zhimg.com/v2-828a437831967b1507ca54a677f86848_b.jpg" alt=""></figure><ul><li>海綿上滴水浸透，放在手機屏幕上“再來一次”的位置。杜邦線的另一頭插進橙子。（觸發電容屏需要在屏幕上形成一個電場，我嘗試過連接乾電池負極的方案，但是效果不理想，最後不得已拿了室友的一個橙子。當然，一直捏着或者含着導線也是可以的。）</li>
+<li>舵機連接上樹莓派，電源使用 5v（Pin #04，Pin #06），舵機控制線接在 GPIO18(Pin #12)。</li>
+</ul><figure><img class="content-image" src="https://pic4.zhimg.com/v2-a5e55f4e802886077b085dc7d51c172a_b.jpg" alt=""></figure><ul><li>需要根據實際安裝位置調整舵機高點和低點位置（範圍： 2.5~12.5）</li>
+</ul><div class="highlight">
+<pre><code class="language-text">servo_down = 3.8
+servo_up = 5 
+</code></pre>
+</div>
+<ul><li>最終效果</li>
+</ul><figure><img class="content-image" src="https://pic3.zhimg.com/v2-48981bf975d64ebe7d12dc865ddec902_b.jpg" alt=""></figure><p><strong>Windows 部分</strong></p>
+<ul><li>下載 <a class=" wrap external" href="http://link.zhihu.com/?target=https%3A//pro.itools.cn/airplayer" target="_blank" rel="nofollow noreferrer">Airplayer</a>（免安裝，暫無捆綁）</li>
+<li>配置 Airplayer，畫質什麼的統統調到最高。啓動 iPhone 上的 Airplay，然後可以在電腦上看到 iPhone 畫面，遊戲運行時需要 Airplayer <strong>全屏顯示</strong>。</li>
+</ul><figure><img class="content-image" src="https://pic2.zhimg.com/v2-68141996c89c205d6a5afc6372308837_b.jpg" alt=""></figure><ul><li>安裝 Pillow 庫，本文使用 Pillow 庫的 ImageGrab 截屏，截屏代碼：</li>
+</ul><div class="highlight">
+<pre><code class="language-python3"><span class="n">im</span> <span class="o">=</span> <span class="n">ImageGrab</span><span class="o">.</span><span class="n">grab</span><span class="p">((</span><span class="mi">654</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1264</span><span class="p">,</span> <span class="mi">1080</span><span class="p">)</span><span class="err">）</span> 
+<span class="n">im</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">'a.png'</span><span class="p">,</span> <span class="s1">'png'</span><span class="p">)</span>
+</code></pre>
+</div>
+<blockquote>其中(654, 0, 1264, 1080)是截屏的範圍，我的顯示器分辨率是 1080p，截取屏幕中間的部分得到的圖片大小是 610*1080，但這個時候圖片最左邊的一列的像素是黑色的。</blockquote>
+<ul><li>下載 <code>wechat_jump_auto_iOS_Win.py</code>，我的顯示器分辨率是 1920*1080，手機是 iPhone7。如果使用不同的設備需要<strong>更改時間係數</strong>等參數。</li>
+<li>由於 Airplay 傳輸畫面時會壓縮，獲取的遊戲畫面會有顏色偏差。我修改了原算法的一些參數，增大了顏色上的寬容度，在測試中已經達到一個比較好的準確率。</li>
+<li>wechat_jump_auto_iOS_Win.py 計算出跳躍距離後，會調用 socket 庫把跳躍時間發送到樹莓派上，其中 ip 地址需要修改爲實際樹莓派的 ip 地址。</li>
+</ul><div class="highlight">
+<pre><code class="language-text">ip_addr = 'rasp_ip'
+</code></pre>
+</div>
+<p><strong><strong>運行</strong></strong></p>
+<ol><li>打開遊戲畫面，Airplayer 窗口全屏</li>
+<li>樹莓派上運行<code>servo_control.py</code> ，監聽 9999 端口，等待 Win 的計算結果</li>
+<li>Windows 運行<code>wechat_jump_auto_iOS_Win.py</code></li>
+<li>海綿放在“再來一次”的位置可以自動重新開始，然後就會一直自動刷分</li>
+</ol><p><strong><strong>問題&amp;其它</strong></strong></p>
+<ul><li>由於是物理點擊屏幕，會產生一定的操作誤差。操作誤差由時間常數誤差、舵機運動時間、杜邦線觸點插進海綿的深度等等因素引起。而當前使用的算法在一種情況下會出現誤差疊加的問題。</li>
+</ul><figure><img class="content-image" src="https://pic2.zhimg.com/v2-757782e15765c0ccf767b025694bab3c_b.jpg" alt=""><figcaption>Z 形路徑誤差累積過程</figcaption></figure><blockquote>如圖：在綠色方塊跳至灰色方塊的過程中，出現操作誤差。連續“Z 形”路徑中誤差會逐漸累積。這個問題在落點方塊較小時有一定的發生概率。我嘗試過添加一些糾正算法，但效果不明顯。這個誤差會在 Z 形路徑中斷時（出現連續 3 個落點在一條直線上）自動修正。如果誤差較大棋子即將掉落，可以終止程序，手動修改時間係數糾正。</blockquote>
+<ul><li>舵機的擺動角度和時間係數沒有絕對的數值，需要慢慢嘗試，當前使用的時間係數是 2.43。</li>
+<li>可以使用 arduino + pyfirmata 組合控制舵機，成本比較低，不需要網絡傳輸計算結果。因爲我的 arduino 前些天送給了女票，所以還沒有使用 arduino 的方案。</li>
+<li>這個遊戲在跳了 200+ 次之後方塊會變的非常小（如題圖），已經不是普通人類所能做到的。研究了外掛之後才知道手玩高分有多難，大家還是不要刷分了，會沒朋友的。</li>
+</ul><hr><p>來自一隻正在艱難地轉 CS 的通信狗，第一次發文章，有很多小問題，歡迎各路大佬指教。</p>
+
+
+
+</div>
+</div>
+</div>
+
+
+</div>
+</div><script type="“text/javascript”">window.daily=true</script>
