@@ -1,0 +1,72 @@
++++
+date = "2018-01-18T07:00:00"
+title = "- 有哪些外行覺得很蠢，實際設計很精妙的東西？- 驗證碼"
+titleimage = "https://pic4.zhimg.com/v2-c23074d0bc791e5df81ea5099734efb3.jpg"
+ga = 011807
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title"></h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>看到這個題目，我腦中蹦出的第一個答案就是它，一項大概讓所有機器人和大部分人類都痛恨的發明：<strong>驗證碼。</strong>準確地說，今天我要說的並不是廣義的驗證碼 -CAPTCHA，而是 reCAPTCHA）</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-36deca5ccf319057a4bf48249861d27c_b.jpg" alt="">
+<p>說它看起來很蠢我想大家都會同意吧，第一，醜；第二，原理看起來簡單粗暴，一點不“高級”。</p>
+<p>那爲什麼又說它精妙無比呢？</p>
+<p>先從 CAPTCHA 說起吧，這是"驗證碼"的英文名，然而它並不是一個現成的單詞，而是一個縮寫，什麼縮寫呢？深吸一口氣，跟我念：</p>
+<p>"<strong>C</strong>ompletely <strong>A</strong>utomated <strong>P</strong>ublic <strong>T</strong>uring test to tell <strong>C</strong>omputers and <strong>H</strong>umans<strong> A</strong>part"。</p>
+<p>翻譯成中文就是"<strong>全自動區分計算機和人類的圖靈測試</strong>"，一下變得高大上了有木有？</p>
+<p>相比於圖靈測試，在 CAPTCHA 中，人類和機器的角色其實是互換了的，所以它其實屬於一種<strong>反圖靈測試（</strong><a href="https://en.wikipedia.org/wiki/Reverse_Turing_test">Reverse Turing test</a><strong>），顯得更高大上了。</strong></p>
+<p>典型的 CAPTCHA 就是像下圖這樣，給你一張包含扭曲文字的圖片，再給你一個文本框用來輸入。</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-22246ede7bdcf199b43c95f68b668336_b.jpg" alt="">
+<p>接下來就輪到我們的主角 Luis von Ahn 大神出場了，CAPTCHA 這個名字就是他提出來的。</p>
+<p>他出生於 1978 年，2000 年在杜克大學獲得了數學學士學位，隨後就進入卡內基梅隆大學讀博士。</p>
+<p>2003 年，他和幾個人一起提出了“CAPTCHA”這個提法，但驗證碼本身是由其他人在更早的時候發明的。</p>
+<p>驗證碼雖然顯得又“醜”又“蠢”，但在區分人類和機器這件事上非常有效，所以從被髮明開始，每天都在被全世界的網站成千上萬次的使用，防止惡意的攻擊、註冊、刷票、抽獎等等。</p>
+<p>Louis 大神就想了，每天有這麼多人要一遍遍地去識別一串串字符，能不能把這些腦力、時間利用起來、集合起來做一些有意義的事呢？</p>
+<p>於是，2007 年，他創立了 reCAPTCHA。</p>
+<p>跟 CAPTCHA 相比，reCAPTCHA 看起來區別並不大，如圖：</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-36deca5ccf319057a4bf48249861d27c_b.jpg" alt="">
+<p>外觀上最大的區別，就是待識別的單詞從<strong>一個</strong>變成了<strong>兩個</strong>，然而這恰恰是 reCAPTCHA 的玄機所在。</p>
+<p>這個玄機就是，兩個單詞中的一個，來自於某個<strong>真實文本</strong>的掃描，而這個文本，可能由於文本的年代 / 印刷質量或者掃描質量的關係，很難用 OCR 技術準確識別出來。</p>
+<p>而 reCAPTCHA 做的事情，就是讓每一個“挑戰”這個驗證碼的人其實都當了一次“人肉”OCR，“幫助”電腦識別文本的內容。</p>
+<p>讀到這裏你也許發現問題了，既然電腦都認不出來那個詞是什麼，那麼它怎麼知道你輸入的對還是錯呢？</p>
+<p>2 個單詞中的另一個就發揮作用了，這個單詞是 reCAPTCHA<strong>知道答案</strong>的，如果這個單詞你的輸入是正確的，那麼系統就認爲你輸入的另一個單詞的也是正確的，當然，還會通過把詞條分發給多人等辦法來交叉驗證保證準確率。</p>
+<p>通過這種牛 B 的衆包(<a href="https://en.wikipedia.org/wiki/Crowdsourcing">Crowdsourcing - Wikipedia</a>)，reCAPTCHA 在短時間內幫助紐約時報數字化了從 1851 年至今的所有文章，共計 1300 多萬篇，非常完美地詮釋了當時 reCAPTCHA 的 slogan,"Stop spam,read books"，也就是上面 reCAPTCHA 的截圖中右下角的文字。</p>
+<p>就問你，酷不酷，妙不妙？</p>
+<p>參考資料：</p>
+<p><a href="https://en.wikipedia.org/wiki/CAPTCHA">CAPTCHA - Wikipedia</a></p>
+<p><a href="https://en.wikipedia.org/wiki/ReCAPTCHA">reCAPTCHA - Wikipedia</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Reverse_Turing_test">Reverse Turing test</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Luis_von_Ahn">Luis von Ahn - Wikipedia</a></p>
+<p><a href="http://jandan.net/2013/02/17/recaptcha.html">關於 reCAPTCHA 驗證碼</a></p>
+<p><a href="http://daily.zhihu.com/story/4454028">一個神人創造了驗證碼，又讓驗證碼做出了巨大貢獻</a></p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div><script type="“text/javascript”">window.daily=true</script>
