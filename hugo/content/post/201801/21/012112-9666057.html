@@ -1,0 +1,75 @@
++++
+date = "2018-01-21T12:00:00"
+title = "大誤 · 想吃個西瓜怎麼這麼難"
+titleimage = "https://pic1.zhimg.com/v2-41112b9b42afce5555e5ee181137f344.jpg"
+ga = 012112
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+<div class="question">
+<h2 class="question-title">用貝葉斯方法挑西瓜</h2>
+<div class="answer">
+
+
+
+<div class="content">
+<p>小紅是小明正在追求的女神。今天，小明好不容易把小紅約出來逛街，逛着逛着，女神小紅說口渴了，兩人來到西瓜攤前，這時，小紅抿嘴一笑，突然想考察一下小明的知識水平，說道：“小明你不是做機器學習的碼農嗎？如果要你用機器學習挑西瓜，你會怎麼做？”</p>
+<p>小明會心一笑，這不是撞我槍口上嗎？看我的蒂花之秀～</p>
+<p>是機器學習挑西瓜的基本思路是這樣滴，先儘量觀察西瓜的特徵，<strong>從特徵中找出和“好瓜”有關的特徵</strong>，這樣的特徵非常多，讓我們頭腦風暴一波：</p>
+<ol><li>直觀特徵：包括但不限於西瓜的顏色、根蒂的形狀、瓜皮的紋理、敲擊的聲音等等～</li>
+<li>外部環境特徵：是不是本地瓜，瓜的品種，上市時間等等～</li>
+<li>還可以有很多其他特徵： 如瓜店老闆的誠信度，這個西瓜的銷售情況等等～</li>
+</ol><p>小明呱啦呱啦一頓說得正起勁，小紅說：stop！你說這麼多我頭都大了，你<strong>怎麼知道那些特徵有用那些特徵沒用呢？</strong></p>
+<p>小明緩緩道來：哈，這個簡單，可以用貝葉斯方法！</p>
+<p><strong><strong>用貝葉斯方法進行特徵分析：</strong></strong></p>
+<p>我們先來規定一下符號，</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=Y%3D%E5%A5%BD%E7%93%9C" alt="">
+<p>表示是好瓜，相反</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cbar%7BY%7D+%3D%E4%B8%8D%E6%98%AF%E5%A5%BD%E7%93%9C" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=X_i" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=X_1%EF%BC%9D%E9%9D%92%E7%BB%BF%E8%89%B2+" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=X_2%EF%BC%9D%E6%A0%B9%E8%92%82%E5%9D%9A%E6%8C%BA+" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=X_3%EF%BC%9D%E6%95%B2%E5%87%BB%E5%A3%B0%E6%B8%85%E8%84%86+" alt="">
+<p>那麼當我們知道了一個習慣的這些特徵，這個西瓜是”好瓜“的概率可以表示爲如下公式：</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=P%28Y%7CX_1%2CX_2%2CX_3%29+%3D+%5Cfrac%7BP%28X_1%2CX_2%2CX_3%7CY%29P%28Y%29%7D%7BP%28X_1%2CX_2%2CX_3%29%7D" alt="">
+<p>再寫出西瓜“不是好瓜”的概率：</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=P%28%5Cbar%7BY%7D%7CX_1%2CX_2%2CX_3%29+%3D+%5Cfrac%7BP%28X_1%2CX_2%2CX_3%7C%5Cbar%7BY%7D%29P%28%5Cbar%7BY%7D%29%7D%7BP%28X_1%2CX_2%2CX_3%29%7D" alt="">
+<p>將兩個概率相除，得到：</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cfrac%7BP%28Y%7CX_1%2CX_2%2CX_3%29%7D%7BP%28%5Cbar%7BY%7D%7CX_1%2CX_2%2CX_3%29%7D%3D+%5Cfrac%7BP%28X_1%2CX_2%2CX_3%7CY%29P%28Y%29%7D%7BP%28X_1%2CX_2%2CX_3%7C%5Cbar%7BY%7D%29P%28%5Cbar%7BY%7D%29%7D" alt="">
+<p>這樣</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cfrac%7BP%28Y%7CX_1%2CX_2%2CX_3%29%7D%7BP%28%5Cbar%7BY%7D%7CX_1%2CX_2%2CX_3%29%7D+%3E+1" alt="">
+<p>時便可以說明，”是好瓜“的概率比”不是好瓜“的概率大～但是實際上除法並不好，容易產生過小的數值，發生 underflow，所以我們兩邊同時取對數 log 函數，得到：</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=log%5Cfrac%7BP%28Y%7CX_1%2CX_2%2CX_3%29%7D%7BP%28%5Cbar%7BY%7D%7CX_1%2CX_2%2CX_3%29%7D%3D+log%5Cfrac%7BP%28X_1%2CX_2%2CX_3%7CY%29%7D%7BP%28X_1%2CX_2%2CX_3%7C%5Cbar%7BY%7D%29%29%7D+%2B+log%5Cfrac%7BP%28Y%29%7D%7BP%28%5Cbar%7BY%7D%29%7D" alt="">
+<p>公式左邊是西瓜“是好瓜”的<strong>邏輯發生比，又稱作 logit，邏輯發生比大於 0 就說明是好瓜的概率較大</strong>。</p>
+<p>接下來，我們假設所有特徵之間是獨立的，可以用條件獨立假設：</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=P%28X_1%2CX_2%2CX_3%7CY%29+%EF%BC%9D+P%28X_1%7CY%29%5Ctimes+P%28X_2%7CY%29+%5Ctimes+P%28X_3%7CY%29" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=P%28X_1%2CX_2%2CX_3%7C%5Cbar%7BY%7D%29+%EF%BC%9D+P%28X_1%7CY%29%5Ctimes+P%28X_2%7C%5Cbar%7BY%7D%29+%5Ctimes+P%28X_3%7C%5Cbar%7BY%7D%29" alt="">
+<p>將它們帶入邏輯發生比公式：</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=log%5Cfrac%7BP%28Y%7CX_1%2CX_2%2CX_3%29%7D%7BP%28%5Cbar%7BY%7D%7CX_1%2CX_2%2CX_3%29%7D%3D+log%5Cfrac%7BP%28X_1%7CY%29%7D%7BP%28X_1%7C%5Cbar%7BY%7D%29%29%7D+%2Blog%5Cfrac%7BP%28X_2%7CY%29%7D%7BP%28X_2%7C%5Cbar%7BY%7D%29%29%7D%EF%BC%8Blog%5Cfrac%7BP%28X_3%7CY%29%7D%7BP%28X_3%7C%5Cbar%7BY%7D%29%29%7D%EF%BC%8B+log%5Cfrac%7BP%28Y%29%7D%7BP%28%5Cbar%7BY%7D%29%7D" alt="">
+<p>我們發現等式右邊變成了各個特徵</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=log%5Cfrac%7BP%28X_i%7CY%29%7D%7BP%28X_i%7C%5Cbar%7BY%7D%29%29%7D" alt="">
+<p>的求和～<img class="content-image" src="http://www.zhihu.com/equation?tex=log%5Cfrac%7BP%28X_i%7CY%29%7D%7BP%28X_i%7C%5Cbar%7BY%7D%29%29%7D" alt="">。而值比較小的特徵說明影響較小，不是一個很有效的特徵，剔除掉也不會有很大的影響。</p>
+<p>這樣就能篩選出最重要的特徵了～</p>
+<p>小明娓娓道來，小紅聽得入了迷，暗自在心中給小明加了一分～</p>
+
+
+
+</div>
+</div>
+</div>
+
+
+</div>
+</div><script type="“text/javascript”">window.daily=true</script>
