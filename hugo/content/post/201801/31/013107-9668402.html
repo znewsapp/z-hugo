@@ -1,0 +1,222 @@
++++
+date = "2018-01-31T07:00:00"
+title = "你的蛙到底在幹什麼？花了 5 個晚上，我總算摸清了一些規律"
+titleimage = "https://pic2.zhimg.com/v2-16158b375746db786c7a796d770d1fe5.jpg"
+ga = 013107
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title">玩《旅行青蛙》（旅かえる）有哪些體驗？</h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p><strong>呱呱走火入魔 - 逆向遊戲代碼 - 終結玄學迷信</strong></p>
+<p>看到很多人對物品的使用上的很多猜測，很多都不是很準確。</p>
+<p>爲了理解你們的呱<strong>究竟</strong>在幹什麼，花了五個晚上逆向遊戲程序邏輯，提取各種數據。</p>
+<p>這裏相當於動用了 <strong>上帝視角 </strong>來解答這些問題。</p>
+<p><em>答案將會陸續更新，歡迎在評論區提問。</em></p>
+<hr><ol><li><strong>呱真的在旅行麼？</strong></li>
+<li><strong>呱是如何選擇旅行路徑的？</strong></li>
+<li><strong>呱是如何旅行的？</strong></li>
+<li><strong>呱在每條路上的耗時是怎麼計算的？</strong></li>
+<li><strong>呱離家出走了怎麼辦？</strong></li>
+<li><strong>道路有哪些屬性？</strong></li>
+<li><strong>每件物品都有什麼效果？</strong></li>
+<li><strong>如何科學使用物品？</strong></li>
+<li><strong>旅途中會帶回哪些明信片？</strong></li>
+<li><strong>旅途中會帶回哪些特產？</strong></li>
+<li><strong>朋友什麼時候會來訪？</strong></li>
+<li><strong>朋友來訪應該投喂什麼？</strong></li>
+<li><strong>三葉草多久會長好？</strong></li>
+<li><strong>四葉草獲得的概率是？</strong></li>
+<li><strong>抽獎球的概率是？</strong></li>
+<li><strong>如何獲得成就？</strong></li>
+<li><strong>有沒有免費獲得三葉草的方法？</strong></li>
+</ol><p><strong>呱真的在旅行麼？</strong></p>
+<p>不得不佩服遊戲的設計者，爲了追求真實，實現了一套非常完整的旅行模擬系統，有嚴謹的旅遊路線設計。</p>
+<p>因爲旅行的過程並不展示給用戶，我原本以爲邏輯會十分簡單。發現這套旅行模擬系統的時候，我也有些驚訝，也促使我深入研究這款遊戲的邏輯。</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-41a48c87ffabb11f2b6621d0bcb414a1_b.jpg" alt="">
+<p><em>下面的解釋中間會用到少量計算機圖論 (graph theory) 的術語，但應該還是很直觀。</em></p>
+<p><strong>呱是如何選擇旅行路徑的？</strong></p>
+<p>程序內建<strong>東、西、南、北</strong>四個區域，呱會選擇一個地區旅行</p>
+<p>每個區域的設計都是一個<strong>連通的無向圖 (connected undirected graph)</strong>，而呱的旅行路線就是在圖上某兩個點之間走出一條<strong>路徑 (path)</strong>。</p>
+<p>通過逆向手段，我提取出了程序中的信息，花了一些時間用 Graphviz 生成了每個地圖的樣子。</p>
+<p><em>如果大家有興趣的話，我可以把原始數據上傳到 Github</em></p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-6a5a8b9bfa56d8de53a27ac08136ab53_b.jpg" alt="">
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-da085ee5e71afca9e68939257e1a8ccf_b.jpg" alt="">
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-e75acd4a0d94b67d62283135eb78f291_b.jpg" alt="">
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-13355d7e07ee35980bc2d41b219867b9_b.jpg" alt="">
+<p>圖上的每個<strong>節點 (vertex)</strong> 都代表了一個地點。每個地點都有可能被蛙經過，並觸發一些事件。</p>
+<p>除了普通的地點外，還有四種特殊的地點會影響呱旅行的路線：</p>
+<ul><li><strong>START 起始點（帽綠色）</strong></li>
+<li><strong>GOAL 目的地（桃紅色）</strong></li>
+<li><strong>PATH 途徑地（橘黃色）</strong></li>
+<li><strong>DETOUR 繞路地（淺黃色）</strong></li>
+</ul><p>連接節點之間的是<strong>邊 (edge)</strong>，代表連接地點的路，這些路上也會觸發 遇上夥伴、拍攝照片 等事件。</p>
+<p>每次開始旅行的時候，根據老母親（？）打包的物品，呱都會：</p>
+<ol><li><strong>選擇目的地<br></strong>攜帶特點食物或道具可以影響到地區的選擇，有些物品可以增加特定地區的被選概率，甚至可以直接確定選擇的地區。在一個區域內的目的地的選擇同樣取決於所攜帶的道具。<strong>具體每件物體效果會在後面提到</strong>。</li>
+<li><strong>選擇途徑地<br></strong>途徑地由目的地決定，每個地點都有對應的途徑地，代碼中對此的描述是當地的縣府 / 交通樞紐。</li>
+<li><strong>選擇繞路地<br></strong>這個很有意思，我猜測作者的目的是爲了讓旅途更有多樣性，每次路途會額外添加幾個地區內繞路地點，攜帶物品對決定繞路地似乎沒有影響。</li>
+<li><strong>生成經過所有地點的旅行路徑<br></strong>運用了圖論很經典的連通圖找最短路徑 Dijkstra 算法，配合途徑地和繞路地的邏輯，最終計算出旅行路徑。</li>
+</ol><p><strong>目的地是怎麼選擇的？</strong></p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-95aa0110679d6c6be268b087fc3b5199_b.jpg" alt="">
+<p>具體目的地的選擇就和攜帶的道具相關，每個物品對應目的地的優先級與 <strong>區域加成</strong> 疊加就能獲得每個地點被選擇的概率。</p>
+<p>每個目的地的 <strong>區域加成 </strong>初始值都爲 30，道具的 <strong>決定地區</strong> 屬性值可以提升對應地區內目的地的<strong> 區域加成</strong>，從而增加區域內所有的目的地被選擇的概率。</p>
+<p>部分道具可以直接限制選擇到規定的地區 (D)。</p>
+<p><strong>呱是如何旅行的？</strong></p>
+<p>確定了地點之後，呱會開始旅行：</p>
+<ol><li>攜帶物品會決定蛙<strong>最長</strong>能旅行多久，<strong>6 ～ 72 小時不等。</strong></li>
+<li>初始體力由攜帶物品決定，以 100 爲基數提升。<br>*<em>物品的具體屬性參考下面的圖鑑</em></li>
+<li>經過圖上的一條路（邊）的時候，道路的地形屬性和所攜帶的物品屬性互相作用，會決定呱實際消耗的時間和體力。</li>
+<li>路上可能會遇見小夥伴，會在之後的旅行中結伴而行，從而出現在明信片中。</li>
+<li>根據路途屬性，有一定概率會寄相關的明信片。</li>
+<li>當體力不支的時候，蛙必須<strong>停下來休息 3 小時</strong>，休息完之後體力會恢復到 100。休息時間也算作旅行時間。</li>
+<li>當到達目的<strong>或者</strong>旅行時間耗盡的時候，蛙就會回家。</li>
+<ol><li>回家時會攜帶三葉草和抽獎券。</li>
+<li>如果在時間耗盡前到達了<strong>目的地</strong>，蛙會在此基礎上帶回當地特產和收藏品。</li>
+</ol></ol><p><em>所以如果你的蛙很久都沒回家，回家了也沒有帶土特產，可能是路途上多次體力不支，暈倒在路邊。</em></p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-8519071aa7d56558474ffef7e52ee958_b.jpg" alt="">
+<p><strong>呱在每條路上的耗時是怎麼計算的？</strong></p>
+<p>設：</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=t_%7B%5Ctext%7Bway%7D%7D" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=t_%7B%5Ctext%7Bplus%7D%7D" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=w" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=w%5Cin+%5Cleft%5C%7B+%5Ctext%7BNormal%7D%2C+%5Ctext%7BMountain%7D%2C+%5Ctext%7BSea%7D%2C+%5Ctext%7BCave%7D+%5Cright%5C%7D" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=n" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=E_%7B%5Ctext%7BNormal%7D%7D%28x%29%2CE_%7B%5Ctext%7BMountain%7D%7D%28x%29%2CE_%7B%5Ctext%7BSea%7D%7D%28x%29%2CE_%7B%5Ctext%7BCave%7D%7D%28x%29%2CE_%7B%5Ctext%7BAll%7D%7D%28x%29" alt="">
+<p>如果當前道路是 <em>普通 </em>地形，則耗時因疊加 <strong>移動速度</strong> 效果而減少：</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=t_w%3D+t_%7B%5Ctext%7Bway%7D%7D%5Ctimes%5Cprod_%7Bx%3D1%7D%5E%7Bn%7D%7B%280.01%5Ctimes%28100-E_%7B%5Ctext%7BNormal%7D%7D%7B%28x%29%7D%29%29%7D%5C%5C" alt="">
+<p>或者 如果當前道路是 <em>山地、大海、洞穴 </em>地形，基礎耗時不變，地形增加耗時因疊加 <strong>移動速度</strong> 效果而減少：</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=t_w%3Dt_%7B%5Ctext%7Bway%7D%7D%2Bt_%7B%5Ctext%7Bplus%7D%7D%5Ctimes%5Cprod_%7Bx%3D1%7D%5E%7Bn%7D%7B%280.01%5Ctimes%28100-E_%7Bw%7D%7B%28x%29%7D%29%29%7D%5C%5C" alt="">
+<p>如果攜帶了 <strong>乳蛋餅 （のびるのキッシュ）</strong>這種 <em>全地形 </em><strong>移動速度</strong> 提升的物品，則會在此基礎上再次疊加 <strong>移動速度</strong> 效果：</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=t_%7B%5Ctext%7Bfinal%7D%7D%3Dt+%5Ctimes%5Cprod_%7Bx%3D1%7D%5E%7Bn%7D%7B%280.01%5Ctimes%28100-E_%7B%5Ctext%7BAll%7D%7D%7B%28x%29%7D%29%29%7D%5C%5C" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=t_%7B%5Ctext%7Bfinal%7D%7D" alt="">
+<p><strong>呱離家出走了怎麼辦？</strong></p>
+<p>如果長時間沒有準備便當，包裏和桌上都沒有食物，呱會憤然離家出走（どこかへ出かけています）。</p>
+<p>這個時候在桌子上放上吃的，呱就會在 5～30 分鐘內回家。</p>
+<p><em>有趣的是，離家出走也算作成就計算中的旅行次數……emmmm。</em></p>
+<p><strong>道路有哪些屬性？</strong></p>
+<p>連接不同地點之間的每條路 (edge) 都有以下幾個屬性</p>
+<ul><li><strong>地形</strong><br>四種地形分別是 <em>普通、大海、山地、洞穴</em></li>
+<li><strong>耗時</strong><br>途徑這條路的體力和時間損耗，分爲基礎耗時和地形增加耗時<br><em>呱需要跋山涉水自然會耗時久一點</em></li>
+<li><strong>明信片概率<br></strong>明信片上不同元素出現的概率<br><em>據說所有的地圖元素都有真實原型</em></li>
+<li><strong>遇見夥伴<br></strong>遇見特定夥伴的概率</li>
+</ul><p>具體如下，<em>不能再詳細了</em></p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-7415bade0ede80076d3ca63a7d2a4c35_b.jpg" alt="">
+<p><strong>每件物品都有什麼效果？</strong></p>
+<p>奉上這張吐血整理的物品效果圖鑑：</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-ac9de692ddf463e7838b1c007ab578dc_b.jpg" alt="">
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-589b369c1564310488c541d7da42b992_b.jpg" alt="">
+<p>有五類不同的物品</p>
+<ul><li><strong>便當<br></strong>商店購買或者抽獎獲得的食物</li>
+<li><strong>幸運符<br></strong>除了四葉草和可以購買的幸 (tǔ) 運 (háo) 鈴之外，都要抽獎獲得</li>
+<li><strong>道具<br></strong>商店購買</li>
+<li><strong>特產<br></strong>呱旅遊時獲得</li>
+<li><strong>收藏品<br></strong>特別的特產，通常在縣府獲得，無法使用</li>
+</ul><p>屬性分類</p>
+<ul><li><strong>HP</strong></li>
+<ul><li><strong>最大時間（小時</strong>）<br>決定蛙的旅行時間</li>
+<li><strong>初始體力提升（%）</strong><br>增加一開始<em>一鼓作氣</em>能旅行的距離</li>
+<li><strong>隨機體力提升（%）</strong><br>隨機額外增加體力提升的最高百分點</li>
+</ul><li><strong>物品機率</strong></li>
+<ul><li><strong>三葉草</strong><br>獲得三葉草數量</li>
+<li><strong>額外隨機三葉草</strong><br>隨機額外獲得的最大三葉草數量</li>
+<li><strong>抽獎券</strong><br>獎券數量</li>
+<li><strong>物品數量增多</strong><br>增加獲得目的地<em>收藏品</em>的概率</li>
+</ul><li><strong>決定地區</strong><br>對應地區被選中的概率，如果值爲 D 則可以直接決定目的地所在區域</li>
+<li><strong>移動速度</strong><br>根據地形不同，提升移動速度，減少途徑所耗費的時間，在相同旅行時間內可以走更遠</li>
+<li><strong>朋友</strong><br>遇到特定旅行夥伴的概率</li>
+<li><strong>遭遇地形</strong><br>途徑特定地形時候獲得相應明信片的概率</li>
+<li><strong>FLAG 屬性</strong><br>立一些特定的 Flag，主要影響成就係統，下面會寫到</li>
+</ul><p><strong>如何科學使用物品？</strong></p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-639c8d930850a0e2ccf3d73595707ffc_b.jpg" alt="">
+<p>這裏用幾個例子來展示物品和路線結合的效果</p>
+<ol><li><strong>決定想去的地區<br></strong>攜帶的便當和抽獎獲得的護身符（お守り）可以提升選擇特定地區的概率。 抽獎獲得的車票（きっぷ）可以<strong>直接決定</strong>所去到的地區。<br><strong>例：</strong><em>想去北方，使用<strong>北國きっぷ。</strong></em></li>
+<li><strong>影響路途的距離和時間<br></strong>帶 <strong>最大時間 </strong>值高的食物吃走得遠，帶 <strong>體力提升</strong> 值高的食物吃走得快耗時少。</li>
+<li><strong>快速通過沿途路線的地形<br></strong>帶有地區速度加成的食物或者道具，可以增加特定地形的移動速度。<br>不同物品的 <strong>移動速度</strong> 效果可以疊加，詳情查看上面的解釋。</li>
+<li><strong>匹配在道路上遇到的夥伴<br></strong>如果在途徑會遭遇夥伴的道路，特定物品可以增加實際遭遇概率<strong><br>例：</strong><em>抽獎抽到的黃色ぼうろ（餅乾）可以增加路途中遇到螃蟹的機率。</em></li>
+</ol><p><strong>綜合運用（敲黑板！！！）</strong></p>
+<p><strong>呱想去秋田県男鹿市看燈塔</strong></p>
+<ol><li>在地圖上找到 秋田県（3022） 在北方。</li>
+<li>便當選擇 <strong>あさつきのピロシキ （蔥餅？）</strong>可以提升去北方的概率。</li>
+<li>攜帶 <strong>青色のお守り （藍色護身符）</strong>可以提升去北方的概率。</li>
+<li>如果有 <strong>北國きっぷ（北方車票？）</strong>可以直接決定去北方，上面的便當和護身符可以換別的。</li>
+<li>通過目的地概率表發現攜帶各類帳篷前往 3022 目的地的概率更高。</li>
+<li>查看可能的路線發現從起始點 3000 到 3022 之間會途徑很多山路。</li>
+<li>攜帶 <strong>ハイテクテント （高級帳篷？）</strong>增加山地移動速度更顯著。</li>
+<li>如果還有空餘，可以帶上 <strong>よつ葉（四葉草）</strong>或者 <strong>幸運の鈴</strong>，提升帶回物品的概率。</li>
+</ol><img class="content-image" src="http://pic3.zhimg.com/70/v2-24d00a5015507fd212aa77504813b9de_b.jpg" alt="">
+<p><strong>旅途中會帶回哪些明信片？</strong></p>
+<p>途徑每條道路上會遇到的明信片元素都有很明確的概率。</p>
+<p>普通的明信片是自動合成的。根據道路元素、所攜帶道具、遇到的同行小夥伴，程序會選擇合適的背景、前景和呱和小夥伴的 pose，合成完整的明信片。粗略計算，有 120 種左右的組合。</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-f693541dcd6ff01bf573029bdd84229a_b.jpg" alt="">
+<p>有一些帶有特定的故事情節明信片是單張繪製的，這裏也可以看出遊戲製作者的用心：迷路和小夥伴看地圖通常出現在地圖的邊緣，冷清下水道一般出現在四通八達的城市交通樞紐。</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-e94a712c25d9bf6cd637a4a2c444e1b8_b.jpg" alt="">
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-67f15a21eceffc257c625238749e2ff9_b.jpg" alt="">
+<p><strong>旅途中會帶回哪些特產？</strong></p>
+<p>上面提到了，成功到達<strong>目的地（GOAL）</strong>的時候纔會獲得特產，收藏品的獲得概率是 15%，其他物品的概率如下：</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-b2ff8cf911cbd8e0d6decc32b902deb7_b.jpg" alt="">
+<p><em>遊戲代碼中有收藏品收集三次必定成功的設定，但是實際上並未啓用，可能在之後的版本中會引入</em></p>
+<p><strong>朋友什麼時候會來訪？</strong></p>
+<p>蝸牛、蜜蜂和烏龜會時不時來訪。來訪停留的時間 180～270 分鐘。</p>
+<p><strong>蜜蜂需要有至少 3 件收藏品纔會出現，烏龜需要有至少 6 件收藏品。</strong></p>
+<p><strong>朋友來訪應該投喂什麼？</strong></p>
+<p>給來訪的朋友投喂會獲得三葉草和抽獎券的回禮：</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-42ca38c99c94b36574c7fa7c02124490_b.jpg" alt="">
+<p>在此基礎上，投喂帶有稀有 FLAG 屬性的物品會多獲得 20 根三葉草，多獲得 1～4 張抽獎券。</p>
+<p>朋友會記住最近三次的食品。連續投喂同一種物品，獲得回禮的數量會降低。</p>
+<p><strong>爲了達到最好效果，最好換四種不同的禮物輪流投喂</strong>，具體可以參照下面的喜好表格：</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-61ec1f27a581a73c7deb30474ffb1c17_b.jpg" alt="">
+<p><strong>三葉草多久會長好？</strong></p>
+<p>花壇中總共有 20 根三葉草。</p>
+<p>三葉草割完之後重生的時間是遵循</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cmu%3D7200%EF%BC%8C%5Csigma%3D1800" alt="">
+<p>的正態分佈在</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5B300%2C+14400%5D" alt="">
+<p>的區間：</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-d455a65b3b15866e5a8f8717ef0a7406_b.jpg" alt="">
+<p><strong>每一根都是獨立重生的。最短 5 分鐘 (300 秒)，最長 4 小時 (14400 秒) 重生。</strong></p>
+<p><strong>四葉草獲得的概率是？</strong></p>
+<p>完成教程後會自動誕生第一顆四葉草，除此之外，每一根三葉草重生的時候都有 <strong>1%</strong> 的概率成爲四葉草。</p>
+<p><strong>抽獎球的概率是？</strong></p>
+<ul><li>白：60%</li>
+<li>藍：27%</li>
+<li>綠：9%</li>
+<li>紅：3%</li>
+<li>金：1%</li>
+</ul><p><strong>如何獲得成就？</strong></p>
+<p>蛙旅行的時候會立一些 Flag，我從代碼中整理了一下觸發的條件：</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-d7e606bc6c49621bf8861d4c70b03c95_b.jpg" alt="">
+<p>這也是玄學錯誤迷信的一個地方。使用稱呼對遊戲其他部分沒有任何影響，不會改變獲得物品和明信片獲得概率，也不會影響出門時長。</p>
+<p><strong>有沒有免費獲得三葉草的方法？</strong></p>
+<p><em>你猜？</em></p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-4d9e1a01ff1ddc43e9b82d0a676cc36c_b.jpg" alt="">
+<hr><p><em>持續更新，歡迎在評論區提問。</em></p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div><script type="“text/javascript”">window.daily=true</script>
