@@ -1,0 +1,142 @@
++++
+date = "2018-03-04T07:00:00"
+title = "圓周率裏會出現你的銀行卡密碼嗎？"
+titleimage = "https://pic3.zhimg.com/v2-1822222b9cac964fccf2d19876933d6e.jpg"
+ga = 030407
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title"></h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>這個問題挺有意思，非數學專業，就從計算機的角度分析一下這個問題吧。</p>
+<p>-</p>
+<p>爲了分析這個問題，我先用 y-cruncher 跑出了 π 的前 10 億位，感覺應該夠用！</p>
+<p>不夠用也沒辦法了，內存有限，而且跑程序時 CPU 佔用率 100%，生怕 CPU 會燒掉 o(╥﹏╥)o</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-135629bf7291a4b7016e204be4f0b200_b.jpg" alt="">
+<p>計算前 10 億位共用時 190.515 秒，數據以 txt 的格式保存，大小 976.563MB。</p>
+<p>下面開始我們的分析工作。</p>
+<p>先簡單的搜索一下，發現自己能想到的幾個六位數字都出現了（包括我的銀行卡密碼）</p>
+<p>舉幾個例子：</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-b5618665501df450e5ed175e49c9d082_b.jpg" alt="">
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-a393e1fc3f2e67cc78c1edc0054dc59f_b.jpg" alt="">
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-ebe9e56f1caba6b7cc67a5a0f213b069_b.jpg" alt="">
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-f7ae6a7122fe98ae0c88c74dc2e51da3_b.jpg" alt="">
+<p><strong>注：每行有 1024 個字符，所以計算公式應爲 1024*（行數 -1）+ 列數 -2，其中 2 爲開頭的“3.”</strong></p>
+<p>但是不可能手動把 000000~999999 全驗證一遍吧（雖然我今天很閒），還是要寫個程序跑一下。</p>
+<p>不考慮複雜度問題的話，代碼很快就寫完了,只有短短的 14 行。</p>
+<div class="highlight">
+<pre><code class="language-python3"><span class="n">pwds</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000000</span><span class="p">):</span>
+    <span class="n">pwds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">"0"</span> <span class="o">*</span> <span class="p">(</span><span class="mi">6</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">num</span><span class="p">)))</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">num</span><span class="p">))</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"Pi-1000000000.txt"</span><span class="p">,</span><span class="s2">"r"</span><span class="p">)</span><span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">pai</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="c1">#輸出字符串的長度和 π 的前 109 位</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">pai</span><span class="p">),</span><span class="n">pai</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">110</span><span class="p">])</span>
+<span class="n">stat</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">pwd</span> <span class="ow">in</span> <span class="n">pwds</span><span class="p">:</span>
+    <span class="n">stat</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">pwd</span><span class="p">,</span><span class="n">pai</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">pwd</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">stat</span><span class="p">)</span> <span class="o">%</span> <span class="mi">1000</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">stat</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"Pi-stat.txt"</span><span class="p">,</span><span class="s2">"w"</span><span class="p">)</span><span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">stat</span><span class="p">:</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="s1">':'</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">+</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+</code></pre>
+</div>
+<p>因爲我用的是 index，<strong>如果密碼不存在的話，則會直接拋出異常。</strong>但是我的直覺是 000000~999999 是都存在的（其實是我懶得多寫代碼了）。</p>
+<p>檢索的速度大概是 1000 條 / 秒，接下來就是耐心的等啊...等啊...等 ╮(╯▽╰)╭</p>
+<p>程序跑完了！不出所料，<strong>所有的六位銀行卡密碼在 π 中都是存在的。</strong></p>
+<p>最後出現的密碼是 569540，位於小數點後 14,118,307 位。（10 億位有點過剩啊！）</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-dc0a499c84c4743ef0deaa18b3be262e_b.jpg" alt="">
+<p>同時我也把數據上傳到百度網盤了，感興趣的朋友們可以下載看一下。（不介意你們私聊告訴我你們的密碼位於第多少位 hhhhh）</p>
+<p>文件：<a href="https://pan.baidu.com/s/1smIZWxJ">Pi-stat.txt</a></p>
+<p>密碼：8rc9</p>
+<p>留個彩蛋~</p>
+<p>雖然 π 是無限不循環的，但是對我來說只有小數點後 7,599,477 位是有意義的，嘻嘻(#^.^#)</p>
+<p>-</p>
+<p>第一次收到這麼多的贊。雞凍 (๑&gt;◡&lt;๑)</p>
+<p>於是雞凍的我又寫了個程序把 π 前 10 億位中的生日給跑了出來，生日的範圍爲 1920~2020 共計 101 年。</p>
+<p>上代碼~供有興趣的朋友們研究，一起討論如何計算的更快呀！（感覺這個完全可以出一個面試題的！我水平是不太行，下面是我想到的方法。）</p>
+<div class="highlight">
+<pre><code class="language-python3"><span class="n">month</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'01'</span><span class="p">:</span><span class="mi">31</span><span class="p">,</span><span class="s1">'02'</span><span class="p">:</span><span class="mi">28</span><span class="p">,</span><span class="s1">'03'</span><span class="p">:</span><span class="mi">31</span><span class="p">,</span>
+         <span class="s1">'04'</span><span class="p">:</span><span class="mi">30</span><span class="p">,</span><span class="s1">'05'</span><span class="p">:</span><span class="mi">31</span><span class="p">,</span><span class="s1">'06'</span><span class="p">:</span><span class="mi">30</span><span class="p">,</span>
+         <span class="s1">'07'</span><span class="p">:</span><span class="mi">31</span><span class="p">,</span><span class="s1">'08'</span><span class="p">:</span><span class="mi">31</span><span class="p">,</span><span class="s1">'09'</span><span class="p">:</span><span class="mi">30</span><span class="p">,</span>
+         <span class="s1">'10'</span><span class="p">:</span><span class="mi">31</span><span class="p">,</span><span class="s1">'11'</span><span class="p">:</span><span class="mi">30</span><span class="p">,</span><span class="s1">'12'</span><span class="p">:</span><span class="mi">31</span><span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">judge</span><span class="p">(</span><span class="n">Jdate</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">Jdate</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">])</span> <span class="o">&lt;</span> <span class="mi">1920</span> <span class="ow">or</span> <span class="nb">int</span><span class="p">(</span><span class="n">Jdate</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">2021</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">Jdate</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">6</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">12</span> <span class="ow">or</span> <span class="nb">int</span><span class="p">(</span><span class="n">Jdate</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">6</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="n">month</span><span class="p">[</span><span class="n">Jdate</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">6</span><span class="p">]]</span>
+            <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">Jdate</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">6</span><span class="p">])</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">and</span> <span class="nb">int</span><span class="p">(</span><span class="n">Jdate</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">])</span><span class="o">%</span><span class="mi">4</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">+</span><span class="mi">1</span>
+            <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">Jdate</span><span class="p">[</span><span class="mi">6</span><span class="p">:</span><span class="mi">8</span><span class="p">])</span> <span class="o">&gt;</span> <span class="n">p</span> <span class="ow">or</span> <span class="nb">int</span><span class="p">(</span><span class="n">Jdate</span><span class="p">[</span><span class="mi">6</span><span class="p">:</span><span class="mi">8</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">False</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">True</span>
+
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"Pi-1000000000.txt"</span><span class="p">,</span><span class="s2">"r"</span><span class="p">)</span><span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">pai</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="c1">#輸出字符串的長度和 π 的前 109 位</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">pai</span><span class="p">),</span><span class="n">pai</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">110</span><span class="p">])</span>
+<span class="n">stat</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">pai</span><span class="p">)</span><span class="o">-</span><span class="mi">8</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">judge</span><span class="p">(</span><span class="n">pai</span><span class="p">[</span><span class="n">num</span><span class="p">:</span><span class="n">num</span><span class="o">+</span><span class="mi">8</span><span class="p">]):</span>
+        <span class="n">stat</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">pai</span><span class="p">[</span><span class="n">num</span><span class="p">:</span><span class="n">num</span><span class="o">+</span><span class="mi">8</span><span class="p">],</span><span class="n">num</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">num</span> <span class="o">%</span> <span class="mi">1000000</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+
+<span class="n">stat</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"Pi-birthday.txt"</span><span class="p">,</span><span class="s2">"w"</span><span class="p">)</span><span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">stat</span><span class="p">:</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="s1">':'</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">+</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+</code></pre>
+</div>
+<p>文件：<a href="https://pan.baidu.com/s/1i6ULDMP">Pi-birthday.txt</a></p>
+<p>密碼：v4o4</p>
+<p>10 億位圓周率：</p>
+<p>文件：<a href="https://pan.baidu.com/s/1df9ccA">Pi-1000000000.txt</a></p>
+<p>密碼：drq8</p>
+<p>2500 萬位圓周率：</p>
+<p>文件：<a href="https://pan.baidu.com/s/1qZNfSHe">Pi-25000000.txt</a></p>
+<p>密碼：0aq8</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div><script type="“text/javascript”">window.daily=true</script>
