@@ -1,0 +1,58 @@
++++
+date = "2018-03-22T17:00:00"
+title = "Google、Facebook、Amazon 三選一，你更看好誰？"
+titleimage = "https://pic4.zhimg.com/v2-f6848b7db6d32b9920829e2a57a0c137.jpg"
+ga = 032217
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title"></h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>本文由於技術因素中英夾雜</p>
+<hr><p>08 年底左右加入 amazon，距今已經快 10 年了。</p>
+<p>10 年前剛加入的時候股票 70 多刀，然後金融危機降臨，股價一度跌倒 40 多。而今天是 1565 刀。</p>
+<p>10 年前 amazon 市值不到 google 一半，終於在今天追上了 google 一次。（也許保持不住 —_—）</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-25be18c00b61038a3d5335ce3dec5e9e_b.jpg" alt="">
+<p>這是兩家我都非常敬佩的公司，但又是文化截然不同的公司。</p>
+<p>以下全是個人主觀臆斷，僅供參考</p>
+<p><strong>感覺 Amazon 是一家探索客戶滿意度極限的公司(霧)</strong>，從內部來講，一個簡單的例子。amazon 的 SDE 是 Someone Do Everything…... 除開設計開發，一個好的 SDE 也必須是半個好的產品經理，好的項目經理, 好的前期技術支持, 好的後期技術支持，好的 tester。對自己組的業務和大局有長遠的把握，要挖掘客戶真正的需求，不但要幫客戶解決問題，還要幫助客戶找到他們的問題，幫助他們 improve(抱歉這邊說成長感覺怪怪的，所以甩個英文。)；其實，從完美中找到不完美，找到問題，比解決問題難的多。</p>
+<p><strong>感覺 Google 是一家探索人類極限的公司</strong>，小到 google guice，guava，protobuf......大到大數據三篇，dremel…... k8s，還有 spanner 這種於不可能中創造可能的藝術品(最近看了很多分佈式數據庫論文，之後看了 spanner 的論文，請原諒我這裏對 spanner 的評價激動了一下)。沒有 google 把很多思想和軟件貢獻給社區，不知道這個世界現在是什麼樣子。至少我知道我會比現在在技術上弱很多，在技術上，google 對我的啓發幫助，不低於 amazon，或甚至超出一些。</p>
+<p>然而現實是，<strong>人類極限未必等於客戶需求的極限</strong>，所以也許這是 google 的股價並配不上 google 對技術領域的偉大貢獻的原因？</p>
+<p>一個例子就可以看出來文化的差距：Google Spanner VS. AWS Aurora, 技術難度和創新上，個人認爲 Spanner 吊打 Aurora，用 TrueTime API 的解決光速限制信息同步問題的思路簡直驚豔。。。Spanner 可以算是第一個真正意義上的全球化分佈式事務數據庫，直面和挑戰跨數據中心的分佈式事務這個大難題；然而，Spanner 自己有一套 SQL 語法，不完全兼容 MySQL，任何使用 MySQL 的企業要使用 Spanner 必須從頭到尾更改自己的代碼來移植到 Spanner 上，這當然也是由於技術限制的原因，不過這就是客觀事實。 而 AWS Aurora，選擇完全兼容 MySQL，任何用戶不需要更改任何代碼，可以直接把業務遷移到 Aurora 上，直接享受“1 數據中心毀滅 +1 額外硬盤出錯”都可以不丟失數據且可以正常讀取的<strong>可怕容災能力</strong>，且 performance 比 MySQL 高 n 個檔。缺點是數據不能 sharding，寫必須找 Leader(高性能高吞吐量的分佈式事務是極難解決的問題，Aurora 選擇避開這個問題)；你是一個小企業 CTO 你選哪個？</p>
+<p>Spanner 捨棄了“最方便客戶需求”這個負擔，來追求技術能達到的極限(如果保持完全兼容 MySQL，我感覺 Spanner 按現在的設計做不出來，至於爲什麼以後有機會我會發文細說，這裏歡迎一波關注⁄(⁄ ⁄ ⁄ω⁄ ⁄ ⁄)⁄)，從而打破了人類的極限，而 Aurora 則選擇正中客戶的需求。這就是活生生的文化差異。</p>
+<p>Amazon 內部 10 年來也經歷了翻天覆地的變化，它的成長，沒有辜負每一個 amazonian 的努力…... （還記得我 10 年前面試 Amazon 的時候，HR 跟我說 Amazon 在美國是跟微軟 google 一個檔次的公司的時候，我的內心其實是非常“呵呵”的 -_- ）</p>
+<p>這兩家公司都教會了我很多東西，很多我一輩子可以受益的東西。</p>
+<p>作爲 amazon 的一員，從商業上來講，我更看好也希望 amazon 有更好的發展。</p>
+<p>作爲人類，作爲一位技術工作者，我希望 google 也能前程似錦，因爲我想看看人類的技術實現的極限在哪…...</p>
+<p>人類的好奇心呀，是沒有止境的！</p>
+<p>（Facebook 完全不瞭解，就不說了，只知道最近被用戶信息泄漏的消息影響的很厲害，最近兩天股價跌慘了…... 還有從跳槽到 Facebook 的朋友反饋，FB 並不比 Amazon 輕鬆多少，甚至他去的組比他原來 amzon 的組還忙很多，但是 Facebook 的輿論控制很好；且人家給的錢是真多，所以也沒什麼好抱怨的。）</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div><script type="“text/javascript”">window.daily=true</script>
