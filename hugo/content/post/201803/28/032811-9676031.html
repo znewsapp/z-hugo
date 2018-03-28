@@ -1,0 +1,84 @@
++++
+date = "2018-03-28T11:00:00"
+title = "- 手機越用越慢，全怪 CPU 和垃圾軟件- 還真不是"
+titleimage = "https://pic2.zhimg.com/v2-057779ab699c35eee8ee511991daf0b5.jpg"
+ga = 032811
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title">在你的專業裏，有什麼基礎知識是和普通人的認識不相符的？</h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>手機越用越慢並不是 CPU 老化了，也並不一定是垃圾 app 安裝多了。</p>
+<p>也許你和我有一樣的感受，手機剛買時運行還比較流暢，可是過了一段時間（大概一兩年）卻越用卻卡。這在很多中低端手機尤其明顯。你也許會懷疑是不是垃圾應用安裝多了，可你會發現很多時候甚至<strong>重刷系統都不能解決問題</strong>，還是難以回覆初始的暢快感。這是不是手機廠商的陰謀，逼迫我們升級手機呢？還是 CPU 老化了，運行速度越來越慢了呢？</p>
+<p>其實 CPU 並不會因爲老化而變慢，我在這篇專欄文章中有詳細解釋：</p>
+<p><a href="https://zhuanlan.zhihu.com/p/31572908">老狼：CPU 能用多久？會不會因爲老化而變慢？</a></p>
+<p>簡單來說就是 CPU 的速度是恆定的，都是一個基頻乘以一個比例(Ratio)出來的。基頻現在 Intel CPU 一般是 100MHz，我們用的 3G CPU，Ratio 就是 30，下來剛好 3GHz。ARM 的也類似。而基頻和 Ratio 在整個生命期是不變的，從而 CPU 運算速度是不變的。手機裏面其他的子系統也類似。</p>
+<p>其實這除了和我們安裝的應用軟件越來越多，而國產 app 經常不請自來在後臺偷偷運行有關外。重刷系統都不能解決速度問題和手機的存儲介質——閃存關係很大。</p>
+<p><strong><strong>寫放大（Write Amplification）</strong></strong></p>
+<p>我在專欄文章介紹 FTL</p>
+<p><a href="https://zhuanlan.zhihu.com/p/26944064">老狼：雜談閃存三：FTL</a></p>
+<p>時，介紹了閃存的存儲特性。我們知道了閃存寫入是以 page 爲單位，而擦除是以 block 爲單位，在寫之前必須擦除。我們也知道了爲了延長閃存的生命週期和壽命均衡（Wear Levelling），FTL 用 LBA/PBA 表來映射邏輯和物理操作單位，而一般的消費級 SSD 和閃存系統有至少 7%的空閒塊——OP(Over Provisioning)。OP 空間就是閃存主控保留的自有空間，用來負責負載均衡和防止寫放大。一個形象的例子就像我們玩數字華容道：</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-9f666fd39ed9612b4d5c83e9772850df_b.jpg" alt="">
+<p>我們要把方塊 1 挪到右下角，一定好充分利用唯一的空格位置，將它移來移去，十分的困難。我們想象一下，如果在最下面忽然多出一整排空閒位置，這樣相信就是小學生也可以輕鬆完成這個簡單版華容道，而不需要很多步驟。我們的 OP 就是這個空閒塊，多了後就會顯著減少挪動的步數，而步數就可以看作寫放大，對閃存壽命和速度有顯著影響。</p>
+<p>因爲這個原因，所以 SSD 和手機廠商必定會空出部分空間來給 OP，一般至少 7%。高端的 SSD 和手機的 OP 空間能夠達到 20%到 30%以上。OP 的大小對性能影響很大，我們今天來看看 OP 和寫放大對 flash 性能的影響。</p>
+<p>我們假設要寫入一個 4KB 的數據，可是一個塊裏已經沒有乾淨空間了，但是有失效的數據可以擦除，所以主控就把所有的數據搬到緩存或者 OP 空間，然後擦除塊，再加上這個 4KB 新數據寫回去，這個操作就造成了寫入放大，即本來是寫 4K 的數據，卻造成了整個塊（512KB）的寫入操作，也就是 128 倍放大。當然我們前文提到 LBA/PBA 並不是簡單的 block，而垃圾收集和 Trim 對寫放大都有所減緩。但隨着閃存空閒空間越來越少，主控的騰挪空間也越來越少。IBM Zurich Research Laboratory 做的研究證明寫放大和空閒淨塊關係極大，如下圖：</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/v2-787711fc7c0f537fb429d513f0cefb2c_b.jpg" alt="">
+<p>可以看出，<strong>在空閒塊少後，寫放大可以達到 3 到 4 倍。</strong></p>
+<p><strong>我們新買的 SSD 和手機，空空如也的數據塊讓寫性能達到最大，而隨着程序和數據越來越多，寫入性能也逐漸下降</strong>。那究竟空閒塊少到多少纔會性能下降，降到什麼程度呢？</p>
+<p><strong><strong>數據</strong></strong></p>
+<p>根據 Anandtech 做的實驗數據，我們 la 如下圖：</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-05f97e3264c73b5dd6f11565c8815b9b_b.jpg" alt="">
+<p>橫軸是時間，縱軸是寫入 IOPS。隨着時間寫入越來越多的隨機 4KB 數據，開始 100000 的 IOPS 在某時刻劇烈下降，最後隨着空閒乾淨塊慢慢減少，穩定到了 10000IOPS，效能下降到原來的 10%！</p>
+<p>當然最終用戶使用情況沒有這麼惡劣，但數據說明寫放大對效能的影響巨大。這也是爲什麼高端企業級 SSD 的 op 空間巨大的原因，Intel 的 SSD DC3700 的 op 空間達到 32%，這讓它有了巨大的騰挪空間，它的曲線異常平滑：</p>
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-d3569a309bd15c502b74e069da93bdfd_b.jpg" alt="">
+<p>這對服務器市場非常重要。</p>
+<p><strong><strong>結論</strong></strong></p>
+<p>數據表明，我們對手機存儲空間或 SSD 使用大於 75%後，寫入性能就會因爲寫放大而大大下降。中低端手機 Flash 空間本來就小，OP 又小，很容易造成寫放大，大大減低了 Flash 的壽命。而壽命降低，會出現更多壞塊，反過來又加劇寫放大，形成惡性循環。速度會越來越慢，這個靠重刷系統是不能解決問題的。</p>
+<p>現在你是不是要考慮買個大容量的手機了？iPhone 手機爲了提升用戶體驗，op 留的很大，所以快滿了後差距並不是很厲害，可以類比 Intel 那款 SSD。</p>
+<p><strong><strong>後記</strong></strong></p>
+<p>有很多朋友留言問解決辦法，這裏簡單說一下，稍後會寫一篇專欄文章詳細介紹步驟和手機 Flash 與 SSD 的使用注意事項。</p>
+<ol><li>首先必須保證手機剩餘存貯空間在 25%以上。至於如何做到，就是刪刪刪唄。</li>
+<li>刪除流氓軟件、自啓動軟件。必要時分別設置 app 權限。</li>
+<li>未有改善就只有重刷系統了。注意保留有價值的信息，如通訊錄、照片等等。</li>
+<li>重刷系統，一般都會有改善。Trim 在 Android 4.3 的手機上自動會打開，無需操作。</li>
+<li>重刷系統還未改善，如果是 Android 4.3 的系統，很有可能就是壞塊太多了，你會發現可用空間變少了很多。有些軟件可以重置 FTL 表，但有風險。建議湊合用或者購買新機，畢竟現在低端手機可以看作快消品了。</li>
+<li>壞塊不會死而復生，壞了就是壞了，節哀順變吧。至於壞了的原因見我下面的系列文章。</li>
+</ol><p>日常使用時注意不要把存貯空間使用到高於 75%，會加速寫放大，加速壞塊的產生。</p>
+<p>本文出自我的專欄 <a href="https://zhuanlan.zhihu.com/UEFIBlog">UEFI 和 BIOS 探祕</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/27294558">老狼：雜說閃存番外：手機爲什麼越用越卡和閃存寫放大</a></p>
+<p><strong>其他閃存相關文章：</strong></p>
+<p><a href="https://zhuanlan.zhihu.com/p/34889064">老狼：神祕消失的固態硬盤空間去哪了？</a><a href="https://zhuanlan.zhihu.com/p/26652622">老狼：雜說閃存一：關公戰秦瓊之 UFS VS NVMe</a><a href="https://zhuanlan.zhihu.com/p/26745577">老狼：雜談閃存二：NOR 和 NAND Flash</a><a href="https://zhuanlan.zhihu.com/p/26944064">老狼：雜談閃存三：FTL</a><a href="https://zhuanlan.zhihu.com/p/27068849">老狼：雜說閃存四：閃存硬盤接口大比拼</a><a href="https://zhuanlan.zhihu.com/p/27328255">老狼：雜說閃存番外：SSD 硬盤如何進行日常維護和 Trim</a><a href="https://zhuanlan.zhihu.com/p/27343166">老狼：雜說閃存番外：傲騰 Optane 與 NAND 閃存</a><a href="https://zhuanlan.zhihu.com/p/27380955">老狼：雜說閃存番外：我們的數據存在固態硬盤上安全嗎？</a><a href="https://zhuanlan.zhihu.com/p/27294558">老狼：雜說閃存番外：手機爲什麼越用越卡和閃存寫放大</a><a href="https://zhuanlan.zhihu.com/p/34858149">老狼：128G 的固態硬盤爲什麼有的標 120G，有的標 100G？固態硬盤容量背後的祕密</a></p>
+<p><strong>硬盤相關文章：</strong></p>
+<p><a href="https://zhuanlan.zhihu.com/p/32907254">老狼：硬盤忽然掉電會損壞硬盤和數據嗎？</a><a href="https://zhuanlan.zhihu.com/p/32915834">老狼：機械硬盤裏面是真空嗎？</a></p>
+<p>歡迎大家關注 UEFI 專欄</p>
+<p>歡迎關注微信公衆號：UEFIBlog</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div><script type="“text/javascript”">window.daily=true</script>
