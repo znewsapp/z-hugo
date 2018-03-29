@@ -1,0 +1,79 @@
++++
+date = "2018-03-29T15:00:00"
+title = "爭議了 8 年，Java 侵權案發生逆轉：Google 或賠 88 億"
+titleimage = "https://pic2.zhimg.com/v2-6510740f415b73968bb034f56e964ec1.jpg"
+ga = 032915
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title">爲什麼 Google 要賠 Oracle 88 億？</h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>首先，現在還沒到賠錢的時候。最新的 opinion 應該是要第三個陪審團來決定一下到底要賠多少錢。在這之前，Google 可以要求 Federal Circuit 重新考慮這個 decision，或者要求整個 Federal Circuit 的所有法官 en banc 考慮這個案子，或者申請讓最高法院來 review 這個決定。</p>
+<p>其次，如果最高法院決定不 review 這個案子的話，我覺得這個決定的影響不會有其他回答說得那麼深遠。原因很簡單，這是個版權法（copyright law）的案子，不是專利法（patent law）的案子。這個解釋起來就牽扯到美國特殊的聯邦制度（federalism）了。簡而言之，在美國，有很多法律是歸州法院（state courts）管的，比如合同法，婚姻法；然後呢，還有一些法律是<strong>只</strong>歸聯邦法院管的，比如專利法和版權法。美國有十二個巡回法庭，坐鎮美國全部領土（比如加州歸第九巡回法庭，麻省歸第一巡回法庭），以及一個特殊的 Federal Circuit，專門聽一些特別的案子，包括<strong>所有的</strong>專利法案子，<strong>但是，這個但是很重要</strong>，不包括版權法。所有的巡回法庭呢，都聽最高法院的決定，但是互相之間是呢，就不一定是誰聽誰的了。因此，每個巡回法庭都有自己的『性格』，在版權法上，最高法留下的模糊區域，每個法庭都有自己的理解。</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-ef00df0fcba7340b00b4114540272232_b.jpg" alt="">
+<p>這個 case，Oracle v. Google，理論上來講是歸第九巡回法庭管的。但是由於這個案子最一開始牽扯到了專利，所以連着版權法部分被扔到了 Federal Circuit。但是，雖然 Federal Circuit 也聽關於版權法的那部分，但是它要用第九巡回法庭的法律來決定關於版權法那部分的 claim。但是關於專利的那部分很快就沒了，所以這六年來一直在扯皮的其實只是版權的部分。所以說這就是個第九巡回法庭的案子，但是在 Federal Circuit 待了六年（委屈巴巴）。</p>
+<p>而 Federal Circuit 對於這個案子版權法做出的決定，對第九巡回法庭是<strong>沒什麼影響</strong>的。因爲他們互相之間平級，這個案子的決定對第九巡回法庭就沒有什麼約束力。由於大部分版權法的案子都是由第二和第九巡回法庭來決定的（第二巡回法庭包括紐約，第九包括加州），這兩個法庭可以說是在版權法方面僅次於最高法最重要的法庭了。而 Federal Circuit，除非這種跟專利法一起捆綁銷售的案子之外，不怎麼聽版權法，因此對版權法的發展並沒有什麼特別大的影響。這就是爲什麼我說影響不會很深遠。但是，如果 Federal Circuit 對原告這麼友好的話。倒是有可能鼓勵更多的人起訴的時候帶上專利法的 claim，逼着 Federal Circuit 聽他的版權法的 claim，導致 forum shopping（就是指大家故意選對自己有利的法院聽自己的案子）。不過對於版權法關於代碼這部分的法律來講，我覺得倒沒那麼影響深遠。而且本來這個案子最關鍵的 fair use defense（下面會講），就是一個相對混亂偶然性比較大的一塊法律，所以這不會是一局定音的那種（當然最高法院決定聽這個案子除外，最高法院說啥就是啥了）。</p>
+<p>回到題主的問題，爲什麼 Google 可能要賠錢？因爲 Google 侵犯了 Oracle 關於 Java 語言的<strong>版權</strong>。對的，是版權。編程的代碼是受版權的保護。事實上，案子進行到這一步，Google 侵權已經是決定了的。Google 剩下的 claim 就是版權法裏的『fair use doctrine』。Fair use doctrine 呢，簡單來說就是指在特定的情況下，即使侵權了，在考慮到被告的行爲對社會有益的情況下不算他有錯。比如教師講課的時候用到一些有版權的材料。Google 的意思就是，我們用這個語音是爲了保證多平臺兼容（inter-operability），這件事對社會有益，所以算是 fair use，不用給 Oracle 錢。</p>
+<p>這個案子的第一輪經過了陪審團之後，起訴到 Federal Circuit，法官決定 Google 侵權，但是有可能 fair use，所以打回去又讓陪審團決定 Google 的行爲算不算 fair use，然後陪審團說算。Oracle 又起訴到 Federal Circuit，然後前兩天 Federal Circuit 說我覺得陪審團說得不對，任何陪審團都不可能覺得這是 fair use（那你爲啥一開始讓陪審團做決定？），所以算 Oracle 贏，然後又打回去讓第三輪陪審團決定 Google 要賠 Oracle 多少錢。</p>
+<p>至於這件事流氓不流氓。侵權這件事是沒跑了，如果沒有 fair use，Google 賣的每一臺帶安卓的機器，都要給 Oracle 錢。Google 一開始跟 Sun 談判過，想用 Java，但是 Sun 要求 Google 開發出的平臺兼容他們以前的內容（應該是這個意思，同樣的東西可以在任何一個地方運行），但是 Google 拒絕了，所以沒談成。但是 Google 最後還是決定了用 Java。爲了讓開發者更方便這個可以理解，不過他們因此也決定了承擔相應的風險。以及我覺得稍微有點好玩的是，Google 一開始拒絕了 Sun 的多平臺兼容，現在又拿多平臺兼容當擋箭牌，當然性質不太一樣，不過還是稍微有點諷刺的感覺。</p>
+<p>* 關於 Google 跟 Sun 的談判我表述得可能不是很準確，法庭原話是這樣的：Google acquired Android, Inc. in 2005 as part of a plan to develop a smartphone platform. Later that same year, Google and Sun began discussing the possibility of Google "taking a license to use and to adapt the entire Java platform for mobile devices." [...] They also discussed a "possible codevelopment partnership deal with Sun under which Java technology would become an open-source part of the Android platform, adapted for mobile devices." [...] The parties negotiated for months but were unable to reach an agreement. The point of contention between the parties was Google's refusal to make the implementation of its programs compatible with the Java virtual machine or interoperable with other Java programs. Because Sun/Oracle found that position to be anathema to the "write once, run anywhere" philosophy, it did not grant Google a license to use the Java API packages.</p>
+</div>
+</div>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>不論結局如何，這場官司都意義深遠。</p>
+<p>每個人都有不同的看法和立場。</p>
+<p>爲 Google 抱不平的：Oracle 在 2010 年 1 月以 74 億美元收購了 Sun，然後在不到 8 個月的時間裏起訴了 Google，索賠 88 億。</p>
+<p>支持 Oracle 的：Google 雖然聲稱 Android 是免費的，但是卻在 Android 廣告上賺了 420 億。</p>
+<p>這是一種商業行爲，我比較同意 @2gua 瓜哥的觀點，Google 確實沾了 Java 的好處，並從中間接獲利。</p>
+<hr><p>之前我製作了一批開源徽章 <a href="https://github.com/justjavac/logo-trademark-licenses">justjavac/logo-trademark-licenses</a>，每個 logo 我都發郵件詢問了 licences 是否允許用於商業。印製完成後一週賣出了 1000+ 個，試想，如果徽章不是印製的開源項目的 logo，而是我自己設計的圖標的話，估計連 10 個都賣不出去。所以，我的商業行爲已經間接的從這些開源項目中獲利了，隨着這些軟件 / 庫 / 框架是可以免費使用的，但是 logo（或商標）是不能隨意用於商業的。</p>
+<hr><p>再補一個題外話，爲什麼 JavaScript 的最新標準是 es6, es7…而不是 js6, js7,…呢？</p>
+<p>因爲 JavaScript 也是 Oracle 的註冊商標。</p>
+<p>當 ECMA（歐洲計算機制造商協會 <strong>E</strong>uropean <strong>C</strong>omputer <strong>M</strong>anufacturers <strong>A</strong>ssociation）給 js 制定完標準後因爲商標原因不能把這個腳本語言命名爲 JavaScript，於是乾脆直接命名爲 ECMAScript 了，意思是 ECMA 制定的腳本語言，js 標準爲 emac-262，目前最新版是 2017。</p>
+<p><a href="https://www.ecma-international.org/ecma-262/8.0/index.html">ECMAScript® 2017 Language Specification (ECMA-262, 8th edition, June 2017)</a></p>
+<p>最新規範一共有 100 多萬字，如果你在文檔裏面搜索一下“javascript”，你會發現只有 1 條結果，就是在前言裏面介紹 ECMAScript 的歷史時提到了一下：</p>
+<blockquote>ECMAScript is based on several originating technologies, the most well-known being <strong>JavaScript </strong>(Netscape) and JScript (Microsoft).</blockquote>
+<p>那麼回到這個問題上來，"JavaScript" 這個名字讓這門語言獲得好處了嗎？答案顯然是肯定的。</p>
+<p>我們看 JavaScript 的早期發展史：</p>
+<ul><li>1995 年 Brendan Eich 花了 10 天時間開發出了一門腳本語言</li>
+<li>Marc Andreessen 給他起名爲 Mocha</li>
+<li>1995 年 9 月，改名爲 LiveScript</li>
+<li>1995 年 12 月，收到 SUN 公司的商標許可，改名爲 JavaScript</li>
+</ul><p>爲什麼改名 JavaScript？W3C 有一篇小短文：<a href="https://link.zhihu.com/?target=https%3A//www.w3.org/community/webed/wiki/A_Short_History_of_JavaScript">A Short History of JavaScript</a></p>
+<blockquote>... in December of the same year, upon<strong> receiving a trademark license from Sun</strong>, the name JavaScript was adopted. This was somewhat of a marketing move at the time, <strong>with Java being very popular around then</strong>.</blockquote>
+<p>原因是：<strong>Java being very popular。</strong></p>
+<hr><p>最後還是看法律如何判決吧。不論結局如何，這場官司都意義深遠。</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div><script type="“text/javascript”">window.daily=true</script>
