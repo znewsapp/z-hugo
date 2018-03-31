@@ -1,0 +1,93 @@
++++
+date = "2018-03-31T16:00:00"
+title = "「十賭九輸」的說法，有依據嗎？"
+titleimage = "https://pic3.zhimg.com/v2-e2c1c50c880b0cf6ad234d9c6a8ada8e.jpg"
+ga = 033116
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title">十賭九輸這句話有根據嗎?</h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>有根據，賭贏和賭輸在概率上並不等價。</p>
+<hr><p>數學理解：</p>
+<p>贏多了一定有輸回來的概率。</p>
+<p>但輸光了，卻沒有再贏回來的資本。</p>
+<p>咱們僅討論概率，假設賭博絕對公平，每場五成概率 +1，五成概率 -1。</p>
+<p>賭資在這個過程中是隨機增減的。而這種隨機過程有個特點，時間越長，波動越大。</p>
+<p>一旦波動下線超過了你的初始賭資，你就破產了。</p>
+<p>如下圖，賭博次數越多，輸光破產的概率越大。賭博次數無限增長，輸光的概率趨近 100%</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-60cc93c9d021ed2bb527935d7a79054e_b.jpg" alt="">
+<hr><p>物理理解：</p>
+<p>我們可以把賭資的增減，看作一個分子在 x 軸上的一維布朗運動。於是，賭資的增減，變成了一個一維擴散問題。</p>
+<p>賭資輸光了就沒資格再賭了，等價於在 x=0 處有一個強力吸收阱。</p>
+<p>吸收阱處濃度爲 0，所以擴散總是吸收阱方向進行的。</p>
+<p>所以說，不管你的初始賭資有多少，終究是會被這個阱給吸光的的。</p>
+<hr><p>模擬 MATLAB 代碼：</p>
+<div class="highlight">
+<pre><code class="language-matlab"><span class="n">clear</span>
+<span class="n">clc</span>
+<span class="n">set</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="s">'defaultfigurecolor'</span><span class="p">,</span><span class="s">'w'</span><span class="p">);</span>
+
+<span class="n">gamblers</span><span class="p">=</span><span class="mi">10000</span><span class="p">;</span><span class="c">%一萬個賭徒</span>
+<span class="n">times</span><span class="p">=</span><span class="mi">10000</span><span class="p">;</span><span class="c">%最多賭一萬場</span>
+<span class="n">fund</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">gamblers</span><span class="p">,</span><span class="mi">1</span><span class="p">)=</span><span class="mi">10</span><span class="p">;</span><span class="c">%每個賭徒初始賭資爲 10</span>
+<span class="n">fund</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">gamblers</span><span class="p">,</span><span class="mi">2</span><span class="p">:</span><span class="n">times</span><span class="p">)=</span><span class="mi">0</span><span class="p">;</span>
+
+<span class="k">for</span> <span class="n">gambler</span><span class="p">=</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="n">gamblers</span>
+    <span class="k">for</span> <span class="n">time</span><span class="p">=</span><span class="mi">2</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="n">times</span>
+        <span class="n">dice</span><span class="p">=</span><span class="nb">rand</span><span class="p">;</span>
+        <span class="c">%隨機擲色子</span>
+        <span class="k">if</span> <span class="n">dice</span><span class="o">&lt;</span><span class="mf">0.5</span>
+            <span class="c">%一半概率賭資 +1</span>
+            <span class="n">fund</span><span class="p">(</span><span class="n">gambler</span><span class="p">,</span><span class="n">time</span><span class="p">)=</span><span class="n">fund</span><span class="p">(</span><span class="n">gambler</span><span class="p">,</span><span class="n">time</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+        <span class="k">else</span>
+            <span class="c">%一半概率賭資 -1</span>
+            <span class="n">fund</span><span class="p">(</span><span class="n">gambler</span><span class="p">,</span><span class="n">time</span><span class="p">)=</span><span class="n">fund</span><span class="p">(</span><span class="n">gambler</span><span class="p">,</span><span class="n">time</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+        <span class="k">end</span>
+        <span class="k">if</span> <span class="n">fund</span><span class="p">(</span><span class="n">gambler</span><span class="p">,</span><span class="n">time</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span>
+            <span class="c">%輸光退場</span>
+            <span class="k">break</span>
+        <span class="k">end</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">broken</span><span class="p">=</span><span class="n">sum</span><span class="p">(</span><span class="n">fund</span><span class="p">(:,:)</span><span class="o">==</span><span class="mi">0</span><span class="p">);</span>
+<span class="n">figure</span>
+<span class="n">set</span><span class="p">(</span><span class="n">gcf</span><span class="p">,</span><span class="s">'Position'</span><span class="p">,[</span><span class="mi">100</span> <span class="mi">100</span> <span class="mi">650</span> <span class="mi">320</span><span class="p">]);</span>
+<span class="n">set</span><span class="p">(</span><span class="n">gca</span><span class="p">,</span><span class="s">'Position'</span><span class="p">,[.</span><span class="mi">14</span> <span class="p">.</span><span class="mi">20</span> <span class="p">.</span><span class="mi">80</span> <span class="p">.</span><span class="mi">78</span><span class="p">]);</span>
+<span class="n">plot</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">times</span><span class="p">,</span><span class="n">broken</span><span class="o">/</span><span class="n">gamblers</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span><span class="s">'b-'</span><span class="p">,</span><span class="s">'linewidth'</span><span class="p">,</span><span class="mf">1.5</span><span class="p">);</span>
+<span class="n">ly</span><span class="p">=</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'破產率（%）'</span><span class="p">,</span><span class="s">'FontSize'</span><span class="p">,</span><span class="mi">16</span><span class="p">);</span>
+<span class="n">lx</span><span class="p">=</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'賭博次數'</span><span class="p">,</span><span class="s">'FontSize'</span><span class="p">,</span><span class="mi">16</span><span class="p">);</span>
+<span class="n">ylim</span><span class="p">([</span><span class="mi">0</span> <span class="mi">100</span><span class="p">])</span>
+</code></pre>
+</div>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div><script type="“text/javascript”">window.daily=true</script>
