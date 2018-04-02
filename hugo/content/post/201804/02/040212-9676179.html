@@ -1,0 +1,138 @@
++++
+date = "2018-04-02T12:00:00"
+title = "大誤 · 韋小寶和哪個老婆最親？"
+titleimage = "https://pic2.zhimg.com/v2-81523488cddf2496a8b4e1a309d4b831.jpg"
+ga = 040212
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+<div class="question">
+<h2 class="question-title">數據分析告訴你，韋小寶跟他七個老婆哪個最親？</h2>
+<div class="answer">
+
+
+
+<div class="content">
+<p>金庸的“<strong>飛雪連天射白鹿，笑書神俠倚碧鴛</strong>”，唯獨《鹿鼎記》寫的最是香豔動人，年少時閱此書，每每春心蕩漾，心裏如鑽進小鹿。</p>
+<figure><img class="content-image" src="https://pic4.zhimg.com/v2-899332a1bfc4da916077c1f9231ef573_b.jpg" alt=""></figure><p>刁蠻任性的建寧公主、天香國色的阿珂、溫柔懂事的雙兒，在當時年少的我心中，真是得一個足矣。</p>
+<figure><img class="content-image" src="https://pic3.zhimg.com/v2-79cc6b671381d97c261cb2a5475dae8e_b.jpg" alt=""></figure><p>作者在寫小說時，往往會將自己代入到書中主角，因此金庸寫韋小寶，往往是在寫他自己，或者說是期望的自己。</p>
+<p>因此要看韋小寶與七個老婆誰最親，可以看書中韋小寶與七個老婆誰的互動最多。</p>
+<figure><img class="content-image" src="https://pic2.zhimg.com/v2-d1f6d1de6f1e71ace446326d3a974995_b.jpg" alt=""></figure><p>首先下載《鹿鼎記》整本小說的 txt。</p>
+<blockquote><strong>韋小寶</strong>一聽大喜，心想：“原來你名叫<strong>阿珂</strong>，終於給我知道了。”他隨伴白衣尼多日，知她喜人恭謹謙讓，在她面前，越是吃虧，越有好處，忙道：“師太，姑娘這兩腳原是該踢的，實在是我不對，真難怪姑娘生氣。她便再踢我一千一萬下，那也是小的該死。”爬起身來，雙手托住下顎，只痛得眼淚也流了出來。這倒不是做作，實在那一腳踢得不輕。</blockquote>
+<p>然後我們定義這樣的指標：</p>
+<p>七個老婆名字與韋小寶在同一段落一起出現的次數，作爲 <strong>親密度 </strong>指標，如以上段落，韋小寶和阿珂的親密度 +1。</p>
+<p>找到七個老婆的名詞：</p>
+<p><strong>阿珂</strong></p>
+<p><strong>蘇荃 / 洪夫人</strong></p>
+<p><strong>建寧公主 / 建寧</strong></p>
+<p><strong>雙兒</strong></p>
+<p><strong>沐劍屏 / 郡主</strong></p>
+<p><strong>方怡 / 方姑娘</strong></p>
+<p><strong>曾柔 / 曾姑娘</strong></p>
+<p>將《鹿鼎記》txt 按照段落，分割成 11581 個 txt 文件。</p>
+<figure><img class="content-image" src="https://pic4.zhimg.com/v2-29244af4acd96a14f8995c2f9e22cf03_b.jpg" alt=""></figure><p>分割文件的 python 代碼：</p>
+<div class="highlight">
+<pre><code class="language-python"><span class="n">s</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'d:/lu/lu.txt'</span><span class="p">,</span><span class="s1">'r'</span><span class="p">)</span>
+<span class="n">q</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+<span class="n">x</span><span class="o">=</span><span class="mi">1</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'d:/lu/'</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">+</span><span class="s1">'.txt'</span><span class="p">,</span><span class="s1">'w'</span><span class="p">)</span>
+    <span class="n">b</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">x</span><span class="o">+=</span><span class="mi">1</span>
+    <span class="k">print</span> <span class="n">x</span>
+<span class="n">s</span><span class="o">.</span><span class="n">close</span>
+</code></pre>
+</div>
+<p>然後用 python 的結巴分詞包，去匹配每個名字在每個段落是否有出現，出現標記爲 1，否則爲 0.</p>
+<div class="highlight">
+<pre><code class="language-python"><span class="n">x</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">result</span><span class="o">=</span><span class="p">{</span><span class="s1">'xiaobao'</span><span class="p">:[],</span><span class="s1">'ake'</span><span class="p">:[],</span><span class="s1">'suquan'</span><span class="p">:[],</span><span class="s1">'jianning'</span><span class="p">:[],</span><span class="s1">'shuanger'</span><span class="p">:[],</span><span class="s1">'junzhu'</span><span class="p">:[],</span><span class="s1">'fangyi'</span><span class="p">:[],</span><span class="s1">'zengrou'</span><span class="p">:[]}</span>
+<span class="k">while</span> <span class="n">x</span><span class="o">&lt;=</span><span class="mi">11581</span><span class="p">:</span>
+    <span class="n">a</span><span class="o">=</span><span class="p">{</span><span class="s1">'word'</span><span class="p">:[],</span><span class="s1">'count'</span><span class="p">:[]}</span>
+    <span class="n">f</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="s1">'d:/lu/'</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">+</span><span class="s1">'.txt'</span><span class="p">,</span><span class="s1">'r'</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="n">words</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">jieba</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
+    <span class="k">if</span> <span class="s1">u'韋小寶'</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
+        <span class="n">result</span><span class="p">[</span><span class="s1">'xiaobao'</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">result</span><span class="p">[</span><span class="s1">'xiaobao'</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">if</span> <span class="s1">u'阿珂'</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
+        <span class="n">result</span><span class="p">[</span><span class="s1">'ake'</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">result</span><span class="p">[</span><span class="s1">'ake'</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="o">...</span>
+</code></pre>
+</div>
+<p>再兩兩計算在段落裏一同出現的次數。</p>
+<div class="highlight">
+<pre><code class="language-python"><span class="n">result2</span><span class="o">=</span><span class="p">{</span><span class="s1">'role'</span><span class="p">:[],</span><span class="s1">'xiaobao'</span><span class="p">:[],</span><span class="s1">'ake'</span><span class="p">:[],</span><span class="s1">'suquan'</span><span class="p">:[],</span><span class="s1">'jianning'</span><span class="p">:[],</span><span class="s1">'shuanger'</span><span class="p">:[],</span><span class="s1">'junzhu'</span><span class="p">:[],</span><span class="s1">'fangyi'</span><span class="p">:[],</span><span class="s1">'zengrou'</span><span class="p">:[]}</span>
+<span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">b</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span><span class="p">:</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">xiaobao</span><span class="o">=</span><span class="n">ake</span><span class="o">=</span><span class="n">suquan</span><span class="o">=</span><span class="n">jianning</span><span class="o">=</span><span class="n">shuanger</span><span class="o">=</span><span class="n">junzhu</span><span class="o">=</span><span class="n">fangyi</span><span class="o">=</span><span class="n">zengrou</span><span class="o">=</span><span class="mi">0</span>
+    <span class="k">while</span> <span class="n">x</span><span class="o">&lt;=</span><span class="mi">11580</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">b</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">a</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">b</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="s1">'xiaobao'</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+                <span class="n">xiaobao</span><span class="o">+=</span><span class="mi">1</span>
+            <span class="k">if</span> <span class="n">b</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="s1">'ake'</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+                <span class="n">ake</span><span class="o">+=</span><span class="mi">1</span>
+<span class="o">...</span>
+        <span class="n">x</span><span class="o">+=</span><span class="mi">1</span>
+    <span class="n">result2</span><span class="p">[</span><span class="s1">'role'</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="n">result2</span><span class="p">[</span><span class="s1">'xiaobao'</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">xiaobao</span><span class="p">)</span>
+    <span class="n">result2</span><span class="p">[</span><span class="s1">'ake'</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ake</span><span class="p">)</span>
+    <span class="n">result2</span><span class="p">[</span><span class="s1">'suquan'</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">suquan</span><span class="p">)</span>
+    <span class="n">result2</span><span class="p">[</span><span class="s1">'jianning'</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">jianning</span><span class="p">)</span>
+    <span class="n">result2</span><span class="p">[</span><span class="s1">'shuanger'</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">shuanger</span><span class="p">)</span>
+    <span class="n">result2</span><span class="p">[</span><span class="s1">'junzhu'</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">junzhu</span><span class="p">)</span>
+    <span class="n">result2</span><span class="p">[</span><span class="s1">'fangyi'</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fangyi</span><span class="p">)</span>
+    <span class="n">result2</span><span class="p">[</span><span class="s1">'zengrou'</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">zengrou</span><span class="p">)</span>
+<span class="n">o</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">result2</span><span class="p">)</span>
+<span class="n">o</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">'d:/lu/lu2.csv'</span><span class="p">,</span><span class="n">mode</span><span class="o">=</span><span class="s1">'w'</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s1">'UTF-8'</span><span class="p">)</span>
+</code></pre>
+</div>
+<p>最後生成這樣一份矩陣的 csv 文件。</p>
+<figure><img class="content-image" src="https://pic2.zhimg.com/v2-70c19a7acd3e35640cbe11663ed141c1_b.jpg" alt=""></figure><p>由以上矩陣可以得出韋小寶跟七個老婆的<strong>親密度</strong>如下：</p>
+<p>韋小寶&amp;雙兒：<strong>327</strong></p>
+<p>韋小寶&amp;沐劍屏：<strong>278</strong></p>
+<p>韋小寶&amp;阿珂：<strong>203</strong></p>
+<p>韋小寶&amp;方怡：<strong>147</strong></p>
+<p>韋小寶&amp;蘇荃：<strong>135</strong></p>
+<p>韋小寶&amp;建寧公主：<strong>47</strong></p>
+<p>韋小寶&amp;曾柔：<strong>28</strong></p>
+<p>實際以上不僅算出韋小寶跟七個老婆的親密度，還算出了七個老婆兩兩之間的親密度。</p>
+<p>我們將以上矩陣丟進 <strong>Gephi</strong>（一款畫關係矩陣的可視化軟件），以散點的大小代表名字出現的頻次，以線的粗細代表親密度的大小，得到這樣一張圖。</p>
+<figure><img class="content-image" src="https://pic1.zhimg.com/v2-35a32229c63e3756274a782c5b3b2140_b.jpg" alt=""></figure><p>所以，是雙兒笑到了最後</p>
+<figure><img class="content-image" src="https://pic1.zhimg.com/v2-fc0f0c027625c2312ddd722b0e90d900_b.jpg" alt=""></figure><p>最喜歡周星馳版的雙兒 (~﹁~)</p>
+<p>同理，我還做了《還珠格格》的關係圖</p>
+<figure><img class="content-image" src="https://pic1.zhimg.com/v2-d0f69aee2c0ecd9fd53c078b6a61f91c_b.jpg" alt=""></figure><p>計算了包括小燕子、紫薇、乾隆、爾康、五阿哥、金鎖、爾泰、皇后、令妃、塞婭、柳青、柳紅在內的親密度，發現《還珠格格》原來講的是小燕子、紫薇和乾隆三角戀的故事，其他角色都是打醬油的 ╮(￣▽ ￣)╭</p>
+<p>所以，姜還是皇阿瑪的辣</p>
+<figure><img class="content-image" src="https://pic4.zhimg.com/v2-5bda7b76dcdf07e3d61cd0898278b037_b.jpg" alt=""></figure><p>最後，手把手教你怎麼用 Gephi 畫關係圖。</p>
+<p>1、首先，從<a class=" wrap external" href="http://link.zhihu.com/?target=https%3A//gephi.org/" target="_blank" rel="nofollow noreferrer">官網</a>下載 Gephi；</p>
+<p>2、文件 - 導入表格，根據數據形式選擇類型，本文是選擇矩陣；</p>
+<figure><img class="content-image" src="https://pic2.zhimg.com/v2-6da6196125936420bd7ce2dcbf707589_b.jpg" alt=""></figure><p>3、耐心調整數據，包括結點、邊的顏色和大小（選完記得點應用），結點的標籤要點 T 才能展示，然後一些 lable 要在數據資料那裏賦值才能展示出來；</p>
+<figure><img class="content-image" src="https://pic4.zhimg.com/v2-3a7e0510eb415553bbe956fa7de18dcf_b.jpg" alt=""></figure><p>4、最後，預覽，刷新，然後輸出圖片。</p>
+<figure><img class="content-image" src="https://pic2.zhimg.com/v2-b745cb8dc1dc8bf322418bead38b8465_b.jpg" alt=""></figure><p>這裏有用 E-charts 畫關係圖的教程</p>
+<p><a class=" wrap external" href="http://link.zhihu.com/?target=https%3A//ask.hellobi.com/blog/seng/3645" target="_blank" rel="nofollow noreferrer">使用 Echarts 呈現天善用戶的關係圖 - 天善智能：專注於商業智能 BI 和數據分析、大數據領域的垂直社區平臺</a></p>
+<p>如果要更深入一些，涉及數據挖掘和 AI，可以學這個教程</p>
+<p><a class=" wrap external" href="http://link.zhihu.com/?target=https%3A//edu.hellobi.com/course/255" target="_blank" rel="nofollow noreferrer">三個月教你從零入門人工智能！！| 深度學習精華實踐課程 （免費）</a></p>
+
+
+
+</div>
+</div>
+</div>
+
+
+</div>
+</div><script type="“text/javascript”">window.daily=true</script>
