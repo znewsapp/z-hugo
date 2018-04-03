@@ -1,0 +1,266 @@
++++
+date = "2018-04-03T08:00:00"
+title = "用數據告訴你，什麼樣的數據分析師纔是企業需要的"
+titleimage = "https://pic4.zhimg.com/v2-8510eedaba6975dea8250b0d35d8e827.jpg"
+ga = 040308
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+<div class="question">
+<h2 class="question-title">數據分析實例：企業需要什麼樣的數據分析人才？</h2>
+<div class="answer">
+
+
+
+<div class="content">
+<p><strong>項目背景</strong></p>
+<p>在學習數據分析的路上，少不了經常逛知乎，這也是我第一篇在知乎上的文章，寫這篇文章的啓發來源於@BigCarrey 的一篇文章<a class="internal" href="https://zhuanlan.zhihu.com/p/25704059">《數據分析師掙多少錢？“黑”了招聘網站告訴你！》</a>，該文章給了我一些幫助，讓我瞭解了數據分析崗位相關的信息，但同樣也留給我一些疑問，該文章分析的數據分析師所需技能的結果絲毫沒有 R 的蹤影，儘管是一年前的分析，我覺得應該不可能不存在。</p>
+<p>因此，抱着證實 R 語言這款工具的想法，以及希望瞭解當前企業對數據分析崗位的需求，開始了一次針對招聘網站的數據分析崗位招聘數據的分析與挖掘實踐，避免自己所學習的方向與企業實際需求脫軌。</p>
+<p>此實例採用 R 語言作爲分析工具，下面展現的是我整個分析過程。</p>
+<p><strong>目標</strong></p>
+<ol><li>瞭解企業當前需要什麼樣的數據分析人才，以及應該具備的能力和素質。</li>
+<li>分析的結果爲今後的學習和求職提供指導，也爲正在學習數據分析和找工作的朋友們提供一定的參考價值。</li>
+</ol><p><strong>問題的分解</strong></p>
+<ol><li>不同地區，數據分析崗位的需求分佈以及對應的薪資分佈</li>
+<li>不同經驗，數據分析崗位的需求分佈以及對應的薪資分佈</li>
+<li>不同學歷，數據分析崗位的需求分佈以及對應的薪資分佈</li>
+<li>不同企業規模，數據分析崗位的需求分佈以及對應的薪資分佈</li>
+<li>探索數據分析崗位對應的工具型技能與對應的薪資水平</li>
+<li>探索數據分析崗位對應非工具型能力的需求</li>
+</ol><p><strong>數據集的定義</strong></p>
+<figure><img class="content-image" src="https://pic1.zhimg.com/v2-fc88dab6159df25c966de4f1c9daf2ca_b.jpg" alt=""><figcaption>表 1：數據分析崗位信息表</figcaption></figure><figure><img class="content-image" src="https://pic3.zhimg.com/v2-5bc2e144ec96009d63d31dd5783e3f97_b.jpg" alt=""><figcaption>表 2：數據分析崗位技能關鍵詞表</figcaption></figure><p><strong>數據獲取</strong></p>
+<p>數據來源：拉勾網</p>
+<p>數據範圍：互聯網行業、數據分析崗位</p>
+<p>數據集：全國數據分析崗位招聘信息數據集（採集樣本量：449）</p>
+<p>工具：爬蟲</p>
+<p>時間：所有數據截止 2018 年 3 月 12 日</p>
+<p>數據集下載地址：鏈接:<a class=" external" href="https://link.zhihu.com/?target=https%3A//pan.baidu.com/s/1Bz7mA_dnvD1MGTVrZKyhPA" target="_blank" rel="nofollow noreferrer"><span class="invisible">https://</span><span class="visible">pan.baidu.com/s/1Bz7mA_</span><span class="invisible">dnvD1MGTVrZKyhPA</span><span class="ellipsis"></span></a> 密碼:layp</p>
+<p><strong>數據處理</strong></p>
+<p><strong>步驟 1：加載原始數據</strong></p>
+<div class="highlight">
+<pre><code class="language-text">#readxl 包的 read_excel 函數
+library(readxl)
+#數據加載
+CN.df </code></pre>
+</div>
+<p><strong>步驟 2：識別缺失值</strong></p>
+<div class="highlight">
+<pre><code class="language-text">#VIM 包的 aggr 函數來識別
+library(VIM)
+aggr(CN.df,prop=TRUE,numbers=TRUE)
+</code></pre>
+</div>
+<figure><img class="content-image" src="https://pic4.zhimg.com/v2-6646118a94e3e01dd556bd8e833e28de_b.jpg" alt=""><figcaption>圖 1. aggr 缺失值識別圖</figcaption></figure><p>幸運的是該數據集不存在缺失值，這是很少遇到的情況</p>
+<p><strong>步驟 3：數據清洗</strong></p>
+<div class="highlight">
+<pre><code class="language-rconsole"><span class="go">#zoo 包的 index 函數</span>
+<span class="go">library(zoo)</span>
+<span class="go">#定義數據清洗函數</span>
+<span class="go">cleaning 
+<span class="go">  #刪除重複值</span>
+<span class="go">  my.data 
+<span class="go">  #計算平均月薪</span>
+<span class="go">  min_salary 
+<span class="go">  max_salary 
+<span class="go">  my.data$avg_salary 
+<span class="go">  #清理字符串中的不需要的字符</span>
+<span class="go">  #並將需要分析的字符變量轉化爲因子，並對部分因子重新編碼</span>
+<span class="go">  my.data$city 
+<span class="go">  </span>
+<span class="go">  my.data$experience 
+<span class="go">  my.data$experience[my.data$experience %in% c("不限","應屆畢業生")] &lt;- "1 年以下"</span>
+<span class="go">  my.data$experience 
+<span class="go">                                levels=c("1 年以下","1-3 年","3-5 年","5-10 年","10 年以上"))</span>
+<span class="go">  </span>
+<span class="go">  #這裏的學歷：“大專”，“本科”，“碩士”都表明是要求該學歷“及以上”</span>
+<span class="go">  my.data$education 
+<span class="go">  my.data$education[my.data$education=="不限"] &lt;- "大專"</span>
+<span class="go">  my.data$education 
+<span class="go">  </span>
+<span class="go">  my.data$phase 
+<span class="go">                        c("不需要融資","未融資","天使輪","A 輪",</span>
+<span class="go">                          "B 輪","C 輪","D 輪及以上","上市公司"))</span>
+<span class="go">  my.data$campany 
+<span class="go">  my.data$scale 
+<span class="go">                               "\\1",paste(my.data$scale,my.data$scale2)),</span>
+<span class="go">                          levels =c("少於 15 人","15-50 人","50-150 人",</span>
+<span class="go">                          "150-500 人","500-2000 人","2000 人以上")) </span>
+<span class="go">  my.data$id 
+<span class="go">  my.data 
+<span class="go">  return(my.data)</span>
+<span class="go">}</span>
+<span class="go">#清洗數據，得到清洗後的數據</span>
+<span class="go">CN.clean 
+<span class="go">str(CN.clean)</span>
+</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
+</div>
+<p><strong>步驟 4：文本挖掘</strong></p>
+<p>文本挖掘工具：jiebaR 包</p>
+<p><strong>說明：</strong></p>
+<p>在進行正式挖掘之前測試了一下 jiebaR 的關鍵詞（keywords）分詞器，測試的結果發現 SQL,Python 等詞在 jiebaR 詞典中的 IDF 值均爲 11.7392，但“R”這個字符無論如何(即使自定義了用戶字典，或者在 idf 字典中添加 R 的 idf 值)都無法被分詞器識別爲關鍵詞，猜測可能是默認 R 的詞性標註或者算法實現方法的原因。但因爲 R 是數據分析師的重要工具，識別不出來是不可容忍的，因此要另求出路。</p>
+<p>測試代碼如下：</p>
+<div class="highlight">
+<pre><code class="language-text">&gt; library(jiebaR)
+&gt; library(jiebaRD)
+&gt; engine  keywords("我在用 R,R,R,R 語言,SQL,PYTHON,EXCEL 等工具,瞭解 MySQL 會更有好處",engine)
+</code></pre>
+</div>
+<p>結果如下：</p>
+<div class="highlight">
+<pre><code class="language-text"># 11.7392  11.7392  11.7392  11.7392  6.87603   6.1635  6.11745  5.09665 
+# "EXCEL"  "MySQL" "PYTHON"    "SQL"   "好處"   "語言"   "工具"   "瞭解"
+</code></pre>
+</div>
+<p><strong>解決辦法：</strong></p>
+<p>關鍵詞算法的實現原理是 TF-IDF 算法，TF 爲詞頻，IDF 爲逆文檔率（詞的權重），因此 TF-IDF=TF*IDF 爲衡量是否關鍵詞的指標，若控制 IDF，則 TF-IDF 的值與 TF 值成正比關係，簡單來說 TF 值可以代替 TF-IDF 值。</p>
+<p>由於此次分析的是數據分析師的工具和技能，因此只考慮 SQL,PYTHON,R,SAS 等常用且類似的詞的分析，又因爲該類詞在 jiebaR 分詞器識別出來的 IDF 值均是同級別的（即使可能存在有差異也在此假設其等值），因此這部分詞彙的關鍵指標的衡量可以簡化爲出現的詞頻，即 TF 值，這個可以通過 jiebaR 的默認分詞器（不是關鍵詞分詞器）來處理即可，最終解決 R 關鍵詞識別的問題。</p>
+<p><strong>文本挖掘思路：</strong></p>
+<p>1、工具型技能的關鍵詞：採用默認分詞器的詞頻 TF 值</p>
+<p>2、非工具型能力或素質的關鍵詞：採用關鍵詞分詞器的 TF-IDF 值</p>
+<p>代碼如下：</p>
+<div class="highlight">
+<pre><code class="language-rconsole"><span class="go">library(jiebaR)</span>
+<span class="go">library(jiebaRD)</span>
+<span class="go">library(zoo)</span>
+<span class="go">library(plyr)</span>
+<span class="go">source("myfun.R")</span>
+<span class="go">#提取技能型關鍵詞</span>
+<span class="go">#採用默認 jiebaR 分詞器</span>
+<span class="go">engine 
+<span class="go">#分詞，並刪除無關的詞彙</span>
+<span class="go">word.lis 
+<span class="go">  v 
+<span class="go">  v 
+<span class="go">  return(v)</span>
+<span class="go">})</span>
+<span class="go">#將所有分出來的詞轉化爲大寫，消除大小寫差異</span>
+<span class="go">segWords 
+<span class="go">stopwords 
+<span class="go">#過濾停詞，由於文本可能會存在其他高頻的詞彙，把不需要的詞去除，如(and,of…)</span>
+<span class="go">#此處確保我要得到的前 20 個關鍵技能是正確的數據分析技能</span>
+<span class="go">segWords&lt;-filter_segment(segWords,stopwords)</span>
+
+<span class="go">#形成詞頻表(數據框格式),獲取前 15 個技能關鍵詞</span>
+<span class="go">top15.df 
+
+<span class="go">#生成有 id 和 keyword 構建的數據框，id 對應 cleandata 數據集的 id（即數據字典表 1 和表 2 的關係）</span>
+<span class="go">id 
+<span class="go">keyword 
+<span class="go">for (i in index(word.lis)) {</span>
+<span class="go">  id 
+<span class="go">  keyword 
+<span class="go">}</span>
+<span class="go">keyword.df 
+<span class="go">keyword.df 
+
+<span class="go">str(keyword.df)</span>
+<span class="go">#合併兩個數據集（表之間的內連接，類似 sql 語句的 inner jion）</span>
+<span class="go">merge.df 
+<span class="go">#該數據集用於工具型技能關鍵詞的分析</span>
+<span class="go">str(merge.df)</span>
+
+<span class="go">#提取非技能型關鍵詞，停詞可以自行定義</span>
+<span class="go">keys 
+<span class="go">keyword.lis 
+<span class="go">  v 
+<span class="go">  v 
+<span class="go">  return(v)</span>
+<span class="go">})</span>
+<span class="go">keyword.lis 
+<span class="go">#形成非工具型技能關鍵詞詞頻表</span>
+<span class="go">not.tool.keyword 
+<span class="go">str(not.tool.keyword)</span>
+</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
+</div>
+<p>到此數據處理的過程基本完成，處理後乾淨的數據如下：</p>
+<figure><img class="content-image" src="https://pic4.zhimg.com/v2-99eebdd19b9df26169f1dd6b89d8acb9_b.jpg" alt=""></figure><p><strong>分析的結果</strong></p>
+<p>數據分析代碼：</p>
+<p>具體代碼可以前往該鏈接查看整個過程：<a class=" wrap external" href="https://link.zhihu.com/?target=http%3A//rpubs.com/Joffy_Z/DA_analysis" target="_blank" rel="nofollow noreferrer">RPubs - 分析實例：企業需要什麼樣的數據分析人才</a></p>
+<p>描述統計信息：</p>
+<div class="highlight">
+<pre><code class="language-text">##       city        phase           scale     education    experience 
+##  北京   :222   不需要融資:94   15-50 人   : 15   大專: 33   1 年以下: 34  
+##  杭州   : 48   上市公司  :88   50-150 人  : 36   本科:389   1-3 年  :156  
+##  上海   : 48   D 輪及以上 :80   150-500 人 :104   碩士: 20   3-5 年  :206  
+##  廣州   : 38   C 輪      :73   500-2000 人:116             5-10 年 : 46  
+##  深圳   : 38   B 輪      :49   2000 人以上 :171                           
+##  長沙   : 11   A 輪      :42                                            
+##  (Other): 37  (Other)   :16                                            
+##    avg_salary   
+##  Min.   : 2.50  
+##  1st Qu.:12.50  
+##  Median :17.50  
+##  Mean   :18.22  
+##  3rd Qu.:22.50  
+##  Max.   :75.00
+</code></pre>
+</div>
+<p><strong>問題一：不同地區，數據分析崗位的需求分佈以及對應的薪資分佈</strong></p>
+<figure><img class="content-image" src="https://pic3.zhimg.com/v2-f0664ddbb5c4a158e735f3e9cf39e639_b.jpg" alt=""></figure><figure><img class="content-image" src="https://pic3.zhimg.com/v2-b0c9c218b9a5c83433ecd6fe0570e92e_b.jpg" alt=""></figure><ul><li>總的來說數據分析師的平均薪資比較好，工作 1 年以上拿到 10k 月薪的機會還是比較大</li>
+<li>在需求量前 5 的城市中，北京和深圳的平均薪資是最高的，廣州的平均薪資最低</li>
+<li>需求量在第二梯度的城市中，長沙和成都的平均薪資較低，但武漢、廈門、鄭州也有不錯的薪資表現，二線城市也是一個可以考慮的選擇</li>
+<li>需要注意的是蘇州的需求量相對於其他城市是非常低的，但其平均薪酬接近深圳，是可以值得關注的城市</li>
+</ul><p><strong>問題二：不同經驗，數據分析崗位的需求分佈以及對應的薪資分佈</strong></p>
+<figure><img class="content-image" src="https://pic4.zhimg.com/v2-2e66bda10a203bc568f9bcf3ae189c06_b.jpg" alt=""></figure><ul><li>跟預想的差不多，薪資隨工作經驗的增加而有一個穩定的增長</li>
+<li>但企業對最大的數據求集中在 3-5 年經驗的數據分析師，這對於轉型進入數據分析的人來說不是一個好的消息</li>
+<li>轉行需要更有充足的準備，且要不斷尋找能夠積累經驗的項目來做。</li>
+</ul><p><strong>問題三：不同學歷，數據分析崗位的需求分佈以及對應的薪資分佈</strong></p>
+<figure><img class="content-image" src="https://pic3.zhimg.com/v2-12b49680a7f3dc065f6851532f36a7ee_b.jpg" alt=""></figure><ul><li>企業似乎更加註重分析師的實踐經驗，而不是學歷的高低，但至少需要具備本科以上的學歷，數據分析還是需要具備一定的理論基礎</li>
+<li>在薪資方面，相對與本科來說，碩士及以上學歷在獲取高薪方面並沒有太大的優勢，能夠解決實際問題纔是數據分析師拿高薪的關鍵，而非深奧的理論知識</li>
+<li>大專學歷的分析師還是有機會，重點在於增加自己的工作經驗纔是本質上與其他分析師拉開距離的關鍵，當然，理論知識也不能落下</li>
+</ul><p><strong>問題四：不同企業規模，數據分析崗位的需求分佈以及對應的薪資分佈</strong></p>
+<figure><img class="content-image" src="https://pic2.zhimg.com/v2-f8314ee69974d173090eecb92b8cd8a8_b.jpg" alt=""></figure><figure><img class="content-image" src="https://pic4.zhimg.com/v2-5fccb23133361918394c4096e65f711c_b.jpg" alt=""></figure><ul><li>150 人規模以下的企業需求量較少，但給出的薪資較高（甚至有異常的高薪），該類企業可能處於快速融資且高速的發展階段，需要有豐富經驗的數據分析專家來建設整個數據體系</li>
+<li>50~150 人規模的企業適合有足夠經驗的分析師且想要創業的人，對自己職位以及薪酬均會有明顯的提升，但最大的風險就是該類企業容易失敗，特別在互聯網行業，因此更不建議作爲轉型新人的首選</li>
+<li>對於轉型的新人，儘可能往大企業走，越大規模的企業，整個體系越成熟，因此可以在 150 人以上的規模從上往下選擇自己合適的企業纔是比較科學的方式，且需求量巨大</li>
+</ul><p><strong>問題五：數據分析崗位對應的工具型技能與對應的薪資水平</strong></p>
+<figure><img class="content-image" src="https://pic4.zhimg.com/v2-ca068a342ef4a5f54a8afb9a75deaadc_b.jpg" alt=""></figure><figure><img class="content-image" src="https://pic1.zhimg.com/v2-d3154dea076f9b8ff9d9e7f882fb5a6d_b.jpg" alt=""></figure><figure><img class="content-image" src="https://pic1.zhimg.com/v2-4a91f4ac1d5af36a65859c4fd3c01112_b.jpg" alt=""></figure><ul><li>SQL 和 Excel 幾乎是每個數據分析師要掌握的基礎技能，大多數企業都有自己的數據庫體系或者系統平臺，因此企業工作人員讀取和處理數據還是以數據庫和 Excel 爲主</li>
+<li>R，Python 是兩個最熱門的開源數據分析工具，且當前 R 語言在需求仍然不低，因此核心掌握兩門語言的其中一門都會讓數據分析師具備有力的競爭優勢</li>
+<li>除此之外工作經驗較低的數據分析師還需要掌握一些 BI 可視化分析工具</li>
+<li>工作經驗較高的數據分析師需要掌握主流的關係型數據庫系統和 NoSQL，以及 Hadoop，Hive，Spark 等大數據工具</li>
+<li>掌握 Hadoop，Hive，Spark，R，Python 等技能是獲取高薪必備條件</li>
+</ul><p><strong>問題六：數據分析崗位對應非工具型能力的需求</strong></p>
+<p>聲明：此處數據涉及到崗位細分和難以衡量的原因，並沒有進行深入分析，詞雲本身不具備太高的數據分析價值，僅作爲可視化關鍵詞的分佈情況的工具；閱讀者需要根據自身崗位以及所處的工作定位查看關鍵詞的情況，這裏的大小表示關鍵詞出現的頻次。</p>
+<figure><img class="content-image" src="https://pic2.zhimg.com/v2-7a67f691d1472fe22e7b0f06476ead7c_b.jpg" alt=""></figure><p>通過資料的收集，瞭解到數據分析崗位主要有偏工程方向和偏業務方向兩個類型，透過詞雲可以大概瞭解到如下信息：</p>
+<ul><li>偏工程方向的數據分析師對“數據挖掘”、“數據建模”、“模型分析”等能力要求較高</li>
+<li>偏業務方向的數據分析師對“業務分析”、“運營分析”、“產品分析”、“用戶分析”等能力要求較高</li>
+<li>兩個類型共同需要“邏輯思維”、“溝通”、“分析報告”、“統計分析”、“團隊合作”等關鍵能力</li>
+</ul><p><strong>總結</strong></p>
+<ol><li>從地域來看，北京、深圳、上海、杭州、廣州應該是數據分析師的首選城市，蘇州是一個值得關注的城市，外部數據瞭解到蘇州的 GDP 僅次於一線城市，此處結果平均薪資接近北京和深圳，但需求量較低，想要蘇州發展的朋友可以關注其動態。</li>
+<li>從總體需求來看，企業更加需要具備多年工作經驗，且動手能力強、解決實際問題的分析人才，隨着工作經驗的增加，其對應的薪資也有可觀的增長。</li>
+<li>從大環境看，外部資料瞭解到，自助式分析工具的逐步完善與人工智能技術的突破，也可能使得企業現有業務人員能夠上手基礎的分析工作，導致企業對經驗較低的分析師需求減少。</li>
+<li>從企業規模看，150 人以上規模的企業更加適合新人進去鍛鍊，一方面企業已經完成了基本的數據體系架構，且越大的企業數據量級越大，另一方面，企業需要逐步培養強大的數據分析團隊來支撐業務的增長。</li>
+<li>從分析師個人的角度，則需要更加關注自身成功項目經驗的積累，這是升職加薪的必備條件，且需要思考未來自身的發展路徑，提前做好準備，相對於業務方向，大數據工程師方向會有更可觀的薪資。</li>
+<li>從能力的角度，數據分析師需要掌握 SQL，Excel，R，Python 四個必備的工具（R 和 Python 可以選擇其一爲主要工具），新人可以注重 BI，PPT 等 office 工具的技能，如果是大數據挖掘，越往後則需要更加關注 hadoop，Hive，Spark 等工具；</li>
+<li>數據分析師個人還需要注重邏輯思維、表達溝通、分析報告等關鍵能力</li>
+</ol><p><strong>建議</strong></p>
+<ol><li>對於想要轉型的數據分析師新人，轉型之前儘可能做好項目經驗的積累，儘量做到跨崗不跨行，在自己熟悉的領域學習數據分析</li>
+<li>企業比較看重經驗和動手能力，面試的時候儘可能展示你的作品或者案例，如果當前沒有，則需要在日常學習，練習，積累</li>
+<li>可以掌握一些可視化工具和數據可視化的思維，熟練掌握報告和表達的技巧，數據分析的工具多樣，方式多樣，只有能夠正確解讀數據且讓對方看懂聽懂纔是有價值的</li>
+</ol><p><strong>不足</strong></p>
+<p>本次分析並沒有按照分析報告的方式來呈現，文章中以個人的整個分析過程來撰寫，希望能夠與各位朋友一起交流學習，如果你不同意我文章中的觀點，歡迎指正交流。</p>
+<p>文章中我附上了我的數據集以及分析的代碼鏈接，有興趣的朋友可以重複我的過程，甚至做更加深入有趣的分析，如果有新的發現和觀點，希望也能讓我知道，向你們學習。</p>
+<p><strong>侷限</strong></p>
+<p>數據僅採集到 449 份樣本，數據量相對少一點，因此數據分析的結果需要大家用懷疑的心態來看待，且僅侷限在互聯網行業，相對於其他行業，本文章的分析結果只能作爲一個參考。</p>
+<p>感謝你的觀看。</p>
+
+
+
+</div>
+</div>
+</div>
+
+
+</div>
+</div><script type="“text/javascript”">window.daily=true</script>
