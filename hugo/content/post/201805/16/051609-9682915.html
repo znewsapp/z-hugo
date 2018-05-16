@@ -1,0 +1,125 @@
++++
+date = "2018-05-16T09:00:00"
+title = "滅霸到底是用什麼方法保證消失的一半人是「隨機」的？"
+titleimage = "https://pic2.zhimg.com/v2-70cdd8c50efdc5eddc41f338846268e9.jpg"
+ga = 051609
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title">滅霸使用了什麼樣的隨機數生成方法來保證公平？</h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>這個問題太有創意了。</p>
+<p>隨機數生成器目前來說，大致分爲兩類。</p>
+<p>第一種，僞隨機數。僞隨機數是依靠數學算法來實現的，我們常見的 PC，遊樂場的抽獎，賭場的賭博機等依賴的都是依據一定算法的僞隨機數。這種算法都依賴一串種子，只要種子確定了，我們就可以預測出後面的隨機數串，也就說這個不是我們想要的真正的隨機數。現在有媒體報道，俄羅斯的黑客以及數學家，就通過破解美國賭場的老虎機的隨機數生成器來賺錢。</p>
+<p>第二類，物理隨機數。其是依靠物理學規律的隨機數發生器，比如核衰變發生的時刻，單個光子經過分束器時的選擇。只要現有的物理規律是正確的，那麼我們就無法預知生成器生成的下一個隨機數是什麼。其實物理隨機數還可以繼續細分，有噪聲， 混沌，量子隨機數發生器，而量子數隨機數發生器又可分爲：practical random number generator，設備無關隨機數發生器等。</p>
+<p>結論：地球上的黑客均沒有控制到誰死誰活，所以這隨機數發生器是物理的，不是僞隨機。其次，不惜一切代價忠實地踐行自己意志的滅霸同志，應該不會對設備做手腳，所以滅霸使用的可能是量子隨機數發生器中的設備無關隨機數發生器，這種隨機數發生器不以個人意志爲轉移。</p>
+<p>Reference：</p>
+<ol><li>Herrero-Collantes M, Garcia-Escartin J C. Quantum random number generators[J]. Reviews of Modern Physics, 2017, 89(1): 015004.</li>
+<li>James F. A review of pseudorandom number generators[J]. Computer physics communications, 1990, 60(3): 329-344.</li>
+</ol>
+</div>
+</div>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>最近工作實在太忙，一直沒有看《復仇者聯盟 3》這部電影，所以我還不瞭解電影的具體情節（雖然我感覺已經被劇透光了，哈哈哈）。不過，聽了周圍人和知乎上一些答案對滅霸計劃的描述後，覺得這道題實在是太有意思了！下面我們來嘗試解答一下這個問題。看看可能有哪些方法、又應該用哪些方法滿足“不摻雜感情因素，隨機地讓宇宙裏一半人口消失”的宏大偉業吧！</p>
+<hr><p><strong>隨機數的生成機制是什麼？</strong></p>
+<p>有關這個問題，知友 @Li YaPing 已經做了簡單的介紹，我們講的再詳細一點好了。我們可以把現有隨機數生成機制分爲兩大類。</p>
+<p><strong>第一種：物理隨機數</strong></p>
+<p>這是真正從物理現象中採集的隨機數。相信知友們都知道“薛定諤的貓”，這就是一個典型的物理隨機數：</p>
+<blockquote>（來自百度百科：<a href="https://baike.baidu.com/item/%E8%96%9B%E5%AE%9A%E8%B0%94%E7%9A%84%E7%8C%AB/554903?fr=aladdin">薛定諤的貓</a>）一隻貓被封在一個密室裏，密室裏有食物有毒藥。毒藥瓶上有一個錘子，錘子由一個電子開關控制，電子開關由放射性原子控制。如果原子核<a href="https://baike.baidu.com/item/%E8%A1%B0%E5%8F%98/13826090">衰變</a>，則放出<a href="https://baike.baidu.com/item/%E9%98%BF%E5%B0%94%E6%B3%95%E7%B2%92%E5%AD%90">阿爾法粒子</a>，觸動電子開關，錘子落下，砸碎毒藥瓶，釋放出裏面的<a href="https://baike.baidu.com/item/%E6%B0%B0%E5%8C%96%E7%89%A9">氰化物</a>氣體，貓必死無疑。原子核的衰變是隨機事件，物理學家所能精確知道的只是半衰期——衰變一半所需要的時間。如果一種放射性元素的半衰期是一天，則過一天，該元素就少了一半，再過一天，就少了剩下的一半。<strong>物理學家卻無法知道，它在什麼時候衰變，上午，還是下午</strong>。</blockquote>
+<p>當人類無法預測一些物理現象的發生與否，只知道物理現象發生的統計規律或理論規律，我們就可以利用這些物理現象構造物理隨機數。</p>
+<p>物理隨機數的最大優點是：無法預知下一個隨機數是什麼。相對地，物理隨機數的缺點是：隨機數的採集過程相對較爲複雜。</p>
+<p><strong>第二種：僞隨機數</strong></p>
+<p>物理隨機數的採集代價實在太高，是否能有一些比較簡單的隨機數生成方法呢？答案是肯定的。沉下心來思考一下就會發現，我們日常生活中需要的可能並不是真正隨機的隨機數，只要生成的隨機數“看起來像是一個隨機數”就可以了。我們把能生成“看起來像是一個隨機數”的算法稱爲<strong>僞隨機數生成器</strong>（Pseudo-Random Generator，PRG）。此類算法需要設置一個種子（seed）作爲參數。可以把種子理解爲算法的初始狀態。當種子設置完畢後，持續調用算法即可輸出一系列看起來像是隨機數的數了。</p>
+<p>僞隨機數的最大優點是：隨機數生成過程非常簡單，可以快速得到大量的隨機數。相對地，僞隨機數的最大缺點是：由於算法以種子作爲初始狀態，而計算機執行算法的過程一定是確定性的，因此只要能夠知道種子是什麼，那麼僞隨機數生成器的輸出結果就能看作是隨機數了，可以完全實現輸出結果的預測和復現。</p>
+<p><strong>相信反派用的是物理隨機數</strong></p>
+<p>既然我們現在討論的是超級英雄們的故事，連時間倒轉都可以做到，因此我們有理由相信在《復仇者聯盟》的故事中，反派有能力採集真正的物理隨機數。</p>
+<p>爲了後續論述方便，我們假定反派可以按照現在人類的計算機一樣，可以從物理環境中採集到一個結果在</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5B0%2C1%29" alt="">
+<p>中滿足均勻分佈的隨機數好了。</p>
+<hr><p><strong>誰執行隨機數的生成過程？</strong></p>
+<p>無論是誰決定誰生誰死，我們都有理由相信決定前一定不在滅霸本人手中。因爲我們的目標是“不摻雜感情因素，隨機地讓宇宙裏一半人口消失”，如果滅霸本人可以提供哪怕一點點誰生誰死的相關信息，那就不滿足“不摻雜感情因素”這個前提條件了。以此類推，既然“不摻雜感情因素”，那麼這個決定權也一定不在其它任何人手中，只能是一個“完全”隨機的過程。既然執行殺戮的“設備”是拳套，我們姑且可以認爲是由拳套完成隨機數採集，並執行殺戮過程好了。</p>
+<hr><p><strong>應該使用何種殺人算法</strong></p>
+<p>下面我們需要解決的一個問題是：如何利用上述的基礎模塊，設計一個算法，實現公平的殺人呢？知友們已經提出了很多很有意思的方法。所有方法幾乎可以歸爲下述兩種情況：</p>
+<ol><li>爲每一個生物拋一枚硬幣，正面就殺掉，反面就活着；</li>
+<li>把所有生物隨機拍成一個隊列，奇數位置上的生物殺掉，偶數就活着；</li>
+</ol><p>下面我們來科學地論述一下，這兩種方法到底哪種更好？應該使用哪種方法呢？</p>
+<p><strong>隨機數所滿足的概率分佈</strong></p>
+<p>在選擇方法之前，我們首先需要知道我們需要一個滿足什麼條件的隨機數。計算機所內置的隨機數生成器一般都會輸出一個結果在</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5B0%2C1%29" alt="">
+<p>中滿足均勻分佈的隨機數生成器出發。也就是說，計算機中隨機數生成器所輸出的隨機變量所滿足的概率密度函數爲：</p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=p%28x%29%3D1%2Cx%5Cin%5B0%2C1%29" alt="">
+<p>得到這樣一個隨機數後，我們可以進一步通過數學變換得到概率分佈更加複雜的隨機數生成算法。上面兩種情況都可以用滿足此種要求的隨機數實現。下面我們一一進行講解。</p>
+<p><strong>拋硬幣：看似科學，實則不合理</strong></p>
+<p>我們先來看看第一種方法：爲每一個生物拋一枚硬幣，正面就殺掉，反面就活着。</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-cd823a83a97a6493e93fde2cdea665cb_b.jpg" alt="">
+<p>利用上述隨機數是可以做到這種殺戮方法的，具體如下：</p>
+<ul><li>分別對每一個生物執行隨機數生成算法，得到一個結果在 <img class="content-image" src="http://www.zhihu.com/equation?tex=%5B0%2C1%29" alt=""> 中滿足均勻分佈的隨機數。</li>
+<li>如果得到的隨機數小於 <img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cfrac%7B1%7D%7B2%7D" alt=""> ，則殺掉這個生物，否則此生物存活。</li>
+</ul><img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cfrac%7B1%7D%7B2%7D" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5CPr%5B0+%5Cleq+X%3C%5Cfrac%7B1%7D%7B2%7D%5D%3D%5Cint_%7B0%7D%5E%7B%5Cfrac%7B1%7D%7B2%7D%7D1dx%3D%5Cfrac%7B1%7D%7B2%7D%3D%5Cint_%7B%5Cfrac%7B1%7D%7B2%7D%7D%5E%7B1%7D1dx%3D%5CPr%5B%5Cfrac%7B1%7D%7B2%7D+%5Cleq+X%3C1%5D" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=n" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cfrac%7B1%7D%7B2%7D" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5CPr%5BX%3Dm%5D+%3D+%5Cfrac%7BC_%7Bn%7D%5E%7Bm%7D%7D%7B2%5En%7D+%3D+%5Cfrac%7B%5Cfrac%7Bn%21%7D%7Bm%21%28n-m%29%21%7D%7D%7B2%5En%7D" alt="">
+<p>對於滅霸這麼嚴謹的人，既然說了“隨機地讓宇宙裏一半人口消失”，那就真應該是讓“一半人口消失”，而不是“差不多讓一半人口消失”吧…</p>
+<p><strong>報數殺人，科學但非最優的殺人方法</strong></p>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=n" alt="">
+<img class="content-image" src="http://pic2.zhimg.com/70/v2-94c5f41f66ca7c77155913ee8e092845_b.jpg" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5B0%2C1%29" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5C%7B1%2C2%2C%5Ccdots%2Cn%5C%7D" alt="">
+<p>中隨機選出一個編號，把對應編號的人殺掉？只要解決了這個問題，我們就可以持續執行上述過程：</p>
+<ul><li>把剩餘的生物按照 1 到 n-1 編號，隨機選出一個編號，把對應編號的人殺掉；</li>
+<li>把剩餘的生物按照 1 到 n-2 編號，隨機選出一個編號，把對應編號的人殺掉；</li>
+<li>......</li>
+</ul><img class="content-image" src="http://www.zhihu.com/equation?tex=%5B0%2C1%29" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=p%28x%29%3D%5Cfrac%7B1%7D%7Bn%7D%2C+x%5Cin%5B0%2Cn%5D" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=i%5Cin%5B1%2Cn%5D" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5CPr%5BX%3Di%5D%3D%5Cint_%7Bi-1%7D%5E%7Bi%7D+%5Cfrac%7B1%7D%7Bn%7Ddx%3D%5Cfrac%7B1%7D%7Bn%7D" alt="">
+<p>如此一來，滅霸終於可以保證“隨機地讓宇宙裏一半人口消失”這一宏偉的過程了！</p>
+<p><strong>Can we do better？洗牌殺戮法</strong></p>
+<p>上述殺戮過程雖然不錯，但是每一次都要對生物重新編號，似乎有點麻煩，能不能有更簡單的方法呢？轉換一下思路，如果我們能把所有生物隨機進行編號，奇數編號殺掉，偶數編號留着，只要編號過程是完全隨機的，是不是就可以實現相同的殺戮要求呢？</p>
+<p>這實際上是計算機科學中一個非常經典的問題：洗牌問題（Shuffle A Deck of Cards），要求如下：</p>
+<blockquote>（來自<a href="https://www.geeksforgeeks.org/shuffle-a-given-array/">Shuffle a given array - GeeksforGeeks</a>）Given an array, write a program to generate a random permutation of array elements. This question is also asked as “shuffle a deck of cards” or “randomize a given array”.</blockquote>
+<p>簡單的實現方法就是前述的報數殺人法：</p>
+<blockquote>A simple solution is to create an auxiliary array temp[] which is initially a copy of arr[]. Randomly select an element from temp[], copy the randomly selected element to arr[0] and remove the selected element from temp[]. Repeat the same process n times and keep copying elements to arr[1], arr[2], … .The time complexity of this solution will be O(n^2).</blockquote>
+<img class="content-image" src="http://www.zhihu.com/equation?tex=%5Cfrac%7Bn%7D%7B2%7D" alt="">
+<p>更好的方法實際上是 Fisher–Yates 洗牌算法，這是 1938 年 Ronald Fisher 和 Frank Yates 所提出的算法（參見<a href="https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#The_modern_algorithm">Fisher-Yates shuffle</a>），記錄在他們撰寫的書籍《Statistical tables for biological, agricultural and medical research》中。這個算法也被記錄在 Donald Knuth 撰寫的著名書籍《計算機程序設計藝術》（The Art of Computer Programming）中，其基本過程如下：</p>
+<blockquote>To shuffle an array a of n elements (indices 0..n-1):<br> for i from n - 1 downto 1 do<br> j = random integer with 0 &lt;= j &lt;= i<br> exchange a[j] and a[i]</blockquote>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-f5616ed21cc7b5b62c8ed13d118ec42e_b.jpg" alt="">
+<p>可以證明，算法的複雜度可以降低到 O(n)。同時，這種方法可以達到等概率完美洗牌，即每一個生物出現在特定位置上的概率都是相等的。既然可以滿足這樣的要求，按照偶數編號殺戮自然也就滿足了嚴格的公平性了。</p>
+<hr><p>什麼？你說生物總數量是奇數，做不到嚴格“讓宇宙裏一半人口消失”？可能奇異博士看到的 1400 多萬種方法中，唯一可以戰勝的方法是讓全宇宙生物總數量是奇數，然後讓拳套出 Bug......</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-4ecef0edb64601c7117043b4122806ee_b.jpg" alt="">
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div><script type="“text/javascript”">window.daily=true</script>
