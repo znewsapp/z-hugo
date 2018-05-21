@@ -1,0 +1,73 @@
++++
+date = "2018-05-21T11:00:00"
+title = "瀏覽器的「隱私模式」真的能完全保護我們的隱私嗎？"
+titleimage = "https://pic3.zhimg.com/v2-440895f4da5ba38cb0ab191d9059247a.jpg"
+ga = 052111
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+<div class="question">
+<h2 class="question-title">瀏覽器的隱私模式，真的能完全保護我們的隱私嗎？</h2>
+<div class="answer">
+
+
+
+<div class="content">
+<p>近期我意外的看到一條<a class=" wrap external" href="https://link.zhihu.com/?target=https%3A//www.solidot.org/story%3Fsid%3D56292" target="_blank" rel="nofollow noreferrer">新聞</a>是這樣說的：</p>
+<blockquote>調查發現網民以爲隱私模式能完全避免被跟蹤。</blockquote>
+<p>看到這個標題，再結合之前劍橋分析數據泄露的新聞，讓我不由地感覺到很多人對隱私保護認識的不足，以及過於信任瀏覽器的隱私模式。</p>
+<p><strong>瀏覽器的隱私模式真的能完全保護我們的隱私嗎？</strong>在這篇文章中，我將解釋用戶的瀏覽行爲、互聯網公司的追蹤方式、隱私模式的意義，來幫助大家更好地理解瀏覽器隱私模式的用途，以及到底哪些瀏覽記錄會被互聯網公司追蹤到。</p>
+<p><strong>瀏覽 &amp; 跟蹤</strong><strong>用戶瀏覽網站的過程</strong></p>
+<figure><img class="content-image" src="https://pic2.zhimg.com/v2-b897867921e1060022ecbeb9bf195e56_b.jpg" alt=""></figure><p>當一位用戶瀏覽網頁時，一般會進行以下操作：</p>
+<ol><li>打開瀏覽器，輸入網址。這時候瀏覽器就會默默將此過程保留在歷史記錄中；</li>
+<li>連接請求通過用戶家中的網線，層層遞進，到達互聯網供應商的主幹網絡，再接着連接到用戶請求的網站地址。這個時候就網站就能拿到用戶的 IP 地址了；</li>
+<li>網站返回數據給用戶，網頁大部分的內容作爲臨時文件被暫存在用戶電腦中；</li>
+<li>用戶如果進行註冊 / 登錄，則會將用戶信息保存 / 更新在服務器端。將 Cookie 保留在本地作爲驗證用戶一種方式，避免用戶多次反覆的登錄。當然進行註冊時填寫的手機號、郵箱、家庭住址也會被瀏覽器記錄，方便用戶下次調用。</li>
+</ol><p>可以看到整個過程一般而言有 3 種數據是保存在用戶的電腦上的，那就是<strong>瀏覽記錄</strong>、<strong>臨時文件與 Cookie</strong> 和<strong>表單填寫的內容</strong>。而有 1 或 2 種的數據被保留在了網站那邊，就是 <strong>IP 地址</strong>和<strong>用戶填寫的註冊信息</strong>。</p>
+<p>當然現在絕大多數的網站都很喜歡讓用戶使用手機註冊，原因自然是手機號實名，這樣能夠更方便連續的描繪出用戶畫像。</p>
+<p><strong>互聯網企業是怎麼對用戶進行追蹤的？</strong></p>
+<figure><img class="content-image" src="https://pic3.zhimg.com/v2-ff2fffac0816a98c1abc43426198169c_b.jpg" alt=""></figure><p>最簡單的，也是最通用的方法，就是通過 Cookie。</p>
+<p>前面我也解釋了 Cookie 的一個作用——記憶用戶的身份，避免用戶反覆的登錄，說明了 Cookie 有個很明顯的特點就是「記憶性」。一般而言網站沒有資源，也不可能用這個資源去追蹤用戶的這個 IP 地址到底瀏覽了我們這個網站的哪些網頁，自然就需要在用戶電腦中寫下一小段加密後的純文本文件作爲標記，來幫助網站來更好的對用戶進行優化。比如亞馬遜、京東、淘寶首頁的推薦，很大程度上都是通過收集到的 Cookie 再加工處理而成的。</p>
+<p>如果廣告商想要收集，比如你最常瀏覽哪些網頁、什麼時候來瀏覽 XX 的網頁、停留多久等等，無形中用戶畫像就被填上了一部分，甚至還可以推斷出你的收入等等。最後進行適當的廣告推送，Google、Facebook、百度都是那麼幹的。</p>
+<figure><img class="content-image" src="https://pic1.zhimg.com/v2-d796dd786f9883721d635a55783e02bc_b.jpg" alt=""></figure><p>此外 Cookie 還有個重要的特點——「專屬性」，也就是某個網站發出 Cookie 那個網站能讀，這是瀏覽器控制的，它只能放置自己的 Cookie，在需要時讀取，沒有其他任何網站能夠讀取。</p>
+<p>但是需要注意的是，並不是一個網站只能擁有自己網站的 Cookie，網站還能使用第三方的 Cookie 來驗證用戶身份，比如司空見慣的通過 QQ 登錄、通過微博登錄，使用的時候都會加載第三方的 Cookie，這時候你的數據就會被第三方進行追蹤了。販賣用戶數據的 Cookie 也可以通過插入第三方 Cookie 實現的，廣告跟蹤商在受用戶歡迎、被廣泛訪問的網頁上放置一個一像素大小的透明圖片，這樣用戶看不到這張圖片，但是他還是被加載了，這樣廣告跟蹤商就可以通過這張圖片進行 Cookie 插入，不斷地追蹤用戶的瀏覽記錄。</p>
+<p><strong>瀏覽器隱私模式能做的 &amp; 不能做的</strong><strong>隱私模式只是保護你在本機的活動</strong></p>
+<figure><img class="content-image" src="https://pic1.zhimg.com/v2-6e649af227988bfb0909bfdc55ee7889_b.jpg" alt=""></figure><p>瀏覽器的隱私模式作爲一種附加運行在本地瀏覽器上的一種模式，它到底阻止了哪些東西呢？從 Google Chrome 的無痕模式中可以清楚地看到 Chrome 不會保存：</p>
+<ol><li>你的瀏覽記錄</li>
+<li>Cookie 和網站數據</li>
+<li>表單中填寫的信息</li>
+</ol><p>這 3 樣都是用戶瀏覽網頁過程中存儲在本地的數據。而這樣做的好處就是<strong>避免了同樣使用這臺電腦的人看到你的瀏覽記錄</strong>，甚至<strong>繞過賬戶以及密碼登錄你的賬戶</strong>，查看竊取你的個人信息以及財產。或是通過填寫的表單信息進一步的瞭解到你的家庭住址等等。</p>
+<p>遇此同時無痕模式的窗口也非常明顯的告訴了你，還是有人能夠看到你的網絡活動：</p>
+<figure><img class="content-image" src="https://pic3.zhimg.com/v2-affc6de6b2243c12fd8e143beac3f86a_b.jpg" alt=""></figure><ol><li><strong>你訪問的網站</strong>：用戶在訪問網站的時候，用戶的 IP 地址直接暴露給了網站，所以網站還是能夠知道你這個人訪問了該網站。甚至當用戶登錄了該網站的賬戶以後，你所瀏覽的與該網站相關一切都將被記錄下來。</li>
+</ol><figure><img class="content-image" src="https://pic1.zhimg.com/v2-17fa9df025145e1dc3cc887c59aab3c1_b.jpg" alt=""></figure><ol><li><strong>你的僱主或你所在的學校</strong>：現在非常多的公司和學校建立了專有的網絡環境，對外只顯示 1 個 IP，數據返回的時候再發送到相應的內網 IP 上。僱主和學校有心想看的話還是能夠知道內網的某個人瀏覽了什麼。對於 HTTP 網站鏈接，僱主和學校能夠完整的瞭解用戶瀏覽了哪些網站，用戶看了哪些內容，停留了多久，針對哪些網站進行了點擊跳轉等等；對於 HTTPS 網站鏈接，由於證書的存在和相應的驗證機制，一般而言 HTTPS 解密（中間人攻擊）很難發動，所以只能夠了解到用戶瀏覽了哪些網站而已。同時不恰當的網絡環境也會將自己的瀏覽記錄暴露在他人的視野中，比如免費公用的 Wi-Fi。</li>
+</ol><figure><img class="content-image" src="https://pic1.zhimg.com/v2-236caf3b29b8867434d50624260d40eb_b.jpg" alt=""></figure><ol><li><strong>你的互聯網提供商</strong>：同樣對於網站相應的請求最少都要發送到運營商那邊，通過運營商進行轉發，發送到網站那邊，所以互聯網提供商有心瞭解也是能夠了解到的。</li>
+<li><strong>部分瀏覽器插件</strong>：對於很多甚至絕大多數的瀏覽器插件都能即時讀取用戶瀏覽了哪些網頁，如果插件想要收集用戶數據的話，隱私模式下開啓插件，也同樣存在泄露用戶數據的風險。尤其是國內瀏覽器提供商提供的類 Chromium 瀏覽器，隱私模式下，瀏覽器插件沒有一個是關閉的，用戶數據岌岌可危。</li>
+</ol><p><strong>隱私模式也並不是一無是處</strong></p>
+<p>上文已經提到了一個比較重要的用途，就是能夠在多人共用電腦的時候保護自己的瀏覽記錄不被其他公用的人看到，以及保護自己的賬戶不被惡意登錄。此外<strong>隱私模式還能保護我們不被惡意廣告所困擾</strong>。</p>
+<figure><img class="content-image" src="https://pic1.zhimg.com/v2-0786185f894a2ccd3cd8719358751b04_b.jpg" alt=""></figure><p>我相信不少人會被這樣的廣告所困擾，在淘寶或者京東看完某件商品以後，在其他有廣告的地方統統都顯示着這樣的商品，不斷的提示你該買了，折扣了……諸如此類的提示語。這些廣告就是互聯網公司通過 Cookie 追蹤到你的最近瀏覽的東西進行投放的，讓人難以忍受，明明我就想瀏覽一下某個商品，感受到了惡意窺視的感覺。</p>
+<p>而通過隱私模式即可抑制這類廣告的存在，因爲 Cookie 和臨時文件都將在關閉整個瀏覽界面的時候被刪除。</p>
+<p><strong>總結</strong></p>
+<p>很多互聯網公司，收集你的個人數據只是爲了更好地爲你提供服務。但同時也有以出售數據爲生的數據公司，他們通過加載第三方，甚至第一方的 Cookie 來追蹤用戶數據，然後上傳，最後販賣，獲取暴利。</p>
+<p>對於一般用戶來說，無法完全隱藏在互聯網背後，IP 地址、不恰當的網絡環境、隱私模式下登錄的網站賬戶、甚至居心不良的瀏覽器插件都在默默地監視着用戶的隱私。這需要的不只是用戶自身的小心謹慎，同時也需要協議乃至政策（最近討論最多的<a class=" wrap external" href="https://link.zhihu.com/?target=https%3A//www.eugdpr.org/" target="_blank" rel="nofollow noreferrer">《歐盟一般數據保護條例》GDPR</a>）對互聯網公司的約束。</p>
+
+
+
+</div>
+</div>
+</div>
+
+
+</div>
+</div><script type="“text/javascript”">window.daily=true</script>
