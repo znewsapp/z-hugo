@@ -1,0 +1,74 @@
++++
+date = "2018-05-22T16:00:00"
+title = "「超級計算機」聽上去就厲害，究竟可以用來幹什麼？"
+titleimage = "https://pic3.zhimg.com/v2-de2e773db9528768339b562831e23bf6.jpg"
+ga = 052216
++++
+
+<div class="main-wrap content-wrap">
+<div class="headline">
+
+<div class="img-place-holder"></div>
+
+
+
+</div>
+
+<div class="content-inner">
+
+
+
+
+<div class="question">
+<h2 class="question-title">中國的超級計算機被用來幹什麼了？</h2>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>當然是用來完成科研、工程項目中繁重的計算任務的。</p>
+<p>超算沒有那麼神祕，就是個計算工具。你輸入計算條件，它給你輸出計算結果。和買菜用的計算器是一樣一樣的，只是規模上有區別而已。</p>
+<p>家用電腦一般只有一顆 CPU（GPU 同理），每顆 CPU 內一般只有 2~8 個物理核心。而一般的超算有成千上萬顆 CPU，每顆 CPU 內一般有幾十個物理核心。</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/v2-2265bdf4a90dd01d8e314a803e0068ea_b.jpg" alt="">
+<p>這麼多 CPU 當然不是拿來供暖的，而是爲了通過並行計算，完成繁重的計算任務的。</p>
+<p>舉個例子，在飛行器製造領域，經常要計算飛機附近空氣的流動，以及飛行器本身的受力情況。最常用的計算方法是把空氣、機體分割成一個個小塊塊，分別計算每個小塊的運動和受力，再整合起來得到整體的運動和受力情況。</p>
+<p>一般來說，分割的越精細，每個小塊越小，計算越準確。</p>
+<p>而魚與熊掌不可兼得，分割的越精細，計算量也越大。</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/v2-3ebc2697aa20afd3d987dbddce3d5c93_b.jpg" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=m%5E3" alt="">
+<img class="content-image" src="http://www.zhihu.com/equation?tex=mm%5E3" alt="">
+<p>的小方塊，那麼就要對 10 億個小方塊進行計算。</p>
+<p>如果用單個 CPU 核心，需要連續做 10 億次運算，算完整個過程可能要花上一天。</p>
+<p>而如果有 10 個 CPU 核心，那就可以把這 10 億個方塊分成 10 份，每個 CPU 核心只要計算 1 億個方塊，然後把得到的結果整合起來就行。這樣大約能快上 10 倍，兩個小時就能算完了。</p>
+<p>在科研和工程領域，有許許多多這樣的計算任務，例如原子基本性質的量子力學計算、藥物反應過程的分子動力學模擬、黑洞碰撞的相對論模擬、大氣運動和天氣變化的預測、橋樑設計中的受力計算......</p>
+<p>這些複雜的問題，如果用單個 CPU 核心計算，可能要花上幾個月甚至是幾年才能得到結果。這麼長的計算時間是難以接受的，所以我們需要用多個 CPU 核心進行並行計算以提高效率，集成大量 CPU 於一身的超算自然就應需而生了。</p>
+</div>
+</div>
+
+<div class="answer">
+
+
+
+<div class="content">
+<p>天河 1A，Titan，Edison，Cori 用戶。</p>
+<p>不得不說， 在科研對外宣傳上面， 美帝完爆其他國家（包括歐洲和日本）， 拿 NERSC（美國能源部高性能計算中心）來說， 主頁是這個樣子的：</p>
+<img class="content-image" src="http://pic3.zhimg.com/70/707f07706a6b6e53c3c451e49766fb0a_b.jpg" alt="">
+<p>每次會在主頁上放 4 個成功案例，所選的成功案例都是非常貼近大衆生活的， 可以大大提高公衆對於 NERSC 的支持度。 這是其中一個， 使用超算來優化燃料電池材料， 未來可能應用於電動汽車， 這一期還有一個是講生物數據庫的， 介紹的文章都非常詳細。</p>
+<p>再往下翻， 可以看到當前正在計算（燒錢）的任務排名：</p>
+<img class="content-image" src="http://pic4.zhimg.com/70/af24719abb25f7db70872a11287482cf_b.jpg" alt="">
+<p>列出正在運行的任務簡介， 牽頭的科學家以及單位， 所使用的 CPU 核數和正在燒掉的機時， 最後的白框裏的數字是會跳動的， 告訴你這是實時的數據。比如第二位的是開發基於等離子體尾波場的加速器， 可以大大縮小加速器體積， 用於醫學等領域。第四位是計算核聚變裝置邊界的不穩定性（核聚變領域對計算能力的需求就是無底洞，最近中科大一個組在太湖之光上跑到了全機運行， 用來模擬託卡馬克裝置中的逃逸電子）。第五名是計算大氣物理， 用於理解環境變化。</p>
+<p>我想說的是， <strong>中國的超算上也在運行同樣種類的任務，爲科學研究，國計民生服務</strong>， 但是天河 1A 的主頁呢？太簡陋， 而且基本不怎麼更新， 系統升級和故障信息也都是通過郵件甚至是電話通知， 沒有統一的信息發佈平臺和用戶管理系統：</p>
+<img class="content-image" src="http://pic1.zhimg.com/70/eb4f8c870ee4a4c87169708f1e56b204_b.jpg" alt="">
+<p>所以國內的超算啊， 還是要在管理和對外宣傳上多學習啊。</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div><script type="“text/javascript”">window.daily=true</script>
